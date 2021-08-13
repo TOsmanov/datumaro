@@ -1,0 +1,965 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dataset Management Framework – MS COCO</title>
+    <link>/tags/ms-coco/</link>
+    <description>Recent content in MS COCO on Dataset Management Framework</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="/tags/ms-coco/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Getting started</title>
+      <link>/docs/getting_started/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/getting_started/</guid>
+      <description>
+        
+        
+        &lt;p&gt;To read about the design concept and features of Datumaro, go to the &lt;a href=&#34;../../docs/design/&#34;&gt;design section&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;h3 id=&#34;dependencies&#34;&gt;Dependencies&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Python (3.6+)&lt;/li&gt;
+&lt;li&gt;Optional: OpenVINO, TensorFlow, PyTorch, MxNet, Caffe, Accuracy Checker&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Optionally, create a virtual environment:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;python -m pip install virtualenv
+python -m virtualenv venv
+. venv/bin/activate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Install Datumaro package:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;pip install datumaro
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+&lt;p&gt;There are several options available:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#standalone-tool&#34;&gt;A standalone command-line tool&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#python-module&#34;&gt;A python module&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;standalone-tool&#34;&gt;Standalone tool&lt;/h3&gt;
+&lt;p&gt;Datuaro as a standalone tool allows to do various dataset operations from
+the command line interface:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum --help
+python -m datumaro --help
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;python-module&#34;&gt;Python module&lt;/h3&gt;
+&lt;p&gt;Datumaro can be used in custom scripts as a Python module. Used this way, it
+allows to use its features from an existing codebase, enabling dataset
+reading, exporting and iteration capabilities, simplifying integration of custom
+formats and providing high performance operations:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;datumaro.components.project&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Project&lt;/span&gt;
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# load a Datumaro project&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;project&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Project&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;load&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;directory&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# create a dataset&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;project&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;make_dataset&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# keep only annotated images&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;select&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;lambda&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;item&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#204a87&#34;&gt;len&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;item&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;annotations&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# change dataset labels&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;transform&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;remap_labels&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;cat&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;dog&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# rename cat to dog&lt;/span&gt;
+    &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;truck&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;car&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# rename truck to car&lt;/span&gt;
+    &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;person&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# remove this label&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;},&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;default&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;delete&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# remove everything else&lt;/span&gt;
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# iterate over dataset elements&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;item&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;
+  &lt;span style=&#34;color:#204a87&#34;&gt;print&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;item&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;item&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;annotations&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# export the resulting dataset in COCO format&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;export&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;dst/dir&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;coco&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Check our &lt;a href=&#34;../../docs/developer-guide/&#34;&gt;developer guide&lt;/a&gt; for additional
+information.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;examples&#34;&gt;Examples&lt;/h2&gt;
+&lt;!--lint disable list-item-indent--&gt;
+&lt;!--lint disable list-item-bullet-indent--&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Convert PASCAL VOC dataset to COCO format, keep only images with &lt;code&gt;cat&lt;/code&gt; class
+presented:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Download VOC dataset:&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar&lt;/span&gt;
+datum convert --input-format voc --input-path &amp;lt;path/to/voc&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;              --output-format coco &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;              --filter &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;/item[annotation/label=&amp;#34;cat&amp;#34;]&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;              -- --reindex &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# avoid annotation id conflicts&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Convert only non-&lt;code&gt;occluded&lt;/code&gt; annotations from a
+&lt;a href=&#34;https://github.com/openvinotoolkit/cvat&#34;&gt;CVAT&lt;/a&gt; project to TFrecord:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# export Datumaro dataset in CVAT UI, extract somewhere, go to the project dir&lt;/span&gt;
+datum filter -e &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;/item/annotation[occluded=&amp;#34;False&amp;#34;]&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;  --mode items+anno --output-dir not_occluded
+datum &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; --project not_occluded &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;  --format tf_detection_api -- --save-images
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Annotate MS COCO dataset, extract image subset, re-annotate it in
+&lt;a href=&#34;https://github.com/openvinotoolkit/cvat&#34;&gt;CVAT&lt;/a&gt;, update old dataset:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Download COCO dataset http://cocodataset.org/#download&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Put images to coco/images/ and annotations to coco/annotations/&lt;/span&gt;
+datum import --format coco --input-path &amp;lt;path/to/coco&amp;gt;
+datum &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; --filter &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;/image[images_I_dont_like]&amp;#39;&lt;/span&gt; --format cvat &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;  --output-dir reannotation
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# import dataset and images to CVAT, re-annotate&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# export Datumaro project, extract to &amp;#39;reannotation-upd&amp;#39;&lt;/span&gt;
+datum merge reannotation-upd
+datum &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; --format coco
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Annotate instance polygons in &lt;a href=&#34;https://github.com/openvinotoolkit/cvat&#34;&gt;CVAT&lt;/a&gt;, export
+as masks in COCO:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum convert --input-format cvat --input-path &amp;lt;path/to/cvat.xml&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;              --output-format coco -- --segmentation-mode masks
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Apply an OpenVINO detection model to some COCO-like dataset,
+then compare annotations with ground truth and visualize in TensorBoard:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum import --format coco --input-path &amp;lt;path/to/coco&amp;gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# create model results interpretation script&lt;/span&gt;
+datum model add mymodel openvino &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;  --weights model.bin --description model.xml &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;  --interpretation-script parse_results.py
+datum model run --model mymodel --output-dir mymodel_inference/
+datum diff mymodel_inference/ --format tensorboard --output-dir diff
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Change colors in PASCAL VOC-like &lt;code&gt;.png&lt;/code&gt; masks:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum import --format voc --input-path &amp;lt;path/to/voc/dataset&amp;gt;
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Create a color map file with desired colors:&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# label : color_rgb : parts : actions&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# cat:0,0,255::&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# dog:255,0,0::&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Save as mycolormap.txt&lt;/span&gt;
+
+datum &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; --format voc_segmentation -- --label-map mycolormap.txt
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# add &amp;#34;--apply-colormap=0&amp;#34; to save grayscale (indexed) masks&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# check &amp;#34;--help&amp;#34; option for more info&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# use &amp;#34;datum --loglevel debug&amp;#34; for extra conversion info&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a custom COCO-like dataset:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;numpy&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;np&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;datumaro.components.extractor&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;DatasetItem&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+  &lt;span style=&#34;color:#000&#34;&gt;Bbox&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;LabelCategories&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;AnnotationType&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;datumaro.components.dataset&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Dataset&lt;/span&gt;
+
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Dataset&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;categories&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+  &lt;span style=&#34;color:#000&#34;&gt;AnnotationType&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;label&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;LabelCategories&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;from_iterable&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;([&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;cat&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;dog&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;])&lt;/span&gt;
+&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;})&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;put&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;DatasetItem&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;np&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;ones&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;((&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)),&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;annotations&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;
+  &lt;span style=&#34;color:#000&#34;&gt;Bbox&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;4&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;label&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;),&lt;/span&gt;
+&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]))&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;export&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;test_dataset&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;coco&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!--lint enable list-item-bullet-indent--&gt;
+&lt;!--lint enable list-item-indent--&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: COCO</title>
+      <link>/docs/formats/coco/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/formats/coco/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;format-specification&#34;&gt;Format specification&lt;/h2&gt;
+&lt;p&gt;COCO format specification available &lt;a href=&#34;https://cocodataset.org/#format-data&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;COCO dataset format supports &lt;code&gt;captions&lt;/code&gt;, &lt;code&gt;image_info&lt;/code&gt;, &lt;code&gt;instances&lt;/code&gt;, &lt;code&gt;panoptic&lt;/code&gt;,
+&lt;code&gt;person_keypoints&lt;/code&gt;, &lt;code&gt;stuff&lt;/code&gt; annotation tasks
+and, as Datumaro extension, &lt;code&gt;label&lt;/code&gt; (like &lt;code&gt;instances&lt;/code&gt; with only &lt;code&gt;category_id&lt;/code&gt;)&lt;/p&gt;
+&lt;h2 id=&#34;load-coco-dataset&#34;&gt;Load COCO dataset&lt;/h2&gt;
+&lt;p&gt;The COCO dataset is available for free download:&lt;/p&gt;
+&lt;p&gt;Images:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://images.cocodataset.org/zips/train2017.zip&#34;&gt;train images&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://images.cocodataset.org/zips/val2017.zip&#34;&gt;val images&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://images.cocodataset.org/zips/test2017.zip&#34;&gt;test images&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://images.cocodataset.org/zips/unlabeled2017.zip&#34;&gt;unlabeled images&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Annotations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://images.cocodataset.org/annotations/annotations_trainval2017.zip&#34;&gt;captions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://images.cocodataset.org/annotations/image_info_test2017.zip&#34;&gt;image_info&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://images.cocodataset.org/annotations/annotations_trainval2017.zip&#34;&gt;instances&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://images.cocodataset.org/annotations/panoptic_annotations_trainval2017.zip&#34;&gt;panoptic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://images.cocodataset.org/annotations/annotations_trainval2017.zip&#34;&gt;person_keypoints&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://images.cocodataset.org/annotations/stuff_annotations_trainval2017.zip&#34;&gt;stuff&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are two ways to create Datumaro project and add COCO dataset to it:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum import --format coco --input-path &amp;lt;path/to/dataset&amp;gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# or&lt;/span&gt;
+datum create
+datum add path -f coco &amp;lt;path/to/dataset&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;It is possible to specify project name and project directory run
+&lt;code&gt;datum create --help&lt;/code&gt; for more information.&lt;/p&gt;
+&lt;p&gt;COCO dataset directory should have the following structure:&lt;/p&gt;
+&lt;!--lint disable fenced-code-flag--&gt;
+&lt;pre&gt;&lt;code&gt;└─ Dataset/
+    ├── images/
+    │   ├── train&amp;lt;year&amp;gt;
+    │   │   ├── &amp;lt;image_name1.ext&amp;gt;
+    │   │   ├── &amp;lt;image_name2.ext&amp;gt;
+    │   │   └── ...
+    │   ├── val&amp;lt;year&amp;gt;
+    │   │   ├── &amp;lt;image_name1.ext&amp;gt;
+    │   │   ├── &amp;lt;image_name2.ext&amp;gt;
+    │   │   └── ...
+    ├── annotations/
+    │   └── &amp;lt;tasks&amp;gt;_train&amp;lt;year&amp;gt;.json
+    │   └── &amp;lt;tasks&amp;gt;_test&amp;lt;year&amp;gt;.json
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For &lt;code&gt;panoptic&lt;/code&gt; COCO dataset directory should have the following structure:&lt;/p&gt;
+&lt;!--lint disable fenced-code-flag--&gt;
+&lt;pre&gt;&lt;code&gt;└─ Dataset/
+    ├── images/
+    │   ├── train&amp;lt;year&amp;gt;
+    │   │   ├── &amp;lt;image_name1.ext&amp;gt;
+    │   │   ├── &amp;lt;image_name2.ext&amp;gt;
+    │   │   └── ...
+    │   ├── val&amp;lt;year&amp;gt;
+    │   │   ├── &amp;lt;image_name1.ext&amp;gt;
+    │   │   ├── &amp;lt;image_name2.ext&amp;gt;
+    │   │   └── ...
+    ├── annotations/
+    │   ├── panoptic_train&amp;lt;year&amp;gt;
+    │   │   ├── &amp;lt;image_name1.ext&amp;gt;
+    │   │   ├── &amp;lt;image_name2.ext&amp;gt;
+    │   │   └── ...
+    │   ├── panoptic_train&amp;lt;year&amp;gt;.json
+    │   ├── panoptic_val&amp;lt;year&amp;gt;
+    │   │   ├── &amp;lt;image_name1.ext&amp;gt;
+    │   │   ├── &amp;lt;image_name2.ext&amp;gt;
+    │   │   └── ...
+    │   └── panoptic_val&amp;lt;year&amp;gt;.json
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can import dataset for specific tasks
+of COCO dataset instead of the whole dataset,
+for example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum import --format coco_stuff --input-path &amp;lt;path/to/stuff.json&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Datumaro supports the following COCO tasks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cocodataset.org/#captions-2015&#34;&gt;Image Captioning&lt;/a&gt; (&lt;code&gt;coco_caption&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cocodataset.org/#detection-2020&#34;&gt;Object Detection&lt;/a&gt; (&lt;code&gt;coco_instances&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Image classification (our extension) (&lt;code&gt;coco_labels&lt;/code&gt;) - a format like
+Object Detection, which uses only &lt;code&gt;category_id&lt;/code&gt; and &lt;code&gt;score&lt;/code&gt; annotation fields&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cocodataset.org/#panoptic-2020&#34;&gt;Panoptic Segmentation&lt;/a&gt; (&lt;code&gt;coco_panoptic&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cocodataset.org/#keypoints-2020&#34;&gt;Keypoint Detection&lt;/a&gt; (&lt;code&gt;coco_person_keypoints&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cocodataset.org/#stuff-2019&#34;&gt;Stuff Segmentation&lt;/a&gt; (&lt;code&gt;coco_stuff&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To make sure that the selected dataset has been added to the project, you can
+run &lt;code&gt;datum info&lt;/code&gt;, which will display the project and dataset information.&lt;/p&gt;
+&lt;h2 id=&#34;export-to-other-formats&#34;&gt;Export to other formats&lt;/h2&gt;
+&lt;p&gt;Datumaro can convert COCO dataset into any other format &lt;a href=&#34;../../docs/user-manual/supported-formats/&#34;&gt;Datumaro supports&lt;/a&gt;.
+To get the expected result, the dataset needs to be converted to formats
+that support the specified task (e.g. for panoptic segmentation - VOC, CamVID)
+There are few ways to convert COCO dataset to other dataset format:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum project import -f coco -i &amp;lt;path/to/coco&amp;gt;
+datum &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; -f voc -o &amp;lt;path/to/output/dir&amp;gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# or&lt;/span&gt;
+datum convert -if coco -i &amp;lt;path/to/coco&amp;gt; -f voc -o &amp;lt;path/to/output/dir&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Some formats provide extra options for conversion.
+These options are passed after double dash (&lt;code&gt;--&lt;/code&gt;) in the command line.
+To get information about them, run&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;datum export -f &amp;lt;FORMAT&amp;gt; -- -h&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;export-to-coco&#34;&gt;Export to COCO&lt;/h2&gt;
+&lt;p&gt;There are few ways to convert dataset to COCO format:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# export dataset into COCO format from existing project&lt;/span&gt;
+datum &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; -p &amp;lt;path/to/project&amp;gt; -f coco -o &amp;lt;path/to/export/dir&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -- --save-images
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# converting to COCO format from other format&lt;/span&gt;
+datum convert -if voc -i &amp;lt;path/to/voc/dataset&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -f coco -o &amp;lt;path/to/export/dir&amp;gt; -- --save-images
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Extra options for export to COCO format:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--save-images&lt;/code&gt; allow to export dataset with saving images
+(by default &lt;code&gt;False&lt;/code&gt;);&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--image-ext IMAGE_EXT&lt;/code&gt; allow to specify image extension
+for exporting dataset (by default - keep original or use &lt;code&gt;.jpg&lt;/code&gt;, if none);&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--segmentation-mode MODE&lt;/code&gt; allow to specify save mode for instance
+segmentation:
+&lt;ul&gt;
+&lt;li&gt;&amp;lsquo;guess&amp;rsquo;: guess the mode for each instance
+(using &amp;lsquo;is_crowd&amp;rsquo; attribute as hint)&lt;/li&gt;
+&lt;li&gt;&amp;lsquo;polygons&amp;rsquo;: save polygons( merge and convert masks, prefer polygons)&lt;/li&gt;
+&lt;li&gt;&amp;lsquo;mask&amp;rsquo;: save masks (merge and convert polygons, prefer masks)
+(by default &lt;code&gt;guess&lt;/code&gt;);&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--crop-covered&lt;/code&gt; allow to crop covered segments so that background objects
+segmentation was more accurate (by default &lt;code&gt;False&lt;/code&gt;);&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--allow-attributes ALLOW_ATTRIBUTES&lt;/code&gt; allow export of attributes
+(by default &lt;code&gt;True&lt;/code&gt;);&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--reindex REINDEX&lt;/code&gt; allow to assign new indices to images and annotations,
+useful to avoid merge conflicts (by default &lt;code&gt;False&lt;/code&gt;);&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--merge-images&lt;/code&gt; allow to save all images into a single directory
+(by default &lt;code&gt;False&lt;/code&gt;);&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--tasks TASKS&lt;/code&gt; allow to specify tasks for export dataset,
+by default Datumaro uses all tasks. Example:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum import -o project -f coco -i &amp;lt;dataset&amp;gt;
+datum &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; -p project -f coco -- --tasks instances,stuff
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;particular-use-cases&#34;&gt;Particular use cases&lt;/h2&gt;
+&lt;p&gt;Datumaro supports filtering, transformation, merging etc. for all formats
+and for the COCO format in particular. Follow
+&lt;a href=&#34;../../docs/user-manual/&#34;&gt;user manual&lt;/a&gt;
+to get more information about these operations.&lt;/p&gt;
+&lt;p&gt;There are few examples of using Datumaro operations to solve
+particular problems with COCO dataset:&lt;/p&gt;
+&lt;h3 id=&#34;example-1-how-to-load-an-original-panoptic-coco-dataset-and-convert-to-pascal-voc&#34;&gt;Example 1. How to load an original panoptic COCO dataset and convert to Pascal VOC&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum create -o project
+datum add path -p project -f coco_panoptic ./COCO/annotations/panoptic_val2017.json
+datum stats -p project
+datum &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; -p final_project -o dataset -f voc  --overwrite  -- --save-images
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;example-2-how-to-create-custom-coco-like-dataset&#34;&gt;Example 2. How to create custom COCO-like dataset&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;numpy&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;np&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;datumaro.components.dataset&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Dataset&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;datumaro.components.extractor&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Mask&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;DatasetItem&lt;/span&gt;
+
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Dataset&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;from_iterable&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;([&lt;/span&gt;
+    &lt;span style=&#34;color:#000&#34;&gt;DatasetItem&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;000000000001&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+                &lt;span style=&#34;color:#000&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;np&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;ones&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;((&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)),&lt;/span&gt;
+                &lt;span style=&#34;color:#000&#34;&gt;subset&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;val&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+                &lt;span style=&#34;color:#000&#34;&gt;attributes&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;40&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;},&lt;/span&gt;
+                &lt;span style=&#34;color:#000&#34;&gt;annotations&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;
+                    &lt;span style=&#34;color:#000&#34;&gt;Mask&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;np&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;array&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;([[&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]]),&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;label&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+                        &lt;span style=&#34;color:#204a87&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;7&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;group&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;7&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;attributes&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;is_crowd&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;False&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}),&lt;/span&gt;
+                    &lt;span style=&#34;color:#000&#34;&gt;Mask&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;np&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;array&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;([[&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]]),&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;label&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+                        &lt;span style=&#34;color:#204a87&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;group&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;attributes&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;is_crowd&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;True&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}),&lt;/span&gt;
+                &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;
+            &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;),&lt;/span&gt;
+    &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;],&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;categories&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;b&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;d&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;])&lt;/span&gt;
+
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;export&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;./dataset&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#204a87&#34;&gt;format&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;coco_panoptic&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;More examples of working with COCO dataset from code can be found in
+&lt;a href=&#34;https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test_coco_format.py&#34;&gt;tests&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Velodyne Points / KITTI Raw 3D</title>
+      <link>/docs/formats/kitti_raw/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/formats/kitti_raw/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;format-specification&#34;&gt;Format specification&lt;/h2&gt;
+&lt;p&gt;Velodyne Points / KITTI Raw 3D data format:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cvlibs.net/datasets/kitti/raw_data.php&#34;&gt;home page&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://s3.eu-central-1.amazonaws.com/avg-kitti/devkit_raw_data.zip&#34;&gt;specification&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This dataset format supports the following types of annotations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cuboid_3d&lt;/code&gt; (tracks)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Supported annotation attributes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;truncation&lt;/code&gt; (write, string), possible values: &lt;code&gt;truncation_unset&lt;/code&gt;,
+&lt;code&gt;in_image&lt;/code&gt;, &lt;code&gt;truncated&lt;/code&gt;, &lt;code&gt;out_image&lt;/code&gt;, &lt;code&gt;behind_image&lt;/code&gt; (case-independent).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;occlusion&lt;/code&gt; (write, string), possible values: &lt;code&gt;occlusion_unset&lt;/code&gt;, &lt;code&gt;visible&lt;/code&gt;,
+&lt;code&gt;partly&lt;/code&gt;, &lt;code&gt;fully&lt;/code&gt; (case-independent). This attribute has priority
+over &lt;code&gt;occluded&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;occluded&lt;/code&gt; (read/write, boolean)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;keyframe&lt;/code&gt; (read/write, boolean). Responsible for &lt;code&gt;occlusion_kf&lt;/code&gt; field.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;track_id&lt;/code&gt; (read/write, integer). Indicates the group over frames for
+annotations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Supported image attributes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;frame&lt;/code&gt; (read/write, integer). Indicates frame number of the image.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;import-kitti-raw-dataset&#34;&gt;Import KITTI Raw dataset&lt;/h2&gt;
+&lt;p&gt;The velodyne points/KITTI Raw dataset is available for download:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.cvlibs.net/datasets/kitti/raw_data.php&#34;&gt;http://www.cvlibs.net/datasets/kitti/raw_data.php&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cloud.enterprise.deepsystems.io/s/YcyfIf5zrS7NZcI/download&#34;&gt;https://cloud.enterprise.deepsystems.io/s/YcyfIf5zrS7NZcI/download&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;KITTI Raw dataset directory should have the following structure:&lt;/p&gt;
+&lt;!--lint disable fenced-code-flag--&gt;
+&lt;pre&gt;&lt;code&gt;└─ Dataset/
+    ├── image_00/ # optional, aligned images from different cameras
+    │   └── data/
+    │       ├── &amp;lt;name1.ext&amp;gt;
+    │       └── &amp;lt;name2.ext&amp;gt;
+    ├── image_01/
+    │   └── data/
+    │       ├── &amp;lt;name1.ext&amp;gt;
+    │       └── &amp;lt;name2.ext&amp;gt;
+    ...
+    │
+    ├── velodyne_points/ # optional, 3d point clouds
+    │   └── data/
+    │       ├── &amp;lt;name1.pcd&amp;gt;
+    │       └── &amp;lt;name2.pcd&amp;gt;
+    ├── tracklet_labels.xml
+    └── frame_list.txt # optional, required for custom image names
+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The format does not support arbitrary image names and paths, but Datumaro
+provides an option to use a special index file to allow this.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;frame_list.txt&lt;/code&gt; contents:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;12345 relative/path/to/name1/from/data
+46 relative/path/to/name2/from/data
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;There are two ways to create Datumaro project and add KITTI dataset to it:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum import --format kitti_raw --input-path &amp;lt;path/to/dataset&amp;gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# or&lt;/span&gt;
+datum create
+datum add path -f kitti_raw &amp;lt;path/to/dataset&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To make sure that the selected dataset has been added to the project,
+you can run &lt;code&gt;datum info&lt;/code&gt;, which will display the project and dataset
+information.&lt;/p&gt;
+&lt;h2 id=&#34;export-to-other-formats&#34;&gt;Export to other formats&lt;/h2&gt;
+&lt;p&gt;Datumaro can convert KITTI Raw dataset into any other
+format &lt;a href=&#34;../../docs/user-manual/supported-formats/&#34;&gt;Datumaro supports&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Such conversion will only be successful if the output
+format can represent the type of dataset you want to convert,
+e.g. 3D point clouds can be saved in Supervisely Point Clouds format,
+but not in COCO keypoints.&lt;/p&gt;
+&lt;p&gt;There are few ways to convert KITTI Raw dataset to other dataset format:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum import -f kitti_raw -i &amp;lt;path/to/kitti_raw&amp;gt; -o proj/
+datum &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; -f sly_pointcloud -o &amp;lt;path/to/output/dir&amp;gt; -p proj/
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# or&lt;/span&gt;
+datum convert -if kitti_raw -i &amp;lt;path/to/kitti_raw&amp;gt; -f sly_pointcloud
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Some formats provide extra options for conversion.
+These options are passed after double dash (&lt;code&gt;--&lt;/code&gt;) in the command line.
+To get information about them, run&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;datum export -f &amp;lt;FORMAT&amp;gt; -- -h&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;export-to-kitti-raw&#34;&gt;Export to KITTI Raw&lt;/h2&gt;
+&lt;p&gt;There are few ways to convert dataset to KITTI Raw format:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# export dataset into KITTI Raw format from existing project&lt;/span&gt;
+datum &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; -p &amp;lt;path/to/project&amp;gt; -f kitti_raw -o &amp;lt;path/to/export/dir&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -- --save-images
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# converting to KITTI Raw format from other format&lt;/span&gt;
+datum convert -if sly_pointcloud -i &amp;lt;path/to/sly_pcd/dataset&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -f kitti_raw -o &amp;lt;path/to/export/dir&amp;gt; -- --save-images --reindex
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Extra options for exporting in KITTI Raw format:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--save-images&lt;/code&gt; allow to export dataset with saving images. This will
+include point clouds and related images (by default &lt;code&gt;False&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--image-ext IMAGE_EXT&lt;/code&gt; allow to specify image extension
+for exporting dataset (by default - keep original or use &lt;code&gt;.png&lt;/code&gt;, if none)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--reindex&lt;/code&gt; assigns new indices to frames and tracks. Allows annotations
+without &lt;code&gt;track_id&lt;/code&gt; attribute (they will be exported as signle-frame tracks).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--allow-attrs&lt;/code&gt; allows writing arbitrary annotation attributes. They will
+be written in &lt;code&gt;&amp;lt;annotations&amp;gt;&lt;/code&gt; section of &lt;code&gt;&amp;lt;poses&amp;gt;&amp;lt;item&amp;gt;&lt;/code&gt;
+(disabled by default)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;examples&#34;&gt;Examples&lt;/h2&gt;
+&lt;h3 id=&#34;example-1-import-dataset-compute-statistics&#34;&gt;Example 1. Import dataset, compute statistics&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum create -o project
+datum add path -p project -f kitti_raw ../../kitti_raw/
+datum stats -p project
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;example-2-convert-supervisely-pointclouds-to-kitti-raw&#34;&gt;Example 2. Convert Supervisely Pointclouds to KITTI Raw&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum convert -if sly_pointcloud -i ../sly_pcd/ &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -f kitti_raw -o my_kitti/ -- --save-images --allow-attrs
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;example-3-create-a-custom-dataset&#34;&gt;Example 3. Create a custom dataset&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;datumaro.components.dataset&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Dataset&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;datumaro.components.extractor&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Cuboid3d&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;DatasetItem&lt;/span&gt;
+
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Dataset&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;from_iterable&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;([&lt;/span&gt;
+    &lt;span style=&#34;color:#000&#34;&gt;DatasetItem&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;some/name/qq&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+        &lt;span style=&#34;color:#000&#34;&gt;annotations&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;
+            &lt;span style=&#34;color:#000&#34;&gt;Cuboid3d&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;position&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;13.54&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;9.41&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0.24&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;],&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;label&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+                &lt;span style=&#34;color:#000&#34;&gt;attributes&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;occluded&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;False&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;track_id&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}),&lt;/span&gt;
+
+            &lt;span style=&#34;color:#000&#34;&gt;Cuboid3d&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;position&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3.4&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2.11&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;4.4&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;],&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;label&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+                &lt;span style=&#34;color:#000&#34;&gt;attributes&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;occluded&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;True&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;track_id&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;})&lt;/span&gt;
+        &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;],&lt;/span&gt;
+        &lt;span style=&#34;color:#000&#34;&gt;pcd&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;path/to/pcd1.pcd&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+        &lt;span style=&#34;color:#000&#34;&gt;related_images&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;np&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;ones&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;((&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)),&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;path/to/image2.png&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;image3.jpg&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;],&lt;/span&gt;
+        &lt;span style=&#34;color:#000&#34;&gt;attributes&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;frame&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;),&lt;/span&gt;
+&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;],&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;categories&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;cat&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;dog&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;])&lt;/span&gt;
+
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;export&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;my_dataset/&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#204a87&#34;&gt;format&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;kitti_raw&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;save_images&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;True&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;More examples of working with KITTI Raw dataset from code can be found in
+&lt;a href=&#34;https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test_kitti_raw_format.py&#34;&gt;tests&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: KITTI</title>
+      <link>/docs/formats/kitti/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/formats/kitti/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;format-specification&#34;&gt;Format specification&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Original KITTI dataset format support the following types of annotations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Bounding boxes&lt;/code&gt; (for &lt;a href=&#34;http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark&#34;&gt;object detection&lt;/a&gt;);&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Masks&lt;/code&gt; (for &lt;a href=&#34;http://www.cvlibs.net/datasets/kitti/eval_semseg.php?benchmark=semantics2015&#34;&gt;segmentation&lt;/a&gt; task).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Supported attributes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;truncated&lt;/code&gt;: indicates that the bounding box specified for the object does
+not correspond to the full extent of the object;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;occluded&lt;/code&gt;: indicates that a significant portion of the object within the
+bounding box is occluded by another object.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;KITTI segmentations format specification available in &lt;code&gt;README.md&lt;/code&gt; &lt;a href=&#34;https://s3.eu-central-1.amazonaws.com/avg-kitti/devkit_semantics.zip&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;KITTI object detection format specification available in &lt;code&gt;README.md&lt;/code&gt; &lt;a href=&#34;https://s3.eu-central-1.amazonaws.com/avg-kitti/devkit_object.zip&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;load-kitti-dataset&#34;&gt;Load KITTI dataset&lt;/h2&gt;
+&lt;p&gt;The KITTI left color images for object detection are available &lt;a href=&#34;http://www.cvlibs.net/download.php?file=data_object_image_2.zip&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The KITTI object detection labels are available &lt;a href=&#34;http://www.cvlibs.net/download.php?file=data_object_label_2.zip&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The KITTI segmentations dataset is available &lt;a href=&#34;http://www.cvlibs.net/download.php?file=data_semantics.zip&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There are two ways to create Datumaro project and add KITTI dataset to it:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum import --format kitti --input-path &amp;lt;path/to/dataset&amp;gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# or&lt;/span&gt;
+datum create
+datum add path -f kitti &amp;lt;path/to/dataset&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;It is possible to specify project name and project directory run
+&lt;code&gt;datum create --help&lt;/code&gt; for more information.&lt;/p&gt;
+&lt;p&gt;KITTI segmentation dataset directory should have the following structure:&lt;/p&gt;
+&lt;!--lint disable fenced-code-flag--&gt;
+&lt;pre&gt;&lt;code&gt;└─ Dataset/
+    ├── testing/
+    │   └── image_2/
+    │       ├── &amp;lt;name_1&amp;gt;.&amp;lt;img_ext&amp;gt;
+    │       ├── &amp;lt;name_2&amp;gt;.&amp;lt;img_ext&amp;gt;
+    │       └── ...
+    ├── training/
+    │   ├── image_2/ # left color camera images
+    │   │   ├── &amp;lt;name_1&amp;gt;.&amp;lt;img_ext&amp;gt;
+    │   │   ├── &amp;lt;name_2&amp;gt;.&amp;lt;img_ext&amp;gt;
+    │   │   └── ...
+    │   ├── label_2/ # left color camera label files
+    │   │   ├── &amp;lt;name_1&amp;gt;.txt
+    │   │   ├── &amp;lt;name_2&amp;gt;.txt
+    │   │   └── ...
+    │   ├── instance/ # instance segmentation masks
+    │   │   ├── &amp;lt;name_1&amp;gt;.png
+    │   │   ├── &amp;lt;name_2&amp;gt;.png
+    │   │   └── ...
+    │   ├── semantic/ # semantic segmentation masks (labels are encoded by its id)
+    │   │   ├── &amp;lt;name_1&amp;gt;.png
+    │   │   ├── &amp;lt;name_2&amp;gt;.png
+    │   │   └── ...
+    │   └── semantic_rgb/ # semantic segmentation masks (labels are encoded by its color)
+    │       ├── &amp;lt;name_1&amp;gt;.png
+    │       ├── &amp;lt;name_2&amp;gt;.png
+    │       └── ...
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can import dataset for specific tasks
+of KITTI dataset instead of the whole dataset,
+for example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum add path -f kitti_detection &amp;lt;path/to/dataset&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Datumaro supports the following KITTI tasks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Object detection (&lt;code&gt;kitti_detection&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Class and instance segmentation (&lt;code&gt;kitti_segmentation&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../docs/formats/kitti_raw/&#34;&gt;3d point clouds / velodyne points (&lt;code&gt;kitti_raw&lt;/code&gt;)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To make sure that the selected dataset has been added to the project, you can
+run &lt;code&gt;datum info&lt;/code&gt;, which will display the project and dataset information.&lt;/p&gt;
+&lt;h2 id=&#34;export-to-other-formats&#34;&gt;Export to other formats&lt;/h2&gt;
+&lt;p&gt;Datumaro can convert KITTI dataset into any other format &lt;a href=&#34;../../docs/user-manual/supported-formats/&#34;&gt;Datumaro supports&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Such conversion will only be successful if the output
+format can represent the type of dataset you want to convert,
+e.g. segmentation annotations can be
+saved in &lt;code&gt;Cityscapes&lt;/code&gt; format, but no as &lt;code&gt;COCO keypoints&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;There are few ways to convert KITTI dataset to other dataset format:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum project import -f kitti -i &amp;lt;path/to/kitti&amp;gt;
+datum &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; -f cityscapes -o &amp;lt;path/to/output/dir&amp;gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# or&lt;/span&gt;
+datum convert -if kitti -i &amp;lt;path/to/kitti&amp;gt; -f cityscapes -o &amp;lt;path/to/output/dir&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Some formats provide extra options for conversion.
+These options are passed after double dash (&lt;code&gt;--&lt;/code&gt;) in the command line.
+To get information about them, run&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;datum export -f &amp;lt;FORMAT&amp;gt; -- -h&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;export-to-kitti&#34;&gt;Export to KITTI&lt;/h2&gt;
+&lt;p&gt;There are few ways to convert dataset to KITTI format:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# export dataset into KITTI format from existing project&lt;/span&gt;
+datum &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; -p &amp;lt;path/to/project&amp;gt; -f kitti -o &amp;lt;path/to/export/dir&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -- --save-images
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# converting to KITTI format from other format&lt;/span&gt;
+datum convert -if cityscapes -i &amp;lt;path/to/cityscapes/dataset&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -f kitti -o &amp;lt;path/to/export/dir&amp;gt; -- --save-images
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Extra options for export to KITTI format:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--save-images&lt;/code&gt; allow to export dataset with saving images
+(by default &lt;code&gt;False&lt;/code&gt;);&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--image-ext IMAGE_EXT&lt;/code&gt; allow to specify image extension
+for exporting dataset (by default - keep original or use &lt;code&gt;.png&lt;/code&gt;, if none).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--apply-colormap APPLY_COLORMAP&lt;/code&gt; allow to use colormap for class masks
+(in folder &lt;code&gt;semantic_rgb&lt;/code&gt;, by default &lt;code&gt;True&lt;/code&gt;);&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--label_map&lt;/code&gt; allow to define a custom colormap. Example&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# mycolormap.txt :&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 0 0 255 sky&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 255 0 0 person&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#...&lt;/span&gt;
+datum &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; -f kitti -- --label-map mycolormap.txt
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# or you can use original kitti colomap:&lt;/span&gt;
+datum &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; -f kitti -- --label-map kitti
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--tasks TASKS&lt;/code&gt; allow to specify tasks for export dataset,
+by default Datumaro uses all tasks. Example:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum import -o project -f kitti -i &amp;lt;dataset&amp;gt;
+datum &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; -p project -f kitti -- --tasks detection
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--allow-attributes ALLOW_ATTRIBUTES&lt;/code&gt; allow export of attributes
+(by default &lt;code&gt;True&lt;/code&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;particular-use-cases&#34;&gt;Particular use cases&lt;/h2&gt;
+&lt;p&gt;Datumaro supports filtering, transformation, merging etc. for all formats
+and for the KITTI format in particular. Follow
+&lt;a href=&#34;../../docs/user-manual/&#34;&gt;user manual&lt;/a&gt;
+to get more information about these operations.&lt;/p&gt;
+&lt;p&gt;There are few examples of using Datumaro operations to solve
+particular problems with KITTI dataset:&lt;/p&gt;
+&lt;h3 id=&#34;example-1-how-to-load-an-original-kitti-dataset-and-convert-to-cityscapes&#34;&gt;Example 1. How to load an original KITTI dataset and convert to Cityscapes&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum create -o project
+datum add path -p project -f kitti ./KITTI/
+datum stats -p project
+datum &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; -p final_project -o dataset -f cityscapes -- --save-images
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;example-2-how-to-create-custom-kitti-like-dataset&#34;&gt;Example 2. How to create custom KITTI-like dataset&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;numpy&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;np&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;datumaro.components.dataset&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Dataset&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;datumaro.components.extractor&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Mask&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;DatasetItem&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;datumaro.plugins.kitti_format&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;KITTI&lt;/span&gt;
+
+&lt;span style=&#34;color:#000&#34;&gt;label_map&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{}&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;label_map&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;background&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;label_map&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;label_1&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;label_map&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;label_2&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;categories&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;KITTI&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;make_kitti_categories&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;label_map&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Dataset&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;from_iterable&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;([&lt;/span&gt;
+    &lt;span style=&#34;color:#000&#34;&gt;DatasetItem&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+                &lt;span style=&#34;color:#000&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;np&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;ones&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;((&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)),&lt;/span&gt;
+                &lt;span style=&#34;color:#000&#34;&gt;annotations&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;
+                    &lt;span style=&#34;color:#000&#34;&gt;Mask&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;np&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;array&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;([[&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]]),&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;label&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#204a87&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+                        &lt;span style=&#34;color:#000&#34;&gt;attributes&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;is_crowd&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;False&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}),&lt;/span&gt;
+                    &lt;span style=&#34;color:#000&#34;&gt;Mask&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;np&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;array&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;([[&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]]),&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;label&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#204a87&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+                        &lt;span style=&#34;color:#000&#34;&gt;attributes&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;is_crowd&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;False&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}),&lt;/span&gt;
+                &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;
+            &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;),&lt;/span&gt;
+    &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;],&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;categories&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;categories&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;export&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;./dataset&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#204a87&#34;&gt;format&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;kitti&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;More examples of working with KITTI dataset from code can be found in
+&lt;a href=&#34;https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test_kitti_format.py&#34;&gt;tests&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Convert datasets</title>
+      <link>/docs/user-manual/command-reference/convert-datasets/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/user-manual/command-reference/convert-datasets/</guid>
+      <description>
+        
+        
+        &lt;p&gt;This command allows to convert a dataset from one format into another.
+In fact, this command is a combination of &lt;code&gt;project import&lt;/code&gt; and &lt;code&gt;project export&lt;/code&gt;
+and just provides a simpler way to obtain the same result when no extra options
+is needed. A list of supported formats can be found in the &lt;code&gt;--help&lt;/code&gt; output of
+this command.&lt;/p&gt;
+&lt;p&gt;Usage:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum convert --help
+
+datum convert &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -i &amp;lt;input path&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -if &amp;lt;input format&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -o &amp;lt;output path&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -f &amp;lt;output format&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -- &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;extra parameters &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; output format&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Example: convert a VOC-like dataset to a COCO-like one:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum convert --input-format voc --input-path &amp;lt;path/to/voc/&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;              --output-format coco
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Add and remove data</title>
+      <link>/docs/user-manual/command-reference/add-and-remove-data/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/user-manual/command-reference/add-and-remove-data/</guid>
+      <description>
+        
+        
+        &lt;p&gt;A Project can contain a number of external Data Sources. Each Data Source
+describes a way to produce dataset items. A Project combines dataset items from
+all the sources and its own dataset into one composite dataset. You can manage
+project sources by commands in the &lt;code&gt;source&lt;/code&gt; command line context.&lt;/p&gt;
+&lt;p&gt;Datasets come in a wide variety of formats. Each dataset
+format defines its own data structure and rules on how to
+interpret the data. For example, the following data structure
+is used in COCO format:&lt;/p&gt;
+&lt;!--lint disable fenced-code-flag--&gt;
+&lt;pre&gt;&lt;code&gt;/dataset/
+- /images/&amp;lt;id&amp;gt;.jpg
+- /annotations/
+&lt;/code&gt;&lt;/pre&gt;&lt;!--lint enable fenced-code-flag--&gt;
+&lt;p&gt;Supported formats are listed in the command help. Check &lt;a href=&#34;../../docs/user-manual/extending/&#34;&gt;extending tips&lt;/a&gt;
+for information on extra format support.&lt;/p&gt;
+&lt;p&gt;Usage:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum add --help
+datum remove --help
+
+datum add &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    path &amp;lt;path&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -p &amp;lt;project dir&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -f &amp;lt;format&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -n &amp;lt;name&amp;gt;
+
+datum remove &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -p &amp;lt;project dir&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -n &amp;lt;name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Example: create a project from a bunch of different annotations and images,
+and generate TFrecord for TF Detection API for model training&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum create
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# &amp;#39;default&amp;#39; is the name of the subset below&lt;/span&gt;
+datum add path &amp;lt;path/to/coco/instances_default.json&amp;gt; -f coco_instances
+datum add path &amp;lt;path/to/cvat/default.xml&amp;gt; -f cvat
+datum add path &amp;lt;path/to/voc&amp;gt; -f voc_detection
+datum add path &amp;lt;path/to/datumaro/default.json&amp;gt; -f datumaro
+datum add path &amp;lt;path/to/images/dir&amp;gt; -f image_dir
+datum &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; -f tf_detection_api
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Import project</title>
+      <link>/docs/user-manual/command-reference/import-project/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/user-manual/command-reference/import-project/</guid>
+      <description>
+        
+        
+        &lt;p&gt;This command creates a Project from an existing dataset.&lt;/p&gt;
+&lt;p&gt;Supported formats are listed in the command help. Check &lt;a href=&#34;../../docs/user-manual/extending/&#34;&gt;extending tips&lt;/a&gt;
+for information on extra format support.&lt;/p&gt;
+&lt;p&gt;Usage:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum import --help
+
+datum import &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -i &amp;lt;dataset_path&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -o &amp;lt;project_dir&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -f &amp;lt;format&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Example: create a project from COCO-like dataset&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum import &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -i /home/coco_dir &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -o /home/project_dir &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -f coco
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;An &lt;em&gt;MS COCO&lt;/em&gt;-like dataset should have the following directory structure:&lt;/p&gt;
+&lt;!--lint disable fenced-code-flag--&gt;
+&lt;pre&gt;&lt;code&gt;COCO/
+├── annotations/
+│   ├── instances_val2017.json
+│   ├── instances_train2017.json
+├── images/
+│   ├── val2017
+│   ├── train2017
+&lt;/code&gt;&lt;/pre&gt;&lt;!--lint enable fenced-code-flag--&gt;
+&lt;p&gt;Everything after the last &lt;code&gt;_&lt;/code&gt; is considered a subset name in the COCO format.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Obtaining project info</title>
+      <link>/docs/user-manual/command-reference/get-project-info/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/user-manual/command-reference/get-project-info/</guid>
+      <description>
+        
+        
+        &lt;p&gt;This command outputs project status information.&lt;/p&gt;
+&lt;p&gt;Usage:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum info --help
+
+datum info &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -p &amp;lt;project dir&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;datum info -p /test_project
+
+Project:
+  name: test_project
+  location: /test_project
+Sources:
+  &lt;span style=&#34;color:#204a87&#34;&gt;source&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;instances_minival2014&amp;#39;&lt;/span&gt;:
+    format: coco_instances
+    url: /coco_like/annotations/instances_minival2014.json
+Dataset:
+  length: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;5000&lt;/span&gt;
+  categories: label
+    label:
+      count: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;80&lt;/span&gt;
+      labels: person, bicycle, car, motorcycle &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;and &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;76&lt;/span&gt; more&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  subsets: minival2014
+    subset &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;minival2014&amp;#39;&lt;/span&gt;:
+      length: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;5000&lt;/span&gt;
+      categories: label
+        label:
+          count: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;80&lt;/span&gt;
+          labels: person, bicycle, car, motorcycle &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;and &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;76&lt;/span&gt; more&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: OpenVINO™ Inference Interpreter</title>
+      <link>/docs/plugins/openvino_plugin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/plugins/openvino_plugin/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;models-supported-from-interpreter-samples&#34;&gt;Models supported from interpreter samples&lt;/h2&gt;
+&lt;p&gt;There are detection and image classification examples.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Detection (SSD-based)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Intel Pre-trained Models &amp;gt; Object Detection&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_models_intel_face_detection_0200_description_face_detection_0200.html&#34;&gt;face-detection-0200&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_models_intel_face_detection_0202_description_face_detection_0202.html&#34;&gt;face-detection-0202&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_models_intel_face_detection_0204_description_face_detection_0204.html&#34;&gt;face-detection-0204&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_models_intel_person_detection_0200_description_person_detection_0200.html&#34;&gt;person-detection-0200&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_models_intel_person_detection_0201_description_person_detection_0201.html&#34;&gt;person-detection-0201&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_models_intel_person_detection_0202_description_person_detection_0202.html&#34;&gt;person-detection-0202&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_models_intel_person_vehicle_bike_detection_2000_description_person_vehicle_bike_detection_2000.html&#34;&gt;person-vehicle-bike-detection-2000&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_models_intel_person_vehicle_bike_detection_2001_description_person_vehicle_bike_detection_2001.html&#34;&gt;person-vehicle-bike-detection-2001&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_models_intel_person_vehicle_bike_detection_2002_description_person_vehicle_bike_detection_2002.html&#34;&gt;person-vehicle-bike-detection-2002&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_models_intel_vehicle_detection_0200_description_vehicle_detection_0200.html&#34;&gt;vehicle-detection-0200&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_models_intel_vehicle_detection_0201_description_vehicle_detection_0201.html&#34;&gt;vehicle-detection-0201&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_models_intel_vehicle_detection_0202_description_vehicle_detection_0202.html&#34;&gt;vehicle-detection-0202&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Public Pre-Trained Models(OMZ) &amp;gt; Object Detection&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_models_public_ssd_mobilenet_v1_coco_ssd_mobilenet_v1_coco.html&#34;&gt;ssd_mobilenet_v1_coco&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_models_public_ssd_mobilenet_v2_coco_ssd_mobilenet_v2_coco.html&#34;&gt;ssd_mobilenet_v2_coco&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Image Classification&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Public Pre-Trained Models(OMZ) &amp;gt; Classification
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_models_public_mobilenet_v2_pytorch_mobilenet_v2_pytorch.html&#34;&gt;mobilenet-v2-pytorch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can find more OpenVINO™ Trained Models
+&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_models_intel_index.html&#34;&gt;here&lt;/a&gt;
+To run the inference with OpenVINO™, the model format should be Intermediate
+Representation(IR).
+For the Caffe/TensorFlow/MXNet/Kaldi/ONNX models, please see the &lt;a href=&#34;https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_prepare_model_convert_model_Converting_Model.html&#34;&gt;Model Conversion Instruction&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You need to implement your own interpreter samples to support the other
+OpenVINO™ Trained Models.&lt;/p&gt;
+&lt;h2 id=&#34;model-download&#34;&gt;Model download&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Prerequisites&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;OpenVINO™ (To install OpenVINO™, please see the
+&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_installing_openvino_linux.html&#34;&gt;OpenVINO™ Installation Instruction&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;OpenVINO™ models (To download OpenVINO™ models, please see the &lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_tools_downloader_README.html&#34;&gt;Model Downloader Instruction&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;PASCAL VOC 2012 dataset (To download VOC 2012 dataset, please go &lt;a href=&#34;http://host.robots.ox.ac.uk/pascal/VOC/voc2012/#devkit&#34;&gt;VOC2012 download&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# cd &amp;lt;openvino_dir&amp;gt;/deployment_tools/open_model_zoo/tools/downloader&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ./downloader.py --name &amp;lt;model_name&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Examples&lt;/span&gt;
+&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; /opt/intel/openvino/deployment_tools/open_model_zoo/tools/downloader
+./downloader.py --name face-detection-0200
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;model-inference&#34;&gt;Model inference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Prerequisites:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;OpenVINO™ (To install OpenVINO™, please see the
+&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_installing_openvino_linux.html&#34;&gt;OpenVINO™ Installation Instruction&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Datumaro (To install Datumaro, please see the &lt;a href=&#34;../../docs/user-manual/&#34;&gt;User Manual&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;OpenVINO™ models (To download OpenVINO™ models, please see the &lt;a href=&#34;https://docs.openvinotoolkit.org/latest/omz_tools_downloader_README.html&#34;&gt;Model Downloader Instruction&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;PASCAL VOC 2012 dataset (To download VOC 2012 dataset, please go &lt;a href=&#34;http://host.robots.ox.ac.uk/pascal/VOC/voc2012/#devkit&#34;&gt;VOC2012 download&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;To run the inference with OpenVINO™ models and the interpreter samples,
+please follow the instructions below.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# source &amp;lt;openvino_dir&amp;gt;/bin/setupvars.sh&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# datum create -o &amp;lt;proj_dir&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# datum model add -l &amp;lt;launcher&amp;gt; -p &amp;lt;proj_dir&amp;gt; --copy -- -d &amp;lt;path_to_xml&amp;gt; -w &amp;lt;path_to_bin&amp;gt; -i &amp;lt;path_to_interpreter_script&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# datum add path -p &amp;lt;proj_dir&amp;gt; -f &amp;lt;format&amp;gt; &amp;lt;path_to_dataset&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# datum model run -p &amp;lt;proj_dir&amp;gt; -m model-0&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Examples&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Detection&amp;gt; ssd_mobilenet_v2_coco&lt;/span&gt;
+&lt;span style=&#34;color:#204a87&#34;&gt;source&lt;/span&gt; /opt/intel/openvino/bin/setupvars.sh
+&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; datumaro/plugins/openvino_plugin
+datum create -o proj_ssd_mobilenet_v2_coco_detection
+datum model add -l openvino -p proj_ssd_mobilenet_v2_coco_detection --copy -- &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --output-layers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;do_ExpandDims_conf/sigmoid &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -d model/ssd_mobilenet_v2_coco.xml &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -w model/ssd_mobilenet_v2_coco.bin &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -i samples/ssd_mobilenet_coco_detection_interp.py
+datum add path -p proj_ssd_mobilenet_v2_coco_detection -f voc VOCdevkit/
+datum model run -p proj_ssd_mobilenet_v2_coco_detection -m model-0
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Classification&amp;gt; mobilenet-v2-pytorch&lt;/span&gt;
+&lt;span style=&#34;color:#204a87&#34;&gt;source&lt;/span&gt; /opt/intel/openvino/bin/setupvars.sh
+&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; datumaro/plugins/openvino_plugin
+datum create -o proj_mobilenet_v2_classification
+datum model add -l openvino -p proj_mobilenet_v2_classification --copy -- &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -d model/mobilenet-v2-pytorch.xml &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -w model/mobilenet-v2-pytorch.bin &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -i samples/mobilenet_v2_pytorch_interp.py
+datum add path -p proj_mobilenet_v2_classification -f voc VOCdevkit/
+datum model run -p proj_mobilenet_v2_classification -m model-0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

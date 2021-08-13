@@ -1,0 +1,519 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dataset Management Framework – Schemes</title>
+    <link>/tags/schemes/</link>
+    <description>Recent content in Schemes on Dataset Management Framework</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="/tags/schemes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Basics</title>
+      <link>/docs/developer-guide/basics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/developer-guide/basics/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The center part of the library is the &lt;code&gt;Dataset&lt;/code&gt; class, which represents
+a dataset and allows to iterate over its elements.
+&lt;code&gt;DatasetItem&lt;/code&gt;, an element of a dataset, represents a single
+dataset entry with annotations - an image, video sequence, audio track etc.
+It can contain only annotated data or meta information, only annotations, or
+all of this.&lt;/p&gt;
+&lt;p&gt;Basic library usage and data flow:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-lang-none&#34; data-lang=&#34;lang-none&#34;&gt;Extractors -&amp;gt; Dataset -&amp;gt; Converter
+                 |
+             Filtration
+          Transformations
+             Statistics
+              Merging
+             Inference
+          Quality Checking
+             Comparison
+                ...
+&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
+&lt;li&gt;Data is read (or produced) by one or many &lt;code&gt;Extractor&lt;/code&gt;s and merged
+into a &lt;code&gt;Dataset&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;The dataset is processed in some way&lt;/li&gt;
+&lt;li&gt;The dataset is saved with a &lt;code&gt;Converter&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Datumaro has a number of dataset and annotation features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;iteration over dataset elements&lt;/li&gt;
+&lt;li&gt;filtering of datasets and annotations by a custom criteria&lt;/li&gt;
+&lt;li&gt;working with subsets (e.g. &lt;code&gt;train&lt;/code&gt;, &lt;code&gt;val&lt;/code&gt;, &lt;code&gt;test&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;computing of dataset statistics&lt;/li&gt;
+&lt;li&gt;comparison and merging of datasets&lt;/li&gt;
+&lt;li&gt;various annotation operations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;datumaro.components.dataset&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Dataset&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;datumaro.components.extractor&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Bbox&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Polygon&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;DatasetItem&lt;/span&gt;
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Import and export a dataset&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Dataset&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;import_from&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;src/dir&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;voc&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;export&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;dst/dir&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;coco&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Create a dataset, convert polygons to masks, save in PASCAL VOC format&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Dataset&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;from_iterable&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;([&lt;/span&gt;
+  &lt;span style=&#34;color:#000&#34;&gt;DatasetItem&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;image1&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;annotations&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;
+    &lt;span style=&#34;color:#000&#34;&gt;Bbox&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;y&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;w&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;h&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;4&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;label&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;),&lt;/span&gt;
+    &lt;span style=&#34;color:#000&#34;&gt;Polygon&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;([&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;4&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;4&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;],&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;label&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;attributes&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;occluded&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;True&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}),&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]),&lt;/span&gt;
+&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;],&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;categories&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;cat&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;dog&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;person&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;])&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;transform&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;polygons_to_masks&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;dataset&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;export&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;dst/dir&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;voc&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Datumaro Design</title>
+      <link>/docs/design/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/design/</guid>
+      <description>
+        
+        
+        &lt;!--lint disable list-item-indent--&gt;
+&lt;h2 id=&#34;concept&#34;&gt;Concept&lt;/h2&gt;
+&lt;p&gt;Datumaro is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a tool to build composite datasets and iterate over them&lt;/li&gt;
+&lt;li&gt;a tool to create and maintain datasets
+&lt;ul&gt;
+&lt;li&gt;Version control of annotations and images&lt;/li&gt;
+&lt;li&gt;Publication (with removal of sensitive information)&lt;/li&gt;
+&lt;li&gt;Editing&lt;/li&gt;
+&lt;li&gt;Joining and splitting&lt;/li&gt;
+&lt;li&gt;Exporting, format changing&lt;/li&gt;
+&lt;li&gt;Image preprocessing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;a dataset storage&lt;/li&gt;
+&lt;li&gt;a tool to debug datasets
+&lt;ul&gt;
+&lt;li&gt;A network can be used to generate
+informative data subsets (e.g. with false-positives)
+to be analyzed further&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;requirements&#34;&gt;Requirements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;User interfaces
+&lt;ul&gt;
+&lt;li&gt;a library&lt;/li&gt;
+&lt;li&gt;a console tool with visualization means&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Targets: single datasets, composite datasets, single images / videos&lt;/li&gt;
+&lt;li&gt;Built-in support for well-known annotation formats and datasets:
+CVAT, COCO, PASCAL VOC, Cityscapes, ImageNet&lt;/li&gt;
+&lt;li&gt;Extensibility with user-provided components&lt;/li&gt;
+&lt;li&gt;Lightweightness - it should be easy to start working with Datumaro
+&lt;ul&gt;
+&lt;li&gt;Minimal dependency on environment and configuration&lt;/li&gt;
+&lt;li&gt;It should be easier to use Datumaro than writing own code
+for computation of statistics or dataset manipulations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;functionality-and-ideas&#34;&gt;Functionality and ideas&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Blur sensitive areas on dataset images&lt;/li&gt;
+&lt;li&gt;Dataset annotation filters, relabelling etc.&lt;/li&gt;
+&lt;li&gt;Dataset augmentation&lt;/li&gt;
+&lt;li&gt;Calculation of statistics:
+&lt;ul&gt;
+&lt;li&gt;Mean &amp;amp; std, custom stats&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Edit&amp;rdquo; command to modify annotations&lt;/li&gt;
+&lt;li&gt;Versioning (for images, annotations, subsets, sources etc., comparison)&lt;/li&gt;
+&lt;li&gt;Documentation generation&lt;/li&gt;
+&lt;li&gt;Provision of iterators for user code&lt;/li&gt;
+&lt;li&gt;Dataset downloading&lt;/li&gt;
+&lt;li&gt;Dataset generation&lt;/li&gt;
+&lt;li&gt;Dataset building (export in a specific format, indexation, statistics,
+documentation)&lt;/li&gt;
+&lt;li&gt;Dataset exporting to other formats&lt;/li&gt;
+&lt;li&gt;Dataset debugging (run inference, generate dataset slices, compute statistics)&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Explainable AI&amp;rdquo; - highlight network attention areas (&lt;a href=&#34;https://arxiv.org/abs/1901.04592&#34;&gt;paper&lt;/a&gt;)
+&lt;ul&gt;
+&lt;li&gt;Black-box approach
+&lt;ul&gt;
+&lt;li&gt;Classification, Detection, Segmentation, Captioning&lt;/li&gt;
+&lt;li&gt;White-box approach&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;research-topics&#34;&gt;Research topics&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;exploration of network prediction uncertainty (aka Bayessian approach)
+Use case: explanation of network &amp;ldquo;quality&amp;rdquo;, &amp;ldquo;stability&amp;rdquo;, &amp;ldquo;certainty&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;adversarial attacks on networks&lt;/li&gt;
+&lt;li&gt;dataset minification / reduction
+Use case: removal of redundant information to reach the same network quality
+with lesser training time&lt;/li&gt;
+&lt;li&gt;dataset expansion and filtration of additions
+Use case: add only important data&lt;/li&gt;
+&lt;li&gt;guidance for key frame selection for tracking (&lt;a href=&#34;https://arxiv.org/abs/1903.11779&#34;&gt;paper&lt;/a&gt;)
+Use case: more effective annotation, better predictions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;rc-1-vision&#34;&gt;RC 1 vision&lt;/h2&gt;
+&lt;h3 id=&#34;cvat-integration&#34;&gt;CVAT integration&lt;/h3&gt;
+&lt;p&gt;Datumaro needs to be integrated with &lt;a href=&#34;https://github.com/openvinotoolkit/cvat&#34;&gt;CVAT&lt;/a&gt;,
+extending CVAT UI capabilities regarding task and project operations.
+It should be capable of downloading and processing data from CVAT.&lt;/p&gt;
+&lt;!--lint disable fenced-code-flag--&gt;
+&lt;pre&gt;&lt;code class=&#34;language-lang-none&#34; data-lang=&#34;lang-none&#34;&gt;        User
+          |
+          v
+ +------------------+
+ |       CVAT       |
+ +--------v---------+       +------------------+       +--------------+
+ | Datumaro module  | ----&amp;gt; | Datumaro project | &amp;lt;---&amp;gt; | Datumaro CLI | &amp;lt;--- User
+ +------------------+       +------------------+       +--------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;!--lint enable fenced-code-flag--&gt;
+&lt;h3 id=&#34;interfaces&#34;&gt;Interfaces&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Python API for user code
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Installation as a package&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Installation with &lt;code&gt;pip&lt;/code&gt; by name&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; A command-line tool for dataset manipulations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;features&#34;&gt;Features&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Dataset format support (reading, writing)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Own format&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CVAT&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; COCO&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; PASCAL VOC&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; YOLO&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; TF Detection API&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Cityscapes&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; ImageNet&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dataset visualization (&lt;code&gt;show&lt;/code&gt;)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Ability to visualize a dataset
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; with TensorBoard&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Calculation of statistics for datasets&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Pixel mean, std&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Object counts (detection scenario)&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Image-Class distribution (classification scenario)&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Pixel-Class distribution (segmentation scenario)&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Image similarity clusters&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Custom statistics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dataset building&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Composite dataset building&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Class remapping&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Subset splitting&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Dataset filtering (&lt;code&gt;extract&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Dataset merging (&lt;code&gt;merge&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Dataset item editing (&lt;code&gt;edit&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dataset comparison (&lt;code&gt;diff&lt;/code&gt;)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Annotation-annotation comparison&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Annotation-inference comparison&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Annotation quality estimation (for CVAT)
+&lt;ul&gt;
+&lt;li&gt;Provide a simple method to check
+annotation quality with a model and generate summary&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dataset and model debugging&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Inference explanation (&lt;code&gt;explain&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Black-box approach (&lt;a href=&#34;https://arxiv.org/abs/1806.07421&#34;&gt;RISE paper&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Ability to run a model on a dataset and read the results&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CVAT-integration features&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Task export
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Datumaro project export&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Dataset export&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Original raw data (images, a video file) can be downloaded (exported)
+together with annotations or just have links
+on CVAT server (in future, support S3, etc)
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Be able to use local files instead of remote links
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Specify cache directory&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Use case &amp;ldquo;annotate for model training&amp;rdquo;
+&lt;ul&gt;
+&lt;li&gt;create a task&lt;/li&gt;
+&lt;li&gt;annotate&lt;/li&gt;
+&lt;li&gt;export the task&lt;/li&gt;
+&lt;li&gt;convert to a training format&lt;/li&gt;
+&lt;li&gt;train a DL model&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Use case &amp;ldquo;annotate - reannotate problematic images - merge&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Use case &amp;ldquo;annotate and estimate quality&amp;rdquo;
+&lt;ul&gt;
+&lt;li&gt;create a task&lt;/li&gt;
+&lt;li&gt;annotate&lt;/li&gt;
+&lt;li&gt;estimate quality of annotations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;optional-features&#34;&gt;Optional features&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Dataset publishing&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Versioning (for annotations, subsets, sources, etc.)&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Blur sensitive areas on images&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Tracking of legal information&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Documentation generation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dataset building&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Dataset minification / Extraction of the most representative subset
+&lt;ul&gt;
+&lt;li&gt;Use case: generate low-precision calibration dataset&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dataset and model debugging&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Training visualization&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Inference explanation (&lt;code&gt;explain&lt;/code&gt;)
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; White-box approach&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;properties&#34;&gt;Properties&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Lightweightness&lt;/li&gt;
+&lt;li&gt;Modularity&lt;/li&gt;
+&lt;li&gt;Extensibility&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Command reference</title>
+      <link>/docs/user-manual/command-reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/user-manual/command-reference/</guid>
+      <description>
+        
+        
+        &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: command invocation syntax is subject to change,
+&lt;strong&gt;always refer to command &amp;ndash;help output&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Available CLI commands:&lt;/p&gt;
+&lt;div class=&#34;text-center large-scheme&#34;&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;flowchart LR
+    d{datum}
+    p((project))
+    s((source))
+    m((model))
+    d==&amp;gt;p
+    p==create===&amp;gt;str1([Creates a Datumaro project])
+    p==import===&amp;gt;str2([Generates a project from other project or dataset in specific format])
+    p==export===&amp;gt;str3([Saves dataset in a specific format])
+    p==extract===&amp;gt;str4([Extracts subproject by filter])
+    p==merge===&amp;gt;str5([Adds new items to project])
+    p==diff===&amp;gt;str6([Compares two projects])
+    p==transform===&amp;gt;str7([Applies specific transformation to the dataset])
+    p==info===&amp;gt;str8([Outputs valuable info])
+    d==&amp;gt;s
+    s==add===&amp;gt;str9([Adds data source by its URL])
+    s==remove===&amp;gt;str10([Remove source dataset])
+    d==&amp;gt;m
+    m==add===&amp;gt;str11([Registers model for inference])
+    m==remove===&amp;gt;str12([Removes model from project])
+    m==run===&amp;gt;str13([Executes network for inference])
+    d==&amp;gt;c(create)===&amp;gt;str14([Calls project create])
+    d==&amp;gt;a(add)===&amp;gt;str15([Calls source add])
+    d==&amp;gt;r(remove)===&amp;gt;str16([Calls source remove])
+    d==&amp;gt;e(export)===&amp;gt;str17([Calls project export])
+    d==&amp;gt;exp(explain)===&amp;gt;str18([Runs inference explanation])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Command-line</title>
+      <link>/docs/developer-guide/command-line/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/developer-guide/command-line/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Basically, the interface is divided on contexts and single commands.
+Contexts are semantically grouped commands, related to a single topic or target.
+Single commands are handy shorter alternatives for the most used commands
+and also special commands, which are hard to be put into any specific context.
+&lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt; is an example of similar approach.&lt;/p&gt;
+&lt;div class=&#34;text-center large-scheme&#34;&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;flowchart LR
+    d{datum}
+    p((project))
+    s((source))
+    m((model))
+    d==&amp;gt;p
+    p==create===&amp;gt;str1([Creates a Datumaro project])
+    p==import===&amp;gt;str2([Generates a project from other project or dataset in specific format])
+    p==export===&amp;gt;str3([Saves dataset in a specific format])
+    p==extract===&amp;gt;str4([Extracts subproject by filter])
+    p==merge===&amp;gt;str5([Adds new items to project])
+    p==diff===&amp;gt;str6([Compares two projects])
+    p==transform===&amp;gt;str7([Applies specific transformation to the dataset])
+    p==info===&amp;gt;str8([Outputs valuable info])
+    d==&amp;gt;s
+    s==add===&amp;gt;str9([Adds data source by its URL])
+    s==remove===&amp;gt;str10([Remove source dataset])
+    d==&amp;gt;m
+    m==add===&amp;gt;str11([Registers model for inference])
+    m==remove===&amp;gt;str12([Removes model from project])
+    m==run===&amp;gt;str13([Executes network for inference])
+    d==&amp;gt;c(create)===&amp;gt;str14([Calls project create])
+    d==&amp;gt;a(add)===&amp;gt;str15([Calls source add])
+    d==&amp;gt;r(remove)===&amp;gt;str16([Calls source remove])
+    d==&amp;gt;e(export)===&amp;gt;str17([Calls project export])
+    d==&amp;gt;exp(explain)===&amp;gt;str18([Runs inference explanation])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Model-View-ViewModel (MVVM) UI pattern is used.&lt;/p&gt;
+&lt;div class=&#34;text-center&#34;&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;flowchart LR
+    c((CLI))&amp;lt;--CliModel---&amp;gt;d((Domain))
+    g((GUI))&amp;lt;--GuiModel---&amp;gt;d
+    a((API))&amp;lt;---&amp;gt;d
+    t((Tests))&amp;lt;---&amp;gt;d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Documentation</title>
+      <link>/docs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;dataset-management-framework-datumaro&#34;&gt;Dataset Management Framework (Datumaro)&lt;/h2&gt;
+&lt;p&gt;A framework and CLI tool to build, transform, and analyze datasets.&lt;/p&gt;
+&lt;div class=&#34;text-center&#34;&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;flowchart LR
+    datasets[(VOC dataset&amp;lt;br/&amp;gt;+&amp;lt;br/&amp;gt;COCO datset&amp;lt;br/&amp;gt;+&amp;lt;br/&amp;gt;CVAT annotation)]
+    datumaro{Datumaro}
+    dataset[dataset]
+    annotation[Annotation tool]
+    training[Model training]
+    publication[Publication, statistics etc]
+    datasets--&amp;gt;datumaro
+    datumaro--&amp;gt;dataset
+    dataset--&amp;gt;annotation &amp;amp; training &amp;amp; publication
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;section id=&#34;docs&#34;&gt;
+
+
+
+ 
+&lt;a id=&#34;td-block-0&#34; class=&#34;td-offset-anchor&#34;&gt;&lt;/a&gt;
+&lt;section class=&#34;row td-box td-box--docs td-box--gradient td-box--height-auto&#34;&gt;
+	&lt;div class=&#34;col&#34;&gt;
+		&lt;div class=&#34;row &#34;&gt;
+			
+				&lt;div class=&#34;col-lg-4 mb-5 mb-lg-0 text-center &#34;&gt;
+  &lt;div class=&#34;mb-4 h1&#34;&gt;
+    &lt;i class=&#34;fas fa-sign-in-alt&#34;&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;h4 class=&#34;h3&#34;&gt;&lt;a href=&#34;../../docs/getting_started/&#34;&gt;Getting started&lt;/a&gt;&lt;/h4&gt;
+  &lt;p class=&#34;mb-0&#34;&gt;&lt;p&gt;Basic information and sections needed for a quick start.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;col-lg-4 mb-5 mb-lg-0 text-center &#34;&gt;
+  &lt;div class=&#34;mb-4 h1&#34;&gt;
+    &lt;i class=&#34;fas fa-book&#34;&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;h4 class=&#34;h3&#34;&gt;&lt;a href=&#34;../../docs/user-manual&#34;&gt;User Manual&lt;/a&gt;&lt;/h4&gt;
+  &lt;p class=&#34;mb-0&#34;&gt;&lt;p&gt;This section contains documents for Datumaro users.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;col-lg-4 mb-5 mb-lg-0 text-center &#34;&gt;
+  &lt;div class=&#34;mb-4 h1&#34;&gt;
+    &lt;i class=&#34;fas fa-code&#34;&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;h4 class=&#34;h3&#34;&gt;&lt;a href=&#34;../../docs/developer-guide/&#34;&gt;Developer Guide&lt;/a&gt;&lt;/h4&gt;
+  &lt;p class=&#34;mb-0&#34;&gt;&lt;p&gt;Documentation for Datumaro developers.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+			
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/section&gt;
+
+&lt;/section&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

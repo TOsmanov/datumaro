@@ -1,0 +1,97 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dataset Management Framework – TensorFlow</title>
+    <link>/tags/tensorflow/</link>
+    <description>Recent content in TensorFlow on Dataset Management Framework</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="/tags/tensorflow/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Extending</title>
+      <link>/docs/user-manual/extending/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/user-manual/extending/</guid>
+      <description>
+        
+        
+        &lt;p&gt;There are few ways to extend and customize Datumaro behaviour, which is
+supported by plugins. Check &lt;a href=&#34;../../docs/contribution-guide&#34;&gt;our contribution guide&lt;/a&gt; for
+details on plugin implementation. In general, a plugin is a Python code file.
+It must be put into a plugin directory:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;project_dir&amp;gt;/.datumaro/plugins&lt;/code&gt; for project-specific plugins&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;datumaro_dir&amp;gt;/plugins&lt;/code&gt; for global plugins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;built-in-plugins&#34;&gt;Built-in plugins&lt;/h3&gt;
+&lt;p&gt;Datumaro provides several builtin plugins. Plugins can have dependencies,
+which need to be installed separately.&lt;/p&gt;
+&lt;h4 id=&#34;tensorflow&#34;&gt;TensorFlow&lt;/h4&gt;
+&lt;p&gt;The plugin provides support of TensorFlow Detection API format, which includes
+boxes and masks. It depends on TensorFlow, which can be installed with &lt;code&gt;pip&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;pip install tensorflow
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# or&lt;/span&gt;
+pip install tensorflow-gpu
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# or&lt;/span&gt;
+pip install datumaro&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;tf&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# or&lt;/span&gt;
+pip install datumaro&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;tf-gpu&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;accuracy-checker&#34;&gt;Accuracy Checker&lt;/h4&gt;
+&lt;p&gt;This plugin allows to use &lt;a href=&#34;https://github.com/openvinotoolkit/open_model_zoo/tree/master/tools/accuracy_checker&#34;&gt;Accuracy Checker&lt;/a&gt;
+to launch deep learning models from various frameworks
+(Caffe, MxNet, PyTorch, OpenVINO, &amp;hellip;) through Accuracy Checker&amp;rsquo;s API.
+The plugin depends on Accuracy Checker, which can be installed with &lt;code&gt;pip&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;pip install &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;git+https://github.com/openvinotoolkit/open_model_zoo.git#subdirectory=tools/accuracy_checker&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;openvino&#34;&gt;OpenVINO™&lt;/h4&gt;
+&lt;p&gt;This plugin provides support for model inference with &lt;a href=&#34;https://01.org/openvinotoolkit&#34;&gt;OpenVINO™&lt;/a&gt;.
+The plugin depends on the OpenVINO™ Toolkit, which can be installed by
+following &lt;a href=&#34;https://docs.openvinotoolkit.org/latest/index.html#packaging_and_deployment&#34;&gt;these instructions&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;dataset-formats&#34;&gt;Dataset Formats&lt;/h3&gt;
+&lt;p&gt;Dataset reading is supported by Extractors and Importers.
+An Extractor produces a list of dataset items corresponding
+to the dataset. An Importer creates a project from the data source location.
+It is possible to add custom Extractors and Importers. To do this, you need
+to put an Extractor and Importer implementation scripts to a plugin directory.&lt;/p&gt;
+&lt;p&gt;Dataset writing is supported by Converters.
+A Converter produces a dataset of a specific format from dataset items.
+It is possible to add custom Converters. To do this, you need to put a Converter
+implementation script to a plugin directory.&lt;/p&gt;
+&lt;h3 id=&#34;dataset-conversions-transforms&#34;&gt;Dataset Conversions (&amp;ldquo;Transforms&amp;rdquo;)&lt;/h3&gt;
+&lt;p&gt;A Transform is a function for altering a dataset and producing a new one.
+It can update dataset items, annotations, classes, and other properties.
+A list of available transforms for dataset conversions can be extended by
+adding a Transform implementation script into a plugin directory.&lt;/p&gt;
+&lt;h3 id=&#34;model-launchers&#34;&gt;Model launchers&lt;/h3&gt;
+&lt;p&gt;A list of available launchers for model execution can be extended by adding
+a Launcher implementation script into a plugin directory.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Links</title>
+      <link>/docs/user-manual/links/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/user-manual/links/</guid>
+      <description>
+        
+        
+        &lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md&#34;&gt;TensorFlow detection model zoo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_convert_model_tf_specific_Convert_Object_Detection_API_Models.html&#34;&gt;How to convert model to OpenVINO™ format&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/openvinotoolkit/cvat/blob/3e09503ba6c6daa6469a6c4d275a5a8b168dfa2c/components/tf_annotation/install.sh#L23&#34;&gt;Model conversion script example&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
