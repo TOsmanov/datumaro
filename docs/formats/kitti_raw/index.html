@@ -26,14 +26,14 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/formats/kitti_raw/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-08-13T13:00:58+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-08-17T14:25:50+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="Velodyne Points / KITTI Raw 3D">
 <meta itemprop="description" content="Format specification Velodyne Points / KITTI Raw 3D data format:
  home page. specification  This dataset format supports the following types of annotations:
  cuboid_3d (tracks)  Supported annotation attributes:
  truncation (write, string), possible values: truncation_unset, in_image, truncated, out_image, behind_image (case-independent). occlusion (write, string), possible values: occlusion_unset, visible, partly, fully (case-independent). This attribute has priority over occluded. occluded (read/write, boolean) keyframe (read/write, boolean). Responsible for occlusion_kf field. track_id (read/write, integer).">
-<meta itemprop="dateModified" content="2021-08-13T13:00:58+03:00" />
+<meta itemprop="dateModified" content="2021-08-17T14:25:50+03:00" />
 <meta itemprop="wordCount" content="635">
 <meta itemprop="keywords" content="Formats,MS COCO,Examples for python module,Examples for standalone tool," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Velodyne Points / KITTI Raw 3D"/>
@@ -112,7 +112,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.918254efcb80d4e433fbfb79e3e1257e.json"
+  data-offline-search-index-json-src="../../../offline-search-index.0ed90f60cb6d2fab962ae23eeecca571.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -140,7 +140,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.918254efcb80d4e433fbfb79e3e1257e.json"
+  data-offline-search-index-json-src="../../../offline-search-index.0ed90f60cb6d2fab962ae23eeecca571.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -571,7 +571,7 @@ include point clouds and related images (by default <code>False</code>)</li>
 <li><code>--image-ext IMAGE_EXT</code> allow to specify image extension
 for exporting dataset (by default - keep original or use <code>.png</code>, if none)</li>
 <li><code>--reindex</code> assigns new indices to frames and tracks. Allows annotations
-without <code>track_id</code> attribute (they will be exported as signle-frame tracks).</li>
+without <code>track_id</code> attribute (they will be exported as single-frame tracks).</li>
 <li><code>--allow-attrs</code> allows writing arbitrary annotation attributes. They will
 be written in <code>&lt;annotations&gt;</code> section of <code>&lt;poses&gt;&lt;item&gt;</code>
 (disabled by default)</li>
@@ -612,8 +612,8 @@ datum stats -p project
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    August 13, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/a23820003220bc60a7597b2af4857209b30c7881">adding documentation to website (a238200)</a>
+    August 17, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/cf48088e6c38f6474fce2bf89154fefa574a1d4f">fix mistakes (cf48088)</a>
 
 </div>
 
