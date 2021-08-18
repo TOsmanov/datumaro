@@ -87,7 +87,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.e6c699654d85f4c4cf6e9f43de4770d2.json"
+  data-offline-search-index-json-src="../../offline-search-index.31cd8ffbc3e9a96049670225df2d45d9.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -376,106 +376,9 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4: <a href="#pg-f7983f93162a9a3c8338b2b23f02d46d">Dataset Management Framework (Datumaro) API and developer manual</a></li>
+<li>4: <a href="#pg-fc8158f50663b4904c0929825f746cef">Dataset Management Framework (Datumaro) API and developer manual</a></li>
 
 
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-    
-    
-	
-<li>4.1: <a href="#pg-a7358c1f9aa241b1b331c6b91d8afb28">Basics</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-    
-    
-	
-<li>4.1.1: <a href="#pg-fd46e33c596955dcc4aec60f6e0ce975">The Dataset class</a></li>
-
-
-    
-  
-    
-    
-	
-<li>4.1.2: <a href="#pg-d96906d24afea3331c8ea10d05c4032d">Projects</a></li>
-
-
-    
-  
-
-    </ul>
-    
-  
-    
-    
-	
-<li>4.2: <a href="#pg-a7f719f25bf92092b0c3f654d78b11b2">Library contents</a></li>
-
-
-    
-  
-    
-    
-	
-<li>4.3: <a href="#pg-18b06762726694a20d6c353198466502">Plugins</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-    
-    
-	
-<li>4.3.1: <a href="#pg-d45ed783247623e643aacec9b30cdea5">Writing a plugin</a></li>
-
-
-    
-  
-    
-    
-	
-<li>4.3.2: <a href="#pg-cdc6f85c9fe9a077fa950ba930622ce4">Plugin example</a></li>
-
-
-    
-  
-
-    </ul>
-    
-  
-    
-    
-	
-<li>4.4: <a href="#pg-54260e5018ba5fd792e11bf1a0150e58">Command-line</a></li>
-
-
-    
-  
-
-    </ul>
     
   
     
@@ -3000,34 +2903,10 @@ a Launcher implementation script into a plugin directory.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f7983f93162a9a3c8338b2b23f02d46d">4 - Dataset Management Framework (Datumaro) API and developer manual</h1>
+	<h1 id="pg-fc8158f50663b4904c0929825f746cef">4 - Dataset Management Framework (Datumaro) API and developer manual</h1>
     
-	
-</div>
-
-
-
-    
-      
-  
-  
-  
-  
-
-  
-  
-
-  
-    
-    
-	
-    
-
-<div class="td-content" style="">
-    
-	<h1 id="pg-a7358c1f9aa241b1b331c6b91d8afb28">4.1 - Basics</h1>
-    
-	<p>The center part of the library is the <code>Dataset</code> class, which represents
+	<h2 id="basics">Basics</h2>
+<p>The center part of the library is the <code>Dataset</code> class, which represents
 a dataset and allows to iterate over its elements.
 <code>DatasetItem</code>, an element of a dataset, represents a single
 dataset entry with annotations - an image, video sequence, audio track etc.
@@ -3075,32 +2954,8 @@ into a <code>Dataset</code></li>
 <span style="color:#000;font-weight:bold">],</span> <span style="color:#000">categories</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;cat&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;dog&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;person&#39;</span><span style="color:#000;font-weight:bold">])</span>
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">transform</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;polygons_to_masks&#39;</span><span style="color:#000;font-weight:bold">)</span>
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;dst/dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;voc&#39;</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div>
-</div>
-
-
-
-    
-      
-  
-  
-  
-  
-
-  
-  
-
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-fd46e33c596955dcc4aec60f6e0ce975">4.1.1 - The Dataset class</h1>
-    
-	<p>The <code>Dataset</code> class from the <code>datumaro.components.dataset</code> module represents
+</code></pre></div><h3 id="the-dataset-class">The Dataset class</h3>
+<p>The <code>Dataset</code> class from the <code>datumaro.components.dataset</code> module represents
 a dataset, consisting of multiple <code>DatasetItem</code>s. Annotations are
 represented by members of the <code>datumaro.components.extractor</code> module,
 such as <code>Label</code>, <code>Mask</code> or <code>Polygon</code>. A dataset can contain items from one or
@@ -3158,24 +3013,8 @@ an <code>image</code> and <code>annotations</code>.</p>
 <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">subset_name</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">subset</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">subsets</span><span style="color:#000;font-weight:bold">()</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">items</span><span style="color:#000;font-weight:bold">():</span>
   <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">item</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">subset</span><span style="color:#000;font-weight:bold">:</span>
     <span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">item</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">id</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">item</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">annotations</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div>
-</div>
-
-
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-d96906d24afea3331c8ea10d05c4032d">4.1.2 - Projects</h1>
-    
-	<p>Projects are intended for complex use of Datumaro. They provide means of
+</code></pre></div><h3 id="projects">Projects</h3>
+<p>Projects are intended for complex use of Datumaro. They provide means of
 persistence, of extending, and CLI operation for Datasets. A project can
 be converted to a Dataset with <code>project.make_dataset</code>. Project datasets
 can have multiple data sources, which are merged on dataset creation. They
@@ -3184,28 +3023,8 @@ A dataset can be saved in <code>datumaro_project</code> format.</p>
 <p>The <code>Environment</code> class is responsible for accessing built-in and
 project-specific plugins. For a project, there is an instance of
 related <code>Environment</code> in <code>project.env</code>.</p>
-
-</div>
-
-
-
-    
-	
-  
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-a7f719f25bf92092b0c3f654d78b11b2">4.2 - Library contents</h1>
-    
-	<h2 id="dataset-formats">Dataset Formats</h2>
+<h2 id="library-contents">Library contents</h2>
+<h3 id="dataset-formats">Dataset Formats</h3>
 <p>The framework provides functions to read and write datasets in specific formats.
 It is supported by <code>Extractor</code>s, <code>Importer</code>s, and <code>Converter</code>s.</p>
 <p>Dataset reading is supported by <code>Extractor</code>s and <code>Importer</code>s:</p>
@@ -3220,32 +3039,16 @@ to put an <code>Extractor</code> and <code>Importer</code> implementations to a 
 A <code>Converter</code> produces a dataset of a specific format from dataset items.
 It is possible to add custom <code>Converter</code>s. To do this, you need to put a
 <code>Converter</code> implementation script to a plugin directory.</p>
-<h2 id="dataset-conversions-transforms">Dataset Conversions (&ldquo;Transforms&rdquo;)</h2>
+<h3 id="dataset-conversions-transforms">Dataset Conversions (&ldquo;Transforms&rdquo;)</h3>
 <p>A <code>Transform</code> is a function for altering a dataset and producing a new one.
 It can update dataset items, annotations, classes, and other properties.
 A list of available transforms for dataset conversions can be extended by
 adding a <code>Transform</code> implementation script into a plugin directory.</p>
-<h2 id="model-launchers">Model launchers</h2>
+<h3 id="model-launchers">Model launchers</h3>
 <p>A list of available launchers for model execution can be extended by
 adding a <code>Launcher</code> implementation script into a plugin directory.</p>
-
-</div>
-
-
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-18b06762726694a20d6c353198466502">4.3 - Plugins</h1>
-    
-	<p>Datumaro comes with a number of built-in formats and other tools,
+<h2 id="plugins">Plugins</h2>
+<p>Datumaro comes with a number of built-in formats and other tools,
 but it also can be extended by plugins. Plugins are optional components,
 which dependencies are not installed by default.
 In Datumaro there are several types of plugins, which include:</p>
@@ -3276,32 +3079,8 @@ or by regular module importing:</p>
 <span style="color:#8f5902;font-style:italic"># Save the dataset in some built-in format</span>
 <span style="color:#000">Environment</span><span style="color:#000;font-weight:bold">()</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">converters</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;yolo&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">convert</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">dataset</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_dir</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">dst_dir</span><span style="color:#000;font-weight:bold">)</span>
 <span style="color:#000">YoloConverter</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">convert</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">dataset</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_dir</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">dst_dir</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div>
-</div>
-
-
-
-    
-      
-  
-  
-  
-  
-
-  
-  
-
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-d45ed783247623e643aacec9b30cdea5">4.3.1 - Writing a plugin</h1>
-    
-	<p>A plugin is a Python module with any name, which exports some symbols. Symbols,
+</code></pre></div><h3 id="writing-a-plugin">Writing a plugin</h3>
+<p>A plugin is a Python module with any name, which exports some symbols. Symbols,
 starting with <code>_</code> are not exported by default. To export a symbol,
 inherit it from one of the special classes:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Importer</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Extractor</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Transform</span>
@@ -3326,24 +3105,8 @@ inherit it from one of the special classes:</p>
     <span style="color:#8f5902;font-style:italic"># set up argparse.ArgumentParser instance</span>
     <span style="color:#8f5902;font-style:italic"># the parsed args are supposed to be used as invocation options</span>
     <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">parser</span>
-</code></pre></div>
-</div>
-
-
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-cdc6f85c9fe9a077fa950ba930622ce4">4.3.2 - Plugin example</h1>
-    
-	<!--lint disable fenced-code-flag-->
+</code></pre></div><h4 id="plugin-example">Plugin example</h4>
+<!--lint disable fenced-code-flag-->
 <pre><code>datumaro/plugins/
 - my_plugin1/file1.py
 - my_plugin1/file2.py
@@ -3381,28 +3144,8 @@ inherit it from one of the special classes:</p>
 
 <span style="color:#000">exports</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#000">MyFormat</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#8f5902;font-style:italic"># explicit exports declaration</span>
 <span style="color:#8f5902;font-style:italic"># MyFormatExtractor and _MyFormatConverter won&#39;t be exported</span>
-</code></pre></div>
-</div>
-
-
-
-    
-	
-  
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-54260e5018ba5fd792e11bf1a0150e58">4.4 - Command-line</h1>
-    
-	<p>Basically, the interface is divided on contexts and single commands.
+</code></pre></div><h2 id="command-line">Command-line</h2>
+<p>Basically, the interface is divided on contexts and single commands.
 Contexts are semantically grouped commands, related to a single topic or target.
 Single commands are handy shorter alternatives for the most used commands
 and also special commands, which are hard to be put into any specific context.
@@ -3447,10 +3190,6 @@ and also special commands, which are hard to be put into any specific context.
 </div>
 
 
-
-    
-	
-  
 
     
 	
