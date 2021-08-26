@@ -19,28 +19,22 @@
 
 <title>Pascal VOC | Dataset Management Framework</title>
 <meta name="description" content=""><meta property="og:title" content="Pascal VOC" />
-<meta property="og:description" content="Format specification   Pascal VOC format specification available here.
-  Original Pascal VOC dataset format support the following types of annotations:
- Labels (for classification tasks); Bounding boxes (for detection, action detection and person layout tasks); Masks (for segmentations tasks).    Supported attributes:
- occluded: indicates that a significant portion of the object within the bounding box is occluded by another object; truncated: indicates that the bounding box specified for the object does not correspond to the full extent of the object; difficult: indicates that the object is considered difficult to recognize; action attributes (jumping, reading, phoning and more)." />
+<meta property="og:description" content="Format specification Pascal VOC format specification is available here.
+The dataset has annotations for multiple tasks. Each task has its own format in Datumaro, and there is also a combined voc format, which includes all the available tasks. The sub-formats have the same options as the &ldquo;main&rdquo; format and only limit the set of annotation files they work with. To work with multiple formats, use the corresponding option of the voc format." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/formats/pascal_voc/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-08-19T17:54:02+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-08-23T13:27:48+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="Pascal VOC">
-<meta itemprop="description" content="Format specification   Pascal VOC format specification available here.
-  Original Pascal VOC dataset format support the following types of annotations:
- Labels (for classification tasks); Bounding boxes (for detection, action detection and person layout tasks); Masks (for segmentations tasks).    Supported attributes:
- occluded: indicates that a significant portion of the object within the bounding box is occluded by another object; truncated: indicates that the bounding box specified for the object does not correspond to the full extent of the object; difficult: indicates that the object is considered difficult to recognize; action attributes (jumping, reading, phoning and more).">
-<meta itemprop="dateModified" content="2021-08-19T17:54:02+03:00" />
-<meta itemprop="wordCount" content="1352">
+<meta itemprop="description" content="Format specification Pascal VOC format specification is available here.
+The dataset has annotations for multiple tasks. Each task has its own format in Datumaro, and there is also a combined voc format, which includes all the available tasks. The sub-formats have the same options as the &ldquo;main&rdquo; format and only limit the set of annotation files they work with. To work with multiple formats, use the corresponding option of the voc format.">
+<meta itemprop="dateModified" content="2021-08-23T13:27:48+03:00" />
+<meta itemprop="wordCount" content="1431">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Pascal VOC"/>
-<meta name="twitter:description" content="Format specification   Pascal VOC format specification available here.
-  Original Pascal VOC dataset format support the following types of annotations:
- Labels (for classification tasks); Bounding boxes (for detection, action detection and person layout tasks); Masks (for segmentations tasks).    Supported attributes:
- occluded: indicates that a significant portion of the object within the bounding box is occluded by another object; truncated: indicates that the bounding box specified for the object does not correspond to the full extent of the object; difficult: indicates that the object is considered difficult to recognize; action attributes (jumping, reading, phoning and more)."/>
+<meta name="twitter:description" content="Format specification Pascal VOC format specification is available here.
+The dataset has annotations for multiple tasks. Each task has its own format in Datumaro, and there is also a combined voc format, which includes all the available tasks. The sub-formats have the same options as the &ldquo;main&rdquo; format and only limit the set of annotation files they work with. To work with multiple formats, use the corresponding option of the voc format."/>
 
 
 
@@ -90,12 +84,15 @@
           
 
 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  Releases
+  Latest version
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
   
     
-      <a class="dropdown-item" href="../../../docs/formats/pascal_voc/">develop</a>
+      <a class="dropdown-item" href="//docs/formats/pascal_voc/">Latest version</a>
+  
+    
+      <a class="dropdown-item" href="../../../v0.1.11/docs/formats/pascal_voc/">v0.1.11</a>
   
 </div>
 
@@ -115,7 +112,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.1a2c33333adfffec97d99a193441a570.json"
+  data-offline-search-index-json-src="../../../offline-search-index.012a8208950364f39682cac77e19fd36.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -143,7 +140,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.1a2c33333adfffec97d99a193441a570.json"
+  data-offline-search-index-json-src="../../../offline-search-index.012a8208950364f39682cac77e19fd36.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -259,8 +256,8 @@
   <a href="../../../docs/plugins/openvino_plugin/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docspluginsopenvino_plugin"><span class="">OpenVINO™ Inference Interpreter</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docscontribution-li">
-  <a href="../../../docs/contribution/" title="Contributing Guide" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docscontribution"><span class="">Contributing</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docscontributing-li">
+  <a href="../../../docs/contributing/" title="Contribution Guide" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docscontributing"><span class="">Contributing</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsrelease_notes-li">
   <a href="../../../docs/release_notes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsrelease_notes"><span class="">Release notes</span></a>
 </li>
@@ -316,7 +313,7 @@
     <li><a href="#load-pascal-voc-dataset">Load Pascal VOC dataset</a></li>
     <li><a href="#export-to-other-formats">Export to other formats</a></li>
     <li><a href="#export-to-pascal-voc">Export to Pascal VOC</a></li>
-    <li><a href="#particular-use-cases">Particular use cases</a>
+    <li><a href="#examples">Examples</a>
       <ul>
         <li><a href="#example-1-how-to-prepare-an-original-dataset-for-training">Example 1. How to prepare an original dataset for training.</a></li>
         <li><a href="#example-2-how-to-create-custom-dataset">Example 2. How to create custom dataset</a></li>
@@ -408,31 +405,42 @@
 		
 	</header>    
 	<h2 id="format-specification">Format specification</h2>
-<ul>
-<li>
-<p>Pascal VOC format specification available
+<p>Pascal VOC format specification is available
 <a href="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/devkit_doc.pdf">here</a>.</p>
-</li>
-<li>
-<p>Original Pascal VOC dataset format support the following types of annotations:</p>
+<p>The dataset has annotations for multiple tasks. Each task has its own format
+in Datumaro, and there is also a combined <code>voc</code> format, which includes all
+the available tasks. The sub-formats have the same options as the &ldquo;main&rdquo;
+format and only limit the set of annotation files they work with. To work with
+multiple formats, use the corresponding option of the <code>voc</code> format.</p>
+<p>Supported tasks / formats:</p>
 <ul>
-<li><code>Labels</code> (for classification tasks);</li>
-<li><code>Bounding boxes</code> (for detection, action detection and person layout tasks);</li>
-<li><code>Masks</code> (for segmentations tasks).</li>
+<li>The combined format - <code>voc</code></li>
+<li>Image classification - <code>voc_classification</code></li>
+<li>Object detection - <code>voc_detection</code></li>
+<li>Action classification - <code>voc_action</code></li>
+<li>Class and instance segmentation - <code>voc_segmentation</code></li>
+<li>Person layout detection - <code>voc_layout</code></li>
 </ul>
-</li>
-<li>
-<p>Supported attributes:</p>
+<p>Supported annotation types:</p>
 <ul>
-<li><code>occluded</code>: indicates that a significant portion of the object within the
-bounding box is occluded by another object;</li>
-<li><code>truncated</code>: indicates that the bounding box specified for the object does
-not correspond to the full extent of the object;</li>
-<li><code>difficult</code>: indicates that the object is considered difficult to recognize;</li>
-<li>action attributes (<code>jumping</code>, <code>reading</code>, <code>phoning</code> and
-<a href="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/actionexamples/index.html">more</a>).</li>
+<li><code>Label</code> (classification)</li>
+<li><code>Bbox</code> (detection, action detection and person layout)</li>
+<li><code>Mask</code> (segmentation)</li>
 </ul>
-</li>
+<p>Supported annotation attributes:</p>
+<ul>
+<li><code>occluded</code> (boolean) - indicates that a significant portion of the
+object within the bounding box is occluded by another object</li>
+<li><code>truncated</code> (boolean) - indicates that the bounding box specified for
+the object does not correspond to the full extent of the object</li>
+<li><code>difficult</code> (boolean) - indicates that the object is considered difficult
+to recognize</li>
+<li>action attributes (boolean) - <code>jumping</code>, <code>reading</code> and
+<a href="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/actionexamples/index.html">others</a>.
+Indicate that the object does the corresponding action.</li>
+<li>arbitrary attributes (string/number) - A Datumaro extension. Stored
+in the <code>attributes</code> section of the annotation <code>xml</code> file. Available for
+bbox annotations only.</li>
 </ul>
 <h2 id="load-pascal-voc-dataset">Load Pascal VOC dataset</h2>
 <p>The Pascal VOC dataset is available for free download
@@ -447,44 +455,47 @@ datum add path -f voc &lt;path/to/dataset&gt;
 Pascal VOC dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
-   ├── label_map.txt # list of non-pascal labels (optional)
+   ├── label_map.txt # a list of non-Pascal labels (optional)
+   │
    ├── Annotations/
    │     ├── ann1.xml # Pascal VOC format annotation file
    │     ├── ann2.xml
-   │     ├── ...
+   │     └── ...
    ├── JPEGImages/
    │    ├── img1.jpg
    │    ├── img2.jpg
-   │    ├── ...
+   │    └── ...
    ├── SegmentationClass/ # directory with semantic segmentation masks
    │    ├── img1.png
    │    ├── img2.png
-   │    ├── ...
+   │    └── ...
    ├── SegmentationObject/ # directory with instance segmentation masks
    │    ├── img1.png
    │    ├── img2.png
-   │    ├── ...
-   ├── ImageSets/
-   │    ├── Main/ # directory with list of images for detection and classification task
-   │    │   ├── test.txt  # list of image names in test subset  (without extension)
-   |    |   ├── train.txt # list of image names in train subset (without extension)
-   |    |   ├── ...
-   │    ├── Layout/ # directory with list of images for person layout task
-   │    │   ├── test.txt
-   |    |   ├── train.txt
-   |    |   ├── ...
-   │    ├── Action/ # directory with list of images for action classification task
-   │    │   ├── test.txt
-   |    |   ├── train.txt
-   |    |   ├── ...
-   │    ├── Segmentation/ # directory with list of images for segmentation task
-   │    │   ├── test.txt
-   |    |   ├── train.txt
-   |    |   ├── ...
+   │    └── ...
+   │
+   └── ImageSets/
+        ├── Main/ # directory with list of images for detection and classification task
+        │   ├── test.txt  # list of image names in test subset  (without extension)
+        |   ├── train.txt # list of image names in train subset (without extension)
+        |   └── ...
+        ├── Layout/ # directory with list of images for person layout task
+        │   ├── test.txt
+        |   ├── train.txt
+        |   └── ...
+        ├── Action/ # directory with list of images for action classification task
+        │   ├── test.txt
+        |   ├── train.txt
+        |   └── ...
+        └── Segmentation/ # directory with list of images for segmentation task
+            ├── test.txt
+            ├── train.txt
+            └── ...
 </code></pre><p>The <code>ImageSets</code> directory should contain at least one of the directories:
 <code>Main</code>, <code>Layout</code>, <code>Action</code>, <code>Segmentation</code>.
 These directories contain <code>.txt</code> files with a list of images in a subset,
-the subset name is the same as the <code>.txt</code> file name.</p>
+the subset name is the same as the <code>.txt</code> file name. Subset names can be
+arbitrary.</p>
 <p>In <code>label_map.txt</code> you can define custom color map and non-pascal labels,
 for example:</p>
 <pre><code># label_map [label : color_rgb : parts : actions]
@@ -510,15 +521,7 @@ the_last_label:12,28,0:: # color index 200
 of Pascal VOC dataset instead of the whole dataset,
 for example:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum add path -f voc_detection &lt;path/to/dataset/ImageSets/Main/train.txt&gt;
-</code></pre></div><p>Datumaro supports the following Pascal VOC tasks:</p>
-<ul>
-<li>Image classification (<code>voc_classification</code>)</li>
-<li>Object detection (<code>voc_detection</code>)</li>
-<li>Action classification (<code>voc_action</code>)</li>
-<li>Class and instance segmentation (<code>voc_segmentation</code>)</li>
-<li>Person layout detection (<code>voc_layout</code>)</li>
-</ul>
-<p>To make sure that the selected dataset has been added to the project, you
+</code></pre></div><p>To make sure that the selected dataset has been added to the project, you
 can run <code>datum info</code>, which will display the project and dataset information.</p>
 <h2 id="export-to-other-formats">Export to other formats</h2>
 <p>Datumaro can convert Pascal VOC dataset into any other format
@@ -585,7 +588,7 @@ datum <span style="color:#204a87">export</span> -f voc_segmentation -- --label-m
 
 <span style="color:#8f5902;font-style:italic"># or you can use original voc colomap:</span>
 datum <span style="color:#204a87">export</span> -f voc_segmentation -- --label-map voc
-</code></pre></div><h2 id="particular-use-cases">Particular use cases</h2>
+</code></pre></div><h2 id="examples">Examples</h2>
 <p>Datumaro supports filtering, transformation, merging etc. for all formats
 and for the Pascal VOC format in particular. Follow
 <a href="../../../docs/user-manual/">user manual</a>
@@ -672,7 +675,7 @@ which has <code>jumping</code> attribute:</p>
 </code></pre></div><p>After executing this code, we can see that there are 5826 images
 in Pascal VOC 2012 has for segmentation task and this result is the same as the
 <a href="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/dbstats.html">official documentation</a></p>
-<p>More examples of working with Pascal VOC dataset from code can be found in
+<p>Examples of using this format from the code can be found in
 <a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test_voc_format.py">tests</a></p>
 
 	
@@ -680,8 +683,8 @@ in Pascal VOC 2012 has for segmentation task and this result is the same as the
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    August 19, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/5df2c847adcca895610a1a40d7fe1acd16102cf3">Adding documentation website (#405) (5df2c84)</a>
+    August 23, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/246b88f031cfb55c36ec5091e2a8414a9236b9f1">Update format docs (#427) (246b88f)</a>
 
 </div>
 

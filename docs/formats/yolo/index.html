@@ -26,15 +26,15 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/formats/yolo/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-08-19T17:54:02+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-08-23T13:27:48+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="YOLO">
 <meta itemprop="description" content="Format specification   The YOLO dataset format is for training and validating object detection models. Specification for this format available here. And also you can find some official examples on working with YOLO dataset here;
   The YOLO dataset format support the following types of annotations:
  Bounding boxes    YOLO format doesn&rsquo;t support attributes for annotations;
   The format only supports subsets named train or valid.">
-<meta itemprop="dateModified" content="2021-08-19T17:54:02+03:00" />
-<meta itemprop="wordCount" content="831">
+<meta itemprop="dateModified" content="2021-08-23T13:27:48+03:00" />
+<meta itemprop="wordCount" content="829">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="YOLO"/>
 <meta name="twitter:description" content="Format specification   The YOLO dataset format is for training and validating object detection models. Specification for this format available here. And also you can find some official examples on working with YOLO dataset here;
@@ -90,12 +90,15 @@
           
 
 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  Releases
+  Latest version
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
   
     
-      <a class="dropdown-item" href="../../../docs/formats/yolo/">develop</a>
+      <a class="dropdown-item" href="//docs/formats/yolo/">Latest version</a>
+  
+    
+      <a class="dropdown-item" href="../../../v0.1.11/docs/formats/yolo/">v0.1.11</a>
   
 </div>
 
@@ -115,7 +118,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.1a2c33333adfffec97d99a193441a570.json"
+  data-offline-search-index-json-src="../../../offline-search-index.012a8208950364f39682cac77e19fd36.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -143,7 +146,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.1a2c33333adfffec97d99a193441a570.json"
+  data-offline-search-index-json-src="../../../offline-search-index.012a8208950364f39682cac77e19fd36.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -259,8 +262,8 @@
   <a href="../../../docs/plugins/openvino_plugin/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docspluginsopenvino_plugin"><span class="">OpenVINO™ Inference Interpreter</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docscontribution-li">
-  <a href="../../../docs/contribution/" title="Contributing Guide" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docscontribution"><span class="">Contributing</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docscontributing-li">
+  <a href="../../../docs/contributing/" title="Contribution Guide" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docscontributing"><span class="">Contributing</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsrelease_notes-li">
   <a href="../../../docs/release_notes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsrelease_notes"><span class="">Release notes</span></a>
 </li>
@@ -316,12 +319,12 @@
     <li><a href="#load-yolo-dataset">Load YOLO dataset</a></li>
     <li><a href="#export-to-other-formats">Export to other formats</a></li>
     <li><a href="#export-to-yolo-format">Export to YOLO format</a></li>
-    <li><a href="#particular-use-cases">Particular use cases</a>
+    <li><a href="#examples">Examples</a>
       <ul>
-        <li><a href="#how-to-prepare-pascal-voc-dataset-for-exporting-to-yolo-format-dataset">How to prepare PASCAL VOC dataset for exporting to YOLO format dataset?</a></li>
-        <li><a href="#how-to-remove-some-class-from-yolo-dataset">How to remove some class from YOLO dataset?</a></li>
-        <li><a href="#how-to-create-custom-dataset-in-yolo-format">How to create custom dataset in YOLO format?</a></li>
-        <li><a href="#how-to-get-information-about-objects-on-each-images">How to get information about objects on each images?</a></li>
+        <li><a href="#example-1-prepare-pascal-voc-dataset-for-exporting-to-yolo-format-dataset">Example 1. Prepare PASCAL VOC dataset for exporting to YOLO format dataset</a></li>
+        <li><a href="#example-2-remove-some-class-from-yolo-dataset">Example 2. Remove some class from YOLO dataset</a></li>
+        <li><a href="#example-3-create-custom-dataset-in-yolo-format">Example 3. Create custom dataset in YOLO format</a></li>
+        <li><a href="#example-4-get-information-about-objects-on-each-image">Example 4. Get information about objects on each image</a></li>
       </ul>
     </li>
   </ul>
@@ -527,21 +530,21 @@ datum export -p project -f yolo -o &lt;path/to/output/yolo/dataset&gt; -- --save
 <li><code>--image-ext &lt;IMAGE_EXT&gt;</code> allow to specify image extension
 for exporting dataset (default: use original or <code>.jpg</code>, if none).</li>
 </ul>
-<h2 id="particular-use-cases">Particular use cases</h2>
-<h3 id="how-to-prepare-pascal-voc-dataset-for-exporting-to-yolo-format-dataset">How to prepare PASCAL VOC dataset for exporting to YOLO format dataset?</h3>
+<h2 id="examples">Examples</h2>
+<h3 id="example-1-prepare-pascal-voc-dataset-for-exporting-to-yolo-format-dataset">Example 1. Prepare PASCAL VOC dataset for exporting to YOLO format dataset</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum import -o project -f voc -i ./VOC2012
 datum filter -p project -e <span style="color:#4e9a06">&#39;/item[subset=&#34;train&#34; or subset=&#34;val&#34;]&#39;</span> -o trainval_voc
 datum transform -p trainval_voc -o trainvalid_voc <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    -t map_subsets -- -s train:train -s val:valid
 datum <span style="color:#204a87">export</span> -p trainvalid_voc -f yolo -o ./yolo_dataset -- --save-images
-</code></pre></div><h3 id="how-to-remove-some-class-from-yolo-dataset">How to remove some class from YOLO dataset?</h3>
+</code></pre></div><h3 id="example-2-remove-some-class-from-yolo-dataset">Example 2. Remove some class from YOLO dataset</h3>
 <p>Delete all items, which contain <code>cat</code> objects and remove
 <code>cat</code> from list of classes:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum import -o project -f yolo -i ./yolo_dataset
 datum filter -p project -o filtered -m i+a -e <span style="color:#4e9a06">&#39;/item/annotation[label!=&#34;cat&#34;]&#39;</span>
 datum transform -p filtered -o without_cat -t remap_labels -- -l cat:
 datum <span style="color:#204a87">export</span> -p without_cat -f yolo -o ./yolo_without_cats
-</code></pre></div><h3 id="how-to-create-custom-dataset-in-yolo-format">How to create custom dataset in YOLO format?</h3>
+</code></pre></div><h3 id="example-3-create-custom-dataset-in-yolo-format">Example 3. Create custom dataset in YOLO format</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">numpy</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">np</span>
 <span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
 <span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">DatasetItem</span>
@@ -563,7 +566,7 @@ datum <span style="color:#204a87">export</span> -p without_cat -f yolo -o ./yolo
 <span style="color:#000;font-weight:bold">],</span> <span style="color:#000">categories</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;house&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;bridge&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;crosswalk&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;traffic_light&#39;</span><span style="color:#000;font-weight:bold">])</span>
 
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;../yolo_dataset&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;yolo&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_images</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><h3 id="how-to-get-information-about-objects-on-each-images">How to get information about objects on each images?</h3>
+</code></pre></div><h3 id="example-4-get-information-about-objects-on-each-image">Example 4. Get information about objects on each image</h3>
 <p>If you only want information about label names for each
 images, then you can get it from code:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
@@ -584,8 +587,8 @@ datum filter -p project --dry-run -e <span style="color:#4e9a06">&#39;/item&#39;
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    August 19, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/5df2c847adcca895610a1a40d7fe1acd16102cf3">Adding documentation website (#405) (5df2c84)</a>
+    August 23, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/246b88f031cfb55c36ec5091e2a8414a9236b9f1">Update format docs (#427) (246b88f)</a>
 
 </div>
 

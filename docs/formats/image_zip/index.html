@@ -19,27 +19,24 @@
 
 <title>Image zip | Dataset Management Framework</title>
 <meta name="description" content=""><meta property="og:title" content="Image zip" />
-<meta property="og:description" content="Format specification   The image zip format allow to export/import unannotated datasets with images to/from zip archive.
-  The image zip format doesn&rsquo;t support any types of annotations and attributes.
-  Load Image zip dataset Few ways to load unannotated datasets to your Datumaro project:
+<meta property="og:description" content="Format specification The image zip format allow to export/import unannotated datasets with images to/from zip archive. The format doesn&rsquo;t support any annotations or attributes.
+Load Image zip dataset Few ways to load unannotated datasets to your Datumaro project:
  From existing archive:  datum import -o project -f image_zip -i ./images.zip  From directory with zip archives. Datumaro will loaded images from all zip files in the directory:  datum import -o project -f image_zip -i ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/formats/image_zip/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-08-19T17:54:02+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-08-23T13:27:48+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="Image zip">
-<meta itemprop="description" content="Format specification   The image zip format allow to export/import unannotated datasets with images to/from zip archive.
-  The image zip format doesn&rsquo;t support any types of annotations and attributes.
-  Load Image zip dataset Few ways to load unannotated datasets to your Datumaro project:
+<meta itemprop="description" content="Format specification The image zip format allow to export/import unannotated datasets with images to/from zip archive. The format doesn&rsquo;t support any annotations or attributes.
+Load Image zip dataset Few ways to load unannotated datasets to your Datumaro project:
  From existing archive:  datum import -o project -f image_zip -i ./images.zip  From directory with zip archives. Datumaro will loaded images from all zip files in the directory:  datum import -o project -f image_zip -i .">
-<meta itemprop="dateModified" content="2021-08-19T17:54:02+03:00" />
+<meta itemprop="dateModified" content="2021-08-23T13:27:48+03:00" />
 <meta itemprop="wordCount" content="289">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Image zip"/>
-<meta name="twitter:description" content="Format specification   The image zip format allow to export/import unannotated datasets with images to/from zip archive.
-  The image zip format doesn&rsquo;t support any types of annotations and attributes.
-  Load Image zip dataset Few ways to load unannotated datasets to your Datumaro project:
+<meta name="twitter:description" content="Format specification The image zip format allow to export/import unannotated datasets with images to/from zip archive. The format doesn&rsquo;t support any annotations or attributes.
+Load Image zip dataset Few ways to load unannotated datasets to your Datumaro project:
  From existing archive:  datum import -o project -f image_zip -i ./images.zip  From directory with zip archives. Datumaro will loaded images from all zip files in the directory:  datum import -o project -f image_zip -i ."/>
 
 
@@ -90,12 +87,15 @@
           
 
 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  Releases
+  Latest version
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
   
     
-      <a class="dropdown-item" href="../../../docs/formats/image_zip/">develop</a>
+      <a class="dropdown-item" href="//docs/formats/image_zip/">Latest version</a>
+  
+    
+      <a class="dropdown-item" href="../../../v0.1.11/docs/formats/image_zip/">v0.1.11</a>
   
 </div>
 
@@ -115,7 +115,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.1a2c33333adfffec97d99a193441a570.json"
+  data-offline-search-index-json-src="../../../offline-search-index.012a8208950364f39682cac77e19fd36.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -143,7 +143,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.1a2c33333adfffec97d99a193441a570.json"
+  data-offline-search-index-json-src="../../../offline-search-index.012a8208950364f39682cac77e19fd36.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -259,8 +259,8 @@
   <a href="../../../docs/plugins/openvino_plugin/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docspluginsopenvino_plugin"><span class="">OpenVINO™ Inference Interpreter</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docscontribution-li">
-  <a href="../../../docs/contribution/" title="Contributing Guide" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docscontribution"><span class="">Contributing</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docscontributing-li">
+  <a href="../../../docs/contributing/" title="Contribution Guide" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docscontributing"><span class="">Contributing</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsrelease_notes-li">
   <a href="../../../docs/release_notes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsrelease_notes"><span class="">Release notes</span></a>
 </li>
@@ -316,6 +316,7 @@
     <li><a href="#load-image-zip-dataset">Load Image zip dataset</a></li>
     <li><a href="#export-to-other-formats">Export to other formats</a></li>
     <li><a href="#export-unannotated-dataset-to-zip-archive">Export unannotated dataset to zip archive</a></li>
+    <li><a href="#examples">Examples</a></li>
   </ul>
 </nav></div>
 
@@ -400,16 +401,9 @@
 		
 	</header>    
 	<h2 id="format-specification">Format specification</h2>
-<ul>
-<li>
 <p>The image zip format allow to export/import unannotated datasets
-with images to/from zip archive.</p>
-</li>
-<li>
-<p>The image zip format doesn&rsquo;t support any types of annotations
-and attributes.</p>
-</li>
-</ul>
+with images to/from zip archive. The format doesn&rsquo;t support any
+annotations or attributes.</p>
 <h2 id="load-image-zip-dataset">Load Image zip dataset</h2>
 <p>Few ways to load unannotated datasets to your Datumaro project:</p>
 <ul>
@@ -422,19 +416,19 @@ all zip files in the directory:</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum import -o project -f image_zip -i ./foo
 </code></pre></div><p>The directory with zip archives should have the following structure:</p>
-<pre><code>├── foo/
-|   ├── archive1.zip/
-|   |   ├── image_1.jpg
-|   |   ├── image_2.png
-|   |   ├── subdir/
-|   |   |   ├── image_3.jpg
-|   |   |   ├── ...
-|   |   ├── ...
-|   ├── archive2.zip/
-|   |   ├── image_101.jpg
-|   |   ├── image_102.jpg
-|   |   ├── ...
-|   ...
+<pre><code>└── foo/
+    ├── archive1.zip/
+    |   ├── image_1.jpg
+    |   ├── image_2.png
+    |   ├── subdir/
+    |   |   ├── image_3.jpg
+    |   |   └── ...
+    |   └── ...
+    ├── archive2.zip/
+    |   ├── image_101.jpg
+    |   ├── image_102.jpg
+    |   └── ...
+    ...
 </code></pre><p>Images in a archives should have supported extension,
 follow the <a href="../../../docs/user-manual/data-formats/">user manual</a> to see the supported
 extensions.</p>
@@ -462,14 +456,17 @@ Available methods:
 Follow <a href="https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT">zip documentation</a>
 for more information.</li>
 </ul>
+<h2 id="examples">Examples</h2>
+<p>Examples of using this format from the code can be found in
+<a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test_image_zip_format.py">the format tests</a></p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    August 19, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/5df2c847adcca895610a1a40d7fe1acd16102cf3">Adding documentation website (#405) (5df2c84)</a>
+    August 23, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/246b88f031cfb55c36ec5091e2a8414a9236b9f1">Update format docs (#427) (246b88f)</a>
 
 </div>
 

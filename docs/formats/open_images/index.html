@@ -20,26 +20,29 @@
 <title>Open Images | Dataset Management Framework</title>
 <meta name="description" content=""><meta property="og:title" content="Open Images" />
 <meta property="og:description" content="Format specification A description of the Open Images Dataset (OID) format is available on its website. Datumaro supports versions 4, 5 and 6.
-Datumaro currently supports the following types of annotations:
- human-verified image-level labels; bounding boxes; segmentation masks.  One attribute is supported on the labels:
+Supported annotation types:
+ Label (human-verified image-level labels) Bbox (bounding boxes) Mask (segmentation masks)  Supported annotation attributes:
+  Labels
  score (read/write, float). The confidence level from 0 to 1. A score of 0 indicates that the image does not contain objects of the corresponding class." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/formats/open_images/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-08-19T17:54:02+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-08-23T13:27:48+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="Open Images">
 <meta itemprop="description" content="Format specification A description of the Open Images Dataset (OID) format is available on its website. Datumaro supports versions 4, 5 and 6.
-Datumaro currently supports the following types of annotations:
- human-verified image-level labels; bounding boxes; segmentation masks.  One attribute is supported on the labels:
+Supported annotation types:
+ Label (human-verified image-level labels) Bbox (bounding boxes) Mask (segmentation masks)  Supported annotation attributes:
+  Labels
  score (read/write, float). The confidence level from 0 to 1. A score of 0 indicates that the image does not contain objects of the corresponding class.">
-<meta itemprop="dateModified" content="2021-08-19T17:54:02+03:00" />
-<meta itemprop="wordCount" content="1177">
+<meta itemprop="dateModified" content="2021-08-23T13:27:48+03:00" />
+<meta itemprop="wordCount" content="1149">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Open Images"/>
 <meta name="twitter:description" content="Format specification A description of the Open Images Dataset (OID) format is available on its website. Datumaro supports versions 4, 5 and 6.
-Datumaro currently supports the following types of annotations:
- human-verified image-level labels; bounding boxes; segmentation masks.  One attribute is supported on the labels:
+Supported annotation types:
+ Label (human-verified image-level labels) Bbox (bounding boxes) Mask (segmentation masks)  Supported annotation attributes:
+  Labels
  score (read/write, float). The confidence level from 0 to 1. A score of 0 indicates that the image does not contain objects of the corresponding class."/>
 
 
@@ -90,12 +93,15 @@ Datumaro currently supports the following types of annotations:
           
 
 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  Releases
+  Latest version
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
   
     
-      <a class="dropdown-item" href="../../../docs/formats/open_images/">develop</a>
+      <a class="dropdown-item" href="//docs/formats/open_images/">Latest version</a>
+  
+    
+      <a class="dropdown-item" href="../../../v0.1.11/docs/formats/open_images/">v0.1.11</a>
   
 </div>
 
@@ -115,7 +121,7 @@ Datumaro currently supports the following types of annotations:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.1a2c33333adfffec97d99a193441a570.json"
+  data-offline-search-index-json-src="../../../offline-search-index.012a8208950364f39682cac77e19fd36.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -143,7 +149,7 @@ Datumaro currently supports the following types of annotations:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.1a2c33333adfffec97d99a193441a570.json"
+  data-offline-search-index-json-src="../../../offline-search-index.012a8208950364f39682cac77e19fd36.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -259,8 +265,8 @@ Datumaro currently supports the following types of annotations:
   <a href="../../../docs/plugins/openvino_plugin/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docspluginsopenvino_plugin"><span class="">OpenVINO™ Inference Interpreter</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docscontribution-li">
-  <a href="../../../docs/contribution/" title="Contributing Guide" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docscontribution"><span class="">Contributing</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docscontributing-li">
+  <a href="../../../docs/contributing/" title="Contribution Guide" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docscontributing"><span class="">Contributing</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsrelease_notes-li">
   <a href="../../../docs/release_notes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsrelease_notes"><span class="">Release notes</span></a>
 </li>
@@ -320,10 +326,10 @@ Datumaro currently supports the following types of annotations:
     </li>
     <li><a href="#export-to-other-formats">Export to other formats</a></li>
     <li><a href="#export-to-open-images">Export to Open Images</a></li>
-    <li><a href="#particular-use-cases">Particular use cases</a>
+    <li><a href="#examples">Examples</a>
       <ul>
-        <li><a href="#example-1-how-to-load-the-open-images-dataset-and-convert-to-the-format-used-by-cvat">Example 1. How to load the Open Images dataset and convert to the format used by CVAT</a></li>
-        <li><a href="#example-2-how-to-create-a-custom-oid-like-dataset">Example 2. How to create a custom OID-like dataset</a></li>
+        <li><a href="#example-1-load-the-open-images-dataset-and-convert-to-the-cvat-format">Example 1. Load the Open Images dataset and convert to the CVAT format</a></li>
+        <li><a href="#example-2-create-a-custom-oid-like-dataset">Example 2. Create a custom OID-like dataset</a></li>
       </ul>
     </li>
   </ul>
@@ -413,20 +419,25 @@ Datumaro currently supports the following types of annotations:
 <p>A description of the Open Images Dataset (OID) format is available
 on <a href="https://storage.googleapis.com/openimages/web/download.html">its website</a>.
 Datumaro supports versions 4, 5 and 6.</p>
-<p>Datumaro currently supports the following types of annotations:</p>
+<p>Supported annotation types:</p>
 <ul>
-<li>human-verified image-level labels;</li>
-<li>bounding boxes;</li>
-<li>segmentation masks.</li>
+<li><code>Label</code> (human-verified image-level labels)</li>
+<li><code>Bbox</code> (bounding boxes)</li>
+<li><code>Mask</code> (segmentation masks)</li>
 </ul>
-<p>One attribute is supported on the labels:</p>
+<p>Supported annotation attributes:</p>
+<ul>
+<li>
+<p>Labels</p>
 <ul>
 <li><code>score</code> (read/write, float).
 The confidence level from 0 to 1.
 A score of 0 indicates that
 the image does not contain objects of the corresponding class.</li>
 </ul>
-<p>The following attributes are supported on the bounding boxes:</p>
+</li>
+<li>
+<p>Bounding boxes</p>
 <ul>
 <li><code>score</code> (read/write, float).
 The confidence level from 0 to 1.
@@ -444,15 +455,15 @@ rather than a real object.</li>
 <li><code>is_inside</code> (read/write, boolean).
 Whether the object is seen from the inside.</li>
 </ul>
-<p>The following attributes are supported on the masks:</p>
-<ul>
-<li>
-<p><code>box_id</code> (read/write, string).
-An identifier for the bounding box associated with the mask.</p>
 </li>
 <li>
-<p><code>predicted_iou</code> (read/write, float).
-Predicted IoU value with respect to the ground truth.</p>
+<p>Masks</p>
+<ul>
+<li><code>box_id</code> (read/write, string).
+An identifier for the bounding box associated with the mask.</li>
+<li><code>predicted_iou</code> (read/write, float).
+Predicted IoU value with respect to the ground truth.</li>
+</ul>
 </li>
 </ul>
 <h2 id="load-open-images-dataset">Load Open Images dataset</h2>
@@ -613,7 +624,7 @@ find images -name <span style="color:#4e9a06">&#39;*.jpg&#39;</span> -exec <span
 </span><span style="color:#4e9a06"></span>    &gt; annotations/images.meta
 </code></pre></div><h2 id="export-to-other-formats">Export to other formats</h2>
 <p>Datumaro can convert OID into any other format <a href="../../../docs/user-manual/supported-formats">Datumaro supports</a>.
-To get the expected result, the dataset needs to be converted to a format
+To get the expected result, convert the dataset to a format
 that supports image-level labels.
 There are a few ways to convert OID to other dataset format:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum project import -f open_images -i &lt;path/to/open_images&gt;
@@ -646,19 +657,19 @@ when exporting the dataset (by default, uses the original extension
 or <code>.jpg</code> if there isn&rsquo;t one)</p>
 </li>
 </ul>
-<h2 id="particular-use-cases">Particular use cases</h2>
+<h2 id="examples">Examples</h2>
 <p>Datumaro supports filtering, transformation, merging etc. for all formats
 and for the Open Images format in particular. Follow
 <a href="../../../docs/user-manual/">user manual</a>
 to get more information about these operations.</p>
 <p>Here are a few examples of using Datumaro operations to solve
 particular problems with the Open Images dataset:</p>
-<h3 id="example-1-how-to-load-the-open-images-dataset-and-convert-to-the-format-used-by-cvat">Example 1. How to load the Open Images dataset and convert to the format used by CVAT</h3>
+<h3 id="example-1-load-the-open-images-dataset-and-convert-to-the-cvat-format">Example 1. Load the Open Images dataset and convert to the CVAT format</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create -o project
 datum add path -p project -f open_images ./open-images-dataset/
 datum stats -p project
 datum <span style="color:#204a87">export</span> -p project -o dataset -f cvat --overwrite -- --save-images
-</code></pre></div><h3 id="example-2-how-to-create-a-custom-oid-like-dataset">Example 2. How to create a custom OID-like dataset</h3>
+</code></pre></div><h3 id="example-2-create-a-custom-oid-like-dataset">Example 2. Create a custom OID-like dataset</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">numpy</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">np</span>
 <span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
 <span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000;font-weight:bold">(</span>
@@ -680,16 +691,16 @@ datum <span style="color:#204a87">export</span> -p project -o dataset -f cvat --
     <span style="color:#000">categories</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;/m/0&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;/m/1&#39;</span><span style="color:#000;font-weight:bold">],</span>
 <span style="color:#000;font-weight:bold">)</span>
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;./dataset&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;open_images&#39;</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p>More examples of working with OID from code can be found in
-<a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test_open_images_format.py">tests</a>.</p>
+</code></pre></div><p>Examples of using this format from the code can be found in
+<a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test_open_images_format.py">the format tests</a>.</p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    August 19, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/5df2c847adcca895610a1a40d7fe1acd16102cf3">Adding documentation website (#405) (5df2c84)</a>
+    August 23, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/246b88f031cfb55c36ec5091e2a8414a9236b9f1">Update format docs (#427) (246b88f)</a>
 
 </div>
 

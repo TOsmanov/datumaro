@@ -20,27 +20,27 @@
 <title>Supervisely Point Cloud | Dataset Management Framework</title>
 <meta name="description" content=""><meta property="og:title" content="Supervisely Point Cloud" />
 <meta property="og:description" content="Format specification Point Cloud data format:
- specification. example.  This dataset format supports the following types of annotations:
+ specification. example.  Supported annotation types:
  cuboid_3d  Supported annotation attributes:
  track_id (read/write, integer), responsible for object field createdAt (write, string), updatedAt (write, string), labelerLogin (write, string), responsible for the corresponding fields in the annotation file. arbitrary attributes  Supported image attributes:
  description (read/write, string), createdAt (write, string), updatedAt (write, string), labelerLogin (write, string), responsible for the corresponding fields in the annotation file." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/formats/sly_pointcloud/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-08-19T17:54:02+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-08-23T13:27:48+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="Supervisely Point Cloud">
 <meta itemprop="description" content="Format specification Point Cloud data format:
- specification. example.  This dataset format supports the following types of annotations:
+ specification. example.  Supported annotation types:
  cuboid_3d  Supported annotation attributes:
  track_id (read/write, integer), responsible for object field createdAt (write, string), updatedAt (write, string), labelerLogin (write, string), responsible for the corresponding fields in the annotation file. arbitrary attributes  Supported image attributes:
  description (read/write, string), createdAt (write, string), updatedAt (write, string), labelerLogin (write, string), responsible for the corresponding fields in the annotation file.">
-<meta itemprop="dateModified" content="2021-08-19T17:54:02+03:00" />
-<meta itemprop="wordCount" content="615">
+<meta itemprop="dateModified" content="2021-08-23T13:27:48+03:00" />
+<meta itemprop="wordCount" content="609">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Supervisely Point Cloud"/>
 <meta name="twitter:description" content="Format specification Point Cloud data format:
- specification. example.  This dataset format supports the following types of annotations:
+ specification. example.  Supported annotation types:
  cuboid_3d  Supported annotation attributes:
  track_id (read/write, integer), responsible for object field createdAt (write, string), updatedAt (write, string), labelerLogin (write, string), responsible for the corresponding fields in the annotation file. arbitrary attributes  Supported image attributes:
  description (read/write, string), createdAt (write, string), updatedAt (write, string), labelerLogin (write, string), responsible for the corresponding fields in the annotation file."/>
@@ -93,12 +93,15 @@
           
 
 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  Releases
+  Latest version
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
   
     
-      <a class="dropdown-item" href="../../../docs/formats/sly_pointcloud/">develop</a>
+      <a class="dropdown-item" href="//docs/formats/sly_pointcloud/">Latest version</a>
+  
+    
+      <a class="dropdown-item" href="../../../v0.1.11/docs/formats/sly_pointcloud/">v0.1.11</a>
   
 </div>
 
@@ -118,7 +121,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.1a2c33333adfffec97d99a193441a570.json"
+  data-offline-search-index-json-src="../../../offline-search-index.012a8208950364f39682cac77e19fd36.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -146,7 +149,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.1a2c33333adfffec97d99a193441a570.json"
+  data-offline-search-index-json-src="../../../offline-search-index.012a8208950364f39682cac77e19fd36.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -262,8 +265,8 @@
   <a href="../../../docs/plugins/openvino_plugin/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docspluginsopenvino_plugin"><span class="">OpenVINO™ Inference Interpreter</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docscontribution-li">
-  <a href="../../../docs/contribution/" title="Contributing Guide" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docscontribution"><span class="">Contributing</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docscontributing-li">
+  <a href="../../../docs/contributing/" title="Contribution Guide" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docscontributing"><span class="">Contributing</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsrelease_notes-li">
   <a href="../../../docs/release_notes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsrelease_notes"><span class="">Release notes</span></a>
 </li>
@@ -322,7 +325,7 @@
     <li><a href="#examples">Examples</a>
       <ul>
         <li><a href="#example-1-import-dataset-compute-statistics">Example 1. Import dataset, compute statistics</a></li>
-        <li><a href="#example-2-convert-supervisely-pointclouds-to-kitti-raw">Example 2. Convert Supervisely Pointclouds to KITTI Raw</a></li>
+        <li><a href="#example-2-convert-supervisely-point-clouds-to-kitti-raw">Example 2. Convert Supervisely Point Clouds to KITTI Raw</a></li>
         <li><a href="#example-3-create-a-custom-dataset">Example 3. Create a custom dataset</a></li>
       </ul>
     </li>
@@ -415,7 +418,7 @@
 <li><a href="https://docs.supervise.ly/data-organization/00_ann_format_navi">specification</a>.</li>
 <li><a href="https://drive.google.com/file/d/1BtZyffWtWNR-mk_PHNPMnGgSlAkkQpBl/view">example</a>.</li>
 </ul>
-<p>This dataset format supports the following types of annotations:</p>
+<p>Supported annotation types:</p>
 <ul>
 <li><code>cuboid_3d</code></li>
 </ul>
@@ -509,7 +512,7 @@ will be written.</li>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create -o project
 datum add path -p project -f sly_pointcloud ../sly_dataset/
 datum stats -p project
-</code></pre></div><h3 id="example-2-convert-supervisely-pointclouds-to-kitti-raw">Example 2. Convert Supervisely Pointclouds to KITTI Raw</h3>
+</code></pre></div><h3 id="example-2-convert-supervisely-point-clouds-to-kitti-raw">Example 2. Convert Supervisely Point Clouds to KITTI Raw</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum convert -if sly_pointcloud -i ../sly_pcd/ <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    -f kitti_raw -o my_kitti/ -- --save-images --reindex --allow-attrs
 </code></pre></div><h3 id="example-3-create-a-custom-dataset">Example 3. Create a custom dataset</h3>
@@ -544,16 +547,16 @@ datum stats -p project
 
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;my_dataset/&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;sly_pointcloud&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_images</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">,</span>
     <span style="color:#000">allow_undeclared_attrs</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p>More examples of working with Supervisely Point Cloud dataset from code can
-be found in <a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test_sly_pointcloud_format.py">tests</a></p>
+</code></pre></div><p>Examples of using this format from the code can be found in
+<a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test_sly_pointcloud_format.py">the format tests</a></p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    August 19, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/5df2c847adcca895610a1a40d7fe1acd16102cf3">Adding documentation website (#405) (5df2c84)</a>
+    August 23, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/246b88f031cfb55c36ec5091e2a8414a9236b9f1">Update format docs (#427) (246b88f)</a>
 
 </div>
 

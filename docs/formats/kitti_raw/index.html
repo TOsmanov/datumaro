@@ -20,27 +20,27 @@
 <title>Velodyne Points / KITTI Raw 3D | Dataset Management Framework</title>
 <meta name="description" content=""><meta property="og:title" content="Velodyne Points / KITTI Raw 3D" />
 <meta property="og:description" content="Format specification Velodyne Points / KITTI Raw 3D data format:
- home page. specification  This dataset format supports the following types of annotations:
- cuboid_3d (tracks)  Supported annotation attributes:
- truncation (write, string), possible values: truncation_unset, in_image, truncated, out_image, behind_image (case-independent). occlusion (write, string), possible values: occlusion_unset, visible, partly, fully (case-independent). This attribute has priority over occluded. occluded (read/write, boolean) keyframe (read/write, boolean). Responsible for occlusion_kf field. track_id (read/write, integer)." />
+ home page. specification  Supported annotation types:
+ Cuboid3d (represent tracks)  Supported annotation attributes:
+ truncation (write, string), possible values: truncation_unset, in_image, truncated, out_image, behind_image (case-independent). occlusion (write, string), possible values: occlusion_unset, visible, partly, fully (case-independent). This attribute has priority over occluded. occluded (read/write, boolean) keyframe (read/write, boolean). Responsible for occlusion_kf field. track_id (read/write, integer). Indicates the group over frames for annotations, represent tracks." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/formats/kitti_raw/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-08-19T17:54:02+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-08-23T13:27:48+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="Velodyne Points / KITTI Raw 3D">
 <meta itemprop="description" content="Format specification Velodyne Points / KITTI Raw 3D data format:
- home page. specification  This dataset format supports the following types of annotations:
- cuboid_3d (tracks)  Supported annotation attributes:
- truncation (write, string), possible values: truncation_unset, in_image, truncated, out_image, behind_image (case-independent). occlusion (write, string), possible values: occlusion_unset, visible, partly, fully (case-independent). This attribute has priority over occluded. occluded (read/write, boolean) keyframe (read/write, boolean). Responsible for occlusion_kf field. track_id (read/write, integer).">
-<meta itemprop="dateModified" content="2021-08-19T17:54:02+03:00" />
-<meta itemprop="wordCount" content="635">
+ home page. specification  Supported annotation types:
+ Cuboid3d (represent tracks)  Supported annotation attributes:
+ truncation (write, string), possible values: truncation_unset, in_image, truncated, out_image, behind_image (case-independent). occlusion (write, string), possible values: occlusion_unset, visible, partly, fully (case-independent). This attribute has priority over occluded. occluded (read/write, boolean) keyframe (read/write, boolean). Responsible for occlusion_kf field. track_id (read/write, integer). Indicates the group over frames for annotations, represent tracks.">
+<meta itemprop="dateModified" content="2021-08-23T13:27:48+03:00" />
+<meta itemprop="wordCount" content="633">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Velodyne Points / KITTI Raw 3D"/>
 <meta name="twitter:description" content="Format specification Velodyne Points / KITTI Raw 3D data format:
- home page. specification  This dataset format supports the following types of annotations:
- cuboid_3d (tracks)  Supported annotation attributes:
- truncation (write, string), possible values: truncation_unset, in_image, truncated, out_image, behind_image (case-independent). occlusion (write, string), possible values: occlusion_unset, visible, partly, fully (case-independent). This attribute has priority over occluded. occluded (read/write, boolean) keyframe (read/write, boolean). Responsible for occlusion_kf field. track_id (read/write, integer)."/>
+ home page. specification  Supported annotation types:
+ Cuboid3d (represent tracks)  Supported annotation attributes:
+ truncation (write, string), possible values: truncation_unset, in_image, truncated, out_image, behind_image (case-independent). occlusion (write, string), possible values: occlusion_unset, visible, partly, fully (case-independent). This attribute has priority over occluded. occluded (read/write, boolean) keyframe (read/write, boolean). Responsible for occlusion_kf field. track_id (read/write, integer). Indicates the group over frames for annotations, represent tracks."/>
 
 
 
@@ -90,12 +90,15 @@
           
 
 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  Releases
+  Latest version
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
   
     
-      <a class="dropdown-item" href="../../../docs/formats/kitti_raw/">develop</a>
+      <a class="dropdown-item" href="//docs/formats/kitti_raw/">Latest version</a>
+  
+    
+      <a class="dropdown-item" href="../../../v0.1.11/docs/formats/kitti_raw/">v0.1.11</a>
   
 </div>
 
@@ -115,7 +118,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.1a2c33333adfffec97d99a193441a570.json"
+  data-offline-search-index-json-src="../../../offline-search-index.012a8208950364f39682cac77e19fd36.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -143,7 +146,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.1a2c33333adfffec97d99a193441a570.json"
+  data-offline-search-index-json-src="../../../offline-search-index.012a8208950364f39682cac77e19fd36.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -259,8 +262,8 @@
   <a href="../../../docs/plugins/openvino_plugin/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docspluginsopenvino_plugin"><span class="">OpenVINO™ Inference Interpreter</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docscontribution-li">
-  <a href="../../../docs/contribution/" title="Contributing Guide" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docscontribution"><span class="">Contributing</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docscontributing-li">
+  <a href="../../../docs/contributing/" title="Contribution Guide" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docscontributing"><span class="">Contributing</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsrelease_notes-li">
   <a href="../../../docs/release_notes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsrelease_notes"><span class="">Release notes</span></a>
 </li>
@@ -412,9 +415,9 @@
 <li><a href="http://www.cvlibs.net/datasets/kitti/raw_data.php">home page</a>.</li>
 <li><a href="https://s3.eu-central-1.amazonaws.com/avg-kitti/devkit_raw_data.zip">specification</a></li>
 </ul>
-<p>This dataset format supports the following types of annotations:</p>
+<p>Supported annotation types:</p>
 <ul>
-<li><code>cuboid_3d</code> (tracks)</li>
+<li><code>Cuboid3d</code> (represent tracks)</li>
 </ul>
 <p>Supported annotation attributes:</p>
 <ul>
@@ -426,16 +429,16 @@ over <code>occluded</code>.</li>
 <li><code>occluded</code> (read/write, boolean)</li>
 <li><code>keyframe</code> (read/write, boolean). Responsible for <code>occlusion_kf</code> field.</li>
 <li><code>track_id</code> (read/write, integer). Indicates the group over frames for
-annotations.</li>
+annotations, represent tracks.</li>
 </ul>
 <p>Supported image attributes:</p>
 <ul>
 <li><code>frame</code> (read/write, integer). Indicates frame number of the image.</li>
 </ul>
 <h2 id="import-kitti-raw-dataset">Import KITTI Raw dataset</h2>
-<p>The velodyne points/KITTI Raw dataset is available for download:</p>
-<p><a href="http://www.cvlibs.net/datasets/kitti/raw_data.php">http://www.cvlibs.net/datasets/kitti/raw_data.php</a></p>
-<p><a href="https://cloud.enterprise.deepsystems.io/s/YcyfIf5zrS7NZcI/download">https://cloud.enterprise.deepsystems.io/s/YcyfIf5zrS7NZcI/download</a></p>
+<p>The velodyne points/KITTI Raw dataset is available for downloading
+<a href="http://www.cvlibs.net/datasets/kitti/raw_data.php">here</a> and
+<a href="https://cloud.enterprise.deepsystems.io/s/YcyfIf5zrS7NZcI/download">here</a>.</p>
 <p>KITTI Raw dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
@@ -534,16 +537,16 @@ datum stats -p project
 <span style="color:#000;font-weight:bold">],</span> <span style="color:#000">categories</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;cat&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;dog&#39;</span><span style="color:#000;font-weight:bold">])</span>
 
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;my_dataset/&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;kitti_raw&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_images</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p>More examples of working with KITTI Raw dataset from code can be found in
-<a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test_kitti_raw_format.py">tests</a></p>
+</code></pre></div><p>Examples of using this format from the code can be found in
+<a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test_kitti_raw_format.py">the format tests</a></p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    August 19, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/5df2c847adcca895610a1a40d7fe1acd16102cf3">Adding documentation website (#405) (5df2c84)</a>
+    August 23, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/246b88f031cfb55c36ec5091e2a8414a9236b9f1">Update format docs (#427) (246b88f)</a>
 
 </div>
 
