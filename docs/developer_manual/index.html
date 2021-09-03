@@ -19,31 +19,31 @@
 
 <title>Dataset Management Framework (Datumaro) API and developer manual | Dataset Management Framework</title>
 <meta name="description" content=""><meta property="og:title" content="Dataset Management Framework (Datumaro) API and developer manual" />
-<meta property="og:description" content="Basics The center part of the library is the Dataset class, which represents a dataset and allows to iterate over its elements. DatasetItem, an element of a dataset, represents a single dataset entry with annotations - an image, video sequence, audio track etc. It can contain only annotated data or meta information, only annotations, or all of this.
+<meta property="og:description" content="Basics The central part of the library is the Dataset class, which represents a dataset and allows to iterate over its elements. DatasetItem, an element of a dataset, represents a single dataset entry with annotations - an image, video sequence, audio track etc. It can contain only annotated data or meta information, only annotations, or all of this.
 Basic library usage and data flow:
 Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatisticsMergingInferenceQuality CheckingComparison." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/developer_manual/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-08-19T17:54:02+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-09-02T15:39:56+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="Dataset Management Framework (Datumaro) API and developer manual">
-<meta itemprop="description" content="Basics The center part of the library is the Dataset class, which represents a dataset and allows to iterate over its elements. DatasetItem, an element of a dataset, represents a single dataset entry with annotations - an image, video sequence, audio track etc. It can contain only annotated data or meta information, only annotations, or all of this.
+<meta itemprop="description" content="Basics The central part of the library is the Dataset class, which represents a dataset and allows to iterate over its elements. DatasetItem, an element of a dataset, represents a single dataset entry with annotations - an image, video sequence, audio track etc. It can contain only annotated data or meta information, only annotations, or all of this.
 Basic library usage and data flow:
 Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatisticsMergingInferenceQuality CheckingComparison.">
-<meta itemprop="dateModified" content="2021-08-19T17:54:02+03:00" />
-<meta itemprop="wordCount" content="1394">
+<meta itemprop="dateModified" content="2021-09-02T15:39:56+03:00" />
+<meta itemprop="wordCount" content="1956">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Dataset Management Framework (Datumaro) API and developer manual"/>
-<meta name="twitter:description" content="Basics The center part of the library is the Dataset class, which represents a dataset and allows to iterate over its elements. DatasetItem, an element of a dataset, represents a single dataset entry with annotations - an image, video sequence, audio track etc. It can contain only annotated data or meta information, only annotations, or all of this.
+<meta name="twitter:description" content="Basics The central part of the library is the Dataset class, which represents a dataset and allows to iterate over its elements. DatasetItem, an element of a dataset, represents a single dataset entry with annotations - an image, video sequence, audio track etc. It can contain only annotated data or meta information, only annotations, or all of this.
 Basic library usage and data flow:
 Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatisticsMergingInferenceQuality CheckingComparison."/>
 
 
 
 
-<link rel="preload" href="../../scss/main.min.1605790daf8dfdfb1bfcb360707a420e537d70a9f314d260ca2c6e79cafd07a7.css" as="style">
-<link href="../../scss/main.min.1605790daf8dfdfb1bfcb360707a420e537d70a9f314d260ca2c6e79cafd07a7.css" rel="stylesheet" integrity="">
+<link rel="preload" href="../../scss/main.min.62966461ab23b33b4700b6bb1a670ee65fff294aca767e1e2d3976ddc1c369ff.css" as="style">
+<link href="../../scss/main.min.62966461ab23b33b4700b6bb1a670ee65fff294aca767e1e2d3976ddc1c369ff.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -115,7 +115,7 @@ Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatistics
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.012a8208950364f39682cac77e19fd36.json"
+  data-offline-search-index-json-src="../../offline-search-index.354da31d671b250575b2acde69e1f588.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -143,7 +143,7 @@ Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatistics
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.012a8208950364f39682cac77e19fd36.json"
+  data-offline-search-index-json-src="../../offline-search-index.354da31d671b250575b2acde69e1f588.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -168,49 +168,51 @@ Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatistics
   <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualinstallation-li">
   <a href="../../docs/user-manual/installation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualinstallation"><span class="">Installation</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualinterfaces-li">
-  <a href="../../docs/user-manual/interfaces/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualinterfaces"><span class="">Interfaces</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualsupported-formats-li">
-  <a href="../../docs/user-manual/supported-formats/" title="Supported dataset formats and annotations" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualsupported-formats"><span class="">Supported Formats</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualdata-formats-li">
-  <a href="../../docs/user-manual/data-formats/" title="Supported data formats" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualdata-formats"><span class="">Data formats</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-line-workflow-li">
-  <a href="../../docs/user-manual/command-line-workflow/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-line-workflow"><span class="">Command line workflow</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualhow_to_use_datumaro-li">
+  <a href="../../docs/user-manual/how_to_use_datumaro/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualhow_to_use_datumaro"><span class="">How to use Datumaro</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualsupported_formats-li">
+  <a href="../../docs/user-manual/supported_formats/" title="Supported Formats" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualsupported_formats"><span class="">Dataset Formats</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualmedia_formats-li">
+  <a href="../../docs/user-manual/media_formats/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualmedia_formats"><span class="">Media formats</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-docsuser-manualcommand-reference-li">
   <a href="../../docs/user-manual/command-reference/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsuser-manualcommand-reference"><span class="">Command reference</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceconvert-datasets-li">
-  <a href="../../docs/user-manual/command-reference/convert-datasets/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceconvert-datasets"><span class="">Convert datasets</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencecreate-project-li">
-  <a href="../../docs/user-manual/command-reference/create-project/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencecreate-project"><span class="">Create project</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceadd-and-remove-data-li">
-  <a href="../../docs/user-manual/command-reference/add-and-remove-data/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceadd-and-remove-data"><span class="">Add and remove data</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencefilter-project-li">
-  <a href="../../docs/user-manual/command-reference/filter-project/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencefilter-project"><span class="">Filter project</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceupdate-project-li">
-  <a href="../../docs/user-manual/command-reference/update-project/" title="Update project (merge)" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceupdate-project"><span class="">Update project</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceimport-project-li">
-  <a href="../../docs/user-manual/command-reference/import-project/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceimport-project"><span class="">Import project</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceexport-project-li">
-  <a href="../../docs/user-manual/command-reference/export-project/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceexport-project"><span class="">Export project</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencemerge-projects-li">
-  <a href="../../docs/user-manual/command-reference/merge-projects/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencemerge-projects"><span class="">Merge projects</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencecompare-projects-li">
-  <a href="../../docs/user-manual/command-reference/compare-projects/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencecompare-projects"><span class="">Compare projects</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceget-project-info-li">
-  <a href="../../docs/user-manual/command-reference/get-project-info/" title="Obtaining project info" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceget-project-info"><span class="">Get project info</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceget-project-statistics-li">
-  <a href="../../docs/user-manual/command-reference/get-project-statistics/" title="Obtaining project statistics" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceget-project-statistics"><span class="">Get project statistics</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencevalidate-project-annotations-li">
-  <a href="../../docs/user-manual/command-reference/validate-project-annotations/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencevalidate-project-annotations"><span class="">Validate project annotations</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceregister-model-li">
-  <a href="../../docs/user-manual/command-reference/register-model/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceregister-model"><span class="">Register model</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencerun-model-li">
-  <a href="../../docs/user-manual/command-reference/run-model/" title="Run inference" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencerun-model"><span class="">Run model</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceexplain-inference-li">
-  <a href="../../docs/user-manual/command-reference/explain-inference/" title="Run inference explanation" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceexplain-inference"><span class="">Explain inference</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencetransform-project-li">
-  <a href="../../docs/user-manual/command-reference/transform-project/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencetransform-project"><span class="">Transform Project</span></a>
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceconvert-li">
+  <a href="../../docs/user-manual/command-reference/convert/" title="Convert datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceconvert"><span class="">Convert</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencecreate-li">
+  <a href="../../docs/user-manual/command-reference/create/" title="Create project" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencecreate"><span class="">Create</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceexport-li">
+  <a href="../../docs/user-manual/command-reference/export/" title="Export Datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceexport"><span class="">Export</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencefilter-li">
+  <a href="../../docs/user-manual/command-reference/filter/" title="Filter datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencefilter"><span class="">Filter</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencemerge-li">
+  <a href="../../docs/user-manual/command-reference/merge/" title="Merge Datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencemerge"><span class="">Merge</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencediff-li">
+  <a href="../../docs/user-manual/command-reference/diff/" title="Compare datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencediff"><span class="">Diff</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceinfo-li">
+  <a href="../../docs/user-manual/command-reference/info/" title="Print dataset info" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceinfo"><span class="">Info</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencestats-li">
+  <a href="../../docs/user-manual/command-reference/stats/" title="Get Project Statistics" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencestats"><span class="">Statistics</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencevalidate-li">
+  <a href="../../docs/user-manual/command-reference/validate/" title="Validate Dataset" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencevalidate"><span class="">Validate</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencecommit-li">
+  <a href="../../docs/user-manual/command-reference/commit/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencecommit"><span class="">Commit</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencetransform-li">
+  <a href="../../docs/user-manual/command-reference/transform/" title="Transform Dataset" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencetransform"><span class="">Transform</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencecheckout-li">
+  <a href="../../docs/user-manual/command-reference/checkout/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencecheckout"><span class="">Checkout</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencestatus-li">
+  <a href="../../docs/user-manual/command-reference/status/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencestatus"><span class="">Status</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencelog-li">
+  <a href="../../docs/user-manual/command-reference/log/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencelog"><span class="">Log</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceexplain-li">
+  <a href="../../docs/user-manual/command-reference/explain/" title="Run model inference explanation (explain)" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceexplain"><span class="">Explain</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencemodels-li">
+  <a href="../../docs/user-manual/command-reference/models/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencemodels"><span class="">Models</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencesources-li">
+  <a href="../../docs/user-manual/command-reference/sources/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencesources"><span class="">Sources</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceprojects-li">
+  <a href="../../docs/user-manual/command-reference/projects/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceprojects"><span class="">Projects</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualextending-li">
@@ -405,7 +407,7 @@ Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatistics
 		
 	</header>    
 	<h2 id="basics">Basics</h2>
-<p>The center part of the library is the <code>Dataset</code> class, which represents
+<p>The central part of the library is the <code>Dataset</code> class, which represents
 a dataset and allows to iterate over its elements.
 <code>DatasetItem</code>, an element of a dataset, represents a single
 dataset entry with annotations - an image, video sequence, audio track etc.
@@ -423,8 +425,8 @@ all of this.</p>
              Comparison
                 ...
 </code></pre><ol>
-<li>Data is read (or produced) by one or many <code>Extractor</code>s and merged
-into a <code>Dataset</code></li>
+<li>Data is read (or produced) by one or many <code>Extractor</code>s and
+<a href="#dataset-merging">merged</a> into a <code>Dataset</code></li>
 <li>The dataset is processed in some way</li>
 <li>The dataset is saved with a <code>Converter</code></li>
 </ol>
@@ -437,8 +439,9 @@ into a <code>Dataset</code></li>
 <li>comparison and merging of datasets</li>
 <li>various annotation operations</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
-<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Polygon</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">DatasetItem</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.annotation</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Polygon</span>
+<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">DatasetItem</span>
 
 <span style="color:#8f5902;font-style:italic"># Import and export a dataset</span>
 <span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;src/dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;voc&#39;</span><span style="color:#000;font-weight:bold">)</span>
@@ -458,41 +461,75 @@ into a <code>Dataset</code></li>
 a dataset, consisting of multiple <code>DatasetItem</code>s. Annotations are
 represented by members of the <code>datumaro.components.extractor</code> module,
 such as <code>Label</code>, <code>Mask</code> or <code>Polygon</code>. A dataset can contain items from one or
-multiple subsets (e.g. <code>train</code>, <code>test</code>, <code>val</code> etc.), the list of dataset subsets
-is available at <code>dataset.subsets</code>.</p>
+multiple subsets (e.g. <code>train</code>, <code>test</code>, <code>val</code> etc.), the list of dataset
+subsets is available in <code>dataset.subsets()</code>.</p>
+<p>A <code>DatasetItem</code> is an element of a dataset. Its <code>id</code> is the name of the
+corresponding image, video frame, or other media being annotated.
+An item can have some <code>attributes</code>, associated media info and <code>annotations</code>.</p>
 <p>Datasets typically have annotations, and these annotations can
 require additional information to be interpreted correctly. For instance, it
-can include class names, class hierarchy, keypoint connections,
+can be class names, class hierarchy, keypoint connections,
 class colors for masks, class attributes.
-This information is stored in <code>dataset.categories</code>, which is a mapping from
+Such information is stored in <code>dataset.categories()</code>, which is a mapping from
 <code>AnnotationType</code> to a corresponding <code>...Categories</code> class. Each annotation type
-can have its <code>Categories</code>. Typically, there will be a <code>LabelCategories</code> object.
-Annotations and other categories address dataset labels
-by their indices in this object.</p>
-<p>The main operation for a dataset is iteration over its elements.
-An item corresponds to a single image, a video sequence, etc. There are also
-few other operations available, such as filtration (<code>dataset.select</code>) and
-transformations (<code>dataset.transform</code>). A dataset can be created from extractors
-or other datasets with <code>Dataset.from_extractors()</code> and directly from items with
-<code>Dataset.from_iterable()</code>. A dataset is an extractor itself. If it is created
-from multiple extractors, their categories must match, and their contents
-will be merged.</p>
-<p>A dataset item is an element of a dataset. Its <code>id</code> is a name of a
-corresponding image. There can be some image <code>attributes</code>,
-an <code>image</code> and <code>annotations</code>.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
-<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Polygon</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">DatasetItem</span>
+can have its <code>Categories</code>. Typically, there will be at least <code>LabelCategories</code>;
+if there are instance masks, the dataset will contain <code>MaskCategories</code> etc.
+The &ldquo;main&rdquo; type of categories is <code>LabelCategories</code> - annotations and other
+categories use label indices from this object.</p>
+<p>The main operation for a dataset is iteration over its elements
+(<code>DatasetItem</code>s). An item corresponds to a single image, a video sequence,
+etc. There are also many other operations available, such as filtration
+(<code>dataset.select()</code>), transformation (<code>dataset.transform()</code>),
+exporting (<code>dataset.export()</code>) and others. A <code>Dataset</code> is an <code>Iterable</code> and
+<code>Extractor</code> by itself.</p>
+<p>A <code>Dataset</code> can be created from scratch by its class constructor.
+Categories can be set immediately or later with the
+<code>define_categories()</code> method, but only once. You can create a dataset filled
+with initial <code>DatasetItem</code>s with <code>Dataset.from_iterable()</code>.
+If you need to create a dataset from one or many other extractors
+(or datasets), it can be done with <code>Dataset.from_extractors()</code>.</p>
+<p>If a dataset is created from multiple extractors with
+<code>Dataset.from_extractors()</code>, the source datasets will be <a href="#dataset-merging">joined</a>,
+so their categories must match. If datasets have mismatching categories,
+use the more complex <code>IntersectMerge</code> class from <code>datumaro.components.operations</code>,
+which will merge all the labels and remap the shifted indices in annotations.</p>
+<p>A <code>Dataset</code> can be loaded from an existing dataset on disk with
+<code>Dataset.import_from()</code> (for arbitrary formats) and
+<code>Dataset.load()</code> (for the Datumaro data format).</p>
+<p>By default, <code>Dataset</code> works lazily, which means all the operations requiring
+iteration over inputs will be deferred as much as possible. If you don&rsquo;t want
+such behavior, use the <code>init_cache()</code> method or wrap the code in
+<code>eager_mode</code> (from <code>datumaro.components.dataset</code>), which will load all
+the annotations into memory. The media won&rsquo;t be loaded unless the data
+is required, because it can quickly waste all the available memory.
+You can check if the dataset is cached with the <code>is_cache_initialized</code>
+attribute.</p>
+<p>Once created, a dataset can be modified in batch mode with transforms or
+directly with the <code>put()</code> and <code>remove()</code> methods. <code>Dataset</code> instances
+record information about changes done, which can be obtained by <code>get_patch()</code>.
+The patch information is used automatically on saving and exporting to
+reduce the amount of disk writes. Changes can be flushed with
+<code>flush_changes()</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.annotation</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Polygon</span>
+<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">DatasetItem</span>
 
-<span style="color:#8f5902;font-style:italic"># create a dataset from other datasets</span>
-<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">from_extractors</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">dataset1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">dataset2</span><span style="color:#000;font-weight:bold">)</span>
-
-<span style="color:#8f5902;font-style:italic"># or directly from items</span>
-<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">from_iterable</span><span style="color:#000;font-weight:bold">([</span>
+<span style="color:#8f5902;font-style:italic"># create a dataset directly from items</span>
+<span style="color:#000">dataset1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">from_iterable</span><span style="color:#000;font-weight:bold">([</span>
   <span style="color:#000">DatasetItem</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;image1&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">annotations</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span>
     <span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">w</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">h</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">label</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">),</span>
     <span style="color:#000">Polygon</span><span style="color:#000;font-weight:bold">([</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000">label</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">),</span>
   <span style="color:#000;font-weight:bold">]),</span>
-<span style="color:#000;font-weight:bold">],</span> <span style="color:#000">categories</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;cat&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;dog&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;person&#39;</span><span style="color:#000;font-weight:bold">])</span>
+<span style="color:#000;font-weight:bold">],</span> <span style="color:#000">categories</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;cat&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;dog&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;person&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;truck&#39;</span><span style="color:#000;font-weight:bold">])</span>
+
+<span style="color:#000">dataset2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">categories</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">dataset1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">categories</span><span style="color:#000;font-weight:bold">())</span>
+<span style="color:#000">dataset2</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">put</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">DatasetItem</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;image2&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">annotations</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span>
+  <span style="color:#000">Label</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">label</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">),</span>
+  <span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">w</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">h</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">label</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000;font-weight:bold">]))</span>
+
+<span style="color:#8f5902;font-style:italic"># create a dataset from other datasets</span>
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">from_extractors</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">dataset1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">dataset2</span><span style="color:#000;font-weight:bold">)</span>
 
 <span style="color:#8f5902;font-style:italic"># keep only annotated images</span>
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">select</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">lambda</span> <span style="color:#000">item</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">item</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">annotations</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">!=</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">)</span>
@@ -512,16 +549,51 @@ an <code>image</code> and <code>annotations</code>.</p>
 <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">subset_name</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">subset</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">subsets</span><span style="color:#000;font-weight:bold">()</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">items</span><span style="color:#000;font-weight:bold">():</span>
   <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">item</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">subset</span><span style="color:#000;font-weight:bold">:</span>
     <span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">item</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">id</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">item</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">annotations</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><h3 id="projects">Projects</h3>
+</code></pre></div><h4 id="dataset-merging">Dataset merging</h4>
+<p>There are 2 methods of merging datasets in Datumaro:</p>
+<ul>
+<li>simple merging (&ldquo;joining&rdquo;)</li>
+<li>complex merging</li>
+</ul>
+<h4 id="the-simple-merging-joining">The simple merging (&ldquo;joining&rdquo;)</h4>
+<p>This approach finds the corresponding <code>DatasetItem</code>s in inputs,
+finds equal annotations and leaves only the unique set of annotations.
+This approach requires all the inputs to have categories with the same
+labels (or no labels) in the same order.</p>
+<p>This algorithm is applied automatically in <code>Dataset.from_extractors()</code>
+and when the build targets are merged in the <code>ProjectTree.make_dataset()</code>.</p>
+<h4 id="the-complex-merging">The complex merging</h4>
+<p>If datasets have mismatching categories, they can&rsquo;t be
+merged by the simple approach, because it can lead to errors in the
+resulting annotations. For complex cases Datumaro provides a more
+sophisticated algorithm, which finds matching annotations by computing
+distances between them. Labels and attributes are deduced by voting,
+spatial annotations use the corresponding metrics like
+Intersection-over-Union (IoU), OKS, PDJ and others.</p>
+<p>The categories of the input datasets are compared, the matching ones
+complement missing information in each other, the mismatching ones are
+appended after next. Label indices in annotations are shifted to the
+new values.</p>
+<p>The complex algorithm is available in the <code>IntersectMerge</code> class
+from <code>datumaro.components.operations</code>. It must be used explicitly.
+This class also allows to check the inputs and the output dataset
+for errors and problems.</p>
+<h3 id="projects">Projects</h3>
 <p>Projects are intended for complex use of Datumaro. They provide means of
-persistence, of extending, and CLI operation for Datasets. A project can
-be converted to a Dataset with <code>project.make_dataset</code>. Project datasets
-can have multiple data sources, which are merged on dataset creation. They
-can have a hierarchy. Project configuration is available in <code>project.config</code>.
-A dataset can be saved in <code>datumaro_project</code> format.</p>
+persistence, versioning, high-level operations for datasets and also
+allow to extend Datumaro via <a href="#plugins">plugins</a>. A project provides
+access to build trees and revisions, data sources, models, configuration,
+plugins and cache. Projects can have multiple data sources, which are
+<a href="#dataset-merging">joined</a> on dataset creation. Project configuration is
+available in <code>project.config</code>. To add a data source into a <code>Project</code>, use
+the <code>import_source()</code> method. The build tree of the current working
+directory can be converted to a <code>Dataset</code> with
+<code>project.working_tree.make_dataset()</code>.</p>
 <p>The <code>Environment</code> class is responsible for accessing built-in and
-project-specific plugins. For a project, there is an instance of
+project-specific plugins. For a <code>Project</code> object, there is an instance of
 related <code>Environment</code> in <code>project.env</code>.</p>
+<p>Check the <a href="../../docs/user-manual/supported_formats">Data Model section of the User Manual</a>
+for more info about Project behavior and high-level details.</p>
 <h2 id="library-contents">Library contents</h2>
 <h3 id="dataset-formats">Dataset Formats</h3>
 <p>The framework provides functions to read and write datasets in specific formats.
@@ -529,8 +601,15 @@ It is supported by <code>Extractor</code>s, <code>Importer</code>s, and <code>Co
 <p>Dataset reading is supported by <code>Extractor</code>s and <code>Importer</code>s:</p>
 <ul>
 <li>An <code>Extractor</code> produces a list of <code>DatasetItem</code>s corresponding to the
-dataset. Annotations are available in the <code>DatasetItem.annotations</code> list</li>
-<li>An <code>Importer</code> creates a project from a data source location</li>
+dataset. Annotations are available in the <code>DatasetItem.annotations</code> list.
+The <code>SourceExtractor</code> class is designed for loading simple, single-subset
+datasets. It should be used by default. The <code>Extractor</code> base class should
+be used when <code>SourceExtractor</code>&rsquo;s functionality is not enough.</li>
+<li>An <code>Importer</code> detects dataset files and generates dataset loading parameters
+for the corresponding <code>Extractor</code>s. <code>Importer</code>s are optional, they
+only extend the Extractor functionality and make them more flexible and
+simple. They are mostly used to locate dataset subsets, but they also can
+do some data compatibility checks and have other required logic.</li>
 </ul>
 <p>It is possible to add custom <code>Extractor</code>s and <code>Importer</code>s. To do this, you need
 to put an <code>Extractor</code> and <code>Importer</code> implementations to a plugin directory.</p>
@@ -651,31 +730,42 @@ and also special commands, which are hard to be put into any specific context.
 <a href="https://www.docker.com/">Docker</a> is an example of similar approach.</p>
 <div class="text-center large-scheme">
 <pre><code class="language-mermaid" data-lang="mermaid">flowchart LR
-    d{datum}
-    p((project))
-    s((source))
-    m((model))
-    d==&gt;p
-    p==create===&gt;str1([Creates a Datumaro project])
-    p==import===&gt;str2([Generates a project from other project or dataset in specific format])
-    p==export===&gt;str3([Saves dataset in a specific format])
-    p==extract===&gt;str4([Extracts subproject by filter])
-    p==merge===&gt;str5([Adds new items to project])
-    p==diff===&gt;str6([Compares two projects])
-    p==transform===&gt;str7([Applies specific transformation to the dataset])
-    p==info===&gt;str8([Outputs valuable info])
-    d==&gt;s
-    s==add===&gt;str9([Adds data source by its URL])
-    s==remove===&gt;str10([Remove source dataset])
-    d==&gt;m
-    m==add===&gt;str11([Registers model for inference])
-    m==remove===&gt;str12([Removes model from project])
-    m==run===&gt;str13([Executes network for inference])
-    d==&gt;c(create)===&gt;str14([Calls project create])
-    d==&gt;a(add)===&gt;str15([Calls source add])
-    d==&gt;r(remove)===&gt;str16([Calls source remove])
-    d==&gt;e(export)===&gt;str17([Calls project export])
-    d==&gt;exp(explain)===&gt;str18([Runs inference explanation])
+  d((&quot;#0009; datum #0009;&quot;)):::mainclass
+  s(source):::nofillclass
+  m(model):::nofillclass
+
+  d===s
+    s===id1[add]:::hideclass
+    s===id2[remove]:::hideclass
+    s===id3[info]:::hideclass
+  d===m
+    m===id4[add]:::hideclass
+    m===id5[remove]:::hideclass
+    m===id6[run]:::hideclass
+    m===id7[info]:::hideclass
+  d====str1[create]:::filloneclass
+  d====str2[add]:::filloneclass
+  d====str3[remove]:::filloneclass
+  d====str4[export]:::filloneclass
+  d====str5[info]:::filloneclass
+  d====str6[transform]:::filltwoclass
+  d====str7[filter]:::filltwoclass
+  d====str8[diff]:::fillthreeclass
+  d====str9[merge]:::fillthreeclass
+  d====str10[validate]:::fillthreeclass
+  d====str11[explain]:::fillthreeclass
+  d====str12[stats]:::fillthreeclass
+  d====str13[commit]:::fillfourclass
+  d====str14[checkout]:::fillfourclass
+  d====str15[status]:::fillfourclass
+  d====str16[log]:::fillfourclass
+
+  classDef nofillclass fill-opacity:0;
+  classDef hideclass fill-opacity:0,stroke-opacity:0;
+  classDef filloneclass fill:#CCCCFF,stroke-opacity:0;
+  classDef filltwoclass fill:#FFFF99,stroke-opacity:0;
+  classDef fillthreeclass fill:#CCFFFF,stroke-opacity:0;
+  classDef fillfourclass fill:#CCFFCC,stroke-opacity:0;
 </code></pre></div>
 <p>Model-View-ViewModel (MVVM) UI pattern is used.</p>
 <div class="text-center">
@@ -691,8 +781,8 @@ and also special commands, which are hard to be put into any specific context.
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    August 19, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/5df2c847adcca895610a1a40d7fe1acd16102cf3">Adding documentation website (#405) (5df2c84)</a>
+    September 2, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/bbd8a71dc97fe3680ceb7cce19ec26df53e7a3f0">fix linter error (bbd8a71)</a>
 
 </div>
 
@@ -780,7 +870,7 @@ and also special commands, which are hard to be put into any specific context.
 
 
 
-<script src="../../js/main.min.ee00f42d1b949caa55ccf416202998d65afac8f58091e2719c89d4fc3518550e.js" integrity="sha256-7gD0LRuUnKpVzPQWICmY1lr6yPWAkeJxnInU/DUYVQ4=" crossorigin="anonymous"></script>
+<script src="../../js/main.min.ba384b433f205e886bb79147f4a92d766e2a215ca656b0194114552dc5edfb3f.js" integrity="sha256-ujhLQz8gXohrt5FH9Kktdm4qIVymVrAZQRRVLcXt&#43;z8=" crossorigin="anonymous"></script>
 
 
 
