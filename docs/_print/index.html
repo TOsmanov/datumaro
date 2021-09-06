@@ -105,7 +105,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.2e7b516384f86d8950864471443f76ef.json"
+  data-offline-search-index-json-src="../../offline-search-index.c4c1ebd884d5f46c934c9120929505cc.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -4058,8 +4058,9 @@ all of this.</p>
 <li>comparison and merging of datasets</li>
 <li>various annotation operations</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
-<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Polygon</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">DatasetItem</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.annotation</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Polygon</span>
+<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">DatasetItem</span>
 
 <span style="color:#8f5902;font-style:italic"># Import and export a dataset</span>
 <span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;src/dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;voc&#39;</span><span style="color:#000;font-weight:bold">)</span>
@@ -4128,8 +4129,9 @@ record information about changes done, which can be obtained by <code>get_patch(
 The patch information is used automatically on saving and exporting to
 reduce the amount of disk writes. Changes can be flushed with
 <code>flush_changes()</code>.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
-<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Polygon</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">DatasetItem</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.annotation</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Polygon</span>
+<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">DatasetItem</span>
 
 <span style="color:#8f5902;font-style:italic"># create a dataset directly from items</span>
 <span style="color:#000">dataset1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">from_iterable</span><span style="color:#000;font-weight:bold">([</span>
