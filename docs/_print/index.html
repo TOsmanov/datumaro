@@ -32,8 +32,8 @@
 
 
 
-<link rel="preload" href="../../scss/main.min.8efb970ff3d43594854ccbed935a2722f5a93db0db7fe234d96769a6a111f17b.css" as="style">
-<link href="../../scss/main.min.8efb970ff3d43594854ccbed935a2722f5a93db0db7fe234d96769a6a111f17b.css" rel="stylesheet" integrity="">
+<link rel="preload" href="../../scss/main.min.903214a884d3ea14114bbda8e243346702e4fde59d7f85ddf1a0ab5d7522376e.css" as="style">
+<link href="../../scss/main.min.903214a884d3ea14114bbda8e243346702e4fde59d7f85ddf1a0ab5d7522376e.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -105,7 +105,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.82be105cadd89c962c1860daadf45c54.json"
+  data-offline-search-index-json-src="../../offline-search-index.2e7b516384f86d8950864471443f76ef.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -1863,7 +1863,7 @@ which splits a video into frames, or split the video manually and import images.
     
 	<h1 id="pg-13498051bfc5d3b0beef06b7439a50a6">3.5 - Command reference</h1>
     
-	<div class="text-center large-scheme">
+	<div class="text-center large-scheme-two">
 <pre><code class="language-mermaid" data-lang="mermaid">%%{init { 'theme':'netrual' }}%%
 flowchart LR
   d((&quot;#0009; datum #0009;&quot;)):::mainclass
@@ -4045,7 +4045,7 @@ all of this.</p>
                 ...
 </code></pre><ol>
 <li>Data is read (or produced) by one or many <code>Extractor</code>s and
-<a href="#dataset-merging">merged</a> into a <code>Dataset</code></li>
+<a href="#merging">merged</a> into a <code>Dataset</code></li>
 <li>The dataset is processed in some way</li>
 <li>The dataset is saved with a <code>Converter</code></li>
 </ol>
@@ -4058,9 +4058,8 @@ all of this.</p>
 <li>comparison and merging of datasets</li>
 <li>various annotation operations</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.annotation</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Polygon</span>
-<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
-<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">DatasetItem</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Polygon</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">DatasetItem</span>
 
 <span style="color:#8f5902;font-style:italic"># Import and export a dataset</span>
 <span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;src/dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;voc&#39;</span><span style="color:#000;font-weight:bold">)</span>
@@ -4108,7 +4107,7 @@ with initial <code>DatasetItem</code>s with <code>Dataset.from_iterable()</code>
 If you need to create a dataset from one or many other extractors
 (or datasets), it can be done with <code>Dataset.from_extractors()</code>.</p>
 <p>If a dataset is created from multiple extractors with
-<code>Dataset.from_extractors()</code>, the source datasets will be <a href="#dataset-merging">joined</a>,
+<code>Dataset.from_extractors()</code>, the source datasets will be <a href="#merging">joined</a>,
 so their categories must match. If datasets have mismatching categories,
 use the more complex <code>IntersectMerge</code> class from <code>datumaro.components.operations</code>,
 which will merge all the labels and remap the shifted indices in annotations.</p>
@@ -4129,9 +4128,8 @@ record information about changes done, which can be obtained by <code>get_patch(
 The patch information is used automatically on saving and exporting to
 reduce the amount of disk writes. Changes can be flushed with
 <code>flush_changes()</code>.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.annotation</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Polygon</span>
-<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
-<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">DatasetItem</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Polygon</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">DatasetItem</span>
 
 <span style="color:#8f5902;font-style:italic"># create a dataset directly from items</span>
 <span style="color:#000">dataset1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">from_iterable</span><span style="color:#000;font-weight:bold">([</span>
@@ -4168,7 +4166,7 @@ reduce the amount of disk writes. Changes can be flushed with
 <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">subset_name</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">subset</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">subsets</span><span style="color:#000;font-weight:bold">()</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">items</span><span style="color:#000;font-weight:bold">():</span>
   <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">item</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">subset</span><span style="color:#000;font-weight:bold">:</span>
     <span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">item</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">id</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">item</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">annotations</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><h4 id="dataset-merging">Dataset merging</h4>
+</code></pre></div><h4 id="dataset-merging-a-idmerginga">Dataset merging <a id="merging"></a></h4>
 <p>There are 2 methods of merging datasets in Datumaro:</p>
 <ul>
 <li>simple merging (&ldquo;joining&rdquo;)</li>
@@ -4203,8 +4201,8 @@ persistence, versioning, high-level operations for datasets and also
 allow to extend Datumaro via <a href="#plugins">plugins</a>. A project provides
 access to build trees and revisions, data sources, models, configuration,
 plugins and cache. Projects can have multiple data sources, which are
-<a href="#dataset-merging">joined</a> on dataset creation. Project configuration is
-available in <code>project.config</code>. To add a data source into a <code>Project</code>, use
+<a href="#merging">joined</a> on dataset creation. Project configuration is available
+in <code>project.config</code>. To add a data source into a <code>Project</code>, use
 the <code>import_source()</code> method. The build tree of the current working
 directory can be converted to a <code>Dataset</code> with
 <code>project.working_tree.make_dataset()</code>.</p>
@@ -4347,7 +4345,7 @@ Contexts are semantically grouped commands, related to a single topic or target.
 Single commands are handy shorter alternatives for the most used commands
 and also special commands, which are hard to be put into any specific context.
 <a href="https://www.docker.com/">Docker</a> is an example of similar approach.</p>
-<div class="text-center large-scheme">
+<div class="text-center large-scheme-two">
 <pre><code class="language-mermaid" data-lang="mermaid">%%{init { 'theme':'netrual' }}%%
 flowchart LR
   d((&quot;#0009; datum #0009;&quot;)):::mainclass
