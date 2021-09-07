@@ -105,7 +105,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.c4c1ebd884d5f46c934c9120929505cc.json"
+  data-offline-search-index-json-src="../../offline-search-index.40d2f3de9cf628f157fdfc7efdeced07.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -1166,7 +1166,7 @@ on CVAT server (in future, support S3, etc)
 <ul>
 <li><a href="./extending/#builtin-plugins">Builtin plugins</a></li>
 <li><a href="./extending/#dataset-formats">Dataset Formats</a></li>
-<li><a href="./extending/#dataset-conversions">Dataset Conversions</a></li>
+<li><a href="./extending/#dataset-conversions">Dataset Conversions (&ldquo;Transforms&rdquo;)</a></li>
 <li><a href="./extending/#model-launchers">Model launchers</a></li>
 </ul>
 </li>
@@ -1666,7 +1666,7 @@ datum <span style="color:#204a87">export</span> -f voc -- --save-images
 <li>WIDER Face (<code>bboxes</code>)
 <ul>
 <li><a href="http://shuoyang1213.me/WIDERFACE/">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/wider_dataset">Dataset example</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/widerface_dataset">Dataset example</a></li>
 </ul>
 </li>
 <li>VGGFace2 (<code>landmarks</code>, <code>bboxes</code>)
@@ -1697,7 +1697,8 @@ datum <span style="color:#204a87">export</span> -f voc -- --save-images
 <li>CIFAR-10/100 (<code>classification</code> (python version))
 <ul>
 <li><a href="https://www.cs.toronto.edu/~kriz/cifar.html">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/cifar_dataset">Dataset example</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/cifar10_dataset">Dataset example CIFAR-10</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/cifar100_dataset">Dataset example CIFAR-100</a></li>
 <li><a href="../../docs/formats/cifar">Format documentation</a></li>
 </ul>
 </li>
@@ -1745,7 +1746,7 @@ datum <span style="color:#204a87">export</span> -f voc -- --save-images
 <li>Supervisely (<code>pointcloud</code>)
 <ul>
 <li><a href="https://docs.supervise.ly/data-organization/00_ann_format_navi">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/sly_pointcloud">Dataset example</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/sly_pointcloud_dataset">Dataset example</a></li>
 <li><a href="../../docs/formats/sly_pointcloud">Format documentation</a></li>
 </ul>
 </li>
@@ -3929,7 +3930,7 @@ Sources:
 	<h1 id="pg-5425ff20f66ad27cecd1cec97424d239">3.6 - Extending</h1>
     
 	<p>There are few ways to extend and customize Datumaro behavior, which is
-supported by plugins. Check <a href="../../docs/contributing/">our contribution guide</a> for
+supported by plugins. Check <a href="../../docs/contributing">our contribution guide</a> for
 details on plugin implementation. In general, a plugin is a Python code file.
 It must be put into a plugin directory:</p>
 <ul>
