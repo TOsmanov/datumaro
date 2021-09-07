@@ -77,12 +77,12 @@
           
 
 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  Latest version
+  develop
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
   
     
-      <a class="dropdown-item" href="../../../../docs/user-manual/command-reference/">Latest version</a>
+      <a class="dropdown-item" href="../../../../docs/user-manual/command-reference/">develop</a>
   
     
       <a class="dropdown-item" href="../../../../v0.1.11/docs/user-manual/command-reference/">v0.1.11</a>
@@ -105,7 +105,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.40d2f3de9cf628f157fdfc7efdeced07.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.cf864a5288fde52fb440e71cd83593e7.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -350,7 +350,7 @@ are mostly the same. By default, commands look for a project in the current
 directory. If the project you&rsquo;re working on is located somewhere else, you
 can pass the <code>-p/--project &lt;path&gt;</code> argument to the command.</p>
 <blockquote>
-<p><strong>Note</strong>: command behavior is subject to change and might be outdated,
+<p><strong>Note</strong>: command behavior is subject to change, so this text might be outdated,
 <strong>always check the <code>--help</code> output of the specific command</strong></p>
 </blockquote>
 <blockquote>
@@ -1748,9 +1748,9 @@ the topk among them.</li>
 tree or to restore separate revisions of sources. A revision can be a commit
 hash, branch, tag, or any <a href="https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection">relative reference in the Git format</a>.</p>
 <p>This command has multiple forms:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">1<span style="color:#ce5c00;font-weight:bold">)</span> datum checkout <span style="color:#4e9a06">\&lt;</span>revision<span style="color:#4e9a06">\&gt;</span>
-2<span style="color:#ce5c00;font-weight:bold">)</span> datum checkout <span style="color:#ce5c00;font-weight:bold">[</span>--<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#4e9a06">\&lt;</span>source1<span style="color:#4e9a06">\&gt;</span> ...
-3<span style="color:#ce5c00;font-weight:bold">)</span> datum checkout <span style="color:#4e9a06">\&lt;</span>revision<span style="color:#4e9a06">\&gt;</span> <span style="color:#ce5c00;font-weight:bold">[</span>--<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#4e9a06">\&lt;</span>source1<span style="color:#4e9a06">\&gt;</span> <span style="color:#4e9a06">\&lt;</span>source2<span style="color:#4e9a06">\&gt;</span> ...
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">1<span style="color:#ce5c00;font-weight:bold">)</span> datum checkout &lt;revision&gt;
+2<span style="color:#ce5c00;font-weight:bold">)</span> datum checkout <span style="color:#ce5c00;font-weight:bold">[</span>--<span style="color:#ce5c00;font-weight:bold">]</span> &lt;source1&gt; ...
+3<span style="color:#ce5c00;font-weight:bold">)</span> datum checkout &lt;revision&gt; <span style="color:#ce5c00;font-weight:bold">[</span>--<span style="color:#ce5c00;font-weight:bold">]</span> &lt;source1&gt; &lt;source2&gt; ...
 </code></pre></div><p>1 - Restores a revision and all the corresponding sources in the
 working directory. If there are conflicts between modified files in the
 working directory and the target revision, an error is raised, unless

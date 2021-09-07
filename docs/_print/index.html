@@ -77,12 +77,12 @@
           
 
 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  Latest version
+  develop
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
   
     
-      <a class="dropdown-item" href="../../docs/">Latest version</a>
+      <a class="dropdown-item" href="../../docs/">develop</a>
   
     
       <a class="dropdown-item" href="../../v0.1.11/docs/">v0.1.11</a>
@@ -105,7 +105,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.40d2f3de9cf628f157fdfc7efdeced07.json"
+  data-offline-search-index-json-src="../../offline-search-index.cf864a5288fde52fb440e71cd83593e7.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -696,10 +696,10 @@ formats and providing high performance operations:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.project</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Project</span>
 
 <span style="color:#8f5902;font-style:italic"># load a Datumaro project</span>
-<span style="color:#000">project</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Project</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">load</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;directory&#39;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">project</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Project</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;directory&#39;</span><span style="color:#000;font-weight:bold">)</span>
 
 <span style="color:#8f5902;font-style:italic"># create a dataset</span>
-<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">project</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">make_dataset</span><span style="color:#000;font-weight:bold">()</span>
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">project</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">working_tree</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">make_dataset</span><span style="color:#000;font-weight:bold">()</span>
 
 <span style="color:#8f5902;font-style:italic"># keep only annotated images</span>
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">select</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">lambda</span> <span style="color:#000">item</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">item</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">annotations</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">!=</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">)</span>
@@ -717,6 +717,9 @@ formats and providing high performance operations:</p>
 
 <span style="color:#8f5902;font-style:italic"># export the resulting dataset in COCO format</span>
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;dst/dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;coco&#39;</span><span style="color:#000;font-weight:bold">)</span>
+
+<span style="color:#8f5902;font-style:italic"># optionally, release the project resources</span>
+<span style="color:#000">project</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">close</span><span style="color:#000;font-weight:bold">()</span>
 </code></pre></div><blockquote>
 <p>Check our <a href="../../docs/developer_manual/">developer manual</a> for additional
 information.</p>
@@ -1912,7 +1915,7 @@ are mostly the same. By default, commands look for a project in the current
 directory. If the project you&rsquo;re working on is located somewhere else, you
 can pass the <code>-p/--project &lt;path&gt;</code> argument to the command.</p>
 <blockquote>
-<p><strong>Note</strong>: command behavior is subject to change and might be outdated,
+<p><strong>Note</strong>: command behavior is subject to change, so this text might be outdated,
 <strong>always check the <code>--help</code> output of the specific command</strong></p>
 </blockquote>
 <blockquote>
@@ -3312,9 +3315,9 @@ the topk among them.</li>
 tree or to restore separate revisions of sources. A revision can be a commit
 hash, branch, tag, or any <a href="https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection">relative reference in the Git format</a>.</p>
 <p>This command has multiple forms:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">1<span style="color:#ce5c00;font-weight:bold">)</span> datum checkout <span style="color:#4e9a06">\&lt;</span>revision<span style="color:#4e9a06">\&gt;</span>
-2<span style="color:#ce5c00;font-weight:bold">)</span> datum checkout <span style="color:#ce5c00;font-weight:bold">[</span>--<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#4e9a06">\&lt;</span>source1<span style="color:#4e9a06">\&gt;</span> ...
-3<span style="color:#ce5c00;font-weight:bold">)</span> datum checkout <span style="color:#4e9a06">\&lt;</span>revision<span style="color:#4e9a06">\&gt;</span> <span style="color:#ce5c00;font-weight:bold">[</span>--<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#4e9a06">\&lt;</span>source1<span style="color:#4e9a06">\&gt;</span> <span style="color:#4e9a06">\&lt;</span>source2<span style="color:#4e9a06">\&gt;</span> ...
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">1<span style="color:#ce5c00;font-weight:bold">)</span> datum checkout &lt;revision&gt;
+2<span style="color:#ce5c00;font-weight:bold">)</span> datum checkout <span style="color:#ce5c00;font-weight:bold">[</span>--<span style="color:#ce5c00;font-weight:bold">]</span> &lt;source1&gt; ...
+3<span style="color:#ce5c00;font-weight:bold">)</span> datum checkout &lt;revision&gt; <span style="color:#ce5c00;font-weight:bold">[</span>--<span style="color:#ce5c00;font-weight:bold">]</span> &lt;source1&gt; &lt;source2&gt; ...
 </code></pre></div><p>1 - Restores a revision and all the corresponding sources in the
 working directory. If there are conflicts between modified files in the
 working directory and the target revision, an error is raised, unless
@@ -6845,10 +6848,7 @@ datum model run -p proj_mobilenet_v2_classification -m model-0
 python -m virtualenv venv
 . venv/bin/activate
 </code></pre></div><p>Then install all dependencies:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#204a87;font-weight:bold">while</span> <span style="color:#204a87">read</span> -r p<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">do</span> pip install <span style="color:#000">$p</span><span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span> &lt; requirements.txt
-</code></pre></div><p>If you&rsquo;re working inside of a CVAT environment:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">. .env/bin/activate
-<span style="color:#204a87;font-weight:bold">while</span> <span style="color:#204a87">read</span> -r p<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">do</span> pip install <span style="color:#000">$p</span><span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span> &lt; datumaro/requirements.txt
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install -r requirements.txt
 </code></pre></div><p>Install Datumaro:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install -e /path/to/the/cloned/repo/
 </code></pre></div><p><strong>Optional dependencies</strong></p>

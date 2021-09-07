@@ -21,26 +21,32 @@
 <meta name="description" content=""><meta property="og:title" content="Contribution Guide" />
 <meta property="og:description" content="Related sections:  Design document Developer manual  Installation Prerequisites  Python (3.6&#43;)  git clone https://github.com/openvinotoolkit/datumaro Optionally, install a virtual environment (recommended):
 python -m pip install virtualenv python -m virtualenv venv . venv/bin/activate Then install all dependencies:
-while read -r p; do pip install $p; done &lt; requirements.txt If you&rsquo;re working inside of a CVAT environment:
-. .env/bin/activate while read -r p; do pip install $p; done &lt; datumaro/requirements.txt Install Datumaro:" />
+pip install -r requirements.txt Install Datumaro:
+pip install -e /path/to/the/cloned/repo/ Optional dependencies
+These components are only required for plugins and not installed by default:
+ OpenVINO Accuracy Checker TensorFlow PyTorch MxNet Caffe  Usage datum --help python -m datumaro --help python datumaro/ --help python datum." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/contributing/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-09-02T14:01:58+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-09-07T14:05:33+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="Contribution Guide">
 <meta itemprop="description" content="Related sections:  Design document Developer manual  Installation Prerequisites  Python (3.6&#43;)  git clone https://github.com/openvinotoolkit/datumaro Optionally, install a virtual environment (recommended):
 python -m pip install virtualenv python -m virtualenv venv . venv/bin/activate Then install all dependencies:
-while read -r p; do pip install $p; done &lt; requirements.txt If you&rsquo;re working inside of a CVAT environment:
-. .env/bin/activate while read -r p; do pip install $p; done &lt; datumaro/requirements.txt Install Datumaro:">
-<meta itemprop="dateModified" content="2021-09-02T14:01:58+03:00" />
-<meta itemprop="wordCount" content="653">
+pip install -r requirements.txt Install Datumaro:
+pip install -e /path/to/the/cloned/repo/ Optional dependencies
+These components are only required for plugins and not installed by default:
+ OpenVINO Accuracy Checker TensorFlow PyTorch MxNet Caffe  Usage datum --help python -m datumaro --help python datumaro/ --help python datum.">
+<meta itemprop="dateModified" content="2021-09-07T14:05:33+03:00" />
+<meta itemprop="wordCount" content="625">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Contribution Guide"/>
 <meta name="twitter:description" content="Related sections:  Design document Developer manual  Installation Prerequisites  Python (3.6&#43;)  git clone https://github.com/openvinotoolkit/datumaro Optionally, install a virtual environment (recommended):
 python -m pip install virtualenv python -m virtualenv venv . venv/bin/activate Then install all dependencies:
-while read -r p; do pip install $p; done &lt; requirements.txt If you&rsquo;re working inside of a CVAT environment:
-. .env/bin/activate while read -r p; do pip install $p; done &lt; datumaro/requirements.txt Install Datumaro:"/>
+pip install -r requirements.txt Install Datumaro:
+pip install -e /path/to/the/cloned/repo/ Optional dependencies
+These components are only required for plugins and not installed by default:
+ OpenVINO Accuracy Checker TensorFlow PyTorch MxNet Caffe  Usage datum --help python -m datumaro --help python datumaro/ --help python datum."/>
 
 
 
@@ -90,12 +96,12 @@ while read -r p; do pip install $p; done &lt; requirements.txt If you&rsquo;re w
           
 
 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  Latest version
+  develop
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
   
     
-      <a class="dropdown-item" href="../../docs/contributing/">Latest version</a>
+      <a class="dropdown-item" href="../../docs/contributing/">develop</a>
   
     
       <a class="dropdown-item" href="../../v0.1.11/docs/contributing/">v0.1.11</a>
@@ -118,7 +124,7 @@ while read -r p; do pip install $p; done &lt; requirements.txt If you&rsquo;re w
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.40d2f3de9cf628f157fdfc7efdeced07.json"
+  data-offline-search-index-json-src="../../offline-search-index.cf864a5288fde52fb440e71cd83593e7.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -146,7 +152,7 @@ while read -r p; do pip install $p; done &lt; requirements.txt If you&rsquo;re w
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.40d2f3de9cf628f157fdfc7efdeced07.json"
+  data-offline-search-index-json-src="../../offline-search-index.cf864a5288fde52fb440e71cd83593e7.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -422,10 +428,7 @@ while read -r p; do pip install $p; done &lt; requirements.txt If you&rsquo;re w
 python -m virtualenv venv
 . venv/bin/activate
 </code></pre></div><p>Then install all dependencies:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#204a87;font-weight:bold">while</span> <span style="color:#204a87">read</span> -r p<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">do</span> pip install <span style="color:#000">$p</span><span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span> &lt; requirements.txt
-</code></pre></div><p>If you&rsquo;re working inside of a CVAT environment:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">. .env/bin/activate
-<span style="color:#204a87;font-weight:bold">while</span> <span style="color:#204a87">read</span> -r p<span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">do</span> pip install <span style="color:#000">$p</span><span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">done</span> &lt; datumaro/requirements.txt
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install -r requirements.txt
 </code></pre></div><p>Install Datumaro:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install -e /path/to/the/cloned/repo/
 </code></pre></div><p><strong>Optional dependencies</strong></p>
@@ -580,8 +583,8 @@ the following: sections: <code>Description</code>, <code>Expected results</code>
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    September 2, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/139375623ded0cec671f40dff98efe2af160e425">fix mistakes (1393756)</a>
+    September 7, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/22632417b1a08bd121bf69b53dcf8678a593f005">update docs site (2263241)</a>
 
 </div>
 
