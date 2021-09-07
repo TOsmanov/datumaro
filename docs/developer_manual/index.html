@@ -25,14 +25,14 @@ Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatistics
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/developer_manual/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-09-07T16:19:10+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-09-07T17:31:26+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="Dataset Management Framework (Datumaro) API and developer manual">
 <meta itemprop="description" content="Basics The central part of the library is the Dataset class, which represents a dataset and allows to iterate over its elements. DatasetItem, an element of a dataset, represents a single dataset entry with annotations - an image, video sequence, audio track etc. It can contain only annotated data or meta information, only annotations, or all of this.
 Basic library usage and data flow:
 Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatisticsMergingInferenceQuality CheckingComparison.">
-<meta itemprop="dateModified" content="2021-09-07T16:19:10+03:00" />
-<meta itemprop="wordCount" content="1964">
+<meta itemprop="dateModified" content="2021-09-07T17:31:26+03:00" />
+<meta itemprop="wordCount" content="1967">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Dataset Management Framework (Datumaro) API and developer manual"/>
 <meta name="twitter:description" content="Basics The central part of the library is the Dataset class, which represents a dataset and allows to iterate over its elements. DatasetItem, an element of a dataset, represents a single dataset entry with annotations - an image, video sequence, audio track etc. It can contain only annotated data or meta information, only annotations, or all of this.
@@ -115,7 +115,7 @@ Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatistics
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.4af489f7464b8d9b94a2792b7a37410a.json"
+  data-offline-search-index-json-src="../../offline-search-index.0e7e6bdc721ea48b0836a37ed9609a05.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -143,7 +143,7 @@ Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatistics
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.4af489f7464b8d9b94a2792b7a37410a.json"
+  data-offline-search-index-json-src="../../offline-search-index.0e7e6bdc721ea48b0836a37ed9609a05.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -734,6 +734,7 @@ flowchart LR
   d((&quot;#0009; datum #0009;&quot;)):::mainclass
   s(source):::nofillclass
   m(model):::nofillclass
+  p(project):::nofillclass
 
   d===s
     s===id1[add]:::hideclass
@@ -744,6 +745,8 @@ flowchart LR
     m===id5[remove]:::hideclass
     m===id6[run]:::hideclass
     m===id7[info]:::hideclass
+  d===p
+    p===info:::hideclass
   d====str1[create]:::filloneclass
   d====str2[add]:::filloneclass
   d====str3[remove]:::filloneclass
@@ -784,7 +787,7 @@ flowchart LR
 
     Last modified
     September 7, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/f8e52aec370bd6a3db528cc126fc20cb078abe27">fix diagrams (f8e52ae)</a>
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/99bcca8d2597925ae76530de7de8ec03ec923c1e">update diagrams (99bcca8)</a>
 
 </div>
 
