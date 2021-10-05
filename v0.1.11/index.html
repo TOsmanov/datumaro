@@ -1,11 +1,16 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" class="no-js">
   <head>
 	<meta name="generator" content="Hugo 0.86.0" />
-    <script>
-      if ( window.self.location != window.top.location ) {
-      window.top.location = window.self.location;
+    <style> html {display : none; } </style>
+      <script>
+      if ( self === top ) {
+      document.documentElement.style.display = 'block';
       }
-    </script>
+      else {
+      top.location = self.location;
+      }
+      </script>
   </head>
 
   <body>

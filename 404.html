@@ -1,10 +1,15 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" class="no-js">
   <head>
-    <script>
-      if ( window.self.location != window.top.location ) {
-      window.top.location = window.self.location;
+    <style> html {display : none; } </style>
+      <script>
+      if ( self === top ) {
+      document.documentElement.style.display = 'block';
       }
-    </script>
+      else {
+      top.location = self.location;
+      }
+      </script>
   </head>
 
   <body>
