@@ -19,37 +19,28 @@
 
 <title>Projects | Dataset Management Framework</title>
 <meta name="description" content=""><meta property="og:title" content="Projects" />
-<meta property="og:description" content="Print project info  Prints project configuration info such as available plugins, registered models, imported sources and build tree.
-Usage:
-datum project info [-h] [-p PROJECT_DIR] [revision] Parameters:
- &lt;revision&gt; (string) - Target project revision. By default, uses the working tree. -p, --project (string) - Directory of the project to operate on (default: current directory). -h, --help - Print the help message and exit.  Examples:
-  Print project info for the current working tree: datum project info" />
+<meta property="og:description" content="Migrate project  Updates the project from an old version to the current one and saves the resulting project in the output directory. Projects cannot be updated inplace.
+The command tries to map the old source configuration to the new one. This can fail in some cases, so the command will exit with an error, unless -f/--force is specified. With this flag, the command will skip these errors an continue its work." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/user-manual/command-reference/projects/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-09-02T13:31:24+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-09-10T18:54:14+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="Projects">
-<meta itemprop="description" content="Print project info  Prints project configuration info such as available plugins, registered models, imported sources and build tree.
-Usage:
-datum project info [-h] [-p PROJECT_DIR] [revision] Parameters:
- &lt;revision&gt; (string) - Target project revision. By default, uses the working tree. -p, --project (string) - Directory of the project to operate on (default: current directory). -h, --help - Print the help message and exit.  Examples:
-  Print project info for the current working tree: datum project info">
-<meta itemprop="dateModified" content="2021-09-02T13:31:24+03:00" />
-<meta itemprop="wordCount" content="219">
+<meta itemprop="description" content="Migrate project  Updates the project from an old version to the current one and saves the resulting project in the output directory. Projects cannot be updated inplace.
+The command tries to map the old source configuration to the new one. This can fail in some cases, so the command will exit with an error, unless -f/--force is specified. With this flag, the command will skip these errors an continue its work.">
+<meta itemprop="dateModified" content="2021-09-10T18:54:14+03:00" />
+<meta itemprop="wordCount" content="373">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Projects"/>
-<meta name="twitter:description" content="Print project info  Prints project configuration info such as available plugins, registered models, imported sources and build tree.
-Usage:
-datum project info [-h] [-p PROJECT_DIR] [revision] Parameters:
- &lt;revision&gt; (string) - Target project revision. By default, uses the working tree. -p, --project (string) - Directory of the project to operate on (default: current directory). -h, --help - Print the help message and exit.  Examples:
-  Print project info for the current working tree: datum project info"/>
+<meta name="twitter:description" content="Migrate project  Updates the project from an old version to the current one and saves the resulting project in the output directory. Projects cannot be updated inplace.
+The command tries to map the old source configuration to the new one. This can fail in some cases, so the command will exit with an error, unless -f/--force is specified. With this flag, the command will skip these errors an continue its work."/>
 
 
 
 
-<link rel="preload" href="../../../../scss/main.min.21c2cea19bc82cf1072148e20b3bc957c31d04e918eba026f810d093e6f85412.css" as="style">
-<link href="../../../../scss/main.min.21c2cea19bc82cf1072148e20b3bc957c31d04e918eba026f810d093e6f85412.css" rel="stylesheet" integrity="">
+<link rel="preload" href="../../../../scss/main.scss" as="style">
+<link href="../../../../scss/main.scss" rel="stylesheet" integrity="">
 
 
 <script
@@ -85,7 +76,7 @@ datum project info [-h] [-p PROJECT_DIR] [revision] Parameters:
           
           
           
-          <a class="nav-link" href="https://github.com/openvinotoolkit/datumaro" target="_blank" ><i class='fab fa-github'></i><span>GitHub</span></a>
+          <a class="nav-link" href="https://github.com/openvinotoolkit/datumaro"  ><i class='fab fa-github'></i><span>GitHub</span></a>
         </li>
       
       
@@ -121,7 +112,7 @@ datum project info [-h] [-p PROJECT_DIR] [revision] Parameters:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.0e7e6bdc721ea48b0836a37ed9609a05.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.cb6c2afc74b8ed5f28b6cecede7d4b1e.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -149,7 +140,7 @@ datum project info [-h] [-p PROJECT_DIR] [revision] Parameters:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.0e7e6bdc721ea48b0836a37ed9609a05.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.cb6c2afc74b8ed5f28b6cecede7d4b1e.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -193,6 +184,8 @@ datum project info [-h] [-p PROJECT_DIR] [revision] Parameters:
   <a href="../../../../docs/user-manual/command-reference/filter/" title="Filter datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencefilter"><span class="">Filter</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualcommand-referencemerge-li">
   <a href="../../../../docs/user-manual/command-reference/merge/" title="Merge Datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencemerge"><span class="">Merge</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualcommand-referencepatch-li">
+  <a href="../../../../docs/user-manual/command-reference/patch/" title="Patch Datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencepatch"><span class="">Patch</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualcommand-referencediff-li">
   <a href="../../../../docs/user-manual/command-reference/diff/" title="Compare datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencediff"><span class="">Diff</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualcommand-referenceinfo-li">
@@ -322,6 +315,7 @@ datum project info [-h] [-p PROJECT_DIR] [revision] Parameters:
   <ul>
     <li>
       <ul>
+        <li><a href="#migrate-project-a-idproject-migratea">Migrate project <a id="project-migrate"></a></a></li>
         <li><a href="#print-project-info-a-idproject-infoa">Print project info <a id="project-info"></a></a></li>
       </ul>
     </li>
@@ -418,7 +412,31 @@ datum project info [-h] [-p PROJECT_DIR] [revision] Parameters:
 		
 		
 	</header>    
-	<h3 id="print-project-info-a-idproject-infoa">Print project info <a id="project-info"></a></h3>
+	<h3 id="migrate-project-a-idproject-migratea">Migrate project <a id="project-migrate"></a></h3>
+<p>Updates the project from an old version to the current one and saves the
+resulting project in the output directory. Projects cannot be updated
+inplace.</p>
+<p>The command tries to map the old source configuration to the new one.
+This can fail in some cases, so the command will exit with an error,
+unless <code>-f/--force</code> is specified. With this flag, the command will
+skip these errors an continue its work.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum project migrate <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> -o DST_DIR <span style="color:#ce5c00;font-weight:bold">[</span>-f<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-p PROJECT_DIR<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--overwrite<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Parameters:</p>
+<ul>
+<li><code>-o, --output-dir</code> (string) - Output directory for the updated project</li>
+<li><code>-f, --force</code> - Ignore source import errors (default: False)</li>
+<li><code>--overwrite</code> - Overwrite existing files in the save directory.</li>
+<li><code>-p, --project</code> (string) - Directory of the project to operate on
+(default: current directory).</li>
+<li><code>-h, --help</code> - Print the help message and exit.</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>Migrate a project from v1 to v2, save the new project in other dir:
+<code>datum project migrate -o &lt;output/dir&gt;</code></li>
+</ul>
+<h3 id="print-project-info-a-idproject-infoa">Print project info <a id="project-info"></a></h3>
 <p>Prints project configuration info such as available plugins, registered models,
 imported sources and build tree.</p>
 <p>Usage:</p>
@@ -484,8 +502,8 @@ Sources:
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    September 2, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/717d95997eda9d7a03c76c2e1d7012b9703db04e">update docs and fix anchors (717d959)</a>
+    September 10, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/e1332fabf9d492983b7fe345e5b1eff0393f12a5">Update docs (#458) (e1332fa)</a>
 
 </div>
 
@@ -506,7 +524,7 @@ Sources:
 <ul class="list-inline mb-0">
   
   <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="" aria-label="">
-    <a class="text-white" target="_blank" rel="noopener noreferrer" href="">
+    <a class="text-white" rel="noopener noreferrer" href="">
       <i class=""></i>
     </a>
   </li>
@@ -523,7 +541,7 @@ Sources:
 <ul class="list-inline mb-0">
   
   <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
-    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://github.com/openvinotoolkit/datumaro">
+    <a class="text-white" rel="noopener noreferrer" href="https://github.com/openvinotoolkit/datumaro">
       <i class="fab fa-github"></i>
     </a>
   </li>
@@ -534,9 +552,9 @@ Sources:
         
       </div>
       <div class="col-12 col-sm-8 text-center order-sm-2">
-        <small class="mr-1"><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html" target="_blank">Privacy Policy</a></small>
+        <small class="mr-1"><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
         |
-        <small class="mx-1"><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html" target="_blank">Terms of Use</a></small>
+        <small class="mx-1"><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
         <br/>
         <div class="footer-disclaimer text-white ">
           <small>Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.</small>

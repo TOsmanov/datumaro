@@ -32,8 +32,8 @@
 
 
 
-<link rel="preload" href="../../../scss/main.min.21c2cea19bc82cf1072148e20b3bc957c31d04e918eba026f810d093e6f85412.css" as="style">
-<link href="../../../scss/main.min.21c2cea19bc82cf1072148e20b3bc957c31d04e918eba026f810d093e6f85412.css" rel="stylesheet" integrity="">
+<link rel="preload" href="../../../scss/main.scss" as="style">
+<link href="../../../scss/main.scss" rel="stylesheet" integrity="">
 
 
 <script
@@ -69,7 +69,7 @@
           
           
           
-          <a class="nav-link" href="https://github.com/openvinotoolkit/datumaro" target="_blank" ><i class='fab fa-github'></i><span>GitHub</span></a>
+          <a class="nav-link" href="https://github.com/openvinotoolkit/datumaro"  ><i class='fab fa-github'></i><span>GitHub</span></a>
         </li>
       
       
@@ -105,7 +105,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.0e7e6bdc721ea48b0836a37ed9609a05.json"
+  data-offline-search-index-json-src="../../../offline-search-index.cb6c2afc74b8ed5f28b6cecede7d4b1e.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -236,30 +236,26 @@ This the multi-page printable view of this section.
 <a href="https://docs.openvinotoolkit.org/latest/omz_models_intel_index.html">here</a>
 To run the inference with OpenVINO™, the model format should be Intermediate
 Representation(IR).
-For the Caffe/TensorFlow/MXNet/Kaldi/ONNX models, please see the <a href="https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_prepare_model_convert_model_Converting_Model.html">Model Conversion Instruction</a></p>
+For the Caffe/TensorFlow/MXNet/Kaldi/ONNX models, please see the
+<a href="https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_prepare_model_convert_model_Converting_Model.html">Model Conversion Instruction</a></p>
 <p>You need to implement your own interpreter samples to support the other
 OpenVINO™ Trained Models.</p>
 <h2 id="model-download">Model download</h2>
-<ul>
-<li>
-<p>Prerequisites</p>
+<p>Prerequisites:</p>
 <ul>
 <li>OpenVINO™ (To install OpenVINO™, please see the
 <a href="https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_installing_openvino_linux.html">OpenVINO™ Installation Instruction</a>)</li>
 <li>OpenVINO™ models (To download OpenVINO™ models, please see the <a href="https://docs.openvinotoolkit.org/latest/omz_tools_downloader_README.html">Model Downloader Instruction</a>)</li>
 <li>PASCAL VOC 2012 dataset (To download VOC 2012 dataset, please go <a href="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/#devkit">VOC2012 download</a>)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># cd &lt;openvino_dir&gt;/deployment_tools/open_model_zoo/tools/downloader</span>
-<span style="color:#8f5902;font-style:italic"># ./downloader.py --name &lt;model_name&gt;</span>
-<span style="color:#8f5902;font-style:italic">#</span>
-<span style="color:#8f5902;font-style:italic"># Examples</span>
-<span style="color:#204a87">cd</span> /opt/intel/openvino/deployment_tools/open_model_zoo/tools/downloader
+<p>Open Model Zoo models can be downloaded with the Model Downloader tool
+from OpenVINO™ distribution:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#204a87">cd</span> &lt;openvino_dir&gt;/deployment_tools/open_model_zoo/tools/downloader
+./downloader.py --name &lt;model_name&gt;
+</code></pre></div><p>Example: download the &ldquo;face-detection-0200&rdquo; model</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#204a87">cd</span> /opt/intel/openvino/deployment_tools/open_model_zoo/tools/downloader
 ./downloader.py --name face-detection-0200
-</code></pre></div></li>
-</ul>
-<h2 id="model-inference">Model inference</h2>
-<ul>
-<li>
+</code></pre></div><h2 id="model-inference">Model inference</h2>
 <p>Prerequisites:</p>
 <ul>
 <li>OpenVINO™ (To install OpenVINO™, please see the
@@ -268,42 +264,37 @@ OpenVINO™ Trained Models.</p>
 <li>OpenVINO™ models (To download OpenVINO™ models, please see the <a href="https://docs.openvinotoolkit.org/latest/omz_tools_downloader_README.html">Model Downloader Instruction</a>)</li>
 <li>PASCAL VOC 2012 dataset (To download VOC 2012 dataset, please go <a href="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/#devkit">VOC2012 download</a>)</li>
 </ul>
-</li>
-<li>
+<h2 id="examples">Examples</h2>
 <p>To run the inference with OpenVINO™ models and the interpreter samples,
 please follow the instructions below.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># source &lt;openvino_dir&gt;/bin/setupvars.sh</span>
-<span style="color:#8f5902;font-style:italic"># datum create -o &lt;proj_dir&gt;</span>
-<span style="color:#8f5902;font-style:italic"># datum model add -l &lt;launcher&gt; -p &lt;proj_dir&gt; --copy -- -d &lt;path_to_xml&gt; -w &lt;path_to_bin&gt; -i &lt;path_to_interpreter_script&gt;</span>
-<span style="color:#8f5902;font-style:italic"># datum add path -p &lt;proj_dir&gt; -f &lt;format&gt; &lt;path_to_dataset&gt;</span>
-<span style="color:#8f5902;font-style:italic"># datum model run -p &lt;proj_dir&gt; -m model-0</span>
-<span style="color:#8f5902;font-style:italic">#</span>
-<span style="color:#8f5902;font-style:italic"># Examples</span>
-<span style="color:#8f5902;font-style:italic"># Detection&gt; ssd_mobilenet_v2_coco</span>
-<span style="color:#204a87">source</span> /opt/intel/openvino/bin/setupvars.sh
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#204a87">source</span> &lt;openvino_dir&gt;/bin/setupvars.sh
+datum create -o &lt;proj_dir&gt;
+datum model add -l &lt;launcher&gt; -p &lt;proj_dir&gt; --copy -- <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -d &lt;path/to/xml&gt; -w &lt;path/to/bin&gt; -i &lt;path/to/interpreter/script&gt;
+datum import -p &lt;proj_dir&gt; -f &lt;format&gt; &lt;path_to_dataset&gt;
+datum model run -p &lt;proj_dir&gt; -m model-0
+</code></pre></div><h3 id="detection-ssd_mobilenet_v2_coco">Detection: ssd_mobilenet_v2_coco</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#204a87">source</span> /opt/intel/openvino/bin/setupvars.sh
 <span style="color:#204a87">cd</span> datumaro/plugins/openvino_plugin
-datum create -o proj_ssd_mobilenet_v2_coco_detection
-datum model add -l openvino -p proj_ssd_mobilenet_v2_coco_detection --copy -- <span style="color:#4e9a06">\
+datum create -o proj
+datum model add -l openvino -p proj --copy -- <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --output-layers<span style="color:#ce5c00;font-weight:bold">=</span>do_ExpandDims_conf/sigmoid <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    -d model/ssd_mobilenet_v2_coco.xml <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    -w model/ssd_mobilenet_v2_coco.bin <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    -i samples/ssd_mobilenet_coco_detection_interp.py
-datum add path -p proj_ssd_mobilenet_v2_coco_detection -f voc VOCdevkit/
-datum model run -p proj_ssd_mobilenet_v2_coco_detection -m model-0
-
-<span style="color:#8f5902;font-style:italic"># Classification&gt; mobilenet-v2-pytorch</span>
-<span style="color:#204a87">source</span> /opt/intel/openvino/bin/setupvars.sh
+datum import -p proj -f voc VOCdevkit/
+datum model run -p proj -m model-0
+</code></pre></div><h3 id="classification-mobilenet-v2-pytorch">Classification: mobilenet-v2-pytorch</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#204a87">source</span> /opt/intel/openvino/bin/setupvars.sh
 <span style="color:#204a87">cd</span> datumaro/plugins/openvino_plugin
-datum create -o proj_mobilenet_v2_classification
-datum model add -l openvino -p proj_mobilenet_v2_classification --copy -- <span style="color:#4e9a06">\
+datum create -o proj
+datum model add -l openvino -p proj --copy -- <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    -d model/mobilenet-v2-pytorch.xml <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    -w model/mobilenet-v2-pytorch.bin <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    -i samples/mobilenet_v2_pytorch_interp.py
-datum add path -p proj_mobilenet_v2_classification -f voc VOCdevkit/
-datum model run -p proj_mobilenet_v2_classification -m model-0
-</code></pre></div></li>
-</ul>
-
+datum import -p proj -f voc VOCdevkit/
+datum model run -p proj -m model-0
+</code></pre></div>
 </div>
 
 
@@ -328,7 +319,7 @@ datum model run -p proj_mobilenet_v2_classification -m model-0
 <ul class="list-inline mb-0">
   
   <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="" aria-label="">
-    <a class="text-white" target="_blank" rel="noopener noreferrer" href="">
+    <a class="text-white" rel="noopener noreferrer" href="">
       <i class=""></i>
     </a>
   </li>
@@ -345,7 +336,7 @@ datum model run -p proj_mobilenet_v2_classification -m model-0
 <ul class="list-inline mb-0">
   
   <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
-    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://github.com/openvinotoolkit/datumaro">
+    <a class="text-white" rel="noopener noreferrer" href="https://github.com/openvinotoolkit/datumaro">
       <i class="fab fa-github"></i>
     </a>
   </li>
@@ -356,9 +347,9 @@ datum model run -p proj_mobilenet_v2_classification -m model-0
         
       </div>
       <div class="col-12 col-sm-8 text-center order-sm-2">
-        <small class="mr-1"><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html" target="_blank">Privacy Policy</a></small>
+        <small class="mr-1"><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
         |
-        <small class="mx-1"><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html" target="_blank">Terms of Use</a></small>
+        <small class="mx-1"><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
         <br/>
         <div class="footer-disclaimer text-white ">
           <small>Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.</small>

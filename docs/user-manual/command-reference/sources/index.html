@@ -23,12 +23,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/user-manual/command-reference/sources/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-09-02T15:56:33+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-09-22T17:13:20+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="Sources">
 <meta itemprop="description" content="Import Datasets  A project can contain an arbitrary number of Data Sources. Each Data Source describes a dataset in a specific format. A project acts as a manager for the data sources and allows to manipulate them separately or as a whole, in which case it combines dataset items from all the sources into one composite dataset. You can manage separate sources in a project by commands in the datum source command line context.">
-<meta itemprop="dateModified" content="2021-09-02T15:56:33+03:00" />
-<meta itemprop="wordCount" content="708">
+<meta itemprop="dateModified" content="2021-09-22T17:13:20+03:00" />
+<meta itemprop="wordCount" content="689">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Sources"/>
 <meta name="twitter:description" content="Import Datasets  A project can contain an arbitrary number of Data Sources. Each Data Source describes a dataset in a specific format. A project acts as a manager for the data sources and allows to manipulate them separately or as a whole, in which case it combines dataset items from all the sources into one composite dataset. You can manage separate sources in a project by commands in the datum source command line context."/>
@@ -36,8 +36,8 @@
 
 
 
-<link rel="preload" href="../../../../scss/main.min.21c2cea19bc82cf1072148e20b3bc957c31d04e918eba026f810d093e6f85412.css" as="style">
-<link href="../../../../scss/main.min.21c2cea19bc82cf1072148e20b3bc957c31d04e918eba026f810d093e6f85412.css" rel="stylesheet" integrity="">
+<link rel="preload" href="../../../../scss/main.scss" as="style">
+<link href="../../../../scss/main.scss" rel="stylesheet" integrity="">
 
 
 <script
@@ -73,7 +73,7 @@
           
           
           
-          <a class="nav-link" href="https://github.com/openvinotoolkit/datumaro" target="_blank" ><i class='fab fa-github'></i><span>GitHub</span></a>
+          <a class="nav-link" href="https://github.com/openvinotoolkit/datumaro"  ><i class='fab fa-github'></i><span>GitHub</span></a>
         </li>
       
       
@@ -109,7 +109,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.0e7e6bdc721ea48b0836a37ed9609a05.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.cb6c2afc74b8ed5f28b6cecede7d4b1e.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -137,7 +137,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.0e7e6bdc721ea48b0836a37ed9609a05.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.cb6c2afc74b8ed5f28b6cecede7d4b1e.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -181,6 +181,8 @@
   <a href="../../../../docs/user-manual/command-reference/filter/" title="Filter datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencefilter"><span class="">Filter</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualcommand-referencemerge-li">
   <a href="../../../../docs/user-manual/command-reference/merge/" title="Merge Datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencemerge"><span class="">Merge</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualcommand-referencepatch-li">
+  <a href="../../../../docs/user-manual/command-reference/patch/" title="Patch Datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencepatch"><span class="">Patch</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualcommand-referencediff-li">
   <a href="../../../../docs/user-manual/command-reference/diff/" title="Compare datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencediff"><span class="">Diff</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualcommand-referenceinfo-li">
@@ -414,7 +416,7 @@ the data sources and allows to manipulate them separately or as a whole, in
 which case it combines dataset items from all the sources into one composite
 dataset. You can manage separate sources in a project by commands in
 the <code>datum source</code> command line context.</p>
-<p>Existing datasets can be added to a Datumaro project with the <code>add</code> command.</p>
+<p>Existing datasets can be added to a Datumaro project with the <code>import</code> command.</p>
 <p>Datasets come in a wide variety of formats. Each dataset
 format defines its own data structure and rules on how to
 interpret the data. For example, the following data structure
@@ -426,7 +428,7 @@ is used in COCO format:</p>
 </code></pre><!--lint enable fenced-code-flag-->
 <p>Dataset format readers can provide some additional import options. To pass
 such options, use the <code>--</code> separator after the main command arguments.
-The usage information can be printed with <code>datum add -f &lt;format&gt; -- --help</code>.</p>
+The usage information can be printed with <code>datum import -f &lt;format&gt; -- --help</code>.</p>
 <p>Check <a href="../../../../docs/user-manual/supported_formats">supported formats</a> for more info
 about format specifications, supported options and other details.
 The list of formats can be extended by custom plugins, check <a href="../../../../docs/user-manual/extending">extending tips</a>
@@ -447,14 +449,13 @@ non-standard placement or names.</p>
 <ul>
 <li>URL is saved in the project config</li>
 <li>data in copied into the project</li>
-<li>data is cached inside the project (use <code>--no-cache</code> to disable)</li>
 </ul>
 <p>Each data source has a name assigned, which can be used in other commands. To
 set a specific name, use the <code>-n/--name</code> parameter.</p>
 <p>The dataset is added into the working tree of the project. A new commit
 is <em>not</em> done automatically.</p>
 <p>Usage:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum add <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-n NAME<span style="color:#ce5c00;font-weight:bold">]</span> -f FORMAT <span style="color:#ce5c00;font-weight:bold">[</span>-r PATH<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--no-check<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--no-cache<span style="color:#ce5c00;font-weight:bold">]</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum import <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-n NAME<span style="color:#ce5c00;font-weight:bold">]</span> -f FORMAT <span style="color:#ce5c00;font-weight:bold">[</span>-r PATH<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--no-check<span style="color:#ce5c00;font-weight:bold">]</span>
   <span style="color:#ce5c00;font-weight:bold">[</span>-p PROJECT_DIR<span style="color:#ce5c00;font-weight:bold">]</span> url <span style="color:#ce5c00;font-weight:bold">[</span>-- EXTRA_FORMAT_ARGS<span style="color:#ce5c00;font-weight:bold">]</span>
 </code></pre></div><p>Parameters:</p>
 <ul>
@@ -463,7 +464,6 @@ is <em>not</em> done automatically.</p>
 <li><code>-r, --path</code> (string) - A path relative to the source URL the data source.
 Useful to specify a path to a subset, subtask, or a specific file in URL.</li>
 <li><code>--no-check</code> - Don&rsquo;t try to read the source after importing</li>
-<li><code>--no-cache</code> - Don&rsquo;t put a copy into the project cache</li>
 <li><code>-n</code>, <code>--name</code> (string) - Name of the new source (default: generate
 automatically)</li>
 <li><code>-p, --project</code> (string) - Directory of the project to operate on
@@ -476,11 +476,11 @@ automatically)</li>
 export as TFrecord for TF Detection API for model training</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
 <span style="color:#8f5902;font-style:italic"># &#39;default&#39; is the name of the subset below</span>
-datum add &lt;path/to/coco/instances_default.json&gt; -f coco_instances
-datum add &lt;path/to/cvat/default.xml&gt; -f cvat
-datum add &lt;path/to/voc&gt; -f voc_detection -r custom_subset_dir/default.txt
-datum add &lt;path/to/datumaro/default.json&gt; -f datumaro
-datum add &lt;path/to/images/dir&gt; -f image_dir
+datum import -f coco_instances -r annotations/instances_default.json path/to/coco
+datum import -f cvat &lt;path/to/cvat/default.xml&gt;
+datum import -f voc_detection -r custom_subset_dir/default.txt &lt;path/to/voc&gt;
+datum import -f datumaro &lt;path/to/datumaro/default.json&gt;
+datum import -f image_dir &lt;path/to/images/dir&gt;
 datum <span style="color:#204a87">export</span> -f tf_detection_api -- --save-images
 </code></pre></div><h3 id="remove-datasets-a-idsource-removea">Remove Datasets <a id="source-remove"></a></h3>
 <p>To remove a data source from a project, use the <code>remove</code> command.</p>
@@ -498,7 +498,7 @@ only project metainfo.</li>
 </ul>
 <p>Example:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
-datum add path/to/dataset/ -f voc -n src1
+datum import -f voc -n src1 &lt;path/to/dataset/&gt;
 datum remove src1
 </code></pre></div>
 	
@@ -506,8 +506,8 @@ datum remove src1
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    September 2, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/adeefef58a2f50e0d002b3180ea8253afd3389a8">fix linter errors (adeefef)</a>
+    September 22, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/cfee19859bd584c9a5a6d754eba2455c6268d92c">Rename datum add to datum import (#469) (cfee198)</a>
 
 </div>
 
@@ -528,7 +528,7 @@ datum remove src1
 <ul class="list-inline mb-0">
   
   <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="" aria-label="">
-    <a class="text-white" target="_blank" rel="noopener noreferrer" href="">
+    <a class="text-white" rel="noopener noreferrer" href="">
       <i class=""></i>
     </a>
   </li>
@@ -545,7 +545,7 @@ datum remove src1
 <ul class="list-inline mb-0">
   
   <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
-    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://github.com/openvinotoolkit/datumaro">
+    <a class="text-white" rel="noopener noreferrer" href="https://github.com/openvinotoolkit/datumaro">
       <i class="fab fa-github"></i>
     </a>
   </li>
@@ -556,9 +556,9 @@ datum remove src1
         
       </div>
       <div class="col-12 col-sm-8 text-center order-sm-2">
-        <small class="mr-1"><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html" target="_blank">Privacy Policy</a></small>
+        <small class="mr-1"><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
         |
-        <small class="mx-1"><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html" target="_blank">Terms of Use</a></small>
+        <small class="mx-1"><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
         <br/>
         <div class="footer-disclaimer text-white ">
           <small>Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.</small>

@@ -25,14 +25,14 @@ Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatistics
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/developer_manual/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-09-07T17:31:26+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-09-10T18:54:14+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="Dataset Management Framework (Datumaro) API and developer manual">
 <meta itemprop="description" content="Basics The central part of the library is the Dataset class, which represents a dataset and allows to iterate over its elements. DatasetItem, an element of a dataset, represents a single dataset entry with annotations - an image, video sequence, audio track etc. It can contain only annotated data or meta information, only annotations, or all of this.
 Basic library usage and data flow:
 Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatisticsMergingInferenceQuality CheckingComparison.">
-<meta itemprop="dateModified" content="2021-09-07T17:31:26+03:00" />
-<meta itemprop="wordCount" content="1967">
+<meta itemprop="dateModified" content="2021-09-10T18:54:14+03:00" />
+<meta itemprop="wordCount" content="1968">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Dataset Management Framework (Datumaro) API and developer manual"/>
 <meta name="twitter:description" content="Basics The central part of the library is the Dataset class, which represents a dataset and allows to iterate over its elements. DatasetItem, an element of a dataset, represents a single dataset entry with annotations - an image, video sequence, audio track etc. It can contain only annotated data or meta information, only annotations, or all of this.
@@ -42,8 +42,8 @@ Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatistics
 
 
 
-<link rel="preload" href="../../scss/main.min.21c2cea19bc82cf1072148e20b3bc957c31d04e918eba026f810d093e6f85412.css" as="style">
-<link href="../../scss/main.min.21c2cea19bc82cf1072148e20b3bc957c31d04e918eba026f810d093e6f85412.css" rel="stylesheet" integrity="">
+<link rel="preload" href="../../scss/main.scss" as="style">
+<link href="../../scss/main.scss" rel="stylesheet" integrity="">
 
 
 <script
@@ -79,7 +79,7 @@ Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatistics
           
           
           
-          <a class="nav-link" href="https://github.com/openvinotoolkit/datumaro" target="_blank" ><i class='fab fa-github'></i><span>GitHub</span></a>
+          <a class="nav-link" href="https://github.com/openvinotoolkit/datumaro"  ><i class='fab fa-github'></i><span>GitHub</span></a>
         </li>
       
       
@@ -115,7 +115,7 @@ Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatistics
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.0e7e6bdc721ea48b0836a37ed9609a05.json"
+  data-offline-search-index-json-src="../../offline-search-index.cb6c2afc74b8ed5f28b6cecede7d4b1e.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -143,7 +143,7 @@ Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatistics
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.0e7e6bdc721ea48b0836a37ed9609a05.json"
+  data-offline-search-index-json-src="../../offline-search-index.cb6c2afc74b8ed5f28b6cecede7d4b1e.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -187,6 +187,8 @@ Extractors -&gt; Dataset -&gt; Converter|FiltrationTransformationsStatistics
   <a href="../../docs/user-manual/command-reference/filter/" title="Filter datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencefilter"><span class="">Filter</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencemerge-li">
   <a href="../../docs/user-manual/command-reference/merge/" title="Merge Datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencemerge"><span class="">Merge</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencepatch-li">
+  <a href="../../docs/user-manual/command-reference/patch/" title="Patch Datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencepatch"><span class="">Patch</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencediff-li">
   <a href="../../docs/user-manual/command-reference/diff/" title="Compare datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencediff"><span class="">Diff</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceinfo-li">
@@ -746,6 +748,7 @@ flowchart LR
     m===id6[run]:::hideclass
     m===id7[info]:::hideclass
   d===p
+    p===migrate:::hideclass
     p===info:::hideclass
   d====str1[create]:::filloneclass
   d====str2[add]:::filloneclass
@@ -786,8 +789,8 @@ flowchart LR
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    September 7, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/99bcca8d2597925ae76530de7de8ec03ec923c1e">update diagrams (99bcca8)</a>
+    September 10, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/e1332fabf9d492983b7fe345e5b1eff0393f12a5">Update docs (#458) (e1332fa)</a>
 
 </div>
 
@@ -808,7 +811,7 @@ flowchart LR
 <ul class="list-inline mb-0">
   
   <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="" aria-label="">
-    <a class="text-white" target="_blank" rel="noopener noreferrer" href="">
+    <a class="text-white" rel="noopener noreferrer" href="">
       <i class=""></i>
     </a>
   </li>
@@ -825,7 +828,7 @@ flowchart LR
 <ul class="list-inline mb-0">
   
   <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
-    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://github.com/openvinotoolkit/datumaro">
+    <a class="text-white" rel="noopener noreferrer" href="https://github.com/openvinotoolkit/datumaro">
       <i class="fab fa-github"></i>
     </a>
   </li>
@@ -836,9 +839,9 @@ flowchart LR
         
       </div>
       <div class="col-12 col-sm-8 text-center order-sm-2">
-        <small class="mr-1"><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html" target="_blank">Privacy Policy</a></small>
+        <small class="mr-1"><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
         |
-        <small class="mx-1"><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html" target="_blank">Terms of Use</a></small>
+        <small class="mx-1"><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
         <br/>
         <div class="footer-disclaimer text-white ">
           <small>Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.</small>

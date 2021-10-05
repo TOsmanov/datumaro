@@ -25,14 +25,14 @@ Supported annotation types:
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/formats/cifar/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-09-02T12:31:30+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-09-22T17:13:20+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="CIFAR">
 <meta itemprop="description" content="Format specification CIFAR format specification is available here.
 Supported annotation types:
  Label  Datumaro supports Python version CIFAR-10/100. The difference between CIFAR-10 and CIFAR-100 is how labels are stored in the meta files (batches.meta or meta) and in the annotation files. The 100 classes in the CIFAR-100 are grouped into 20 superclasses. Each image comes with a &ldquo;fine&rdquo; label (the class to which it belongs) and a &ldquo;coarse&rdquo; label (the superclass to which it belongs).">
-<meta itemprop="dateModified" content="2021-09-02T12:31:30+03:00" />
-<meta itemprop="wordCount" content="614">
+<meta itemprop="dateModified" content="2021-09-22T17:13:20+03:00" />
+<meta itemprop="wordCount" content="636">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="CIFAR"/>
 <meta name="twitter:description" content="Format specification CIFAR format specification is available here.
@@ -42,8 +42,8 @@ Supported annotation types:
 
 
 
-<link rel="preload" href="../../../scss/main.min.21c2cea19bc82cf1072148e20b3bc957c31d04e918eba026f810d093e6f85412.css" as="style">
-<link href="../../../scss/main.min.21c2cea19bc82cf1072148e20b3bc957c31d04e918eba026f810d093e6f85412.css" rel="stylesheet" integrity="">
+<link rel="preload" href="../../../scss/main.scss" as="style">
+<link href="../../../scss/main.scss" rel="stylesheet" integrity="">
 
 
 <script
@@ -79,7 +79,7 @@ Supported annotation types:
           
           
           
-          <a class="nav-link" href="https://github.com/openvinotoolkit/datumaro" target="_blank" ><i class='fab fa-github'></i><span>GitHub</span></a>
+          <a class="nav-link" href="https://github.com/openvinotoolkit/datumaro"  ><i class='fab fa-github'></i><span>GitHub</span></a>
         </li>
       
       
@@ -115,7 +115,7 @@ Supported annotation types:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.0e7e6bdc721ea48b0836a37ed9609a05.json"
+  data-offline-search-index-json-src="../../../offline-search-index.cb6c2afc74b8ed5f28b6cecede7d4b1e.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -143,7 +143,7 @@ Supported annotation types:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.0e7e6bdc721ea48b0836a37ed9609a05.json"
+  data-offline-search-index-json-src="../../../offline-search-index.cb6c2afc74b8ed5f28b6cecede7d4b1e.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -187,6 +187,8 @@ Supported annotation types:
   <a href="../../../docs/user-manual/command-reference/filter/" title="Filter datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencefilter"><span class="">Filter</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencemerge-li">
   <a href="../../../docs/user-manual/command-reference/merge/" title="Merge Datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencemerge"><span class="">Merge</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencepatch-li">
+  <a href="../../../docs/user-manual/command-reference/patch/" title="Patch Datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencepatch"><span class="">Patch</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencediff-li">
   <a href="../../../docs/user-manual/command-reference/diff/" title="Compare datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencediff"><span class="">Diff</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceinfo-li">
@@ -315,13 +317,13 @@ Supported annotation types:
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
     <li><a href="#format-specification">Format specification</a></li>
-    <li><a href="#load-cifar-dataset">Load CIFAR dataset</a></li>
+    <li><a href="#import-cifar-dataset">Import CIFAR dataset</a></li>
     <li><a href="#export-to-other-formats">Export to other formats</a></li>
     <li><a href="#export-to-cifar">Export to CIFAR</a></li>
     <li><a href="#examples">Examples</a>
       <ul>
-        <li><a href="#example-1-how-to-create-custom-cifar-like-dataset">Example 1. How to create custom CIFAR-like dataset</a></li>
-        <li><a href="#example-2-how-to-filter-and-convert-cifar-dataset-to-imagenet">Example 2. How to filter and convert CIFAR dataset to ImageNet</a></li>
+        <li><a href="#example-1-how-to-create-a-custom-cifar-like-dataset">Example 1. How to create a custom CIFAR-like dataset</a></li>
+        <li><a href="#example-2-how-to-filter-and-convert-a-cifar-dataset-to-imagenet">Example 2. How to filter and convert a CIFAR dataset to ImageNet</a></li>
       </ul>
     </li>
   </ul>
@@ -419,9 +421,9 @@ in the meta files (<code>batches.meta</code> or <code>meta</code>) and in the an
 The 100 classes in the CIFAR-100 are grouped into 20 superclasses. Each image
 comes with a &ldquo;fine&rdquo; label (the class to which it belongs) and a &ldquo;coarse&rdquo; label
 (the superclass to which it belongs). In CIFAR-10 there are no superclasses.</p>
-<p>CIFAR formats contains 32 x 32 images. As an extension, Datumaro supports
+<p>CIFAR formats contain 32 x 32 images. As an extension, Datumaro supports
 reading and writing of arbitrary-sized images.</p>
-<h2 id="load-cifar-dataset">Load CIFAR dataset</h2>
+<h2 id="import-cifar-dataset">Import CIFAR dataset</h2>
 <p>The CIFAR dataset is available for free download:</p>
 <ul>
 <li><a href="https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz">cifar-10-python.tar.gz</a>:
@@ -429,12 +431,10 @@ CIFAR-10 python version</li>
 <li><a href="https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz">cifar-100-python.tar.gz</a>:
 CIFAR-100 python version</li>
 </ul>
-<p>There are two ways to create Datumaro project and add CIFAR dataset to it:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum import --format cifar --input-path &lt;path/to/dataset&gt;
-<span style="color:#8f5902;font-style:italic"># or</span>
-datum create
-datum add path -f cifar &lt;path/to/dataset&gt;
-</code></pre></div><p>It is possible to specify project name and project directory run
+<p>A Datumaro project with a CIFAR source can be created in the following way:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
+datum import --format cifar &lt;path/to/dataset&gt;
+</code></pre></div><p>It is possible to specify project name and project directory. Run
 <code>datum create --help</code> for more information.</p>
 <p>CIFAR-10 dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
@@ -450,7 +450,7 @@ datum add path -f cifar &lt;path/to/dataset&gt;
     ├── &lt;subset_name1&gt;
     ├── &lt;subset_name2&gt;
     └── ...
-</code></pre><p>Dataset files use <a href="https://docs.python.org/3/library/pickle.html">Pickle</a>
+</code></pre><p>Dataset files use the <a href="https://docs.python.org/3/library/pickle.html">Pickle</a>
 data format.</p>
 <p>Meta files:</p>
 <!--lint disable fenced-code-flag-->
@@ -479,38 +479,47 @@ CIFAR-100:
     'fine_labels': list of integers
     'coarse_labels': list of integers
 </code></pre><h2 id="export-to-other-formats">Export to other formats</h2>
-<p>Datumaro can convert CIFAR dataset into any other format <a href="../../../docs/user-manual/supported-formats">Datumaro supports</a>.
-To get the expected result, convert the dataset to formats
-that support the classification task (e.g. MNIST, ImageNet, PascalVOC,
-etc.) There are few ways to convert CIFAR dataset to other dataset format:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum project import -f cifar -i &lt;path/to/cifar&gt;
-datum <span style="color:#204a87">export</span> -f imagenet -o &lt;path/to/output/dir&gt;
+<p>Datumaro can convert a CIFAR dataset into any other format <a href="../../../docs/user-manual/supported_formats">Datumaro supports</a>.
+To get the expected result, convert the dataset to a format
+that supports the classification task (e.g. MNIST, ImageNet, PascalVOC, etc.)</p>
+<p>There are several ways to convert a CIFAR dataset to other dataset
+formats using CLI:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
+datum import -f cifar &lt;path/to/cifar&gt;
+datum <span style="color:#204a87">export</span> -f imagenet -o &lt;output/dir&gt;
 <span style="color:#8f5902;font-style:italic"># or</span>
-datum convert -if cifar -i &lt;path/to/cifar&gt; -f imagenet -o &lt;path/to/output/dir&gt;
+datum convert -if cifar -i &lt;path/to/dataset&gt; <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    -f imagenet -o &lt;output/dir&gt; -- --save-images
+</code></pre></div><p>Or, using Python API:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;cifar&#39;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;save_dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;imagenet&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_images</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">)</span>
 </code></pre></div><h2 id="export-to-cifar">Export to CIFAR</h2>
-<p>There are few ways to convert dataset to CIFAR format:</p>
+<p>There are several ways to convert a dataset to CIFAR format:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># export dataset into CIFAR format from existing project</span>
-datum <span style="color:#204a87">export</span> -p &lt;path/to/project&gt; -f cifar -o &lt;path/to/export/dir&gt; <span style="color:#4e9a06">\
+datum <span style="color:#204a87">export</span> -p &lt;path/to/project&gt; -f cifar -o &lt;output/dir&gt; <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    -- --save-images
+
 <span style="color:#8f5902;font-style:italic"># converting to CIFAR format from other format</span>
-datum convert -if imagenet -i &lt;path/to/imagenet/dataset&gt; <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>    -f cifar -o &lt;path/to/export/dir&gt; -- --save-images
-</code></pre></div><p>Extra options for export to CIFAR format:</p>
+datum convert -if imagenet -i &lt;path/to/dataset&gt; <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    -f cifar -o &lt;output/dir&gt; -- --save-images
+</code></pre></div><p>Extra options for exporting to CIFAR format:</p>
 <ul>
 <li><code>--save-images</code> allow to export dataset with saving images
-(by default <code>False</code>);</li>
+(by default <code>False</code>)</li>
 <li><code>--image-ext &lt;IMAGE_EXT&gt;</code> allow to specify image extension
-for exporting dataset (by default <code>.png</code>).</li>
+for exporting the dataset (by default <code>.png</code>)</li>
 </ul>
 <p>The format (CIFAR-10 or CIFAR-100) in which the dataset will be
 exported depends on the presence of superclasses in the <code>LabelCategories</code>.</p>
 <h2 id="examples">Examples</h2>
 <p>Datumaro supports filtering, transformation, merging etc. for all formats
-and for the CIFAR format in particular. Follow <a href="../../../docs/user-manual">user manual</a>
+and for the CIFAR format in particular. Follow the <a href="../../../docs/user-manual">user manual</a>
 to get more information about these operations.</p>
-<p>There are few examples of using Datumaro operations to solve
+<p>There are several examples of using Datumaro operations to solve
 particular problems with CIFAR dataset:</p>
-<h3 id="example-1-how-to-create-custom-cifar-like-dataset">Example 1. How to create custom CIFAR-like dataset</h3>
+<h3 id="example-1-how-to-create-a-custom-cifar-like-dataset">Example 1. How to create a custom CIFAR-like dataset</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.annotation</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Label</span>
 <span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
 <span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">DatasetItem</span>
@@ -526,9 +535,9 @@ particular problems with CIFAR dataset:</p>
                <span style="color:#4e9a06">&#39;dog&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;frog&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;horse&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;ship&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;truck&#39;</span><span style="color:#000;font-weight:bold">])</span>
 
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;./dataset&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;cifar&#39;</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><h3 id="example-2-how-to-filter-and-convert-cifar-dataset-to-imagenet">Example 2. How to filter and convert CIFAR dataset to ImageNet</h3>
-<p>Convert CIFAR dataset to ImageNet format, keep only images with <code>dog</code> class
-presented:</p>
+</code></pre></div><h3 id="example-2-how-to-filter-and-convert-a-cifar-dataset-to-imagenet">Example 2. How to filter and convert a CIFAR dataset to ImageNet</h3>
+<p>Convert a CIFAR dataset to ImageNet format, keep only images with the
+<code>dog</code> class present:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># Download CIFAR-10 dataset:</span>
 <span style="color:#8f5902;font-style:italic"># https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz</span>
 datum convert --input-format cifar --input-path &lt;path/to/cifar&gt; <span style="color:#4e9a06">\
@@ -542,8 +551,8 @@ datum convert --input-format cifar --input-path &lt;path/to/cifar&gt; <span styl
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    September 2, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/2db47002f37b3b86ba8ac3f42439ecb919e0792f">Factor out annotation-related functionality into a separate module (#439) (2db4700)</a>
+    September 22, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/cfee19859bd584c9a5a6d754eba2455c6268d92c">Rename datum add to datum import (#469) (cfee198)</a>
 
 </div>
 
@@ -564,7 +573,7 @@ datum convert --input-format cifar --input-path &lt;path/to/cifar&gt; <span styl
 <ul class="list-inline mb-0">
   
   <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="" aria-label="">
-    <a class="text-white" target="_blank" rel="noopener noreferrer" href="">
+    <a class="text-white" rel="noopener noreferrer" href="">
       <i class=""></i>
     </a>
   </li>
@@ -581,7 +590,7 @@ datum convert --input-format cifar --input-path &lt;path/to/cifar&gt; <span styl
 <ul class="list-inline mb-0">
   
   <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
-    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://github.com/openvinotoolkit/datumaro">
+    <a class="text-white" rel="noopener noreferrer" href="https://github.com/openvinotoolkit/datumaro">
       <i class="fab fa-github"></i>
     </a>
   </li>
@@ -592,9 +601,9 @@ datum convert --input-format cifar --input-path &lt;path/to/cifar&gt; <span styl
         
       </div>
       <div class="col-12 col-sm-8 text-center order-sm-2">
-        <small class="mr-1"><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html" target="_blank">Privacy Policy</a></small>
+        <small class="mr-1"><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
         |
-        <small class="mx-1"><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html" target="_blank">Terms of Use</a></small>
+        <small class="mx-1"><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
         <br/>
         <div class="footer-disclaimer text-white ">
           <small>Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.</small>
