@@ -21,8 +21,8 @@
 <meta name="description" content=""><meta property="og:title" content="Installation" />
 <meta property="og:description" content="Dependencies  Python (3.6&#43;) Optional: OpenVINO, TensorFlow, PyTorch, MxNet, Caffe, Accuracy Checker  Installation steps Optionally, set up a virtual environment:
 python -m pip install virtualenv python -m virtualenv venv . venv/bin/activate Install:
-# From PyPI: pip install datumaro # From the GitHub repository: pip install &#39;git&#43;https://github.com/openvinotoolkit/datumaro&#39;  You can change the installation branch with ...@&lt;branch_name&gt; Also use --force-reinstall parameter in this case.
- " />
+# From PyPI: pip install datumaro[default] # From the GitHub repository: pip install &#39;git&#43;https://github.com/openvinotoolkit/datumaro[default]&#39; Read more about choosing between datumaro and datumaro[default] here.
+Plugins  Datumaro has many plugins, which are responsible for dataset formats, model launchers and other optional components." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/user-manual/installation/" /><meta property="article:section" content="docs" />
 
@@ -31,16 +31,16 @@ python -m pip install virtualenv python -m virtualenv venv . venv/bin/activate I
 <meta itemprop="name" content="Installation">
 <meta itemprop="description" content="Dependencies  Python (3.6&#43;) Optional: OpenVINO, TensorFlow, PyTorch, MxNet, Caffe, Accuracy Checker  Installation steps Optionally, set up a virtual environment:
 python -m pip install virtualenv python -m virtualenv venv . venv/bin/activate Install:
-# From PyPI: pip install datumaro # From the GitHub repository: pip install &#39;git&#43;https://github.com/openvinotoolkit/datumaro&#39;  You can change the installation branch with ...@&lt;branch_name&gt; Also use --force-reinstall parameter in this case.
- ">
+# From PyPI: pip install datumaro[default] # From the GitHub repository: pip install &#39;git&#43;https://github.com/openvinotoolkit/datumaro[default]&#39; Read more about choosing between datumaro and datumaro[default] here.
+Plugins  Datumaro has many plugins, which are responsible for dataset formats, model launchers and other optional components.">
 <meta itemprop="dateModified" content="2021-09-08T17:28:13+03:00" />
-<meta itemprop="wordCount" content="60">
+<meta itemprop="wordCount" content="338">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Installation"/>
 <meta name="twitter:description" content="Dependencies  Python (3.6&#43;) Optional: OpenVINO, TensorFlow, PyTorch, MxNet, Caffe, Accuracy Checker  Installation steps Optionally, set up a virtual environment:
 python -m pip install virtualenv python -m virtualenv venv . venv/bin/activate Install:
-# From PyPI: pip install datumaro # From the GitHub repository: pip install &#39;git&#43;https://github.com/openvinotoolkit/datumaro&#39;  You can change the installation branch with ...@&lt;branch_name&gt; Also use --force-reinstall parameter in this case.
- "/>
+# From PyPI: pip install datumaro[default] # From the GitHub repository: pip install &#39;git&#43;https://github.com/openvinotoolkit/datumaro[default]&#39; Read more about choosing between datumaro and datumaro[default] here.
+Plugins  Datumaro has many plugins, which are responsible for dataset formats, model launchers and other optional components."/>
 
 
 
@@ -118,7 +118,7 @@ python -m pip install virtualenv python -m virtualenv venv . venv/bin/activate I
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.6364185cc394b4fa37eba8b6422a71cf.json"
+  data-offline-search-index-json-src="../../../offline-search-index.45a96ce3013b3daa8eab62d0b9d035fb.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -146,7 +146,7 @@ python -m pip install virtualenv python -m virtualenv venv . venv/bin/activate I
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.6364185cc394b4fa37eba8b6422a71cf.json"
+  data-offline-search-index-json-src="../../../offline-search-index.45a96ce3013b3daa8eab62d0b9d035fb.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -171,49 +171,53 @@ python -m pip install virtualenv python -m virtualenv venv . venv/bin/activate I
   <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsuser-manualinstallation-li">
   <a href="../../../docs/user-manual/installation/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualinstallation"><span class="td-sidebar-nav-active-item">Installation</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualinterfaces-li">
-  <a href="../../../docs/user-manual/interfaces/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualinterfaces"><span class="">Interfaces</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualsupported-formats-li">
-  <a href="../../../docs/user-manual/supported-formats/" title="Supported dataset formats and annotations" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualsupported-formats"><span class="">Supported Formats</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualdata-formats-li">
-  <a href="../../../docs/user-manual/data-formats/" title="Supported data formats" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualdata-formats"><span class="">Data formats</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualcommand-line-workflow-li">
-  <a href="../../../docs/user-manual/command-line-workflow/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-line-workflow"><span class="">Command line workflow</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualhow_to_use_datumaro-li">
+  <a href="../../../docs/user-manual/how_to_use_datumaro/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualhow_to_use_datumaro"><span class="">How to use Datumaro</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualsupported_formats-li">
+  <a href="../../../docs/user-manual/supported_formats/" title="Supported Formats" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualsupported_formats"><span class="">Dataset Formats</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualmedia_formats-li">
+  <a href="../../../docs/user-manual/media_formats/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualmedia_formats"><span class="">Media formats</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsuser-manualcommand-reference-li">
   <a href="../../../docs/user-manual/command-reference/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsuser-manualcommand-reference"><span class="">Command reference</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceconvert-datasets-li">
-  <a href="../../../docs/user-manual/command-reference/convert-datasets/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceconvert-datasets"><span class="">Convert datasets</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencecreate-project-li">
-  <a href="../../../docs/user-manual/command-reference/create-project/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencecreate-project"><span class="">Create project</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceadd-and-remove-data-li">
-  <a href="../../../docs/user-manual/command-reference/add-and-remove-data/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceadd-and-remove-data"><span class="">Add and remove data</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencefilter-project-li">
-  <a href="../../../docs/user-manual/command-reference/filter-project/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencefilter-project"><span class="">Filter project</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceupdate-project-li">
-  <a href="../../../docs/user-manual/command-reference/update-project/" title="Update project (merge)" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceupdate-project"><span class="">Update project</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceimport-project-li">
-  <a href="../../../docs/user-manual/command-reference/import-project/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceimport-project"><span class="">Import project</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceexport-project-li">
-  <a href="../../../docs/user-manual/command-reference/export-project/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceexport-project"><span class="">Export project</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencemerge-projects-li">
-  <a href="../../../docs/user-manual/command-reference/merge-projects/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencemerge-projects"><span class="">Merge projects</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencecompare-projects-li">
-  <a href="../../../docs/user-manual/command-reference/compare-projects/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencecompare-projects"><span class="">Compare projects</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceget-project-info-li">
-  <a href="../../../docs/user-manual/command-reference/get-project-info/" title="Obtaining project info" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceget-project-info"><span class="">Get project info</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceget-project-statistics-li">
-  <a href="../../../docs/user-manual/command-reference/get-project-statistics/" title="Obtaining project statistics" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceget-project-statistics"><span class="">Get project statistics</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencevalidate-project-annotations-li">
-  <a href="../../../docs/user-manual/command-reference/validate-project-annotations/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencevalidate-project-annotations"><span class="">Validate project annotations</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceregister-model-li">
-  <a href="../../../docs/user-manual/command-reference/register-model/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceregister-model"><span class="">Register model</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencerun-model-li">
-  <a href="../../../docs/user-manual/command-reference/run-model/" title="Run inference" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencerun-model"><span class="">Run model</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceexplain-inference-li">
-  <a href="../../../docs/user-manual/command-reference/explain-inference/" title="Run inference explanation" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceexplain-inference"><span class="">Explain inference</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencetransform-project-li">
-  <a href="../../../docs/user-manual/command-reference/transform-project/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencetransform-project"><span class="">Transform Project</span></a>
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceconvert-li">
+  <a href="../../../docs/user-manual/command-reference/convert/" title="Convert datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceconvert"><span class="">Convert</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencecreate-li">
+  <a href="../../../docs/user-manual/command-reference/create/" title="Create project" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencecreate"><span class="">Create</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceexport-li">
+  <a href="../../../docs/user-manual/command-reference/export/" title="Export Datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceexport"><span class="">Export</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencefilter-li">
+  <a href="../../../docs/user-manual/command-reference/filter/" title="Filter datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencefilter"><span class="">Filter</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencemerge-li">
+  <a href="../../../docs/user-manual/command-reference/merge/" title="Merge Datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencemerge"><span class="">Merge</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencepatch-li">
+  <a href="../../../docs/user-manual/command-reference/patch/" title="Patch Datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencepatch"><span class="">Patch</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencediff-li">
+  <a href="../../../docs/user-manual/command-reference/diff/" title="Compare datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencediff"><span class="">Diff</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceinfo-li">
+  <a href="../../../docs/user-manual/command-reference/info/" title="Print dataset info" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceinfo"><span class="">Info</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencestats-li">
+  <a href="../../../docs/user-manual/command-reference/stats/" title="Get Project Statistics" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencestats"><span class="">Statistics</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencevalidate-li">
+  <a href="../../../docs/user-manual/command-reference/validate/" title="Validate Dataset" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencevalidate"><span class="">Validate</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencecommit-li">
+  <a href="../../../docs/user-manual/command-reference/commit/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencecommit"><span class="">Commit</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencetransform-li">
+  <a href="../../../docs/user-manual/command-reference/transform/" title="Transform Dataset" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencetransform"><span class="">Transform</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencecheckout-li">
+  <a href="../../../docs/user-manual/command-reference/checkout/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencecheckout"><span class="">Checkout</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencestatus-li">
+  <a href="../../../docs/user-manual/command-reference/status/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencestatus"><span class="">Status</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencelog-li">
+  <a href="../../../docs/user-manual/command-reference/log/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencelog"><span class="">Log</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceexplain-li">
+  <a href="../../../docs/user-manual/command-reference/explain/" title="Run model inference explanation (explain)" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceexplain"><span class="">Explain</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencemodels-li">
+  <a href="../../../docs/user-manual/command-reference/models/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencemodels"><span class="">Models</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencesources-li">
+  <a href="../../../docs/user-manual/command-reference/sources/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencesources"><span class="">Sources</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceprojects-li">
+  <a href="../../../docs/user-manual/command-reference/projects/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceprojects"><span class="">Projects</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualextending-li">
@@ -416,14 +420,58 @@ python -m virtualenv venv
 . venv/bin/activate
 </code></pre></div><p>Install:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># From PyPI:</span>
-pip install datumaro
+pip install datumaro<span style="color:#ce5c00;font-weight:bold">[</span>default<span style="color:#ce5c00;font-weight:bold">]</span>
 
 <span style="color:#8f5902;font-style:italic"># From the GitHub repository:</span>
-pip install <span style="color:#4e9a06">&#39;git+https://github.com/openvinotoolkit/datumaro&#39;</span>
-</code></pre></div><blockquote>
-<p>You can change the installation branch with <code>...@&lt;branch_name&gt;</code>
-Also use <code>--force-reinstall</code> parameter in this case.</p>
-</blockquote>
+pip install <span style="color:#4e9a06">&#39;git+https://github.com/openvinotoolkit/datumaro[default]&#39;</span>
+</code></pre></div><p>Read more about choosing between <code>datumaro</code> and <code>datumaro[default]</code>
+<a href="#core-install">here</a>.</p>
+<h4 id="plugins-a-idinstallation-pluginsa">Plugins <a id="installation-plugins"></a></h4>
+<p>Datumaro has many plugins, which are responsible for dataset formats,
+model launchers and other optional components. If a plugin has dependencies,
+they can require additional installation. You can find the list of all the
+plugin dependencies in the <a href="../../../docs/user-manual/extending">plugins</a> section.</p>
+<h4 id="customizing-installation">Customizing installation</h4>
+<ul>
+<li>
+<p><a id="core-install"></a>Datumaro has the following installation options:</p>
+<ul>
+<li><code>pip install datumaro</code> - for core library functionality</li>
+<li><code>pip install datumaro[default]</code> - for normal CLI experience</li>
+</ul>
+<p>In restricted installation environments, where some dependencies are
+not available, or if you need only the core library functionality,
+you can install Datumaro without extra plugins.</p>
+<p>In some cases, installing just the core library may be not enough,
+because there can be limited options of installing graphical libraries
+in the system (various Docker environments, servers etc). You can select
+between using <code>opencv-python</code> and <code>opencv-python-headless</code> by setting the
+<code>DATUMARO_HEADLESS</code> environment variable to <code>0</code> or <code>1</code> before installing
+the package. It requires installation from sources (using <code>--no-binary</code>):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">DATUMARO_HEADLESS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span> pip install datumaro --no-binary<span style="color:#ce5c00;font-weight:bold">=</span>datumaro
+</code></pre></div><p>This option can&rsquo;t be covered by extras due to Python packaging system
+limitations.</p>
+</li>
+<li>
+<p>Although Datumaro excludes <code>pycocotools</code> of version 2.0.2 in
+requirements, it works with this version perfectly fine. The
+reason for such requirement is binary incompatibility of the <code>numpy</code>
+dependency in the <code>TensorFlow</code> and <code>pycocotools</code> binary packages,
+and the current workaround forces this package to be build from sources
+on most platforms
+(see <a href="https://github.com/openvinotoolkit/datumaro/issues/253">#253</a>).
+If you need to use 2.0.2, make sure it is linked with the same version
+of <code>numpy</code> as <code>TensorFlow</code> by reinstalling the package:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip uninstall pycocotools
+pip install pycocotools --no-binary<span style="color:#ce5c00;font-weight:bold">=</span>pycocotools
+</code></pre></div></li>
+<li>
+<p>When installing directly from the repository, you can change the
+installation branch with <code>...@&lt;branch_name&gt;</code>. Also use <code>--force-reinstall</code>
+parameter in this case. It can be useful for testing of unreleased
+versions from GitHub pull requests.</p>
+</li>
+</ul>
 
 	
 	
