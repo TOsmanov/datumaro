@@ -19,25 +19,25 @@
 
 <title>404 | Dataset Management Framework</title>
 <meta name="description" content=""><meta property="og:title" content="404" />
-<meta property="og:description" content="404Not found
+<meta property="og:description" content="function startTimer(duration, display) {var timer = duration, seconds;var end =setInterval(function () {seconds = parseInt(timer % 60, 10);seconds = seconds 404Not found
 Oops! This page doesn&#39;t exist. Try going back to documentation page.
-Go back" />
+You will be redirected to the documentation page 5" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/page_404/" /><meta property="article:section" content="" />
 
 <meta property="article:modified_time" content="2021-08-24T16:04:26+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="404">
-<meta itemprop="description" content="404Not found
+<meta itemprop="description" content="function startTimer(duration, display) {var timer = duration, seconds;var end =setInterval(function () {seconds = parseInt(timer % 60, 10);seconds = seconds 404Not found
 Oops! This page doesn&#39;t exist. Try going back to documentation page.
-Go back">
+You will be redirected to the documentation page 5">
 <meta itemprop="dateModified" content="2021-08-24T16:04:26+03:00" />
-<meta itemprop="wordCount" content="16">
+<meta itemprop="wordCount" content="46">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="404"/>
-<meta name="twitter:description" content="404Not found
+<meta name="twitter:description" content="function startTimer(duration, display) {var timer = duration, seconds;var end =setInterval(function () {seconds = parseInt(timer % 60, 10);seconds = seconds 404Not found
 Oops! This page doesn&#39;t exist. Try going back to documentation page.
-Go back"/>
+You will be redirected to the documentation page 5"/>
 
 
 
@@ -115,7 +115,7 @@ Go back"/>
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../offline-search-index.3055a8691e56fa91342a76e7d3b519ca.json"
+  data-offline-search-index-json-src="../offline-search-index.baaece91b01805183ed80a1273644b85.json"
   data-offline-search-base-href="../"
   data-offline-search-max-results="10"
 >
@@ -128,15 +128,37 @@ Go back"/>
       <main role="main" class="td-main">
         
 
+<script>
+  function startTimer(duration, display) {
+      var timer = duration, seconds;
+      var end =setInterval(function () {
+          seconds = parseInt(timer % 60, 10);
 
-  <main id="main">
-    <div class="text-center">
-      <h1>404</h1>
-      <p>Not found</p>
-      <p>Oops! This page doesn't exist. Try going back to <a href="../docs">documentation page</a>.</p>
-      <a href="javascript:history.go(-1)">Go back</a>
-    </div>
-  </main>
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+
+          display.textContent = seconds;
+
+          if (--timer < 0) {
+              window.location = "/docs";
+              clearInterval(end);
+          }
+      }, 1000);
+  }
+
+  window.onload = function () {
+      var fiveSeconds = 5,
+          display = document.querySelector('#time');
+      startTimer(fiveSeconds, display);
+  };
+</script>
+<main id="main">
+  <div class="text-center">
+    <h1>404</h1>
+    <p>Not found</p>
+    <p>Oops! This page doesn't exist. Try going back to <a href="../docs">documentation page</a>.</p>
+    <div>You will be redirected to the documentation page <span id="time">5</span></div>
+  </div>
+</main>
 
 
 
