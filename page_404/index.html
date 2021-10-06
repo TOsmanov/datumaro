@@ -134,15 +134,15 @@ You will be redirected to the documentation page 5"/>
       var end =setInterval(function () {
           seconds = parseInt(timer % 60, 10);
 
-          seconds = seconds < 10 ? "0" + seconds : seconds;
+          seconds = seconds < 10 ? seconds : seconds;
 
           display.textContent = seconds;
 
           if (--timer < 0) {
-              window.location = "/docs";
+              window.location = "/datumaro/docs";
               clearInterval(end);
           }
-      }, 1000);
+      }, 500);
   }
 
   window.onload = function () {
