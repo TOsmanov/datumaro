@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>datumaro.components.algorithms.rise.RISE</title>
+    <meta name="generator" content="pydoctor 21.9.1"> 
+        
+    </meta>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=0.75" name="viewport" />
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="apidocs.css" rel="stylesheet" type="text/css" />
+    <link href="extra.css" rel="stylesheet" type="text/css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default">
+  
+  <div class="container">
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+          <span class="navbar-brand">
+            <a href="C:/Program Files/Git/docs/" class="projecthome">datumaro</a> <a href="index.html">API Documentation</a>
+          </span>
+
+          <a href="moduleIndex.html">
+            Modules
+          </a>
+
+          <a href="classIndex.html">
+            Classes
+          </a>
+
+          <a href="nameIndex.html">
+            Names
+          </a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+    
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="class"><code><code><a href="datumaro.html">datumaro</a></code><wbr></wbr>.<code><a href="datumaro.components.html">components</a></code><wbr></wbr>.<code><a href="datumaro.components.algorithms.html">algorithms</a></code><wbr></wbr>.<code><a href="datumaro.components.algorithms.rise.html">rise</a></code><wbr></wbr>.<code><a href="datumaro.components.algorithms.rise.RISE.html">RISE</a></code></code></h1>
+        <div id="showPrivate">
+          <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+        </div>
+      </div>
+
+      <div class="categoryHeader">
+        class documentation
+      </div>
+
+      <div class="extrasDocstring">
+        <p><code><span class="py-keyword">class</span> <span class="py-defname">RISE</span>:</code></p>
+        <p><a href="classIndex.html#datumaro.components.algorithms.rise.RISE">View In Hierarchy</a></p>
+      </div>
+
+      <div class="moduleDocstring">
+        <div>Implements RISE: Randomized Input Sampling for Explanation of Black-box Models algorithm See explanations at: https://arxiv.org/pdf/1806.07421.pdf</div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id44">
+  
+  
+  <tr class="staticmethod">
+    
+    <td>Static Method</td>
+    <td><code><a href="#split_outputs">split_outputs</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__">__init__</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#apply">apply</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#normalize_hmaps">normalize_hmaps</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#batch_size">batch_size</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#det_conf_thresh">det_conf_thresh</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#iou_thresh">iou_thresh</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#mask_height">mask_height</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#mask_width">mask_width</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#max_samples">max_samples</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#model">model</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#nms_thresh">nms_thresh</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#prob">prob</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+        
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basestaticmethod">
+  
+  
+  <a name="datumaro.components.algorithms.rise.RISE.split_outputs">
+    
+  </a>
+  <a name="split_outputs">
+    
+  </a>
+  <div class="functionHeader">
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">split_outputs</span>(annotations):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="datumaro.components.algorithms.rise.RISE.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span>(self, model, max_samples=None, mask_width=7, mask_height=7, prob=0.5, iou_thresh=0.9, nms_thresh=0.0, det_conf_thresh=0.0, batch_size=1):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="datumaro.components.algorithms.rise.RISE.apply">
+    
+  </a>
+  <a name="apply">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">apply</span>(self, image, progressive=False):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="datumaro.components.algorithms.rise.RISE.normalize_hmaps">
+    
+  </a>
+  <a name="normalize_hmaps">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">normalize_hmaps</span>(self, heatmaps, counts):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="datumaro.components.algorithms.rise.RISE.batch_size">
+    
+  </a>
+  <a name="batch_size">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">batch_size</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="datumaro.components.algorithms.rise.RISE.det_conf_thresh">
+    
+  </a>
+  <a name="det_conf_thresh">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">det_conf_thresh</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="datumaro.components.algorithms.rise.RISE.iou_thresh">
+    
+  </a>
+  <a name="iou_thresh">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">iou_thresh</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="datumaro.components.algorithms.rise.RISE.mask_height">
+    
+  </a>
+  <a name="mask_height">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">mask_height</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="datumaro.components.algorithms.rise.RISE.mask_width">
+    
+  </a>
+  <a name="mask_width">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">mask_width</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="datumaro.components.algorithms.rise.RISE.max_samples">
+    
+  </a>
+  <a name="max_samples">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">max_samples</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="datumaro.components.algorithms.rise.RISE.model">
+    
+  </a>
+  <a name="model">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">model</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="datumaro.components.algorithms.rise.RISE.nms_thresh">
+    
+  </a>
+  <a name="nms_thresh">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">nms_thresh</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="datumaro.components.algorithms.rise.RISE.prob">
+    
+  </a>
+  <a name="prob">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">prob</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for <a href="C:/Program Files/Git/docs/" class="projecthome">datumaro</a>,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    21.9.1 at 2021-10-21 11:45:17.
+  </div>
+</footer>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

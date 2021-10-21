@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>datumaro.components.operations._ShapeMatcher</title>
+    <meta name="generator" content="pydoctor 21.9.1"> 
+        
+    </meta>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=0.75" name="viewport" />
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="apidocs.css" rel="stylesheet" type="text/css" />
+    <link href="extra.css" rel="stylesheet" type="text/css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default">
+  
+  <div class="container">
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+          <span class="navbar-brand">
+            <a href="C:/Program Files/Git/docs/" class="projecthome">datumaro</a> <a href="index.html">API Documentation</a>
+          </span>
+
+          <a href="moduleIndex.html">
+            Modules
+          </a>
+
+          <a href="classIndex.html">
+            Classes
+          </a>
+
+          <a href="nameIndex.html">
+            Names
+          </a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+    
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="class private"><code><code><a href="datumaro.html">datumaro</a></code><wbr></wbr>.<code><a href="datumaro.components.html">components</a></code><wbr></wbr>.<code><a href="datumaro.components.operations.html">operations</a></code><wbr></wbr>.<code><a href="datumaro.components.operations._ShapeMatcher.html">_ShapeMatcher</a></code></code></h1>
+        <div id="showPrivate">
+          <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+        </div>
+      </div>
+
+      <div class="categoryHeader">
+        class documentation
+      </div>
+
+      <div class="extrasDocstring">
+        <p><code><span class="py-keyword">class</span> <span class="py-defname">_ShapeMatcher</span>(<a href="datumaro.components.operations.AnnotationMatcher.html" title="datumaro.components.operations.AnnotationMatcher">AnnotationMatcher</a>):</code></p><p>Known subclasses: <code><a href="datumaro.components.operations.BboxMatcher.html">datumaro.components.operations.BboxMatcher</a></code>, <code><a href="datumaro.components.operations.Cuboid3dMatcher.html">datumaro.components.operations.Cuboid3dMatcher</a></code>, <code><a href="datumaro.components.operations.LineMatcher.html">datumaro.components.operations.LineMatcher</a></code>, <code><a href="datumaro.components.operations.MaskMatcher.html">datumaro.components.operations.MaskMatcher</a></code>, <code><a href="datumaro.components.operations.PointsMatcher.html">datumaro.components.operations.PointsMatcher</a></code>, <code><a href="datumaro.components.operations.PolygonMatcher.html">datumaro.components.operations.PolygonMatcher</a></code>, <code><a href="datumaro.components.operations._ShapeMerger.html">datumaro.components.operations._ShapeMerger</a></code></p>
+        <p><a href="classIndex.html#datumaro.components.operations._ShapeMatcher">View In Hierarchy</a></p>
+      </div>
+
+      <div class="moduleDocstring">
+        <div><p class="undocumented">Undocumented</p></div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id275">
+  
+  
+  <tr class="staticmethod">
+    
+    <td>Static Method</td>
+    <td><code><a href="#distance">distance</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#label_matcher">label_matcher</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#match_annotations">match_annotations</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#cluster_dist">cluster_dist</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#pairwise_dist">pairwise_dist</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+        
+          <p class="inheritedFrom">
+            Inherited from <code><a href="datumaro.components.operations.AnnotationMatcher.html">AnnotationMatcher</a></code>:
+          </p>
+          <table class="children sortable" id="id276">
+  
+  
+  <tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="datumaro.components.operations.AnnotationMatcher.html#_context">_context</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basestaticmethod">
+  
+  
+  <a name="datumaro.components.operations._ShapeMatcher.distance">
+    
+  </a>
+  <a name="distance">
+    
+  </a>
+  <div class="functionHeader">
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">distance</span>(a, b):
+    
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="datumaro.components.operations.Cuboid3dMatcher.html">datumaro.components.operations.Cuboid3dMatcher</a></code>, <code><a href="datumaro.components.operations.LineMatcher.html">datumaro.components.operations.LineMatcher</a></code>, <code><a href="datumaro.components.operations.PointsMatcher.html">datumaro.components.operations.PointsMatcher</a></code></div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="datumaro.components.operations._ShapeMatcher.label_matcher">
+    
+  </a>
+  <a name="label_matcher">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">label_matcher</span>(self, a, b):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="datumaro.components.operations._ShapeMatcher.match_annotations">
+    
+  </a>
+  <a name="match_annotations">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">match_annotations</span>(self, sources):
+    
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <code><a href="datumaro.components.operations.AnnotationMatcher.html#match_annotations">datumaro.components.operations.AnnotationMatcher.match_annotations</a></code></div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="datumaro.components.operations._ShapeMatcher.cluster_dist">
+    
+  </a>
+  <a name="cluster_dist">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">cluster_dist</span>: <code><a href="https://docs.python.org/3/library/functions.html#float">float</a></code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="datumaro.components.operations._ShapeMatcher.pairwise_dist">
+    
+  </a>
+  <a name="pairwise_dist">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">pairwise_dist</span>: <code><a href="https://docs.python.org/3/library/functions.html#float">float</a></code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for <a href="C:/Program Files/Git/docs/" class="projecthome">datumaro</a>,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    21.9.1 at 2021-10-21 11:45:17.
+  </div>
+</footer>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

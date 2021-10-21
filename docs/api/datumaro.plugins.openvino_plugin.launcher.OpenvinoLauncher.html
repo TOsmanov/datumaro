@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher</title>
+    <meta name="generator" content="pydoctor 21.9.1"> 
+        
+    </meta>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=0.75" name="viewport" />
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="apidocs.css" rel="stylesheet" type="text/css" />
+    <link href="extra.css" rel="stylesheet" type="text/css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default">
+  
+  <div class="container">
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+          <span class="navbar-brand">
+            <a href="C:/Program Files/Git/docs/" class="projecthome">datumaro</a> <a href="index.html">API Documentation</a>
+          </span>
+
+          <a href="moduleIndex.html">
+            Modules
+          </a>
+
+          <a href="classIndex.html">
+            Classes
+          </a>
+
+          <a href="nameIndex.html">
+            Names
+          </a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+    
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="class"><code><code><a href="datumaro.html">datumaro</a></code><wbr></wbr>.<code><a href="datumaro.plugins.html">plugins</a></code><wbr></wbr>.<code><a href="datumaro.plugins.openvino_plugin.html">openvino_plugin</a></code><wbr></wbr>.<code><a href="datumaro.plugins.openvino_plugin.launcher.html">launcher</a></code><wbr></wbr>.<code><a href="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.html">OpenvinoLauncher</a></code></code></h1>
+        <div id="showPrivate">
+          <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+        </div>
+      </div>
+
+      <div class="categoryHeader">
+        class documentation
+      </div>
+
+      <div class="extrasDocstring">
+        <p><code><span class="py-keyword">class</span> <span class="py-defname">OpenvinoLauncher</span>(<a href="datumaro.components.launcher.Launcher.html" title="datumaro.components.launcher.Launcher">Launcher</a>):</code></p>
+        <p><a href="classIndex.html#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher">View In Hierarchy</a></p>
+      </div>
+
+      <div class="moduleDocstring">
+        <div><p class="undocumented">Undocumented</p></div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id888">
+  
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__">__init__</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#categories">categories</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#infer">infer</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#launch">launch</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#process_outputs">process_outputs</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method private">
+    
+    <td>Method</td>
+    <td><code><a href="#_check_model_support">_check_model_support</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method private">
+    
+    <td>Method</td>
+    <td><code><a href="#_load_executable_net">_load_executable_net</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_batch_size">_batch_size</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_device">_device</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_ie">_ie</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_input_blob">_input_blob</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_input_layout">_input_layout</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_interpreter">_interpreter</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_net">_net</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_network">_network</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_output_blobs">_output_blobs</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_require_image_info">_require_image_info</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+        
+          <p class="inheritedFrom">
+            Inherited from <code><a href="datumaro.components.cli_plugin.CliPlugin.html">CliPlugin</a></code> (via <code><a href="datumaro.components.launcher.Launcher.html">Launcher</a></code>):
+          </p>
+          <table class="children sortable" id="id889">
+  
+  
+  <tr class="baseclassmethod">
+    
+    <td>Class Method</td>
+    <td><code><a href="datumaro.components.cli_plugin.CliPlugin.html#build_cmdline_parser">build_cmdline_parser</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseclassmethod">
+    
+    <td>Class Method</td>
+    <td><code><a href="datumaro.components.cli_plugin.CliPlugin.html#parse_cmdline">parse_cmdline</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="basestaticmethod private">
+    
+    <td>Static Method</td>
+    <td><code><a href="datumaro.components.cli_plugin.CliPlugin.html#_get_doc">_get_doc</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="basestaticmethod private">
+    
+    <td>Static Method</td>
+    <td><code><a href="datumaro.components.cli_plugin.CliPlugin.html#_get_name">_get_name</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basemethod">
+  
+  
+  <a name="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span>(self, description, weights, interpreter, device=None, model_dir=None, output_layers=None):
+    
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <code><a href="datumaro.components.launcher.Launcher.html#__init__">datumaro.components.launcher.Launcher.__init__</a></code></div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.categories">
+    
+  </a>
+  <a name="categories">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">categories</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <code><a href="datumaro.components.launcher.Launcher.html#categories">datumaro.components.launcher.Launcher.categories</a></code></div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.infer">
+    
+  </a>
+  <a name="infer">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">infer</span>(self, inputs):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.launch">
+    
+  </a>
+  <a name="launch">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">launch</span>(self, inputs):
+    
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <code><a href="datumaro.components.launcher.Launcher.html#launch">datumaro.components.launcher.Launcher.launch</a></code></div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.process_outputs">
+    
+  </a>
+  <a name="process_outputs">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">process_outputs</span>(self, inputs, outputs):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod private">
+  
+  
+  <a name="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher._check_model_support">
+    
+  </a>
+  <a name="_check_model_support">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_check_model_support</span>(self, net, device):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod private">
+  
+  
+  <a name="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher._load_executable_net">
+    
+  </a>
+  <a name="_load_executable_net">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_load_executable_net</span>(self, batch_size=1):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher._batch_size">
+    
+  </a>
+  <a name="_batch_size">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_batch_size</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher._device">
+    
+  </a>
+  <a name="_device">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_device</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher._ie">
+    
+  </a>
+  <a name="_ie">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_ie</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher._input_blob">
+    
+  </a>
+  <a name="_input_blob">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_input_blob</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher._input_layout">
+    
+  </a>
+  <a name="_input_layout">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_input_layout</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher._interpreter">
+    
+  </a>
+  <a name="_interpreter">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_interpreter</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher._net">
+    
+  </a>
+  <a name="_net">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_net</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher._network">
+    
+  </a>
+  <a name="_network">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_network</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher._output_blobs">
+    
+  </a>
+  <a name="_output_blobs">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_output_blobs</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher._require_image_info">
+    
+  </a>
+  <a name="_require_image_info">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_require_image_info</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for <a href="C:/Program Files/Git/docs/" class="projecthome">datumaro</a>,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    21.9.1 at 2021-10-21 11:45:17.
+  </div>
+</footer>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

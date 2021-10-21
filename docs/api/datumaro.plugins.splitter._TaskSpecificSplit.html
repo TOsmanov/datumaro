@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>datumaro.plugins.splitter._TaskSpecificSplit</title>
+    <meta name="generator" content="pydoctor 21.9.1"> 
+        
+    </meta>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=0.75" name="viewport" />
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="apidocs.css" rel="stylesheet" type="text/css" />
+    <link href="extra.css" rel="stylesheet" type="text/css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default">
+  
+  <div class="container">
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+          <span class="navbar-brand">
+            <a href="C:/Program Files/Git/docs/" class="projecthome">datumaro</a> <a href="index.html">API Documentation</a>
+          </span>
+
+          <a href="moduleIndex.html">
+            Modules
+          </a>
+
+          <a href="classIndex.html">
+            Classes
+          </a>
+
+          <a href="nameIndex.html">
+            Names
+          </a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+    
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="class private"><code><code><a href="datumaro.html">datumaro</a></code><wbr></wbr>.<code><a href="datumaro.plugins.html">plugins</a></code><wbr></wbr>.<code><a href="datumaro.plugins.splitter.html">splitter</a></code><wbr></wbr>.<code><a href="datumaro.plugins.splitter._TaskSpecificSplit.html">_TaskSpecificSplit</a></code></code></h1>
+        <div id="showPrivate">
+          <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+        </div>
+      </div>
+
+      <div class="categoryHeader">
+        class documentation
+      </div>
+
+      <div class="extrasDocstring">
+        <p><code><span class="py-keyword">class</span> <span class="py-defname">_TaskSpecificSplit</span>:</code></p><p>Known subclasses: <code><a href="datumaro.plugins.splitter._ClassificationSplit.html">datumaro.plugins.splitter._ClassificationSplit</a></code>, <code><a href="datumaro.plugins.splitter._InstanceSpecificSplit.html">datumaro.plugins.splitter._InstanceSpecificSplit</a></code>, <code><a href="datumaro.plugins.splitter._ReidentificationSplit.html">datumaro.plugins.splitter._ReidentificationSplit</a></code></p>
+        <p><a href="classIndex.html#datumaro.plugins.splitter._TaskSpecificSplit">View In Hierarchy</a></p>
+      </div>
+
+      <div class="moduleDocstring">
+        <div><p class="undocumented">Undocumented</p></div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id923">
+  
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__">__init__</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="staticmethod private">
+    
+    <td>Static Method</td>
+    <td><code><a href="#_get_required">_get_required</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="staticmethod private">
+    
+    <td>Static Method</td>
+    <td><code><a href="#_get_sections">_get_sections</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="staticmethod private">
+    
+    <td>Static Method</td>
+    <td><code><a href="#_get_uniq_annotations">_get_uniq_annotations</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="staticmethod private">
+    
+    <td>Static Method</td>
+    <td><code><a href="#_group_by_attr">_group_by_attr</a></code></td>
+    <td><span class="undocumented">No summary</span></td>
+  </tr><tr class="staticmethod private">
+    
+    <td>Static Method</td>
+    <td><code><a href="#_validate_splits">_validate_splits</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method private">
+    
+    <td>Method</td>
+    <td><code><a href="#_find_split">_find_split</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method private">
+    
+    <td>Method</td>
+    <td><code><a href="#_set_parts">_set_parts</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method private">
+    
+    <td>Method</td>
+    <td><code><a href="#_split_by_attr">_split_by_attr</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method private">
+    
+    <td>Method</td>
+    <td><code><a href="#_split_dataset">_split_dataset</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method private">
+    
+    <td>Method</td>
+    <td><code><a href="#_split_unlabeled">_split_unlabeled</a></code></td>
+    <td><span class="undocumented">No summary</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_extractor">_extractor</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_initialized">_initialized</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_length">_length</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_parts">_parts</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_seed">_seed</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_snames">_snames</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_sratio">_sratio</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_subsets">_subsets</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+        
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basemethod">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span>(self, dataset, splits, seed, restrict=False):
+    
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="datumaro.plugins.splitter._ClassificationSplit.html">datumaro.plugins.splitter._ClassificationSplit</a></code>, <code><a href="datumaro.plugins.splitter._InstanceSpecificSplit.html">datumaro.plugins.splitter._InstanceSpecificSplit</a></code>, <code><a href="datumaro.plugins.splitter._ReidentificationSplit.html">datumaro.plugins.splitter._ReidentificationSplit</a></code></div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basestaticmethod private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._get_required">
+    
+  </a>
+  <a name="_get_required">
+    
+  </a>
+  <div class="functionHeader">
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">_get_required</span>(ratio):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basestaticmethod private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._get_sections">
+    
+  </a>
+  <a name="_get_sections">
+    
+  </a>
+  <div class="functionHeader">
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">_get_sections</span>(dataset_size, ratio):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basestaticmethod private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._get_uniq_annotations">
+    
+  </a>
+  <a name="_get_uniq_annotations">
+    
+  </a>
+  <div class="functionHeader">
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">_get_uniq_annotations</span>(dataset):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basestaticmethod private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._group_by_attr">
+    
+  </a>
+  <a name="_group_by_attr">
+    
+  </a>
+  <div class="functionHeader">
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">_group_by_attr</span>(items):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div></div>
+  </div>
+</div><div class="basestaticmethod private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._validate_splits">
+    
+  </a>
+  <a name="_validate_splits">
+    
+  </a>
+  <div class="functionHeader">
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">_validate_splits</span>(splits, restrict=False):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._find_split">
+    
+  </a>
+  <a name="_find_split">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_find_split</span>(self, index):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._set_parts">
+    
+  </a>
+  <a name="_set_parts">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_set_parts</span>(self, by_splits):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._split_by_attr">
+    
+  </a>
+  <a name="_split_by_attr">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_split_by_attr</span>(self, datasets, snames, ratio, out_splits, merge_small_classes=True):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._split_dataset">
+    
+  </a>
+  <a name="_split_dataset">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_split_dataset</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="datumaro.plugins.splitter._ClassificationSplit.html">datumaro.plugins.splitter._ClassificationSplit</a></code>, <code><a href="datumaro.plugins.splitter._InstanceSpecificSplit.html">datumaro.plugins.splitter._InstanceSpecificSplit</a></code>, <code><a href="datumaro.plugins.splitter._ReidentificationSplit.html">datumaro.plugins.splitter._ReidentificationSplit</a></code></div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._split_unlabeled">
+    
+  </a>
+  <a name="_split_unlabeled">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_split_unlabeled</span>(self, unlabeled, by_splits):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._extractor">
+    
+  </a>
+  <a name="_extractor">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_extractor</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._initialized">
+    
+  </a>
+  <a name="_initialized">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_initialized</span>: <code><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._length">
+    
+  </a>
+  <a name="_length">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_length</span>: <code><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._parts">
+    
+  </a>
+  <a name="_parts">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_parts</span>: <code><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a></code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._seed">
+    
+  </a>
+  <a name="_seed">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_seed</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._snames">
+    
+  </a>
+  <a name="_snames">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_snames</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._sratio">
+    
+  </a>
+  <a name="_sratio">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_sratio</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="datumaro.plugins.splitter._TaskSpecificSplit._subsets">
+    
+  </a>
+  <a name="_subsets">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_subsets</span> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="datumaro.plugins.splitter._ReidentificationSplit.html">datumaro.plugins.splitter._ReidentificationSplit</a></code></div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for <a href="C:/Program Files/Git/docs/" class="projecthome">datumaro</a>,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    21.9.1 at 2021-10-21 11:45:17.
+  </div>
+</footer>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

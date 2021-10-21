@@ -75,23 +75,8 @@
           <a class="nav-link" href="https://github.com/openvinotoolkit/datumaro"  ><i class='fab fa-github'></i><span>GitHub</span></a>
         </li>
       
-      
-        <li class="nav-item dropdown mr-4 d-lg-block">
-          
-
-<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  develop
-</a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-  
-    
-      <a class="dropdown-item" href="../../docs/">develop</a>
-  
-    
-      <a class="dropdown-item" href="../../v0.1.11/docs/">v0.1.11</a>
-  
-</div>
-
+        <li class="nav-item mr-4 mb-2 mb-lg-0" id="api">
+          <a class="nav-link" href="api/classIndex.html">API documentation</a>
         </li>
       
       
@@ -108,7 +93,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.823557ec66840a952dd06f2a48103162.json"
+  data-offline-search-index-json-src="../../offline-search-index.c6dd5f3855bbb75596f8c39b48f2d645.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -409,7 +394,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>3.8: <a href="#pg-96ec68af4af3e862b09f2ce6a1d6568f">How to control telemetry data collection</a></li>
+<li>3.8: <a href="#pg-f6582e1039317c10889db7a3a9231d9f">How to control telemetry data collection</a></li>
 
 
     
@@ -1153,7 +1138,10 @@ on CVAT server (in future, support S3, etc)
 <ul>
 <li><a href="./command-reference/convert">Convert</a></li>
 <li><a href="./command-reference/create">Create</a></li>
+<li><a href="./command-reference/sources/#source-import">Import</a></li>
 <li><a href="./command-reference/export">Export</a></li>
+<li><a href="./command-reference/sources/#source-add">Add</a></li>
+<li><a href="./command-reference/sources/#source-remove">Remove</a></li>
 <li><a href="./command-reference/filter">Filter</a></li>
 <li><a href="./command-reference/merge">Merge</a></li>
 <li><a href="./command-reference/patch">Patch</a></li>
@@ -1176,6 +1164,7 @@ on CVAT server (in future, support S3, etc)
 </li>
 <li>Sources:
 <ul>
+<li><a href="./command-reference/sources/#source-import">Import</a></li>
 <li><a href="./command-reference/sources/#source-add">Add</a></li>
 <li><a href="./command-reference/sources/#source-remove">Remove</a></li>
 </ul>
@@ -1423,7 +1412,7 @@ commands directly on existing datasets</p>
 <p>Create a Datumaro project and operate on it:</p>
 <ul>
 <li>Create an empty project with <a href="../../docs/user-manual/command-reference/create"><code>create</code></a></li>
-<li>Import existing datasets with <a href="../../docs/user-manual/command-reference/sources/#source-add"><code>import</code></a></li>
+<li>Import existing datasets with <a href="../../docs/user-manual/command-reference/import"><code>import</code></a></li>
 <li>Modify the project with <a href="../../docs/user-manual/command-reference/transform"><code>transform</code></a> and <a href="../../docs/user-manual/command-reference/filter"><code>filter</code></a></li>
 <li>Create new revisions of the project with
 <a href="../../docs/user-manual/command-reference/commit"><code>commit</code></a>, navigate over
@@ -1436,14 +1425,14 @@ statistics with <a href="../../docs/user-manual/command-reference/stats"><code>s
 </li>
 </ul>
 <p>Basically, a project is a combination of datasets, models and environment.</p>
-<p>A project can contain an arbitrary number of data sources. Each data source
-describes a dataset in a specific format. A project acts as a manager for
-the data sources and allows to manipulate them separately or as a whole, in
-which case it combines dataset items from all the sources into one composite
-dataset. You can manage separate sources in a project by commands in
-the <code>datum source</code> command-line context.</p>
-<p>Note that <strong>modifying operations</strong> (<code>transform</code>, <code>filter</code>) <strong>are applied
-in-place</strong> to the data sources by default.</p>
+<p>A project can contain an arbitrary number of datasets (<a href="../../docs/user-manual/how_to_use_datumaro#data-sources">data sources</a>).
+A project acts as a manager for them and allows to manipulate them
+separately or as a whole, in which case it combines dataset items
+from all the sources into one composite dataset. You can manage separate
+datasets in a project by commands in the <a href="../../docs/user-manual/command-reference/sources"><code>datum source</code></a>
+command line context.</p>
+<p>Note that <strong>modifying operations</strong> (<code>transform</code>, <code>filter</code>, <code>patch</code>)
+<strong>are applied in-place</strong> to the datasets by default.</p>
 <p>If you want to interact with models, you need to add them to the project
 first using the <a href="../../docs/user-manual/command-reference/models/#register-model"><code>model add</code></a> command.</p>
 <p>A typical way to obtain Datumaro projects is to export tasks in
@@ -1519,7 +1508,34 @@ datum transform &lt;...&gt; source2
 │   └── &lt;<span style="color:#204a87">source</span> data&gt;
 └── &lt;<span style="color:#204a87">source</span> name 2&gt;/ <span style="color:#8f5902;font-style:italic"># working directory for the source 2</span>
     └── &lt;<span style="color:#204a87">source</span> data&gt;
-</code></pre></div><h3 id="use-cases">Use cases</h3>
+</code></pre></div><h3 id="datasets-and-data-sources-a-iddata-sourcesa">Datasets and Data Sources <a id="data-sources"></a></h3>
+<p>A project can contain an arbitrary number of Data Sources. Each Data Source
+describes a dataset in a specific format. A project acts as a manager for
+the data sources and allows to manipulate them separately or as a whole, in
+which case it combines dataset items from all the sources into one composite
+dataset. You can manage separate sources in a project by commands in
+the <a href="../../docs/user-manual/command-reference/sources"><code>datum source</code></a> command
+line context.</p>
+<p>Datasets come in a wide variety of formats. Each dataset
+format defines its own data structure and rules on how to
+interpret the data. For example, the following data structure
+is used in COCO format:</p>
+<!--lint disable fenced-code-flag-->
+<pre><code>/dataset/
+- /images/&lt;id&gt;.jpg
+- /annotations/
+</code></pre><!--lint enable fenced-code-flag-->
+<p>Datumaro supports complete datasets, having both image data and
+annotations, or incomplete ones, having annotations only.
+Incomplete datasets can be used to prepare images and annotations
+independently of each other, or to analyze or modify just the lightweight
+annotations without the need to download the whole dataset.</p>
+<p>Check <a href="../../docs/user-manual/supported_formats">supported formats</a> for more info
+about format specifications, supported import and export options and other
+details. The list of formats can be extended by custom plugins,
+check <a href="../../docs/user-manual/extending">extending tips</a> for information on this
+topic.</p>
+<h3 id="use-cases">Use cases</h3>
 <p>Let&rsquo;s consider few examples describing what Datumaro does for you behind the
 scene.</p>
 <p>The first example explains how working trees, working directories and the
@@ -1914,21 +1930,22 @@ flowchart LR
     p===info:::hideclass
   d====str1[create]:::filloneclass
   d====str2[import]:::filloneclass
-  d====str3[remove]:::filloneclass
-  d====str4[export]:::filloneclass
-  d====str5[info]:::filloneclass
-  d====str6[transform]:::filltwoclass
-  d====str7[filter]:::filltwoclass
-  d====str8[diff]:::fillthreeclass
-  d====str9[merge]:::fillthreeclass
-  d====str10[patch]:::fillthreeclass
-  d====str11[validate]:::fillthreeclass
-  d====str12[explain]:::fillthreeclass
-  d====str13[stats]:::fillthreeclass
-  d====str14[commit]:::fillfourclass
-  d====str15[checkout]:::fillfourclass
-  d====str16[status]:::fillfourclass
-  d====str17[log]:::fillfourclass
+  d====str3[export]:::filloneclass
+  d====str4[add]:::filloneclass
+  d====str5[remove]:::filloneclass
+  d====str6[info]:::filloneclass
+  d====str7[transform]:::filltwoclass
+  d====str8[filter]:::filltwoclass
+  d====str9[diff]:::fillthreeclass
+  d====str10[merge]:::fillthreeclass
+  d====str11[patch]:::fillthreeclass
+  d====str12[validate]:::fillthreeclass
+  d====str13[explain]:::fillthreeclass
+  d====str14[stats]:::fillthreeclass
+  d====str15[commit]:::fillfourclass
+  d====str16[checkout]:::fillfourclass
+  d====str17[status]:::fillfourclass
+  d====str18[log]:::fillfourclass
 
   classDef nofillclass fill-opacity:0;
   classDef hideclass fill-opacity:0,stroke-opacity:0;
@@ -2149,6 +2166,19 @@ images to <code>PNG</code> from other formats.</p>
 	<p>This command allows to extract a sub-dataset from a dataset. The new dataset
 includes only items satisfying some condition. The XML <a href="https://devhints.io/xpath">XPath</a>
 is used as a query format.</p>
+<p>The command can be applied to a dataset or a project build target,
+a stage or the combined <code>project</code> target, in which case all the project
+targets will be affected. A build tree stage will be recorded
+if <code>--stage</code> is enabled, and the resulting dataset(-s) will be
+saved if <code>--apply</code> is enabled.</p>
+<p>By default, datasets are updated in-place. The <code>-o/--output-dir</code>
+option can be used to specify another output directory. When
+updating in-place, use the <code>--overwrite</code> parameter (in-place
+updates fail by default to prevent data loss), unless a project
+target is modified.</p>
+<p>The current project (<code>-p/--project</code>) is also used as a context for
+plugins, so it can be useful for dataset paths having custom formats.
+When not specified, the current project&rsquo;s working tree is used.</p>
 <p>There are several filtering modes available (the <code>-m/--mode</code> parameter).
 Supported modes:</p>
 <ul>
@@ -2201,21 +2231,23 @@ dataset(-s) will be saved if <code>--apply</code> is enabled.</p>
   <span style="color:#ce5c00;font-weight:bold">[</span>--apply APPLY<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-o DST_DIR<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--overwrite<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-p PROJECT_DIR<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>target<span style="color:#ce5c00;font-weight:bold">]</span>
 </code></pre></div><p>Parameters:</p>
 <ul>
-<li><code>&lt;target&gt;</code> (string) - A project build target to be filtered.
-By default, all project targets are affected.</li>
+<li><code>&lt;target&gt;</code> (string) - Target
+<a href="../../docs/user-manual/how_to_use_datumaro/#revpath">dataset revpath</a>.
+By default, filters all targets of the current project.</li>
 <li><code>-e, --filter</code> (string) - XML XPath filter expression for dataset items</li>
 <li><code>-m, --mode</code> (string) - The filtering mode. Default is the <code>i</code> mode.</li>
 <li><code>--dry-run</code> - Print XML representations of the filtered dataset and exit.</li>
 <li><code>--stage</code> (bool) - Include this action as a project build step.
 If true, this operation will be saved in the project
 build tree, allowing to reproduce the resulting dataset later.
-Applicable only to data source targets (i.e. not intermediate stages)
-and the <code>project</code> target. Enabled by default.</li>
+Applicable only to main project targets (i.e. data sources
+and the <code>project</code> target, but not intermediate stages). Enabled by default.</li>
 <li><code>--apply</code> (bool) - Run this command immediately. If disabled, only the
 build tree stage will be written. Enabled by default.</li>
 <li><code>-o, --output-dir</code> (string) - Output directory. Can be omitted for
-data source targets (i.e. not intermediate stages) and the <code>project</code> target,
-in which case the results will be saved in place in the working tree.</li>
+main project targets (i.e. data sources and the <code>project</code> target, but not
+intermediate stages) and dataset targets. If not specified, the results
+will be saved inplace.</li>
 <li><code>--overwrite</code> - Allows to overwrite existing files in the output directory,
 when it is specified and is not empty.</li>
 <li><code>-p, --project</code> (string) - Directory of the project to operate on
@@ -3256,28 +3288,39 @@ need to modify few elements of a dataset, you might want to use
 other approaches for better performance. A possible solution can be
 a simple script, which uses <a href="../../docs/developer_manual/">Datumaro API</a>.</p>
 </blockquote>
-<p>The command can only be applied to a project build target, a stage
-or the combined <code>project</code> target, in which case all the targets will
-be affected. A build tree stage will be added if <code>--stage</code> is enabled,
-and the resulting dataset(-s) will be saved if <code>--apply</code> is enabled.</p>
+<p>The command can be applied to a dataset or a project build target,
+a stage or the combined <code>project</code> target, in which case all the project
+targets will be affected. A build tree stage will be recorded
+if <code>--stage</code> is enabled, and the resulting dataset(-s) will be
+saved if <code>--apply</code> is enabled.</p>
+<p>By default, datasets are updated in-place. The <code>-o/--output-dir</code>
+option can be used to specify another output directory. When
+updating in-place, use the <code>--overwrite</code> parameter (in-place
+updates fail by default to prevent data loss), unless a project
+target is modified.</p>
+<p>The current project (<code>-p/--project</code>) is also used as a context for
+plugins, so it can be useful for dataset paths having custom formats.
+When not specified, the current project&rsquo;s working tree is used.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> -t TRANSFORM <span style="color:#ce5c00;font-weight:bold">[</span>-o DST_DIR<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--overwrite<span style="color:#ce5c00;font-weight:bold">]</span>
   <span style="color:#ce5c00;font-weight:bold">[</span>-p PROJECT_DIR<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--stage STAGE<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--apply APPLY<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>target<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-- EXTRA_ARGS<span style="color:#ce5c00;font-weight:bold">]</span>
 </code></pre></div><p>Parameters:</p>
 <ul>
-<li><code>&lt;target&gt;</code> (string) - A project build target to be transformed.
-By default, all project targets are affected.</li>
+<li><code>&lt;target&gt;</code> (string) - Target
+<a href="../../docs/user-manual/how_to_use_datumaro/#revpath">dataset revpath</a>.
+By default, transforms all targets of the current project.</li>
 <li><code>-t, --transform</code> (string) - Transform method name</li>
 <li><code>--stage</code> (bool) - Include this action as a project build step.
 If true, this operation will be saved in the project
 build tree, allowing to reproduce the resulting dataset later.
-Applicable only to data source targets (i.e. not intermediate stages)
-and the <code>project</code> target. Enabled by default.</li>
+Applicable only to main project targets (i.e. data sources
+and the <code>project</code> target, but not intermediate stages). Enabled by default.</li>
 <li><code>--apply</code> (bool) - Run this command immediately. If disabled, only the
 build tree stage will be written. Enabled by default.</li>
 <li><code>-o, --output-dir</code> (string) - Output directory. Can be omitted for
-data source targets (i.e. not intermediate stages) and the <code>project</code> target,
-in which case the results will be saved inplace in the working tree.</li>
+main project targets (i.e. data sources and the <code>project</code> target, but not
+intermediate stages) and dataset targets. If not specified, the results
+will be saved inplace.</li>
 <li><code>--overwrite</code> - Allows to overwrite existing files in the output directory,
 when it is specified and is not empty.</li>
 <li><code>-p, --project</code> (string) - Directory of the project to operate on
@@ -3288,7 +3331,18 @@ passed after the <code>--</code> separator after the main command arguments. See
 transform descriptions for info about extra parameters. Use the <code>--help</code>
 option to print parameter info.</li>
 </ul>
-<h4 id="built-in-transforms-a-idbuiltin-transformsa">Built-in transforms <a id="builtin-transforms"></a></h4>
+<p>Examples:</p>
+<ul>
+<li>Split a VOC-like dataset randomly:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t random_split --overwrite path/to/dataset:voc
+</code></pre></div><ul>
+<li>Rename images in a project data source by a regex from <code>frame_XXX</code> to <code>XXX</code>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create &lt;...&gt;
+datum import &lt;...&gt; -n source-1
+datum transform -t rename source-1 -- -e <span style="color:#4e9a06">&#39;|frame_(\d+)|\\1|&#39;</span>
+</code></pre></div><h4 id="built-in-transforms-a-idbuiltin-transformsa">Built-in transforms <a id="builtin-transforms"></a></h4>
 <p>Basic dataset item manipulations:</p>
 <ul>
 <li><code>rename</code> - Renames dataset items by regular expression</li>
@@ -3307,6 +3361,7 @@ segmentation or re-identification</li>
 <p>Annotation manipulations:</p>
 <ul>
 <li><code>remap_labels</code> - Renames, adds or removes labels in dataset</li>
+<li><code>project_labels</code> - Sets dataset labels to the requested sequence</li>
 <li><code>shapes_to_boxes</code> - Replaces spatial annotations with bounding boxes</li>
 <li><code>boxes_to_masks</code> - Converts bounding boxes to instance masks</li>
 <li><code>polygons_to_masks</code> - Converts polygons to instance masks</li>
@@ -3344,6 +3399,12 @@ datum transform -t split -- <span style="color:#4e9a06">\
 datum transform -t masks_to_polygons
 datum transform -t polygons_to_masks
 datum transform -t shapes_to_boxes
+</code></pre></div><ul>
+<li>Set dataset labels to {<code>person</code>, <code>cat</code>, <code>dog</code>}, remove others, add missing.
+Original labels (can be any): <code>cat</code>, <code>dog</code>, <code>elephant</code>, <code>human</code>
+New labels: <code>person</code> (added), <code>cat</code> (kept), <code>dog</code> (kept)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t project_labels -- -l person -l cat -l dog
 </code></pre></div><ul>
 <li>Remap dataset labels, <code>person</code> to <code>car</code> and <code>cat</code> to <code>dog</code>,
 keep <code>bus</code>, remove others</li>
@@ -3854,35 +3915,16 @@ datum model run -m mymodel -o inference
     
 	<h1 id="pg-dc182af461d71cbd7217b8679bde29bc">3.5.18 - Sources</h1>
     
-	<h3 id="import-datasets-a-idsource-adda">Import Datasets <a id="source-add"></a></h3>
-<p>A project can contain an arbitrary number of Data Sources. Each Data Source
-describes a dataset in a specific format. A project acts as a manager for
-the data sources and allows to manipulate them separately or as a whole, in
-which case it combines dataset items from all the sources into one composite
-dataset. You can manage separate sources in a project by commands in
-the <code>datum source</code> command line context.</p>
-<p>Existing datasets can be added to a Datumaro project with the <code>import</code> command.</p>
-<p>Datasets come in a wide variety of formats. Each dataset
-format defines its own data structure and rules on how to
-interpret the data. For example, the following data structure
-is used in COCO format:</p>
-<!--lint disable fenced-code-flag-->
-<pre><code>/dataset/
-- /images/&lt;id&gt;.jpg
-- /annotations/
-</code></pre><!--lint enable fenced-code-flag-->
+	<p>These commands are specific for Data Sources. Read more about them <a href="../../docs/user-manual/how_to_use_datumaro#data-sources">here</a>.</p>
+<h3 id="import-dataset-a-idsource-importa">Import Dataset <a id="source-import"></a></h3>
+<p>Datasets can be added to a Datumaro project with the <code>import</code> command,
+which adds a dataset link into the project and downloads (or copies)
+the dataset. If you need to add a dataset already copied into the project,
+use the <a href="./sources#source-add"><code>add</code></a> command.</p>
 <p>Dataset format readers can provide some additional import options. To pass
 such options, use the <code>--</code> separator after the main command arguments.
 The usage information can be printed with <code>datum import -f &lt;format&gt; -- --help</code>.</p>
-<p>Check <a href="../../docs/user-manual/supported_formats">supported formats</a> for more info
-about format specifications, supported options and other details.
-The list of formats can be extended by custom plugins, check <a href="../../docs/user-manual/extending">extending tips</a>
-for information on this topic.</p>
-<p>The list of currently available formats are listed in the command help output.</p>
-<p>Datumaro supports working with complete datasets, having both image data and
-annotations, or with annotations only. It can be used to prepare
-images and annotations independently of each other, or to process the
-lightweight annotations without downloading the whole dataset.</p>
+<p>The list of currently available formats is listed in the command help output.</p>
 <p>A dataset is imported by its URL. Currently, only local filesystem
 paths are supported. The URL can be a file or a directory path
 to a dataset. When the dataset is read, it is read as a whole.
@@ -3919,14 +3961,53 @@ automatically)</li>
 </ul>
 <p>Example: create a project from images and annotations in different formats,
 export as TFrecord for TF Detection API for model training</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
-<span style="color:#8f5902;font-style:italic"># &#39;default&#39; is the name of the subset below</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># &#39;default&#39; is the name of the subset below</span>
+datum create
 datum import -f coco_instances -r annotations/instances_default.json path/to/coco
 datum import -f cvat &lt;path/to/cvat/default.xml&gt;
 datum import -f voc_detection -r custom_subset_dir/default.txt &lt;path/to/voc&gt;
 datum import -f datumaro &lt;path/to/datumaro/default.json&gt;
 datum import -f image_dir &lt;path/to/images/dir&gt;
 datum <span style="color:#204a87">export</span> -f tf_detection_api -- --save-images
+</code></pre></div><h3 id="add-dataset-a-idsource-adda">Add Dataset <a id="source-add"></a></h3>
+<p>Existing datasets can be added to a Datumaro project with the <code>add</code> command.
+The command adds a project-local directory as a data source in the project.
+Unlike the <a href="./sources#source-import"><code>import</code></a>
+command, it does not copy datasets and only works with local directories.
+The source name is defined by the directory name.</p>
+<p>Dataset format readers can provide some additional import options. To pass
+such options, use the <code>--</code> separator after the main command arguments.
+The usage information can be printed with <code>datum add -f &lt;format&gt; -- --help</code>.</p>
+<p>The list of currently available formats is listed in the command help output.</p>
+<p>A dataset is imported as a directory. When the dataset is read, it is read
+as a whole. However, many formats can have multiple subsets like <code>train</code>,
+<code>val</code>, <code>test</code> etc. If you want to limit reading only to a specific subset,
+use the <code>-r/--path</code> parameter. It can also be useful when subset files have
+non-standard placement or names.</p>
+<p>The dataset is added into the working tree of the project. A new commit
+is <em>not</em> done automatically.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum add <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> -f FORMAT <span style="color:#ce5c00;font-weight:bold">[</span>-r PATH<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--no-check<span style="color:#ce5c00;font-weight:bold">]</span>
+  <span style="color:#ce5c00;font-weight:bold">[</span>-p PROJECT_DIR<span style="color:#ce5c00;font-weight:bold">]</span> path <span style="color:#ce5c00;font-weight:bold">[</span>-- EXTRA_FORMAT_ARGS<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Parameters:</p>
+<ul>
+<li><code>&lt;url&gt;</code> (string) - A file of directory path to the dataset.</li>
+<li><code>-f, --format</code> (string) - Dataset format</li>
+<li><code>-r, --path</code> (string) - A path relative to the source URL the data source.
+Useful to specify a path to a subset, subtask, or a specific file in URL.</li>
+<li><code>--no-check</code> - Don&rsquo;t try to read the source after importing</li>
+<li><code>-p, --project</code> (string) - Directory of the project to operate on
+(default: current directory).</li>
+<li><code>-h, --help</code> - Print the help message and exit.</li>
+<li><code>-- &lt;extra format args&gt;</code> - Additional arguments for the format reader
+(use <code>-- -h</code> for help). Must be specified after the main command arguments.</li>
+</ul>
+<p>Example: create a project from images and annotations in different formats,
+export in YOLO for model training</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
+datum add -f coco -r annotations/instances_train.json dataset1/
+datum add -f cvat dataset2/train.xml
+datum <span style="color:#204a87">export</span> -f yolo -- --save-images
 </code></pre></div><h3 id="remove-datasets-a-idsource-removea">Remove Datasets <a id="source-remove"></a></h3>
 <p>To remove a data source from a project, use the <code>remove</code> command.</p>
 <p>Usage:</p>
@@ -4158,12 +4239,44 @@ a Launcher implementation script into a plugin directory.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-96ec68af4af3e862b09f2ce6a1d6568f">3.8 - How to control telemetry data collection</h1>
+	<h1 id="pg-f6582e1039317c10889db7a3a9231d9f">3.8 - How to control telemetry data collection</h1>
     
-	<p>To enable the collection of telemetry data, the ISIP consent file
-must exist and contain &ldquo;1&rdquo;, otherwise telemetry will be disabled.
-The ISIP file can be created/modified by OpenVINO installer
-or manually and used by other OpenVINO tools.</p>
+	<p>The <a href="https://github.com/openvinotoolkit/telemetry/">OpenVINO™ telemetry library</a>
+is used to collect basic information about Datumaro usage.</p>
+<p>A short description of the information collected:</p>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>version</td>
+<td>Datumaro version</td>
+</tr>
+<tr>
+<td>session start/end</td>
+<td>Accessory event, there is no additional info here</td>
+</tr>
+<tr>
+<td>{cli_command}_result</td>
+<td>Datumaro command result with arguments passed*</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Stack trace in case of exception*</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>* All sensitive arguments, such as filesystem paths or names, are sanitized</p>
+</blockquote>
+<p>To enable the collection of telemetry data, the ISIP consent file
+must exist and contain <code>1</code>, otherwise telemetry will be disabled.
+The ISIP file can be created/modified by an OpenVINO installer
+or manually and used by other OpenVINO™ tools.</p>
 <p>The location of the ISIP consent file depends on the OS:</p>
 <ul>
 <li>Windows: <code>%localappdata%\Intel Corporation\isip</code>,</li>
@@ -5195,41 +5308,47 @@ in the original annotation file.</li>
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
     ├── images/
-    │   ├── train&lt;year&gt;/
+    │   ├── train/
     │   │   ├── &lt;image_name1.ext&gt;
     │   │   ├── &lt;image_name2.ext&gt;
     │   │   └── ...
-    │   └── val&lt;year&gt;/
+    │   └── val/
     │       ├── &lt;image_name1.ext&gt;
     │       ├── &lt;image_name2.ext&gt;
     │       └── ...
     └── annotations/
-        ├── &lt;task&gt;_&lt;subset_name&gt;&lt;year&gt;.json
+        ├── &lt;task&gt;_&lt;subset_name&gt;.json
         └── ...
 </code></pre><p>For the panoptic task, a dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
     ├── images/
-    │   ├── train&lt;year&gt;
+    │   ├── train/
     │   │   ├── &lt;image_name1.ext&gt;
     │   │   ├── &lt;image_name2.ext&gt;
     │   │   └── ...
-    │   ├── val&lt;year&gt;
+    │   ├── val/
     │   │   ├── &lt;image_name1.ext&gt;
     │   │   ├── &lt;image_name2.ext&gt;
     │   │   └── ...
     └── annotations/
-        ├── panoptic_train&lt;year&gt;/
+        ├── panoptic_train/
         │   ├── &lt;image_name1.ext&gt;
         │   ├── &lt;image_name2.ext&gt;
         │   └── ...
-        ├── panoptic_train&lt;year&gt;.json
-        ├── panoptic_val&lt;year&gt;/
+        ├── panoptic_train.json
+        ├── panoptic_val/
         │   ├── &lt;image_name1.ext&gt;
         │   ├── &lt;image_name2.ext&gt;
         │   └── ...
-        └── panoptic_val&lt;year&gt;.json
-</code></pre><p>Annotation files must have the names like <code>&lt;task&gt;_&lt;subset_name&gt;&lt;year&gt;.json</code>.</p>
+        └── panoptic_val.json
+</code></pre><p>Annotation files must have the names like <code>&lt;task_name&gt;_&lt;subset_name&gt;.json</code>.
+The year is treated as a part of the subset name.
+If the annotation file name does&rsquo;t match this pattern, use one of the
+task-specific formats instead of plain <code>coco</code>: <code>coco_captions</code>,
+<code>coco_image_info</code>, <code>coco_instances</code>, <code>coco_labels</code>, <code>coco_panoptic</code>,
+<code>coco_person_keypoints</code>, <code>coco_stuff</code>. In this case all items of the
+dataset will be added to the <code>default</code> subset.</p>
 <p>You can import a dataset for one or several tasks
 instead of the whole dataset. This option also allows to import annotation
 files with non-default names. For example:</p>
@@ -5989,8 +6108,8 @@ which can be downloaded from the following URLs:</p>
 <li><a href="https://storage.googleapis.com/openimages/2018_04/validation/validation-images-with-rotation.csv">validation set</a></li>
 <li><a href="https://storage.googleapis.com/openimages/2018_04/test/test-images-with-rotation.csv">test set</a></li>
 </ul>
-<p>Datumaro expects at least one of the files above to be present.</p>
-<p>In addition, the following metadata file must be present as well:</p>
+<p>In addition, the following metadata file must be present
+in the <code>annotations</code> directory:</p>
 <ul>
 <li><a href="https://storage.googleapis.com/openimages/v6/oidv6-class-descriptions.csv">class descriptions</a></li>
 </ul>
@@ -6073,7 +6192,7 @@ datum import --format open_images &lt;path/to/dataset&gt;
 <pre><code>└─ Dataset/
     ├── annotations/
     │   └── bbox_labels_600_hierarchy.json
-    │   └── image_ids_and_rotation.csv
+    │   └── image_ids_and_rotation.csv  # optional
     │   └── oidv6-class-descriptions.csv
     │   └── *-annotations-bbox.csv
     │   └── *-annotations-human-imagelabels.csv

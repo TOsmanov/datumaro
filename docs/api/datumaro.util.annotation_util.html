@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>datumaro.util.annotation_util</title>
+    <meta name="generator" content="pydoctor 21.9.1"> 
+        
+    </meta>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=0.75" name="viewport" />
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="apidocs.css" rel="stylesheet" type="text/css" />
+    <link href="extra.css" rel="stylesheet" type="text/css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default">
+  
+  <div class="container">
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+          <span class="navbar-brand">
+            <a href="C:/Program Files/Git/docs/" class="projecthome">datumaro</a> <a href="index.html">API Documentation</a>
+          </span>
+
+          <a href="moduleIndex.html">
+            Modules
+          </a>
+
+          <a href="classIndex.html">
+            Classes
+          </a>
+
+          <a href="nameIndex.html">
+            Names
+          </a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+    
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="module"><code><code><a href="datumaro.html">datumaro</a></code><wbr></wbr>.<code><a href="datumaro.util.html">util</a></code><wbr></wbr>.<code><a href="datumaro.util.annotation_util.html">annotation_util</a></code></code></h1>
+        <div id="showPrivate">
+          <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+        </div>
+      </div>
+
+      <div class="categoryHeader">
+        module documentation
+      </div>
+
+      <div class="extrasDocstring">
+        
+        <p></p>
+      </div>
+
+      <div class="moduleDocstring">
+        <div><p class="undocumented">Undocumented</p></div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id1219">
+  
+  
+  <tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#bbox_iou">bbox_iou</a></code></td>
+    <td>IoU computations for simple cases with bounding boxes</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#find_group_leader">find_group_leader</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#find_instances">find_instances</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#make_label_id_mapping">make_label_id_mapping</a></code></td>
+    <td>Maps label ids from source to destination. Fallback is used for missing labels.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#max_bbox">max_bbox</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#mean_bbox">mean_bbox</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#nms">nms</a></code></td>
+    <td>Non-maxima suppression algorithm.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#OKS">OKS</a></code></td>
+    <td>Object Keypoint Similarity metric. https://cocodataset.org/#keypoints-eval</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#PDJ">PDJ</a></code></td>
+    <td>Percentage of Detected Joints metric. Counts the number of matching points.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#segment_iou">segment_iou</a></code></td>
+    <td>Generic IoU computation with masks, polygons, and boxes. Returns -1 if no intersection, [0; 1] otherwise</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#smooth_line">smooth_line</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#softmax">softmax</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function private">
+    
+    <td>Function</td>
+    <td><code><a href="#_get_bbox">_get_bbox</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+        
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basefunction">
+  
+  
+  <a name="datumaro.util.annotation_util.bbox_iou">
+    
+  </a>
+  <a name="bbox_iou">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">bbox_iou</span>(a, b):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>IoU computations for simple cases with bounding boxes<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code><a href="https://docs.python.org/3/library/typing.html#typing.Union">Union</a>[<wbr></wbr>Literal[<wbr></wbr>(-1)], <a href="https://docs.python.org/3/library/functions.html#float">float</a>]</code></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="datumaro.util.annotation_util.find_group_leader">
+    
+  </a>
+  <a name="find_group_leader">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">find_group_leader</span>(group):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="datumaro.util.annotation_util.find_instances">
+    
+  </a>
+  <a name="find_instances">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">find_instances</span>(instance_anns):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="datumaro.util.annotation_util.make_label_id_mapping">
+    
+  </a>
+  <a name="make_label_id_mapping">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">make_label_id_mapping</span>(src_labels, dst_labels, fallback=0):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">src_labels:</span><code><a href="datumaro.components.annotation.LabelCategories.html">LabelCategories</a></code></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">dst_labels:</span><code><a href="datumaro.components.annotation.LabelCategories.html">LabelCategories</a></code></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">fallback:</span><code><a href="https://docs.python.org/3/library/functions.html#int">int</a></code></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code><a href="https://docs.python.org/3/library/typing.html#typing.Tuple">Tuple</a>[<wbr></wbr><a href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a>[<wbr></wbr>[<wbr></wbr><a href="https://docs.python.org/3/library/functions.html#int">int</a>], <a href="https://docs.python.org/3/library/typing.html#typing.Optional">Optional</a>[<wbr></wbr><a href="https://docs.python.org/3/library/functions.html#int">int</a>]], <wbr></wbr><a href="https://docs.python.org/3/library/typing.html#typing.Dict">Dict</a>[<wbr></wbr><a href="https://docs.python.org/3/library/functions.html#int">int</a>, <a href="https://docs.python.org/3/library/functions.html#int">int</a>], <wbr></wbr><a href="https://docs.python.org/3/library/typing.html#typing.Dict">Dict</a>[<wbr></wbr><a href="https://docs.python.org/3/library/functions.html#int">int</a>, <a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>], <a href="https://docs.python.org/3/library/typing.html#typing.Dict">Dict</a>[<wbr></wbr><a href="https://docs.python.org/3/library/functions.html#int">int</a>, <a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]]</code></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="datumaro.util.annotation_util.max_bbox">
+    
+  </a>
+  <a name="max_bbox">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">max_bbox</span>(annotations):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="datumaro.util.annotation_util.mean_bbox">
+    
+  </a>
+  <a name="mean_bbox">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">mean_bbox</span>(annotations):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="datumaro.util.annotation_util.nms">
+    
+  </a>
+  <a name="nms">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">nms</span>(segments, iou_thresh=0.5):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Non-maxima suppression algorithm.</div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="datumaro.util.annotation_util.OKS">
+    
+  </a>
+  <a name="OKS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">OKS</span>(a, b, sigma=None, bbox=None, scale=None):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Object Keypoint Similarity metric. https://cocodataset.org/#keypoints-eval</div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="datumaro.util.annotation_util.PDJ">
+    
+  </a>
+  <a name="PDJ">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">PDJ</span>(a, b, eps=None, ratio=0.05, bbox=None):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Percentage of Detected Joints metric. Counts the number of matching points.</div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="datumaro.util.annotation_util.segment_iou">
+    
+  </a>
+  <a name="segment_iou">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">segment_iou</span>(a, b):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Generic IoU computation with masks, polygons, and boxes. Returns -1 if no intersection, [0; 1] otherwise</div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="datumaro.util.annotation_util.smooth_line">
+    
+  </a>
+  <a name="smooth_line">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">smooth_line</span>(points, segments):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="datumaro.util.annotation_util.softmax">
+    
+  </a>
+  <a name="softmax">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">softmax</span>(x):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction private">
+  
+  
+  <a name="datumaro.util.annotation_util._get_bbox">
+    
+  </a>
+  <a name="_get_bbox">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_get_bbox</span>(ann):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for <a href="C:/Program Files/Git/docs/" class="projecthome">datumaro</a>,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    21.9.1 at 2021-10-21 11:45:17.
+  </div>
+</footer>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

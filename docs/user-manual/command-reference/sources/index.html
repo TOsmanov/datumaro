@@ -19,19 +19,25 @@
 
 <title>Sources | Dataset Management Framework</title>
 <meta name="description" content=""><meta property="og:title" content="Sources" />
-<meta property="og:description" content="Import Datasets  A project can contain an arbitrary number of Data Sources. Each Data Source describes a dataset in a specific format. A project acts as a manager for the data sources and allows to manipulate them separately or as a whole, in which case it combines dataset items from all the sources into one composite dataset. You can manage separate sources in a project by commands in the datum source command line context." />
+<meta property="og:description" content="These commands are specific for Data Sources. Read more about them here.
+Import Dataset  Datasets can be added to a Datumaro project with the import command, which adds a dataset link into the project and downloads (or copies) the dataset. If you need to add a dataset already copied into the project, use the add command.
+Dataset format readers can provide some additional import options. To pass such options, use the -- separator after the main command arguments." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/user-manual/command-reference/sources/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-09-22T17:13:20+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-10-13T13:59:36+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="Sources">
-<meta itemprop="description" content="Import Datasets  A project can contain an arbitrary number of Data Sources. Each Data Source describes a dataset in a specific format. A project acts as a manager for the data sources and allows to manipulate them separately or as a whole, in which case it combines dataset items from all the sources into one composite dataset. You can manage separate sources in a project by commands in the datum source command line context.">
-<meta itemprop="dateModified" content="2021-09-22T17:13:20+03:00" />
-<meta itemprop="wordCount" content="689">
+<meta itemprop="description" content="These commands are specific for Data Sources. Read more about them here.
+Import Dataset  Datasets can be added to a Datumaro project with the import command, which adds a dataset link into the project and downloads (or copies) the dataset. If you need to add a dataset already copied into the project, use the add command.
+Dataset format readers can provide some additional import options. To pass such options, use the -- separator after the main command arguments.">
+<meta itemprop="dateModified" content="2021-10-13T13:59:36+03:00" />
+<meta itemprop="wordCount" content="877">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Sources"/>
-<meta name="twitter:description" content="Import Datasets  A project can contain an arbitrary number of Data Sources. Each Data Source describes a dataset in a specific format. A project acts as a manager for the data sources and allows to manipulate them separately or as a whole, in which case it combines dataset items from all the sources into one composite dataset. You can manage separate sources in a project by commands in the datum source command line context."/>
+<meta name="twitter:description" content="These commands are specific for Data Sources. Read more about them here.
+Import Dataset  Datasets can be added to a Datumaro project with the import command, which adds a dataset link into the project and downloads (or copies) the dataset. If you need to add a dataset already copied into the project, use the add command.
+Dataset format readers can provide some additional import options. To pass such options, use the -- separator after the main command arguments."/>
 
 
 
@@ -79,23 +85,8 @@
           <a class="nav-link" href="https://github.com/openvinotoolkit/datumaro"  ><i class='fab fa-github'></i><span>GitHub</span></a>
         </li>
       
-      
-        <li class="nav-item dropdown mr-4 d-lg-block">
-          
-
-<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  develop
-</a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-  
-    
-      <a class="dropdown-item" href="../../../../docs/user-manual/command-reference/sources/">develop</a>
-  
-    
-      <a class="dropdown-item" href="../../../../v0.1.11/docs/user-manual/command-reference/sources/">v0.1.11</a>
-  
-</div>
-
+        <li class="nav-item mr-4 mb-2 mb-lg-0" id="api">
+          <a class="nav-link" href="api/classIndex.html">API documentation</a>
         </li>
       
       
@@ -112,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.823557ec66840a952dd06f2a48103162.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.c6dd5f3855bbb75596f8c39b48f2d645.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -140,7 +131,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.823557ec66840a952dd06f2a48103162.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.c6dd5f3855bbb75596f8c39b48f2d645.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -218,8 +209,8 @@
   <a href="../../../../docs/user-manual/extending/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualextending"><span class="">Extending</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manuallinks-li">
   <a href="../../../../docs/user-manual/links/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manuallinks"><span class="">Links</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualhow_to_control_tm_data_colletion-li">
-  <a href="../../../../docs/user-manual/how_to_control_tm_data_colletion/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualhow_to_control_tm_data_colletion"><span class="">How to control telemetry data collection</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualhow_to_control_tm_data_collection-li">
+  <a href="../../../../docs/user-manual/how_to_control_tm_data_collection/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualhow_to_control_tm_data_collection"><span class="">How to control telemetry data collection</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsdeveloper_manual-li">
@@ -317,7 +308,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#import-datasets-a-idsource-adda">Import Datasets <a id="source-add"></a></a></li>
+        <li><a href="#import-dataset-a-idsource-importa">Import Dataset <a id="source-import"></a></a></li>
+        <li><a href="#add-dataset-a-idsource-adda">Add Dataset <a id="source-add"></a></a></li>
         <li><a href="#remove-datasets-a-idsource-removea">Remove Datasets <a id="source-remove"></a></a></li>
       </ul>
     </li>
@@ -414,35 +406,16 @@
 		
 		
 	</header>    
-	<h3 id="import-datasets-a-idsource-adda">Import Datasets <a id="source-add"></a></h3>
-<p>A project can contain an arbitrary number of Data Sources. Each Data Source
-describes a dataset in a specific format. A project acts as a manager for
-the data sources and allows to manipulate them separately or as a whole, in
-which case it combines dataset items from all the sources into one composite
-dataset. You can manage separate sources in a project by commands in
-the <code>datum source</code> command line context.</p>
-<p>Existing datasets can be added to a Datumaro project with the <code>import</code> command.</p>
-<p>Datasets come in a wide variety of formats. Each dataset
-format defines its own data structure and rules on how to
-interpret the data. For example, the following data structure
-is used in COCO format:</p>
-<!--lint disable fenced-code-flag-->
-<pre><code>/dataset/
-- /images/&lt;id&gt;.jpg
-- /annotations/
-</code></pre><!--lint enable fenced-code-flag-->
+	<p>These commands are specific for Data Sources. Read more about them <a href="../../../../docs/user-manual/how_to_use_datumaro#data-sources">here</a>.</p>
+<h3 id="import-dataset-a-idsource-importa">Import Dataset <a id="source-import"></a></h3>
+<p>Datasets can be added to a Datumaro project with the <code>import</code> command,
+which adds a dataset link into the project and downloads (or copies)
+the dataset. If you need to add a dataset already copied into the project,
+use the <a href="./sources#source-add"><code>add</code></a> command.</p>
 <p>Dataset format readers can provide some additional import options. To pass
 such options, use the <code>--</code> separator after the main command arguments.
 The usage information can be printed with <code>datum import -f &lt;format&gt; -- --help</code>.</p>
-<p>Check <a href="../../../../docs/user-manual/supported_formats">supported formats</a> for more info
-about format specifications, supported options and other details.
-The list of formats can be extended by custom plugins, check <a href="../../../../docs/user-manual/extending">extending tips</a>
-for information on this topic.</p>
-<p>The list of currently available formats are listed in the command help output.</p>
-<p>Datumaro supports working with complete datasets, having both image data and
-annotations, or with annotations only. It can be used to prepare
-images and annotations independently of each other, or to process the
-lightweight annotations without downloading the whole dataset.</p>
+<p>The list of currently available formats is listed in the command help output.</p>
 <p>A dataset is imported by its URL. Currently, only local filesystem
 paths are supported. The URL can be a file or a directory path
 to a dataset. When the dataset is read, it is read as a whole.
@@ -479,14 +452,53 @@ automatically)</li>
 </ul>
 <p>Example: create a project from images and annotations in different formats,
 export as TFrecord for TF Detection API for model training</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
-<span style="color:#8f5902;font-style:italic"># &#39;default&#39; is the name of the subset below</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># &#39;default&#39; is the name of the subset below</span>
+datum create
 datum import -f coco_instances -r annotations/instances_default.json path/to/coco
 datum import -f cvat &lt;path/to/cvat/default.xml&gt;
 datum import -f voc_detection -r custom_subset_dir/default.txt &lt;path/to/voc&gt;
 datum import -f datumaro &lt;path/to/datumaro/default.json&gt;
 datum import -f image_dir &lt;path/to/images/dir&gt;
 datum <span style="color:#204a87">export</span> -f tf_detection_api -- --save-images
+</code></pre></div><h3 id="add-dataset-a-idsource-adda">Add Dataset <a id="source-add"></a></h3>
+<p>Existing datasets can be added to a Datumaro project with the <code>add</code> command.
+The command adds a project-local directory as a data source in the project.
+Unlike the <a href="./sources#source-import"><code>import</code></a>
+command, it does not copy datasets and only works with local directories.
+The source name is defined by the directory name.</p>
+<p>Dataset format readers can provide some additional import options. To pass
+such options, use the <code>--</code> separator after the main command arguments.
+The usage information can be printed with <code>datum add -f &lt;format&gt; -- --help</code>.</p>
+<p>The list of currently available formats is listed in the command help output.</p>
+<p>A dataset is imported as a directory. When the dataset is read, it is read
+as a whole. However, many formats can have multiple subsets like <code>train</code>,
+<code>val</code>, <code>test</code> etc. If you want to limit reading only to a specific subset,
+use the <code>-r/--path</code> parameter. It can also be useful when subset files have
+non-standard placement or names.</p>
+<p>The dataset is added into the working tree of the project. A new commit
+is <em>not</em> done automatically.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum add <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> -f FORMAT <span style="color:#ce5c00;font-weight:bold">[</span>-r PATH<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--no-check<span style="color:#ce5c00;font-weight:bold">]</span>
+  <span style="color:#ce5c00;font-weight:bold">[</span>-p PROJECT_DIR<span style="color:#ce5c00;font-weight:bold">]</span> path <span style="color:#ce5c00;font-weight:bold">[</span>-- EXTRA_FORMAT_ARGS<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Parameters:</p>
+<ul>
+<li><code>&lt;url&gt;</code> (string) - A file of directory path to the dataset.</li>
+<li><code>-f, --format</code> (string) - Dataset format</li>
+<li><code>-r, --path</code> (string) - A path relative to the source URL the data source.
+Useful to specify a path to a subset, subtask, or a specific file in URL.</li>
+<li><code>--no-check</code> - Don&rsquo;t try to read the source after importing</li>
+<li><code>-p, --project</code> (string) - Directory of the project to operate on
+(default: current directory).</li>
+<li><code>-h, --help</code> - Print the help message and exit.</li>
+<li><code>-- &lt;extra format args&gt;</code> - Additional arguments for the format reader
+(use <code>-- -h</code> for help). Must be specified after the main command arguments.</li>
+</ul>
+<p>Example: create a project from images and annotations in different formats,
+export in YOLO for model training</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
+datum add -f coco -r annotations/instances_train.json dataset1/
+datum add -f cvat dataset2/train.xml
+datum <span style="color:#204a87">export</span> -f yolo -- --save-images
 </code></pre></div><h3 id="remove-datasets-a-idsource-removea">Remove Datasets <a id="source-remove"></a></h3>
 <p>To remove a data source from a project, use the <code>remove</code> command.</p>
 <p>Usage:</p>
@@ -511,8 +523,8 @@ datum remove src1
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    September 22, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/cfee19859bd584c9a5a6d754eba2455c6268d92c">Rename datum add to datum import (#469) (cfee198)</a>
+    October 13, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/52f9a95553ff3edfbcb61e30dfd9202485e1b448">Add command (#508) (52f9a95)</a>
 
 </div>
 

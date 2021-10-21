@@ -24,13 +24,13 @@ The dataset has annotations for multiple tasks. Each task has its own format in 
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/formats/coco/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-09-29T20:13:27+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-10-16T11:40:06+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="COCO">
 <meta itemprop="description" content="Format specification COCO format specification is available here.
 The dataset has annotations for multiple tasks. Each task has its own format in Datumaro, and there is also a combined coco format, which includes all the available tasks. The sub-formats have the same options as the &ldquo;main&rdquo; format and only limit the set of annotation files they work with. To work with multiple formats, use the corresponding option of the coco format.">
-<meta itemprop="dateModified" content="2021-09-29T20:13:27+03:00" />
-<meta itemprop="wordCount" content="1111">
+<meta itemprop="dateModified" content="2021-10-16T11:40:06+03:00" />
+<meta itemprop="wordCount" content="1163">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="COCO"/>
 <meta name="twitter:description" content="Format specification COCO format specification is available here.
@@ -82,23 +82,8 @@ The dataset has annotations for multiple tasks. Each task has its own format in 
           <a class="nav-link" href="https://github.com/openvinotoolkit/datumaro"  ><i class='fab fa-github'></i><span>GitHub</span></a>
         </li>
       
-      
-        <li class="nav-item dropdown mr-4 d-lg-block">
-          
-
-<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  develop
-</a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-  
-    
-      <a class="dropdown-item" href="../../../docs/formats/coco/">develop</a>
-  
-    
-      <a class="dropdown-item" href="../../../v0.1.11/docs/formats/coco/">v0.1.11</a>
-  
-</div>
-
+        <li class="nav-item mr-4 mb-2 mb-lg-0" id="api">
+          <a class="nav-link" href="api/classIndex.html">API documentation</a>
         </li>
       
       
@@ -115,7 +100,7 @@ The dataset has annotations for multiple tasks. Each task has its own format in 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.823557ec66840a952dd06f2a48103162.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c6dd5f3855bbb75596f8c39b48f2d645.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -143,7 +128,7 @@ The dataset has annotations for multiple tasks. Each task has its own format in 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.823557ec66840a952dd06f2a48103162.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c6dd5f3855bbb75596f8c39b48f2d645.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -221,8 +206,8 @@ The dataset has annotations for multiple tasks. Each task has its own format in 
   <a href="../../../docs/user-manual/extending/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualextending"><span class="">Extending</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manuallinks-li">
   <a href="../../../docs/user-manual/links/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manuallinks"><span class="">Links</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualhow_to_control_tm_data_colletion-li">
-  <a href="../../../docs/user-manual/how_to_control_tm_data_colletion/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualhow_to_control_tm_data_colletion"><span class="">How to control telemetry data collection</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualhow_to_control_tm_data_collection-li">
+  <a href="../../../docs/user-manual/how_to_control_tm_data_collection/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualhow_to_control_tm_data_collection"><span class="">How to control telemetry data collection</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsdeveloper_manual-li">
@@ -481,41 +466,47 @@ in the original annotation file.</li>
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
     ├── images/
-    │   ├── train&lt;year&gt;/
+    │   ├── train/
     │   │   ├── &lt;image_name1.ext&gt;
     │   │   ├── &lt;image_name2.ext&gt;
     │   │   └── ...
-    │   └── val&lt;year&gt;/
+    │   └── val/
     │       ├── &lt;image_name1.ext&gt;
     │       ├── &lt;image_name2.ext&gt;
     │       └── ...
     └── annotations/
-        ├── &lt;task&gt;_&lt;subset_name&gt;&lt;year&gt;.json
+        ├── &lt;task&gt;_&lt;subset_name&gt;.json
         └── ...
 </code></pre><p>For the panoptic task, a dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
     ├── images/
-    │   ├── train&lt;year&gt;
+    │   ├── train/
     │   │   ├── &lt;image_name1.ext&gt;
     │   │   ├── &lt;image_name2.ext&gt;
     │   │   └── ...
-    │   ├── val&lt;year&gt;
+    │   ├── val/
     │   │   ├── &lt;image_name1.ext&gt;
     │   │   ├── &lt;image_name2.ext&gt;
     │   │   └── ...
     └── annotations/
-        ├── panoptic_train&lt;year&gt;/
+        ├── panoptic_train/
         │   ├── &lt;image_name1.ext&gt;
         │   ├── &lt;image_name2.ext&gt;
         │   └── ...
-        ├── panoptic_train&lt;year&gt;.json
-        ├── panoptic_val&lt;year&gt;/
+        ├── panoptic_train.json
+        ├── panoptic_val/
         │   ├── &lt;image_name1.ext&gt;
         │   ├── &lt;image_name2.ext&gt;
         │   └── ...
-        └── panoptic_val&lt;year&gt;.json
-</code></pre><p>Annotation files must have the names like <code>&lt;task&gt;_&lt;subset_name&gt;&lt;year&gt;.json</code>.</p>
+        └── panoptic_val.json
+</code></pre><p>Annotation files must have the names like <code>&lt;task_name&gt;_&lt;subset_name&gt;.json</code>.
+The year is treated as a part of the subset name.
+If the annotation file name does&rsquo;t match this pattern, use one of the
+task-specific formats instead of plain <code>coco</code>: <code>coco_captions</code>,
+<code>coco_image_info</code>, <code>coco_instances</code>, <code>coco_labels</code>, <code>coco_panoptic</code>,
+<code>coco_person_keypoints</code>, <code>coco_stuff</code>. In this case all items of the
+dataset will be added to the <code>default</code> subset.</p>
 <p>You can import a dataset for one or several tasks
 instead of the whole dataset. This option also allows to import annotation
 files with non-default names. For example:</p>
@@ -633,8 +624,8 @@ datum <span style="color:#204a87">export</span> -p project -f voc -- --save-imag
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    September 29, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/d8201796bf4839a59ddb3dd8518b41c503c5260a">Add patch command (#401) (d820179)</a>
+    October 16, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/8e60add5b732d11e2792df417ea332e541b77b89">Improve formats: COCO, Open Images, LFW (#509) (8e60add)</a>
 
 </div>
 

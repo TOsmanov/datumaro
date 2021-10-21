@@ -24,13 +24,13 @@ This command allows to modify dataset images or annotations all at once." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/user-manual/command-reference/transform/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-09-08T17:28:13+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-10-14T16:20:12+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="Transform Dataset">
 <meta itemprop="description" content="Often datasets need to be modified during preparation for model training and experimenting. In trivial cases it can be done manually - e.g. image renaming or label renaming. However, in more complex cases even simple modifications can require too much efforts, distracting the user from the real work. Datumaro provides the datum transform command to help in such cases.
 This command allows to modify dataset images or annotations all at once.">
-<meta itemprop="dateModified" content="2021-09-08T17:28:13+03:00" />
-<meta itemprop="wordCount" content="910">
+<meta itemprop="dateModified" content="2021-10-14T16:20:12+03:00" />
+<meta itemprop="wordCount" content="1078">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Transform Dataset"/>
 <meta name="twitter:description" content="Often datasets need to be modified during preparation for model training and experimenting. In trivial cases it can be done manually - e.g. image renaming or label renaming. However, in more complex cases even simple modifications can require too much efforts, distracting the user from the real work. Datumaro provides the datum transform command to help in such cases.
@@ -82,23 +82,8 @@ This command allows to modify dataset images or annotations all at once."/>
           <a class="nav-link" href="https://github.com/openvinotoolkit/datumaro"  ><i class='fab fa-github'></i><span>GitHub</span></a>
         </li>
       
-      
-        <li class="nav-item dropdown mr-4 d-lg-block">
-          
-
-<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  develop
-</a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-  
-    
-      <a class="dropdown-item" href="../../../../docs/user-manual/command-reference/transform/">develop</a>
-  
-    
-      <a class="dropdown-item" href="../../../../v0.1.11/docs/user-manual/command-reference/transform/">v0.1.11</a>
-  
-</div>
-
+        <li class="nav-item mr-4 mb-2 mb-lg-0" id="api">
+          <a class="nav-link" href="api/classIndex.html">API documentation</a>
         </li>
       
       
@@ -115,7 +100,7 @@ This command allows to modify dataset images or annotations all at once."/>
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.823557ec66840a952dd06f2a48103162.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.c6dd5f3855bbb75596f8c39b48f2d645.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -143,7 +128,7 @@ This command allows to modify dataset images or annotations all at once."/>
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.823557ec66840a952dd06f2a48103162.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.c6dd5f3855bbb75596f8c39b48f2d645.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -221,8 +206,8 @@ This command allows to modify dataset images or annotations all at once."/>
   <a href="../../../../docs/user-manual/extending/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualextending"><span class="">Extending</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manuallinks-li">
   <a href="../../../../docs/user-manual/links/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manuallinks"><span class="">Links</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualhow_to_control_tm_data_colletion-li">
-  <a href="../../../../docs/user-manual/how_to_control_tm_data_colletion/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualhow_to_control_tm_data_colletion"><span class="">How to control telemetry data collection</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualhow_to_control_tm_data_collection-li">
+  <a href="../../../../docs/user-manual/how_to_control_tm_data_collection/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualhow_to_control_tm_data_collection"><span class="">How to control telemetry data collection</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsdeveloper_manual-li">
@@ -418,28 +403,39 @@ need to modify few elements of a dataset, you might want to use
 other approaches for better performance. A possible solution can be
 a simple script, which uses <a href="../../../../docs/developer_manual/">Datumaro API</a>.</p>
 </blockquote>
-<p>The command can only be applied to a project build target, a stage
-or the combined <code>project</code> target, in which case all the targets will
-be affected. A build tree stage will be added if <code>--stage</code> is enabled,
-and the resulting dataset(-s) will be saved if <code>--apply</code> is enabled.</p>
+<p>The command can be applied to a dataset or a project build target,
+a stage or the combined <code>project</code> target, in which case all the project
+targets will be affected. A build tree stage will be recorded
+if <code>--stage</code> is enabled, and the resulting dataset(-s) will be
+saved if <code>--apply</code> is enabled.</p>
+<p>By default, datasets are updated in-place. The <code>-o/--output-dir</code>
+option can be used to specify another output directory. When
+updating in-place, use the <code>--overwrite</code> parameter (in-place
+updates fail by default to prevent data loss), unless a project
+target is modified.</p>
+<p>The current project (<code>-p/--project</code>) is also used as a context for
+plugins, so it can be useful for dataset paths having custom formats.
+When not specified, the current project&rsquo;s working tree is used.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> -t TRANSFORM <span style="color:#ce5c00;font-weight:bold">[</span>-o DST_DIR<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--overwrite<span style="color:#ce5c00;font-weight:bold">]</span>
   <span style="color:#ce5c00;font-weight:bold">[</span>-p PROJECT_DIR<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--stage STAGE<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--apply APPLY<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>target<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-- EXTRA_ARGS<span style="color:#ce5c00;font-weight:bold">]</span>
 </code></pre></div><p>Parameters:</p>
 <ul>
-<li><code>&lt;target&gt;</code> (string) - A project build target to be transformed.
-By default, all project targets are affected.</li>
+<li><code>&lt;target&gt;</code> (string) - Target
+<a href="../../../../docs/user-manual/how_to_use_datumaro/#revpath">dataset revpath</a>.
+By default, transforms all targets of the current project.</li>
 <li><code>-t, --transform</code> (string) - Transform method name</li>
 <li><code>--stage</code> (bool) - Include this action as a project build step.
 If true, this operation will be saved in the project
 build tree, allowing to reproduce the resulting dataset later.
-Applicable only to data source targets (i.e. not intermediate stages)
-and the <code>project</code> target. Enabled by default.</li>
+Applicable only to main project targets (i.e. data sources
+and the <code>project</code> target, but not intermediate stages). Enabled by default.</li>
 <li><code>--apply</code> (bool) - Run this command immediately. If disabled, only the
 build tree stage will be written. Enabled by default.</li>
 <li><code>-o, --output-dir</code> (string) - Output directory. Can be omitted for
-data source targets (i.e. not intermediate stages) and the <code>project</code> target,
-in which case the results will be saved inplace in the working tree.</li>
+main project targets (i.e. data sources and the <code>project</code> target, but not
+intermediate stages) and dataset targets. If not specified, the results
+will be saved inplace.</li>
 <li><code>--overwrite</code> - Allows to overwrite existing files in the output directory,
 when it is specified and is not empty.</li>
 <li><code>-p, --project</code> (string) - Directory of the project to operate on
@@ -450,7 +446,18 @@ passed after the <code>--</code> separator after the main command arguments. See
 transform descriptions for info about extra parameters. Use the <code>--help</code>
 option to print parameter info.</li>
 </ul>
-<h4 id="built-in-transforms-a-idbuiltin-transformsa">Built-in transforms <a id="builtin-transforms"></a></h4>
+<p>Examples:</p>
+<ul>
+<li>Split a VOC-like dataset randomly:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t random_split --overwrite path/to/dataset:voc
+</code></pre></div><ul>
+<li>Rename images in a project data source by a regex from <code>frame_XXX</code> to <code>XXX</code>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create &lt;...&gt;
+datum import &lt;...&gt; -n source-1
+datum transform -t rename source-1 -- -e <span style="color:#4e9a06">&#39;|frame_(\d+)|\\1|&#39;</span>
+</code></pre></div><h4 id="built-in-transforms-a-idbuiltin-transformsa">Built-in transforms <a id="builtin-transforms"></a></h4>
 <p>Basic dataset item manipulations:</p>
 <ul>
 <li><code>rename</code> - Renames dataset items by regular expression</li>
@@ -469,6 +476,7 @@ segmentation or re-identification</li>
 <p>Annotation manipulations:</p>
 <ul>
 <li><code>remap_labels</code> - Renames, adds or removes labels in dataset</li>
+<li><code>project_labels</code> - Sets dataset labels to the requested sequence</li>
 <li><code>shapes_to_boxes</code> - Replaces spatial annotations with bounding boxes</li>
 <li><code>boxes_to_masks</code> - Converts bounding boxes to instance masks</li>
 <li><code>polygons_to_masks</code> - Converts polygons to instance masks</li>
@@ -506,6 +514,12 @@ datum transform -t split -- <span style="color:#4e9a06">\
 datum transform -t masks_to_polygons
 datum transform -t polygons_to_masks
 datum transform -t shapes_to_boxes
+</code></pre></div><ul>
+<li>Set dataset labels to {<code>person</code>, <code>cat</code>, <code>dog</code>}, remove others, add missing.
+Original labels (can be any): <code>cat</code>, <code>dog</code>, <code>elephant</code>, <code>human</code>
+New labels: <code>person</code> (added), <code>cat</code> (kept), <code>dog</code> (kept)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t project_labels -- -l person -l cat -l dog
 </code></pre></div><ul>
 <li>Remap dataset labels, <code>person</code> to <code>car</code> and <code>cat</code> to <code>dog</code>,
 keep <code>bus</code>, remove others</li>
@@ -574,8 +588,8 @@ the topk among them.</li>
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    September 8, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/9c17113b41ccfe4cce12f5ac8673b24fec25e2ca">Update docs for versioning for the website (#442) (9c17113)</a>
+    October 14, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/9e562f66c74ffecdac0453d0ea659ad2764684d1">Allow dataset revpath in transform (#511) (9e562f6)</a>
 
 </div>
 

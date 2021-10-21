@@ -26,15 +26,15 @@ from datumaro.components.project import Project from datumaro.components.dataset
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/user-manual/how_to_use_datumaro/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-09-22T17:13:20+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-10-13T13:59:36+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="How to use Datumaro">
 <meta itemprop="description" content="As a standalone tool or a Python module:
 datum --help python -m datumaro --help python datumaro/ --help python datum.py --help As a Python library:
 from datumaro.components.project import Project from datumaro.components.dataset import Dataset from datumaro.components.extractor import Label, Bbox, DatasetItem ... dataset = Dataset.import_from(path, format) ... Glossary   Basic concepts:
  Dataset - A collection of dataset items, which consist of media and associated annotations. Dataset item - A basic single element of the dataset.">
-<meta itemprop="dateModified" content="2021-09-22T17:13:20+03:00" />
-<meta itemprop="wordCount" content="2309">
+<meta itemprop="dateModified" content="2021-10-13T13:59:36+03:00" />
+<meta itemprop="wordCount" content="2497">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to use Datumaro"/>
 <meta name="twitter:description" content="As a standalone tool or a Python module:
@@ -88,23 +88,8 @@ from datumaro.components.project import Project from datumaro.components.dataset
           <a class="nav-link" href="https://github.com/openvinotoolkit/datumaro"  ><i class='fab fa-github'></i><span>GitHub</span></a>
         </li>
       
-      
-        <li class="nav-item dropdown mr-4 d-lg-block">
-          
-
-<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  develop
-</a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-  
-    
-      <a class="dropdown-item" href="../../../docs/user-manual/how_to_use_datumaro/">develop</a>
-  
-    
-      <a class="dropdown-item" href="../../../v0.1.11/docs/user-manual/how_to_use_datumaro/">v0.1.11</a>
-  
-</div>
-
+        <li class="nav-item mr-4 mb-2 mb-lg-0" id="api">
+          <a class="nav-link" href="api/classIndex.html">API documentation</a>
         </li>
       
       
@@ -121,7 +106,7 @@ from datumaro.components.project import Project from datumaro.components.dataset
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.823557ec66840a952dd06f2a48103162.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c6dd5f3855bbb75596f8c39b48f2d645.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -149,7 +134,7 @@ from datumaro.components.project import Project from datumaro.components.dataset
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.823557ec66840a952dd06f2a48103162.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c6dd5f3855bbb75596f8c39b48f2d645.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -227,8 +212,8 @@ from datumaro.components.project import Project from datumaro.components.dataset
   <a href="../../../docs/user-manual/extending/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualextending"><span class="">Extending</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manuallinks-li">
   <a href="../../../docs/user-manual/links/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manuallinks"><span class="">Links</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualhow_to_control_tm_data_colletion-li">
-  <a href="../../../docs/user-manual/how_to_control_tm_data_colletion/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualhow_to_control_tm_data_colletion"><span class="">How to control telemetry data collection</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualhow_to_control_tm_data_collection-li">
+  <a href="../../../docs/user-manual/how_to_control_tm_data_collection/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualhow_to_control_tm_data_collection"><span class="">How to control telemetry data collection</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsdeveloper_manual-li">
@@ -330,6 +315,7 @@ from datumaro.components.project import Project from datumaro.components.dataset
         <li><a href="#command-line-workflow">Command-line workflow</a></li>
         <li><a href="#project-data-model-a-iddata-modela">Project data model <a id="data-model"></a></a></li>
         <li><a href="#project-layout">Project layout</a></li>
+        <li><a href="#datasets-and-data-sources-a-iddata-sourcesa">Datasets and Data Sources <a id="data-sources"></a></a></li>
         <li><a href="#use-cases">Use cases</a></li>
         <li><a href="#examples-a-idcli-examplesa">Examples <a id="cli-examples"></a></a></li>
       </ul>
@@ -536,7 +522,7 @@ commands directly on existing datasets</p>
 <p>Create a Datumaro project and operate on it:</p>
 <ul>
 <li>Create an empty project with <a href="../../../docs/user-manual/command-reference/create"><code>create</code></a></li>
-<li>Import existing datasets with <a href="../../../docs/user-manual/command-reference/sources/#source-add"><code>import</code></a></li>
+<li>Import existing datasets with <a href="../../../docs/user-manual/command-reference/import"><code>import</code></a></li>
 <li>Modify the project with <a href="../../../docs/user-manual/command-reference/transform"><code>transform</code></a> and <a href="../../../docs/user-manual/command-reference/filter"><code>filter</code></a></li>
 <li>Create new revisions of the project with
 <a href="../../../docs/user-manual/command-reference/commit"><code>commit</code></a>, navigate over
@@ -549,14 +535,14 @@ statistics with <a href="../../../docs/user-manual/command-reference/stats"><cod
 </li>
 </ul>
 <p>Basically, a project is a combination of datasets, models and environment.</p>
-<p>A project can contain an arbitrary number of data sources. Each data source
-describes a dataset in a specific format. A project acts as a manager for
-the data sources and allows to manipulate them separately or as a whole, in
-which case it combines dataset items from all the sources into one composite
-dataset. You can manage separate sources in a project by commands in
-the <code>datum source</code> command-line context.</p>
-<p>Note that <strong>modifying operations</strong> (<code>transform</code>, <code>filter</code>) <strong>are applied
-in-place</strong> to the data sources by default.</p>
+<p>A project can contain an arbitrary number of datasets (<a href="../../../docs/user-manual/how_to_use_datumaro#data-sources">data sources</a>).
+A project acts as a manager for them and allows to manipulate them
+separately or as a whole, in which case it combines dataset items
+from all the sources into one composite dataset. You can manage separate
+datasets in a project by commands in the <a href="../../../docs/user-manual/command-reference/sources"><code>datum source</code></a>
+command line context.</p>
+<p>Note that <strong>modifying operations</strong> (<code>transform</code>, <code>filter</code>, <code>patch</code>)
+<strong>are applied in-place</strong> to the datasets by default.</p>
 <p>If you want to interact with models, you need to add them to the project
 first using the <a href="../../../docs/user-manual/command-reference/models/#register-model"><code>model add</code></a> command.</p>
 <p>A typical way to obtain Datumaro projects is to export tasks in
@@ -632,7 +618,34 @@ datum transform &lt;...&gt; source2
 │   └── &lt;<span style="color:#204a87">source</span> data&gt;
 └── &lt;<span style="color:#204a87">source</span> name 2&gt;/ <span style="color:#8f5902;font-style:italic"># working directory for the source 2</span>
     └── &lt;<span style="color:#204a87">source</span> data&gt;
-</code></pre></div><h3 id="use-cases">Use cases</h3>
+</code></pre></div><h3 id="datasets-and-data-sources-a-iddata-sourcesa">Datasets and Data Sources <a id="data-sources"></a></h3>
+<p>A project can contain an arbitrary number of Data Sources. Each Data Source
+describes a dataset in a specific format. A project acts as a manager for
+the data sources and allows to manipulate them separately or as a whole, in
+which case it combines dataset items from all the sources into one composite
+dataset. You can manage separate sources in a project by commands in
+the <a href="../../../docs/user-manual/command-reference/sources"><code>datum source</code></a> command
+line context.</p>
+<p>Datasets come in a wide variety of formats. Each dataset
+format defines its own data structure and rules on how to
+interpret the data. For example, the following data structure
+is used in COCO format:</p>
+<!--lint disable fenced-code-flag-->
+<pre><code>/dataset/
+- /images/&lt;id&gt;.jpg
+- /annotations/
+</code></pre><!--lint enable fenced-code-flag-->
+<p>Datumaro supports complete datasets, having both image data and
+annotations, or incomplete ones, having annotations only.
+Incomplete datasets can be used to prepare images and annotations
+independently of each other, or to analyze or modify just the lightweight
+annotations without the need to download the whole dataset.</p>
+<p>Check <a href="../../../docs/user-manual/supported_formats">supported formats</a> for more info
+about format specifications, supported import and export options and other
+details. The list of formats can be extended by custom plugins,
+check <a href="../../../docs/user-manual/extending">extending tips</a> for information on this
+topic.</p>
+<h3 id="use-cases">Use cases</h3>
 <p>Let&rsquo;s consider few examples describing what Datumaro does for you behind the
 scene.</p>
 <p>The first example explains how working trees, working directories and the
@@ -760,8 +773,8 @@ datum <span style="color:#204a87">export</span> -f voc -- --save-images
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    September 22, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/cfee19859bd584c9a5a6d754eba2455c6268d92c">Rename datum add to datum import (#469) (cfee198)</a>
+    October 13, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/52f9a95553ff3edfbcb61e30dfd9202485e1b448">Add command (#508) (52f9a95)</a>
 
 </div>
 
