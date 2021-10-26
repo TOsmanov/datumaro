@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>datumaro.plugins.voc_format package &mdash; Datumaro API documentation 0.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+            <a href="../index.html" class="icon icon-home"> Datumaro API documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference external" href="https://tosmanov.github.io/datumaro/docs/">Main doccumentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Datumaro API documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>datumaro.plugins.voc_format package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/datumaro.plugins.voc_format.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="datumaro-plugins-voc-format-package">
+<h1>datumaro.plugins.voc_format package<a class="headerlink" href="#datumaro-plugins-voc-format-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-datumaro.plugins.voc_format.converter">
+<span id="datumaro-plugins-voc-format-converter-module"></span><h2>datumaro.plugins.voc_format.converter module<a class="headerlink" href="#module-datumaro.plugins.voc_format.converter" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.LabelmapType">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.converter.</span></span><span class="sig-name descname"><span class="pre">LabelmapType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.LabelmapType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.LabelmapType.source">
+<span class="sig-name descname"><span class="pre">source</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.converter.LabelmapType.source" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.LabelmapType.voc">
+<span class="sig-name descname"><span class="pre">voc</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.converter.LabelmapType.voc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocActionConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.converter.</span></span><span class="sig-name descname"><span class="pre">VocActionConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocActionConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.voc_format.converter.VocConverter" title="datumaro.plugins.voc_format.converter.VocConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.converter.VocConverter</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocClassificationConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.converter.</span></span><span class="sig-name descname"><span class="pre">VocClassificationConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocClassificationConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.voc_format.converter.VocConverter" title="datumaro.plugins.voc_format.converter.VocConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.converter.VocConverter</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.converter.</span></span><span class="sig-name descname"><span class="pre">VocConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tasks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_colormap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_attributes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_empty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.converter.Converter" title="datumaro.components.converter.Converter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.converter.Converter</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.BUILTIN_ATTRS">
+<span class="sig-name descname"><span class="pre">BUILTIN_ATTRS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'difficult',</span> <span class="pre">'occluded',</span> <span class="pre">'pose',</span> <span class="pre">'truncated'}</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.BUILTIN_ATTRS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.DEFAULT_IMAGE_EXT">
+<span class="sig-name descname"><span class="pre">DEFAULT_IMAGE_EXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'.jpg'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.DEFAULT_IMAGE_EXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.apply" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.get_label">
+<span class="sig-name descname"><span class="pre">get_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.get_label" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.make_dirs">
+<span class="sig-name descname"><span class="pre">make_dirs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.make_dirs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.patch">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">patch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.patch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.save_action_lists">
+<span class="sig-name descname"><span class="pre">save_action_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.save_action_lists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.save_class_lists">
+<span class="sig-name descname"><span class="pre">save_class_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_lists</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.save_class_lists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.save_clsdet_lists">
+<span class="sig-name descname"><span class="pre">save_clsdet_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clsdet_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.save_clsdet_lists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.save_label_map">
+<span class="sig-name descname"><span class="pre">save_label_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.save_label_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.save_layout_lists">
+<span class="sig-name descname"><span class="pre">save_layout_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.save_layout_lists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.save_segm">
+<span class="sig-name descname"><span class="pre">save_segm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colormap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.save_segm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.save_segm_lists">
+<span class="sig-name descname"><span class="pre">save_segm_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segm_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.save_segm_lists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.save_subsets">
+<span class="sig-name descname"><span class="pre">save_subsets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.save_subsets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocDetectionConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.converter.</span></span><span class="sig-name descname"><span class="pre">VocDetectionConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocDetectionConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.voc_format.converter.VocConverter" title="datumaro.plugins.voc_format.converter.VocConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.converter.VocConverter</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocLayoutConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.converter.</span></span><span class="sig-name descname"><span class="pre">VocLayoutConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocLayoutConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.voc_format.converter.VocConverter" title="datumaro.plugins.voc_format.converter.VocConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.converter.VocConverter</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocSegmentationConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.converter.</span></span><span class="sig-name descname"><span class="pre">VocSegmentationConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocSegmentationConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.voc_format.converter.VocConverter" title="datumaro.plugins.voc_format.converter.VocConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.converter.VocConverter</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datumaro.plugins.voc_format.extractor">
+<span id="datumaro-plugins-voc-format-extractor-module"></span><h2>datumaro.plugins.voc_format.extractor module<a class="headerlink" href="#module-datumaro.plugins.voc_format.extractor" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.extractor.VocActionExtractor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.extractor.</span></span><span class="sig-name descname"><span class="pre">VocActionExtractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.extractor.VocActionExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.extractor._VocXmlExtractor</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.extractor.VocClassificationExtractor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.extractor.</span></span><span class="sig-name descname"><span class="pre">VocClassificationExtractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.extractor.VocClassificationExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.extractor._VocExtractor</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.extractor.VocDetectionExtractor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.extractor.</span></span><span class="sig-name descname"><span class="pre">VocDetectionExtractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.extractor.VocDetectionExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.extractor._VocXmlExtractor</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.extractor.VocLayoutExtractor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.extractor.</span></span><span class="sig-name descname"><span class="pre">VocLayoutExtractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.extractor.VocLayoutExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.extractor._VocXmlExtractor</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.extractor.VocSegmentationExtractor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.extractor.</span></span><span class="sig-name descname"><span class="pre">VocSegmentationExtractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.extractor.VocSegmentationExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.extractor._VocExtractor</span></code></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datumaro.plugins.voc_format.format">
+<span id="datumaro-plugins-voc-format-format-module"></span><h2>datumaro.plugins.voc_format.format module<a class="headerlink" href="#module-datumaro.plugins.voc_format.format" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">VocAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.jumping">
+<span class="sig-name descname"><span class="pre">jumping</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.jumping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.other">
+<span class="sig-name descname"><span class="pre">other</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.other" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.phoning">
+<span class="sig-name descname"><span class="pre">phoning</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.phoning" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.playinginstrument">
+<span class="sig-name descname"><span class="pre">playinginstrument</span></span><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.playinginstrument" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.reading">
+<span class="sig-name descname"><span class="pre">reading</span></span><em class="property"> <span class="pre">=</span> <span class="pre">5</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.reading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.ridingbike">
+<span class="sig-name descname"><span class="pre">ridingbike</span></span><em class="property"> <span class="pre">=</span> <span class="pre">6</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.ridingbike" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.ridinghorse">
+<span class="sig-name descname"><span class="pre">ridinghorse</span></span><em class="property"> <span class="pre">=</span> <span class="pre">7</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.ridinghorse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.running">
+<span class="sig-name descname"><span class="pre">running</span></span><em class="property"> <span class="pre">=</span> <span class="pre">8</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.running" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.takingphoto">
+<span class="sig-name descname"><span class="pre">takingphoto</span></span><em class="property"> <span class="pre">=</span> <span class="pre">9</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.takingphoto" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.usingcomputer">
+<span class="sig-name descname"><span class="pre">usingcomputer</span></span><em class="property"> <span class="pre">=</span> <span class="pre">10</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.usingcomputer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.walking">
+<span class="sig-name descname"><span class="pre">walking</span></span><em class="property"> <span class="pre">=</span> <span class="pre">11</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.walking" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocBodyPart">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">VocBodyPart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocBodyPart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocBodyPart.foot">
+<span class="sig-name descname"><span class="pre">foot</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocBodyPart.foot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocBodyPart.hand">
+<span class="sig-name descname"><span class="pre">hand</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocBodyPart.hand" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocBodyPart.head">
+<span class="sig-name descname"><span class="pre">head</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocBodyPart.head" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">VocLabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.aeroplane">
+<span class="sig-name descname"><span class="pre">aeroplane</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.aeroplane" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.background">
+<span class="sig-name descname"><span class="pre">background</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.background" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.bicycle">
+<span class="sig-name descname"><span class="pre">bicycle</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.bicycle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.bird">
+<span class="sig-name descname"><span class="pre">bird</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.bird" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.boat">
+<span class="sig-name descname"><span class="pre">boat</span></span><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.boat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.bottle">
+<span class="sig-name descname"><span class="pre">bottle</span></span><em class="property"> <span class="pre">=</span> <span class="pre">5</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.bottle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.bus">
+<span class="sig-name descname"><span class="pre">bus</span></span><em class="property"> <span class="pre">=</span> <span class="pre">6</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.bus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.car">
+<span class="sig-name descname"><span class="pre">car</span></span><em class="property"> <span class="pre">=</span> <span class="pre">7</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.car" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.cat">
+<span class="sig-name descname"><span class="pre">cat</span></span><em class="property"> <span class="pre">=</span> <span class="pre">8</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.cat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.chair">
+<span class="sig-name descname"><span class="pre">chair</span></span><em class="property"> <span class="pre">=</span> <span class="pre">9</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.chair" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.cow">
+<span class="sig-name descname"><span class="pre">cow</span></span><em class="property"> <span class="pre">=</span> <span class="pre">10</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.cow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.diningtable">
+<span class="sig-name descname"><span class="pre">diningtable</span></span><em class="property"> <span class="pre">=</span> <span class="pre">11</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.diningtable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.dog">
+<span class="sig-name descname"><span class="pre">dog</span></span><em class="property"> <span class="pre">=</span> <span class="pre">12</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.dog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.horse">
+<span class="sig-name descname"><span class="pre">horse</span></span><em class="property"> <span class="pre">=</span> <span class="pre">13</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.horse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.ignored">
+<span class="sig-name descname"><span class="pre">ignored</span></span><em class="property"> <span class="pre">=</span> <span class="pre">255</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.ignored" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.motorbike">
+<span class="sig-name descname"><span class="pre">motorbike</span></span><em class="property"> <span class="pre">=</span> <span class="pre">14</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.motorbike" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.person">
+<span class="sig-name descname"><span class="pre">person</span></span><em class="property"> <span class="pre">=</span> <span class="pre">15</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.person" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.pottedplant">
+<span class="sig-name descname"><span class="pre">pottedplant</span></span><em class="property"> <span class="pre">=</span> <span class="pre">16</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.pottedplant" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.sheep">
+<span class="sig-name descname"><span class="pre">sheep</span></span><em class="property"> <span class="pre">=</span> <span class="pre">17</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.sheep" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.sofa">
+<span class="sig-name descname"><span class="pre">sofa</span></span><em class="property"> <span class="pre">=</span> <span class="pre">18</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.sofa" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.train">
+<span class="sig-name descname"><span class="pre">train</span></span><em class="property"> <span class="pre">=</span> <span class="pre">19</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.train" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.tvmonitor">
+<span class="sig-name descname"><span class="pre">tvmonitor</span></span><em class="property"> <span class="pre">=</span> <span class="pre">20</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.tvmonitor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">VocPath</span></span><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.ANNOTATIONS_DIR">
+<span class="sig-name descname"><span class="pre">ANNOTATIONS_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'Annotations'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.ANNOTATIONS_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.IMAGES_DIR">
+<span class="sig-name descname"><span class="pre">IMAGES_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'JPEGImages'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.IMAGES_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.IMAGE_EXT">
+<span class="sig-name descname"><span class="pre">IMAGE_EXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'.jpg'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.IMAGE_EXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.INSTANCES_DIR">
+<span class="sig-name descname"><span class="pre">INSTANCES_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'SegmentationObject'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.INSTANCES_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.LABELMAP_FILE">
+<span class="sig-name descname"><span class="pre">LABELMAP_FILE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'labelmap.txt'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.LABELMAP_FILE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.SEGMENTATION_DIR">
+<span class="sig-name descname"><span class="pre">SEGMENTATION_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'SegmentationClass'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.SEGMENTATION_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.SEGM_EXT">
+<span class="sig-name descname"><span class="pre">SEGM_EXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'.png'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.SEGM_EXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.SUBSETS_DIR">
+<span class="sig-name descname"><span class="pre">SUBSETS_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'ImageSets'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.SUBSETS_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.TASK_DIR">
+<span class="sig-name descname"><span class="pre">TASK_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{&lt;VocTask.classification:</span> <span class="pre">1&gt;:</span> <span class="pre">'Main',</span> <span class="pre">&lt;VocTask.detection:</span> <span class="pre">2&gt;:</span> <span class="pre">'Main',</span> <span class="pre">&lt;VocTask.segmentation:</span> <span class="pre">3&gt;:</span> <span class="pre">'Segmentation',</span> <span class="pre">&lt;VocTask.action_classification:</span> <span class="pre">4&gt;:</span> <span class="pre">'Action',</span> <span class="pre">&lt;VocTask.person_layout:</span> <span class="pre">5&gt;:</span> <span class="pre">'Layout'}</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.TASK_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPose">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">VocPose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPose.Frontal">
+<span class="sig-name descname"><span class="pre">Frontal</span></span><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPose.Frontal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPose.Left">
+<span class="sig-name descname"><span class="pre">Left</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPose.Left" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPose.Rear">
+<span class="sig-name descname"><span class="pre">Rear</span></span><em class="property"> <span class="pre">=</span> <span class="pre">5</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPose.Rear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPose.Right">
+<span class="sig-name descname"><span class="pre">Right</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPose.Right" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPose.Unspecified">
+<span class="sig-name descname"><span class="pre">Unspecified</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPose.Unspecified" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocTask">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">VocTask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocTask.action_classification">
+<span class="sig-name descname"><span class="pre">action_classification</span></span><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocTask.action_classification" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocTask.classification">
+<span class="sig-name descname"><span class="pre">classification</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocTask.classification" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocTask.detection">
+<span class="sig-name descname"><span class="pre">detection</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocTask.detection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocTask.person_layout">
+<span class="sig-name descname"><span class="pre">person_layout</span></span><em class="property"> <span class="pre">=</span> <span class="pre">5</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocTask.person_layout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocTask.segmentation">
+<span class="sig-name descname"><span class="pre">segmentation</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocTask.segmentation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.generate_colormap">
+<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">generate_colormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.format.generate_colormap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.make_voc_categories">
+<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">make_voc_categories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.format.make_voc_categories" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.make_voc_label_map">
+<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">make_voc_label_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.format.make_voc_label_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.parse_label_map">
+<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">parse_label_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.format.parse_label_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.write_label_map">
+<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">write_label_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.format.write_label_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-datumaro.plugins.voc_format.importer">
+<span id="datumaro-plugins-voc-format-importer-module"></span><h2>datumaro.plugins.voc_format.importer module<a class="headerlink" href="#module-datumaro.plugins.voc_format.importer" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.importer.VocActionImporter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.importer.</span></span><span class="sig-name descname"><span class="pre">VocActionImporter</span></span><a class="headerlink" href="#datumaro.plugins.voc_format.importer.VocActionImporter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.voc_format.importer.VocImporter" title="datumaro.plugins.voc_format.importer.VocImporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.importer.VocImporter</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.importer.VocClassificationImporter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.importer.</span></span><span class="sig-name descname"><span class="pre">VocClassificationImporter</span></span><a class="headerlink" href="#datumaro.plugins.voc_format.importer.VocClassificationImporter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.voc_format.importer.VocImporter" title="datumaro.plugins.voc_format.importer.VocImporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.importer.VocImporter</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.importer.VocDetectionImporter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.importer.</span></span><span class="sig-name descname"><span class="pre">VocDetectionImporter</span></span><a class="headerlink" href="#datumaro.plugins.voc_format.importer.VocDetectionImporter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.voc_format.importer.VocImporter" title="datumaro.plugins.voc_format.importer.VocImporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.importer.VocImporter</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.importer.VocImporter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.importer.</span></span><span class="sig-name descname"><span class="pre">VocImporter</span></span><a class="headerlink" href="#datumaro.plugins.voc_format.importer.VocImporter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.Importer" title="datumaro.components.extractor.Importer"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Importer</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.importer.VocImporter.find_sources">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">find_sources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.voc_format.importer.VocImporter.find_sources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.importer.VocLayoutImporter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.importer.</span></span><span class="sig-name descname"><span class="pre">VocLayoutImporter</span></span><a class="headerlink" href="#datumaro.plugins.voc_format.importer.VocLayoutImporter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.voc_format.importer.VocImporter" title="datumaro.plugins.voc_format.importer.VocImporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.importer.VocImporter</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.importer.VocSegmentationImporter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.importer.</span></span><span class="sig-name descname"><span class="pre">VocSegmentationImporter</span></span><a class="headerlink" href="#datumaro.plugins.voc_format.importer.VocSegmentationImporter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.voc_format.importer.VocImporter" title="datumaro.plugins.voc_format.importer.VocImporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.importer.VocImporter</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datumaro.plugins.voc_format">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datumaro.plugins.voc_format" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
