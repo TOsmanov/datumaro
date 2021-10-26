@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>datumaro.plugins.sampler package &mdash; Datumaro API documentation 0.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+            <a href="../index.html" class="icon icon-home"> Datumaro API documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Main documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Datumaro API documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>datumaro.plugins.sampler package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/datumaro.plugins.sampler.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="datumaro-plugins-sampler-package">
+<h1>datumaro.plugins.sampler package<a class="headerlink" href="#datumaro-plugins-sampler-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-datumaro.plugins.sampler.sampler">
+<span id="datumaro-plugins-sampler-sampler-module"></span><h2>datumaro.plugins.sampler.sampler module<a class="headerlink" href="#module-datumaro.plugins.sampler.sampler" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.sampler.sampler.Sampler">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.sampler.sampler.</span></span><span class="sig-name descname"><span class="pre">Sampler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unsampled_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.sampler.sampler.Sampler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.Transform" title="datumaro.components.extractor.Transform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Transform</span></code></a>, <a class="reference internal" href="datumaro.components.html#datumaro.components.cli_plugin.CliPlugin" title="datumaro.components.cli_plugin.CliPlugin"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></a></p>
+<p>Sampler that analyzes model inference results on the dataset <a href="#id1"><span class="problematic" id="id2">|</span></a>n
+and picks the best sample for training.|n
+<a href="#id3"><span class="problematic" id="id4">|</span></a>n
+Notes:<a href="#id5"><span class="problematic" id="id6">|</span></a>n
+- Each image’s inference result must contain the probability for
+all classes.|n
+- Requesting a sample larger than the number of all images will
+return all images.|n
+<a href="#id7"><span class="problematic" id="id8">|</span></a>n
+Example: select the most relevant data subset of 20 images <a href="#id9"><span class="problematic" id="id10">|</span></a>n
+<a href="#id11"><span class="problematic" id="id12">|</span></a>s|sbased on model certainty, put the result into ‘sample’ subset
+<a href="#id13"><span class="problematic" id="id14">|</span></a>s|sand put all the rest into ‘unsampled’ subset, use ‘train’ subset <a href="#id15"><span class="problematic" id="id16">|</span></a>n
+<a href="#id17"><span class="problematic" id="id18">|</span></a>s|sas input. <a href="#id19"><span class="problematic" id="id20">|</span></a>n
+<a href="#id21"><span class="problematic" id="id22">|</span></a>s|s%(prog)s <a href="#id23"><span class="problematic" id="id24">|</span></a>n
+<a href="#id25"><span class="problematic" id="id26">|</span></a>s|s|s|s–algorithm entropy <a href="#id27"><span class="problematic" id="id28">|</span></a>n
+<a href="#id29"><span class="problematic" id="id30">|</span></a>s|s|s|s–subset_name train <a href="#id31"><span class="problematic" id="id32">|</span></a>n
+<a href="#id33"><span class="problematic" id="id34">|</span></a>s|s|s|s–sample_name sample <a href="#id35"><span class="problematic" id="id36">|</span></a>n
+<a href="#id37"><span class="problematic" id="id38">|</span></a>s|s|s|s–unsampled_name unsampled <a href="#id39"><span class="problematic" id="id40">|</span></a>n
+<a href="#id41"><span class="problematic" id="id42">|</span></a>s|s|s|s–sampling_method topk -k 20</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.sampler.sampler.Sampler.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.sampler.sampler.Sampler.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-datumaro.plugins.sampler">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datumaro.plugins.sampler" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
