@@ -17,7 +17,9 @@
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="datumaro.plugins.accuracy_checker_plugin package" href="datumaro.plugins.accuracy_checker_plugin.html" />
+    <link rel="prev" title="datumaro.components.algorithms package" href="datumaro.components.algorithms.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -36,7 +38,76 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference external" href="https://tosmanov.github.io/datumaro/docs/">Main documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Installation</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="datumaro.html">datumaro package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.html">datumaro.cli package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.commands.html">datumaro.cli.commands package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.contexts.html">datumaro.cli.contexts package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.contexts.project.html">datumaro.cli.contexts.project package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.util.html">datumaro.cli.util package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.components.html">datumaro.components package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.components.algorithms.html">datumaro.components.algorithms package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">datumaro.plugins package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.plugins.accuracy_checker_plugin.html">datumaro.plugins.accuracy_checker_plugin package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.plugins.coco_format.html">datumaro.plugins.coco_format package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.plugins.cvat_format.html">datumaro.plugins.cvat_format package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.plugins.datumaro_format.html">datumaro.plugins.datumaro_format package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.plugins.icdar_format.html">datumaro.plugins.icdar_format package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.plugins.kitti_format.html">datumaro.plugins.kitti_format package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.plugins.kitti_raw_format.html">datumaro.plugins.kitti_raw_format package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.plugins.openvino_plugin.html">datumaro.plugins.openvino_plugin package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.plugins.sampler.html">datumaro.plugins.sampler package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.plugins.sly_pointcloud_format.html">datumaro.plugins.sly_pointcloud_format package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.plugins.tf_detection_api_format.html">datumaro.plugins.tf_detection_api_format package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.plugins.voc_format.html">datumaro.plugins.voc_format package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.plugins.yolo_format.html">datumaro.plugins.yolo_format package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.ade20k2017_format">datumaro.plugins.ade20k2017_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.ade20k2020_format">datumaro.plugins.ade20k2020_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.camvid_format">datumaro.plugins.camvid_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.cifar_format">datumaro.plugins.cifar_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.cityscapes_format">datumaro.plugins.cityscapes_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.image_dir_format">datumaro.plugins.image_dir_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.image_zip_format">datumaro.plugins.image_zip_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.imagenet_format">datumaro.plugins.imagenet_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.imagenet_txt_format">datumaro.plugins.imagenet_txt_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.labelme_format">datumaro.plugins.labelme_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.lfw_format">datumaro.plugins.lfw_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.market1501_format">datumaro.plugins.market1501_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.mnist_csv_format">datumaro.plugins.mnist_csv_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.mnist_format">datumaro.plugins.mnist_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.mot_format">datumaro.plugins.mot_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.mots_format">datumaro.plugins.mots_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.ndr">datumaro.plugins.ndr module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.open_images_format">datumaro.plugins.open_images_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.splitter">datumaro.plugins.splitter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.transforms">datumaro.plugins.transforms module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.validators">datumaro.plugins.validators module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.vgg_face2_format">datumaro.plugins.vgg_face2_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins.widerface_format">datumaro.plugins.widerface_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.plugins">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.accuracy_checker_plugin.html">datumaro.plugins.accuracy_checker_plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.coco_format.html">datumaro.plugins.coco_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.cvat_format.html">datumaro.plugins.cvat_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.datumaro_format.html">datumaro.plugins.datumaro_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.icdar_format.html">datumaro.plugins.icdar_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_format.html">datumaro.plugins.kitti_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_raw_format.html">datumaro.plugins.kitti_raw_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.openvino_plugin.html">datumaro.plugins.openvino_plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.sampler.html">datumaro.plugins.sampler package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.sly_pointcloud_format.html">datumaro.plugins.sly_pointcloud_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.tf_detection_api_format.html">datumaro.plugins.tf_detection_api_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.voc_format.html">datumaro.plugins.voc_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.yolo_format.html">datumaro.plugins.yolo_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.util.html">datumaro.util package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">datumaro</a></li>
 </ul>
 
         </div>
@@ -53,6 +124,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="datumaro.html">datumaro package</a> &raquo;</li>
       <li>datumaro.plugins package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/api/datumaro.plugins.rst.txt" rel="nofollow"> View page source</a>
@@ -1446,17 +1518,19 @@ needed.  Both arguments passed are str objects.</p>
 <dt class="sig sig-object py" id="datumaro.plugins.ndr.NDR">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.ndr.</span></span><span class="sig-name descname"><span class="pre">NDR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">working_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duplicated_subset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'duplicated'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cut</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">over_sample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">under_sample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.ndr.NDR" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.Transform" title="datumaro.components.extractor.Transform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Transform</span></code></a>, <a class="reference internal" href="datumaro.components.html#datumaro.components.cli_plugin.CliPlugin" title="datumaro.components.cli_plugin.CliPlugin"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></a></p>
-<p>Near-duplicated image removal.|n
-<a href="#id1"><span class="problematic" id="id2">|</span></a>n
-Removes near-duplicated images in subset|n
-<a href="#id3"><span class="problematic" id="id4">|</span></a>n
-Example: apply NDR, return no more than 100 images|n
-<a href="#id5"><span class="problematic" id="id6">|</span></a>s|s%(prog)s|n
-<a href="#id7"><span class="problematic" id="id8">|</span></a>s|s|s|s–working_subset train|n
-<a href="#id9"><span class="problematic" id="id10">|</span></a>s|s|s|s–algorithm gradient|n
-<a href="#id11"><span class="problematic" id="id12">|</span></a>s|s|s|s–num_cut 100|n
-<a href="#id13"><span class="problematic" id="id14">|</span></a>s|s|s|s–over_sample random|n
-<a href="#id15"><span class="problematic" id="id16">|</span></a>s|s|s|s–under_sample uniform</p>
+<p>Near-duplicated image removal.</p>
+<p>Removes near-duplicated images in subset</p>
+<dl class="simple">
+<dt>Example: apply NDR, return no more than 100 images</dt><dd><dl class="simple">
+<dt>%(prog)s</dt><dd><p>–working_subset train
+–algorithm gradient
+–num_cut 100
+–over_sample random
+–under_sample uniform</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.plugins.ndr.NDR.build_cmdline_parser">
 <em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.ndr.NDR.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
@@ -1686,52 +1760,61 @@ Example: apply NDR, return no more than 100 images|n
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.splitter.</span></span><span class="sig-name descname"><span class="pre">Split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr_for_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.splitter.Split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.Transform" title="datumaro.components.extractor.Transform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Transform</span></code></a>, <a class="reference internal" href="datumaro.components.html#datumaro.components.cli_plugin.CliPlugin" title="datumaro.components.cli_plugin.CliPlugin"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></a></p>
 <ul class="simple">
-<li><p>classification split <a href="#id17"><span class="problematic" id="id18">|</span></a>n</p></li>
-</ul>
-<p>Splits dataset into subsets(train/val/test) in class-wise manner. <a href="#id19"><span class="problematic" id="id20">|</span></a>n
+<li><dl class="simple">
+<dt>classification split</dt><dd><p>Splits dataset into subsets(train/val/test) in class-wise manner.
 Splits dataset images in the specified ratio, keeping the initial class
-distribution.|n
-<a href="#id21"><span class="problematic" id="id22">|</span></a>n
-- detection &amp; segmentation split <a href="#id23"><span class="problematic" id="id24">|</span></a>n
-Each image can have multiple object annotations -
+distribution.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>detection &amp; segmentation split</dt><dd><p>Each image can have multiple object annotations -
 (bbox, mask, polygon). Since an image shouldn’t be included
 in multiple subsets at the same time, and image annotations
 shouldn’t be split, in general, dataset annotations are unlikely
-to be split exactly in the specified ratio. <a href="#id25"><span class="problematic" id="id26">|</span></a>n
+to be split exactly in the specified ratio.
 This split tries to split dataset images as close as possible
-to the specified ratio, keeping the initial class distribution.|n
-<a href="#id27"><span class="problematic" id="id28">|</span></a>n
-- reidentification split <a href="#id29"><span class="problematic" id="id30">|</span></a>n
-In this task, the test set should consist of images of unseen
-people or objects during the training phase. <a href="#id31"><span class="problematic" id="id32">|</span></a>n
-This function splits a dataset in the following way:<a href="#id33"><span class="problematic" id="id34">|</span></a>n
-1. Splits the dataset into ‘train + val’ and ‘test’ sets|n
-<a href="#id35"><span class="problematic" id="id36">|</span></a>s|sbased on person or object ID.|n
-2. Splits ‘test’ set into ‘test-gallery’ and ‘test-query’ sets|n
-<a href="#id37"><span class="problematic" id="id38">|</span></a>s|sin class-wise manner.|n
-3. Splits the ‘train + val’ set into ‘train’ and ‘val’ sets|n
-<a href="#id39"><span class="problematic" id="id40">|</span></a>s|sin the same way.|n
+to the specified ratio, keeping the initial class distribution.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>reidentification split</dt><dd><p>In this task, the test set should consist of images of unseen
+people or objects during the training phase.
+This function splits a dataset in the following way:
+1. Splits the dataset into ‘train + val’ and ‘test’ sets
+based on person or object ID.
+2. Splits ‘test’ set into ‘test-gallery’ and ‘test-query’ sets
+in class-wise manner.
+3. Splits the ‘train + val’ set into ‘train’ and ‘val’ sets
+in the same way.
 The final subsets would be
-‘train’, ‘val’, ‘test-gallery’ and ‘test-query’. <a href="#id41"><span class="problematic" id="id42">|</span></a>n
-<a href="#id43"><span class="problematic" id="id44">|</span></a>n
-Notes:<a href="#id45"><span class="problematic" id="id46">|</span></a>n
-- Each image is expected to have only one Annotation. Unlabeled or
-multi-labeled images will be split into subsets randomly. <a href="#id47"><span class="problematic" id="id48">|</span></a>n
-- If Labels also have attributes, also splits by attribute values.|n
+‘train’, ‘val’, ‘test-gallery’ and ‘test-query’.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl>
+<dt>Notes:</dt><dd><ul class="simple">
+<li><p>Each image is expected to have only one Annotation. Unlabeled or</p></li>
+</ul>
+<p>multi-labeled images will be split into subsets randomly.
+- If Labels also have attributes, also splits by attribute values.
 - If there is not enough images in some class or attributes group,
-the split ratio can’t be guaranteed.|n
-In reidentification task, <a href="#id49"><span class="problematic" id="id50">|</span></a>n
-- Object ID can be described by Label, or by attribute (–attr parameter)|n
-- The splits of the test set are controlled by ‘–query’ parameter <a href="#id51"><span class="problematic" id="id52">|</span></a>n
-<a href="#id53"><span class="problematic" id="id54">|</span></a>s|sGallery ratio would be 1.0 - query.|n
-<a href="#id55"><span class="problematic" id="id56">|</span></a>n
-Example:<a href="#id57"><span class="problematic" id="id58">|</span></a>n
-<a href="#id59"><span class="problematic" id="id60">|</span></a>s|s%(prog)s -t classification –subset train:.5 –subset val:.2 –subset test:.3 <a href="#id61"><span class="problematic" id="id62">|</span></a>n
-<a href="#id63"><span class="problematic" id="id64">|</span></a>s|s%(prog)s -t detection –subset train:.5 –subset val:.2 –subset test:.3 <a href="#id65"><span class="problematic" id="id66">|</span></a>n
-<a href="#id67"><span class="problematic" id="id68">|</span></a>s|s%(prog)s -t segmentation –subset train:.5 –subset val:.2 –subset test:.3 <a href="#id69"><span class="problematic" id="id70">|</span></a>n
-<a href="#id71"><span class="problematic" id="id72">|</span></a>s|s%(prog)s -t reid –subset train:.5 –subset val:.2 –subset test:.3 –query .5 <a href="#id73"><span class="problematic" id="id74">|</span></a>n
-Example: use ‘person_id’ attribute for splitting|n
-<a href="#id75"><span class="problematic" id="id76">|</span></a>s|s%(prog)s –attr person_id</p>
+the split ratio can’t be guaranteed.
+In reidentification task,
+- Object ID can be described by Label, or by attribute (–attr parameter)
+- The splits of the test set are controlled by ‘–query’ parameter
+Gallery ratio would be 1.0 - query.</p>
+</dd>
+<dt>Example:</dt><dd><p>%(prog)s -t classification –subset train:.5 –subset val:.2 –subset test:.3
+%(prog)s -t detection –subset train:.5 –subset val:.2 –subset test:.3
+%(prog)s -t segmentation –subset train:.5 –subset val:.2 –subset test:.3
+%(prog)s -t reid –subset train:.5 –subset val:.2 –subset test:.3 –query .5</p>
+</dd>
+<dt>Example: use ‘person_id’ attribute for splitting</dt><dd><p>%(prog)s –attr person_id</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.plugins.splitter.Split.build_cmdline_parser">
 <em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.splitter.Split.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
@@ -1955,18 +2038,22 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 <dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.ItemTransform" title="datumaro.components.extractor.ItemTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.ItemTransform</span></code></a></p>
 <p>Changes the order of labels in the dataset from the existing
 to the desired one, removes unknown labels and adds new labels.
-Updates or removes the corresponding annotations.|n
-<a href="#id77"><span class="problematic" id="id78">|</span></a>n
-Labels are matched by names (case dependent). Parent labels are only kept
+Updates or removes the corresponding annotations.</p>
+<p>Labels are matched by names (case dependent). Parent labels are only kept
 if they are present in the resulting set of labels. If new labels are
 added, and the dataset has mask colors defined, new labels will obtain
-generated colors.|n
-<a href="#id79"><span class="problematic" id="id80">|</span></a>n
-Useful for merging similar datasets, whose labels need to be aligned.|n
-<a href="#id81"><span class="problematic" id="id82">|</span></a>n
-Examples:<a href="#id83"><span class="problematic" id="id84">|</span></a>n
-- Align the source dataset labels to [person, cat, dog]:<a href="#id85"><span class="problematic" id="id86">|</span></a>n
-<a href="#id87"><span class="problematic" id="id88">|</span></a>s|s%(prog)s -l person -l cat -l dog</p>
+generated colors.</p>
+<p>Useful for merging similar datasets, whose labels need to be aligned.</p>
+<dl class="simple">
+<dt>Examples:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>Align the source dataset labels to [person, cat, dog]:</dt><dd><p>%(prog)s -l person -l cat -l dog</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.plugins.transforms.ProjectLabels.build_cmdline_parser">
 <em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.transforms.ProjectLabels.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
@@ -1992,10 +2079,11 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.transforms.</span></span><span class="sig-name descname"><span class="pre">RandomSplit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.transforms.RandomSplit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.Transform" title="datumaro.components.extractor.Transform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Transform</span></code></a>, <a class="reference internal" href="datumaro.components.html#datumaro.components.cli_plugin.CliPlugin" title="datumaro.components.cli_plugin.CliPlugin"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></a></p>
 <p>Joins all subsets into one and splits the result into few parts.
-It is expected that item ids are unique and subset ratios sum up to 1.|n
-<a href="#id89"><span class="problematic" id="id90">|</span></a>n
-Example:<a href="#id91"><span class="problematic" id="id92">|</span></a>n
-<a href="#id93"><span class="problematic" id="id94">|</span></a>s|s%(prog)s –subset train:.67 –subset test:.33</p>
+It is expected that item ids are unique and subset ratios sum up to 1.</p>
+<dl class="simple">
+<dt>Example:</dt><dd><p>%(prog)s –subset train:.67 –subset test:.33</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.plugins.transforms.RandomSplit.build_cmdline_parser">
 <em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.transforms.RandomSplit.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
@@ -2018,25 +2106,38 @@ Example:<a href="#id91"><span class="problematic" id="id92">|</span></a>n
 <dt class="sig sig-object py" id="datumaro.plugins.transforms.RemapLabels">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.transforms.</span></span><span class="sig-name descname"><span class="pre">RemapLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.IExtractor" title="datumaro.components.extractor.IExtractor"><span class="pre">datumaro.components.extractor.IExtractor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#datumaro.plugins.transforms.RemapLabels.DefaultAction" title="datumaro.plugins.transforms.RemapLabels.DefaultAction"><span class="pre">datumaro.plugins.transforms.RemapLabels.DefaultAction</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.transforms.RemapLabels" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.ItemTransform" title="datumaro.components.extractor.ItemTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.ItemTransform</span></code></a>, <a class="reference internal" href="datumaro.components.html#datumaro.components.cli_plugin.CliPlugin" title="datumaro.components.cli_plugin.CliPlugin"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></a></p>
-<p>Changes labels in the dataset.|n
-<a href="#id95"><span class="problematic" id="id96">|</span></a>n
-A label can be:<a href="#id97"><span class="problematic" id="id98">|</span></a>n
-- renamed (and joined with existing) -<a href="#id99"><span class="problematic" id="id100">|</span></a>n
-<a href="#id101"><span class="problematic" id="id102">|</span></a>s|swhen specified ‘–label &lt;old_name&gt;:&lt;new_name&gt;’<a href="#id103"><span class="problematic" id="id104">|</span></a>n
-- deleted - when specified ‘–label &lt;name&gt;:’ or default action is ‘delete’<a href="#id105"><span class="problematic" id="id106">|</span></a>n
-<a href="#id107"><span class="problematic" id="id108">|</span></a>s|sand the label is not mentioned in the list. When a label|n
-<a href="#id109"><span class="problematic" id="id110">|</span></a>s|sis deleted, all the associated annotations are removed|n
-- kept unchanged - when specified ‘–label &lt;name&gt;:&lt;name&gt;’<a href="#id111"><span class="problematic" id="id112">|</span></a>n
-<a href="#id113"><span class="problematic" id="id114">|</span></a>s|sor default action is ‘keep’ and the label is not mentioned in the list|n
-Annotations with no label are managed by the default action policy.|n
-<a href="#id115"><span class="problematic" id="id116">|</span></a>n
-Examples:<a href="#id117"><span class="problematic" id="id118">|</span></a>n
-- Remove the ‘person’ label (and corresponding annotations):<a href="#id119"><span class="problematic" id="id120">|</span></a>n
-<a href="#id121"><span class="problematic" id="id122">|</span></a>s|s%(prog)s -l person: –default keep|n
-- Rename ‘person’ to ‘pedestrian’ and ‘human’ to ‘pedestrian’, join:<a href="#id123"><span class="problematic" id="id124">|</span></a>n
-<a href="#id125"><span class="problematic" id="id126">|</span></a>s|s%(prog)s -l person:pedestrian -l human:pedestrian –default keep|n
-- Rename ‘person’ to ‘car’ and ‘cat’ to ‘dog’, keep ‘bus’, remove others:<a href="#id127"><span class="problematic" id="id128">|</span></a>n
-<a href="#id129"><span class="problematic" id="id130">|</span></a>s|s%(prog)s -l person:car -l bus:bus -l cat:dog –default delete</p>
+<p>Changes labels in the dataset.</p>
+<dl>
+<dt>A label can be:</dt><dd><ul class="simple">
+<li><p>renamed (and joined with existing) -</p></li>
+</ul>
+<p>when specified ‘–label &lt;old_name&gt;:&lt;new_name&gt;’
+- deleted - when specified ‘–label &lt;name&gt;:’ or default action is ‘delete’
+and the label is not mentioned in the list. When a label
+is deleted, all the associated annotations are removed
+- kept unchanged - when specified ‘–label &lt;name&gt;:&lt;name&gt;’
+or default action is ‘keep’ and the label is not mentioned in the list
+Annotations with no label are managed by the default action policy.</p>
+</dd>
+<dt>Examples:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>Remove the ‘person’ label (and corresponding annotations):</dt><dd><p>%(prog)s -l person: –default keep</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Rename ‘person’ to ‘pedestrian’ and ‘human’ to ‘pedestrian’, join:</dt><dd><p>%(prog)s -l person:pedestrian -l human:pedestrian –default keep</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Rename ‘person’ to ‘car’ and ‘cat’ to ‘dog’, keep ‘bus’, remove others:</dt><dd><p>%(prog)s -l person:car -l bus:bus -l cat:dog –default delete</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.transforms.RemapLabels.DefaultAction">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">DefaultAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.transforms.RemapLabels.DefaultAction" title="Permalink to this definition">¶</a></dt>
@@ -2081,13 +2182,16 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 <p>Renames items in the dataset. Supports regular expressions.
 The first character in the expression is a delimiter for
 the pattern and replacement parts. Replacement part can also
-contain string.format tokens with ‘item’ object available.|n
-<a href="#id131"><span class="problematic" id="id132">|n
-Examples:|n
-- Replace 'pattern' with 'replacement':|n
-|s|srename -e '|pattern|replacement|</span></a>’<a href="#id133"><span class="problematic" id="id134">|n
-- Remove 'frame_' from item ids:|n
-|s|srename -e '|frame_(\d+)|</span></a>1|’</p>
+contain string.format tokens with ‘item’ object available.</p>
+<dl>
+<dt>Examples:</dt><dd><ul class="simple">
+<li><p>Replace ‘pattern’ with ‘replacement’:</p></li>
+</ul>
+<p>rename -e ‘<a href="#id1"><span class="problematic" id="id2">|pattern|replacement|</span></a>’
+- Remove ‘<a href="#id5"><span class="problematic" id="id6">frame_</span></a>’ from item ids:
+rename -e ‘<a href="#id3"><span class="problematic" id="id4">|frame_(\d+)|</span></a>1|’</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.plugins.transforms.Rename.build_cmdline_parser">
 <em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.transforms.Rename.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
@@ -2365,7 +2469,10 @@ stats : Dict object</p>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="datumaro.components.algorithms.html" class="btn btn-neutral float-left" title="datumaro.components.algorithms package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="datumaro.plugins.accuracy_checker_plugin.html" class="btn btn-neutral float-right" title="datumaro.plugins.accuracy_checker_plugin package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

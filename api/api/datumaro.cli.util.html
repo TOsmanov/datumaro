@@ -17,7 +17,9 @@
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="datumaro.components package" href="datumaro.components.html" />
+    <link rel="prev" title="datumaro.cli.contexts.project package" href="datumaro.cli.contexts.project.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -36,7 +38,39 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference external" href="https://tosmanov.github.io/datumaro/docs/">Main documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Installation</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="datumaro.html">datumaro package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.html">datumaro.cli package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.commands.html">datumaro.cli.commands package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.contexts.html">datumaro.cli.contexts package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.contexts.project.html">datumaro.cli.contexts.project package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">datumaro.cli.util package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.util.errors">datumaro.cli.util.errors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.util.project">datumaro.cli.util.project module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.util">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.components.html">datumaro.components package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.components.algorithms.html">datumaro.components.algorithms package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html">datumaro.plugins package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.accuracy_checker_plugin.html">datumaro.plugins.accuracy_checker_plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.coco_format.html">datumaro.plugins.coco_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.cvat_format.html">datumaro.plugins.cvat_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.datumaro_format.html">datumaro.plugins.datumaro_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.icdar_format.html">datumaro.plugins.icdar_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_format.html">datumaro.plugins.kitti_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_raw_format.html">datumaro.plugins.kitti_raw_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.openvino_plugin.html">datumaro.plugins.openvino_plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.sampler.html">datumaro.plugins.sampler package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.sly_pointcloud_format.html">datumaro.plugins.sly_pointcloud_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.tf_detection_api_format.html">datumaro.plugins.tf_detection_api_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.voc_format.html">datumaro.plugins.voc_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.yolo_format.html">datumaro.plugins.yolo_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.util.html">datumaro.util package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">datumaro</a></li>
 </ul>
 
         </div>
@@ -53,6 +87,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="datumaro.html">datumaro package</a> &raquo;</li>
+          <li><a href="datumaro.cli.html">datumaro.cli package</a> &raquo;</li>
       <li>datumaro.cli.util package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/api/datumaro.cli.util.rst.txt" rel="nofollow"> View page source</a>
@@ -149,8 +185,8 @@ At least one part must be present.</p>
 <dt class="sig sig-object py" id="datumaro.cli.util.MultilineFormatter">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.cli.util.</span></span><span class="sig-name descname"><span class="pre">MultilineFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep_natural</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.util.MultilineFormatter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">argparse.HelpFormatter</span></code></p>
-<p>Keeps line breaks introduced with ‘|n’ separator
-and spaces introduced with ‘|s’.</p>
+<p>Keeps line breaks introduced with ‘n’ separator
+and spaces introduced with ‘’.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -180,7 +216,10 @@ and spaces introduced with ‘|s’.</p>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="datumaro.cli.contexts.project.html" class="btn btn-neutral float-left" title="datumaro.cli.contexts.project package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="datumaro.components.html" class="btn btn-neutral float-right" title="datumaro.components package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
