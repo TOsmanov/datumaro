@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>datumaro.cli.util package &mdash; Datumaro API documentation 0.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="datumaro.components package" href="datumaro.components.html" />
+    <link rel="prev" title="datumaro.cli.contexts.project package" href="datumaro.cli.contexts.project.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+            <a href="../index.html" class="icon icon-home"> Datumaro API documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Installation</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="datumaro.html">datumaro package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.html">datumaro.cli package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.commands.html">datumaro.cli.commands package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.contexts.html">datumaro.cli.contexts package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.contexts.project.html">datumaro.cli.contexts.project package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">datumaro.cli.util package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.util.errors">datumaro.cli.util.errors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.util.project">datumaro.cli.util.project module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.util">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.components.html">datumaro.components package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.components.algorithms.html">datumaro.components.algorithms package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html">datumaro.plugins package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.accuracy_checker_plugin.html">datumaro.plugins.accuracy_checker_plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.coco_format.html">datumaro.plugins.coco_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.cvat_format.html">datumaro.plugins.cvat_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.datumaro_format.html">datumaro.plugins.datumaro_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.icdar_format.html">datumaro.plugins.icdar_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_format.html">datumaro.plugins.kitti_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_raw_format.html">datumaro.plugins.kitti_raw_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.openvino_plugin.html">datumaro.plugins.openvino_plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.sampler.html">datumaro.plugins.sampler package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.sly_pointcloud_format.html">datumaro.plugins.sly_pointcloud_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.tf_detection_api_format.html">datumaro.plugins.tf_detection_api_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.voc_format.html">datumaro.plugins.voc_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.yolo_format.html">datumaro.plugins.yolo_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.util.html">datumaro.util package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">datumaro</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://tosmanov.github.io/datumaro/docs/">Back to main documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Datumaro API documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="datumaro.html">datumaro package</a> &raquo;</li>
+          <li><a href="datumaro.cli.html">datumaro.cli package</a> &raquo;</li>
+      <li>datumaro.cli.util package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/datumaro.cli.util.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="datumaro-cli-util-package">
+<h1>datumaro.cli.util package<a class="headerlink" href="#datumaro-cli-util-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-datumaro.cli.util.errors">
+<span id="datumaro-cli-util-errors-module"></span><h2>datumaro.cli.util.errors module<a class="headerlink" href="#module-datumaro.cli.util.errors" title="Permalink to this headline">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="datumaro.cli.util.errors.CliException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.cli.util.errors.</span></span><span class="sig-name descname"><span class="pre">CliException</span></span><a class="headerlink" href="#datumaro.cli.util.errors.CliException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.errors.DatumaroError" title="datumaro.components.errors.DatumaroError"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.errors.DatumaroError</span></code></a></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="datumaro.cli.util.errors.WrongRevpathError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.cli.util.errors.</span></span><span class="sig-name descname"><span class="pre">WrongRevpathError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problems</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.util.errors.WrongRevpathError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.cli.util.errors.CliException" title="datumaro.cli.util.errors.CliException"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.cli.util.errors.CliException</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datumaro.cli.util.project">
+<span id="datumaro-cli-util-project-module"></span><h2>datumaro.cli.util.project module<a class="headerlink" href="#module-datumaro.cli.util.project" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.cli.util.project.generate_next_file_name">
+<span class="sig-prename descclassname"><span class="pre">datumaro.cli.util.project.</span></span><span class="sig-name descname"><span class="pre">generate_next_file_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">basename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basedir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.util.project.generate_next_file_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>If basedir does not contain basename, returns basename,
+otherwise generates a name by appending sep to the basename
+and the number, next to the last used number in the basedir for
+files with basename prefix. Optionally, appends ext.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.cli.util.project.load_project">
+<span class="sig-prename descclassname"><span class="pre">datumaro.cli.util.project.</span></span><span class="sig-name descname"><span class="pre">load_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">readonly</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.util.project.load_project" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.cli.util.project.parse_dataset_pathspec">
+<span class="sig-prename descclassname"><span class="pre">datumaro.cli.util.project.</span></span><span class="sig-name descname"><span class="pre">parse_dataset_pathspec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="datumaro.components.html#datumaro.components.environment.Environment" title="datumaro.components.environment.Environment"><span class="pre">datumaro.components.environment.Environment</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="datumaro.components.html#datumaro.components.dataset.Dataset" title="datumaro.components.dataset.Dataset"><span class="pre">datumaro.components.dataset.Dataset</span></a></span></span><a class="headerlink" href="#datumaro.cli.util.project.parse_dataset_pathspec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses Dataset paths. The syntax is:
+- &lt;dataset path&gt;[ :&lt;format&gt; ]</p>
+<p>Returns: a dataset from the parsed path</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.cli.util.project.parse_full_revpath">
+<span class="sig-prename descclassname"><span class="pre">datumaro.cli.util.project.</span></span><span class="sig-name descname"><span class="pre">parse_full_revpath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx_project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="datumaro.components.html#datumaro.components.project.Project" title="datumaro.components.project.Project"><span class="pre">datumaro.components.project.Project</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="datumaro.components.html#datumaro.components.dataset.Dataset" title="datumaro.components.dataset.Dataset"><span class="pre">datumaro.components.dataset.Dataset</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="datumaro.components.html#datumaro.components.project.Project" title="datumaro.components.project.Project"><span class="pre">datumaro.components.project.Project</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#datumaro.cli.util.project.parse_full_revpath" title="Permalink to this definition">¶</a></dt>
+<dd><p>revpath - either a Dataset path or a Revision path.</p>
+<dl class="simple">
+<dt>Returns: the dataset and the project from the parsed path</dt><dd><p>The project is only returned when specified in the revpath.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.cli.util.project.parse_revspec">
+<span class="sig-prename descclassname"><span class="pre">datumaro.cli.util.project.</span></span><span class="sig-name descname"><span class="pre">parse_revspec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx_project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="datumaro.components.html#datumaro.components.project.Project" title="datumaro.components.project.Project"><span class="pre">datumaro.components.project.Project</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="datumaro.components.html#datumaro.components.dataset.Dataset" title="datumaro.components.dataset.Dataset"><span class="pre">datumaro.components.dataset.Dataset</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="datumaro.components.html#datumaro.components.project.Project" title="datumaro.components.project.Project"><span class="pre">datumaro.components.project.Project</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#datumaro.cli.util.project.parse_revspec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses Revision paths. The syntax is:
+- &lt;project path&gt; [ &#64;&lt;rev&gt; ] [ :&lt;target&gt; ]
+- &lt;rev&gt; [ :&lt;target&gt; ]
+- &lt;target&gt;
+The second and the third forms assume an existing “current” project.</p>
+<dl class="simple">
+<dt>Returns: the dataset and the project from the parsed path.</dt><dd><p>The project is only returned when specified in the revpath.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.cli.util.project.split_local_revpath">
+<span class="sig-prename descclassname"><span class="pre">datumaro.cli.util.project.</span></span><span class="sig-name descname"><span class="pre">split_local_revpath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">revpath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Revision</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#datumaro.cli.util.project.split_local_revpath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Splits the given string into revpath components.</p>
+<p>A local revpath is a path to a revision withing the current project.
+The syntax is:
+- [ &lt;revision&gt; : ] [ &lt;target&gt; ]
+At least one part must be present.</p>
+<p>Returns: (revision, build target)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datumaro.cli.util">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datumaro.cli.util" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.cli.util.MultilineFormatter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.cli.util.</span></span><span class="sig-name descname"><span class="pre">MultilineFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep_natural</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.util.MultilineFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">argparse.HelpFormatter</span></code></p>
+<p>Keeps line breaks introduced with ‘n’ separator
+and spaces introduced with ‘’.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.cli.util.add_subparser">
+<span class="sig-prename descclassname"><span class="pre">datumaro.cli.util.</span></span><span class="sig-name descname"><span class="pre">add_subparser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subparsers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">builder</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.util.add_subparser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.cli.util.at_least">
+<span class="sig-prename descclassname"><span class="pre">datumaro.cli.util.</span></span><span class="sig-name descname"><span class="pre">at_least</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.util.at_least" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.cli.util.join_cli_args">
+<span class="sig-prename descclassname"><span class="pre">datumaro.cli.util.</span></span><span class="sig-name descname"><span class="pre">join_cli_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">argparse.Namespace</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span><a class="headerlink" href="#datumaro.cli.util.join_cli_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges arg values in a list</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.cli.util.required_count">
+<span class="sig-prename descclassname"><span class="pre">datumaro.cli.util.</span></span><span class="sig-name descname"><span class="pre">required_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.util.required_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="datumaro.cli.contexts.project.html" class="btn btn-neutral float-left" title="datumaro.cli.contexts.project package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="datumaro.components.html" class="btn btn-neutral float-right" title="datumaro.components package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
