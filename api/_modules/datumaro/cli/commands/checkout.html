@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>datumaro.cli.commands.checkout &mdash; Datumaro API documentation 0.2 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../../../index.html" class="icon"> Datumaro API documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup.py</span></code> — Installation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.html">datumaro package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.html">datumaro.cli package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.commands.html">datumaro.cli.commands package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.contexts.html">datumaro.cli.contexts package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.contexts.project.html">datumaro.cli.contexts.project package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.util.html">datumaro.cli.util package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.components.html">datumaro.components package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.components.algorithms.html">datumaro.components.algorithms package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html">datumaro.plugins package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.accuracy_checker_plugin.html">datumaro.plugins.accuracy_checker_plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.coco_format.html">datumaro.plugins.coco_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.cvat_format.html">datumaro.plugins.cvat_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.datumaro_format.html">datumaro.plugins.datumaro_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.icdar_format.html">datumaro.plugins.icdar_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.kitti_format.html">datumaro.plugins.kitti_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.kitti_raw_format.html">datumaro.plugins.kitti_raw_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.openvino_plugin.html">datumaro.plugins.openvino_plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.sampler.html">datumaro.plugins.sampler package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.sly_pointcloud_format.html">datumaro.plugins.sly_pointcloud_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.tf_detection_api_format.html">datumaro.plugins.tf_detection_api_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.voc_format.html">datumaro.plugins.voc_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.yolo_format.html">datumaro.plugins.yolo_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.util.html">datumaro.util package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/modules.html">datumaro</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Datumaro API documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      <li>datumaro.cli.commands.checkout</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for datumaro.cli.commands.checkout</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2021 Intel Corporation</span>
+<span class="c1">#</span>
+<span class="c1"># SPDX-License-Identifier: MIT</span>
+
+<span class="kn">import</span> <span class="nn">argparse</span>
+
+<span class="kn">from</span> <span class="nn">datumaro.util.scope</span> <span class="kn">import</span> <span class="n">scope_add</span><span class="p">,</span> <span class="n">scoped</span>
+
+<span class="kn">from</span> <span class="nn">..util</span> <span class="kn">import</span> <span class="n">MultilineFormatter</span>
+<span class="kn">from</span> <span class="nn">..util.project</span> <span class="kn">import</span> <span class="n">load_project</span>
+
+
+<div class="viewcode-block" id="build_parser"><a class="viewcode-back" href="../../../../api/datumaro.cli.commands.html#datumaro.cli.commands.checkout.build_parser">[docs]</a><span class="k">def</span> <span class="nf">build_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Navigate to a revision&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        Command forms:</span>
+<span class="s2">        1) </span><span class="si">%(prog)s</span><span class="s2"> &lt;revision&gt;</span>
+<span class="s2">        2) </span><span class="si">%(prog)s</span><span class="s2"> [--] &lt;source1&gt; ...</span>
+<span class="s2">        3) </span><span class="si">%(prog)s</span><span class="s2"> &lt;revision&gt; [--] &lt;source1&gt; &lt;source2&gt; ...</span>
+
+<span class="s2">        1 - Restores a revision and all the sources in the working directory.</span>
+<span class="s2">        2, 3 - Restores only specified sources from the specified revision.</span>
+
+<span class="s2">        The current revision is used, when not set. When no revision</span>
+<span class="s2">        and no sources is specified, restores the</span>
+<span class="s2">        current revision (like the 1-st form).</span>
+<span class="s2">        &quot;--&quot; is optionally used to separate source names and revisions.</span>
+
+<span class="s2">        Examples:</span>
+<span class="s2">        - Restore the previous revision:</span>
+<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> HEAD~1</span>
+<span class="s2">        - Restore the saved version of a source in the working tree</span>
+<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> -- source-1</span>
+<span class="s2">        - Restore a previous version of a source</span>
+<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> 33fbfbe my-source</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;_positionals&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">REMAINDER</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">SUPPRESS</span><span class="p">)</span> <span class="c1"># workaround for -- eaten by positionals</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;rev&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Commit or tag (default: current)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;sources&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Sources to restore (default: all)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;--force&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Allows to overwrite unsaved changes in case of conflicts &quot;</span>
+            <span class="s2">&quot;(default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--project&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;project_dir&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Directory of the project to operate on (default: current dir)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">checkout_command</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">parser</span></div>
+
+<div class="viewcode-block" id="get_sensitive_args"><a class="viewcode-back" href="../../../../api/datumaro.cli.commands.html#datumaro.cli.commands.checkout.get_sensitive_args">[docs]</a><span class="k">def</span> <span class="nf">get_sensitive_args</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="n">checkout_command</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;rev&#39;</span><span class="p">,</span> <span class="s1">&#39;sources&#39;</span><span class="p">,</span> <span class="s1">&#39;project_dir&#39;</span><span class="p">,],</span>
+    <span class="p">}</span></div>
+
+<div class="viewcode-block" id="checkout_command"><a class="viewcode-back" href="../../../../api/datumaro.cli.commands.html#datumaro.cli.commands.checkout.checkout_command">[docs]</a><span class="nd">@scoped</span>
+<span class="k">def</span> <span class="nf">checkout_command</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">has_sep</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">_positionals</span>
+    <span class="k">if</span> <span class="n">has_sep</span><span class="p">:</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">_positionals</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">pos</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentError</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Expected no more than 1 revision argument&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">args</span><span class="o">.</span><span class="n">rev</span> <span class="o">=</span> <span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">_positionals</span><span class="p">[:</span><span class="n">pos</span><span class="p">]</span> <span class="ow">or</span> <span class="p">[</span><span class="kc">None</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">args</span><span class="o">.</span><span class="n">sources</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">_positionals</span><span class="p">[</span><span class="n">pos</span> <span class="o">+</span> <span class="n">has_sep</span><span class="p">:]</span>
+    <span class="k">if</span> <span class="n">has_sep</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">sources</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentError</span><span class="p">(</span><span class="s1">&#39;sources&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;When &#39;--&#39; is used, &quot;</span>
+            <span class="s2">&quot;at least 1 source name must be specified&quot;</span><span class="p">)</span>
+
+    <span class="n">project</span> <span class="o">=</span> <span class="n">scope_add</span><span class="p">(</span><span class="n">load_project</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">project_dir</span><span class="p">))</span>
+
+    <span class="n">project</span><span class="o">.</span><span class="n">checkout</span><span class="p">(</span><span class="n">rev</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">rev</span><span class="p">,</span> <span class="n">sources</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">sources</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">force</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="mi">0</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview: module code &mdash; Datumaro API documentation 0.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../index.html" class="icon"> Datumaro API documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup.py</span></code> — Installation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.cli.commands.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.commands</span></code> — Commands package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.cli.contexts.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.contexts</span></code> — Contexts package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.cli.contexts.project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.project</span></code> — Project package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.cli.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.util</span></code> — Util package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.components.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">components</span></code> — Components package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.components.algorithms.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algorithms</span></code> — Algorithms package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.plugins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">plugins</span></code> — Plugins package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.plugins.accuracy_checker_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">accuracy</span></code> — Accuracy checker plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.plugins.coco_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coco</span></code> — COCO format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.plugins.cvat_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cvat</span></code> — CVAT format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.plugins.datumaro_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datumaro</span></code> — Datumaro format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.plugins.icdar_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icdar</span></code> — ICDAR format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.plugins.kitti_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI raw format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.plugins.openvino_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">openvino</span></code> — OpenVino plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.plugins.sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sampler</span></code> — Sampler package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.plugins.sly_pointcloud_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sly</span></code> — sly pointcloud format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.plugins.tf_detection_api_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tf</span></code> — tf detection API format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.plugins.voc_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">voc</span></code> — VOC format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.plugins.yolo_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">yolo</span></code> — YOLO format package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/datumaro.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">util</span></code> — Utilities package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://tosmanov.github.io/datumaro/docs/">Back to main documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Datumaro API documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Overview: module code</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>All modules for which code is available</h1>
+<ul><li><a href="datumaro/cli/commands/diff.html">datumaro.cli.commands.diff</a></li>
+<li><a href="datumaro/cli/contexts/project.html">datumaro.cli.contexts.project</a></li>
+<li><a href="datumaro/cli/util.html">datumaro.cli.util</a></li>
+<ul><li><a href="datumaro/cli/util/errors.html">datumaro.cli.util.errors</a></li>
+<li><a href="datumaro/cli/util/project.html">datumaro.cli.util.project</a></li>
+</ul><li><a href="datumaro/components/algorithms/rise.html">datumaro.components.algorithms.rise</a></li>
+<li><a href="datumaro/components/annotation.html">datumaro.components.annotation</a></li>
+<li><a href="datumaro/components/dataset.html">datumaro.components.dataset</a></li>
+<li><a href="datumaro/components/dataset_filter.html">datumaro.components.dataset_filter</a></li>
+<li><a href="datumaro/components/errors.html">datumaro.components.errors</a></li>
+<li><a href="datumaro/components/extractor.html">datumaro.components.extractor</a></li>
+<li><a href="datumaro/components/launcher.html">datumaro.components.launcher</a></li>
+<li><a href="datumaro/components/operations.html">datumaro.components.operations</a></li>
+<li><a href="datumaro/components/project.html">datumaro.components.project</a></li>
+<li><a href="datumaro/components/validator.html">datumaro.components.validator</a></li>
+<li><a href="datumaro/plugins/ade20k2017_format.html">datumaro.plugins.ade20k2017_format</a></li>
+<li><a href="datumaro/plugins/ade20k2020_format.html">datumaro.plugins.ade20k2020_format</a></li>
+<li><a href="datumaro/plugins/camvid_format.html">datumaro.plugins.camvid_format</a></li>
+<li><a href="datumaro/plugins/cifar_format.html">datumaro.plugins.cifar_format</a></li>
+<li><a href="datumaro/plugins/cityscapes_format.html">datumaro.plugins.cityscapes_format</a></li>
+<li><a href="datumaro/plugins/coco_format/converter.html">datumaro.plugins.coco_format.converter</a></li>
+<li><a href="datumaro/plugins/coco_format/extractor.html">datumaro.plugins.coco_format.extractor</a></li>
+<li><a href="datumaro/plugins/coco_format/format.html">datumaro.plugins.coco_format.format</a></li>
+<li><a href="datumaro/plugins/cvat_format/extractor.html">datumaro.plugins.cvat_format.extractor</a></li>
+<li><a href="datumaro/plugins/datumaro_format/extractor.html">datumaro.plugins.datumaro_format.extractor</a></li>
+<li><a href="datumaro/plugins/icdar_format/extractor.html">datumaro.plugins.icdar_format.extractor</a></li>
+<li><a href="datumaro/plugins/icdar_format/format.html">datumaro.plugins.icdar_format.format</a></li>
+<li><a href="datumaro/plugins/image_dir_format.html">datumaro.plugins.image_dir_format</a></li>
+<li><a href="datumaro/plugins/image_zip_format.html">datumaro.plugins.image_zip_format</a></li>
+<li><a href="datumaro/plugins/imagenet_format.html">datumaro.plugins.imagenet_format</a></li>
+<li><a href="datumaro/plugins/imagenet_txt_format.html">datumaro.plugins.imagenet_txt_format</a></li>
+<li><a href="datumaro/plugins/kitti_format/converter.html">datumaro.plugins.kitti_format.converter</a></li>
+<li><a href="datumaro/plugins/kitti_format/extractor.html">datumaro.plugins.kitti_format.extractor</a></li>
+<li><a href="datumaro/plugins/kitti_format/format.html">datumaro.plugins.kitti_format.format</a></li>
+<li><a href="datumaro/plugins/kitti_raw_format/extractor.html">datumaro.plugins.kitti_raw_format.extractor</a></li>
+<li><a href="datumaro/plugins/kitti_raw_format/format.html">datumaro.plugins.kitti_raw_format.format</a></li>
+<li><a href="datumaro/plugins/labelme_format.html">datumaro.plugins.labelme_format</a></li>
+<li><a href="datumaro/plugins/lfw_format.html">datumaro.plugins.lfw_format</a></li>
+<li><a href="datumaro/plugins/market1501_format.html">datumaro.plugins.market1501_format</a></li>
+<li><a href="datumaro/plugins/mnist_csv_format.html">datumaro.plugins.mnist_csv_format</a></li>
+<li><a href="datumaro/plugins/mnist_format.html">datumaro.plugins.mnist_format</a></li>
+<li><a href="datumaro/plugins/mot_format.html">datumaro.plugins.mot_format</a></li>
+<li><a href="datumaro/plugins/mots_format.html">datumaro.plugins.mots_format</a></li>
+<li><a href="datumaro/plugins/ndr.html">datumaro.plugins.ndr</a></li>
+<li><a href="datumaro/plugins/open_images_format.html">datumaro.plugins.open_images_format</a></li>
+<li><a href="datumaro/plugins/sampler/sampler.html">datumaro.plugins.sampler.sampler</a></li>
+<li><a href="datumaro/plugins/sly_pointcloud_format/extractor.html">datumaro.plugins.sly_pointcloud_format.extractor</a></li>
+<li><a href="datumaro/plugins/splitter.html">datumaro.plugins.splitter</a></li>
+<li><a href="datumaro/plugins/tf_detection_api_format/extractor.html">datumaro.plugins.tf_detection_api_format.extractor</a></li>
+<li><a href="datumaro/plugins/transforms.html">datumaro.plugins.transforms</a></li>
+<li><a href="datumaro/plugins/validators.html">datumaro.plugins.validators</a></li>
+<li><a href="datumaro/plugins/vgg_face2_format.html">datumaro.plugins.vgg_face2_format</a></li>
+<li><a href="datumaro/plugins/voc_format/converter.html">datumaro.plugins.voc_format.converter</a></li>
+<li><a href="datumaro/plugins/voc_format/extractor.html">datumaro.plugins.voc_format.extractor</a></li>
+<li><a href="datumaro/plugins/voc_format/format.html">datumaro.plugins.voc_format.format</a></li>
+<li><a href="datumaro/plugins/widerface_format.html">datumaro.plugins.widerface_format</a></li>
+<li><a href="datumaro/plugins/yolo_format/extractor.html">datumaro.plugins.yolo_format.extractor</a></li>
+<li><a href="datumaro/util.html">datumaro.util</a></li>
+<ul><li><a href="datumaro/util/annotation_util.html">datumaro.util.annotation_util</a></li>
+<li><a href="datumaro/util/image.html">datumaro.util.image</a></li>
+<li><a href="datumaro/util/mask_tools.html">datumaro.util.mask_tools</a></li>
+<li><a href="datumaro/util/os_util.html">datumaro.util.os_util</a></li>
+<li><a href="datumaro/util/scope.html">datumaro.util.scope</a></li>
+<li><a href="datumaro/util/telemetry_stub.html">datumaro.util.telemetry_stub</a></li>
+<li><a href="datumaro/util/test_utils.html">datumaro.util.test_utils</a></li>
+</ul></ul>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

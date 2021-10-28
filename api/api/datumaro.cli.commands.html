@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>datumaro.cli.commands package &mdash; Datumaro API documentation 0.2 documentation</title>
+  <title>cli.commands — Commands package &mdash; Datumaro API documentation 0.2 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -18,8 +18,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="datumaro.cli.contexts package" href="datumaro.cli.contexts.html" />
-    <link rel="prev" title="datumaro.cli package" href="datumaro.cli.html" /> 
+    <link rel="next" title="cli.contexts — Contexts package" href="datumaro.cli.contexts.html" />
+    <link rel="prev" title="cli — CLI package" href="datumaro.cli.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -27,8 +27,8 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #30638E" >
-            <a href="../index.html" class="icon icon-home"> Datumaro API documentation
-          </a>
+  <a href="../index.html" class="icon"> Datumaro API documentation
+</a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -38,12 +38,11 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../setup.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup.py</span></code> — Installation</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="datumaro.html">datumaro package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.html">datumaro.cli package</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">datumaro.cli.commands package</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.commands</span></code> — Commands package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.add">datumaro.cli.commands.add module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.checkout">datumaro.cli.commands.checkout module</a></li>
@@ -67,27 +66,32 @@
 <li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.contexts.html">datumaro.cli.contexts package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.contexts.project.html">datumaro.cli.contexts.project package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.util.html">datumaro.cli.util package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.components.html">datumaro.components package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.components.algorithms.html">datumaro.components.algorithms package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html">datumaro.plugins package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.accuracy_checker_plugin.html">datumaro.plugins.accuracy_checker_plugin package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.coco_format.html">datumaro.plugins.coco_format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.cvat_format.html">datumaro.plugins.cvat_format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.datumaro_format.html">datumaro.plugins.datumaro_format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.icdar_format.html">datumaro.plugins.icdar_format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_format.html">datumaro.plugins.kitti_format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_raw_format.html">datumaro.plugins.kitti_raw_format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.openvino_plugin.html">datumaro.plugins.openvino_plugin package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.sampler.html">datumaro.plugins.sampler package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.sly_pointcloud_format.html">datumaro.plugins.sly_pointcloud_format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.tf_detection_api_format.html">datumaro.plugins.tf_detection_api_format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.voc_format.html">datumaro.plugins.voc_format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.yolo_format.html">datumaro.plugins.yolo_format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.util.html">datumaro.util package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">datumaro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.contexts.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.contexts</span></code> — Contexts package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.contexts.project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.project</span></code> — Project package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.util</span></code> — Util package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.components.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">components</span></code> — Components package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.components.algorithms.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algorithms</span></code> — Algorithms package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">plugins</span></code> — Plugins package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.accuracy_checker_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">accuracy</span></code> — Accuracy checker plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.coco_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coco</span></code> — COCO format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.cvat_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cvat</span></code> — CVAT format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.datumaro_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datumaro</span></code> — Datumaro format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.icdar_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icdar</span></code> — ICDAR format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI raw format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.openvino_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">openvino</span></code> — OpenVino plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sampler</span></code> — Sampler package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.sly_pointcloud_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sly</span></code> — sly pointcloud format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.tf_detection_api_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tf</span></code> — tf detection API format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.voc_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">voc</span></code> — VOC format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.yolo_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">yolo</span></code> — YOLO format package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">util</span></code> — Utilities package</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://tosmanov.github.io/datumaro/docs/">Back to main documentation</a></li>
@@ -107,9 +111,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="datumaro.html">datumaro package</a> &raquo;</li>
-          <li><a href="datumaro.cli.html">datumaro.cli package</a> &raquo;</li>
-      <li>datumaro.cli.commands package</li>
+          <li><a href="datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a> &raquo;</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.commands</span></code> — Commands package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/api/datumaro.cli.commands.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -119,334 +122,74 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="datumaro-cli-commands-package">
-<h1>datumaro.cli.commands package<a class="headerlink" href="#datumaro-cli-commands-package" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="cli-commands-commands-package">
+<h1><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.commands</span></code> — Commands package<a class="headerlink" href="#cli-commands-commands-package" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-datumaro.cli.commands.add">
 <span id="datumaro-cli-commands-add-module"></span><h2>datumaro.cli.commands.add module<a class="headerlink" href="#module-datumaro.cli.commands.add" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.add.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.add.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.add.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.add.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.add.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.add.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands.checkout">
 <span id="datumaro-cli-commands-checkout-module"></span><h2>datumaro.cli.commands.checkout module<a class="headerlink" href="#module-datumaro.cli.commands.checkout" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.checkout.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.checkout.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.checkout.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.checkout.checkout_command">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.checkout.</span></span><span class="sig-name descname"><span class="pre">checkout_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.checkout.checkout_command" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.checkout.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.checkout.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.checkout.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands.commit">
 <span id="datumaro-cli-commands-commit-module"></span><h2>datumaro.cli.commands.commit module<a class="headerlink" href="#module-datumaro.cli.commands.commit" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.commit.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.commit.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.commit.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.commit.commit_command">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.commit.</span></span><span class="sig-name descname"><span class="pre">commit_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.commit.commit_command" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.commit.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.commit.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.commit.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands.convert">
 <span id="datumaro-cli-commands-convert-module"></span><h2>datumaro.cli.commands.convert module<a class="headerlink" href="#module-datumaro.cli.commands.convert" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.convert.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.convert.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.convert.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.convert.convert_command">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.convert.</span></span><span class="sig-name descname"><span class="pre">convert_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.convert.convert_command" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.convert.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.convert.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.convert.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands.create">
 <span id="datumaro-cli-commands-create-module"></span><h2>datumaro.cli.commands.create module<a class="headerlink" href="#module-datumaro.cli.commands.create" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.create.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.create.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.create.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.create.create_command">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.create.</span></span><span class="sig-name descname"><span class="pre">create_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.create.create_command" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.create.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.create.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.create.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands.diff">
 <span id="datumaro-cli-commands-diff-module"></span><h2>datumaro.cli.commands.diff module<a class="headerlink" href="#module-datumaro.cli.commands.diff" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.cli.commands.diff.ComparisonMethod">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.diff.</span></span><span class="sig-name descname"><span class="pre">ComparisonMethod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.diff.ComparisonMethod" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.diff.</span></span><span class="sig-name descname"><span class="pre">ComparisonMethod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/cli/commands/diff.html#ComparisonMethod"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.cli.commands.diff.ComparisonMethod" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
 <p>An enumeration.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="datumaro.cli.commands.diff.ComparisonMethod.distance">
-<span class="sig-name descname"><span class="pre">distance</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.cli.commands.diff.ComparisonMethod.distance" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="datumaro.cli.commands.diff.ComparisonMethod.equality">
-<span class="sig-name descname"><span class="pre">equality</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.cli.commands.diff.ComparisonMethod.equality" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.diff.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.diff.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.diff.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.diff.diff_command">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.diff.</span></span><span class="sig-name descname"><span class="pre">diff_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.diff.diff_command" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.diff.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.diff.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.diff.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </div>
 <div class="section" id="module-datumaro.cli.commands.explain">
 <span id="datumaro-cli-commands-explain-module"></span><h2>datumaro.cli.commands.explain module<a class="headerlink" href="#module-datumaro.cli.commands.explain" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.explain.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.explain.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.explain.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.explain.explain_command">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.explain.</span></span><span class="sig-name descname"><span class="pre">explain_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.explain.explain_command" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.explain.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.explain.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.explain.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands.export">
 <span id="datumaro-cli-commands-export-module"></span><h2>datumaro.cli.commands.export module<a class="headerlink" href="#module-datumaro.cli.commands.export" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.export.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.export.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.export.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.export.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.export.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.export.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands.filter">
 <span id="datumaro-cli-commands-filter-module"></span><h2>datumaro.cli.commands.filter module<a class="headerlink" href="#module-datumaro.cli.commands.filter" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.filter.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.filter.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.filter.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.filter.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.filter.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.filter.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands.import_">
 <span id="datumaro-cli-commands-import-module"></span><h2>datumaro.cli.commands.import_ module<a class="headerlink" href="#module-datumaro.cli.commands.import_" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.import_.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.import_.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.import_.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.import_.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.import_.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.import_.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands.info">
 <span id="datumaro-cli-commands-info-module"></span><h2>datumaro.cli.commands.info module<a class="headerlink" href="#module-datumaro.cli.commands.info" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.info.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.info.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.info.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.info.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.info.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.info.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.info.info_command">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.info.</span></span><span class="sig-name descname"><span class="pre">info_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.info.info_command" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands.log">
 <span id="datumaro-cli-commands-log-module"></span><h2>datumaro.cli.commands.log module<a class="headerlink" href="#module-datumaro.cli.commands.log" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.log.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.log.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.log.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.log.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.log.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.log.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.log.log_command">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.log.</span></span><span class="sig-name descname"><span class="pre">log_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.log.log_command" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands.merge">
 <span id="datumaro-cli-commands-merge-module"></span><h2>datumaro.cli.commands.merge module<a class="headerlink" href="#module-datumaro.cli.commands.merge" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.merge.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.merge.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.merge.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.merge.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.merge.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.merge.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.merge.merge_command">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.merge.</span></span><span class="sig-name descname"><span class="pre">merge_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.merge.merge_command" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.merge.save_merge_report">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.merge.</span></span><span class="sig-name descname"><span class="pre">save_merge_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">merger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.merge.save_merge_report" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands.patch">
 <span id="datumaro-cli-commands-patch-module"></span><h2>datumaro.cli.commands.patch module<a class="headerlink" href="#module-datumaro.cli.commands.patch" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.patch.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.patch.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.patch.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.patch.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.patch.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.patch.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.patch.patch_command">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.patch.</span></span><span class="sig-name descname"><span class="pre">patch_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.patch.patch_command" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands.remove">
 <span id="datumaro-cli-commands-remove-module"></span><h2>datumaro.cli.commands.remove module<a class="headerlink" href="#module-datumaro.cli.commands.remove" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.remove.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.remove.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.remove.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.remove.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.remove.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.remove.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands.stats">
 <span id="datumaro-cli-commands-stats-module"></span><h2>datumaro.cli.commands.stats module<a class="headerlink" href="#module-datumaro.cli.commands.stats" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.stats.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.stats.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.stats.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.stats.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.stats.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.stats.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands.status">
 <span id="datumaro-cli-commands-status-module"></span><h2>datumaro.cli.commands.status module<a class="headerlink" href="#module-datumaro.cli.commands.status" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.status.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.status.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.status.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.status.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.status.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.status.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.status.status_command">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.status.</span></span><span class="sig-name descname"><span class="pre">status_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.status.status_command" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands.transform">
 <span id="datumaro-cli-commands-transform-module"></span><h2>datumaro.cli.commands.transform module<a class="headerlink" href="#module-datumaro.cli.commands.transform" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.transform.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.transform.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.transform.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.transform.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.transform.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.transform.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands.validate">
 <span id="datumaro-cli-commands-validate-module"></span><h2>datumaro.cli.commands.validate module<a class="headerlink" href="#module-datumaro.cli.commands.validate" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.validate.build_parser">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.validate.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.validate.build_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datumaro.cli.commands.validate.get_sensitive_args">
-<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.validate.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.cli.commands.validate.get_sensitive_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.cli.commands">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datumaro.cli.commands" title="Permalink to this headline">¶</a></h2>
@@ -457,8 +200,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="datumaro.cli.html" class="btn btn-neutral float-left" title="datumaro.cli package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="datumaro.cli.contexts.html" class="btn btn-neutral float-right" title="datumaro.cli.contexts package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="datumaro.cli.html" class="btn btn-neutral float-left" title="cli — CLI package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="datumaro.cli.contexts.html" class="btn btn-neutral float-right" title="cli.contexts — Contexts package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

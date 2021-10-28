@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>datumaro.cli.commands.explain &mdash; Datumaro API documentation 0.2 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../../../index.html" class="icon"> Datumaro API documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup.py</span></code> — Installation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.html">datumaro package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.html">datumaro.cli package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.commands.html">datumaro.cli.commands package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.contexts.html">datumaro.cli.contexts package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.contexts.project.html">datumaro.cli.contexts.project package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.util.html">datumaro.cli.util package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.components.html">datumaro.components package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.components.algorithms.html">datumaro.components.algorithms package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html">datumaro.plugins package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.accuracy_checker_plugin.html">datumaro.plugins.accuracy_checker_plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.coco_format.html">datumaro.plugins.coco_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.cvat_format.html">datumaro.plugins.cvat_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.datumaro_format.html">datumaro.plugins.datumaro_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.icdar_format.html">datumaro.plugins.icdar_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.kitti_format.html">datumaro.plugins.kitti_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.kitti_raw_format.html">datumaro.plugins.kitti_raw_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.openvino_plugin.html">datumaro.plugins.openvino_plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.sampler.html">datumaro.plugins.sampler package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.sly_pointcloud_format.html">datumaro.plugins.sly_pointcloud_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.tf_detection_api_format.html">datumaro.plugins.tf_detection_api_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.voc_format.html">datumaro.plugins.voc_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.yolo_format.html">datumaro.plugins.yolo_format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.util.html">datumaro.util package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/modules.html">datumaro</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Datumaro API documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      <li>datumaro.cli.commands.explain</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for datumaro.cli.commands.explain</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2019-2021 Intel Corporation</span>
+<span class="c1">#</span>
+<span class="c1"># SPDX-License-Identifier: MIT</span>
+
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">logging</span> <span class="k">as</span> <span class="nn">log</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">os.path</span> <span class="k">as</span> <span class="nn">osp</span>
+
+<span class="kn">from</span> <span class="nn">datumaro.util.image</span> <span class="kn">import</span> <span class="n">is_image</span><span class="p">,</span> <span class="n">load_image</span><span class="p">,</span> <span class="n">save_image</span>
+<span class="kn">from</span> <span class="nn">datumaro.util.scope</span> <span class="kn">import</span> <span class="n">scope_add</span><span class="p">,</span> <span class="n">scoped</span>
+
+<span class="kn">from</span> <span class="nn">..util</span> <span class="kn">import</span> <span class="n">MultilineFormatter</span>
+<span class="kn">from</span> <span class="nn">..util.project</span> <span class="kn">import</span> <span class="n">load_project</span><span class="p">,</span> <span class="n">parse_full_revpath</span>
+
+
+<div class="viewcode-block" id="build_parser"><a class="viewcode-back" href="../../../../api/datumaro.cli.commands.html#datumaro.cli.commands.explain.build_parser">[docs]</a><span class="k">def</span> <span class="nf">build_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Run Explainable AI algorithm&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        Runs an explainable AI algorithm for a model.</span>
+
+<span class="s2">        This tool is supposed to help an AI developer to debug</span>
+<span class="s2">        a model and a dataset. Basically, it executes inference and</span>
+<span class="s2">        tries to find problems in the trained model - determine decision</span>
+<span class="s2">        boundaries and belief intervals for the classifier.</span>
+
+<span class="s2">        Currently, the only available algorithm is</span>
+<span class="s2">        RISE (https://arxiv.org/pdf/1806.07421.pdf), which runs</span>
+<span class="s2">        inference and then re-runs a model multiple times</span>
+<span class="s2">        on each image to produce a heatmap of activations for</span>
+<span class="s2">        each output of the first inference. As a result, we obtain</span>
+<span class="s2">        few heatmaps, which shows, how image pixels affected</span>
+<span class="s2">        the inference result. This algorithm doesn&#39;t require any special</span>
+<span class="s2">        information about the model, but it requires the model to</span>
+<span class="s2">        return all the outputs and confidences. Check the User Manual</span>
+<span class="s2">        for usage examples.</span>
+<span class="s2">        Supported scenarios:</span>
+<span class="s2">        - RISE for classification</span>
+<span class="s2">        - RISE for Object Detection</span>
+
+<span class="s2">        This command has the following syntax:</span>
+<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> &lt;image path or revpath&gt;</span>
+
+<span class="s2">        &lt;image path&gt; - a path to the file.</span>
+<span class="s2">        &lt;revpath&gt; - either a dataset path or a revision path. The full</span>
+<span class="s2">        syntax is:</span>
+<span class="s2">        - Dataset paths:</span>
+<span class="s2">          - &lt;dataset path&gt;[ :&lt;format&gt; ]</span>
+<span class="s2">        - Revision paths:</span>
+<span class="s2">          - &lt;project path&gt; [ @&lt;rev&gt; ] [ :&lt;target&gt; ]</span>
+<span class="s2">          - &lt;rev&gt; [ :&lt;target&gt; ]</span>
+<span class="s2">          - &lt;target&gt;</span>
+<span class="s2">        Parts can be enclosed in quotes.</span>
+
+<span class="s2">        The current project (-p/--project) is used as a context for plugins</span>
+<span class="s2">        and models. It is used when there is a dataset path in target.</span>
+<span class="s2">        When not specified, the current project&#39;s working tree is used.</span>
+
+<span class="s2">        Examples:</span>
+<span class="s2">        - Run RISE on an image, display results:</span>
+<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> path/to/image.jpg -m mymodel rise --max-samples 50</span>
+
+<span class="s2">        - Run RISE on a source revision:</span>
+<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> HEAD~1:source-1 -m model rise</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Inference target - image, revpath (default: project)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;--model&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Model to use for inference&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-dir&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;save_dir&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Directory to save output (default: display only)&quot;</span><span class="p">)</span>
+
+    <span class="n">method_sp</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_subparsers</span><span class="p">(</span><span class="n">dest</span><span class="o">=</span><span class="s1">&#39;algorithm&#39;</span><span class="p">)</span>
+
+    <span class="n">rise_parser</span> <span class="o">=</span> <span class="n">method_sp</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span><span class="s1">&#39;rise&#39;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        RISE: Randomized Input Sampling for</span>
+<span class="s2">        Explanation of Black-box Models algorithm</span>
+
+<span class="s2">        See explanations at: https://arxiv.org/pdf/1806.07421.pdf</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
+    <span class="n">rise_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;--max-samples&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Number of algorithm iterations (default: mask size ^ 2)&quot;</span><span class="p">)</span>
+    <span class="n">rise_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--mw&#39;</span><span class="p">,</span> <span class="s1">&#39;--mask-width&#39;</span><span class="p">,</span>
+        <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;mask_width&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Mask width (default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">rise_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--mh&#39;</span><span class="p">,</span> <span class="s1">&#39;--mask-height&#39;</span><span class="p">,</span>
+        <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;mask_height&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Mask height (default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">rise_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--prob&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Mask pixel inclusion probability (default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">rise_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--iou&#39;</span><span class="p">,</span> <span class="s1">&#39;--iou-thresh&#39;</span><span class="p">,</span>
+        <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;iou_thresh&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;IoU match threshold for detections (default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">rise_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--nms&#39;</span><span class="p">,</span> <span class="s1">&#39;--nms-iou-thresh&#39;</span><span class="p">,</span>
+        <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;nms_iou_thresh&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;IoU match threshold in Non-maxima suppression (default: no NMS)&quot;</span><span class="p">)</span>
+    <span class="n">rise_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--conf&#39;</span><span class="p">,</span> <span class="s1">&#39;--det-conf-thresh&#39;</span><span class="p">,</span>
+        <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;det_conf_thresh&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Confidence threshold for detections (default: include all)&quot;</span><span class="p">)</span>
+    <span class="n">rise_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-b&#39;</span><span class="p">,</span> <span class="s1">&#39;--batch-size&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Inference batch size (default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">rise_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--display&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Visualize results during computations&quot;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--project&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;project_dir&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Directory of the project to operate on (default: current dir)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">explain_command</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">parser</span></div>
+
+<div class="viewcode-block" id="get_sensitive_args"><a class="viewcode-back" href="../../../../api/datumaro.cli.commands.html#datumaro.cli.commands.explain.get_sensitive_args">[docs]</a><span class="k">def</span> <span class="nf">get_sensitive_args</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="n">explain_command</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;save_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;project_dir&#39;</span><span class="p">,],</span>
+    <span class="p">}</span></div>
+
+<div class="viewcode-block" id="explain_command"><a class="viewcode-back" href="../../../../api/datumaro.cli.commands.html#datumaro.cli.commands.explain.explain_command">[docs]</a><span class="nd">@scoped</span>
+<span class="k">def</span> <span class="nf">explain_command</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+    <span class="kn">import</span> <span class="nn">cv2</span>
+
+    <span class="n">project</span> <span class="o">=</span> <span class="n">scope_add</span><span class="p">(</span><span class="n">load_project</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">project_dir</span><span class="p">))</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">make_executable_model</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">algorithm</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;rise&#39;</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+    <span class="kn">from</span> <span class="nn">datumaro.components.algorithms.rise</span> <span class="kn">import</span> <span class="n">RISE</span>
+    <span class="n">rise</span> <span class="o">=</span> <span class="n">RISE</span><span class="p">(</span><span class="n">model</span><span class="p">,</span>
+        <span class="n">max_samples</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">max_samples</span><span class="p">,</span>
+        <span class="n">mask_width</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">mask_width</span><span class="p">,</span>
+        <span class="n">mask_height</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">mask_height</span><span class="p">,</span>
+        <span class="n">prob</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">prob</span><span class="p">,</span>
+        <span class="n">iou_thresh</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">iou_thresh</span><span class="p">,</span>
+        <span class="n">nms_thresh</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">nms_iou_thresh</span><span class="p">,</span>
+        <span class="n">det_conf_thresh</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">det_conf_thresh</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">target</span> <span class="ow">and</span> <span class="n">is_image</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">target</span><span class="p">):</span>
+        <span class="n">image_path</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">target</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Running inference explanation for &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">image_path</span><span class="p">)</span>
+        <span class="n">heatmap_iter</span> <span class="o">=</span> <span class="n">rise</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">progressive</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">display</span><span class="p">)</span>
+
+        <span class="n">image</span> <span class="o">=</span> <span class="n">image</span> <span class="o">/</span> <span class="mf">255.0</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">image_path</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">display</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">heatmaps</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">heatmap_iter</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">heatmap</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">heatmaps</span><span class="p">):</span>
+                    <span class="n">hm_painted</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">(</span><span class="n">heatmap</span><span class="p">)[:,</span> <span class="p">:,</span> <span class="mi">2</span><span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">disp</span> <span class="o">=</span> <span class="p">(</span><span class="n">image</span> <span class="o">+</span> <span class="n">hm_painted</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+                    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;heatmap-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">j</span><span class="p">,</span> <span class="n">hm_painted</span><span class="p">)</span>
+                    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">file_name</span> <span class="o">+</span> <span class="s1">&#39;-heatmap-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">j</span><span class="p">,</span> <span class="n">disp</span><span class="p">)</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Iter&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">max_samples</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">heatmaps</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">heatmap_iter</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">save_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Saving inference heatmaps at &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">args</span><span class="o">.</span><span class="n">save_dir</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">save_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">heatmap</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">heatmaps</span><span class="p">):</span>
+                <span class="n">save_path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">save_dir</span><span class="p">,</span>
+                    <span class="n">file_name</span> <span class="o">+</span> <span class="s1">&#39;-heatmap-</span><span class="si">%s</span><span class="s1">.png&#39;</span> <span class="o">%</span> <span class="n">j</span><span class="p">)</span>
+                <span class="n">save_image</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">heatmap</span> <span class="o">*</span> <span class="mf">255.0</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">heatmap</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">heatmaps</span><span class="p">):</span>
+                <span class="n">disp</span> <span class="o">=</span> <span class="p">(</span><span class="n">image</span> <span class="o">+</span> <span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">(</span><span class="n">heatmap</span><span class="p">)[:,</span> <span class="p">:,</span> <span class="mi">2</span><span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">file_name</span> <span class="o">+</span> <span class="s1">&#39;-heatmap-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">j</span><span class="p">,</span> <span class="n">disp</span><span class="p">)</span>
+            <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">dataset</span><span class="p">,</span> <span class="n">target_project</span> <span class="o">=</span> \
+            <span class="n">parse_full_revpath</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">target</span> <span class="ow">or</span> <span class="s1">&#39;project&#39;</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">target_project</span><span class="p">:</span>
+            <span class="n">scope_add</span><span class="p">(</span><span class="n">target_project</span><span class="p">)</span>
+
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Running inference explanation for &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">args</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">data</span>
+            <span class="k">if</span> <span class="n">image</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Item </span><span class="si">%s</span><span class="s2"> does not have image data. Skipping.&quot;</span><span class="p">,</span>
+                    <span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+                <span class="k">continue</span>
+
+            <span class="n">heatmap_iter</span> <span class="o">=</span> <span class="n">rise</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+            <span class="n">image</span> <span class="o">=</span> <span class="n">image</span> <span class="o">/</span> <span class="mf">255.0</span>
+            <span class="n">heatmaps</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">heatmap_iter</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">save_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Saving inference heatmaps to &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">args</span><span class="o">.</span><span class="n">save_dir</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">save_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">heatmap</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">heatmaps</span><span class="p">):</span>
+                    <span class="n">save_image</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">save_dir</span><span class="p">,</span>
+                            <span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="o">+</span> <span class="s1">&#39;-heatmap-</span><span class="si">%s</span><span class="s1">.png&#39;</span> <span class="o">%</span> <span class="n">j</span><span class="p">),</span>
+                        <span class="n">heatmap</span> <span class="o">*</span> <span class="mf">255.0</span><span class="p">,</span> <span class="n">create_dir</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">save_dir</span> <span class="ow">or</span> <span class="n">args</span><span class="o">.</span><span class="n">display</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">heatmap</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">heatmaps</span><span class="p">):</span>
+                    <span class="n">disp</span> <span class="o">=</span> <span class="p">(</span><span class="n">image</span> <span class="o">+</span> <span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">(</span><span class="n">heatmap</span><span class="p">)[:,</span> <span class="p">:,</span> <span class="mi">2</span><span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+                    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="o">+</span> <span class="s1">&#39;-heatmap-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">j</span><span class="p">,</span> <span class="n">disp</span><span class="p">)</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="mi">0</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
