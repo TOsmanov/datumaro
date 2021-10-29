@@ -36,7 +36,8 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup.py</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datum.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datum</span></code> — datum</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a></li>
@@ -57,7 +58,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.datumaro_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datumaro</span></code> — Datumaro format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.icdar_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icdar</span></code> — ICDAR format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.kitti_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI raw format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti_raw</span></code> — KITTI raw format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.openvino_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">openvino</span></code> — OpenVino plugin package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sampler</span></code> — Sampler package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.sly_pointcloud_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sly</span></code> — sly pointcloud format package</a></li>
@@ -69,7 +70,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">util</span></code> — Utilities package</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://tosmanov.github.io/datumaro/docs/">Back to main documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
 </ul>
 
         </div>
@@ -325,7 +326,7 @@
                     <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">]: item </span><span class="si">%s</span><span class="s2">: &quot;</span>
                         <span class="s2">&quot;Mask conversion to polygons resulted in too &quot;</span>
                         <span class="s2">&quot;small polygons, which were discarded&quot;</span> <span class="o">%</span> \
-                        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_name</span><span class="p">(</span><span class="vm">__class__</span><span class="p">),</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+                        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
                 <span class="n">annotations</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">polygons</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ann</span><span class="p">)</span>
@@ -418,10 +419,10 @@
 <div class="viewcode-block" id="RandomSplit"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.transforms.RandomSplit">[docs]</a><span class="k">class</span> <span class="nc">RandomSplit</span><span class="p">(</span><span class="n">Transform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Joins all subsets into one and splits the result into few parts.</span>
-<span class="sd">    It is expected that item ids are unique and subset ratios sum up to 1.</span>
-
-<span class="sd">    Example:</span>
-<span class="sd">        %(prog)s --subset train:.67 --subset test:.33</span>
+<span class="sd">    It is expected that item ids are unique and subset ratios sum up to 1.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Example:|n</span>
+<span class="sd">    |s|s%(prog)s --subset train:.67 --subset test:.33</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># avoid https://bugs.python.org/issue16399</span>
@@ -506,13 +507,13 @@
 <span class="sd">    Renames items in the dataset. Supports regular expressions.</span>
 <span class="sd">    The first character in the expression is a delimiter for</span>
 <span class="sd">    the pattern and replacement parts. Replacement part can also</span>
-<span class="sd">    contain string.format tokens with &#39;item&#39; object available.</span>
-
-<span class="sd">    Examples:</span>
-<span class="sd">        - Replace &#39;pattern&#39; with &#39;replacement&#39;:</span>
-<span class="sd">        rename -e &#39;|pattern|replacement|&#39;</span>
-<span class="sd">        - Remove &#39;frame_&#39; from item ids:</span>
-<span class="sd">        rename -e &#39;|frame_(\d+)|\1|&#39;</span>
+<span class="sd">    contain string.format tokens with &#39;item&#39; object available.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Examples:|n</span>
+<span class="sd">    - Replace &#39;pattern&#39; with &#39;replacement&#39;:|n</span>
+<span class="sd">    |s|srename -e &#39;|pattern|replacement|&#39;|n</span>
+<span class="sd">    - Remove &#39;frame_&#39; from item ids:|n</span>
+<span class="sd">    |s|srename -e &#39;|frame_(\d+)|\1|&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nd">@classmethod</span>
@@ -537,25 +538,25 @@
 
 <div class="viewcode-block" id="RemapLabels"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.transforms.RemapLabels">[docs]</a><span class="k">class</span> <span class="nc">RemapLabels</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Changes labels in the dataset.</span>
-
-<span class="sd">    A label can be:</span>
-<span class="sd">        - renamed (and joined with existing) -</span>
-<span class="sd">        when specified &#39;--label &lt;old_name&gt;:&lt;new_name&gt;&#39;</span>
-<span class="sd">        - deleted - when specified &#39;--label &lt;name&gt;:&#39; or default action is &#39;delete&#39;</span>
-<span class="sd">        and the label is not mentioned in the list. When a label</span>
-<span class="sd">        is deleted, all the associated annotations are removed</span>
-<span class="sd">        - kept unchanged - when specified &#39;--label &lt;name&gt;:&lt;name&gt;&#39;</span>
-<span class="sd">        or default action is &#39;keep&#39; and the label is not mentioned in the list</span>
-<span class="sd">        Annotations with no label are managed by the default action policy.</span>
-
-<span class="sd">    Examples:</span>
-<span class="sd">        - Remove the &#39;person&#39; label (and corresponding annotations):</span>
-<span class="sd">            %(prog)s -l person: --default keep</span>
-<span class="sd">        - Rename &#39;person&#39; to &#39;pedestrian&#39; and &#39;human&#39; to &#39;pedestrian&#39;, join:</span>
-<span class="sd">            %(prog)s -l person:pedestrian -l human:pedestrian --default keep</span>
-<span class="sd">        - Rename &#39;person&#39; to &#39;car&#39; and &#39;cat&#39; to &#39;dog&#39;, keep &#39;bus&#39;, remove others:</span>
-<span class="sd">            %(prog)s -l person:car -l bus:bus -l cat:dog --default delete</span>
+<span class="sd">    Changes labels in the dataset.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    A label can be:|n</span>
+<span class="sd">    - renamed (and joined with existing) -|n</span>
+<span class="sd">    |s|swhen specified &#39;--label &lt;old_name&gt;:&lt;new_name&gt;&#39;|n</span>
+<span class="sd">    - deleted - when specified &#39;--label &lt;name&gt;:&#39; or default action is &#39;delete&#39;|n</span>
+<span class="sd">    |s|sand the label is not mentioned in the list. When a label|n</span>
+<span class="sd">    |s|sis deleted, all the associated annotations are removed|n</span>
+<span class="sd">    - kept unchanged - when specified &#39;--label &lt;name&gt;:&lt;name&gt;&#39;|n</span>
+<span class="sd">    |s|sor default action is &#39;keep&#39; and the label is not mentioned in the list|n</span>
+<span class="sd">    Annotations with no label are managed by the default action policy.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Examples:|n</span>
+<span class="sd">    - Remove the &#39;person&#39; label (and corresponding annotations):|n</span>
+<span class="sd">    |s|s%(prog)s -l person: --default keep|n</span>
+<span class="sd">    - Rename &#39;person&#39; to &#39;pedestrian&#39; and &#39;human&#39; to &#39;pedestrian&#39;, join:|n</span>
+<span class="sd">    |s|s%(prog)s -l person:pedestrian -l human:pedestrian --default keep|n</span>
+<span class="sd">    - Rename &#39;person&#39; to &#39;car&#39; and &#39;cat&#39; to &#39;dog&#39;, keep &#39;bus&#39;, remove others:|n</span>
+<span class="sd">    |s|s%(prog)s -l person:car -l bus:bus -l cat:dog --default delete</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="RemapLabels.DefaultAction"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.transforms.RemapLabels.DefaultAction">[docs]</a>    <span class="k">class</span> <span class="nc">DefaultAction</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
@@ -683,18 +684,18 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Changes the order of labels in the dataset from the existing</span>
 <span class="sd">    to the desired one, removes unknown labels and adds new labels.</span>
-<span class="sd">    Updates or removes the corresponding annotations.</span>
-
+<span class="sd">    Updates or removes the corresponding annotations.|n</span>
+<span class="sd">    |n</span>
 <span class="sd">    Labels are matched by names (case dependent). Parent labels are only kept</span>
 <span class="sd">    if they are present in the resulting set of labels. If new labels are</span>
 <span class="sd">    added, and the dataset has mask colors defined, new labels will obtain</span>
-<span class="sd">    generated colors.</span>
-
-<span class="sd">    Useful for merging similar datasets, whose labels need to be aligned.</span>
-
-<span class="sd">    Examples:</span>
-<span class="sd">        - Align the source dataset labels to [person, cat, dog]:</span>
-<span class="sd">            %(prog)s -l person -l cat -l dog</span>
+<span class="sd">    generated colors.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Useful for merging similar datasets, whose labels need to be aligned.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Examples:|n</span>
+<span class="sd">    - Align the source dataset labels to [person, cat, dog]:|n</span>
+<span class="sd">    |s|s%(prog)s -l person -l cat -l dog</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nd">@classmethod</span>

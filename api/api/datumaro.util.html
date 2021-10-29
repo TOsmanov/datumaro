@@ -37,7 +37,8 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup.py</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datum.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datum</span></code> — datum</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a></li>
@@ -58,7 +59,7 @@
 <li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.datumaro_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datumaro</span></code> — Datumaro format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.icdar_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icdar</span></code> — ICDAR format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI raw format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti_raw</span></code> — KITTI raw format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.openvino_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">openvino</span></code> — OpenVino plugin package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sampler</span></code> — Sampler package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.sly_pointcloud_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sly</span></code> — sly pointcloud format package</a></li>
@@ -86,7 +87,7 @@
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://tosmanov.github.io/datumaro/docs/">Back to main documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
 </ul>
 
         </div>
@@ -225,12 +226,16 @@ Input segments are expected to be sorted from background to foreground.</p>
 <dt>Args:</dt><dd><p>segments: 1d list of segment RLEs (in COCO format)
 width: width of the image
 height: height of the image
-iou_threshold: IoU threshold for objects to be counted as intersected
-By default is set to 0 to process any intersected objects
-ratio_tolerance: an IoU “handicap” value for a situation
-when an object is (almost) fully covered by another one and we
-don’t want make a “hole” in the background object
-area_threshold: minimal area of included segments</p>
+iou_threshold: IoU threshold for objects to be counted as intersected</p>
+<blockquote>
+<div><p>By default is set to 0 to process any intersected objects</p>
+</div></blockquote>
+<dl class="simple">
+<dt>ratio_tolerance: an IoU “handicap” value for a situation</dt><dd><p>when an object is (almost) fully covered by another one and we
+don’t want make a “hole” in the background object</p>
+</dd>
+</dl>
+<p>area_threshold: minimal area of included segments</p>
 </dd>
 <dt>Returns:</dt><dd><dl>
 <dt>A list of input segments’ parts (in the same order as input):</dt><dd><dl class="simple">
@@ -251,9 +256,11 @@ mask1, # input segment #1 mask (if source segment is mask)
 <dt class="sig sig-object py" id="datumaro.util.mask_tools.generate_colormap">
 <span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">generate_colormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/mask_tools.html#generate_colormap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.generate_colormap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates colors using PASCAL VOC algorithm.</p>
-<p>If include_background is True, the result will include the item
-“0: (0, 0, 0)”, which is typically used as a background color.
+<dl class="simple">
+<dt>If include_background is True, the result will include the item</dt><dd><p>“0: (0, 0, 0)”, which is typically used as a background color.
 Otherwise, indices will start from 0, but (0, 0, 0) is not included.</p>
+</dd>
+</dl>
 <p>Returns index -&gt; (R, G, B) mapping.</p>
 </dd></dl>
 
@@ -261,11 +268,13 @@ Otherwise, indices will start from 0, but (0, 0, 0) is not included.</p>
 <dt class="sig sig-object py" id="datumaro.util.mask_tools.mask_to_polygons">
 <span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">mask_to_polygons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/mask_tools.html#mask_to_polygons"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.mask_to_polygons" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert an instance mask to polygons</p>
-<dl class="simple">
+<dl>
 <dt>Args:</dt><dd><p>mask: a 2d binary mask
-tolerance: maximum distance from original points of
-a polygon to the approximated ones
-area_threshold: minimal area of generated polygons</p>
+tolerance: maximum distance from original points of</p>
+<blockquote>
+<div><p>a polygon to the approximated ones</p>
+</div></blockquote>
+<p>area_threshold: minimal area of generated polygons</p>
 </dd>
 <dt>Returns:</dt><dd><p>A list of polygons like [[x1,y1, x2,y2 …], […]]</p>
 </dd>

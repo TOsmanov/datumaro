@@ -38,7 +38,8 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup.py</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datum.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datum</span></code> — datum</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a></li>
@@ -59,7 +60,7 @@
 <li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.datumaro_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datumaro</span></code> — Datumaro format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.icdar_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icdar</span></code> — ICDAR format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI raw format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti_raw</span></code> — KITTI raw format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.openvino_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">openvino</span></code> — OpenVino plugin package</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sampler</span></code> — Sampler package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
@@ -76,7 +77,7 @@
 <li class="toctree-l1"><a class="reference internal" href="datumaro.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">util</span></code> — Utilities package</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://tosmanov.github.io/datumaro/docs/">Back to main documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
 </ul>
 
         </div>
@@ -115,23 +116,25 @@
 <dt class="sig sig-object py" id="datumaro.plugins.sampler.sampler.Sampler">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.sampler.sampler.</span></span><span class="sig-name descname"><span class="pre">Sampler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unsampled_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/sampler/sampler.html#Sampler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.sampler.sampler.Sampler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.Transform" title="datumaro.components.extractor.Transform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Transform</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></p>
-<p>Sampler that analyzes model inference results on the dataset
-and picks the best sample for training.</p>
-<p>Notes:
+<p>Sampler that analyzes model inference results on the dataset <a href="#id1"><span class="problematic" id="id2">|</span></a>n
+and picks the best sample for training.|n
+<a href="#id3"><span class="problematic" id="id4">|</span></a>n
+Notes:<a href="#id5"><span class="problematic" id="id6">|</span></a>n
 - Each image’s inference result must contain the probability for
-all classes.
+all classes.|n
 - Requesting a sample larger than the number of all images will
-return all images.</p>
-<dl>
-<dt>Example: select the most relevant data subset of 20 images</dt><dd><p>based on model certainty, put the result into ‘sample’ subset
-and put all the rest into ‘unsampled’ subset, use ‘train’ subset
-as input.
-%(prog)s </p>
-<blockquote>
-<div><p>–algorithm entropy –subset_name train –sample_name sample –unsampled_name unsampled –sampling_method topk -k 20</p>
-</div></blockquote>
-</dd>
-</dl>
+return all images.|n
+<a href="#id7"><span class="problematic" id="id8">|</span></a>n
+Example: select the most relevant data subset of 20 images <a href="#id9"><span class="problematic" id="id10">|</span></a>n
+<a href="#id11"><span class="problematic" id="id12">|</span></a>s|sbased on model certainty, put the result into ‘sample’ subset
+<a href="#id13"><span class="problematic" id="id14">|</span></a>s|sand put all the rest into ‘unsampled’ subset, use ‘train’ subset <a href="#id15"><span class="problematic" id="id16">|</span></a>n
+<a href="#id17"><span class="problematic" id="id18">|</span></a>s|sas input. <a href="#id19"><span class="problematic" id="id20">|</span></a>n
+<a href="#id21"><span class="problematic" id="id22">|</span></a>s|s%(prog)s <a href="#id23"><span class="problematic" id="id24">|</span></a>n
+<a href="#id25"><span class="problematic" id="id26">|</span></a>s|s|s|s–algorithm entropy <a href="#id27"><span class="problematic" id="id28">|</span></a>n
+<a href="#id29"><span class="problematic" id="id30">|</span></a>s|s|s|s–subset_name train <a href="#id31"><span class="problematic" id="id32">|</span></a>n
+<a href="#id33"><span class="problematic" id="id34">|</span></a>s|s|s|s–sample_name sample <a href="#id35"><span class="problematic" id="id36">|</span></a>n
+<a href="#id37"><span class="problematic" id="id38">|</span></a>s|s|s|s–unsampled_name unsampled <a href="#id39"><span class="problematic" id="id40">|</span></a>n
+<a href="#id41"><span class="problematic" id="id42">|</span></a>s|s|s|s–sampling_method topk -k 20</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.plugins.sampler.sampler.Sampler.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unsampled_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/sampler/sampler.html#Sampler.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.sampler.sampler.Sampler.__init__" title="Permalink to this definition">¶</a></dt>

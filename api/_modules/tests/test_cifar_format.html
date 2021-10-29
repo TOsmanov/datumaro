@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tests.test_cifar_format &mdash; Datumaro API documentation 0.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../index.html" class="icon"> Datumaro API documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datum.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datum</span></code> — datum</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.commands.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.commands</span></code> — Commands package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.contexts.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.contexts</span></code> — Contexts package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.contexts.project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.project</span></code> — Project package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.util</span></code> — Util package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.components.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">components</span></code> — Components package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.components.algorithms.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algorithms</span></code> — Algorithms package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">plugins</span></code> — Plugins package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.accuracy_checker_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">accuracy</span></code> — Accuracy checker plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.coco_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coco</span></code> — COCO format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.cvat_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cvat</span></code> — CVAT format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.datumaro_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datumaro</span></code> — Datumaro format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.icdar_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icdar</span></code> — ICDAR format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.kitti_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti_raw</span></code> — KITTI raw format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.openvino_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">openvino</span></code> — OpenVino plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sampler</span></code> — Sampler package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.sly_pointcloud_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sly</span></code> — sly pointcloud format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.tf_detection_api_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tf</span></code> — tf detection API format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.voc_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">voc</span></code> — VOC format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.yolo_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">yolo</span></code> — YOLO format package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">util</span></code> — Utilities package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Datumaro API documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>tests.test_cifar_format</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for tests.test_cifar_format</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">os.path</span> <span class="k">as</span> <span class="nn">osp</span>
+<span class="kn">import</span> <span class="nn">pickle</span>  <span class="c1"># nosec - disable B403:import_pickle check</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">datumaro.components.annotation</span> <span class="kn">import</span> <span class="n">Label</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.extractor</span> <span class="kn">import</span> <span class="n">DatasetItem</span>
+<span class="kn">from</span> <span class="nn">datumaro.plugins.cifar_format</span> <span class="kn">import</span> <span class="n">CifarConverter</span><span class="p">,</span> <span class="n">CifarImporter</span>
+<span class="kn">from</span> <span class="nn">datumaro.util.image</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">datumaro.util.test_utils</span> <span class="kn">import</span> <span class="n">TestDir</span><span class="p">,</span> <span class="n">compare_datasets</span>
+
+<span class="kn">from</span> <span class="nn">.requirements</span> <span class="kn">import</span> <span class="n">Requirements</span><span class="p">,</span> <span class="n">mark_requirement</span>
+
+
+<div class="viewcode-block" id="CifarFormatTest"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarFormatTest">[docs]</a><span class="k">class</span> <span class="nc">CifarFormatTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+<div class="viewcode-block" id="CifarFormatTest.test_can_save_and_load"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarFormatTest.test_can_save_and_load">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_save_and_load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">source_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_2&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span>
+            <span class="p">),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_3&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+            <span class="p">),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_4&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+            <span class="p">)</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;label_0&#39;</span><span class="p">,</span> <span class="s1">&#39;label_1&#39;</span><span class="p">])</span>
+
+        <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+            <span class="n">CifarConverter</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">source_dataset</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">parsed_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;cifar&#39;</span><span class="p">)</span>
+
+            <span class="n">compare_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_dataset</span><span class="p">,</span> <span class="n">parsed_dataset</span><span class="p">,</span>
+                <span class="n">require_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CifarFormatTest.test_can_save_and_load_without_saving_images"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarFormatTest.test_can_save_and_load_without_saving_images">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_save_and_load_without_saving_images</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">source_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train_1&#39;</span><span class="p">,</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span>
+            <span class="p">),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train_first&#39;</span><span class="p">,</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+            <span class="p">),</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span>
+
+        <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+            <span class="n">CifarConverter</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">source_dataset</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">parsed_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;cifar&#39;</span><span class="p">)</span>
+
+            <span class="n">compare_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_dataset</span><span class="p">,</span> <span class="n">parsed_dataset</span><span class="p">,</span>
+                <span class="n">require_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CifarFormatTest.test_can_save_and_load_with_different_image_size"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarFormatTest.test_can_save_and_load_with_different_image_size">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_save_and_load_with_different_image_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">source_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_1&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span>
+            <span class="p">),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_2&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+            <span class="p">),</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">])</span>
+
+        <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+            <span class="n">CifarConverter</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">source_dataset</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">parsed_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;cifar&#39;</span><span class="p">)</span>
+
+            <span class="n">compare_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_dataset</span><span class="p">,</span> <span class="n">parsed_dataset</span><span class="p">,</span>
+                <span class="n">require_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CifarFormatTest.test_can_save_dataset_with_cyrillic_and_spaces_in_filename"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarFormatTest.test_can_save_dataset_with_cyrillic_and_spaces_in_filename">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_save_dataset_with_cyrillic_and_spaces_in_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">source_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;кириллица с пробелом&quot;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span>
+            <span class="p">),</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;label_0&#39;</span><span class="p">])</span>
+
+        <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+            <span class="n">CifarConverter</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">source_dataset</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">parsed_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;cifar&#39;</span><span class="p">)</span>
+
+            <span class="n">compare_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_dataset</span><span class="p">,</span> <span class="n">parsed_dataset</span><span class="p">,</span>
+                <span class="n">require_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CifarFormatTest.test_can_save_and_load_image_with_arbitrary_extension"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarFormatTest.test_can_save_and_load_image_with_arbitrary_extension">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_save_and_load_image_with_arbitrary_extension</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;q/1&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">Image</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;q/1.JPEG&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;a/b/c/2&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">Image</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;a/b/c/2.bmp&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))),</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[])</span>
+
+        <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+            <span class="n">CifarConverter</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">parsed_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;cifar&#39;</span><span class="p">)</span>
+
+            <span class="n">compare_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">parsed_dataset</span><span class="p">,</span>
+                <span class="n">require_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CifarFormatTest.test_can_save_and_load_empty_image"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarFormatTest.test_can_save_and_load_empty_image">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_save_and_load_empty_image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">0</span><span class="p">)]),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;label_0&#39;</span><span class="p">])</span>
+
+        <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+            <span class="n">CifarConverter</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">parsed_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;cifar&#39;</span><span class="p">)</span>
+
+            <span class="n">compare_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">parsed_dataset</span><span class="p">,</span>
+                <span class="n">require_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CifarFormatTest.test_inplace_save_writes_only_updated_data"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarFormatTest.test_inplace_save_writes_only_updated_data">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_inplace_save_writes_only_updated_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span> <span class="n">Label</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">]),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span> <span class="n">Label</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">]),</span>
+
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span> <span class="n">Label</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">]),</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">])</span>
+
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span> <span class="n">Label</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">]),</span>
+
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span> <span class="n">Label</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">]),</span>
+
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span> <span class="n">Label</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">]),</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">])</span>
+
+        <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">path</span><span class="p">:</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;cifar&#39;</span><span class="p">,</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="n">dataset</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">DatasetItem</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span> <span class="n">Label</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">]))</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">save_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;batches.meta&#39;</span><span class="p">},</span>
+                <span class="nb">set</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)))</span>
+            <span class="n">compare_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expected</span><span class="p">,</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;cifar&#39;</span><span class="p">),</span>
+                <span class="n">require_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CifarFormatTest.test_can_save_and_load_cifar100"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarFormatTest.test_can_save_and_load_cifar100">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_save_and_load_cifar100</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">source_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_2&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span>
+            <span class="p">),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_3&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+            <span class="p">),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_4&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+            <span class="p">)</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">[</span><span class="s1">&#39;class_0&#39;</span><span class="p">,</span> <span class="s1">&#39;superclass_0&#39;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s1">&#39;class_1&#39;</span><span class="p">,</span> <span class="s1">&#39;superclass_0&#39;</span><span class="p">]</span>
+        <span class="p">])</span>
+
+        <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+            <span class="n">CifarConverter</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">source_dataset</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">parsed_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;cifar&#39;</span><span class="p">)</span>
+
+            <span class="n">compare_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_dataset</span><span class="p">,</span> <span class="n">parsed_dataset</span><span class="p">,</span>
+                <span class="n">require_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CifarFormatTest.test_can_save_and_load_cifar100_without_saving_images"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarFormatTest.test_can_save_and_load_cifar100_without_saving_images">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_save_and_load_cifar100_without_saving_images</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">source_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train_1&#39;</span><span class="p">,</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span>
+            <span class="p">),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train_1&#39;</span><span class="p">,</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+            <span class="p">),</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">[</span><span class="s1">&#39;class_0&#39;</span><span class="p">,</span> <span class="s1">&#39;superclass_0&#39;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s1">&#39;class_1&#39;</span><span class="p">,</span> <span class="s1">&#39;superclass_0&#39;</span><span class="p">]</span>
+        <span class="p">])</span>
+
+        <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+            <span class="n">CifarConverter</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">source_dataset</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">parsed_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;cifar&#39;</span><span class="p">)</span>
+
+            <span class="n">compare_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_dataset</span><span class="p">,</span> <span class="n">parsed_dataset</span><span class="p">,</span>
+                <span class="n">require_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CifarFormatTest.test_can_catch_pickle_exception"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarFormatTest.test_can_catch_pickle_exception">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_catch_pickle_exception</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+            <span class="n">anno_file</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">anno_file</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span> <span class="n">file</span><span class="p">)</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">UnpicklingError</span><span class="p">,</span> <span class="s2">&quot;Global&quot;</span><span class="p">):</span>
+                <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;cifar&#39;</span><span class="p">)</span></div></div>
+
+
+<span class="n">DUMMY_10_DATASET_DIR</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;assets&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cifar10_dataset&#39;</span><span class="p">)</span>
+
+<span class="n">DUMMY_100_DATASET_DIR</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;assets&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cifar100_dataset&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CifarImporterTest"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarImporterTest">[docs]</a><span class="k">class</span> <span class="nc">CifarImporterTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+<div class="viewcode-block" id="CifarImporterTest.test_can_import_10"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarImporterTest.test_can_import_10">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_import_10</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">expected_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_1&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;data_batch_1&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span>
+            <span class="p">),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_2&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test_batch&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+            <span class="p">),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_3&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test_batch&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+            <span class="p">),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_4&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test_batch&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
+            <span class="p">),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_5&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test_batch&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]],</span>
+                                <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]]),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+            <span class="p">)</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;airplane&#39;</span><span class="p">,</span> <span class="s1">&#39;automobile&#39;</span><span class="p">,</span> <span class="s1">&#39;bird&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">])</span>
+
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="n">DUMMY_10_DATASET_DIR</span><span class="p">,</span> <span class="s1">&#39;cifar&#39;</span><span class="p">)</span>
+
+        <span class="n">compare_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expected_dataset</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">require_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CifarImporterTest.test_can_detect_10"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarImporterTest.test_can_detect_10">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_detect_10</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">CifarImporter</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">DUMMY_10_DATASET_DIR</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="CifarImporterTest.test_can_detect_10_subset"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarImporterTest.test_can_detect_10_subset">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_detect_10_subset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">CifarImporter</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span>
+            <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DUMMY_10_DATASET_DIR</span><span class="p">,</span> <span class="s1">&#39;data_batch_1&#39;</span><span class="p">)))</span></div>
+
+<div class="viewcode-block" id="CifarImporterTest.test_can_import_100"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarImporterTest.test_can_import_100">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_import_100</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Unless simple dataset merge can&#39;t overlap labels and add parent</span>
+        <span class="c1"># information, the datasets must contain all the possible labels.</span>
+        <span class="c1"># This should be normal on practice.</span>
+        <span class="n">expected_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_1&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span>
+            <span class="p">),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_2&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+            <span class="p">),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_3&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
+            <span class="p">),</span>
+
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_1&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span>
+            <span class="p">),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_2&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+            <span class="p">),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image_3&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]],</span>
+                                <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]]),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
+            <span class="p">)</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">[</span><span class="s1">&#39;airplane&#39;</span><span class="p">,</span> <span class="s1">&#39;air_object&#39;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s1">&#39;automobile&#39;</span><span class="p">,</span> <span class="s1">&#39;ground_object&#39;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s1">&#39;bird&#39;</span><span class="p">,</span> <span class="s1">&#39;air_object&#39;</span><span class="p">],</span>
+        <span class="p">])</span>
+
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="n">DUMMY_100_DATASET_DIR</span><span class="p">,</span> <span class="s1">&#39;cifar&#39;</span><span class="p">)</span>
+
+        <span class="n">compare_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expected_dataset</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">require_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CifarImporterTest.test_can_detect_100"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarImporterTest.test_can_detect_100">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_detect_100</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">CifarImporter</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">DUMMY_100_DATASET_DIR</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="CifarImporterTest.test_can_detect_100_subset"><a class="viewcode-back" href="../../api/tests.html#tests.test_cifar_format.CifarImporterTest.test_can_detect_100_subset">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_detect_100_subset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">CifarImporter</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span>
+            <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DUMMY_100_DATASET_DIR</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">)))</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tests.cli.test_voc_format &mdash; Datumaro API documentation 0.2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../../index.html" class="icon"> Datumaro API documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datum.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datum</span></code> — datum</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.cli.commands.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.commands</span></code> — Commands package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.cli.contexts.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.contexts</span></code> — Contexts package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.cli.contexts.project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.project</span></code> — Project package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.cli.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.util</span></code> — Util package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.components.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">components</span></code> — Components package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.components.algorithms.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algorithms</span></code> — Algorithms package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">plugins</span></code> — Plugins package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.accuracy_checker_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">accuracy</span></code> — Accuracy checker plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.coco_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coco</span></code> — COCO format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.cvat_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cvat</span></code> — CVAT format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.datumaro_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datumaro</span></code> — Datumaro format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.icdar_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icdar</span></code> — ICDAR format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.kitti_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti_raw</span></code> — KITTI raw format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.openvino_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">openvino</span></code> — OpenVino plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sampler</span></code> — Sampler package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.sly_pointcloud_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sly</span></code> — sly pointcloud format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.tf_detection_api_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tf</span></code> — tf detection API format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.voc_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">voc</span></code> — VOC format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.yolo_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">yolo</span></code> — YOLO format package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">util</span></code> — Utilities package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Datumaro API documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>tests.cli.test_voc_format</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for tests.cli.test_voc_format</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span>
+<span class="kn">import</span> <span class="nn">os.path</span> <span class="k">as</span> <span class="nn">osp</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">datumaro.components.annotation</span> <span class="kn">import</span> <span class="n">Bbox</span><span class="p">,</span> <span class="n">Label</span><span class="p">,</span> <span class="n">Mask</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">DatasetItem</span>
+<span class="kn">from</span> <span class="nn">datumaro.util.test_utils</span> <span class="kn">import</span> <span class="n">TestDir</span><span class="p">,</span> <span class="n">compare_datasets</span>
+<span class="kn">from</span> <span class="nn">datumaro.util.test_utils</span> <span class="kn">import</span> <span class="n">run_datum</span> <span class="k">as</span> <span class="n">run</span>
+<span class="kn">import</span> <span class="nn">datumaro.plugins.voc_format.format</span> <span class="k">as</span> <span class="nn">VOC</span>
+
+<span class="kn">from</span> <span class="nn">..requirements</span> <span class="kn">import</span> <span class="n">Requirements</span><span class="p">,</span> <span class="n">mark_requirement</span>
+
+<span class="n">DUMMY_DATASETS_DIR</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="vm">__file__</span><span class="p">[:</span><span class="vm">__file__</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;tests&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))],</span>
+    <span class="s1">&#39;tests&#39;</span><span class="p">,</span> <span class="s1">&#39;assets&#39;</span><span class="p">,</span> <span class="s1">&#39;voc_dataset&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="VocIntegrationScenarios"><a class="viewcode-back" href="../../../api/tests.cli.html#tests.cli.test_voc_format.VocIntegrationScenarios">[docs]</a><span class="k">class</span> <span class="nc">VocIntegrationScenarios</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_test_can_save_and_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_path</span><span class="p">,</span> <span class="n">source_path</span><span class="p">,</span> <span class="n">expected_dataset</span><span class="p">,</span>
+            <span class="n">dataset_format</span><span class="p">,</span> <span class="n">result_path</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">label_map</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">project_path</span><span class="p">)</span>
+
+        <span class="n">extra_args</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">result_path</span><span class="p">:</span>
+            <span class="n">extra_args</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="n">result_path</span><span class="p">]</span>
+        <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;import&#39;</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">project_path</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="n">dataset_format</span><span class="p">,</span>
+            <span class="o">*</span><span class="n">extra_args</span><span class="p">,</span> <span class="n">source_path</span><span class="p">)</span>
+
+        <span class="n">result_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">project_path</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">)</span>
+        <span class="n">extra_args</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--save-images&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">label_map</span><span class="p">:</span>
+            <span class="n">extra_args</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;--label-map&#39;</span><span class="p">,</span> <span class="n">label_map</span><span class="p">]</span>
+        <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;export&#39;</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="n">dataset_format</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">project_path</span><span class="p">,</span>
+            <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">result_dir</span><span class="p">,</span> <span class="o">*</span><span class="n">extra_args</span><span class="p">)</span>
+
+        <span class="n">result_path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result_dir</span><span class="p">,</span> <span class="n">result_path</span><span class="p">)</span>
+        <span class="n">parsed_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="n">result_path</span><span class="p">,</span> <span class="n">dataset_format</span><span class="p">)</span>
+        <span class="n">compare_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expected_dataset</span><span class="p">,</span> <span class="n">parsed_dataset</span><span class="p">,</span>
+            <span class="n">require_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="VocIntegrationScenarios.test_preparing_dataset_for_train_model"><a class="viewcode-back" href="../../../api/tests.cli.html#tests.cli.test_voc_format.VocIntegrationScenarios.test_preparing_dataset_for_train_model">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_preparing_dataset_for_train_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &lt;b&gt;Description:&lt;/b&gt;</span>
+<span class="sd">        Testing a particular example of working with VOC dataset.</span>
+
+<span class="sd">        &lt;b&gt;Expected results:&lt;/b&gt;</span>
+<span class="sd">        A VOC dataset that matches the expected result.</span>
+
+<span class="sd">        &lt;b&gt;Steps:&lt;/b&gt;</span>
+<span class="sd">        1. Get path to the source dataset from assets.</span>
+<span class="sd">        2. Create a datumaro project and add source dataset to it.</span>
+<span class="sd">        3. Leave only non-occluded annotations with `filter` command.</span>
+<span class="sd">        4. Split the dataset into subsets with `transform` command.</span>
+<span class="sd">        5. Export the project to a VOC dataset with `export` command.</span>
+<span class="sd">        6. Verify that the resulting dataset is equal to the expected result.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">expected_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">Bbox</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span>
+                        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span>
+                            <span class="s1">&#39;truncated&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;occluded&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;difficult&#39;</span><span class="p">:</span> <span class="kc">False</span>
+                        <span class="p">},</span>
+                        <span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="mi">1</span>
+                    <span class="p">)</span>
+                <span class="p">]</span>
+            <span class="p">),</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">Bbox</span><span class="p">(</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span>
+                        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span>
+                            <span class="s1">&#39;truncated&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;occluded&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;difficult&#39;</span><span class="p">:</span> <span class="kc">False</span>
+                        <span class="p">},</span>
+                        <span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="mi">1</span>
+                    <span class="p">)</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="n">VOC</span><span class="o">.</span><span class="n">make_voc_categories</span><span class="p">())</span>
+
+        <span class="n">dataset_path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DUMMY_DATASETS_DIR</span><span class="p">,</span> <span class="s1">&#39;voc_dataset2&#39;</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+            <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">)</span>
+            <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;import&#39;</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;voc&#39;</span><span class="p">,</span> <span class="n">dataset_path</span><span class="p">)</span>
+
+            <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;filter&#39;</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;i+a&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;-e&#39;</span><span class="p">,</span> <span class="s2">&quot;/item/annotation[occluded=&#39;False&#39;]&quot;</span><span class="p">)</span>
+
+            <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;transform&#39;</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span>
+                <span class="s1">&#39;-t&#39;</span><span class="p">,</span> <span class="s1">&#39;random_split&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;test:.5&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;train:.5&#39;</span><span class="p">,</span> <span class="s1">&#39;--seed&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span>
+
+            <span class="n">export_path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;dataset&#39;</span><span class="p">)</span>
+            <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;export&#39;</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;voc&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">export_path</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--label-map&#39;</span><span class="p">,</span> <span class="s1">&#39;voc&#39;</span><span class="p">)</span>
+
+            <span class="n">parsed_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="n">export_path</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;voc&#39;</span><span class="p">)</span>
+            <span class="n">compare_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expected_dataset</span><span class="p">,</span> <span class="n">parsed_dataset</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VocIntegrationScenarios.test_export_to_voc_format"><a class="viewcode-back" href="../../../api/tests.cli.html#tests.cli.test_voc_format.VocIntegrationScenarios.test_export_to_voc_format">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_export_to_voc_format</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">label_map</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">((</span><span class="s1">&#39;label_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[]])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+        <span class="n">label_map</span><span class="p">[</span><span class="s1">&#39;background&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[]]</span>
+        <span class="n">label_map</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="s1">&#39;background&#39;</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">expected_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">Bbox</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span>
+                        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span>
+                            <span class="s1">&#39;difficult&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;truncated&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;occluded&#39;</span><span class="p">:</span> <span class="kc">False</span>
+                        <span class="p">},</span>
+                        <span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="mi">1</span>
+                    <span class="p">),</span>
+                    <span class="n">Bbox</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span>
+                        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span>
+                            <span class="s1">&#39;difficult&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;truncated&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;occluded&#39;</span><span class="p">:</span> <span class="kc">False</span>
+                        <span class="p">},</span>
+                        <span class="nb">id</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="mi">2</span>
+                    <span class="p">)</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="n">VOC</span><span class="o">.</span><span class="n">make_voc_categories</span><span class="p">(</span><span class="n">label_map</span><span class="p">))</span>
+
+        <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+            <span class="n">yolo_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="vm">__file__</span><span class="p">[:</span><span class="vm">__file__</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;tests&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))],</span>
+                <span class="s1">&#39;tests&#39;</span><span class="p">,</span> <span class="s1">&#39;assets&#39;</span><span class="p">,</span> <span class="s1">&#39;yolo_dataset&#39;</span><span class="p">)</span>
+
+            <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">)</span>
+            <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;import&#39;</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;yolo&#39;</span><span class="p">,</span> <span class="n">yolo_dir</span><span class="p">)</span>
+
+            <span class="n">voc_export</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;voc_export&#39;</span><span class="p">)</span>
+            <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;export&#39;</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;voc&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">voc_export</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--save-images&#39;</span><span class="p">)</span>
+
+            <span class="n">parsed_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="n">voc_export</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;voc&#39;</span><span class="p">)</span>
+            <span class="n">compare_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expected_dataset</span><span class="p">,</span> <span class="n">parsed_dataset</span><span class="p">,</span>
+                <span class="n">require_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VocIntegrationScenarios.test_convert_to_voc_format"><a class="viewcode-back" href="../../../api/tests.cli.html#tests.cli.test_voc_format.VocIntegrationScenarios.test_convert_to_voc_format">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_283</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_convert_to_voc_format</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &lt;b&gt;Description:&lt;/b&gt;</span>
+<span class="sd">        Ensure that the dataset can be converted to VOC format with</span>
+<span class="sd">        command `datum convert`.</span>
+
+<span class="sd">        &lt;b&gt;Expected results:&lt;/b&gt;</span>
+<span class="sd">        A VOC dataset that matches the expected dataset.</span>
+
+<span class="sd">        &lt;b&gt;Steps:&lt;/b&gt;</span>
+<span class="sd">        1. Get path to the source dataset from assets.</span>
+<span class="sd">        2. Convert source dataset to VOC format, using the `convert` command.</span>
+<span class="sd">        3. Verify that resulting dataset is equal to the expected dataset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">label_map</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">((</span><span class="s1">&#39;label_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[]])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+        <span class="n">label_map</span><span class="p">[</span><span class="s1">&#39;background&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[]]</span>
+        <span class="n">label_map</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="s1">&#39;background&#39;</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">expected_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">Bbox</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span>
+                        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span>
+                            <span class="s1">&#39;difficult&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;truncated&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;occluded&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;visibility&#39;</span><span class="p">:</span> <span class="s1">&#39;1.0&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;ignored&#39;</span><span class="p">:</span> <span class="s1">&#39;False&#39;</span>
+                        <span class="p">},</span>
+                        <span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="mi">1</span>
+                    <span class="p">)</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="n">VOC</span><span class="o">.</span><span class="n">make_voc_categories</span><span class="p">(</span><span class="n">label_map</span><span class="p">))</span>
+
+        <span class="n">mot_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="vm">__file__</span><span class="p">[:</span><span class="vm">__file__</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;tests&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))],</span>
+            <span class="s1">&#39;tests&#39;</span><span class="p">,</span> <span class="s1">&#39;assets&#39;</span><span class="p">,</span> <span class="s1">&#39;mot_dataset&#39;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+            <span class="n">voc_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;voc&#39;</span><span class="p">)</span>
+            <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;convert&#39;</span><span class="p">,</span> <span class="s1">&#39;-if&#39;</span><span class="p">,</span> <span class="s1">&#39;mot_seq&#39;</span><span class="p">,</span> <span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="n">mot_dir</span><span class="p">,</span>
+                <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;voc&#39;</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">voc_dir</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--save-images&#39;</span><span class="p">)</span>
+
+            <span class="n">target_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="n">voc_dir</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;voc&#39;</span><span class="p">)</span>
+            <span class="n">compare_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expected_dataset</span><span class="p">,</span> <span class="n">target_dataset</span><span class="p">,</span>
+                <span class="n">require_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VocIntegrationScenarios.test_convert_from_voc_format"><a class="viewcode-back" href="../../../api/tests.cli.html#tests.cli.test_voc_format.VocIntegrationScenarios.test_convert_from_voc_format">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_283</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_convert_from_voc_format</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &lt;b&gt;Description:&lt;/b&gt;</span>
+<span class="sd">        Ensure that the dataset can be converted from VOC format with</span>
+<span class="sd">        command `datum convert`.</span>
+
+<span class="sd">        &lt;b&gt;Expected results:&lt;/b&gt;</span>
+<span class="sd">        A ImageNet dataset that matches the expected dataset.</span>
+
+<span class="sd">        &lt;b&gt;Steps:&lt;/b&gt;</span>
+<span class="sd">        1. Get path to the source dataset from assets.</span>
+<span class="sd">        2. Convert source dataset to LabelMe format, using the `convert` command.</span>
+<span class="sd">        3. Verify that resulting dataset is equal to the expected dataset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">labels</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">l</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">VOC</span><span class="o">.</span><span class="n">VocLabel</span> <span class="k">if</span> <span class="n">l</span><span class="o">.</span><span class="n">value</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">expected_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">label</span><span class="p">,</span> <span class="s1">&#39;2007_000001&#39;</span><span class="p">]),</span>
+                <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+            <span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;no_label/2007_000002&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">,</span>
+                   <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+            <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="n">labels</span>
+        <span class="p">)</span>
+
+        <span class="n">voc_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DUMMY_DATASETS_DIR</span><span class="p">,</span> <span class="s1">&#39;voc_dataset1&#39;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+            <span class="n">imagenet_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;imagenet&#39;</span><span class="p">)</span>
+            <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;convert&#39;</span><span class="p">,</span> <span class="s1">&#39;-if&#39;</span><span class="p">,</span> <span class="s1">&#39;voc&#39;</span><span class="p">,</span> <span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="n">voc_dir</span><span class="p">,</span>
+                <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;imagenet&#39;</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">imagenet_dir</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--save-image&#39;</span><span class="p">)</span>
+
+            <span class="n">target_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="n">imagenet_dir</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;imagenet&#39;</span><span class="p">)</span>
+            <span class="n">compare_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expected_dataset</span><span class="p">,</span> <span class="n">target_dataset</span><span class="p">,</span>
+                <span class="n">require_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VocIntegrationScenarios.test_can_save_and_load_voc_dataset"><a class="viewcode-back" href="../../../api/tests.cli.html#tests.cli.test_voc_format.VocIntegrationScenarios.test_can_save_and_load_voc_dataset">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_save_and_load_voc_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">source_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;2007_000001&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span>
+                    <span class="n">Bbox</span><span class="p">(</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span>
+                            <span class="s1">&#39;difficult&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;truncated&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;occluded&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="o">**</span><span class="p">{</span>
+                                <span class="n">a</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">value</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span>
+                                <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">VOC</span><span class="o">.</span><span class="n">VocAction</span>
+                            <span class="p">}</span>
+                        <span class="p">},</span>
+                    <span class="p">),</span>
+                    <span class="n">Bbox</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span>
+                            <span class="s1">&#39;difficult&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;truncated&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                            <span class="s1">&#39;occluded&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;pose&#39;</span><span class="p">:</span> <span class="s1">&#39;Unspecified&#39;</span>
+                        <span class="p">}</span>
+                    <span class="p">),</span>
+                    <span class="n">Bbox</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                    <span class="n">Mask</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]),</span> <span class="n">label</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                <span class="p">]),</span>
+
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;2007_000002&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+               <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="n">VOC</span><span class="o">.</span><span class="n">make_voc_categories</span><span class="p">())</span>
+
+        <span class="n">voc_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DUMMY_DATASETS_DIR</span><span class="p">,</span> <span class="s1">&#39;voc_dataset1&#39;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_test_can_save_and_load</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="n">voc_dir</span><span class="p">,</span> <span class="n">source_dataset</span><span class="p">,</span>
+                <span class="s1">&#39;voc&#39;</span><span class="p">,</span> <span class="n">label_map</span><span class="o">=</span><span class="s1">&#39;voc&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VocIntegrationScenarios.test_can_save_and_load_voc_layout_dataset"><a class="viewcode-back" href="../../../api/tests.cli.html#tests.cli.test_voc_format.VocIntegrationScenarios.test_can_save_and_load_voc_layout_dataset">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_save_and_load_voc_layout_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">expected_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;2007_000001&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">Bbox</span><span class="p">(</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span>
+                            <span class="s1">&#39;difficult&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;truncated&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;occluded&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="o">**</span><span class="p">{</span>
+                                <span class="n">a</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">value</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span>
+                                <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">VOC</span><span class="o">.</span><span class="n">VocAction</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">),</span>
+                    <span class="n">Bbox</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                <span class="p">]),</span>
+
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;2007_000002&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">))),</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="n">VOC</span><span class="o">.</span><span class="n">make_voc_categories</span><span class="p">())</span>
+
+        <span class="n">dataset_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DUMMY_DATASETS_DIR</span><span class="p">,</span> <span class="s1">&#39;voc_dataset1&#39;</span><span class="p">)</span>
+        <span class="n">rpath</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;ImageSets&#39;</span><span class="p">,</span> <span class="s1">&#39;Layout&#39;</span><span class="p">,</span> <span class="s1">&#39;train.txt&#39;</span><span class="p">)</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s1">&#39;voc_layout&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;voc_layout&#39;</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">rpath</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;voc&#39;</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">rpath</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="nb">format</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">matrix</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">subset</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">subset</span><span class="p">:</span>
+                    <span class="n">expected</span> <span class="o">=</span> <span class="n">expected_dataset</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">expected</span> <span class="o">=</span> <span class="n">expected_dataset</span>
+
+                <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_test_can_save_and_load</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="n">dataset_dir</span><span class="p">,</span>
+                        <span class="n">expected</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">result_path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">label_map</span><span class="o">=</span><span class="s1">&#39;voc&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VocIntegrationScenarios.test_can_save_and_load_voc_classification_dataset"><a class="viewcode-back" href="../../../api/tests.cli.html#tests.cli.test_voc_format.VocIntegrationScenarios.test_can_save_and_load_voc_classification_dataset">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_save_and_load_voc_classification_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">expected_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;2007_000001&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">Label</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]),</span>
+
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;2007_000002&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">))),</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="n">VOC</span><span class="o">.</span><span class="n">make_voc_categories</span><span class="p">())</span>
+
+        <span class="n">dataset_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DUMMY_DATASETS_DIR</span><span class="p">,</span> <span class="s1">&#39;voc_dataset1&#39;</span><span class="p">)</span>
+        <span class="n">rpath</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;ImageSets&#39;</span><span class="p">,</span> <span class="s1">&#39;Main&#39;</span><span class="p">,</span> <span class="s1">&#39;train.txt&#39;</span><span class="p">)</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s1">&#39;voc_classification&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;voc_classification&#39;</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">rpath</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="nb">format</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">matrix</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">subset</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">subset</span><span class="p">:</span>
+                    <span class="n">expected</span> <span class="o">=</span> <span class="n">expected_dataset</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">expected</span> <span class="o">=</span> <span class="n">expected_dataset</span>
+
+                <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_test_can_save_and_load</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="n">dataset_dir</span><span class="p">,</span>
+                        <span class="n">expected</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">result_path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">label_map</span><span class="o">=</span><span class="s1">&#39;voc&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VocIntegrationScenarios.test_can_save_and_load_voc_detection_dataset"><a class="viewcode-back" href="../../../api/tests.cli.html#tests.cli.test_voc_format.VocIntegrationScenarios.test_can_save_and_load_voc_detection_dataset">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_save_and_load_voc_detection_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">expected_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;2007_000001&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">Bbox</span><span class="p">(</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span>
+                            <span class="s1">&#39;difficult&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;truncated&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;occluded&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="o">**</span><span class="p">{</span>
+                                <span class="n">a</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">value</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span>
+                                <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">VOC</span><span class="o">.</span><span class="n">VocAction</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">),</span>
+                    <span class="n">Bbox</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span>
+                            <span class="s1">&#39;difficult&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;truncated&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                            <span class="s1">&#39;occluded&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;pose&#39;</span><span class="p">:</span> <span class="s1">&#39;Unspecified&#39;</span>
+                        <span class="p">}</span>
+                    <span class="p">)</span>
+                <span class="p">]),</span>
+
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;2007_000002&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">))),</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="n">VOC</span><span class="o">.</span><span class="n">make_voc_categories</span><span class="p">())</span>
+
+        <span class="n">dataset_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DUMMY_DATASETS_DIR</span><span class="p">,</span> <span class="s1">&#39;voc_dataset1&#39;</span><span class="p">)</span>
+        <span class="n">rpath</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;ImageSets&#39;</span><span class="p">,</span> <span class="s1">&#39;Main&#39;</span><span class="p">,</span> <span class="s1">&#39;train.txt&#39;</span><span class="p">)</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s1">&#39;voc_detection&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;voc_detection&#39;</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">rpath</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="nb">format</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">matrix</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">subset</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">subset</span><span class="p">:</span>
+                    <span class="n">expected</span> <span class="o">=</span> <span class="n">expected_dataset</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">expected</span> <span class="o">=</span> <span class="n">expected_dataset</span>
+
+                <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_test_can_save_and_load</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="n">dataset_dir</span><span class="p">,</span>
+                        <span class="n">expected</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">result_path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">label_map</span><span class="o">=</span><span class="s1">&#39;voc&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VocIntegrationScenarios.test_can_save_and_load_voc_segmentation_dataset"><a class="viewcode-back" href="../../../api/tests.cli.html#tests.cli.test_voc_format.VocIntegrationScenarios.test_can_save_and_load_voc_segmentation_dataset">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_save_and_load_voc_segmentation_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">expected_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;2007_000001&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">Mask</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]),</span> <span class="n">label</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                <span class="p">]),</span>
+
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;2007_000002&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">))),</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="n">VOC</span><span class="o">.</span><span class="n">make_voc_categories</span><span class="p">())</span>
+
+        <span class="n">dataset_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DUMMY_DATASETS_DIR</span><span class="p">,</span> <span class="s1">&#39;voc_dataset1&#39;</span><span class="p">)</span>
+        <span class="n">rpath</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;ImageSets&#39;</span><span class="p">,</span> <span class="s1">&#39;Segmentation&#39;</span><span class="p">,</span> <span class="s1">&#39;train.txt&#39;</span><span class="p">)</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s1">&#39;voc_segmentation&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;voc_segmentation&#39;</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">rpath</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;voc&#39;</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">rpath</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="nb">format</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">matrix</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">subset</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">subset</span><span class="p">:</span>
+                    <span class="n">expected</span> <span class="o">=</span> <span class="n">expected_dataset</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">expected</span> <span class="o">=</span> <span class="n">expected_dataset</span>
+
+                <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_test_can_save_and_load</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="n">dataset_dir</span><span class="p">,</span>
+                        <span class="n">expected</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">result_path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">label_map</span><span class="o">=</span><span class="s1">&#39;voc&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VocIntegrationScenarios.test_can_save_and_load_voc_action_dataset"><a class="viewcode-back" href="../../../api/tests.cli.html#tests.cli.test_voc_format.VocIntegrationScenarios.test_can_save_and_load_voc_action_dataset">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_can_save_and_load_voc_action_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">expected_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;2007_000001&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">Bbox</span><span class="p">(</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span>
+                            <span class="s1">&#39;difficult&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;truncated&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;occluded&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="o">**</span><span class="p">{</span>
+                                <span class="n">a</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">value</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span>
+                                <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">VOC</span><span class="o">.</span><span class="n">VocAction</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">)</span>
+                <span class="p">]),</span>
+
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;2007_000002&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">))),</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="n">VOC</span><span class="o">.</span><span class="n">make_voc_categories</span><span class="p">())</span>
+
+        <span class="n">dataset_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DUMMY_DATASETS_DIR</span><span class="p">,</span> <span class="s1">&#39;voc_dataset1&#39;</span><span class="p">)</span>
+        <span class="n">rpath</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;ImageSets&#39;</span><span class="p">,</span> <span class="s1">&#39;Action&#39;</span><span class="p">,</span> <span class="s1">&#39;train.txt&#39;</span><span class="p">)</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s1">&#39;voc_action&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;voc_action&#39;</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">rpath</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;voc&#39;</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">rpath</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="nb">format</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">matrix</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">subset</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">subset</span><span class="p">:</span>
+                    <span class="n">expected</span> <span class="o">=</span> <span class="n">expected_dataset</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">expected</span> <span class="o">=</span> <span class="n">expected_dataset</span>
+
+                <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_test_can_save_and_load</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="n">dataset_dir</span><span class="p">,</span>
+                        <span class="n">expected</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">result_path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">label_map</span><span class="o">=</span><span class="s1">&#39;voc&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VocIntegrationScenarios.test_label_projection_with_masks"><a class="viewcode-back" href="../../../api/tests.cli.html#tests.cli.test_voc_format.VocIntegrationScenarios.test_label_projection_with_masks">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_label_projection_with_masks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">expected_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;2007_000001&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">Bbox</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span>
+                            <span class="s1">&#39;pose&#39;</span><span class="p">:</span> <span class="n">VOC</span><span class="o">.</span><span class="n">VocPose</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                            <span class="s1">&#39;truncated&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                            <span class="s1">&#39;difficult&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;occluded&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                        <span class="p">},</span>
+                        <span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="p">),</span>
+                <span class="p">]</span>
+            <span class="p">),</span>
+
+            <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;2007_000002&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">))),</span>
+        <span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="n">VOC</span><span class="o">.</span><span class="n">make_voc_categories</span><span class="p">({</span>
+            <span class="s1">&#39;background&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">[],</span> <span class="p">[]],</span> <span class="c1"># Added on export</span>
+            <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">[],</span> <span class="p">[]],</span> <span class="c1"># Generated by the transform</span>
+            <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">[],</span> <span class="p">[]],</span> <span class="c1"># Generated by the transform</span>
+            <span class="s1">&#39;cat&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">[],</span> <span class="p">[]]</span> <span class="c1"># Original</span>
+        <span class="p">}))</span>
+
+        <span class="n">dataset_path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DUMMY_DATASETS_DIR</span><span class="p">,</span> <span class="s1">&#39;voc_dataset1&#39;</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+            <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">)</span>
+            <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;import&#39;</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;voc&#39;</span><span class="p">,</span> <span class="n">dataset_path</span><span class="p">)</span>
+
+            <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;transform&#39;</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">test_dir</span><span class="p">,</span>
+                <span class="s1">&#39;-t&#39;</span><span class="p">,</span> <span class="s1">&#39;project_labels&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;-l&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;-l&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;-l&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">)</span>
+
+            <span class="n">parsed_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span>
+                <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;source-1&#39;</span><span class="p">),</span> <span class="s1">&#39;voc&#39;</span><span class="p">)</span>
+            <span class="n">compare_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expected_dataset</span><span class="p">,</span> <span class="n">parsed_dataset</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

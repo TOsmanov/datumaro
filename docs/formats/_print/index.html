@@ -93,7 +93,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.08096ca729143afb1311caa40b6dac7b.json"
+  data-offline-search-index-json-src="../../../offline-search-index.8e2162d9f4e90f2f1eea740ce0b8844e.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -160,7 +160,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>3: <a href="#pg-ddb50cccf6304e9bb85b1b9fb0369c48">CIFAR</a></li>
+<li>3: <a href="#pg-f20c26628d349ff890dd5cd005e9f851">Align CelebA</a></li>
 
 
     
@@ -168,7 +168,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4: <a href="#pg-b4837f6e880fb91ac1bc5f75998df382">Cityscapes</a></li>
+<li>4: <a href="#pg-371aa98e0519c0c055b8ef101dec2080">CelebA</a></li>
 
 
     
@@ -176,7 +176,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>5: <a href="#pg-f3691abbbae7eae85ce83b256e5aec64">COCO</a></li>
+<li>5: <a href="#pg-ddb50cccf6304e9bb85b1b9fb0369c48">CIFAR</a></li>
 
 
     
@@ -184,7 +184,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>6: <a href="#pg-69397e43070456769c1b4fdb55f75baf">Image zip</a></li>
+<li>6: <a href="#pg-b4837f6e880fb91ac1bc5f75998df382">Cityscapes</a></li>
 
 
     
@@ -192,7 +192,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>7: <a href="#pg-bc1c599a20f4d5c48cfd2ed514e3f166">Velodyne Points / KITTI Raw 3D</a></li>
+<li>7: <a href="#pg-f3691abbbae7eae85ce83b256e5aec64">COCO</a></li>
 
 
     
@@ -200,7 +200,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>8: <a href="#pg-342fda6e82df12e35a4cf02ae46d4bab">KITTI</a></li>
+<li>8: <a href="#pg-69397e43070456769c1b4fdb55f75baf">Image zip</a></li>
 
 
     
@@ -208,7 +208,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>9: <a href="#pg-a2db7ecd3bd406d8822366b9b33229dd">MNIST</a></li>
+<li>9: <a href="#pg-bc1c599a20f4d5c48cfd2ed514e3f166">Velodyne Points / KITTI Raw 3D</a></li>
 
 
     
@@ -216,7 +216,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>10: <a href="#pg-f97053c70a29d6713d3412af07bcdcca">Open Images</a></li>
+<li>10: <a href="#pg-342fda6e82df12e35a4cf02ae46d4bab">KITTI</a></li>
 
 
     
@@ -224,7 +224,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>11: <a href="#pg-db1d30fa5536c19aa2aa75b33dbf92ea">Pascal VOC</a></li>
+<li>11: <a href="#pg-a2db7ecd3bd406d8822366b9b33229dd">MNIST</a></li>
 
 
     
@@ -232,7 +232,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>12: <a href="#pg-0c9b196a180c68b9b42be11ddc52c8bb">Supervisely Point Cloud</a></li>
+<li>12: <a href="#pg-f97053c70a29d6713d3412af07bcdcca">Open Images</a></li>
 
 
     
@@ -240,7 +240,23 @@ This the multi-page printable view of this section.
     
     
 	
-<li>13: <a href="#pg-f638f1a110145e49bc81ee72961dd7ef">YOLO</a></li>
+<li>13: <a href="#pg-db1d30fa5536c19aa2aa75b33dbf92ea">Pascal VOC</a></li>
+
+
+    
+  
+    
+    
+	
+<li>14: <a href="#pg-0c9b196a180c68b9b42be11ddc52c8bb">Supervisely Point Cloud</a></li>
+
+
+    
+  
+    
+    
+	
+<li>15: <a href="#pg-f638f1a110145e49bc81ee72961dd7ef">YOLO</a></li>
 
 
     
@@ -485,7 +501,181 @@ datum convert -if ade20k2020 -i &lt;path/to/dataset&gt; <span style="color:#4e9a
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-ddb50cccf6304e9bb85b1b9fb0369c48">3 - CIFAR</h1>
+	<h1 id="pg-f20c26628d349ff890dd5cd005e9f851">3 - Align CelebA</h1>
+    
+	<h2 id="format-specification">Format specification</h2>
+<p>The original CelebA dataset is available
+<a href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">here</a>.</p>
+<p>Supported annotation types:</p>
+<ul>
+<li><code>Label</code></li>
+<li><code>Points</code> (landmarks)</li>
+</ul>
+<p>Supported attributes:</p>
+<ul>
+<li><code>5_o_Clock_Shadow</code>, <code>Arched_Eyebrows</code>, <code>Attractive</code>,
+<code>Bags_Under_Eyes</code>, <code>Bald</code>, <code>Bangs</code>, <code>Big_Lips</code>, <code>Big_Nose</code>, <code>Black_Hair</code>,
+<code>Blond_Hair</code>, <code>Blurry</code>, <code>Brown_Hair</code>, <code>Bushy_Eyebrows</code>, <code>Chubby</code>,
+<code>Double_Chin</code>, <code>Eyeglasses</code>, <code>Goatee</code>, <code>Gray_Hair</code>, <code>Heavy_Makeup</code>,
+<code>High_Cheekbones</code>, <code>Male</code>, <code>Mouth_Slightly_Open</code>, <code>Mustache</code>, <code>Narrow_Eyes</code>,
+<code>No_Beard</code>, <code>Oval_Face</code>, <code>Pale_Skin</code>, <code>Pointy_Nose</code>, <code>Receding_Hairline</code>,
+<code>Rosy_Cheeks</code>, <code>Sideburns</code>, <code>Smiling</code>, <code>Straight_Hair</code>, <code>Wavy_Hair</code>,
+<code>Wearing_Earrings</code>, <code>Wearing_Hat</code>, <code>Wearing_Lipstick</code>, <code>Wearing_Necklace</code>,
+<code>Wearing_Necktie</code>, <code>Young</code> (boolean)</li>
+</ul>
+<h2 id="import-align-celeba-dataset">Import align CelebA dataset</h2>
+<p>A Datumaro project with an align CelebA source can be created
+in the following way:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
+datum import --format align_celeba &lt;path/to/dataset&gt;
+</code></pre></div><p>It is also possible to import the dataset using Python API:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+
+<span style="color:#000">align_celeba_dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;align_celeba&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>Align CelebA dataset directory should have the following structure:</p>
+<!--lint disable fenced-code-flag-->
+<pre><code>dataset/
+├── Anno/
+│   ├── identity_CelebA.txt
+│   ├── list_attr_celeba.txt
+│   └── list_landmarks_align_celeba.txt
+├── Eval/
+│   └── list_eval_partition.txt
+└── Img/
+    └── img_align_celeba/
+        ├── 000001.jpg
+        ├── 000002.jpg
+        └── ...
+</code></pre><p>The <code>identity_CelebA.txt</code> file contains labels (required).
+The <code>list_attr_celeba.txt</code>, <code>list_landmarks_align_celeba.txt</code>,
+<code>list_eval_partition.txt</code> files contain attributes, bounding boxes,
+landmarks and subsets respectively (optional).</p>
+<p>The original CelebA dataset stores images in a .7z archive. The archive
+needs to be unpacked before importing.</p>
+<h2 id="export-to-other-formats">Export to other formats</h2>
+<p>Datumaro can convert an align CelebA dataset into any other format <a href="../../../docs/user-manual/supported_formats/">Datumaro supports</a>.
+To get the expected result, convert the dataset to a format
+that supports labels or landmarks.</p>
+<p>There are several ways to convert an align CelebA dataset to other dataset
+formats using CLI:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
+datum import -f align_celeba &lt;path/to/dataset&gt;
+datum <span style="color:#204a87">export</span> -f imagenet_txt -o ./save_dir -- --save-images
+<span style="color:#8f5902;font-style:italic"># or</span>
+datum convert -if align_celeba -i &lt;path/to/dataset&gt; <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    -f imagenet_txt -o &lt;output/dir&gt; -- --save-images
+</code></pre></div><p>Or, using Python API:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;align_celeba&#39;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;save_dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;voc&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><h2 id="examples">Examples</h2>
+<p>Examples of using this format from the code can be found in
+<a href="https://github.com/openvinotoolkit/datumaro/blob/develop/tests/test_align_celeba_format.py">the format tests</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-371aa98e0519c0c055b8ef101dec2080">4 - CelebA</h1>
+    
+	<h2 id="format-specification">Format specification</h2>
+<p>The original CelebA dataset is available
+<a href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">here</a>.</p>
+<p>Supported annotation types:</p>
+<ul>
+<li><code>Label</code></li>
+<li><code>Bbox</code></li>
+<li><code>Points</code> (landmarks)</li>
+</ul>
+<p>Supported attributes:</p>
+<ul>
+<li><code>5_o_Clock_Shadow</code>, <code>Arched_Eyebrows</code>, <code>Attractive</code>,
+<code>Bags_Under_Eyes</code>, <code>Bald</code>, <code>Bangs</code>, <code>Big_Lips</code>, <code>Big_Nose</code>, <code>Black_Hair</code>,
+<code>Blond_Hair</code>, <code>Blurry</code>, <code>Brown_Hair</code>, <code>Bushy_Eyebrows</code>, <code>Chubby</code>,
+<code>Double_Chin</code>, <code>Eyeglasses</code>, <code>Goatee</code>, <code>Gray_Hair</code>, <code>Heavy_Makeup</code>,
+<code>High_Cheekbones</code>, <code>Male</code>, <code>Mouth_Slightly_Open</code>, <code>Mustache</code>, <code>Narrow_Eyes</code>,
+<code>No_Beard</code>, <code>Oval_Face</code>, <code>Pale_Skin</code>, <code>Pointy_Nose</code>, <code>Receding_Hairline</code>,
+<code>Rosy_Cheeks</code>, <code>Sideburns</code>, <code>Smiling</code>, <code>Straight_Hair</code>, <code>Wavy_Hair</code>,
+<code>Wearing_Earrings</code>, <code>Wearing_Hat</code>, <code>Wearing_Lipstick</code>, <code>Wearing_Necklace</code>,
+<code>Wearing_Necktie</code>, <code>Young</code> (boolean)</li>
+</ul>
+<h2 id="import-celeba-dataset">Import CelebA dataset</h2>
+<p>A Datumaro project with a CelebA source can be created in the following way:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
+datum import --format celeba &lt;path/to/dataset&gt;
+</code></pre></div><p>It is also possible to import the dataset using Python API:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+
+<span style="color:#000">celeba_dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;celeba&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>CelebA dataset directory should have the following structure:</p>
+<!--lint disable fenced-code-flag-->
+<pre><code>dataset/
+├── Anno/
+│   ├── identity_CelebA.txt
+│   ├── list_attr_celeba.txt
+│   ├── list_bbox_celeba.txt
+│   └── list_landmarks_celeba.txt
+├── Eval/
+│   └── list_eval_partition.txt
+└── Img/
+    └── img_celeba/
+        ├── 000001.jpg
+        ├── 000002.jpg
+        └── ...
+</code></pre><p>The <code>identity_CelebA.txt</code> file contains labels (required).
+The <code>list_attr_celeba.txt</code>, <code>list_bbox_celeba.txt</code>,
+<code>list_landmarks_celeba.txt</code>, <code>list_eval_partition.txt</code> files contain
+attributes, bounding boxes, landmarks and subsets respectively
+(optional).</p>
+<p>The original CelebA dataset stores images in a .7z archive. The archive
+needs to be unpacked before importing.</p>
+<h2 id="export-to-other-formats">Export to other formats</h2>
+<p>Datumaro can convert a CelebA dataset into any other format <a href="../../../docs/user-manual/supported_formats/">Datumaro supports</a>.
+To get the expected result, convert the dataset to a format
+that supports labels, bounding boxes or landmarks.</p>
+<p>There are several ways to convert a CelebA dataset to other dataset
+formats using CLI:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
+datum import -f celeba &lt;path/to/dataset&gt;
+datum <span style="color:#204a87">export</span> -f imagenet_txt -o ./save_dir -- --save-images
+<span style="color:#8f5902;font-style:italic"># or</span>
+datum convert -if celeba -i &lt;path/to/dataset&gt; <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    -f imagenet_txt -o &lt;output/dir&gt; -- --save-images
+</code></pre></div><p>Or, using Python API:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;celeba&#39;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;save_dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;voc&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><h2 id="examples">Examples</h2>
+<p>Examples of using this format from the code can be found in
+<a href="https://github.com/openvinotoolkit/datumaro/blob/develop/tests/test_celeba_format.py">the format tests</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-ddb50cccf6304e9bb85b1b9fb0369c48">5 - CIFAR</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>CIFAR format specification is available <a href="https://www.cs.toronto.edu/~kriz/cifar.html">here</a>.</p>
@@ -638,7 +828,7 @@ datum convert --input-format cifar --input-path &lt;path/to/cifar&gt; <span styl
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-b4837f6e880fb91ac1bc5f75998df382">4 - Cityscapes</h1>
+	<h1 id="pg-b4837f6e880fb91ac1bc5f75998df382">6 - Cityscapes</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>Cityscapes format overview is available <a href="https://www.cityscapes-dataset.com/dataset-overview/">here</a>.</p>
@@ -789,7 +979,7 @@ datum <span style="color:#204a87">export</span> -p project -o dataset/ -f voc --
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f3691abbbae7eae85ce83b256e5aec64">5 - COCO</h1>
+	<h1 id="pg-f3691abbbae7eae85ce83b256e5aec64">7 - COCO</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>COCO format specification is available <a href="https://cocodataset.org/#format-data">here</a>.</p>
@@ -1028,7 +1218,7 @@ datum <span style="color:#204a87">export</span> -p project -f voc -- --save-imag
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-69397e43070456769c1b4fdb55f75baf">6 - Image zip</h1>
+	<h1 id="pg-69397e43070456769c1b4fdb55f75baf">8 - Image zip</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>The image zip format allows to export/import unannotated datasets
@@ -1111,7 +1301,7 @@ for more information.</li>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-bc1c599a20f4d5c48cfd2ed514e3f166">7 - Velodyne Points / KITTI Raw 3D</h1>
+	<h1 id="pg-bc1c599a20f4d5c48cfd2ed514e3f166">9 - Velodyne Points / KITTI Raw 3D</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>Velodyne Points / KITTI Raw 3D data format homepage is
@@ -1258,7 +1448,7 @@ datum stats -p project
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-342fda6e82df12e35a4cf02ae46d4bab">8 - KITTI</h1>
+	<h1 id="pg-342fda6e82df12e35a4cf02ae46d4bab">10 - KITTI</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>The KITTI dataset has many annotations for different tasks. Datumaro supports
@@ -1436,7 +1626,7 @@ datum <span style="color:#204a87">export</span> -p project -f cityscapes -- --sa
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-a2db7ecd3bd406d8822366b9b33229dd">9 - MNIST</h1>
+	<h1 id="pg-a2db7ecd3bd406d8822366b9b33229dd">11 - MNIST</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>MNIST format specification is available <a href="http://yann.lecun.com/exdb/mnist/">here</a>.</p>
@@ -1596,7 +1786,7 @@ the <a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f97053c70a29d6713d3412af07bcdcca">10 - Open Images</h1>
+	<h1 id="pg-f97053c70a29d6713d3412af07bcdcca">12 - Open Images</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>A description of the Open Images Dataset (OID) format is available
@@ -1886,7 +2076,7 @@ datum <span style="color:#204a87">export</span> -p project -f cvat -- --save-ima
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-db1d30fa5536c19aa2aa75b33dbf92ea">11 - Pascal VOC</h1>
+	<h1 id="pg-db1d30fa5536c19aa2aa75b33dbf92ea">13 - Pascal VOC</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>Pascal VOC format specification is available
@@ -2164,7 +2354,7 @@ in Pascal VOC 2012 has for segmentation task and this result is the same as the
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-0c9b196a180c68b9b42be11ddc52c8bb">12 - Supervisely Point Cloud</h1>
+	<h1 id="pg-0c9b196a180c68b9b42be11ddc52c8bb">14 - Supervisely Point Cloud</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>Specification for the Point Cloud data format is available
@@ -2321,7 +2511,7 @@ datum stats -p project
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f638f1a110145e49bc81ee72961dd7ef">13 - YOLO</h1>
+	<h1 id="pg-f638f1a110145e49bc81ee72961dd7ef">15 - YOLO</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>The YOLO dataset format is for training and validating object detection

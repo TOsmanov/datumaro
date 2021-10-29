@@ -38,7 +38,8 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup.py</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datum.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datum</span></code> — datum</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a></li>
@@ -81,7 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.datumaro_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datumaro</span></code> — Datumaro format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.icdar_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icdar</span></code> — ICDAR format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI raw format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti_raw</span></code> — KITTI raw format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.openvino_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">openvino</span></code> — OpenVino plugin package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sampler</span></code> — Sampler package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.sly_pointcloud_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sly</span></code> — sly pointcloud format package</a></li>
@@ -93,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="datumaro.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">util</span></code> — Utilities package</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://tosmanov.github.io/datumaro/docs/">Back to main documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
 </ul>
 
         </div>
@@ -450,10 +451,14 @@ all the instances (opposed to single-instance masks).</p>
 <dd><p>Joins instance masks into a single mask. Masks are sorted by
 z_order (ascending) prior to merging.</p>
 <p>Parameters:
-- instance_ids - Instance id values for the produced instance mask.
-By default, mask positions are used.
-- instance_labels - Instance label id values for the produced class
-mask. By default, mask labels are used.</p>
+- instance_ids - Instance id values for the produced instance mask.</p>
+<blockquote>
+<div><p>By default, mask positions are used.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>instance_labels - Instance label id values for the produced class
+mask. By default, mask labels are used.</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py method">
@@ -686,18 +691,13 @@ mask. By default, mask labels are used.</p>
 <dt class="sig sig-object py" id="datumaro.components.annotation.LabelCategories.from_iterable">
 <em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_iterable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#datumaro.components.annotation.LabelCategories" title="datumaro.components.annotation.LabelCategories"><span class="pre">datumaro.components.annotation.LabelCategories</span></a></span></span><a class="reference internal" href="../_modules/datumaro/components/annotation.html#LabelCategories.from_iterable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.LabelCategories.from_iterable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a LabelCategories from iterable.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><dl class="simple">
-<dt>iterable: This iterable object can be:</dt><dd><ul class="simple">
-<li><p>a list of str - will be interpreted as list of Category names</p></li>
-<li><dl class="simple">
-<dt>a list of positional arguments - will generate Categories</dt><dd><p>with these arguments</p>
-</dd>
-</dl>
-</li>
-</ul>
-</dd>
-</dl>
+<dl>
+<dt>Args:</dt><dd><p>iterable: This iterable object can be:
+- a list of str - will be interpreted as list of Category names
+- a list of positional arguments - will generate Categories</p>
+<blockquote>
+<div><p>with these arguments</p>
+</div></blockquote>
 </dd>
 </dl>
 <p>Returns: a LabelCategories object</p>
@@ -937,14 +937,9 @@ mask. By default, mask labels are used.</p>
 <dd><p>Create PointsCategories from an iterable.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><dl class="simple">
-<dt>iterable - An Iterable with the following elements:</dt><dd><ul>
-<li><p>a label id</p></li>
-<li><p>a list of positional arguments for Categories</p></li>
-</ul>
-</dd>
-</dl>
-</li>
+<li><p>iterable - An Iterable with the following elements:
+- a label id
+- a list of positional arguments for Categories</p></li>
 </ul>
 </dd>
 <dt>Returns:</dt><dd><p>PointsCategories: PointsCategories object</p>

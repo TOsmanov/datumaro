@@ -36,7 +36,8 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup.py</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datum.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datum</span></code> — datum</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a></li>
@@ -57,7 +58,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.datumaro_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datumaro</span></code> — Datumaro format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.icdar_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icdar</span></code> — ICDAR format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.kitti_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI raw format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti_raw</span></code> — KITTI raw format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.openvino_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">openvino</span></code> — OpenVino plugin package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sampler</span></code> — Sampler package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.sly_pointcloud_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sly</span></code> — sly pointcloud format package</a></li>
@@ -69,7 +70,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">util</span></code> — Utilities package</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://tosmanov.github.io/datumaro/docs/">Back to main documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
 </ul>
 
         </div>
@@ -115,8 +116,8 @@
 <span class="sd">    Generates colors using PASCAL VOC algorithm.</span>
 
 <span class="sd">    If include_background is True, the result will include the item</span>
-<span class="sd">    &quot;0: (0, 0, 0)&quot;, which is typically used as a background color.</span>
-<span class="sd">    Otherwise, indices will start from 0, but (0, 0, 0) is not included.</span>
+<span class="sd">        &quot;0: (0, 0, 0)&quot;, which is typically used as a background color.</span>
+<span class="sd">        Otherwise, indices will start from 0, but (0, 0, 0) is not included.</span>
 
 <span class="sd">    Returns index -&gt; (R, G, B) mapping.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -265,7 +266,7 @@
 <span class="sd">    Args:</span>
 <span class="sd">        mask: a 2d binary mask</span>
 <span class="sd">        tolerance: maximum distance from original points of</span>
-<span class="sd">        a polygon to the approximated ones</span>
+<span class="sd">            a polygon to the approximated ones</span>
 <span class="sd">        area_threshold: minimal area of generated polygons</span>
 
 <span class="sd">    Returns:</span>
@@ -308,10 +309,10 @@
 <span class="sd">        width: width of the image</span>
 <span class="sd">        height: height of the image</span>
 <span class="sd">        iou_threshold: IoU threshold for objects to be counted as intersected</span>
-<span class="sd">        By default is set to 0 to process any intersected objects</span>
+<span class="sd">            By default is set to 0 to process any intersected objects</span>
 <span class="sd">        ratio_tolerance: an IoU &quot;handicap&quot; value for a situation</span>
-<span class="sd">        when an object is (almost) fully covered by another one and we</span>
-<span class="sd">        don&#39;t want make a &quot;hole&quot; in the background object</span>
+<span class="sd">            when an object is (almost) fully covered by another one and we</span>
+<span class="sd">            don&#39;t want make a &quot;hole&quot; in the background object</span>
 <span class="sd">        area_threshold: minimal area of included segments</span>
 
 <span class="sd">    Returns:</span>

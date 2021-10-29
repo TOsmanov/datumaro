@@ -36,7 +36,8 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup.py</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datum.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datum</span></code> — datum</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a></li>
@@ -57,7 +58,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.datumaro_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datumaro</span></code> — Datumaro format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.icdar_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icdar</span></code> — ICDAR format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.kitti_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI raw format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti_raw</span></code> — KITTI raw format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.openvino_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">openvino</span></code> — OpenVino plugin package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sampler</span></code> — Sampler package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.sly_pointcloud_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sly</span></code> — sly pointcloud format package</a></li>
@@ -69,7 +70,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">util</span></code> — Utilities package</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://tosmanov.github.io/datumaro/docs/">Back to main documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
 </ul>
 
         </div>
@@ -173,39 +174,39 @@
 
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Export project&quot;</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        Exports a project in some format.</span>
-
+<span class="s2">        Exports a project in some format.|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        Each dataset format has its own export</span>
 <span class="s2">        options, which are passed after the &#39;--&#39; separator (see examples),</span>
 <span class="s2">        pass &#39;-- -h&#39; for more info. If not stated otherwise, by default</span>
 <span class="s2">        only annotations are exported, to include images pass</span>
-<span class="s2">        &#39;--save-images&#39; parameter.</span>
-
+<span class="s2">        &#39;--save-images&#39; parameter.|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        A filter can be passed, check the &#39;filter&#39; command description for</span>
-<span class="s2">        more info.</span>
-
-<span class="s2">        Formats:</span>
+<span class="s2">        more info.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Formats:|n</span>
 <span class="s2">        Datasets come in a wide variety of formats. Each dataset</span>
 <span class="s2">        format defines its own data structure and rules on how to</span>
 <span class="s2">        interpret the data. Check the user manual for the list of</span>
 <span class="s2">        supported formats, examples and documentation.</span>
-
+<span class="s2">        |n</span>
 <span class="s2">        The list of supported formats can be extended by plugins.</span>
 <span class="s2">        Check the &quot;plugins&quot; section of the developer guide for information</span>
-<span class="s2">        about plugin implementation.</span>
-
-<span class="s2">        List of builtin dataset formats: </span><span class="si">{}</span><span class="s2"></span>
-
+<span class="s2">        about plugin implementation.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        List of builtin dataset formats: </span><span class="si">{}</span><span class="s2">|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        The command can only be applied to a project build target, a stage</span>
 <span class="s2">        or the combined &#39;project&#39; target, in which case all the targets will</span>
 <span class="s2">        be affected.</span>
-
-<span class="s2">        Examples:</span>
-<span class="s2">        - Export project as a VOC-like dataset, include images:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> -f voc -- --save-images</span>
-
-<span class="s2">        - Export project as a COCO-like dataset in other directory:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> -f coco -o path/I/like/</span>
+<span class="s2">        |n</span>
+<span class="s2">        Examples:|n</span>
+<span class="s2">        - Export project as a VOC-like dataset, include images:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -f voc -- --save-images|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Export project as a COCO-like dataset in other directory:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -f coco -o path/I/like/</span>
 <span class="s2">        &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">builtins</span><span class="p">)),</span>
         <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
 
@@ -308,70 +309,70 @@
 <span class="k">def</span> <span class="nf">build_filter_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Extract subdataset&quot;</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        Extracts a subdataset that contains only items matching filter.</span>
-
+<span class="s2">        Extracts a subdataset that contains only items matching filter.|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        By default, datasets are updated in-place. The &#39;-o/--output-dir&#39;</span>
 <span class="s2">        option can be used to specify another output directory. When</span>
 <span class="s2">        updating in-place, use the &#39;--overwrite&#39; parameter (in-place</span>
 <span class="s2">        updates fail by default to prevent data loss), unless a project</span>
-<span class="s2">        target is modified.</span>
-
+<span class="s2">        target is modified.|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        A filter is an XPath expression, which is applied to XML</span>
 <span class="s2">        representation of a dataset item. Check &#39;--dry-run&#39; parameter</span>
-<span class="s2">        to see XML representations of the dataset items.</span>
-
-<span class="s2">        To filter annotations use the mode (&#39;-m&#39;) parameter.</span>
-<span class="s2">        Supported modes:</span>
-<span class="s2">        - &#39;i&#39;, &#39;items&#39;</span>
-<span class="s2">        - &#39;a&#39;, &#39;annotations&#39;</span>
-<span class="s2">        - &#39;i+a&#39;, &#39;a+i&#39;, &#39;items+annotations&#39;, &#39;annotations+items&#39;</span>
+<span class="s2">        to see XML representations of the dataset items.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        To filter annotations use the mode (&#39;-m&#39;) parameter.|n</span>
+<span class="s2">        Supported modes:|n</span>
+<span class="s2">        - &#39;i&#39;, &#39;items&#39;|n</span>
+<span class="s2">        - &#39;a&#39;, &#39;annotations&#39;|n</span>
+<span class="s2">        - &#39;i+a&#39;, &#39;a+i&#39;, &#39;items+annotations&#39;, &#39;annotations+items&#39;|n</span>
 <span class="s2">        When filtering annotations, use the &#39;items+annotations&#39;</span>
 <span class="s2">        mode to point that annotation-less dataset items should be</span>
 <span class="s2">        removed. To select an annotation, write an XPath that</span>
-<span class="s2">        returns &#39;annotation&#39; elements (see examples).</span>
-
+<span class="s2">        returns &#39;annotation&#39; elements (see examples).|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        This command has the following invocation syntax:</span>
-<span class="s2">        - </span><span class="si">%(prog)s</span><span class="s2"> &lt;target dataset revpath&gt;</span>
-
+<span class="s2">        - </span><span class="si">%(prog)s</span><span class="s2"> &lt;target dataset revpath&gt;|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        &lt;revpath&gt; - either a dataset path or a revision path. The full</span>
-<span class="s2">        syntax is:</span>
-<span class="s2">        - Dataset paths:</span>
-<span class="s2">          - &lt;dataset path&gt;[ :&lt;format&gt; ]</span>
-<span class="s2">        - Revision paths:</span>
-<span class="s2">          - &lt;project path&gt; [ @&lt;rev&gt; ] [ :&lt;target&gt; ]</span>
-<span class="s2">          - &lt;rev&gt; [ :&lt;target&gt; ]</span>
-<span class="s2">          - &lt;target&gt;</span>
-
+<span class="s2">        syntax is:|n</span>
+<span class="s2">        - Dataset paths:|n</span>
+<span class="s2">        |s|s- &lt;dataset path&gt;[ :&lt;format&gt; ]|n</span>
+<span class="s2">        - Revision paths:|n</span>
+<span class="s2">        |s|s- &lt;project path&gt; [ @&lt;rev&gt; ] [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;rev&gt; [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;target&gt;|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        The current project (-p/--project) is also used as a context for</span>
 <span class="s2">        plugins, so it can be useful for dataset paths having custom formats.</span>
-<span class="s2">        When not specified, the current project&#39;s working tree is used.</span>
-
+<span class="s2">        When not specified, the current project&#39;s working tree is used.|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        The command can be applied to a dataset or a project build target,</span>
 <span class="s2">        a stage or the combined &#39;project&#39; target, in which case all the</span>
 <span class="s2">        targets will be affected. A build tree stage will be recorded</span>
 <span class="s2">        if &#39;--stage&#39; is enabled, and the resulting dataset(-s) will be</span>
-<span class="s2">        saved if &#39;--apply&#39; is enabled.</span>
-
-<span class="s2">        Examples:</span>
-<span class="s2">        - Filter images with width &lt; height:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> -e &#39;/item[image/width &lt; image/height]&#39;</span>
-
-<span class="s2">        - Filter images with large-area bboxes:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> -e &#39;/item[annotation/type=&quot;bbox&quot; and</span>
-<span class="s2">            annotation/area&gt;2000]&#39;</span>
-
-<span class="s2">        - Filter out all irrelevant annotations from items:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> -m a -e &#39;/item/annotation[label = &quot;person&quot;]&#39;</span>
-
-<span class="s2">        - Filter out all irrelevant annotations from items:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> -m a -e &#39;/item/annotation[label=&quot;cat&quot; and</span>
-<span class="s2">        area &gt; 99.5]&#39;</span>
-
-<span class="s2">        - Filter occluded annotations and items, if no annotations left:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> -m i+a -e &#39;/item/annotation[occluded=&quot;True&quot;]&#39;</span>
-
-<span class="s2">        - Filter a VOC-like dataset inplace:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> -e &#39;/item/annotation[label = &quot;bus&quot;]&#39; --overwrite dataset/:voc</span>
+<span class="s2">        saved if &#39;--apply&#39; is enabled.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Examples:|n</span>
+<span class="s2">        - Filter images with width &lt; height:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -e &#39;/item[image/width &lt; image/height]&#39;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Filter images with large-area bboxes:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -e &#39;/item[annotation/type=&quot;bbox&quot; and</span>
+<span class="s2">            annotation/area&gt;2000]&#39;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Filter out all irrelevant annotations from items:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -m a -e &#39;/item/annotation[label = &quot;person&quot;]&#39;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Filter out all irrelevant annotations from items:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -m a -e &#39;/item/annotation[label=&quot;cat&quot; and</span>
+<span class="s2">        area &gt; 99.5]&#39;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Filter occluded annotations and items, if no annotations left:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -m i+a -e &#39;/item/annotation[occluded=&quot;True&quot;]&#39;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Filter a VOC-like dataset inplace:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -e &#39;/item/annotation[label = &quot;bus&quot;]&#39; --overwrite dataset/:voc</span>
 <span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
         <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
 
@@ -506,51 +507,51 @@
 
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Transform project&quot;</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        Applies a batch operation to a dataset and produces a new dataset.</span>
-
+<span class="s2">        Applies a batch operation to a dataset and produces a new dataset.|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        By default, datasets are updated in-place. The &#39;-o/--output-dir&#39;</span>
 <span class="s2">        option can be used to specify another output directory. When</span>
 <span class="s2">        updating in-place, use the &#39;--overwrite&#39; parameter (in-place</span>
 <span class="s2">        updates fail by default to prevent data loss), unless a project</span>
-<span class="s2">        target is modified.</span>
-
-<span class="s2">        Builtin transforms: </span><span class="si">{}</span><span class="s2"></span>
-
+<span class="s2">        target is modified.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Builtin transforms: </span><span class="si">{}</span><span class="s2">|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        This command has the following invocation syntax:</span>
-<span class="s2">        - </span><span class="si">%(prog)s</span><span class="s2"> &lt;target dataset revpath&gt;</span>
-
+<span class="s2">        - </span><span class="si">%(prog)s</span><span class="s2"> &lt;target dataset revpath&gt;|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        &lt;revpath&gt; - either a dataset path or a revision path. The full</span>
-<span class="s2">        syntax is:</span>
-<span class="s2">        - Dataset paths:</span>
-<span class="s2">          - &lt;dataset path&gt;[ :&lt;format&gt; ]</span>
-<span class="s2">        - Revision paths:</span>
-<span class="s2">          - &lt;project path&gt; [ @&lt;rev&gt; ] [ :&lt;target&gt; ]</span>
-<span class="s2">          - &lt;rev&gt; [ :&lt;target&gt; ]</span>
-<span class="s2">          - &lt;target&gt;</span>
-
+<span class="s2">        syntax is:|n</span>
+<span class="s2">        - Dataset paths:|n</span>
+<span class="s2">        |s|s- &lt;dataset path&gt;[ :&lt;format&gt; ]|n</span>
+<span class="s2">        - Revision paths:|n</span>
+<span class="s2">        |s|s- &lt;project path&gt; [ @&lt;rev&gt; ] [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;rev&gt; [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;target&gt;|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        The current project (-p/--project) is also used as a context for</span>
 <span class="s2">        plugins, so it can be useful for dataset paths having custom formats.</span>
-<span class="s2">        When not specified, the current project&#39;s working tree is used.</span>
-
+<span class="s2">        When not specified, the current project&#39;s working tree is used.|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        The command can be applied to a dataset or a project build target,</span>
 <span class="s2">        a stage or the combined &#39;project&#39; target, in which case all the</span>
 <span class="s2">        targets will be affected. A build tree stage will be recorded</span>
 <span class="s2">        if &#39;--stage&#39; is enabled, and the resulting dataset(-s) will be</span>
-<span class="s2">        saved if &#39;--apply&#39; is enabled.</span>
-
-<span class="s2">        Examples:</span>
-<span class="s2">        - Convert instance polygons to masks:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> -t polygons_to_masks</span>
-
-<span class="s2">        - Rename dataset items by a regular expression</span>
-<span class="s2">          - Replace &#39;pattern&#39; with &#39;replacement&#39;</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> -t rename -- -e &#39;|pattern|replacement|&#39;</span>
-
-<span class="s2">          - Remove &#39;frame_&#39; from item ids</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> -t rename -- -e &#39;|frame_(</span><span class="se">\\</span><span class="s2">d+)|</span><span class="se">\\</span><span class="s2">1|&#39;</span>
-
-<span class="s2">        - Split a dataset randomly:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> -t random_split --overwrite path/to/dataset:voc</span>
+<span class="s2">        saved if &#39;--apply&#39; is enabled.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Examples:|n</span>
+<span class="s2">        - Convert instance polygons to masks:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -t polygons_to_masks|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Rename dataset items by a regular expression|n</span>
+<span class="s2">        |s|s- Replace &#39;pattern&#39; with &#39;replacement&#39;|n|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -t rename -- -e &#39;|pattern|replacement|&#39;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        |s|s- Remove &#39;frame_&#39; from item ids|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -t rename -- -e &#39;|frame_(</span><span class="se">\\</span><span class="s2">d+)|</span><span class="se">\\</span><span class="s2">1|&#39;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Split a dataset randomly:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -t random_split --overwrite path/to/dataset:voc</span>
 <span class="s2">        &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">builtins</span><span class="p">)),</span>
         <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
 
@@ -691,23 +692,23 @@
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Get project statistics&quot;</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        Outputs various project statistics like image mean and std,</span>
-<span class="s2">        annotations count etc.</span>
-
-<span class="s2">        Target dataset is specified by a revpath. The full syntax is:</span>
-<span class="s2">        - Dataset paths:</span>
-<span class="s2">          - &lt;dataset path&gt;[ :&lt;format&gt; ]</span>
-<span class="s2">        - Revision paths:</span>
-<span class="s2">          - &lt;project path&gt; [ @&lt;rev&gt; ] [ :&lt;target&gt; ]</span>
-<span class="s2">          - &lt;rev&gt; [ :&lt;target&gt; ]</span>
-<span class="s2">          - &lt;target&gt;</span>
-
+<span class="s2">        annotations count etc.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Target dataset is specified by a revpath. The full syntax is:|n</span>
+<span class="s2">        - Dataset paths:|n</span>
+<span class="s2">        |s|s- &lt;dataset path&gt;[ :&lt;format&gt; ]|n</span>
+<span class="s2">        - Revision paths:|n</span>
+<span class="s2">        |s|s- &lt;project path&gt; [ @&lt;rev&gt; ] [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;rev&gt; [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;target&gt;|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        Both forms use the -p/--project as a context for plugins. It can be</span>
 <span class="s2">        useful for dataset paths in targets. When not specified, the current</span>
-<span class="s2">        project&#39;s working tree is used.</span>
-
-<span class="s2">        Examples:</span>
-<span class="s2">        - Compute project statistics:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"></span>
+<span class="s2">        project&#39;s working tree is used.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Examples:|n</span>
+<span class="s2">        - Compute project statistics:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"></span>
 <span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
         <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
 
@@ -750,14 +751,14 @@
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Get project info&quot;</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        Outputs project info - information about plugins,</span>
-<span class="s2">        sources, build tree, models and revisions.</span>
-
-<span class="s2">        Examples:</span>
-<span class="s2">        - Print project info for the current working tree:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"></span>
-
-<span class="s2">        - Print project info for the previous revision:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> HEAD~1</span>
+<span class="s2">        sources, build tree, models and revisions.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Examples:|n</span>
+<span class="s2">        - Print project info for the current working tree:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2">|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Print project info for the previous revision:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> HEAD~1</span>
 <span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
         <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
 
@@ -820,22 +821,22 @@
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Validate project&quot;</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        Validates a dataset according to the task type and</span>
-<span class="s2">        reports summary in a JSON file.</span>
-<span class="s2">        Target dataset is specified by a revpath. The full syntax is:</span>
-<span class="s2">        - Dataset paths:</span>
-<span class="s2">          - &lt;dataset path&gt;[ :&lt;format&gt; ]</span>
-<span class="s2">        - Revision paths:</span>
-<span class="s2">          - &lt;project path&gt; [ @&lt;rev&gt; ] [ :&lt;target&gt; ]</span>
-<span class="s2">          - &lt;rev&gt; [ :&lt;target&gt; ]</span>
-<span class="s2">          - &lt;target&gt;</span>
-
+<span class="s2">        reports summary in a JSON file.|n</span>
+<span class="s2">        Target dataset is specified by a revpath. The full syntax is:|n</span>
+<span class="s2">        - Dataset paths:|n</span>
+<span class="s2">        |s|s- &lt;dataset path&gt;[ :&lt;format&gt; ]|n</span>
+<span class="s2">        - Revision paths:|n</span>
+<span class="s2">        |s|s- &lt;project path&gt; [ @&lt;rev&gt; ] [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;rev&gt; [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;target&gt;|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        Both forms use the -p/--project as a context for plugins. It can be</span>
 <span class="s2">        useful for dataset paths in targets. When not specified, the current</span>
-<span class="s2">        project&#39;s working tree is used.</span>
-
-<span class="s2">        Examples:</span>
-<span class="s2">        - Validate a project&#39;s subset as a classification dataset:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> -t classification -s train</span>
+<span class="s2">        project&#39;s working tree is used.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Examples:|n</span>
+<span class="s2">        - Validate a project&#39;s subset as a classification dataset:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -t classification -s train</span>
 <span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
         <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
 
@@ -939,11 +940,11 @@
 <span class="k">def</span> <span class="nf">build_migrate_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Migrate project&quot;</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        Migrates the project from the old version to a new one.</span>
-
-<span class="s2">        Examples:</span>
-<span class="s2">        - Migrate a project from v1 to v2, save the new project in other dir:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> -o &lt;output/dir&gt;</span>
+<span class="s2">        Migrates the project from the old version to a new one.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Examples:|n</span>
+<span class="s2">        - Migrate a project from v1 to v2, save the new project in other dir:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -o &lt;output/dir&gt;</span>
 <span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
         <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
 
@@ -987,8 +988,8 @@
 <span class="k">def</span> <span class="nf">build_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">            Manipulate projects.</span>
-
+<span class="s2">            Manipulate projects.|n</span>
+<span class="s2">            |n</span>
 <span class="s2">            By default, the project to be operated on is searched for</span>
 <span class="s2">            in the current directory. An additional &#39;-p&#39; argument can be</span>
 <span class="s2">            passed to specify project location.</span>

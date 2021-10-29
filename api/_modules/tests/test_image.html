@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tests.test_image &mdash; Datumaro API documentation 0.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../index.html" class="icon"> Datumaro API documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datum.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datum</span></code> — datum</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.commands.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.commands</span></code> — Commands package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.contexts.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.contexts</span></code> — Contexts package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.contexts.project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.project</span></code> — Project package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.util</span></code> — Util package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.components.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">components</span></code> — Components package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.components.algorithms.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algorithms</span></code> — Algorithms package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">plugins</span></code> — Plugins package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.accuracy_checker_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">accuracy</span></code> — Accuracy checker plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.coco_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coco</span></code> — COCO format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.cvat_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cvat</span></code> — CVAT format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.datumaro_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datumaro</span></code> — Datumaro format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.icdar_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icdar</span></code> — ICDAR format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.kitti_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti_raw</span></code> — KITTI raw format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.openvino_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">openvino</span></code> — OpenVino plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sampler</span></code> — Sampler package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.sly_pointcloud_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sly</span></code> — sly pointcloud format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.tf_detection_api_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tf</span></code> — tf detection API format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.voc_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">voc</span></code> — VOC format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.yolo_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">yolo</span></code> — YOLO format package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">util</span></code> — Utilities package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Datumaro API documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>tests.test_image</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for tests.test_image</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+<span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span>
+<span class="kn">import</span> <span class="nn">os.path</span> <span class="k">as</span> <span class="nn">osp</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">datumaro.util.test_utils</span> <span class="kn">import</span> <span class="n">TestDir</span>
+<span class="kn">import</span> <span class="nn">datumaro.util.image</span> <span class="k">as</span> <span class="nn">image_module</span>
+
+<span class="kn">from</span> <span class="nn">.requirements</span> <span class="kn">import</span> <span class="n">Requirements</span><span class="p">,</span> <span class="n">mark_requirement</span>
+
+
+<div class="viewcode-block" id="ImageOperationsTest"><a class="viewcode-back" href="../../api/tests.html#tests.test_image.ImageOperationsTest">[docs]</a><span class="k">class</span> <span class="nc">ImageOperationsTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+<div class="viewcode-block" id="ImageOperationsTest.setUp"><a class="viewcode-back" href="../../api/tests.html#tests.test_image.ImageOperationsTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_backend</span> <span class="o">=</span> <span class="n">image_module</span><span class="o">.</span><span class="n">_IMAGE_BACKEND</span></div>
+
+<div class="viewcode-block" id="ImageOperationsTest.tearDown"><a class="viewcode-back" href="../../api/tests.html#tests.test_image.ImageOperationsTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">image_module</span><span class="o">.</span><span class="n">_IMAGE_BACKEND</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_backend</span></div>
+
+<div class="viewcode-block" id="ImageOperationsTest.test_save_and_load_backends"><a class="viewcode-back" href="../../api/tests.html#tests.test_image.ImageOperationsTest.test_save_and_load_backends">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_save_and_load_backends</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">backends</span> <span class="o">=</span> <span class="n">image_module</span><span class="o">.</span><span class="n">_IMAGE_BACKENDS</span>
+        <span class="k">for</span> <span class="n">save_backend</span><span class="p">,</span> <span class="n">load_backend</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">backends</span><span class="p">,</span> <span class="n">backends</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]):</span>
+            <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">src_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">src_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;img.png&#39;</span><span class="p">)</span> <span class="c1"># lossless</span>
+
+                <span class="n">image_module</span><span class="o">.</span><span class="n">_IMAGE_BACKEND</span> <span class="o">=</span> <span class="n">save_backend</span>
+                <span class="n">image_module</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">src_image</span><span class="p">,</span> <span class="n">jpeg_quality</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+                <span class="n">image_module</span><span class="o">.</span><span class="n">_IMAGE_BACKEND</span> <span class="o">=</span> <span class="n">load_backend</span>
+                <span class="n">dst_image</span> <span class="o">=</span> <span class="n">image_module</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">src_image</span><span class="p">,</span> <span class="n">dst_image</span><span class="p">),</span>
+                    <span class="s1">&#39;save: </span><span class="si">%s</span><span class="s1">, load: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">save_backend</span><span class="p">,</span> <span class="n">load_backend</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ImageOperationsTest.test_encode_and_decode_backends"><a class="viewcode-back" href="../../api/tests.html#tests.test_image.ImageOperationsTest.test_encode_and_decode_backends">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_encode_and_decode_backends</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">backends</span> <span class="o">=</span> <span class="n">image_module</span><span class="o">.</span><span class="n">_IMAGE_BACKENDS</span>
+        <span class="k">for</span> <span class="n">save_backend</span><span class="p">,</span> <span class="n">load_backend</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">backends</span><span class="p">,</span> <span class="n">backends</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">src_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">src_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+
+            <span class="n">image_module</span><span class="o">.</span><span class="n">_IMAGE_BACKEND</span> <span class="o">=</span> <span class="n">save_backend</span>
+            <span class="n">buffer</span> <span class="o">=</span> <span class="n">image_module</span><span class="o">.</span><span class="n">encode_image</span><span class="p">(</span><span class="n">src_image</span><span class="p">,</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span>
+                <span class="n">jpeg_quality</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># lossless</span>
+
+            <span class="n">image_module</span><span class="o">.</span><span class="n">_IMAGE_BACKEND</span> <span class="o">=</span> <span class="n">load_backend</span>
+            <span class="n">dst_image</span> <span class="o">=</span> <span class="n">image_module</span><span class="o">.</span><span class="n">decode_image</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">src_image</span><span class="p">,</span> <span class="n">dst_image</span><span class="p">),</span>
+                <span class="s1">&#39;save: </span><span class="si">%s</span><span class="s1">, load: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">save_backend</span><span class="p">,</span> <span class="n">load_backend</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ImageOperationsTest.test_save_image_to_inexistent_dir_raises_error"><a class="viewcode-back" href="../../api/tests.html#tests.test_image.ImageOperationsTest.test_save_image_to_inexistent_dir_raises_error">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_save_image_to_inexistent_dir_raises_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">FileNotFoundError</span><span class="p">):</span>
+            <span class="n">image_module</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s1">&#39;some/path.jpg&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                <span class="n">create_dir</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ImageOperationsTest.test_save_image_can_create_dir"><a class="viewcode-back" href="../../api/tests.html#tests.test_image.ImageOperationsTest.test_save_image_can_create_dir">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_save_image_can_create_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">TestDir</span><span class="p">()</span> <span class="k">as</span> <span class="n">test_dir</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_dir</span><span class="p">,</span> <span class="s1">&#39;some&#39;</span><span class="p">,</span> <span class="s1">&#39;path.jpg&#39;</span><span class="p">)</span>
+            <span class="n">image_module</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="n">create_dir</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">))</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

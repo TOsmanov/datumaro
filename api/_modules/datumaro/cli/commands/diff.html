@@ -36,7 +36,8 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup.py</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datum.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datum</span></code> — datum</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a></li>
@@ -57,7 +58,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.datumaro_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datumaro</span></code> — Datumaro format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.icdar_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icdar</span></code> — ICDAR format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.kitti_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI raw format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti_raw</span></code> — KITTI raw format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.openvino_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">openvino</span></code> — OpenVino plugin package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sampler</span></code> — Sampler package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.sly_pointcloud_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sly</span></code> — sly pointcloud format package</a></li>
@@ -69,7 +70,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">util</span></code> — Utilities package</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://tosmanov.github.io/datumaro/docs/">Back to main documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
 </ul>
 
         </div>
@@ -130,48 +131,48 @@
 <span class="k">def</span> <span class="nf">build_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Compares two datasets&quot;</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        Compares two datasets. This command has multiple forms:</span>
-<span class="s2">        1) </span><span class="si">%(prog)s</span><span class="s2"> &lt;revpath&gt;</span>
-<span class="s2">        2) </span><span class="si">%(prog)s</span><span class="s2"> &lt;revpath&gt; &lt;revpath&gt;</span>
-
+<span class="s2">        Compares two datasets. This command has multiple forms:|n</span>
+<span class="s2">        1) </span><span class="si">%(prog)s</span><span class="s2"> &lt;revpath&gt;|n</span>
+<span class="s2">        2) </span><span class="si">%(prog)s</span><span class="s2"> &lt;revpath&gt; &lt;revpath&gt;|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        1 - Compares the current project&#39;s main target (&#39;project&#39;)</span>
-<span class="s2">        in the working tree with the specified dataset.</span>
-<span class="s2">        2 - Compares two specified datasets.</span>
-
+<span class="s2">        in the working tree with the specified dataset.|n</span>
+<span class="s2">        2 - Compares two specified datasets.|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        &lt;revpath&gt; - either a dataset path or a revision path. The full</span>
-<span class="s2">        syntax is:</span>
-<span class="s2">        - Dataset paths:</span>
-<span class="s2">          - &lt;dataset path&gt;[ :&lt;format&gt; ]</span>
-<span class="s2">        - Revision paths:</span>
-<span class="s2">          - &lt;project path&gt; [ @&lt;rev&gt; ] [ :&lt;target&gt; ]</span>
-<span class="s2">          - &lt;rev&gt; [ :&lt;target&gt; ]</span>
-<span class="s2">          - &lt;target&gt;</span>
-
+<span class="s2">        syntax is:|n</span>
+<span class="s2">        - Dataset paths:|n</span>
+<span class="s2">        |s|s- &lt;dataset path&gt;[ :&lt;format&gt; ]|n</span>
+<span class="s2">        - Revision paths:|n</span>
+<span class="s2">        |s|s- &lt;project path&gt; [ @&lt;rev&gt; ] [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;rev&gt; [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;target&gt;|n</span>
+<span class="s2">        |n</span>
 <span class="s2">        Both forms use the -p/--project as a context for plugins. It can be</span>
 <span class="s2">        useful for dataset paths in targets. When not specified, the current</span>
-<span class="s2">        project&#39;s working tree is used.</span>
-
-<span class="s2">        Annotations can be matched 2 ways:</span>
-<span class="s2">        - by equality checking</span>
-<span class="s2">        - by distance computation</span>
-
-<span class="s2">        Examples:</span>
-<span class="s2">        - Compare two projects by distance, match boxes if IoU &gt; 0.7,</span>
-<span class="s2">            save results to Tensorboard:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> other/project -o diff/ -f tensorboard --iou-thresh 0.7</span>
-
-<span class="s2">        - Compare two projects for equality, exclude annotation groups</span>
-<span class="s2">            and the &#39;is_crowd&#39; attribute from comparison:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> other/project/ -if group -ia is_crowd</span>
-
-<span class="s2">        - Compare two datasets, specify formats:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> path/to/dataset1:voc path/to/dataset2:coco</span>
-
-<span class="s2">        - Compare the current working tree and a dataset:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> path/to/dataset2:coco</span>
-
-<span class="s2">        - Compare a source from a previous revision and a dataset:</span>
-<span class="s2">          </span><span class="si">%(prog)s</span><span class="s2"> HEAD~2:source-2 path/to/dataset2:yolo</span>
+<span class="s2">        project&#39;s working tree is used.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Annotations can be matched 2 ways:|n</span>
+<span class="s2">        - by equality checking|n</span>
+<span class="s2">        - by distance computation|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Examples:|n</span>
+<span class="s2">        - Compare two projects by distance, match boxes if IoU &gt; 0.7,|n</span>
+<span class="s2">        |s|s|s|ssave results to Tensorboard:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> other/project -o diff/ -f tensorboard --iou-thresh 0.7|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Compare two projects for equality, exclude annotation groups |n</span>
+<span class="s2">        |s|s|s|sand the &#39;is_crowd&#39; attribute from comparison:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> other/project/ -if group -ia is_crowd|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Compare two datasets, specify formats:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> path/to/dataset1:voc path/to/dataset2:coco|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Compare the current working tree and a dataset:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> path/to/dataset2:coco|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Compare a source from a previous revision and a dataset:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> HEAD~2:source-2 path/to/dataset2:yolo</span>
 <span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
         <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
 

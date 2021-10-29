@@ -36,7 +36,8 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup.py</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datum.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datum</span></code> — datum</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a></li>
@@ -57,7 +58,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.datumaro_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datumaro</span></code> — Datumaro format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.icdar_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icdar</span></code> — ICDAR format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.kitti_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI raw format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti_raw</span></code> — KITTI raw format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.openvino_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">openvino</span></code> — OpenVino plugin package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sampler</span></code> — Sampler package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.sly_pointcloud_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sly</span></code> — sly pointcloud format package</a></li>
@@ -69,7 +70,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">util</span></code> — Utilities package</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://tosmanov.github.io/datumaro/docs/">Back to main documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
 </ul>
 
         </div>
@@ -206,9 +207,9 @@
 
 <span class="sd">        Args:</span>
 <span class="sd">            iterable: This iterable object can be:</span>
-<span class="sd">                - a list of str - will be interpreted as list of Category names</span>
-<span class="sd">                - a list of positional arguments - will generate Categories</span>
-<span class="sd">                    with these arguments</span>
+<span class="sd">            - a list of str - will be interpreted as list of Category names</span>
+<span class="sd">            - a list of positional arguments - will generate Categories</span>
+<span class="sd">              with these arguments</span>
 
 <span class="sd">        Returns: a LabelCategories object</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -438,13 +439,13 @@
             <span class="n">instance_labels</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;CompiledMask&#39;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Joins instance masks into a single mask. Masks are sorted by</span>
-<span class="sd">        z_order \(ascending\) prior to merging.</span>
+<span class="sd">        z_order (ascending) prior to merging.</span>
 
 <span class="sd">        Parameters:</span>
 <span class="sd">        - instance_ids - Instance id values for the produced instance mask.</span>
-<span class="sd">        By default, mask positions are used.</span>
+<span class="sd">          By default, mask positions are used.</span>
 <span class="sd">        - instance_labels - Instance label id values for the produced class</span>
-<span class="sd">        mask. By default, mask labels are used.</span>
+<span class="sd">          mask. By default, mask labels are used.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="kn">from</span> <span class="nn">datumaro.util.mask_tools</span> <span class="kn">import</span> <span class="n">make_index_mask</span>
@@ -759,9 +760,9 @@
 <span class="sd">        Create PointsCategories from an iterable.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            - iterable - An Iterable with the following elements:</span>
-<span class="sd">                - a label id</span>
-<span class="sd">                - a list of positional arguments for Categories</span>
+<span class="sd">          - iterable - An Iterable with the following elements:</span>
+<span class="sd">            - a label id</span>
+<span class="sd">            - a list of positional arguments for Categories</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            PointsCategories: PointsCategories object</span>

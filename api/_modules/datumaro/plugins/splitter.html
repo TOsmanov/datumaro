@@ -36,7 +36,8 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup.py</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datum.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datum</span></code> — datum</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a></li>
@@ -57,7 +58,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.datumaro_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datumaro</span></code> — Datumaro format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.icdar_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icdar</span></code> — ICDAR format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.kitti_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI raw format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti_raw</span></code> — KITTI raw format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.openvino_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">openvino</span></code> — OpenVino plugin package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sampler</span></code> — Sampler package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.plugins.sly_pointcloud_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sly</span></code> — sly pointcloud format package</a></li>
@@ -69,7 +70,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">util</span></code> — Utilities package</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://tosmanov.github.io/datumaro/docs/">Back to main documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
 </ul>
 
         </div>
@@ -124,51 +125,51 @@
 
 <div class="viewcode-block" id="Split"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter.Split">[docs]</a><span class="k">class</span> <span class="nc">Split</span><span class="p">(</span><span class="n">Transform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    - classification split</span>
-<span class="sd">        Splits dataset into subsets(train/val/test) in class-wise manner.</span>
-<span class="sd">        Splits dataset images in the specified ratio, keeping the initial class</span>
-<span class="sd">        distribution.</span>
-
-<span class="sd">    - detection &amp; segmentation split</span>
-<span class="sd">        Each image can have multiple object annotations -</span>
-<span class="sd">        (bbox, mask, polygon). Since an image shouldn&#39;t be included</span>
-<span class="sd">        in multiple subsets at the same time, and image annotations</span>
-<span class="sd">        shouldn&#39;t be split, in general, dataset annotations are unlikely</span>
-<span class="sd">        to be split exactly in the specified ratio.</span>
-<span class="sd">        This split tries to split dataset images as close as possible</span>
-<span class="sd">        to the specified ratio, keeping the initial class distribution.</span>
-
-<span class="sd">    - reidentification split</span>
-<span class="sd">        In this task, the test set should consist of images of unseen</span>
-<span class="sd">        people or objects during the training phase.</span>
-<span class="sd">        This function splits a dataset in the following way:</span>
-<span class="sd">        1. Splits the dataset into &#39;train + val&#39; and &#39;test&#39; sets</span>
-<span class="sd">        based on person or object ID.</span>
-<span class="sd">        2. Splits &#39;test&#39; set into &#39;test-gallery&#39; and &#39;test-query&#39; sets</span>
-<span class="sd">        in class-wise manner.</span>
-<span class="sd">        3. Splits the &#39;train + val&#39; set into &#39;train&#39; and &#39;val&#39; sets</span>
-<span class="sd">        in the same way.</span>
-<span class="sd">        The final subsets would be</span>
-<span class="sd">        &#39;train&#39;, &#39;val&#39;, &#39;test-gallery&#39; and &#39;test-query&#39;.</span>
-
-<span class="sd">    Notes:</span>
-<span class="sd">        - Each image is expected to have only one Annotation. Unlabeled or</span>
-<span class="sd">        multi-labeled images will be split into subsets randomly.</span>
-<span class="sd">        - If Labels also have attributes, also splits by attribute values.</span>
-<span class="sd">        - If there is not enough images in some class or attributes group,</span>
-<span class="sd">        the split ratio can&#39;t be guaranteed.</span>
-<span class="sd">        In reidentification task,</span>
-<span class="sd">        - Object ID can be described by Label, or by attribute (--attr parameter)</span>
-<span class="sd">        - The splits of the test set are controlled by &#39;--query&#39; parameter</span>
-<span class="sd">        Gallery ratio would be 1.0 - query.</span>
-
-<span class="sd">    Example:</span>
-<span class="sd">        %(prog)s -t classification --subset train:.5 --subset val:.2 --subset test:.3</span>
-<span class="sd">        %(prog)s -t detection --subset train:.5 --subset val:.2 --subset test:.3</span>
-<span class="sd">        %(prog)s -t segmentation --subset train:.5 --subset val:.2 --subset test:.3</span>
-<span class="sd">        %(prog)s -t reid --subset train:.5 --subset val:.2 --subset test:.3 --query .5</span>
-<span class="sd">    Example: use &#39;person_id&#39; attribute for splitting</span>
-<span class="sd">        %(prog)s --attr person_id</span>
+<span class="sd">    - classification split |n</span>
+<span class="sd">    Splits dataset into subsets(train/val/test) in class-wise manner. |n</span>
+<span class="sd">    Splits dataset images in the specified ratio, keeping the initial class</span>
+<span class="sd">    distribution.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    - detection &amp; segmentation split |n</span>
+<span class="sd">    Each image can have multiple object annotations -</span>
+<span class="sd">    (bbox, mask, polygon). Since an image shouldn&#39;t be included</span>
+<span class="sd">    in multiple subsets at the same time, and image annotations</span>
+<span class="sd">    shouldn&#39;t be split, in general, dataset annotations are unlikely</span>
+<span class="sd">    to be split exactly in the specified ratio. |n</span>
+<span class="sd">    This split tries to split dataset images as close as possible</span>
+<span class="sd">    to the specified ratio, keeping the initial class distribution.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    - reidentification split |n</span>
+<span class="sd">    In this task, the test set should consist of images of unseen</span>
+<span class="sd">    people or objects during the training phase. |n</span>
+<span class="sd">    This function splits a dataset in the following way:|n</span>
+<span class="sd">    1. Splits the dataset into &#39;train + val&#39; and &#39;test&#39; sets|n</span>
+<span class="sd">    |s|sbased on person or object ID.|n</span>
+<span class="sd">    2. Splits &#39;test&#39; set into &#39;test-gallery&#39; and &#39;test-query&#39; sets|n</span>
+<span class="sd">    |s|sin class-wise manner.|n</span>
+<span class="sd">    3. Splits the &#39;train + val&#39; set into &#39;train&#39; and &#39;val&#39; sets|n</span>
+<span class="sd">    |s|sin the same way.|n</span>
+<span class="sd">    The final subsets would be</span>
+<span class="sd">    &#39;train&#39;, &#39;val&#39;, &#39;test-gallery&#39; and &#39;test-query&#39;. |n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Notes:|n</span>
+<span class="sd">    - Each image is expected to have only one Annotation. Unlabeled or</span>
+<span class="sd">    multi-labeled images will be split into subsets randomly. |n</span>
+<span class="sd">    - If Labels also have attributes, also splits by attribute values.|n</span>
+<span class="sd">    - If there is not enough images in some class or attributes group,</span>
+<span class="sd">    the split ratio can&#39;t be guaranteed.|n</span>
+<span class="sd">    In reidentification task, |n</span>
+<span class="sd">    - Object ID can be described by Label, or by attribute (--attr parameter)|n</span>
+<span class="sd">    - The splits of the test set are controlled by &#39;--query&#39; parameter |n</span>
+<span class="sd">    |s|sGallery ratio would be 1.0 - query.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Example:|n</span>
+<span class="sd">    |s|s%(prog)s -t classification --subset train:.5 --subset val:.2 --subset test:.3 |n</span>
+<span class="sd">    |s|s%(prog)s -t detection --subset train:.5 --subset val:.2 --subset test:.3 |n</span>
+<span class="sd">    |s|s%(prog)s -t segmentation --subset train:.5 --subset val:.2 --subset test:.3 |n</span>
+<span class="sd">    |s|s%(prog)s -t reid --subset train:.5 --subset val:.2 --subset test:.3 --query .5 |n</span>
+<span class="sd">    Example: use &#39;person_id&#39; attribute for splitting|n</span>
+<span class="sd">    |s|s%(prog)s --attr person_id</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">_default_split</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;val&quot;</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)]</span>
@@ -504,19 +505,19 @@
 
 <div class="viewcode-block" id="_ClassificationSplit"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter._ClassificationSplit">[docs]</a><span class="k">class</span> <span class="nc">_ClassificationSplit</span><span class="p">(</span><span class="n">_TaskSpecificSplit</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Splits dataset into subsets(train/val/test) in class-wise manner.</span>
+<span class="sd">    Splits dataset into subsets(train/val/test) in class-wise manner. |n</span>
 <span class="sd">    Splits dataset images in the specified ratio, keeping the initial class</span>
-<span class="sd">    distribution.</span>
-
-<span class="sd">    Notes:</span>
-<span class="sd">        - Each image is expected to have only one Label. Unlabeled or</span>
-<span class="sd">        multi-labeled images will be split into subsets randomly.</span>
-<span class="sd">        - If Labels also have attributes, also splits by attribute values.</span>
-<span class="sd">        - If there is not enough images in some class or attributes group,</span>
-<span class="sd">        the split ratio can&#39;t be guaranteed.</span>
-
-<span class="sd">    Example:</span>
-<span class="sd">        %(prog)s -t classification --subset train:.5 --subset val:.2 --subset test:.3</span>
+<span class="sd">    distribution.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Notes:|n</span>
+<span class="sd">    - Each image is expected to have only one Label. Unlabeled or</span>
+<span class="sd">      multi-labeled images will be split into subsets randomly. |n</span>
+<span class="sd">    - If Labels also have attributes, also splits by attribute values.|n</span>
+<span class="sd">    - If there is not enough images in some class or attributes group,</span>
+<span class="sd">      the split ratio can&#39;t be guaranteed.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Example:|n</span>
+<span class="sd">    |s|s%(prog)s -t classification --subset train:.5 --subset val:.2 --subset test:.3</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="_ClassificationSplit.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter._ClassificationSplit.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -562,34 +563,34 @@
 
 <div class="viewcode-block" id="_ReidentificationSplit"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter._ReidentificationSplit">[docs]</a><span class="k">class</span> <span class="nc">_ReidentificationSplit</span><span class="p">(</span><span class="n">_TaskSpecificSplit</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Splits a dataset for re-identification task.</span>
+<span class="sd">    Splits a dataset for re-identification task.|n</span>
 <span class="sd">    Produces a split with a specified ratio of images, avoiding having same</span>
-<span class="sd">    labels in different subsets.</span>
-
+<span class="sd">    labels in different subsets.|n</span>
+<span class="sd">    |n</span>
 <span class="sd">    In this task, the test set should consist of images of unseen</span>
-<span class="sd">    people or objects during the training phase.</span>
-<span class="sd">    This function splits a dataset in the following way:</span>
-<span class="sd">    1. Splits the dataset into &#39;train + val&#39; and &#39;test&#39; sets</span>
-<span class="sd">    based on person or object ID.</span>
-<span class="sd">    2. Splits &#39;test&#39; set into &#39;test-gallery&#39; and &#39;test-query&#39; sets</span>
-<span class="sd">    in class-wise manner.</span>
-<span class="sd">    3. Splits the &#39;train + val&#39; set into &#39;train&#39; and &#39;val&#39; sets</span>
-<span class="sd">    in the same way.</span>
+<span class="sd">    people or objects during the training phase. |n</span>
+<span class="sd">    This function splits a dataset in the following way:|n</span>
+<span class="sd">    1. Splits the dataset into &#39;train + val&#39; and &#39;test&#39; sets|n</span>
+<span class="sd">    |s|sbased on person or object ID.|n</span>
+<span class="sd">    2. Splits &#39;test&#39; set into &#39;test-gallery&#39; and &#39;test-query&#39; sets|n</span>
+<span class="sd">    |s|sin class-wise manner.|n</span>
+<span class="sd">    3. Splits the &#39;train + val&#39; set into &#39;train&#39; and &#39;val&#39; sets|n</span>
+<span class="sd">    |s|sin the same way.|n</span>
 <span class="sd">    The final subsets would be</span>
-<span class="sd">    &#39;train&#39;, &#39;val&#39;, &#39;test-gallery&#39; and &#39;test-query&#39;.</span>
-
-<span class="sd">    Notes:</span>
-<span class="sd">        - Each image is expected to have a single Label. Unlabeled or multi-labeled</span>
-<span class="sd">        images will be split into &#39;not-supported&#39;.</span>
-<span class="sd">        - Object ID can be described by Label, or by attribute (--attr parameter)</span>
-<span class="sd">        - The splits of the test set are controlled by &#39;--query&#39; parameter.</span>
-<span class="sd">        Gallery ratio would be 1.0 - query.</span>
-
-<span class="sd">    Example: split a dataset in the specified ratio, split the test set</span>
-<span class="sd">        into gallery and query in 1:1 ratio</span>
-<span class="sd">            %(prog)s -t reidentification --subset train:.5 --subset val:.2 --subset test:.3 --query .5</span>
-<span class="sd">        Example: use &#39;person_id&#39; attribute for splitting</span>
-<span class="sd">            %(prog)s --attr person_id</span>
+<span class="sd">    &#39;train&#39;, &#39;val&#39;, &#39;test-gallery&#39; and &#39;test-query&#39;. |n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Notes:|n</span>
+<span class="sd">    - Each image is expected to have a single Label. Unlabeled or multi-labeled</span>
+<span class="sd">      images will be split into &#39;not-supported&#39;.|n</span>
+<span class="sd">    - Object ID can be described by Label, or by attribute (--attr parameter)|n</span>
+<span class="sd">    - The splits of the test set are controlled by &#39;--query&#39; parameter. |n</span>
+<span class="sd">    |s|sGallery ratio would be 1.0 - query.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Example: split a dataset in the specified ratio, split the test set|n</span>
+<span class="sd">    |s|s|s|sinto gallery and query in 1:1 ratio|n</span>
+<span class="sd">    |s|s%(prog)s -t reidentification --subset train:.5 --subset val:.2 --subset test:.3 --query .5|n</span>
+<span class="sd">    Example: use &#39;person_id&#39; attribute for splitting|n</span>
+<span class="sd">    |s|s%(prog)s --attr person_id</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">_default_query_ratio</span> <span class="o">=</span> <span class="mf">0.5</span>
@@ -779,27 +780,27 @@
 <div class="viewcode-block" id="_InstanceSpecificSplit"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter._InstanceSpecificSplit">[docs]</a><span class="k">class</span> <span class="nc">_InstanceSpecificSplit</span><span class="p">(</span><span class="n">_TaskSpecificSplit</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Splits a dataset into subsets(train/val/test),</span>
-<span class="sd">    using object annotations as a basis for splitting.</span>
+<span class="sd">    using object annotations as a basis for splitting.|n</span>
 <span class="sd">    Tries to produce an image split with the specified ratio, keeping the</span>
-<span class="sd">    initial distribution of class objects.</span>
-
+<span class="sd">    initial distribution of class objects.|n</span>
+<span class="sd">    |n</span>
 <span class="sd">    each image can have multiple object annotations -</span>
 <span class="sd">    (instance bounding boxes, masks, polygons). Since an image shouldn&#39;t be included</span>
 <span class="sd">    in multiple subsets at the same time, and image annotations</span>
 <span class="sd">    shouldn&#39;t be split, in general, dataset annotations are unlikely to be split</span>
-<span class="sd">    exactly in the specified ratio.</span>
+<span class="sd">    exactly in the specified ratio. |n</span>
 <span class="sd">    This split tries to split dataset images as close as possible</span>
-<span class="sd">    to the specified ratio, keeping the initial class distribution.</span>
-
-<span class="sd">    Notes:</span>
-<span class="sd">        - Each image is expected to have one or more annotations.</span>
-<span class="sd">        - Only bbox annotations are considered in detection task.</span>
-<span class="sd">        - Mask or Polygon annotations are considered in segmentation task.</span>
-
-<span class="sd">    Example: split dataset so that each object class annotations were split</span>
-<span class="sd">    in the specified ratio between subsets</span>
-<span class="sd">        %(prog)s -t detection --subset train:.5 --subset val:.2 --subset test:.3</span>
-<span class="sd">        %(prog)s -t segmentation --subset train:.5 --subset val:.2 --subset test:.3</span>
+<span class="sd">    to the specified ratio, keeping the initial class distribution.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Notes:|n</span>
+<span class="sd">    - Each image is expected to have one or more annotations.|n</span>
+<span class="sd">    - Only bbox annotations are considered in detection task.|n</span>
+<span class="sd">    - Mask or Polygon annotations are considered in segmentation task.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Example: split dataset so that each object class annotations were split|n</span>
+<span class="sd">    |s|s|s|sin the specified ratio between subsets|n</span>
+<span class="sd">    |s|s%(prog)s -t detection --subset train:.5 --subset val:.2 --subset test:.3 |n</span>
+<span class="sd">    |s|s%(prog)s -t segmentation --subset train:.5 --subset val:.2 --subset test:.3</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="_InstanceSpecificSplit.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter._InstanceSpecificSplit.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>

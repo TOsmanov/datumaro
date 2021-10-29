@@ -36,7 +36,8 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup.py</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datum.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datum</span></code> — datum</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a></li>
@@ -57,7 +58,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.datumaro_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datumaro</span></code> — Datumaro format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.icdar_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icdar</span></code> — ICDAR format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.kitti_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI raw format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti_raw</span></code> — KITTI raw format package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.openvino_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">openvino</span></code> — OpenVino plugin package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sampler</span></code> — Sampler package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.sly_pointcloud_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sly</span></code> — sly pointcloud format package</a></li>
@@ -69,7 +70,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">util</span></code> — Utilities package</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://tosmanov.github.io/datumaro/docs/">Back to main documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
 </ul>
 
         </div>
@@ -113,25 +114,25 @@
 
 <div class="viewcode-block" id="Sampler"><a class="viewcode-back" href="../../../../api/datumaro.plugins.sampler.html#datumaro.plugins.sampler.sampler.Sampler">[docs]</a><span class="k">class</span> <span class="nc">Sampler</span><span class="p">(</span><span class="n">Transform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Sampler that analyzes model inference results on the dataset</span>
-<span class="sd">    and picks the best sample for training.</span>
-
-<span class="sd">    Notes:</span>
+<span class="sd">    Sampler that analyzes model inference results on the dataset |n</span>
+<span class="sd">    and picks the best sample for training.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Notes:|n</span>
 <span class="sd">    - Each image&#39;s inference result must contain the probability for</span>
-<span class="sd">    all classes.</span>
+<span class="sd">    all classes.|n</span>
 <span class="sd">    - Requesting a sample larger than the number of all images will</span>
-<span class="sd">    return all images.</span>
-
-<span class="sd">    Example: select the most relevant data subset of 20 images</span>
-<span class="sd">      based on model certainty, put the result into &#39;sample&#39; subset</span>
-<span class="sd">      and put all the rest into &#39;unsampled&#39; subset, use &#39;train&#39; subset</span>
-<span class="sd">      as input.</span>
-<span class="sd">      %(prog)s \</span>
-<span class="sd">        --algorithm entropy \</span>
-<span class="sd">        --subset_name train \</span>
-<span class="sd">        --sample_name sample \</span>
-<span class="sd">        --unsampled_name unsampled \</span>
-<span class="sd">        --sampling_method topk -k 20</span>
+<span class="sd">    return all images.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Example: select the most relevant data subset of 20 images |n</span>
+<span class="sd">    |s|sbased on model certainty, put the result into &#39;sample&#39; subset</span>
+<span class="sd">    |s|sand put all the rest into &#39;unsampled&#39; subset, use &#39;train&#39; subset |n</span>
+<span class="sd">    |s|sas input. |n</span>
+<span class="sd">    |s|s%(prog)s \ |n</span>
+<span class="sd">    |s|s|s|s--algorithm entropy \ |n</span>
+<span class="sd">    |s|s|s|s--subset_name train \ |n</span>
+<span class="sd">    |s|s|s|s--sample_name sample \ |n</span>
+<span class="sd">    |s|s|s|s--unsampled_name unsampled \ |n</span>
+<span class="sd">    |s|s|s|s--sampling_method topk -k 20</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nd">@classmethod</span>

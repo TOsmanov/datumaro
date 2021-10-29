@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tests.test_sampler &mdash; Datumaro API documentation 0.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../index.html" class="icon"> Datumaro API documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datum.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datum</span></code> — datum</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.commands.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.commands</span></code> — Commands package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.contexts.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.contexts</span></code> — Contexts package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.contexts.project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.project</span></code> — Project package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.util</span></code> — Util package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.components.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">components</span></code> — Components package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.components.algorithms.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algorithms</span></code> — Algorithms package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">plugins</span></code> — Plugins package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.accuracy_checker_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">accuracy</span></code> — Accuracy checker plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.coco_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coco</span></code> — COCO format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.cvat_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cvat</span></code> — CVAT format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.datumaro_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datumaro</span></code> — Datumaro format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.icdar_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icdar</span></code> — ICDAR format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.kitti_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti_raw</span></code> — KITTI raw format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.openvino_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">openvino</span></code> — OpenVino plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sampler</span></code> — Sampler package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.sly_pointcloud_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sly</span></code> — sly pointcloud format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.tf_detection_api_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tf</span></code> — tf detection API format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.voc_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">voc</span></code> — VOC format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.yolo_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">yolo</span></code> — YOLO format package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">util</span></code> — Utilities package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Datumaro API documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>tests.test_sampler</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for tests.test_sampler</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span><span class="p">,</span> <span class="n">skipIf</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="kn">from</span> <span class="nn">datumaro.components.annotation</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AnnotationType</span><span class="p">,</span> <span class="n">Label</span><span class="p">,</span> <span class="n">LabelCategories</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.extractor</span> <span class="kn">import</span> <span class="n">DatasetItem</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.project</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span> <span class="nn">datumaro.util.image</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+    <span class="kn">from</span> <span class="nn">datumaro.plugins.sampler.algorithm.entropy</span> <span class="kn">import</span> \
+        <span class="n">SampleEntropy</span> <span class="k">as</span> <span class="n">entropy</span>
+    <span class="kn">from</span> <span class="nn">datumaro.plugins.sampler.sampler</span> <span class="kn">import</span> <span class="n">Sampler</span>
+    <span class="n">has_libs</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">has_libs</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="kn">from</span> <span class="nn">.requirements</span> <span class="kn">import</span> <span class="n">Requirements</span><span class="p">,</span> <span class="n">mark_requirement</span>
+
+
+<div class="viewcode-block" id="SamplerTest"><a class="viewcode-back" href="../../api/tests.html#tests.test_sampler.SamplerTest">[docs]</a><span class="nd">@skipIf</span><span class="p">(</span><span class="ow">not</span> <span class="n">has_libs</span><span class="p">,</span> <span class="s2">&quot;pandas library is not available&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">SamplerTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_get_probs</span><span class="p">(</span><span class="n">out_range</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">probs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">inference_file</span> <span class="o">=</span> <span class="s2">&quot;tests/assets/sampler/inference.csv&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">inference_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">csv_file</span><span class="p">:</span>
+            <span class="n">csv_reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span>
+            <span class="n">col</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csv_reader</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">col</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">col</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">continue</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">out_range</span><span class="p">:</span>
+                        <span class="n">probs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">])))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">probs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">])))</span>
+        <span class="k">return</span> <span class="n">probs</span>
+
+    <span class="k">def</span> <span class="nf">_generate_classification_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">empty_scores</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">out_range</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">no_attr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">no_img</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">probs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_probs</span><span class="p">(</span><span class="n">out_range</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">subset</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">subset</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">subset</span> <span class="o">=</span> <span class="n">subset</span>
+
+        <span class="n">iterable</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">label_cat</span> <span class="o">=</span> <span class="n">LabelCategories</span><span class="p">()</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">label_id</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="n">num_item</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="n">label</span><span class="p">]</span>
+            <span class="n">label_cat</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">attributes</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_item</span><span class="p">):</span>
+                <span class="n">scores</span> <span class="o">=</span> <span class="n">probs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+                <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">empty_scores</span><span class="p">:</span>
+                    <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">attr</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;scores&quot;</span><span class="p">:</span> <span class="n">scores</span><span class="p">}</span>
+                <span class="k">if</span> <span class="n">no_attr</span><span class="p">:</span>
+                    <span class="n">attr</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;test/dataset/</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">.jpg&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">no_img</span><span class="p">:</span>
+                    <span class="n">img</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">iterable</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">DatasetItem</span><span class="p">(</span>
+                        <span class="n">idx</span><span class="p">,</span>
+                        <span class="n">subset</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">subset</span><span class="p">[</span><span class="n">idx</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subset</span><span class="p">)],</span>
+                        <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+                            <span class="n">Label</span><span class="p">(</span>
+                                <span class="n">label_id</span><span class="p">,</span>
+                                <span class="n">attributes</span><span class="o">=</span><span class="n">attr</span><span class="p">,</span>
+                            <span class="p">)</span>
+                        <span class="p">],</span>
+                        <span class="n">image</span><span class="o">=</span><span class="n">img</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+        <span class="n">categories</span> <span class="o">=</span> <span class="p">{</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">:</span> <span class="n">label_cat</span><span class="p">}</span>
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dataset</span>
+
+<div class="viewcode-block" id="SamplerTest.test_sampler_get_sample_classification"><a class="viewcode-back" href="../../api/tests.html#tests.test_sampler.SamplerTest.test_sampler_get_sample_classification">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_sampler_get_sample_classification</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;label1&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;label2&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;label3&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_classification_dataset</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">])</span>
+        <span class="n">num_pre_train_subset</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">))</span>
+
+        <span class="n">num_sample</span> <span class="o">=</span> <span class="mi">5</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;Top-K method&quot;</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_sample</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;unsampled&quot;</span><span class="p">)),</span>
+                <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span>
+            <span class="p">)</span>
+            <span class="n">topk_expected_result</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">26</span><span class="p">]</span>
+            <span class="n">topk_result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;ImageID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">topk_result</span><span class="p">),</span> <span class="n">topk_expected_result</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;Low-K method&quot;</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;lowk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_sample</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;unsampled&quot;</span><span class="p">)),</span>
+                <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span>
+            <span class="p">)</span>
+            <span class="n">lowk_expected_result</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+            <span class="n">lowk_result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;ImageID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">lowk_result</span><span class="p">),</span> <span class="n">lowk_expected_result</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;Rand-K method&quot;</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;randk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_sample</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;unsampled&quot;</span><span class="p">)),</span>
+                <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span>
+            <span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;Mix-K method&quot;</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;mixk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_sample</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;unsampled&quot;</span><span class="p">)),</span>
+                <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span>
+            <span class="p">)</span>
+            <span class="n">mixk_expected_result</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">26</span><span class="p">]</span>
+            <span class="n">mixk_result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;ImageID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">mixk_result</span><span class="p">),</span> <span class="n">mixk_expected_result</span><span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;mixk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;unsampled&quot;</span><span class="p">)),</span>
+                <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span>
+            <span class="p">)</span>
+            <span class="n">mixk_expected_result</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">26</span><span class="p">]</span>
+            <span class="n">mixk_result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;ImageID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">mixk_result</span><span class="p">),</span> <span class="n">mixk_expected_result</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;Randtop-K method&quot;</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;randtopk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_sample</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;unsampled&quot;</span><span class="p">)),</span>
+                <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span>
+            <span class="p">)</span></div>
+
+<div class="viewcode-block" id="SamplerTest.test_sampler_gives_error"><a class="viewcode-back" href="../../api/tests.html#tests.test_sampler.SamplerTest.test_sampler_gives_error">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_sampler_gives_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;label1&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;label2&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;label3&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">num_sample</span> <span class="o">=</span> <span class="mi">5</span>
+
+        <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_classification_dataset</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;Not found&quot;</span><span class="p">):</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">Exception</span><span class="p">,</span> <span class="s2">&quot;Unknown subset&quot;</span><span class="p">):</span>
+                <span class="n">subset</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                    <span class="n">source</span><span class="p">,</span>
+                    <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                    <span class="n">input_subset</span><span class="o">=</span><span class="n">subset</span><span class="p">,</span>
+                    <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                    <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                    <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                    <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                    <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">Exception</span><span class="p">,</span> <span class="s2">&quot;Unknown algorithm&quot;</span><span class="p">):</span>
+                <span class="n">algorithm</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                    <span class="n">source</span><span class="p">,</span>
+                    <span class="n">algorithm</span><span class="o">=</span><span class="n">algorithm</span><span class="p">,</span>
+                    <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                    <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                    <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                    <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                    <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                    <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">Exception</span><span class="p">,</span> <span class="s2">&quot;Unknown sampling method&quot;</span><span class="p">):</span>
+                <span class="n">sampling_method</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                    <span class="n">source</span><span class="p">,</span>
+                    <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                    <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                    <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                    <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                    <span class="n">sampling_method</span><span class="o">=</span><span class="n">sampling_method</span><span class="p">,</span>
+                    <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                    <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;Invalid Value&quot;</span><span class="p">):</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">Exception</span><span class="p">,</span> <span class="s2">&quot;Invalid value&quot;</span><span class="p">):</span>
+                <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                    <span class="n">source</span><span class="p">,</span>
+                    <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                    <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                    <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                    <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                    <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                    <span class="n">count</span><span class="o">=</span><span class="n">k</span><span class="p">,</span>
+                    <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">Exception</span><span class="p">,</span> <span class="s2">&quot;Invalid value&quot;</span><span class="p">):</span>
+                <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                    <span class="n">source</span><span class="p">,</span>
+                    <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                    <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                    <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                    <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                    <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                    <span class="n">count</span><span class="o">=</span><span class="n">k</span><span class="p">,</span>
+                    <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">Exception</span><span class="p">,</span> <span class="s2">&quot;Invalid value&quot;</span><span class="p">):</span>
+                <span class="n">k</span> <span class="o">=</span> <span class="s2">&quot;string&quot;</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                    <span class="n">source</span><span class="p">,</span>
+                    <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                    <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                    <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                    <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                    <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                    <span class="n">count</span><span class="o">=</span><span class="n">k</span><span class="p">,</span>
+                    <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">Exception</span><span class="p">,</span> <span class="s2">&quot;extension&quot;</span><span class="p">):</span>
+                <span class="n">output_file</span> <span class="o">=</span> <span class="s2">&quot;string.xml&quot;</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                    <span class="n">source</span><span class="p">,</span>
+                    <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                    <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                    <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                    <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                    <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                    <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                    <span class="n">output_file</span><span class="o">=</span><span class="n">output_file</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span>
+                <span class="ne">Exception</span><span class="p">,</span> <span class="s2">&quot;Invalid Data, ImageID not found in data&quot;</span>
+            <span class="p">):</span>
+                <span class="n">sub</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+
+                <span class="n">data_df</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+                <span class="n">infer_df</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">sub</span><span class="p">:</span>
+                    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">size</span>
+                    <span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;Width&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
+                    <span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">height</span><span class="p">)</span>
+                    <span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;ImagePath&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+                    <span class="k">for</span> <span class="n">annotation</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">annotations</span><span class="p">:</span>
+                        <span class="n">probs</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s2">&quot;scores&quot;</span><span class="p">]</span>
+                        <span class="n">infer_df</span><span class="p">[</span><span class="s2">&quot;ImageID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+                        <span class="k">for</span> <span class="n">prob_idx</span><span class="p">,</span> <span class="n">prob</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">probs</span><span class="p">):</span>
+                            <span class="n">infer_df</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;ClassProbability</span><span class="si">{</span><span class="n">prob_idx</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prob</span><span class="p">)</span>
+
+                <span class="n">data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+                <span class="n">infer_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">infer_df</span><span class="p">)</span>
+
+                <span class="n">entropy</span><span class="p">(</span><span class="n">data_df</span><span class="p">,</span> <span class="n">infer_df</span><span class="p">)</span>
+
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span>
+                <span class="ne">Exception</span><span class="p">,</span> <span class="s2">&quot;Invalid Data, ImageID not found in inference&quot;</span>
+            <span class="p">):</span>
+                <span class="n">sub</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+
+                <span class="n">data_df</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+                <span class="n">infer_df</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">sub</span><span class="p">:</span>
+                    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">size</span>
+                    <span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;ImageID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+                    <span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;Width&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
+                    <span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">height</span><span class="p">)</span>
+                    <span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;ImagePath&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+                    <span class="k">for</span> <span class="n">annotation</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">annotations</span><span class="p">:</span>
+                        <span class="n">probs</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s2">&quot;scores&quot;</span><span class="p">]</span>
+
+                        <span class="k">for</span> <span class="n">prob_idx</span><span class="p">,</span> <span class="n">prob</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">probs</span><span class="p">):</span>
+                            <span class="n">infer_df</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;ClassProbability</span><span class="si">{</span><span class="n">prob_idx</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prob</span><span class="p">)</span>
+
+                <span class="n">data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+                <span class="n">infer_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">infer_df</span><span class="p">)</span>
+
+                <span class="n">entropy</span><span class="p">(</span><span class="n">data_df</span><span class="p">,</span> <span class="n">infer_df</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SamplerTest.test_sampler_get_invalid_data"><a class="viewcode-back" href="../../api/tests.html#tests.test_sampler.SamplerTest.test_sampler_get_invalid_data">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_sampler_get_invalid_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;empty dataset&quot;</span><span class="p">):</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;label1&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;label2&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;label3&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="p">}</span>
+
+            <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_classification_dataset</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">Exception</span><span class="p">,</span> <span class="s2">&quot;Unknown subset&quot;</span><span class="p">):</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                    <span class="n">source</span><span class="p">,</span>
+                    <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                    <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                    <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                    <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                    <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                    <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                    <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;Dataset without Scores (Probability)&quot;</span><span class="p">):</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;label1&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                <span class="s2">&quot;label2&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                <span class="s2">&quot;label3&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="p">}</span>
+
+            <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_classification_dataset</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">empty_scores</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">Exception</span><span class="p">,</span> <span class="s2">&quot;ClassProbability&quot;</span><span class="p">):</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                    <span class="n">source</span><span class="p">,</span>
+                    <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                    <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                    <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                    <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                    <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                    <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                    <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;Out of range, probability (Less than 0 or more than 1)&quot;</span><span class="p">):</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;label1&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                <span class="s2">&quot;label2&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                <span class="s2">&quot;label3&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="p">}</span>
+
+            <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_classification_dataset</span><span class="p">(</span>
+                <span class="n">config</span><span class="p">,</span> <span class="n">empty_scores</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">out_range</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">Exception</span><span class="p">,</span> <span class="s2">&quot;Invalid data&quot;</span><span class="p">):</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                    <span class="n">source</span><span class="p">,</span>
+                    <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                    <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                    <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                    <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                    <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                    <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                    <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;No Scores Attribute Data&quot;</span><span class="p">):</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;label1&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                <span class="s2">&quot;label2&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                <span class="s2">&quot;label3&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="p">}</span>
+
+            <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_classification_dataset</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">no_attr</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">Exception</span><span class="p">,</span> <span class="s2">&quot;does not have &#39;scores&#39;&quot;</span><span class="p">):</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                    <span class="n">source</span><span class="p">,</span>
+                    <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                    <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                    <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                    <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                    <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                    <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                    <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;No Image Data&quot;</span><span class="p">):</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;label1&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                <span class="s2">&quot;label2&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                <span class="s2">&quot;label3&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="p">}</span>
+
+            <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_classification_dataset</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">no_img</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="ne">Exception</span><span class="p">,</span> <span class="s2">&quot;does not have image info&quot;</span><span class="p">):</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                    <span class="n">source</span><span class="p">,</span>
+                    <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                    <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                    <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                    <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                    <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                    <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                    <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SamplerTest.test_sampler_number_of_samples"><a class="viewcode-back" href="../../api/tests.html#tests.test_sampler.SamplerTest.test_sampler_number_of_samples">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_sampler_number_of_samples</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;label1&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;label2&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;label3&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_classification_dataset</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="n">num_pre_train_subset</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">))</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;k &gt; num of data with top-k&quot;</span><span class="p">):</span>
+            <span class="n">num_sample</span> <span class="o">=</span> <span class="mi">500</span>
+            <span class="n">sampling_method</span> <span class="o">=</span> <span class="s2">&quot;topk&quot;</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="n">sampling_method</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_pre_train_subset</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)))</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;k &gt; num of data with low-k&quot;</span><span class="p">):</span>
+            <span class="n">num_sample</span> <span class="o">=</span> <span class="mi">500</span>
+            <span class="n">sampling_method</span> <span class="o">=</span> <span class="s2">&quot;lowk&quot;</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="n">sampling_method</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_pre_train_subset</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)))</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;k &gt; num of data with rand-k&quot;</span><span class="p">):</span>
+            <span class="n">num_sample</span> <span class="o">=</span> <span class="mi">500</span>
+            <span class="n">sampling_method</span> <span class="o">=</span> <span class="s2">&quot;randk&quot;</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="n">sampling_method</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_pre_train_subset</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)))</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;k &gt; num of data with mix-k&quot;</span><span class="p">):</span>
+            <span class="n">num_sample</span> <span class="o">=</span> <span class="mi">500</span>
+            <span class="n">sampling_method</span> <span class="o">=</span> <span class="s2">&quot;mixk&quot;</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="n">sampling_method</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_pre_train_subset</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)))</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;k &gt; num of data with randtop-k&quot;</span><span class="p">):</span>
+            <span class="n">num_sample</span> <span class="o">=</span> <span class="mi">500</span>
+            <span class="n">sampling_method</span> <span class="o">=</span> <span class="s2">&quot;randtopk&quot;</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="n">sampling_method</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_pre_train_subset</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)))</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;k == num of data with top-k&quot;</span><span class="p">):</span>
+            <span class="n">num_sample</span> <span class="o">=</span> <span class="mi">10</span>
+            <span class="n">sampling_method</span> <span class="o">=</span> <span class="s2">&quot;topk&quot;</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="n">sampling_method</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_pre_train_subset</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)))</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;k == num of data with low-k&quot;</span><span class="p">):</span>
+            <span class="n">num_sample</span> <span class="o">=</span> <span class="mi">10</span>
+            <span class="n">sampling_method</span> <span class="o">=</span> <span class="s2">&quot;lowk&quot;</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="n">sampling_method</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_pre_train_subset</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)))</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;k == num of data with rand-k&quot;</span><span class="p">):</span>
+            <span class="n">num_sample</span> <span class="o">=</span> <span class="mi">10</span>
+            <span class="n">sampling_method</span> <span class="o">=</span> <span class="s2">&quot;randk&quot;</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="n">sampling_method</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_pre_train_subset</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)))</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;k == num of data with mix-k&quot;</span><span class="p">):</span>
+            <span class="n">num_sample</span> <span class="o">=</span> <span class="mi">10</span>
+            <span class="n">sampling_method</span> <span class="o">=</span> <span class="s2">&quot;mixk&quot;</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="n">sampling_method</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_pre_train_subset</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)))</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;k == num of data with randtop-k&quot;</span><span class="p">):</span>
+            <span class="n">num_sample</span> <span class="o">=</span> <span class="mi">10</span>
+            <span class="n">sampling_method</span> <span class="o">=</span> <span class="s2">&quot;randtopk&quot;</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="n">sampling_method</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">num_pre_train_subset</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)))</span>
+
+            <span class="n">num_sample</span> <span class="o">=</span> <span class="mi">9</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;unsampled&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="n">sampling_method</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span> <span class="mi">9</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SamplerTest.test_sampler_accumulated_sampling"><a class="viewcode-back" href="../../api/tests.html#tests.test_sampler.SamplerTest.test_sampler_accumulated_sampling">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_sampler_accumulated_sampling</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;label1&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;label2&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;label3&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_classification_dataset</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="n">num_pre_train_subset</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">))</span>
+        <span class="n">num_pre_val_subset</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;val&quot;</span><span class="p">))</span>
+        <span class="n">num_pre_test_subset</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">))</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;Same Subset, Same number of datas 3times&quot;</span><span class="p">):</span>
+            <span class="n">num_sample</span> <span class="o">=</span> <span class="mi">3</span>
+            <span class="n">sample_subset_name</span> <span class="o">=</span> <span class="s2">&quot;sample&quot;</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="n">sample_subset_name</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span> <span class="n">num_sample</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)),</span> <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="n">num_sample</span>
+            <span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">result</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="n">sample_subset_name</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span> <span class="n">num_sample</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)),</span> <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="n">num_sample</span> <span class="o">*</span> <span class="mi">2</span>
+            <span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">result</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="n">sample_subset_name</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span> <span class="n">num_sample</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)),</span> <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="n">num_sample</span> <span class="o">*</span> <span class="mi">3</span>
+            <span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;Same Subset, 2, 3, 4 sampling&quot;</span><span class="p">):</span>
+            <span class="n">sample_subset_name</span> <span class="o">=</span> <span class="s2">&quot;sample&quot;</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="n">sample_subset_name</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)),</span> <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">result</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="n">sample_subset_name</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)),</span> <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">result</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="n">sample_subset_name</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span> <span class="mi">9</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)),</span> <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="mi">9</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;Different Subset, Same number of datas 3times&quot;</span><span class="p">):</span>
+            <span class="n">num_sample</span> <span class="o">=</span> <span class="mi">3</span>
+            <span class="n">sample_subset_name</span> <span class="o">=</span> <span class="s2">&quot;sample&quot;</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="n">sample_subset_name</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span> <span class="n">num_sample</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)),</span> <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="n">num_sample</span>
+            <span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">result</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;val&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="n">sample_subset_name</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;val&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span> <span class="n">num_sample</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;val&quot;</span><span class="p">)),</span> <span class="n">num_pre_val_subset</span> <span class="o">-</span> <span class="n">num_sample</span>
+            <span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">result</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="n">sample_subset_name</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span> <span class="n">num_sample</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)),</span> <span class="n">num_pre_test_subset</span> <span class="o">-</span> <span class="n">num_sample</span>
+            <span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;Different Subset, 2, 3, 4 sampling&quot;</span><span class="p">):</span>
+            <span class="n">sample_subset_name</span> <span class="o">=</span> <span class="s2">&quot;sample&quot;</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="n">sample_subset_name</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)),</span> <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">result</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;val&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="n">sample_subset_name</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;val&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;val&quot;</span><span class="p">)),</span> <span class="n">num_pre_val_subset</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">result</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="n">sample_subset_name</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">)),</span> <span class="mi">9</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)),</span> <span class="n">num_pre_test_subset</span> <span class="o">-</span> <span class="mi">4</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SamplerTest.test_sampler_unaccumulated_sampling"><a class="viewcode-back" href="../../api/tests.html#tests.test_sampler.SamplerTest.test_sampler_unaccumulated_sampling">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_sampler_unaccumulated_sampling</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;label1&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;label2&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;label3&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_classification_dataset</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="n">num_pre_train_subset</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">))</span>
+        <span class="n">num_pre_val_subset</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;val&quot;</span><span class="p">))</span>
+        <span class="n">num_pre_test_subset</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">))</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;Same Subset, Same number of datas 3times&quot;</span><span class="p">):</span>
+            <span class="n">num_sample</span> <span class="o">=</span> <span class="mi">3</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample1&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample1&quot;</span><span class="p">)),</span> <span class="n">num_sample</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)),</span> <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="n">num_sample</span>
+            <span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">result</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample2&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample1&quot;</span><span class="p">)),</span> <span class="n">num_sample</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample2&quot;</span><span class="p">)),</span> <span class="n">num_sample</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)),</span> <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="n">num_sample</span> <span class="o">*</span> <span class="mi">2</span>
+            <span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">result</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample3&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample1&quot;</span><span class="p">)),</span> <span class="n">num_sample</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample2&quot;</span><span class="p">)),</span> <span class="n">num_sample</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample3&quot;</span><span class="p">)),</span> <span class="n">num_sample</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)),</span> <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="n">num_sample</span> <span class="o">*</span> <span class="mi">3</span>
+            <span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;Same Subset, 2, 3, 4 sampling&quot;</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample1&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample1&quot;</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)),</span> <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">result</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample2&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample1&quot;</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample2&quot;</span><span class="p">)),</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)),</span> <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">result</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample3&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample1&quot;</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample2&quot;</span><span class="p">)),</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample3&quot;</span><span class="p">)),</span> <span class="mi">4</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)),</span> <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="mi">9</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;Different Subset, Same number of datas 3times&quot;</span><span class="p">):</span>
+            <span class="n">num_sample</span> <span class="o">=</span> <span class="mi">3</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample1&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample1&quot;</span><span class="p">)),</span> <span class="n">num_sample</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)),</span> <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="n">num_sample</span>
+            <span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">result</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;val&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample2&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;val&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample1&quot;</span><span class="p">)),</span> <span class="n">num_sample</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample2&quot;</span><span class="p">)),</span> <span class="n">num_sample</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;val&quot;</span><span class="p">)),</span> <span class="n">num_pre_val_subset</span> <span class="o">-</span> <span class="n">num_sample</span>
+            <span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">result</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample3&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="n">num_sample</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample1&quot;</span><span class="p">)),</span> <span class="n">num_sample</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample2&quot;</span><span class="p">)),</span> <span class="n">num_sample</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample3&quot;</span><span class="p">)),</span> <span class="n">num_sample</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)),</span> <span class="n">num_pre_test_subset</span> <span class="o">-</span> <span class="n">num_sample</span>
+            <span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="s2">&quot;Different Subset, 2, 3, 4 sampling&quot;</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample1&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample1&quot;</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)),</span> <span class="n">num_pre_train_subset</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">result</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;val&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample2&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;val&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample1&quot;</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample2&quot;</span><span class="p">)),</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;val&quot;</span><span class="p">)),</span> <span class="n">num_pre_val_subset</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span>
+                <span class="n">result</span><span class="p">,</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span>
+                <span class="n">input_subset</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+                <span class="n">sampled_subset</span><span class="o">=</span><span class="s2">&quot;sample3&quot;</span><span class="p">,</span>
+                <span class="n">unsampled_subset</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+                <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;topk&quot;</span><span class="p">,</span>
+                <span class="n">count</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample1&quot;</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample2&quot;</span><span class="p">)),</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;sample3&quot;</span><span class="p">)),</span> <span class="mi">4</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)),</span> <span class="n">num_pre_test_subset</span> <span class="o">-</span> <span class="mi">4</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SamplerTest.test_sampler_parser"><a class="viewcode-back" href="../../api/tests.html#tests.test_sampler.SamplerTest.test_sampler_parser">[docs]</a>    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_sampler_parser</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">ArgumentParser</span>
+
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">Sampler</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(),</span> <span class="n">ArgumentParser</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
