@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>setuptools.extension &mdash; Datumaro API documentation 0.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../index.html" class="icon"> Datumaro API documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/setup.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setup</span></code> — Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datum.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datum</span></code> — datum</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli</span></code> — CLI package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.commands.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.commands</span></code> — Commands package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.contexts.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.contexts</span></code> — Contexts package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.contexts.project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.project</span></code> — Project package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.cli.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cli.util</span></code> — Util package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.components.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">components</span></code> — Components package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.components.algorithms.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algorithms</span></code> — Algorithms package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">plugins</span></code> — Plugins package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.accuracy_checker_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">accuracy</span></code> — Accuracy checker plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.coco_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coco</span></code> — COCO format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.cvat_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cvat</span></code> — CVAT format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.datumaro_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datumaro</span></code> — Datumaro format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.icdar_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icdar</span></code> — ICDAR format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.kitti_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti</span></code> — KITTI format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.kitti_raw_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kitti_raw</span></code> — KITTI raw format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.openvino_plugin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">openvino</span></code> — OpenVino plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sampler</span></code> — Sampler package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.sly_pointcloud_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sly</span></code> — sly pointcloud format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.tf_detection_api_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tf</span></code> — tf detection API format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.voc_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">voc</span></code> — VOC format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.plugins.yolo_format.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">yolo</span></code> — YOLO format package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/datumaro.util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">util</span></code> — Utilities package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Datumaro API documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+          <li><a href="../setuptools.html">setuptools</a> &raquo;</li>
+      <li>setuptools.extension</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for setuptools.extension</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">distutils.core</span>
+<span class="kn">import</span> <span class="nn">distutils.errors</span>
+<span class="kn">import</span> <span class="nn">distutils.extension</span>
+
+<span class="kn">from</span> <span class="nn">setuptools.extern.six.moves</span> <span class="kn">import</span> <span class="nb">map</span>
+
+<span class="kn">from</span> <span class="nn">.monkey</span> <span class="kn">import</span> <span class="n">get_unpatched</span>
+
+
+<span class="k">def</span> <span class="nf">_have_cython</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return True if Cython can be imported.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cython_impl</span> <span class="o">=</span> <span class="s1">&#39;Cython.Distutils.build_ext&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># from (cython_impl) import build_ext</span>
+        <span class="nb">__import__</span><span class="p">(</span><span class="n">cython_impl</span><span class="p">,</span> <span class="n">fromlist</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;build_ext&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">build_ext</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="c1"># for compatibility</span>
+<span class="n">have_pyrex</span> <span class="o">=</span> <span class="n">_have_cython</span>
+
+<span class="n">_Extension</span> <span class="o">=</span> <span class="n">get_unpatched</span><span class="p">(</span><span class="n">distutils</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">Extension</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Extension"><a class="viewcode-back" href="../../api/setup.html#setuptools.Extension">[docs]</a><span class="k">class</span> <span class="nc">Extension</span><span class="p">(</span><span class="n">_Extension</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Extension that uses &#39;.c&#39; files in place of &#39;.pyx&#39; files&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Extension.__init__"><a class="viewcode-back" href="../../api/setup.html#setuptools.Extension.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+        <span class="c1"># The *args is needed for compatibility as calls may use positional</span>
+        <span class="c1"># arguments. py_limited_api may be set only via keyword.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">py_limited_api</span> <span class="o">=</span> <span class="n">kw</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;py_limited_api&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">_Extension</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Extension._convert_pyx_sources_to_lang"><a class="viewcode-back" href="../../api/setup.html#setuptools.Extension._convert_pyx_sources_to_lang">[docs]</a>    <span class="k">def</span> <span class="nf">_convert_pyx_sources_to_lang</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Replace sources with .pyx extensions to sources with the target</span>
+<span class="sd">        language extension. This mechanism allows language authors to supply</span>
+<span class="sd">        pre-converted sources but to prefer the .pyx sources.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">_have_cython</span><span class="p">():</span>
+            <span class="c1"># the build has Cython, so allow it to compile the .pyx files</span>
+            <span class="k">return</span>
+        <span class="n">lang</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">language</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">target_ext</span> <span class="o">=</span> <span class="s1">&#39;.cpp&#39;</span> <span class="k">if</span> <span class="n">lang</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;c++&#39;</span> <span class="k">else</span> <span class="s1">&#39;.c&#39;</span>
+        <span class="n">sub</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">,</span> <span class="s1">&#39;.pyx$&#39;</span><span class="p">,</span> <span class="n">target_ext</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sources</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sources</span><span class="p">))</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">Library</span><span class="p">(</span><span class="n">Extension</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Just like a regular Extension, but built as a library instead&quot;&quot;&quot;</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
