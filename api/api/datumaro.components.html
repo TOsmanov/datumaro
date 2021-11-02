@@ -495,15 +495,18 @@ all the instances (opposed to single-instance masks).</p>
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">from_instance_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instance_masks</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#datumaro.components.annotation.Mask" title="datumaro.components.annotation.Mask"><span class="pre">datumaro.components.annotation.Mask</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance_ids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance_labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#datumaro.components.annotation.CompiledMask" title="datumaro.components.annotation.CompiledMask"><span class="pre">datumaro.components.annotation.CompiledMask</span></a></span></span><a class="reference internal" href="../_modules/datumaro/components/annotation.html#CompiledMask.from_instance_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.CompiledMask.from_instance_masks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Joins instance masks into a single mask. Masks are sorted by
 z_order (ascending) prior to merging.</p>
-<p>Parameters:
-- instance_ids - Instance id values for the produced instance mask.</p>
-<blockquote>
-<div><p>By default, mask positions are used.</p>
-</div></blockquote>
-<ul class="simple">
-<li><p>instance_labels - Instance label id values for the produced class
-mask. By default, mask labels are used.</p></li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mask.</strong> (<em>- instance_ids - Instance id values for the produced instance</em>) – </p></li>
+<li><p><strong>default</strong> (<em>mask. By</em>) – </p></li>
+<li><p><strong>used.</strong> (<em>mask labels are</em>) – </p></li>
+<li><p><strong>class</strong> (<em>- instance_labels - Instance label id values for the produced</em>) – </p></li>
+<li><p><strong>default</strong> – </p></li>
+<li><p><strong>used.</strong> – </p></li>
 </ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -738,11 +741,10 @@ mask. By default, mask labels are used.</p></li>
 <dd><p>Creates a LabelCategories from iterable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>iterable</strong> – This iterable object can be:</p></li>
-<li><p><strong>names</strong> (<em>- a list of str - will be interpreted as list of Category</em>) – </p></li>
-<li><p><strong>Categories</strong> (<em>- a list of positional arguments - will generate</em>) – with these arguments</p></li>
-</ul>
+<dd class="field-odd"><p><strong>iterable</strong> – This iterable object can be:
+- a list of str - will be interpreted as list of Category names
+- a list of positional arguments - will generate Categories
+with these arguments</p>
 </dd>
 </dl>
 <p>Returns: a LabelCategories object</p>

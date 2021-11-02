@@ -1097,18 +1097,18 @@
 <span class="sd">        Compares working directory and index.</span>
 
 <span class="sd">        Parameters:</span>
-<span class="sd">        - paths - an iterable of paths to compare, a git.Tree, or None.</span>
-<span class="sd">            When None, uses all the paths from HEAD.</span>
-<span class="sd">        - base_dir - a base path for paths. Paths will be prepended by this.</span>
-<span class="sd">            When None or &#39;&#39;, uses repo root. Can be useful, if index contains</span>
-<span class="sd">            displaced paths, which needs to be mapped on real paths.</span>
+<span class="sd">            - paths - an iterable of paths to compare, a git.Tree, or None.</span>
+<span class="sd">                When None, uses all the paths from HEAD.</span>
+<span class="sd">            - base_dir - a base path for paths. Paths will be prepended by this.</span>
+<span class="sd">                When None or &#39;&#39;, uses repo root. Can be useful, if index contains</span>
+<span class="sd">                displaced paths, which needs to be mapped on real paths.</span>
 
 <span class="sd">        The statuses are:</span>
-<span class="sd">        - &quot;A&quot; for added paths</span>
-<span class="sd">        - &quot;D&quot; for deleted paths</span>
-<span class="sd">        - &quot;R&quot; for renamed paths</span>
-<span class="sd">        - &quot;M&quot; for paths with modified data</span>
-<span class="sd">        - &quot;T&quot; for changed in the type paths</span>
+<span class="sd">            - &quot;A&quot; for added paths</span>
+<span class="sd">            - &quot;D&quot; for deleted paths</span>
+<span class="sd">            - &quot;R&quot; for renamed paths</span>
+<span class="sd">            - &quot;M&quot; for paths with modified data</span>
+<span class="sd">            - &quot;T&quot; for changed in the type paths</span>
 
 <span class="sd">        Returns: { abspath(base_dir + path): status }</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1814,8 +1814,8 @@
     <span class="k">def</span> <span class="nf">get_rev</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rev</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">Revision</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tree</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Reference conventions:</span>
-<span class="sd">        - None or &quot;&quot; - working dir</span>
-<span class="sd">        - &quot;&lt;40 symbols&gt;&quot; - revision hash</span>
+<span class="sd">            - None or &quot;&quot; - working dir</span>
+<span class="sd">            - &quot;&lt;40 symbols&gt;&quot; - revision hash</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">obj_type</span><span class="p">,</span> <span class="n">obj_hash</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_ref</span><span class="p">(</span><span class="n">rev</span><span class="p">)</span>
@@ -2106,17 +2106,17 @@
 <span class="sd">        in datasets.</span>
 
 <span class="sd">        Parameters:</span>
-<span class="sd">        - name (str) - Name of the new source</span>
-<span class="sd">        - url (str) - URL of the new source. A path to a file or directory</span>
-<span class="sd">        - format (str) - Dataset format</span>
-<span class="sd">        - options (dict) - Options for the format Extractor</span>
-<span class="sd">        - no_cache (bool) - Don&#39;t put a copy of files into the project cache.</span>
-<span class="sd">            Can be used to reduce project cache size.</span>
-<span class="sd">        - no_hash (bool) - Don&#39;t compute source data hash. Implies &quot;no_cache&quot;.</span>
-<span class="sd">            Useful to reduce import time at the cost of disabled data</span>
-<span class="sd">            integrity checks.</span>
-<span class="sd">        - rpath (str) - Used to specify a relative path to the dataset</span>
-<span class="sd">            inside of the directory pointed by URL.</span>
+<span class="sd">            - name (str) - Name of the new source</span>
+<span class="sd">            - url (str) - URL of the new source. A path to a file or directory</span>
+<span class="sd">            - format (str) - Dataset format</span>
+<span class="sd">            - options (dict) - Options for the format Extractor</span>
+<span class="sd">            - no_cache (bool) - Don&#39;t put a copy of files into the project cache.</span>
+<span class="sd">                Can be used to reduce project cache size.</span>
+<span class="sd">            - no_hash (bool) - Don&#39;t compute source data hash. Implies &quot;no_cache&quot;.</span>
+<span class="sd">                Useful to reduce import time at the cost of disabled data</span>
+<span class="sd">                integrity checks.</span>
+<span class="sd">            - rpath (str) - Used to specify a relative path to the dataset</span>
+<span class="sd">                inside of the directory pointed by URL.</span>
 
 <span class="sd">        Returns: the new source config</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -2211,11 +2211,11 @@
 <span class="sd">        in datasets.</span>
 
 <span class="sd">        Parameters:</span>
-<span class="sd">        - url (str) - URL of the new source. A path to a file or directory</span>
-<span class="sd">        - format (str) - Dataset format</span>
-<span class="sd">        - options (dict) - Options for the format Extractor</span>
-<span class="sd">        - rpath (str) - Used to specify a relative path to the dataset</span>
-<span class="sd">            inside of the directory pointed by URL.</span>
+<span class="sd">            - url (str) - URL of the new source. A path to a file or directory</span>
+<span class="sd">            - format (str) - Dataset format</span>
+<span class="sd">            - options (dict) - Options for the format Extractor</span>
+<span class="sd">            - rpath (str) - Used to specify a relative path to the dataset</span>
+<span class="sd">                inside of the directory pointed by URL.</span>
 
 <span class="sd">        Returns: the name and the config of the new source</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -2275,8 +2275,8 @@
             <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">keep_data</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Options:</span>
-<span class="sd">        - force (bool) - ignores errors and tries to wipe remaining data</span>
-<span class="sd">        - keep_data (bool) - leaves source data untouched</span>
+<span class="sd">            - force (bool) - ignores errors and tries to wipe remaining data</span>
+<span class="sd">            - keep_data (bool) - leaves source data untouched</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">readonly</span><span class="p">:</span>
@@ -2313,10 +2313,10 @@
 <span class="sd">        Creates a new commit. Moves the HEAD pointer to the new commit.</span>
 
 <span class="sd">        Options:</span>
-<span class="sd">        - no_cache (bool) - don&#39;t put added dataset data into cache,</span>
-<span class="sd">            store only metainfo. Can be used to reduce storage size.</span>
-<span class="sd">        - allow_empty (bool) - allow commits with no changes.</span>
-<span class="sd">        - allow_foreign (bool) - allow commits with changes made not by Datumaro.</span>
+<span class="sd">            - no_cache (bool) - don&#39;t put added dataset data into cache,</span>
+<span class="sd">                store only metainfo. Can be used to reduce storage size.</span>
+<span class="sd">            - allow_empty (bool) - allow commits with no changes.</span>
+<span class="sd">            - allow_foreign (bool) - allow commits with changes made not by Datumaro.</span>
 
 <span class="sd">        Returns: the new commit hash</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -2391,7 +2391,7 @@
 <span class="sd">        By default, uses the current (HEAD) revision.</span>
 
 <span class="sd">        Options:</span>
-<span class="sd">        - force (bool) - ignore unsaved changes. By default, an error is raised</span>
+<span class="sd">            - force (bool) - ignore unsaved changes. By default, an error is raised</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">readonly</span><span class="p">:</span>

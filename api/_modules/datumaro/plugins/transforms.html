@@ -421,7 +421,7 @@
 <span class="sd">    It is expected that item ids are unique and subset ratios sum up to 1.|n</span>
 <span class="sd">    |n</span>
 <span class="sd">    Example:|n</span>
-<span class="sd">    |s|s%(prog)s --subset train:.67 --subset test:.33</span>
+<span class="sd">    |s|s|s|s%(prog)s --subset train:.67 --subset test:.33</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># avoid https://bugs.python.org/issue16399</span>
@@ -509,10 +509,10 @@
 <span class="sd">    contain string.format tokens with &#39;item&#39; object available.|n</span>
 <span class="sd">    |n</span>
 <span class="sd">    Examples:|n</span>
-<span class="sd">    - Replace &#39;pattern&#39; with &#39;replacement&#39;:|n</span>
-<span class="sd">    |s|srename -e &#39;|pattern|replacement|&#39;|n</span>
-<span class="sd">    - Remove &#39;frame_&#39; from item ids:|n</span>
-<span class="sd">    |s|srename -e &#39;|frame_(\d+)|\1|&#39;</span>
+<span class="sd">    |s|s- Replace &#39;pattern&#39; with &#39;replacement&#39;:|n</span>
+<span class="sd">    |s|s|s|srename -e &#39;|pattern|replacement|&#39;|n</span>
+<span class="sd">    |s|s- Remove &#39;frame_&#39; from item ids:|n</span>
+<span class="sd">    |s|s|s|srename -e &#39;|frame_(\d+)|\1|&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nd">@classmethod</span>
@@ -540,22 +540,22 @@
 <span class="sd">    Changes labels in the dataset.|n</span>
 <span class="sd">    |n</span>
 <span class="sd">    A label can be:|n</span>
-<span class="sd">    - renamed (and joined with existing) -|n</span>
-<span class="sd">    |s|swhen specified &#39;--label &lt;old_name&gt;:&lt;new_name&gt;&#39;|n</span>
-<span class="sd">    - deleted - when specified &#39;--label &lt;name&gt;:&#39; or default action is &#39;delete&#39;|n</span>
-<span class="sd">    |s|sand the label is not mentioned in the list. When a label|n</span>
-<span class="sd">    |s|sis deleted, all the associated annotations are removed|n</span>
-<span class="sd">    - kept unchanged - when specified &#39;--label &lt;name&gt;:&lt;name&gt;&#39;|n</span>
-<span class="sd">    |s|sor default action is &#39;keep&#39; and the label is not mentioned in the list|n</span>
+<span class="sd">    |s|s- renamed (and joined with existing) -|n</span>
+<span class="sd">    |s|s|s|swhen specified &#39;--label &lt;old_name&gt;:&lt;new_name&gt;&#39;|n</span>
+<span class="sd">    |s|s- deleted - when specified &#39;--label &lt;name&gt;:&#39; or default action is &#39;delete&#39;|n</span>
+<span class="sd">    |s|s|s|sand the label is not mentioned in the list. When a label|n</span>
+<span class="sd">    |s|s|s|sis deleted, all the associated annotations are removed|n</span>
+<span class="sd">    |s|s- kept unchanged - when specified &#39;--label &lt;name&gt;:&lt;name&gt;&#39;|n</span>
+<span class="sd">    |s|s|s|sor default action is &#39;keep&#39; and the label is not mentioned in the list|n</span>
 <span class="sd">    Annotations with no label are managed by the default action policy.|n</span>
 <span class="sd">    |n</span>
 <span class="sd">    Examples:|n</span>
-<span class="sd">    - Remove the &#39;person&#39; label (and corresponding annotations):|n</span>
-<span class="sd">    |s|s%(prog)s -l person: --default keep|n</span>
-<span class="sd">    - Rename &#39;person&#39; to &#39;pedestrian&#39; and &#39;human&#39; to &#39;pedestrian&#39;, join:|n</span>
-<span class="sd">    |s|s%(prog)s -l person:pedestrian -l human:pedestrian --default keep|n</span>
-<span class="sd">    - Rename &#39;person&#39; to &#39;car&#39; and &#39;cat&#39; to &#39;dog&#39;, keep &#39;bus&#39;, remove others:|n</span>
-<span class="sd">    |s|s%(prog)s -l person:car -l bus:bus -l cat:dog --default delete</span>
+<span class="sd">    |s|s- Remove the &#39;person&#39; label (and corresponding annotations):|n</span>
+<span class="sd">    |s|s|s|s%(prog)s -l person: --default keep|n</span>
+<span class="sd">    |s|s- Rename &#39;person&#39; to &#39;pedestrian&#39; and &#39;human&#39; to &#39;pedestrian&#39;, join:|n</span>
+<span class="sd">    |s|s|s|s%(prog)s -l person:pedestrian -l human:pedestrian --default keep|n</span>
+<span class="sd">    |s|s- Rename &#39;person&#39; to &#39;car&#39; and &#39;cat&#39; to &#39;dog&#39;, keep &#39;bus&#39;, remove others:|n</span>
+<span class="sd">    |s|s|s|s%(prog)s -l person:car -l bus:bus -l cat:dog --default delete</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="RemapLabels.DefaultAction"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.transforms.RemapLabels.DefaultAction">[docs]</a>    <span class="k">class</span> <span class="nc">DefaultAction</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
@@ -693,8 +693,8 @@
 <span class="sd">    Useful for merging similar datasets, whose labels need to be aligned.|n</span>
 <span class="sd">    |n</span>
 <span class="sd">    Examples:|n</span>
-<span class="sd">    - Align the source dataset labels to [person, cat, dog]:|n</span>
-<span class="sd">    |s|s%(prog)s -l person -l cat -l dog</span>
+<span class="sd">    |s|s- Align the source dataset labels to [person, cat, dog]:|n</span>
+<span class="sd">    |s|s|s|s%(prog)s -l person -l cat -l dog</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nd">@classmethod</span>

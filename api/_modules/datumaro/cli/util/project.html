@@ -132,7 +132,7 @@
         <span class="n">env</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Environment</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dataset</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parses Dataset paths. The syntax is:</span>
-<span class="sd">    - &lt;dataset path&gt;[ :&lt;format&gt; ]</span>
+<span class="sd">        - &lt;dataset path&gt;[ :&lt;format&gt; ]</span>
 
 <span class="sd">    Returns: a dataset from the parsed path</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -154,13 +154,13 @@
         <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">Project</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parses Revision paths. The syntax is:</span>
-<span class="sd">    - &lt;project path&gt; [ @&lt;rev&gt; ] [ :&lt;target&gt; ]</span>
-<span class="sd">    - &lt;rev&gt; [ :&lt;target&gt; ]</span>
-<span class="sd">    - &lt;target&gt;</span>
+<span class="sd">        - &lt;project path&gt; [ @&lt;rev&gt; ] [ :&lt;target&gt; ]</span>
+<span class="sd">        - &lt;rev&gt; [ :&lt;target&gt; ]</span>
+<span class="sd">        - &lt;target&gt;</span>
 <span class="sd">    The second and the third forms assume an existing &quot;current&quot; project.</span>
 
 <span class="sd">    Returns: the dataset and the project from the parsed path.</span>
-<span class="sd">      The project is only returned when specified in the revpath.</span>
+<span class="sd">        The project is only returned when specified in the revpath.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
@@ -237,7 +237,7 @@
 
 <span class="sd">    A local revpath is a path to a revision withing the current project.</span>
 <span class="sd">    The syntax is:</span>
-<span class="sd">    - [ &lt;revision&gt; : ] [ &lt;target&gt; ]</span>
+<span class="sd">        - [ &lt;revision&gt; : ] [ &lt;target&gt; ]</span>
 <span class="sd">    At least one part must be present.</span>
 
 <span class="sd">    Returns: (revision, build target)</span>
