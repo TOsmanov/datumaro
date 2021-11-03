@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CLI package &mdash; Datumaro API documentation 0.2 documentation</title>
+  <title>CLI &mdash; Datumaro API documentation 0.2 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Components package" href="datumaro.components.html" />
+    <link rel="next" title="Components" href="datumaro.components.html" />
     <link rel="prev" title="datum" href="datum.html" /> 
 </head>
 
@@ -42,79 +42,61 @@
 <li class="toctree-l1"><a class="reference internal" href="datum.html">datum</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">CLI package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a><ul class="simple">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CLI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#commands-package">Commands package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.add">datumaro.cli.commands.add module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.checkout">datumaro.cli.commands.checkout module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.commit">datumaro.cli.commands.commit module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.convert">datumaro.cli.commands.convert module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.create">datumaro.cli.commands.create module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.diff">datumaro.cli.commands.diff module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.explain">datumaro.cli.commands.explain module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.export">datumaro.cli.commands.export module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.filter">datumaro.cli.commands.filter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.import_">datumaro.cli.commands.import_ module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.info">datumaro.cli.commands.info module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.log">datumaro.cli.commands.log module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.merge">datumaro.cli.commands.merge module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.patch">datumaro.cli.commands.patch module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.remove">datumaro.cli.commands.remove module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.stats">datumaro.cli.commands.stats module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.status">datumaro.cli.commands.status module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.transform">datumaro.cli.commands.transform module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands.validate">datumaro.cli.commands.validate module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.commands">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#project-package">Project package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.contexts.project.diff">datumaro.cli.contexts.project.diff module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#commands-package">Commands package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.add">datumaro.cli.commands.add module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.checkout">datumaro.cli.commands.checkout module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.commit">datumaro.cli.commands.commit module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.convert">datumaro.cli.commands.convert module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.create">datumaro.cli.commands.create module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.diff">datumaro.cli.commands.diff module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.explain">datumaro.cli.commands.explain module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.export">datumaro.cli.commands.export module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.filter">datumaro.cli.commands.filter module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.import_">datumaro.cli.commands.import_ module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.info">datumaro.cli.commands.info module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.log">datumaro.cli.commands.log module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.merge">datumaro.cli.commands.merge module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.patch">datumaro.cli.commands.patch module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.remove">datumaro.cli.commands.remove module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.stats">datumaro.cli.commands.stats module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.status">datumaro.cli.commands.status module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.transform">datumaro.cli.commands.transform module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.commands.validate">datumaro.cli.commands.validate module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contexts-package">Contexts package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#project-package">Project package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.contexts.project.diff">datumaro.cli.contexts.project.diff module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.contexts.model">datumaro.cli.contexts.model module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.contexts.source">datumaro.cli.contexts.source module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#contexts-package">Contexts package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id3">Subpackages</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="#util-package">Util package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.util.errors">datumaro.cli.util.errors module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.cli.util.project">datumaro.cli.util.project module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.contexts.model">datumaro.cli.contexts.model module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.contexts.source">datumaro.cli.contexts.source module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#util-package">Util package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.util.errors">datumaro.cli.util.errors module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.cli.util.project">datumaro.cli.util.project module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">Module contents</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.components.html">Components package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.components.html#algorithms-package">Algorithms package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.components.html">Components</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html">Plugins package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#accuracy-checker-plugin-package">Accuracy checker plugin package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#coco-format-package">COCO format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#cvat-format-package">CVAT format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#datumaro-format-package">Datumaro format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#icdar-format-package">ICDAR format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#kitti-format-package">KITTI format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#kitti-raw-format-package">KITTI raw format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#openvino-plugin-package">OpenVino plugin package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#sampler-package">Sampler package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#sly-pointcloud-format-package">sly pointcloud format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#tf-detection-api-format-package">tf detection API format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#voc-format-package">VOC format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#yolo-format-package">YOLO format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html">Plugins</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.util.html">Utilities package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.util.html">Utilities</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
@@ -134,7 +116,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>CLI package</li>
+      <li>CLI</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/api/datumaro.cli.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -144,36 +126,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="cli-package">
-<h1>CLI package<a class="headerlink" href="#cli-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="cli">
+<h1>CLI<a class="headerlink" href="#cli" title="Permalink to this headline">¶</a></h1>
+<p><strong>Subpackages</strong></p>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="module-datumaro.cli">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datumaro.cli" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
-<div class="section" id="commands-package">
-<h1>Commands package<a class="headerlink" href="#commands-package" title="Permalink to this headline">¶</a></h1>
+<p><strong>Module contents</strong></p>
+<span class="target" id="module-datumaro.cli"></span><div class="section" id="commands-package">
+<h2>Commands package<a class="headerlink" href="#commands-package" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="module-datumaro.cli.commands.add">
-<span id="datumaro-cli-commands-add-module"></span><h2>datumaro.cli.commands.add module<a class="headerlink" href="#module-datumaro.cli.commands.add" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-add-module"></span><h3>datumaro.cli.commands.add module<a class="headerlink" href="#module-datumaro.cli.commands.add" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.commands.checkout">
-<span id="datumaro-cli-commands-checkout-module"></span><h2>datumaro.cli.commands.checkout module<a class="headerlink" href="#module-datumaro.cli.commands.checkout" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-checkout-module"></span><h3>datumaro.cli.commands.checkout module<a class="headerlink" href="#module-datumaro.cli.commands.checkout" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.commands.commit">
-<span id="datumaro-cli-commands-commit-module"></span><h2>datumaro.cli.commands.commit module<a class="headerlink" href="#module-datumaro.cli.commands.commit" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-commit-module"></span><h3>datumaro.cli.commands.commit module<a class="headerlink" href="#module-datumaro.cli.commands.commit" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.commands.convert">
-<span id="datumaro-cli-commands-convert-module"></span><h2>datumaro.cli.commands.convert module<a class="headerlink" href="#module-datumaro.cli.commands.convert" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-convert-module"></span><h3>datumaro.cli.commands.convert module<a class="headerlink" href="#module-datumaro.cli.commands.convert" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.commands.create">
-<span id="datumaro-cli-commands-create-module"></span><h2>datumaro.cli.commands.create module<a class="headerlink" href="#module-datumaro.cli.commands.create" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-create-module"></span><h3>datumaro.cli.commands.create module<a class="headerlink" href="#module-datumaro.cli.commands.create" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.commands.diff">
-<span id="datumaro-cli-commands-diff-module"></span><h2>datumaro.cli.commands.diff module<a class="headerlink" href="#module-datumaro.cli.commands.diff" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-diff-module"></span><h3>datumaro.cli.commands.diff module<a class="headerlink" href="#module-datumaro.cli.commands.diff" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.cli.commands.diff.ComparisonMethod">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.diff.</span></span><span class="sig-name descname"><span class="pre">ComparisonMethod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/cli/commands/diff.html#ComparisonMethod"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.cli.commands.diff.ComparisonMethod" title="Permalink to this definition">¶</a></dt>
@@ -213,55 +190,55 @@
 
 </div>
 <div class="section" id="module-datumaro.cli.commands.explain">
-<span id="datumaro-cli-commands-explain-module"></span><h2>datumaro.cli.commands.explain module<a class="headerlink" href="#module-datumaro.cli.commands.explain" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-explain-module"></span><h3>datumaro.cli.commands.explain module<a class="headerlink" href="#module-datumaro.cli.commands.explain" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.commands.export">
-<span id="datumaro-cli-commands-export-module"></span><h2>datumaro.cli.commands.export module<a class="headerlink" href="#module-datumaro.cli.commands.export" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-export-module"></span><h3>datumaro.cli.commands.export module<a class="headerlink" href="#module-datumaro.cli.commands.export" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.commands.filter">
-<span id="datumaro-cli-commands-filter-module"></span><h2>datumaro.cli.commands.filter module<a class="headerlink" href="#module-datumaro.cli.commands.filter" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-filter-module"></span><h3>datumaro.cli.commands.filter module<a class="headerlink" href="#module-datumaro.cli.commands.filter" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.commands.import_">
-<span id="datumaro-cli-commands-import-module"></span><h2>datumaro.cli.commands.import_ module<a class="headerlink" href="#module-datumaro.cli.commands.import_" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-import-module"></span><h3>datumaro.cli.commands.import_ module<a class="headerlink" href="#module-datumaro.cli.commands.import_" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.commands.info">
-<span id="datumaro-cli-commands-info-module"></span><h2>datumaro.cli.commands.info module<a class="headerlink" href="#module-datumaro.cli.commands.info" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-info-module"></span><h3>datumaro.cli.commands.info module<a class="headerlink" href="#module-datumaro.cli.commands.info" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.commands.log">
-<span id="datumaro-cli-commands-log-module"></span><h2>datumaro.cli.commands.log module<a class="headerlink" href="#module-datumaro.cli.commands.log" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-log-module"></span><h3>datumaro.cli.commands.log module<a class="headerlink" href="#module-datumaro.cli.commands.log" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.commands.merge">
-<span id="datumaro-cli-commands-merge-module"></span><h2>datumaro.cli.commands.merge module<a class="headerlink" href="#module-datumaro.cli.commands.merge" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-merge-module"></span><h3>datumaro.cli.commands.merge module<a class="headerlink" href="#module-datumaro.cli.commands.merge" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.commands.patch">
-<span id="datumaro-cli-commands-patch-module"></span><h2>datumaro.cli.commands.patch module<a class="headerlink" href="#module-datumaro.cli.commands.patch" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-patch-module"></span><h3>datumaro.cli.commands.patch module<a class="headerlink" href="#module-datumaro.cli.commands.patch" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.commands.remove">
-<span id="datumaro-cli-commands-remove-module"></span><h2>datumaro.cli.commands.remove module<a class="headerlink" href="#module-datumaro.cli.commands.remove" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-remove-module"></span><h3>datumaro.cli.commands.remove module<a class="headerlink" href="#module-datumaro.cli.commands.remove" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.commands.stats">
-<span id="datumaro-cli-commands-stats-module"></span><h2>datumaro.cli.commands.stats module<a class="headerlink" href="#module-datumaro.cli.commands.stats" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-stats-module"></span><h3>datumaro.cli.commands.stats module<a class="headerlink" href="#module-datumaro.cli.commands.stats" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.commands.status">
-<span id="datumaro-cli-commands-status-module"></span><h2>datumaro.cli.commands.status module<a class="headerlink" href="#module-datumaro.cli.commands.status" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-status-module"></span><h3>datumaro.cli.commands.status module<a class="headerlink" href="#module-datumaro.cli.commands.status" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.commands.transform">
-<span id="datumaro-cli-commands-transform-module"></span><h2>datumaro.cli.commands.transform module<a class="headerlink" href="#module-datumaro.cli.commands.transform" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-transform-module"></span><h3>datumaro.cli.commands.transform module<a class="headerlink" href="#module-datumaro.cli.commands.transform" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.commands.validate">
-<span id="datumaro-cli-commands-validate-module"></span><h2>datumaro.cli.commands.validate module<a class="headerlink" href="#module-datumaro.cli.commands.validate" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-commands-validate-module"></span><h3>datumaro.cli.commands.validate module<a class="headerlink" href="#module-datumaro.cli.commands.validate" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="id1">
-<h2>Module contents<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-datumaro.cli.commands"></span></div>
+<div class="section" id="module-datumaro.cli.commands">
+<span id="module-contents"></span><h3>Module contents<a class="headerlink" href="#module-datumaro.cli.commands" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 <div class="section" id="project-package">
-<h1>Project package<a class="headerlink" href="#project-package" title="Permalink to this headline">¶</a></h1>
+<h2>Project package<a class="headerlink" href="#project-package" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="module-datumaro.cli.contexts.project.diff">
-<span id="datumaro-cli-contexts-project-diff-module"></span><h2>datumaro.cli.contexts.project.diff module<a class="headerlink" href="#module-datumaro.cli.contexts.project.diff" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-contexts-project-diff-module"></span><h3>datumaro.cli.contexts.project.diff module<a class="headerlink" href="#module-datumaro.cli.contexts.project.diff" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="id2">
-<h2>Module contents<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Module contents<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-datumaro.cli.contexts.project"></span><dl class="py class">
 <dt class="sig sig-object py" id="datumaro.cli.contexts.project.FilterModes">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.cli.contexts.project.</span></span><span class="sig-name descname"><span class="pre">FilterModes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/cli/contexts/project.html#FilterModes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.cli.contexts.project.FilterModes" title="Permalink to this definition">¶</a></dt>
@@ -272,26 +249,26 @@
 </div>
 </div>
 <div class="section" id="contexts-package">
-<h1>Contexts package<a class="headerlink" href="#contexts-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id3">
-<h2>Subpackages<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>Contexts package<a class="headerlink" href="#contexts-package" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="subpackages">
+<h3>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h3>
 <div class="toctree-wrapper compound">
 </div>
 </div>
 <div class="section" id="module-datumaro.cli.contexts.model">
-<span id="datumaro-cli-contexts-model-module"></span><h2>datumaro.cli.contexts.model module<a class="headerlink" href="#module-datumaro.cli.contexts.model" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-contexts-model-module"></span><h3>datumaro.cli.contexts.model module<a class="headerlink" href="#module-datumaro.cli.contexts.model" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.cli.contexts.source">
-<span id="datumaro-cli-contexts-source-module"></span><h2>datumaro.cli.contexts.source module<a class="headerlink" href="#module-datumaro.cli.contexts.source" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-contexts-source-module"></span><h3>datumaro.cli.contexts.source module<a class="headerlink" href="#module-datumaro.cli.contexts.source" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="id4">
-<h2>Module contents<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>Module contents<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-datumaro.cli.contexts"></span></div>
 </div>
 <div class="section" id="util-package">
-<h1>Util package<a class="headerlink" href="#util-package" title="Permalink to this headline">¶</a></h1>
+<h2>Util package<a class="headerlink" href="#util-package" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="module-datumaro.cli.util.errors">
-<span id="datumaro-cli-util-errors-module"></span><h2>datumaro.cli.util.errors module<a class="headerlink" href="#module-datumaro.cli.util.errors" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-util-errors-module"></span><h3>datumaro.cli.util.errors module<a class="headerlink" href="#module-datumaro.cli.util.errors" title="Permalink to this headline">¶</a></h3>
 <dl class="py exception">
 <dt class="sig sig-object py" id="datumaro.cli.util.errors.CliException">
 <em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.cli.util.errors.</span></span><span class="sig-name descname"><span class="pre">CliException</span></span><a class="reference internal" href="../_modules/datumaro/cli/util/errors.html#CliException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.cli.util.errors.CliException" title="Permalink to this definition">¶</a></dt>
@@ -365,7 +342,7 @@
 
 </div>
 <div class="section" id="module-datumaro.cli.util.project">
-<span id="datumaro-cli-util-project-module"></span><h2>datumaro.cli.util.project module<a class="headerlink" href="#module-datumaro.cli.util.project" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-cli-util-project-module"></span><h3>datumaro.cli.util.project module<a class="headerlink" href="#module-datumaro.cli.util.project" title="Permalink to this headline">¶</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="datumaro.cli.util.project.generate_next_file_name">
 <span class="sig-prename descclassname"><span class="pre">datumaro.cli.util.project.</span></span><span class="sig-name descname"><span class="pre">generate_next_file_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">basename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basedir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/cli/util/project.html#generate_next_file_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.cli.util.project.generate_next_file_name" title="Permalink to this definition">¶</a></dt>
@@ -431,14 +408,14 @@ The syntax is:</p>
 </dd></dl>
 
 </div>
-<div class="section" id="id5">
-<h2>Module contents<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Module contents<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-datumaro.cli.util"></span><dl class="py class">
 <dt class="sig sig-object py" id="datumaro.cli.util.MultilineFormatter">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.cli.util.</span></span><span class="sig-name descname"><span class="pre">MultilineFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep_natural</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/cli/util.html#MultilineFormatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.cli.util.MultilineFormatter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">argparse.HelpFormatter</span></code></p>
-<p>Keeps line breaks introduced with ‘<a href="#id6"><span class="problematic" id="id7">|</span></a>n’ separator
-and spaces introduced with ‘<a href="#id8"><span class="problematic" id="id9">|</span></a>s’.</p>
+<p>Keeps line breaks introduced with ‘<a href="#id4"><span class="problematic" id="id5">|</span></a>n’ separator
+and spaces introduced with ‘<a href="#id6"><span class="problematic" id="id7">|</span></a>s’.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.cli.util.MultilineFormatter.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep_natural</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/cli/util.html#MultilineFormatter.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.cli.util.MultilineFormatter.__init__" title="Permalink to this definition">¶</a></dt>
@@ -454,13 +431,14 @@ and spaces introduced with ‘<a href="#id8"><span class="problematic" id="id9">
 
 </div>
 </div>
+</div>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="datum.html" class="btn btn-neutral float-left" title="datum" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="datumaro.components.html" class="btn btn-neutral float-right" title="Components package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="datumaro.components.html" class="btn btn-neutral float-right" title="Components" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Components package &mdash; Datumaro API documentation 0.2 documentation</title>
+  <title>Components &mdash; Datumaro API documentation 0.2 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -18,8 +18,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Plugins package" href="datumaro.plugins.html" />
-    <link rel="prev" title="CLI package" href="datumaro.cli.html" /> 
+    <link rel="next" title="Plugins" href="datumaro.plugins.html" />
+    <link rel="prev" title="CLI" href="datumaro.cli.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,59 +42,41 @@
 <li class="toctree-l1"><a class="reference internal" href="datum.html">datum</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.html">CLI package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.html#commands-package">Commands package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.html#project-package">Project package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.html#contexts-package">Contexts package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.html#util-package">Util package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.cli.html">CLI</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Components package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a><ul class="simple">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#components-package">Components package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.components.annotation">datumaro.components.annotation module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.components.cli_plugin">datumaro.components.cli_plugin module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.components.config">datumaro.components.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.components.config_model">datumaro.components.config_model module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.components.converter">datumaro.components.converter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.components.dataset">datumaro.components.dataset module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.components.dataset_filter">datumaro.components.dataset_filter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.components.environment">datumaro.components.environment module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.components.errors">datumaro.components.errors module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.components.extractor">datumaro.components.extractor module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.components.launcher">datumaro.components.launcher module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.components.operations">datumaro.components.operations module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#datumaro-components-project-module">datumaro.components.project module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.components.validator">datumaro.components.validator module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.components">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.components.annotation">datumaro.components.annotation module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.components.cli_plugin">datumaro.components.cli_plugin module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.components.config">datumaro.components.config module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.components.config_model">datumaro.components.config_model module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.components.converter">datumaro.components.converter module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.components.dataset">datumaro.components.dataset module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.components.dataset_filter">datumaro.components.dataset_filter module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.components.environment">datumaro.components.environment module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.components.errors">datumaro.components.errors module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.components.extractor">datumaro.components.extractor module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.components.launcher">datumaro.components.launcher module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.components.operations">datumaro.components.operations module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#datumaro-components-project-module">datumaro.components.project module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.components.validator">datumaro.components.validator module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.components">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#algorithms-package">Algorithms package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.components.algorithms.rise">datumaro.components.algorithms.rise module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id93">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#algorithms-package">Algorithms package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.components.algorithms.rise">datumaro.components.algorithms.rise module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id93">Module contents</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html">Plugins package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#accuracy-checker-plugin-package">Accuracy checker plugin package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#coco-format-package">COCO format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#cvat-format-package">CVAT format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#datumaro-format-package">Datumaro format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#icdar-format-package">ICDAR format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#kitti-format-package">KITTI format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#kitti-raw-format-package">KITTI raw format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#openvino-plugin-package">OpenVino plugin package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#sampler-package">Sampler package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#sly-pointcloud-format-package">sly pointcloud format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#tf-detection-api-format-package">tf detection API format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#voc-format-package">VOC format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html#yolo-format-package">YOLO format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.plugins.html">Plugins</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="datumaro.util.html">Utilities package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro.util.html">Utilities</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
@@ -114,7 +96,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Components package</li>
+      <li>Components</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/api/datumaro.components.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -124,18 +106,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="components-package">
-<h1>Components package<a class="headerlink" href="#components-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="components">
+<h1>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h1>
+<p><strong>Subpackages</strong></p>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
+<div class="section" id="components-package">
+<h2>Components package<a class="headerlink" href="#components-package" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="module-datumaro.components.annotation">
-<span id="datumaro-components-annotation-module"></span><h2>datumaro.components.annotation module<a class="headerlink" href="#module-datumaro.components.annotation" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-components-annotation-module"></span><h3>datumaro.components.annotation module<a class="headerlink" href="#module-datumaro.components.annotation" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.annotation.Annotation">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.annotation.</span></span><span class="sig-name descname"><span class="pre">Annotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/components/annotation.html#Annotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.Annotation" title="Permalink to this definition">¶</a></dt>
@@ -1868,19 +1847,19 @@ z_order (ascending) prior to merging.</p>
 
 </div>
 <div class="section" id="module-datumaro.components.cli_plugin">
-<span id="datumaro-components-cli-plugin-module"></span><h2>datumaro.components.cli_plugin module<a class="headerlink" href="#module-datumaro.components.cli_plugin" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-components-cli-plugin-module"></span><h3>datumaro.components.cli_plugin module<a class="headerlink" href="#module-datumaro.components.cli_plugin" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.components.config">
-<span id="datumaro-components-config-module"></span><h2>datumaro.components.config module<a class="headerlink" href="#module-datumaro.components.config" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-components-config-module"></span><h3>datumaro.components.config module<a class="headerlink" href="#module-datumaro.components.config" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.components.config_model">
-<span id="datumaro-components-config-model-module"></span><h2>datumaro.components.config_model module<a class="headerlink" href="#module-datumaro.components.config_model" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-components-config-model-module"></span><h3>datumaro.components.config_model module<a class="headerlink" href="#module-datumaro.components.config_model" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.components.converter">
-<span id="datumaro-components-converter-module"></span><h2>datumaro.components.converter module<a class="headerlink" href="#module-datumaro.components.converter" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-components-converter-module"></span><h3>datumaro.components.converter module<a class="headerlink" href="#module-datumaro.components.converter" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.components.dataset">
-<span id="datumaro-components-dataset-module"></span><h2>datumaro.components.dataset module<a class="headerlink" href="#module-datumaro.components.dataset" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-components-dataset-module"></span><h3>datumaro.components.dataset module<a class="headerlink" href="#module-datumaro.components.dataset" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.dataset.DatasetItemStorage">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.dataset.</span></span><span class="sig-name descname"><span class="pre">DatasetItemStorage</span></span><a class="reference internal" href="../_modules/datumaro/components/dataset.html#DatasetItemStorage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.dataset.DatasetItemStorage" title="Permalink to this definition">¶</a></dt>
@@ -2543,7 +2522,7 @@ use the saved parameters.</p>
 
 </div>
 <div class="section" id="module-datumaro.components.dataset_filter">
-<span id="datumaro-components-dataset-filter-module"></span><h2>datumaro.components.dataset_filter module<a class="headerlink" href="#module-datumaro.components.dataset_filter" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-components-dataset-filter-module"></span><h3>datumaro.components.dataset_filter module<a class="headerlink" href="#module-datumaro.components.dataset_filter" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.dataset_filter.XPathDatasetFilter">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.dataset_filter.</span></span><span class="sig-name descname"><span class="pre">XPathDatasetFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xpath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/components/dataset_filter.html#XPathDatasetFilter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.dataset_filter.XPathDatasetFilter" title="Permalink to this definition">¶</a></dt>
@@ -2584,10 +2563,10 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 
 </div>
 <div class="section" id="module-datumaro.components.environment">
-<span id="datumaro-components-environment-module"></span><h2>datumaro.components.environment module<a class="headerlink" href="#module-datumaro.components.environment" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-components-environment-module"></span><h3>datumaro.components.environment module<a class="headerlink" href="#module-datumaro.components.environment" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="module-datumaro.components.errors">
-<span id="datumaro-components-errors-module"></span><h2>datumaro.components.errors module<a class="headerlink" href="#module-datumaro.components.errors" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-components-errors-module"></span><h3>datumaro.components.errors module<a class="headerlink" href="#module-datumaro.components.errors" title="Permalink to this headline">¶</a></h3>
 <dl class="py exception">
 <dt class="sig sig-object py" id="datumaro.components.errors.ImmutableObjectError">
 <em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.errors.</span></span><span class="sig-name descname"><span class="pre">ImmutableObjectError</span></span><a class="reference internal" href="../_modules/datumaro/components/errors.html#ImmutableObjectError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.errors.ImmutableObjectError" title="Permalink to this definition">¶</a></dt>
@@ -5464,7 +5443,7 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 
 </div>
 <div class="section" id="module-datumaro.components.extractor">
-<span id="datumaro-components-extractor-module"></span><h2>datumaro.components.extractor module<a class="headerlink" href="#module-datumaro.components.extractor" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-components-extractor-module"></span><h3>datumaro.components.extractor module<a class="headerlink" href="#module-datumaro.components.extractor" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.extractor.Extractor">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.extractor.</span></span><span class="sig-name descname"><span class="pre">Extractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/components/extractor.html#Extractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.extractor.Extractor" title="Permalink to this definition">¶</a></dt>
@@ -5516,7 +5495,7 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 
 </div>
 <div class="section" id="module-datumaro.components.launcher">
-<span id="datumaro-components-launcher-module"></span><h2>datumaro.components.launcher module<a class="headerlink" href="#module-datumaro.components.launcher" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-components-launcher-module"></span><h3>datumaro.components.launcher module<a class="headerlink" href="#module-datumaro.components.launcher" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.launcher.ModelTransform">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.launcher.</span></span><span class="sig-name descname"><span class="pre">ModelTransform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">launcher</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/components/launcher.html#ModelTransform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.launcher.ModelTransform" title="Permalink to this definition">¶</a></dt>
@@ -5530,7 +5509,7 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 
 </div>
 <div class="section" id="module-datumaro.components.operations">
-<span id="datumaro-components-operations-module"></span><h2>datumaro.components.operations module<a class="headerlink" href="#module-datumaro.components.operations" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-components-operations-module"></span><h3>datumaro.components.operations module<a class="headerlink" href="#module-datumaro.components.operations" title="Permalink to this headline">¶</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="datumaro.components.operations.mean_std">
 <span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">mean_std</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/components/operations.html#mean_std"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.mean_std" title="Permalink to this definition">¶</a></dt>
@@ -5539,7 +5518,7 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 
 </div>
 <div class="section" id="datumaro-components-project-module">
-<h2>datumaro.components.project module<a class="headerlink" href="#datumaro-components-project-module" title="Permalink to this headline">¶</a></h2>
+<h3>datumaro.components.project module<a class="headerlink" href="#datumaro-components-project-module" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.project.BuildStageType">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.project.</span></span><span class="sig-name descname"><span class="pre">BuildStageType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/components/project.html#BuildStageType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.BuildStageType" title="Permalink to this definition">¶</a></dt>
@@ -5693,7 +5672,7 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 
 </div>
 <div class="section" id="module-datumaro.components.validator">
-<span id="datumaro-components-validator-module"></span><h2>datumaro.components.validator module<a class="headerlink" href="#module-datumaro.components.validator" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-components-validator-module"></span><h3>datumaro.components.validator module<a class="headerlink" href="#module-datumaro.components.validator" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.validator.Severity">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.validator.</span></span><span class="sig-name descname"><span class="pre">Severity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/components/validator.html#Severity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.validator.Severity" title="Permalink to this definition">¶</a></dt>
@@ -5798,13 +5777,13 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 
 </div>
 <div class="section" id="module-datumaro.components">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datumaro.components" title="Permalink to this headline">¶</a></h2>
+<span id="module-contents"></span><h3>Module contents<a class="headerlink" href="#module-datumaro.components" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 <div class="section" id="algorithms-package">
-<h1>Algorithms package<a class="headerlink" href="#algorithms-package" title="Permalink to this headline">¶</a></h1>
+<h2>Algorithms package<a class="headerlink" href="#algorithms-package" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="module-datumaro.components.algorithms.rise">
-<span id="datumaro-components-algorithms-rise-module"></span><h2>datumaro.components.algorithms.rise module<a class="headerlink" href="#module-datumaro.components.algorithms.rise" title="Permalink to this headline">¶</a></h2>
+<span id="datumaro-components-algorithms-rise-module"></span><h3>datumaro.components.algorithms.rise module<a class="headerlink" href="#module-datumaro.components.algorithms.rise" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.algorithms.rise.RISE">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.algorithms.rise.</span></span><span class="sig-name descname"><span class="pre">RISE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iou_thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nms_thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">det_conf_thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/components/algorithms/rise.html#RISE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.algorithms.rise.RISE" title="Permalink to this definition">¶</a></dt>
@@ -5827,16 +5806,17 @@ See explanations at: <a class="reference external" href="https://arxiv.org/pdf/1
 
 </div>
 <div class="section" id="id93">
-<h2>Module contents<a class="headerlink" href="#id93" title="Permalink to this headline">¶</a></h2>
+<h3>Module contents<a class="headerlink" href="#id93" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-datumaro.components.algorithms"></span></div>
+</div>
 </div>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="datumaro.cli.html" class="btn btn-neutral float-left" title="CLI package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="datumaro.plugins.html" class="btn btn-neutral float-right" title="Plugins package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="datumaro.cli.html" class="btn btn-neutral float-left" title="CLI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="datumaro.plugins.html" class="btn btn-neutral float-right" title="Plugins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
