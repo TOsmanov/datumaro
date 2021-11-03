@@ -130,8 +130,8 @@
     <span class="n">polygons</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
 
-<span class="k">class</span> <span class="nc">_TaskConverter</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<div class="viewcode-block" id="_TaskConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._TaskConverter">[docs]</a><span class="k">class</span> <span class="nc">_TaskConverter</span><span class="p">:</span>
+<div class="viewcode-block" id="_TaskConverter.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._TaskConverter.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_min_ann_id</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_context</span> <span class="o">=</span> <span class="n">context</span>
 
@@ -157,15 +157,15 @@
             <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
             <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span>
         <span class="p">}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span></div>
 
-    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="s1">&#39;annotations&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
+<div class="viewcode-block" id="_TaskConverter.is_empty"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._TaskConverter.is_empty">[docs]</a>    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="s1">&#39;annotations&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span></div>
 
-    <span class="k">def</span> <span class="nf">_get_image_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">_get_image_id</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<div class="viewcode-block" id="_TaskConverter._get_image_id"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._TaskConverter._get_image_id">[docs]</a>    <span class="k">def</span> <span class="nf">_get_image_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">_get_image_id</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">save_image_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+<div class="viewcode-block" id="_TaskConverter.save_image_info"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._TaskConverter.save_image_info">[docs]</a>    <span class="k">def</span> <span class="nf">save_image_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="n">h</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">w</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">has_image</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
@@ -180,15 +180,15 @@
             <span class="s1">&#39;flickr_url&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
             <span class="s1">&#39;coco_url&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
             <span class="s1">&#39;date_captured&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="p">})</span>
+        <span class="p">})</span></div>
 
-    <span class="k">def</span> <span class="nf">save_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<div class="viewcode-block" id="_TaskConverter.save_categories"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._TaskConverter.save_categories">[docs]</a>    <span class="k">def</span> <span class="nf">save_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">save_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<div class="viewcode-block" id="_TaskConverter.save_annotations"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._TaskConverter.save_annotations">[docs]</a>    <span class="k">def</span> <span class="nf">save_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<div class="viewcode-block" id="_TaskConverter.write"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._TaskConverter.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="n">next_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_min_ann_id</span>
         <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">ann</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]:</span>
@@ -196,7 +196,7 @@
                 <span class="n">next_id</span> <span class="o">+=</span> <span class="mi">1</span>
 
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
-            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="n">outfile</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="n">outfile</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -206,33 +206,33 @@
     <span class="k">def</span> <span class="nf">categories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="s1">&#39;categories&#39;</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">_get_ann_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">annotation</span><span class="p">):</span>
+<div class="viewcode-block" id="_TaskConverter._get_ann_id"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._TaskConverter._get_ann_id">[docs]</a>    <span class="k">def</span> <span class="nf">_get_ann_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">annotation</span><span class="p">):</span>
         <span class="n">ann_id</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">_reindex</span> <span class="k">else</span> <span class="n">annotation</span><span class="o">.</span><span class="n">id</span>
         <span class="k">if</span> <span class="n">ann_id</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_min_ann_id</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ann_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_min_ann_id</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ann_id</span>
+        <span class="k">return</span> <span class="n">ann_id</span></div>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="_TaskConverter._convert_attributes"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._TaskConverter._convert_attributes">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_convert_attributes</span><span class="p">(</span><span class="n">ann</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">{</span> <span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ann</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;is_crowd&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">}</span>
-        <span class="p">}</span>
+        <span class="p">}</span></div></div>
 
-<span class="k">class</span> <span class="nc">_ImageInfoConverter</span><span class="p">(</span><span class="n">_TaskConverter</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="s1">&#39;images&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
+<div class="viewcode-block" id="_ImageInfoConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._ImageInfoConverter">[docs]</a><span class="k">class</span> <span class="nc">_ImageInfoConverter</span><span class="p">(</span><span class="n">_TaskConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="_ImageInfoConverter.is_empty"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._ImageInfoConverter.is_empty">[docs]</a>    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="s1">&#39;images&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span></div>
 
-    <span class="k">def</span> <span class="nf">save_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
-        <span class="k">pass</span>
+<div class="viewcode-block" id="_ImageInfoConverter.save_categories"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._ImageInfoConverter.save_categories">[docs]</a>    <span class="k">def</span> <span class="nf">save_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+        <span class="k">pass</span></div>
 
-    <span class="k">def</span> <span class="nf">save_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-        <span class="k">pass</span>
+<div class="viewcode-block" id="_ImageInfoConverter.save_annotations"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._ImageInfoConverter.save_annotations">[docs]</a>    <span class="k">def</span> <span class="nf">save_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">pass</span></div></div>
 
-<span class="k">class</span> <span class="nc">_CaptionsConverter</span><span class="p">(</span><span class="n">_TaskConverter</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">save_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
-        <span class="k">pass</span>
+<div class="viewcode-block" id="_CaptionsConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._CaptionsConverter">[docs]</a><span class="k">class</span> <span class="nc">_CaptionsConverter</span><span class="p">(</span><span class="n">_TaskConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="_CaptionsConverter.save_categories"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._CaptionsConverter.save_categories">[docs]</a>    <span class="k">def</span> <span class="nf">save_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+        <span class="k">pass</span></div>
 
-    <span class="k">def</span> <span class="nf">save_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<div class="viewcode-block" id="_CaptionsConverter.save_annotations"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._CaptionsConverter.save_annotations">[docs]</a>    <span class="k">def</span> <span class="nf">save_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">ann_idx</span><span class="p">,</span> <span class="n">ann</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">ann</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">caption</span><span class="p">:</span>
                 <span class="k">continue</span>
@@ -254,10 +254,10 @@
                 <span class="k">if</span> <span class="n">attrs</span><span class="p">:</span>
                     <span class="n">elem</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">attrs</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span></div></div>
 
-<span class="k">class</span> <span class="nc">_InstancesConverter</span><span class="p">(</span><span class="n">_TaskConverter</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">save_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+<div class="viewcode-block" id="_InstancesConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._InstancesConverter">[docs]</a><span class="k">class</span> <span class="nc">_InstancesConverter</span><span class="p">(</span><span class="n">_TaskConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="_InstancesConverter.save_categories"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._InstancesConverter.save_categories">[docs]</a>    <span class="k">def</span> <span class="nf">save_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
         <span class="n">label_categories</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">categories</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">label_categories</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
@@ -267,9 +267,9 @@
                 <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">idx</span><span class="p">,</span>
                 <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">cast</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
                 <span class="s1">&#39;supercategory&#39;</span><span class="p">:</span> <span class="n">cast</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
-            <span class="p">})</span>
+            <span class="p">})</span></div>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="_InstancesConverter.crop_segments"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._InstancesConverter.crop_segments">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">crop_segments</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">instances</span><span class="p">,</span> <span class="n">img_width</span><span class="p">,</span> <span class="n">img_height</span><span class="p">):</span>
         <span class="n">instances</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">instances</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">z_order</span><span class="p">)</span>
 
@@ -301,9 +301,9 @@
                 <span class="n">mask</span> <span class="o">=</span> <span class="n">mask_tools</span><span class="o">.</span><span class="n">merge_masks</span><span class="p">(</span><span class="n">new_segments</span><span class="p">)</span>
                 <span class="n">inst</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask_tools</span><span class="o">.</span><span class="n">mask_to_rle</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">instances</span>
+        <span class="k">return</span> <span class="n">instances</span></div>
 
-    <span class="k">def</span> <span class="nf">find_instance_parts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">img_width</span><span class="p">,</span> <span class="n">img_height</span><span class="p">):</span>
+<div class="viewcode-block" id="_InstancesConverter.find_instance_parts"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._InstancesConverter.find_instance_parts">[docs]</a>    <span class="k">def</span> <span class="nf">find_instance_parts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">img_width</span><span class="p">,</span> <span class="n">img_height</span><span class="p">):</span>
         <span class="n">boxes</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">group</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">bbox</span><span class="p">]</span>
         <span class="n">polygons</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">group</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">polygon</span><span class="p">]</span>
         <span class="n">masks</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">group</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
@@ -344,20 +344,20 @@
                 <span class="n">polygons</span> <span class="o">+=</span> <span class="n">mask_tools</span><span class="o">.</span><span class="n">mask_to_polygons</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
             <span class="n">mask</span> <span class="o">=</span> <span class="kc">None</span>
 
-        <span class="k">return</span> <span class="p">[</span><span class="n">leader</span><span class="p">,</span> <span class="n">polygons</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">bbox</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">leader</span><span class="p">,</span> <span class="n">polygons</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">bbox</span><span class="p">]</span></div>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="_InstancesConverter.find_instance_anns"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._InstancesConverter.find_instance_anns">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">find_instance_anns</span><span class="p">(</span><span class="n">annotations</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">annotations</span>
             <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="p">{</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">bbox</span><span class="p">,</span>
                 <span class="n">AnnotationType</span><span class="o">.</span><span class="n">polygon</span><span class="p">,</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">mask</span> <span class="p">}</span>
-        <span class="p">]</span>
+        <span class="p">]</span></div>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="_InstancesConverter.find_instances"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._InstancesConverter.find_instances">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">find_instances</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">annotations</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">anno_tools</span><span class="o">.</span><span class="n">find_instances</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">find_instance_anns</span><span class="p">(</span><span class="n">annotations</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">anno_tools</span><span class="o">.</span><span class="n">find_instances</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">find_instance_anns</span><span class="p">(</span><span class="n">annotations</span><span class="p">))</span></div>
 
-    <span class="k">def</span> <span class="nf">save_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<div class="viewcode-block" id="_InstancesConverter.save_annotations"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._InstancesConverter.save_annotations">[docs]</a>    <span class="k">def</span> <span class="nf">save_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="n">instances</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_instances</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">instances</span><span class="p">:</span>
             <span class="k">return</span>
@@ -375,9 +375,9 @@
         <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">instances</span><span class="p">:</span>
             <span class="n">elem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_instance</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">elem</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">convert_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<div class="viewcode-block" id="_InstancesConverter.convert_instance"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._InstancesConverter.convert_instance">[docs]</a>    <span class="k">def</span> <span class="nf">convert_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="n">ann</span><span class="p">,</span> <span class="n">polygons</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">bbox</span> <span class="o">=</span> <span class="n">instance</span>
 
         <span class="n">is_crowd</span> <span class="o">=</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
@@ -430,10 +430,10 @@
                 <span class="k">if</span> <span class="n">attrs</span><span class="p">:</span>
                     <span class="n">elem</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">attrs</span>
 
-        <span class="k">return</span> <span class="n">elem</span>
+        <span class="k">return</span> <span class="n">elem</span></div></div>
 
-<span class="k">class</span> <span class="nc">_KeypointsConverter</span><span class="p">(</span><span class="n">_InstancesConverter</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">save_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+<div class="viewcode-block" id="_KeypointsConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._KeypointsConverter">[docs]</a><span class="k">class</span> <span class="nc">_KeypointsConverter</span><span class="p">(</span><span class="n">_InstancesConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="_KeypointsConverter.save_categories"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._KeypointsConverter.save_categories">[docs]</a>    <span class="k">def</span> <span class="nf">save_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
         <span class="n">label_categories</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">categories</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">label_categories</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
@@ -455,9 +455,9 @@
                         <span class="s1">&#39;keypoints&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">kp_cat</span><span class="o">.</span><span class="n">labels</span><span class="p">],</span>
                         <span class="s1">&#39;skeleton&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">kp_cat</span><span class="o">.</span><span class="n">joints</span><span class="p">],</span>
                     <span class="p">})</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">categories</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">categories</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">save_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<div class="viewcode-block" id="_KeypointsConverter.save_annotations"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._KeypointsConverter.save_annotations">[docs]</a>    <span class="k">def</span> <span class="nf">save_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="n">point_annotations</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">annotations</span>
             <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">points</span><span class="p">]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">point_annotations</span><span class="p">:</span>
@@ -471,9 +471,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
 
         <span class="c1"># Create annotations for complete instance + keypoints annotations</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">save_annotations</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">save_annotations</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></div>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="_KeypointsConverter.find_solitary_points"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._KeypointsConverter.find_solitary_points">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">find_solitary_points</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">annotations</span><span class="p">):</span>
         <span class="n">annotations</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">annotations</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">group</span><span class="p">)</span>
         <span class="n">solitary_points</span> <span class="o">=</span> <span class="p">[]</span>
@@ -483,9 +483,9 @@
                 <span class="n">group</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">group</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">points</span><span class="p">]</span>
                 <span class="n">solitary_points</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">solitary_points</span>
+        <span class="k">return</span> <span class="n">solitary_points</span></div>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="_KeypointsConverter.convert_points_object"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._KeypointsConverter.convert_points_object">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">convert_points_object</span><span class="p">(</span><span class="n">ann</span><span class="p">):</span>
         <span class="n">keypoints</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">points</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">points</span>
@@ -501,9 +501,9 @@
         <span class="k">return</span> <span class="p">{</span>
             <span class="s1">&#39;keypoints&#39;</span><span class="p">:</span> <span class="n">keypoints</span><span class="p">,</span>
             <span class="s1">&#39;num_keypoints&#39;</span><span class="p">:</span> <span class="n">num_annotated</span><span class="p">,</span>
-        <span class="p">}</span>
+        <span class="p">}</span></div>
 
-    <span class="k">def</span> <span class="nf">convert_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<div class="viewcode-block" id="_KeypointsConverter.convert_instance"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._KeypointsConverter.convert_instance">[docs]</a>    <span class="k">def</span> <span class="nf">convert_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="n">points_ann</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> \
             <span class="n">x</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">points</span> <span class="ow">and</span> \
             <span class="n">instance</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">group</span> <span class="ow">and</span> <span class="n">x</span><span class="o">.</span><span class="n">group</span> <span class="o">==</span> <span class="n">instance</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">group</span><span class="p">)</span>
@@ -513,10 +513,10 @@
         <span class="n">elem</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">convert_instance</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
         <span class="n">elem</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">convert_points_object</span><span class="p">(</span><span class="n">points_ann</span><span class="p">))</span>
 
-        <span class="k">return</span> <span class="n">elem</span>
+        <span class="k">return</span> <span class="n">elem</span></div></div>
 
-<span class="k">class</span> <span class="nc">_LabelsConverter</span><span class="p">(</span><span class="n">_TaskConverter</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">save_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+<div class="viewcode-block" id="_LabelsConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._LabelsConverter">[docs]</a><span class="k">class</span> <span class="nc">_LabelsConverter</span><span class="p">(</span><span class="n">_TaskConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="_LabelsConverter.save_categories"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._LabelsConverter.save_categories">[docs]</a>    <span class="k">def</span> <span class="nf">save_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
         <span class="n">label_categories</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">categories</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">label_categories</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
@@ -526,9 +526,9 @@
                 <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">idx</span><span class="p">,</span>
                 <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">cast</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
                 <span class="s1">&#39;supercategory&#39;</span><span class="p">:</span> <span class="n">cast</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
-            <span class="p">})</span>
+            <span class="p">})</span></div>
 
-    <span class="k">def</span> <span class="nf">save_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<div class="viewcode-block" id="_LabelsConverter.save_annotations"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._LabelsConverter.save_annotations">[docs]</a>    <span class="k">def</span> <span class="nf">save_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">ann</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">:</span>
                 <span class="k">continue</span>
@@ -549,17 +549,17 @@
                 <span class="k">if</span> <span class="n">attrs</span><span class="p">:</span>
                     <span class="n">elem</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">attrs</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span></div></div>
 
-<span class="k">class</span> <span class="nc">_StuffConverter</span><span class="p">(</span><span class="n">_InstancesConverter</span><span class="p">):</span>
-    <span class="k">pass</span>
+<div class="viewcode-block" id="_StuffConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._StuffConverter">[docs]</a><span class="k">class</span> <span class="nc">_StuffConverter</span><span class="p">(</span><span class="n">_InstancesConverter</span><span class="p">):</span>
+    <span class="k">pass</span></div>
 
-<span class="k">class</span> <span class="nc">_PanopticConverter</span><span class="p">(</span><span class="n">_TaskConverter</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<div class="viewcode-block" id="_PanopticConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._PanopticConverter">[docs]</a><span class="k">class</span> <span class="nc">_PanopticConverter</span><span class="p">(</span><span class="n">_TaskConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="_PanopticConverter.write"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._PanopticConverter.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
-            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="n">outfile</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="n">outfile</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">save_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+<div class="viewcode-block" id="_PanopticConverter.save_categories"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._PanopticConverter.save_categories">[docs]</a>    <span class="k">def</span> <span class="nf">save_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
         <span class="n">label_categories</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">categories</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">label_categories</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
@@ -570,9 +570,9 @@
                 <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">cast</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
                 <span class="s1">&#39;supercategory&#39;</span><span class="p">:</span> <span class="n">cast</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
                 <span class="s1">&#39;isthing&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="c1"># TODO: can&#39;t represent this information yet</span>
-            <span class="p">})</span>
+            <span class="p">})</span></div>
 
-    <span class="k">def</span> <span class="nf">save_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<div class="viewcode-block" id="_PanopticConverter.save_annotations"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter._PanopticConverter.save_annotations">[docs]</a>    <span class="k">def</span> <span class="nf">save_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">has_image</span><span class="p">:</span>
             <span class="k">return</span>
 
@@ -610,14 +610,14 @@
             <span class="s1">&#39;file_name&#39;</span><span class="p">:</span> <span class="n">ann_filename</span><span class="p">,</span>
             <span class="s1">&#39;segments_info&#39;</span><span class="p">:</span> <span class="n">segments_info</span>
         <span class="p">}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span></div></div>
 
-<span class="k">class</span> <span class="nc">CocoConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="CocoConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoConverter">[docs]</a><span class="k">class</span> <span class="nc">CocoConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoConverter._split_tasks_string"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoConverter._split_tasks_string">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_split_tasks_string</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">CocoTask</span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">CocoTask</span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span></div>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="CocoConverter.build_cmdline_parser"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoConverter.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">            Segmentation mask modes (&#39;--segmentation-mode&#39;):|n</span>
@@ -663,7 +663,7 @@
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--tasks&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">_split_tasks_string</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;COCO task filter, comma-separated list of {</span><span class="si">%s</span><span class="s2">} &quot;</span>
                 <span class="s2">&quot;(default: all)&quot;</span> <span class="o">%</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">CocoTask</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">parser</span>
+        <span class="k">return</span> <span class="n">parser</span></div>
 
     <span class="n">DEFAULT_IMAGE_EXT</span> <span class="o">=</span> <span class="n">CocoPath</span><span class="o">.</span><span class="n">IMAGE_EXT</span>
 
@@ -677,7 +677,7 @@
         <span class="n">CocoTask</span><span class="o">.</span><span class="n">stuff</span><span class="p">:</span> <span class="n">_StuffConverter</span><span class="p">,</span>
     <span class="p">}</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span>
+<div class="viewcode-block" id="CocoConverter.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoConverter.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span>
             <span class="n">tasks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">segmentation_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crop_covered</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">allow_attributes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reindex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">merge_images</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -714,30 +714,30 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_image_ids</span> <span class="o">=</span> <span class="p">{}</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_patch</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_patch</span> <span class="o">=</span> <span class="kc">None</span></div>
 
-    <span class="k">def</span> <span class="nf">_make_dirs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoConverter._make_dirs"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoConverter._make_dirs">[docs]</a>    <span class="k">def</span> <span class="nf">_make_dirs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_images_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_dir</span><span class="p">,</span> <span class="n">CocoPath</span><span class="o">.</span><span class="n">IMAGES_DIR</span><span class="p">)</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_images_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_ann_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_dir</span><span class="p">,</span> <span class="n">CocoPath</span><span class="o">.</span><span class="n">ANNOTATIONS_DIR</span><span class="p">)</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ann_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ann_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_make_segmentation_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subset_name</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoConverter._make_segmentation_dir"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoConverter._make_segmentation_dir">[docs]</a>    <span class="k">def</span> <span class="nf">_make_segmentation_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subset_name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_segmentation_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_dir</span><span class="p">,</span>
             <span class="n">CocoPath</span><span class="o">.</span><span class="n">ANNOTATIONS_DIR</span><span class="p">,</span> <span class="s1">&#39;panoptic_&#39;</span><span class="o">+</span> <span class="n">subset_name</span><span class="p">)</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_segmentation_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_segmentation_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_make_task_converter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoConverter._make_task_converter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoConverter._make_task_converter">[docs]</a>    <span class="k">def</span> <span class="nf">_make_task_converter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">task</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TASK_CONVERTER</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TASK_CONVERTER</span><span class="p">[</span><span class="n">task</span><span class="p">](</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TASK_CONVERTER</span><span class="p">[</span><span class="n">task</span><span class="p">](</span><span class="bp">self</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_make_task_converters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoConverter._make_task_converters"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoConverter._make_task_converters">[docs]</a>    <span class="k">def</span> <span class="nf">_make_task_converters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">{</span> <span class="n">task</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_task_converter</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TASK_CONVERTER</span><span class="p">)</span> <span class="p">}</span>
+            <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TASK_CONVERTER</span><span class="p">)</span> <span class="p">}</span></div>
 
-    <span class="k">def</span> <span class="nf">_get_image_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoConverter._get_image_id"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoConverter._get_image_id">[docs]</a>    <span class="k">def</span> <span class="nf">_get_image_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="n">image_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_image_ids</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">image_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reindex</span><span class="p">:</span>
@@ -746,9 +746,9 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">image_id</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_image_ids</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_image_ids</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_id</span>
-        <span class="k">return</span> <span class="n">image_id</span>
+        <span class="k">return</span> <span class="n">image_id</span></div>
 
-    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoConverter.apply"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoConverter.apply">[docs]</a>    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_make_dirs</span><span class="p">()</span>
 
         <span class="k">for</span> <span class="n">subset_name</span><span class="p">,</span> <span class="n">subset</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="o">.</span><span class="n">subsets</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -783,9 +783,9 @@
                             <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">ann_file</span><span class="p">)</span>
                     <span class="k">continue</span>
 
-                <span class="n">task_conv</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ann_file</span><span class="p">)</span>
+                <span class="n">task_conv</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ann_file</span><span class="p">)</span></div>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="CocoConverter.patch"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoConverter.patch">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">patch</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">patch</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">subset</span> <span class="ow">in</span> <span class="n">patch</span><span class="o">.</span><span class="n">updated_subsets</span><span class="p">:</span>
             <span class="n">conv</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="n">subset</span><span class="p">),</span> <span class="n">save_dir</span><span class="o">=</span><span class="n">save_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -812,44 +812,44 @@
             <span class="n">image_path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">images_dir</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span>
                 <span class="n">conv</span><span class="o">.</span><span class="n">_make_image_filename</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
             <span class="k">if</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">image_path</span><span class="p">):</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span></div></div>
 
 
-<span class="k">class</span> <span class="nc">CocoInstancesConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoInstancesConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoInstancesConverter">[docs]</a><span class="k">class</span> <span class="nc">CocoInstancesConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoInstancesConverter.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoInstancesConverter.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CocoTask</span><span class="o">.</span><span class="n">instances</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 
-<span class="k">class</span> <span class="nc">CocoImageInfoConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoImageInfoConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoImageInfoConverter">[docs]</a><span class="k">class</span> <span class="nc">CocoImageInfoConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoImageInfoConverter.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoImageInfoConverter.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CocoTask</span><span class="o">.</span><span class="n">image_info</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 
-<span class="k">class</span> <span class="nc">CocoPersonKeypointsConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoPersonKeypointsConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoPersonKeypointsConverter">[docs]</a><span class="k">class</span> <span class="nc">CocoPersonKeypointsConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoPersonKeypointsConverter.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoPersonKeypointsConverter.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CocoTask</span><span class="o">.</span><span class="n">person_keypoints</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 
-<span class="k">class</span> <span class="nc">CocoCaptionsConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoCaptionsConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoCaptionsConverter">[docs]</a><span class="k">class</span> <span class="nc">CocoCaptionsConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoCaptionsConverter.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoCaptionsConverter.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CocoTask</span><span class="o">.</span><span class="n">captions</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 
-<span class="k">class</span> <span class="nc">CocoLabelsConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoLabelsConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoLabelsConverter">[docs]</a><span class="k">class</span> <span class="nc">CocoLabelsConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoLabelsConverter.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoLabelsConverter.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CocoTask</span><span class="o">.</span><span class="n">labels</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 
-<span class="k">class</span> <span class="nc">CocoPanopticConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoPanopticConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoPanopticConverter">[docs]</a><span class="k">class</span> <span class="nc">CocoPanopticConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoPanopticConverter.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoPanopticConverter.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CocoTask</span><span class="o">.</span><span class="n">panoptic</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 
-<span class="k">class</span> <span class="nc">CocoStuffConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoStuffConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoStuffConverter">[docs]</a><span class="k">class</span> <span class="nc">CocoStuffConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoStuffConverter.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoStuffConverter.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CocoTask</span><span class="o">.</span><span class="n">stuff</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;segmentation_mode&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SegmentationMode</span><span class="o">.</span><span class="n">mask</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

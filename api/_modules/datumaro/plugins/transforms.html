@@ -536,7 +536,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sub</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> \
             <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">))</span></div></div>
 
-<div class="viewcode-block" id="RemapLabels"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.transforms.RemapLabels">[docs]</a><span class="k">class</span> <span class="nc">RemapLabels</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">RemapLabels</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Changes labels in the dataset.|n</span>
 <span class="sd">    |n</span>
@@ -559,9 +559,9 @@
 <span class="sd">    |s|s|s|s%(prog)s -l person:car -l bus:bus -l cat:dog --default delete</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="RemapLabels.DefaultAction"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.transforms.RemapLabels.DefaultAction">[docs]</a>    <span class="k">class</span> <span class="nc">DefaultAction</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">DefaultAction</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
         <span class="n">keep</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
-        <span class="n">delete</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+        <span class="n">delete</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_split_arg</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
@@ -583,7 +583,7 @@
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Action for unspecified labels (default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">parser</span>
 
-<div class="viewcode-block" id="RemapLabels.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.transforms.RemapLabels.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">:</span> <span class="n">IExtractor</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">:</span> <span class="n">IExtractor</span><span class="p">,</span>
             <span class="n">mapping</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]],</span>
             <span class="n">default</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">DefaultAction</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">extractor</span><span class="p">)</span>
@@ -628,7 +628,7 @@
 
             <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">points</span><span class="p">]</span> <span class="o">=</span> <span class="n">dst_point_cat</span>
 
-        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">src_categories</span><span class="p">)</span></div>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">src_categories</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_make_label_id_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src_label_cat</span><span class="p">,</span> <span class="n">label_mapping</span><span class="p">,</span> <span class="n">default_action</span><span class="p">):</span>
         <span class="n">dst_label_cat</span> <span class="o">=</span> <span class="n">LabelCategories</span><span class="p">(</span>
@@ -669,7 +669,7 @@
     <span class="k">def</span> <span class="nf">categories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span>
 
-<div class="viewcode-block" id="RemapLabels.transform_item"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.transforms.RemapLabels.transform_item">[docs]</a>    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="n">annotations</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">ann</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -678,9 +678,9 @@
                     <span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ann</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">conv_label</span><span class="p">))</span>
             <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_action</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="n">DefaultAction</span><span class="o">.</span><span class="n">keep</span><span class="p">:</span>
                 <span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ann</span><span class="o">.</span><span class="n">wrap</span><span class="p">())</span>
-        <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">annotations</span><span class="o">=</span><span class="n">annotations</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">annotations</span><span class="o">=</span><span class="n">annotations</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ProjectLabels"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.transforms.ProjectLabels">[docs]</a><span class="k">class</span> <span class="nc">ProjectLabels</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">ProjectLabels</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Changes the order of labels in the dataset from the existing</span>
 <span class="sd">    to the desired one, removes unknown labels and adds new labels.</span>
@@ -705,7 +705,7 @@
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Label name (repeatable, ordered)&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">parser</span>
 
-<div class="viewcode-block" id="ProjectLabels.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.transforms.ProjectLabels.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">:</span> <span class="n">IExtractor</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">:</span> <span class="n">IExtractor</span><span class="p">,</span>
             <span class="n">dst_labels</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">LabelCategories</span><span class="p">]):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">extractor</span><span class="p">)</span>
 
@@ -780,7 +780,7 @@
                 <span class="k">if</span> <span class="n">new_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">new_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dst_point_cat</span><span class="p">:</span>
                     <span class="n">dst_point_cat</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">new_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">old_cat</span><span class="p">)</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">points</span><span class="p">]</span> <span class="o">=</span> <span class="n">dst_point_cat</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">points</span><span class="p">]</span> <span class="o">=</span> <span class="n">dst_point_cat</span>
 
     <span class="k">def</span> <span class="nf">_make_label_id_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src_label_cat</span><span class="p">,</span> <span class="n">dst_label_cat</span><span class="p">):</span>
         <span class="n">id_mapping</span> <span class="o">=</span> <span class="p">{</span>
@@ -792,7 +792,7 @@
     <span class="k">def</span> <span class="nf">categories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span>
 
-<div class="viewcode-block" id="ProjectLabels.transform_item"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.transforms.ProjectLabels.transform_item">[docs]</a>    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="n">annotations</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">ann</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -801,29 +801,29 @@
                     <span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ann</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">conv_label</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ann</span><span class="o">.</span><span class="n">wrap</span><span class="p">())</span>
-        <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">annotations</span><span class="o">=</span><span class="n">annotations</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">annotations</span><span class="o">=</span><span class="n">annotations</span><span class="p">)</span>
 
-<div class="viewcode-block" id="AnnsToLabels"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.transforms.AnnsToLabels">[docs]</a><span class="k">class</span> <span class="nc">AnnsToLabels</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">AnnsToLabels</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Collects all labels from annotations (of all types) and</span>
 <span class="sd">    transforms them into a set of annotations of type Label</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="AnnsToLabels.transform_item"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.transforms.AnnsToLabels.transform_item">[docs]</a>    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="n">labels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">annotations</span>
             <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">)</span>
         <span class="n">annotations</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
             <span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Label</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">))</span>
 
-        <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">annotations</span><span class="o">=</span><span class="n">annotations</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">annotations</span><span class="o">=</span><span class="n">annotations</span><span class="p">)</span>
 
-<div class="viewcode-block" id="BboxValuesDecrement"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.transforms.BboxValuesDecrement">[docs]</a><span class="k">class</span> <span class="nc">BboxValuesDecrement</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">BboxValuesDecrement</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Subtracts one from the coordinates of bounding boxes</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="BboxValuesDecrement.transform_item"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.transforms.BboxValuesDecrement.transform_item">[docs]</a>    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="n">annotations</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">annotations</span>
             <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">bbox</span><span class="p">]</span>
         <span class="n">bboxes</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">annotations</span>
@@ -833,7 +833,7 @@
                 <span class="n">bbox</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bbox</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bbox</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">bbox</span><span class="o">.</span><span class="n">h</span><span class="p">,</span>
                 <span class="n">label</span><span class="o">=</span><span class="n">bbox</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">attributes</span><span class="o">=</span><span class="n">bbox</span><span class="o">.</span><span class="n">attributes</span><span class="p">))</span>
 
-        <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">annotations</span><span class="o">=</span><span class="n">annotations</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">annotations</span><span class="o">=</span><span class="n">annotations</span><span class="p">)</span>
 </pre></div>
 
            </div>

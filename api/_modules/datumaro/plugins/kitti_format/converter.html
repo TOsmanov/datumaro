@@ -129,14 +129,14 @@
     <span class="n">kitti</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
     <span class="n">source</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
 
-<span class="k">class</span> <span class="nc">KittiConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
+<div class="viewcode-block" id="KittiConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.converter.KittiConverter">[docs]</a><span class="k">class</span> <span class="nc">KittiConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
     <span class="n">DEFAULT_IMAGE_EXT</span> <span class="o">=</span> <span class="n">KittiPath</span><span class="o">.</span><span class="n">IMAGE_EXT</span>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="KittiConverter._split_tasks_string"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.converter.KittiConverter._split_tasks_string">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_split_tasks_string</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">KittiTask</span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">KittiTask</span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span></div>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="KittiConverter._get_labelmap"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.converter.KittiConverter._get_labelmap">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_get_labelmap</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">s</span>
@@ -144,9 +144,9 @@
             <span class="k">return</span> <span class="n">LabelmapType</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span><span class="o">.</span><span class="n">name</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="kn">import</span> <span class="nn">argparse</span>
-            <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">()</span></div>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="KittiConverter.build_cmdline_parser"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.converter.KittiConverter.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
@@ -158,9 +158,9 @@
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--tasks&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">_split_tasks_string</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;KITTI task filter, comma-separated list of {</span><span class="si">%s</span><span class="s2">} &quot;</span>
                 <span class="s2">&quot;(default: all)&quot;</span> <span class="o">%</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">KittiTask</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">parser</span>
+        <span class="k">return</span> <span class="n">parser</span></div>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span>
+<div class="viewcode-block" id="KittiConverter.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.converter.KittiConverter.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span>
             <span class="n">tasks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">apply_colormap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allow_attributes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">label_map</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">extractor</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -183,9 +183,9 @@
         <span class="k">elif</span> <span class="n">KittiTask</span><span class="o">.</span><span class="n">detection</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span> <span class="o">=</span> <span class="p">{</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="o">.</span><span class="n">categories</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
-                    <span class="n">LabelCategories</span><span class="p">())}</span>
+                    <span class="n">LabelCategories</span><span class="p">())}</span></div>
 
-    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="KittiConverter.apply"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.converter.KittiConverter.apply">[docs]</a>    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">subset_name</span><span class="p">,</span> <span class="n">subset</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="o">.</span><span class="n">subsets</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -246,17 +246,17 @@
                             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">label_line</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">KittiTask</span><span class="o">.</span><span class="n">segmentation</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">save_label_map</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_label_map</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">get_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_id</span><span class="p">):</span>
+<div class="viewcode-block" id="KittiConverter.get_label"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.converter.KittiConverter.get_label">[docs]</a>    <span class="k">def</span> <span class="nf">get_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_id</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="o">.</span> \
-            <span class="n">categories</span><span class="p">()[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">label_id</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+            <span class="n">categories</span><span class="p">()[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">label_id</span><span class="p">]</span><span class="o">.</span><span class="n">name</span></div>
 
-    <span class="k">def</span> <span class="nf">save_label_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="KittiConverter.save_label_map"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.converter.KittiConverter.save_label_map">[docs]</a>    <span class="k">def</span> <span class="nf">save_label_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_dir</span><span class="p">,</span> <span class="n">KittiPath</span><span class="o">.</span><span class="n">LABELMAP_FILE</span><span class="p">)</span>
-        <span class="n">write_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label_map</span><span class="p">)</span>
+        <span class="n">write_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label_map</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_load_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_map_source</span><span class="p">):</span>
+<div class="viewcode-block" id="KittiConverter._load_categories"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.converter.KittiConverter._load_categories">[docs]</a>    <span class="k">def</span> <span class="nf">_load_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_map_source</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">label_map_source</span> <span class="o">==</span> <span class="n">LabelmapType</span><span class="o">.</span><span class="n">kitti</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
             <span class="c1"># use the default KITTI colormap</span>
             <span class="n">label_map</span> <span class="o">=</span> <span class="n">KittiLabelMap</span>
@@ -294,9 +294,9 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span> <span class="o">=</span> <span class="n">make_kitti_categories</span><span class="p">(</span><span class="n">label_map</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_label_map</span> <span class="o">=</span> <span class="n">label_map</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_label_id_mapping</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_label_id_map</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_label_id_mapping</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_label_id_map</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">_make_label_id_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="KittiConverter._make_label_id_map"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.converter.KittiConverter._make_label_id_map">[docs]</a>    <span class="k">def</span> <span class="nf">_make_label_id_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">map_id</span><span class="p">,</span> <span class="n">id_mapping</span><span class="p">,</span> <span class="n">src_labels</span><span class="p">,</span> <span class="n">dst_labels</span> <span class="o">=</span> <span class="n">make_label_id_mapping</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="o">.</span><span class="n">categories</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">),</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">])</span>
@@ -317,25 +317,25 @@
             <span class="p">])</span>
         <span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">map_id</span>
+        <span class="k">return</span> <span class="n">map_id</span></div>
 
-    <span class="k">def</span> <span class="nf">save_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">apply_colormap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<div class="viewcode-block" id="KittiConverter.save_mask"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.converter.KittiConverter.save_mask">[docs]</a>    <span class="k">def</span> <span class="nf">save_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">apply_colormap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_colormap</span> <span class="ow">and</span> <span class="n">apply_colormap</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">colormap</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">colormap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">colormap</span>
             <span class="n">mask</span> <span class="o">=</span> <span class="n">paint_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">colormap</span><span class="p">)</span>
-        <span class="n">save_image</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">create_dir</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">save_image</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">create_dir</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span></div></div>
 
-<span class="k">class</span> <span class="nc">KittiSegmentationConverter</span><span class="p">(</span><span class="n">KittiConverter</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="KittiSegmentationConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.converter.KittiSegmentationConverter">[docs]</a><span class="k">class</span> <span class="nc">KittiSegmentationConverter</span><span class="p">(</span><span class="n">KittiConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="KittiSegmentationConverter.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.converter.KittiSegmentationConverter.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KittiTask</span><span class="o">.</span><span class="n">segmentation</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 
-<span class="k">class</span> <span class="nc">KittiDetectionConverter</span><span class="p">(</span><span class="n">KittiConverter</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="KittiDetectionConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.converter.KittiDetectionConverter">[docs]</a><span class="k">class</span> <span class="nc">KittiDetectionConverter</span><span class="p">(</span><span class="n">KittiConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="KittiDetectionConverter.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.converter.KittiDetectionConverter.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KittiTask</span><span class="o">.</span><span class="n">detection</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

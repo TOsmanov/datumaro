@@ -120,8 +120,8 @@
     <span class="n">segmentation</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
 
 
-<span class="k">class</span> <span class="nc">Validator</span><span class="p">(</span><span class="n">CliPlugin</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="n">IDataset</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<div class="viewcode-block" id="Validator"><a class="viewcode-back" href="../../../api/datumaro.components.html#datumaro.components.validator.Validator">[docs]</a><span class="k">class</span> <span class="nc">Validator</span><span class="p">(</span><span class="n">CliPlugin</span><span class="p">):</span>
+<div class="viewcode-block" id="Validator.validate"><a class="viewcode-back" href="../../../api/datumaro.components.html#datumaro.components.validator.Validator.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="n">IDataset</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the validation results of a dataset based on task type.</span>
 
@@ -156,9 +156,9 @@
         <span class="n">validation_results</span><span class="p">[</span><span class="s1">&#39;validation_reports&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reports</span>
         <span class="n">validation_results</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">summary</span>
 
-        <span class="k">return</span> <span class="n">validation_results</span>
+        <span class="k">return</span> <span class="n">validation_results</span></div>
 
-    <span class="k">def</span> <span class="nf">compute_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="n">IDataset</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<div class="viewcode-block" id="Validator.compute_statistics"><a class="viewcode-back" href="../../../api/datumaro.components.html#datumaro.components.validator.Validator.compute_statistics">[docs]</a>    <span class="k">def</span> <span class="nf">compute_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="n">IDataset</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes statistics of the dataset based on task type.</span>
 
@@ -168,10 +168,10 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            stats (dict): A dict object containing statistics of the dataset.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Must be implemented in a subclass&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Must be implemented in a subclass&quot;</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">generate_reports</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stats</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Must be implemented in a subclass&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="Validator.generate_reports"><a class="viewcode-back" href="../../../api/datumaro.components.html#datumaro.components.validator.Validator.generate_reports">[docs]</a>    <span class="k">def</span> <span class="nf">generate_reports</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stats</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Must be implemented in a subclass&quot;</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

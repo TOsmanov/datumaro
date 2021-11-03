@@ -154,7 +154,7 @@
 <span class="p">])</span>
 
 
-<span class="k">class</span> <span class="nc">KittiPath</span><span class="p">:</span>
+<div class="viewcode-block" id="KittiPath"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.format.KittiPath">[docs]</a><span class="k">class</span> <span class="nc">KittiPath</span><span class="p">:</span>
     <span class="n">IMAGES_DIR</span> <span class="o">=</span> <span class="s1">&#39;image_2&#39;</span>
     <span class="n">INSTANCES_DIR</span> <span class="o">=</span> <span class="s1">&#39;instance&#39;</span>
     <span class="n">LABELS_DIR</span> <span class="o">=</span> <span class="s1">&#39;label_2&#39;</span>
@@ -166,10 +166,10 @@
     <span class="n">LABELMAP_FILE</span> <span class="o">=</span> <span class="s1">&#39;label_colors.txt&#39;</span>
 
     <span class="n">DEFAULT_TRUNCATED</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># 0% truncated</span>
-    <span class="n">DEFAULT_OCCLUDED</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1"># fully visible</span>
+    <span class="n">DEFAULT_OCCLUDED</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1"># fully visible</span></div>
 
 
-<span class="k">def</span> <span class="nf">make_kitti_categories</span><span class="p">(</span><span class="n">label_map</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="make_kitti_categories"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.format.make_kitti_categories">[docs]</a><span class="k">def</span> <span class="nf">make_kitti_categories</span><span class="p">(</span><span class="n">label_map</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">label_map</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">label_map</span> <span class="o">=</span> <span class="n">KittiLabelMap</span>
 
@@ -189,9 +189,9 @@
     <span class="n">mask_categories</span> <span class="o">=</span> <span class="n">MaskCategories</span><span class="p">(</span><span class="n">colormap</span><span class="p">)</span>
     <span class="n">mask_categories</span><span class="o">.</span><span class="n">inverse_colormap</span> <span class="c1"># pylint: disable=pointless-statement</span>
     <span class="n">categories</span><span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask_categories</span>
-    <span class="k">return</span> <span class="n">categories</span>
+    <span class="k">return</span> <span class="n">categories</span></div>
 
-<span class="k">def</span> <span class="nf">parse_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<div class="viewcode-block" id="parse_label_map"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.format.parse_label_map">[docs]</a><span class="k">def</span> <span class="nf">parse_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="n">label_map</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
@@ -214,16 +214,16 @@
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Label &#39;</span><span class="si">%s</span><span class="s2">&#39; is already defined&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
 
             <span class="n">label_map</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
-    <span class="k">return</span> <span class="n">label_map</span>
+    <span class="k">return</span> <span class="n">label_map</span></div>
 
-<span class="k">def</span> <span class="nf">write_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">label_map</span><span class="p">):</span>
+<div class="viewcode-block" id="write_label_map"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.format.write_label_map">[docs]</a><span class="k">def</span> <span class="nf">write_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">label_map</span><span class="p">):</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">label_name</span><span class="p">,</span> <span class="n">label_desc</span> <span class="ow">in</span> <span class="n">label_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">label_desc</span><span class="p">:</span>
                 <span class="n">color_rgb</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">label_desc</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">color_rgb</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">color_rgb</span><span class="p">,</span> <span class="n">label_name</span><span class="p">))</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">color_rgb</span><span class="p">,</span> <span class="n">label_name</span><span class="p">))</span></div>
 </pre></div>
 
            </div>
