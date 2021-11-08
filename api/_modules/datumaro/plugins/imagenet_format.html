@@ -96,17 +96,17 @@
 <span class="kn">from</span> <span class="nn">datumaro.util.image</span> <span class="kn">import</span> <span class="n">find_images</span>
 
 
-<span class="k">class</span> <span class="nc">ImagenetPath</span><span class="p">:</span>
-    <span class="n">IMAGE_DIR_NO_LABEL</span> <span class="o">=</span> <span class="s1">&#39;no_label&#39;</span>
+<div class="viewcode-block" id="ImagenetPath"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.imagenet_format.ImagenetPath">[docs]</a><span class="k">class</span> <span class="nc">ImagenetPath</span><span class="p">:</span>
+    <span class="n">IMAGE_DIR_NO_LABEL</span> <span class="o">=</span> <span class="s1">&#39;no_label&#39;</span></div>
 
 
 <div class="viewcode-block" id="ImagenetExtractor"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.imagenet_format.ImagenetExtractor">[docs]</a><span class="k">class</span> <span class="nc">ImagenetExtractor</span><span class="p">(</span><span class="n">SourceExtractor</span><span class="p">):</span>
-<div class="viewcode-block" id="ImagenetExtractor.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.imagenet_format.ImagenetExtractor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">assert</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">path</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">subset</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_categories</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_load_items</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_load_items</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
     <span class="k">def</span> <span class="nf">_load_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="n">label_cat</span> <span class="o">=</span> <span class="n">LabelCategories</span><span class="p">()</span>
@@ -137,18 +137,18 @@
         <span class="k">return</span> <span class="n">items</span></div>
 
 
-<span class="k">class</span> <span class="nc">ImagenetImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="ImagenetImporter"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.imagenet_format.ImagenetImporter">[docs]</a><span class="k">class</span> <span class="nc">ImagenetImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
+<div class="viewcode-block" id="ImagenetImporter.find_sources"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.imagenet_format.ImagenetImporter.find_sources">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">find_sources</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">[]</span>
-        <span class="k">return</span> <span class="p">[{</span> <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="n">ImagenetExtractor</span><span class="o">.</span><span class="n">NAME</span> <span class="p">}]</span>
+        <span class="k">return</span> <span class="p">[{</span> <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="n">ImagenetExtractor</span><span class="o">.</span><span class="n">NAME</span> <span class="p">}]</span></div></div>
 
 
-<span class="k">class</span> <span class="nc">ImagenetConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
+<div class="viewcode-block" id="ImagenetConverter"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.imagenet_format.ImagenetConverter">[docs]</a><span class="k">class</span> <span class="nc">ImagenetConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
     <span class="n">DEFAULT_IMAGE_EXT</span> <span class="o">=</span> <span class="s1">&#39;.jpg&#39;</span>
 
-    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ImagenetConverter.apply"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.imagenet_format.ImagenetConverter.apply">[docs]</a>    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">def</span> <span class="nf">_get_dir_name</span><span class="p">(</span><span class="n">id_parts</span><span class="p">,</span> <span class="n">label_name</span><span class="p">):</span>
             <span class="k">if</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">id_parts</span><span class="p">)</span> <span class="ow">and</span> <span class="n">id_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">label_name</span><span class="p">:</span>
@@ -175,7 +175,7 @@
 
             <span class="k">if</span> <span class="ow">not</span> <span class="n">labels</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_save_image</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">subdir</span><span class="o">=</span><span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subset_dir</span><span class="p">,</span>
-                     <span class="n">_get_dir_name</span><span class="p">(</span><span class="n">id_parts</span><span class="p">,</span> <span class="n">ImagenetPath</span><span class="o">.</span><span class="n">IMAGE_DIR_NO_LABEL</span><span class="p">)))</span>
+                     <span class="n">_get_dir_name</span><span class="p">(</span><span class="n">id_parts</span><span class="p">,</span> <span class="n">ImagenetPath</span><span class="o">.</span><span class="n">IMAGE_DIR_NO_LABEL</span><span class="p">)))</span></div></div>
 </pre></div>
 
            </div>

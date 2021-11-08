@@ -102,11 +102,11 @@
 <span class="n">tf</span> <span class="o">=</span> <span class="n">_import_tf</span><span class="p">()</span>
 
 
-<span class="k">def</span> <span class="nf">clamp</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">_min</span><span class="p">,</span> <span class="n">_max</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">_max</span><span class="p">,</span> <span class="n">value</span><span class="p">),</span> <span class="n">_min</span><span class="p">)</span>
+<div class="viewcode-block" id="clamp"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.tf_detection_api_format.extractor.clamp">[docs]</a><span class="k">def</span> <span class="nf">clamp</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">_min</span><span class="p">,</span> <span class="n">_max</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">_max</span><span class="p">,</span> <span class="n">value</span><span class="p">),</span> <span class="n">_min</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TfDetectionApiExtractor"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiExtractor">[docs]</a><span class="k">class</span> <span class="nc">TfDetectionApiExtractor</span><span class="p">(</span><span class="n">SourceExtractor</span><span class="p">):</span>
-<div class="viewcode-block" id="TfDetectionApiExtractor.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiExtractor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">assert</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">path</span>
         <span class="n">images_dir</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="n">root_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
@@ -122,7 +122,7 @@
 
         <span class="n">items</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_tfrecord_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subset</span><span class="p">,</span> <span class="n">images_dir</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="n">items</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_categories</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_categories</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_load_categories</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
@@ -267,10 +267,10 @@
 
         <span class="k">return</span> <span class="n">dataset_items</span><span class="p">,</span> <span class="n">dataset_labels</span></div>
 
-<span class="k">class</span> <span class="nc">TfDetectionApiImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="TfDetectionApiImporter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiImporter">[docs]</a><span class="k">class</span> <span class="nc">TfDetectionApiImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
+<div class="viewcode-block" id="TfDetectionApiImporter.find_sources"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiImporter.find_sources">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">find_sources</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_find_sources_recursive</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;.tfrecord&#39;</span><span class="p">,</span> <span class="s1">&#39;tf_detection_api&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_find_sources_recursive</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;.tfrecord&#39;</span><span class="p">,</span> <span class="s1">&#39;tf_detection_api&#39;</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

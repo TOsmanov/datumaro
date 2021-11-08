@@ -101,7 +101,7 @@
     <span class="n">NAME</span> <span class="o">=</span> <span class="s1">&#39;sly_pointcloud&#39;</span>
     <span class="n">_SUPPORTED_SHAPES</span> <span class="o">=</span> <span class="s1">&#39;cuboid&#39;</span>
 
-<div class="viewcode-block" id="SuperviselyPointCloudExtractor.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.sly_pointcloud_format.extractor.SuperviselyPointCloudExtractor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="s2">&quot;Expected a path to &#39;meta.json&#39;, &quot;</span>
                 <span class="s2">&quot;got &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">path</span><span class="p">)</span>
@@ -113,7 +113,7 @@
 
         <span class="n">items</span><span class="p">,</span> <span class="n">categories</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse</span><span class="p">(</span><span class="n">rootdir</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_load_items</span><span class="p">(</span><span class="n">items</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span> <span class="o">=</span> <span class="n">categories</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span> <span class="o">=</span> <span class="n">categories</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_parse</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">rootpath</span><span class="p">):</span>
@@ -258,13 +258,13 @@
         <span class="k">return</span> <span class="n">parsed</span></div>
 
 
-<span class="k">class</span> <span class="nc">SuperviselyPointCloudImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
+<div class="viewcode-block" id="SuperviselyPointCloudImporter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.sly_pointcloud_format.extractor.SuperviselyPointCloudImporter">[docs]</a><span class="k">class</span> <span class="nc">SuperviselyPointCloudImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
     <span class="n">NAME</span> <span class="o">=</span> <span class="s1">&#39;sly_pointcloud&#39;</span>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="SuperviselyPointCloudImporter.find_sources"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.sly_pointcloud_format.extractor.SuperviselyPointCloudImporter.find_sources">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">find_sources</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_find_sources_recursive</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;.json&#39;</span><span class="p">,</span> <span class="s1">&#39;sly_pointcloud&#39;</span><span class="p">,</span>
-            <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;meta&#39;</span><span class="p">)</span>
+            <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;meta&#39;</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

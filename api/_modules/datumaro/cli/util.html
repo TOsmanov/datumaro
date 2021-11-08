@@ -89,8 +89,8 @@
 <span class="kn">import</span> <span class="nn">textwrap</span>
 
 
-<span class="k">def</span> <span class="nf">add_subparser</span><span class="p">(</span><span class="n">subparsers</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">builder</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">builder</span><span class="p">(</span><span class="k">lambda</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">subparsers</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+<div class="viewcode-block" id="add_subparser"><a class="viewcode-back" href="../../../api/datumaro.cli.html#datumaro.cli.util.add_subparser">[docs]</a><span class="k">def</span> <span class="nf">add_subparser</span><span class="p">(</span><span class="n">subparsers</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">builder</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">builder</span><span class="p">(</span><span class="k">lambda</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">subparsers</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="MultilineFormatter"><a class="viewcode-back" href="../../../api/datumaro.cli.html#datumaro.cli.util.MultilineFormatter">[docs]</a><span class="k">class</span> <span class="nc">MultilineFormatter</span><span class="p">(</span><span class="n">argparse</span><span class="o">.</span><span class="n">HelpFormatter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -98,9 +98,9 @@
 <span class="sd">    and spaces introduced with &#39;|s&#39;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="MultilineFormatter.__init__"><a class="viewcode-back" href="../../../api/datumaro.cli.html#datumaro.cli.util.MultilineFormatter.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keep_natural</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keep_natural</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_keep_natural</span> <span class="o">=</span> <span class="n">keep_natural</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_keep_natural</span> <span class="o">=</span> <span class="n">keep_natural</span>
 
     <span class="k">def</span> <span class="nf">_fill_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">indent</span><span class="p">):</span>
         <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_whitespace_matcher</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -117,7 +117,7 @@
             <span class="n">multiline_text</span> <span class="o">+=</span> <span class="n">formatted_paragraph</span>
         <span class="k">return</span> <span class="n">multiline_text</span></div>
 
-<span class="k">def</span> <span class="nf">required_count</span><span class="p">(</span><span class="n">nmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">nmax</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="required_count"><a class="viewcode-back" href="../../../api/datumaro.cli.html#datumaro.cli.util.required_count">[docs]</a><span class="k">def</span> <span class="nf">required_count</span><span class="p">(</span><span class="n">nmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">nmax</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nmin</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nmax</span> <span class="ow">and</span> <span class="n">nmin</span> <span class="ow">or</span> <span class="n">nmax</span>
 
     <span class="k">class</span> <span class="nc">RequiredCount</span><span class="p">(</span><span class="n">argparse</span><span class="o">.</span><span class="n">Action</span><span class="p">):</span>
@@ -134,10 +134,10 @@
                     <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot; no more </span><span class="si">%s</span><span class="s2"> arguments&quot;</span> <span class="o">%</span> <span class="n">nmax</span>
                 <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
             <span class="nb">setattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dest</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">RequiredCount</span>
+    <span class="k">return</span> <span class="n">RequiredCount</span></div>
 
-<span class="k">def</span> <span class="nf">at_least</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">required_count</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="viewcode-block" id="at_least"><a class="viewcode-back" href="../../../api/datumaro.cli.html#datumaro.cli.util.at_least">[docs]</a><span class="k">def</span> <span class="nf">at_least</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">required_count</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="join_cli_args"><a class="viewcode-back" href="../../../api/datumaro.cli.html#datumaro.cli.util.join_cli_args">[docs]</a><span class="k">def</span> <span class="nf">join_cli_args</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">,</span> <span class="o">*</span><span class="n">names</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
     <span class="s2">&quot;Merges arg values in a list&quot;</span>

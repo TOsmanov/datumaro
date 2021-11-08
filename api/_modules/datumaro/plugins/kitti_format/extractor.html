@@ -100,8 +100,8 @@
 <span class="p">)</span>
 
 
-<div class="viewcode-block" id="_KittiExtractor"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.extractor._KittiExtractor">[docs]</a><span class="k">class</span> <span class="nc">_KittiExtractor</span><span class="p">(</span><span class="n">SourceExtractor</span><span class="p">):</span>
-<div class="viewcode-block" id="_KittiExtractor.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.extractor._KittiExtractor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">_KittiExtractor</span><span class="p">(</span><span class="n">SourceExtractor</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">assert</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">path</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_path</span> <span class="o">=</span> <span class="n">path</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_task</span> <span class="o">=</span> <span class="n">task</span>
@@ -112,7 +112,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">subset</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_categories</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_load_items</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_load_items</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
     <span class="k">def</span> <span class="nf">_load_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span> <span class="o">==</span> <span class="n">KittiTask</span><span class="o">.</span><span class="n">segmentation</span><span class="p">:</span>
@@ -205,15 +205,15 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_lazy_extract_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-        <span class="k">return</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">mask</span> <span class="o">==</span> <span class="n">c</span></div>
+        <span class="k">return</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">mask</span> <span class="o">==</span> <span class="n">c</span>
 
 <div class="viewcode-block" id="KittiSegmentationExtractor"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.extractor.KittiSegmentationExtractor">[docs]</a><span class="k">class</span> <span class="nc">KittiSegmentationExtractor</span><span class="p">(</span><span class="n">_KittiExtractor</span><span class="p">):</span>
-<div class="viewcode-block" id="KittiSegmentationExtractor.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.extractor.KittiSegmentationExtractor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="n">KittiTask</span><span class="o">.</span><span class="n">segmentation</span><span class="p">)</span></div></div>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="n">KittiTask</span><span class="o">.</span><span class="n">segmentation</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="KittiDetectionExtractor"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.extractor.KittiDetectionExtractor">[docs]</a><span class="k">class</span> <span class="nc">KittiDetectionExtractor</span><span class="p">(</span><span class="n">_KittiExtractor</span><span class="p">):</span>
-<div class="viewcode-block" id="KittiDetectionExtractor.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_format.extractor.KittiDetectionExtractor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="n">KittiTask</span><span class="o">.</span><span class="n">detection</span><span class="p">)</span></div></div>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="n">KittiTask</span><span class="o">.</span><span class="n">detection</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

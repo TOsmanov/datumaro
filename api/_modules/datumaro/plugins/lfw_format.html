@@ -96,17 +96,17 @@
 <span class="kn">from</span> <span class="nn">datumaro.util.image</span> <span class="kn">import</span> <span class="n">find_images</span>
 
 
-<span class="k">class</span> <span class="nc">LfwPath</span><span class="p">:</span>
+<div class="viewcode-block" id="LfwPath"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.lfw_format.LfwPath">[docs]</a><span class="k">class</span> <span class="nc">LfwPath</span><span class="p">:</span>
     <span class="n">IMAGES_DIR</span> <span class="o">=</span> <span class="s1">&#39;images&#39;</span>
     <span class="n">ANNOTATION_DIR</span> <span class="o">=</span> <span class="s1">&#39;annotations&#39;</span>
     <span class="n">LANDMARKS_FILE</span> <span class="o">=</span> <span class="s1">&#39;landmarks.txt&#39;</span>
     <span class="n">PAIRS_FILE</span> <span class="o">=</span> <span class="s1">&#39;pairs.txt&#39;</span>
     <span class="n">PEOPLE_FILE</span> <span class="o">=</span> <span class="s1">&#39;people.txt&#39;</span>
     <span class="n">IMAGE_EXT</span> <span class="o">=</span> <span class="s1">&#39;.jpg&#39;</span>
-    <span class="n">PATTERN</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;([\w-]+)_([-\d]+)&#39;</span><span class="p">)</span>
+    <span class="n">PATTERN</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;([\w-]+)_([-\d]+)&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="LfwExtractor"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.lfw_format.LfwExtractor">[docs]</a><span class="k">class</span> <span class="nc">LfwExtractor</span><span class="p">(</span><span class="n">SourceExtractor</span><span class="p">):</span>
-<div class="viewcode-block" id="LfwExtractor.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.lfw_format.LfwExtractor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t read annotation file &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">path</span><span class="p">)</span>
 
@@ -122,7 +122,7 @@
         <span class="n">people_file</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">LfwPath</span><span class="o">.</span><span class="n">PEOPLE_FILE</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_categories</span><span class="p">(</span><span class="n">people_file</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_load_items</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_load_items</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
     <span class="k">def</span> <span class="nf">_load_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="n">label_cat</span> <span class="o">=</span> <span class="n">LabelCategories</span><span class="p">()</span>
@@ -241,7 +241,7 @@
 
         <span class="k">return</span> <span class="n">items</span>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="LfwExtractor.get_image_name"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.lfw_format.LfwExtractor.get_image_name">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_image_name</span><span class="p">(</span><span class="n">person</span><span class="p">,</span> <span class="n">image_id</span><span class="p">):</span>
         <span class="n">image</span><span class="p">,</span> <span class="n">item_id</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -251,19 +251,19 @@
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
             <span class="n">image</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">person</span><span class="p">,</span> <span class="n">image_id</span><span class="p">)</span>
             <span class="n">item_id</span> <span class="o">=</span> <span class="n">image_id</span>
-        <span class="k">return</span> <span class="n">image</span><span class="p">,</span> <span class="n">item_id</span></div>
+        <span class="k">return</span> <span class="n">image</span><span class="p">,</span> <span class="n">item_id</span></div></div>
 
-<span class="k">class</span> <span class="nc">LfwImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="LfwImporter"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.lfw_format.LfwImporter">[docs]</a><span class="k">class</span> <span class="nc">LfwImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
+<div class="viewcode-block" id="LfwImporter.find_sources"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.lfw_format.LfwImporter.find_sources">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">find_sources</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="n">base</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">LfwPath</span><span class="o">.</span><span class="n">PAIRS_FILE</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_find_sources_recursive</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">ext</span><span class="p">,</span> <span class="s1">&#39;lfw&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">base</span><span class="p">,</span>
-            <span class="n">dirname</span><span class="o">=</span><span class="n">LfwPath</span><span class="o">.</span><span class="n">ANNOTATION_DIR</span><span class="p">)</span>
+            <span class="n">dirname</span><span class="o">=</span><span class="n">LfwPath</span><span class="o">.</span><span class="n">ANNOTATION_DIR</span><span class="p">)</span></div></div>
 
-<span class="k">class</span> <span class="nc">LfwConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
+<div class="viewcode-block" id="LfwConverter"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.lfw_format.LfwConverter">[docs]</a><span class="k">class</span> <span class="nc">LfwConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
     <span class="n">DEFAULT_IMAGE_EXT</span> <span class="o">=</span> <span class="n">LfwPath</span><span class="o">.</span><span class="n">IMAGE_EXT</span>
 
-    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="LfwConverter.apply"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.lfw_format.LfwConverter.apply">[docs]</a>    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">subset_name</span><span class="p">,</span> <span class="n">subset</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="o">.</span><span class="n">subsets</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">label_categories</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="o">.</span><span class="n">categories</span><span class="p">()[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">]</span>
             <span class="n">labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">label</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">label_categories</span><span class="p">}</span>
@@ -371,7 +371,7 @@
                 <span class="n">people_file</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">annotations_dir</span><span class="p">,</span> <span class="n">LfwPath</span><span class="o">.</span><span class="n">PEOPLE_FILE</span><span class="p">)</span>
                 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">people_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
                     <span class="n">f</span><span class="o">.</span><span class="n">writelines</span><span class="p">([</span><span class="s1">&#39;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%d</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">labels</span><span class="p">[</span><span class="n">label</span><span class="p">])</span>
-                        <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">])</span>
+                        <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">])</span></div></div>
 </pre></div>
 
            </div>

@@ -634,13 +634,13 @@
 <span class="sd">    A specific validator class for classification task.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="ClassificationValidator.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.validators.ClassificationValidator.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">few_samples_thr</span><span class="p">,</span> <span class="n">imbalance_ratio_thr</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">few_samples_thr</span><span class="p">,</span> <span class="n">imbalance_ratio_thr</span><span class="p">,</span>
             <span class="n">far_from_mean_thr</span><span class="p">,</span> <span class="n">dominance_ratio_thr</span><span class="p">,</span> <span class="n">topk_bins</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task_type</span><span class="o">=</span><span class="n">TaskType</span><span class="o">.</span><span class="n">classification</span><span class="p">,</span>
             <span class="n">few_samples_thr</span><span class="o">=</span><span class="n">few_samples_thr</span><span class="p">,</span>
             <span class="n">imbalance_ratio_thr</span><span class="o">=</span><span class="n">imbalance_ratio_thr</span><span class="p">,</span>
             <span class="n">far_from_mean_thr</span><span class="o">=</span><span class="n">far_from_mean_thr</span><span class="p">,</span>
-            <span class="n">dominance_ratio_thr</span><span class="o">=</span><span class="n">dominance_ratio_thr</span><span class="p">,</span> <span class="n">topk_bins</span><span class="o">=</span><span class="n">topk_bins</span><span class="p">)</span></div>
+            <span class="n">dominance_ratio_thr</span><span class="o">=</span><span class="n">dominance_ratio_thr</span><span class="p">,</span> <span class="n">topk_bins</span><span class="o">=</span><span class="n">topk_bins</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_check_multi_label_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
         <span class="n">validation_reports</span> <span class="o">=</span> <span class="p">[]</span>
@@ -739,13 +739,13 @@
 <span class="sd">    A specific validator class for detection task.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="DetectionValidator.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.validators.DetectionValidator.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">few_samples_thr</span><span class="p">,</span> <span class="n">imbalance_ratio_thr</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">few_samples_thr</span><span class="p">,</span> <span class="n">imbalance_ratio_thr</span><span class="p">,</span>
             <span class="n">far_from_mean_thr</span><span class="p">,</span> <span class="n">dominance_ratio_thr</span><span class="p">,</span> <span class="n">topk_bins</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task_type</span><span class="o">=</span><span class="n">TaskType</span><span class="o">.</span><span class="n">detection</span><span class="p">,</span>
             <span class="n">few_samples_thr</span><span class="o">=</span><span class="n">few_samples_thr</span><span class="p">,</span>
             <span class="n">imbalance_ratio_thr</span><span class="o">=</span><span class="n">imbalance_ratio_thr</span><span class="p">,</span>
             <span class="n">far_from_mean_thr</span><span class="o">=</span><span class="n">far_from_mean_thr</span><span class="p">,</span>
-            <span class="n">dominance_ratio_thr</span><span class="o">=</span><span class="n">dominance_ratio_thr</span><span class="p">,</span> <span class="n">topk_bins</span><span class="o">=</span><span class="n">topk_bins</span><span class="p">)</span></div>
+            <span class="n">dominance_ratio_thr</span><span class="o">=</span><span class="n">dominance_ratio_thr</span><span class="p">,</span> <span class="n">topk_bins</span><span class="o">=</span><span class="n">topk_bins</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_check_negative_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
         <span class="n">validation_reports</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1025,13 +1025,13 @@
 <span class="sd">    A specific validator class for (instance) segmentation task.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="SegmentationValidator.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.validators.SegmentationValidator.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">few_samples_thr</span><span class="p">,</span> <span class="n">imbalance_ratio_thr</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">few_samples_thr</span><span class="p">,</span> <span class="n">imbalance_ratio_thr</span><span class="p">,</span>
             <span class="n">far_from_mean_thr</span><span class="p">,</span> <span class="n">dominance_ratio_thr</span><span class="p">,</span> <span class="n">topk_bins</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task_type</span><span class="o">=</span><span class="n">TaskType</span><span class="o">.</span><span class="n">segmentation</span><span class="p">,</span>
             <span class="n">few_samples_thr</span><span class="o">=</span><span class="n">few_samples_thr</span><span class="p">,</span>
             <span class="n">imbalance_ratio_thr</span><span class="o">=</span><span class="n">imbalance_ratio_thr</span><span class="p">,</span>
             <span class="n">far_from_mean_thr</span><span class="o">=</span><span class="n">far_from_mean_thr</span><span class="p">,</span>
-            <span class="n">dominance_ratio_thr</span><span class="o">=</span><span class="n">dominance_ratio_thr</span><span class="p">,</span> <span class="n">topk_bins</span><span class="o">=</span><span class="n">topk_bins</span><span class="p">)</span></div>
+            <span class="n">dominance_ratio_thr</span><span class="o">=</span><span class="n">dominance_ratio_thr</span><span class="p">,</span> <span class="n">topk_bins</span><span class="o">=</span><span class="n">topk_bins</span><span class="p">)</span>
 
 <div class="viewcode-block" id="SegmentationValidator.compute_statistics"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.validators.SegmentationValidator.compute_statistics">[docs]</a>    <span class="k">def</span> <span class="nf">compute_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

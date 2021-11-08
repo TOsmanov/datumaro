@@ -104,7 +104,7 @@
     <span class="c1"># https://s3.eu-central-1.amazonaws.com/avg-kitti/devkit_raw_data.zip</span>
     <span class="c1"># Check cpp header implementation for field meaning</span>
 
-<div class="viewcode-block" id="KittiRawExtractor.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_raw_format.extractor.KittiRawExtractor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">assert</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">path</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rootdir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
@@ -112,7 +112,7 @@
 
         <span class="n">items</span><span class="p">,</span> <span class="n">categories</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_load_items</span><span class="p">(</span><span class="n">items</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span> <span class="o">=</span> <span class="n">categories</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span> <span class="o">=</span> <span class="n">categories</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_parse</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
@@ -339,10 +339,10 @@
         <span class="k">return</span> <span class="n">items</span></div>
 
 
-<span class="k">class</span> <span class="nc">KittiRawImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="KittiRawImporter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_raw_format.extractor.KittiRawImporter">[docs]</a><span class="k">class</span> <span class="nc">KittiRawImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
+<div class="viewcode-block" id="KittiRawImporter.find_sources"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.kitti_raw_format.extractor.KittiRawImporter.find_sources">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">find_sources</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_find_sources_recursive</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;kitti_raw&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_find_sources_recursive</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;kitti_raw&#39;</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

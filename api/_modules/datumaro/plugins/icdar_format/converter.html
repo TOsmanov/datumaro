@@ -40,34 +40,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datum.html">datum</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.html">CLI package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.html#commands-package">Commands package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.html#project-package">Project package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.html#contexts-package">Contexts package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.html#util-package">Util package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.html">CLI</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.components.html">Components package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.components.html#algorithms-package">Algorithms package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.components.html">Components</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html">Plugins package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html#accuracy-checker-plugin-package">Accuracy checker plugin package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html#coco-format-package">COCO format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html#cvat-format-package">CVAT format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html#datumaro-format-package">Datumaro format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html#icdar-format-package">ICDAR format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html#kitti-format-package">KITTI format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html#kitti-raw-format-package">KITTI raw format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html#openvino-plugin-package">OpenVino plugin package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html#sampler-package">Sampler package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html#sly-pointcloud-format-package">sly pointcloud format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html#tf-detection-api-format-package">tf detection API format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html#voc-format-package">VOC format package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html#yolo-format-package">YOLO format package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html">Plugins</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.util.html">Utilities package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.util.html">Utilities</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
@@ -174,7 +156,7 @@
             <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">subset</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_save_item</span><span class="p">(</span><span class="n">subset_name</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IcdarTextSegmentationConverter._save_item"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.icdar_format.converter.IcdarTextSegmentationConverter._save_item">[docs]</a>    <span class="k">def</span> <span class="nf">_save_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subset_name</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_save_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subset_name</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_save_images</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">has_image</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_save_image</span><span class="p">(</span><span class="n">item</span><span class="p">,</span>
                 <span class="n">subdir</span><span class="o">=</span><span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subset_name</span><span class="p">,</span> <span class="n">IcdarPath</span><span class="o">.</span><span class="n">IMAGES_DIR</span><span class="p">))</span>
@@ -225,7 +207,7 @@
             <span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="o">+</span> <span class="s1">&#39;_GT&#39;</span> <span class="o">+</span> <span class="s1">&#39;.txt&#39;</span><span class="p">)</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">anno_file</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">anno_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">annotation</span><span class="p">)</span></div></div>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">annotation</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

@@ -101,14 +101,14 @@
 <span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">Ade20k2017Path</span><span class="p">:</span>
+<div class="viewcode-block" id="Ade20k2017Path"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.ade20k2017_format.Ade20k2017Path">[docs]</a><span class="k">class</span> <span class="nc">Ade20k2017Path</span><span class="p">:</span>
     <span class="n">MASK_PATTERN</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&#39;&#39;.+_seg</span>
 <span class="s1">        | .+_parts_\d+</span>
-<span class="s1">    &#39;&#39;&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+<span class="s1">    &#39;&#39;&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Ade20k2017Extractor"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.ade20k2017_format.Ade20k2017Extractor">[docs]</a><span class="k">class</span> <span class="nc">Ade20k2017Extractor</span><span class="p">(</span><span class="n">Extractor</span><span class="p">):</span>
-<div class="viewcode-block" id="Ade20k2017Extractor.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.ade20k2017_format.Ade20k2017Extractor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t read dataset directory &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">path</span><span class="p">)</span>
 
@@ -123,13 +123,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span>  <span class="o">=</span> <span class="p">{}</span>
 
         <span class="k">for</span> <span class="n">subset</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subsets</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_load_items</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_load_items</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">categories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span>
+<div class="viewcode-block" id="Ade20k2017Extractor.categories"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.ade20k2017_format.Ade20k2017Extractor.categories">[docs]</a>    <span class="k">def</span> <span class="nf">categories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span></div>
 
     <span class="k">def</span> <span class="nf">_load_items</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subset</span><span class="p">):</span>
         <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
@@ -221,8 +221,8 @@
         <span class="n">instance_mask</span> <span class="o">=</span> <span class="n">instance_mask</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">mask</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">instance_mask</span></div>
 
-<span class="k">class</span> <span class="nc">Ade20k2017Importer</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Ade20k2017Importer"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.ade20k2017_format.Ade20k2017Importer">[docs]</a><span class="k">class</span> <span class="nc">Ade20k2017Importer</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
+<div class="viewcode-block" id="Ade20k2017Importer.find_sources"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.ade20k2017_format.Ade20k2017Importer.find_sources">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">find_sources</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="s1">&#39;*&#39;</span> <span class="o">*</span> <span class="n">i</span><span class="p">))):</span>
@@ -230,7 +230,7 @@
                         <span class="k">return</span> <span class="p">[{</span>
                             <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="n">Ade20k2017Extractor</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span>
                         <span class="p">}]</span>
-        <span class="k">return</span> <span class="p">[]</span>
+        <span class="k">return</span> <span class="p">[]</span></div></div>
 </pre></div>
 
            </div>
