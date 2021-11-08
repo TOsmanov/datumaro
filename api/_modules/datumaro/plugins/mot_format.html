@@ -116,7 +116,7 @@
     <span class="p">(</span><span class="s1">&#39;reflection&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
 <span class="p">])</span>
 
-<div class="viewcode-block" id="MotPath"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.mot_format.MotPath">[docs]</a><span class="k">class</span> <span class="nc">MotPath</span><span class="p">:</span>
+<span class="k">class</span> <span class="nc">MotPath</span><span class="p">:</span>
     <span class="n">IMAGE_DIR</span> <span class="o">=</span> <span class="s1">&#39;img1&#39;</span>
     <span class="n">SEQINFO_FILE</span> <span class="o">=</span> <span class="s1">&#39;seqinfo.ini&#39;</span>
     <span class="n">LABELS_FILE</span> <span class="o">=</span> <span class="s1">&#39;labels.txt&#39;</span>
@@ -135,7 +135,7 @@
         <span class="s1">&#39;confidence&#39;</span><span class="p">,</span> <span class="c1"># or &#39;not ignored&#39; flag for GT anns</span>
         <span class="s1">&#39;class_id&#39;</span><span class="p">,</span>
         <span class="s1">&#39;visibility&#39;</span>
-    <span class="p">]</span></div>
+    <span class="p">]</span>
 
 
 <div class="viewcode-block" id="MotSeqExtractor"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.mot_format.MotSeqExtractor">[docs]</a><span class="k">class</span> <span class="nc">MotSeqExtractor</span><span class="p">(</span><span class="n">SourceExtractor</span><span class="p">):</span>
@@ -180,12 +180,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_categories</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_load_items</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></div>
 
-<div class="viewcode-block" id="MotSeqExtractor._parse_labels"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.mot_format.MotSeqExtractor._parse_labels">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_parse_labels</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">labels_file</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">labels_file</span><span class="p">]</span></div>
+            <span class="k">return</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">labels_file</span><span class="p">]</span>
 
-<div class="viewcode-block" id="MotSeqExtractor._load_categories"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.mot_format.MotSeqExtractor._load_categories">[docs]</a>    <span class="k">def</span> <span class="nf">_load_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_load_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
         <span class="n">attributes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;track_id&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_gt</span><span class="p">:</span>
             <span class="n">attributes</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;occluded&#39;</span><span class="p">,</span> <span class="s1">&#39;visibility&#39;</span><span class="p">,</span> <span class="s1">&#39;ignored&#39;</span><span class="p">]</span>
@@ -195,9 +195,9 @@
         <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
             <span class="n">label_cat</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="p">{</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">:</span> <span class="n">label_cat</span> <span class="p">}</span></div>
+        <span class="k">return</span> <span class="p">{</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">:</span> <span class="n">label_cat</span> <span class="p">}</span>
 
-<div class="viewcode-block" id="MotSeqExtractor._load_items"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.mot_format.MotSeqExtractor._load_items">[docs]</a>    <span class="k">def</span> <span class="nf">_load_items</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_load_items</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="n">labels_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
         <span class="n">items</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
 
@@ -260,9 +260,9 @@
                     <span class="n">attributes</span><span class="o">=</span><span class="n">attributes</span><span class="p">))</span>
 
                 <span class="n">items</span><span class="p">[</span><span class="n">frame_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span>
-        <span class="k">return</span> <span class="n">items</span></div>
+        <span class="k">return</span> <span class="n">items</span>
 
-<div class="viewcode-block" id="MotSeqExtractor._parse_seq_info"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.mot_format.MotSeqExtractor._parse_seq_info">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_parse_seq_info</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="n">fields</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -273,22 +273,22 @@
         <span class="bp">cls</span><span class="o">.</span><span class="n">_check_seq_info</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">{</span> <span class="s1">&#39;framerate&#39;</span><span class="p">,</span> <span class="s1">&#39;seqlength&#39;</span><span class="p">,</span> <span class="s1">&#39;imwidth&#39;</span><span class="p">,</span> <span class="s1">&#39;imheight&#39;</span> <span class="p">}:</span>
             <span class="n">fields</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
-        <span class="k">return</span> <span class="n">fields</span></div>
+        <span class="k">return</span> <span class="n">fields</span>
 
-<div class="viewcode-block" id="MotSeqExtractor._check_seq_info"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.mot_format.MotSeqExtractor._check_seq_info">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_check_seq_info</span><span class="p">(</span><span class="n">seq_info</span><span class="p">):</span>
-        <span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">seq_info</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;imdir&#39;</span><span class="p">,</span> <span class="s1">&#39;framerate&#39;</span><span class="p">,</span> <span class="s1">&#39;seqlength&#39;</span><span class="p">,</span> <span class="s1">&#39;imwidth&#39;</span><span class="p">,</span> <span class="s1">&#39;imheight&#39;</span><span class="p">,</span> <span class="s1">&#39;imext&#39;</span><span class="p">},</span> <span class="n">seq_info</span></div></div>
+        <span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">seq_info</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;imdir&#39;</span><span class="p">,</span> <span class="s1">&#39;framerate&#39;</span><span class="p">,</span> <span class="s1">&#39;seqlength&#39;</span><span class="p">,</span> <span class="s1">&#39;imwidth&#39;</span><span class="p">,</span> <span class="s1">&#39;imheight&#39;</span><span class="p">,</span> <span class="s1">&#39;imext&#39;</span><span class="p">},</span> <span class="n">seq_info</span></div>
 
-<div class="viewcode-block" id="MotSeqImporter"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.mot_format.MotSeqImporter">[docs]</a><span class="k">class</span> <span class="nc">MotSeqImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
-<div class="viewcode-block" id="MotSeqImporter.find_sources"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.mot_format.MotSeqImporter.find_sources">[docs]</a>    <span class="nd">@classmethod</span>
+<span class="k">class</span> <span class="nc">MotSeqImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">find_sources</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_find_sources_recursive</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;mot_seq&#39;</span><span class="p">,</span>
-            <span class="n">dirname</span><span class="o">=</span><span class="s1">&#39;gt&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">osp</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">MotPath</span><span class="o">.</span><span class="n">GT_FILENAME</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span></div></div>
+            <span class="n">dirname</span><span class="o">=</span><span class="s1">&#39;gt&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">osp</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">MotPath</span><span class="o">.</span><span class="n">GT_FILENAME</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 
-<div class="viewcode-block" id="MotSeqGtConverter"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.mot_format.MotSeqGtConverter">[docs]</a><span class="k">class</span> <span class="nc">MotSeqGtConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">MotSeqGtConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
     <span class="n">DEFAULT_IMAGE_EXT</span> <span class="o">=</span> <span class="n">MotPath</span><span class="o">.</span><span class="n">IMAGE_EXT</span>
 
-<div class="viewcode-block" id="MotSeqGtConverter.apply"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.mot_format.MotSeqGtConverter.apply">[docs]</a>    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">extractor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span>
 
         <span class="n">image_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_dir</span><span class="p">,</span> <span class="n">MotPath</span><span class="o">.</span><span class="n">IMAGE_DIR</span><span class="p">)</span>
@@ -344,7 +344,7 @@
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">labels_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">name</span>
                 <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">extractor</span><span class="o">.</span><span class="n">categories</span><span class="p">()[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">])</span>
-            <span class="p">)</span></div></div>
+            <span class="p">)</span>
 </pre></div>
 
            </div>

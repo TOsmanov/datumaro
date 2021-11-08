@@ -151,7 +151,7 @@
     <span class="n">usingcomputer</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
     <span class="n">walking</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="generate_colormap"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.voc_format.format.generate_colormap">[docs]</a><span class="k">def</span> <span class="nf">generate_colormap</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">256</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">generate_colormap</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">256</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">get_bit</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">number</span> <span class="o">&gt;&gt;</span> <span class="n">index</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span>
 
@@ -165,13 +165,13 @@
 
     <span class="k">return</span> <span class="n">OrderedDict</span><span class="p">(</span>
         <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">color</span><span class="p">))</span> <span class="k">for</span> <span class="nb">id</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">colormap</span><span class="p">)</span>
-    <span class="p">)</span></div>
+    <span class="p">)</span>
 
 <span class="n">VocColormap</span> <span class="o">=</span> <span class="p">{</span><span class="nb">id</span><span class="p">:</span> <span class="n">color</span> <span class="k">for</span> <span class="nb">id</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">generate_colormap</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
     <span class="k">if</span> <span class="nb">id</span> <span class="ow">in</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">VocLabel</span><span class="p">]}</span>
 <span class="n">VocInstColormap</span> <span class="o">=</span> <span class="n">generate_colormap</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>
 
-<div class="viewcode-block" id="VocPath"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.voc_format.format.VocPath">[docs]</a><span class="k">class</span> <span class="nc">VocPath</span><span class="p">:</span>
+<span class="k">class</span> <span class="nc">VocPath</span><span class="p">:</span>
     <span class="n">IMAGES_DIR</span> <span class="o">=</span> <span class="s1">&#39;JPEGImages&#39;</span>
     <span class="n">ANNOTATIONS_DIR</span> <span class="o">=</span> <span class="s1">&#39;Annotations&#39;</span>
     <span class="n">SEGMENTATION_DIR</span> <span class="o">=</span> <span class="s1">&#39;SegmentationClass&#39;</span>
@@ -187,18 +187,18 @@
         <span class="n">VocTask</span><span class="o">.</span><span class="n">segmentation</span><span class="p">:</span> <span class="s1">&#39;Segmentation&#39;</span><span class="p">,</span>
         <span class="n">VocTask</span><span class="o">.</span><span class="n">action_classification</span><span class="p">:</span> <span class="s1">&#39;Action&#39;</span><span class="p">,</span>
         <span class="n">VocTask</span><span class="o">.</span><span class="n">person_layout</span><span class="p">:</span> <span class="s1">&#39;Layout&#39;</span><span class="p">,</span>
-    <span class="p">}</span></div>
+    <span class="p">}</span>
 
 
-<div class="viewcode-block" id="make_voc_label_map"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.voc_format.format.make_voc_label_map">[docs]</a><span class="k">def</span> <span class="nf">make_voc_label_map</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">make_voc_label_map</span><span class="p">():</span>
     <span class="n">labels</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">VocLabel</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
     <span class="n">label_map</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
         <span class="p">(</span><span class="n">label</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="p">[</span><span class="n">VocColormap</span><span class="p">[</span><span class="n">label</span><span class="o">.</span><span class="n">value</span><span class="p">],</span> <span class="p">[],</span> <span class="p">[]])</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">)</span>
     <span class="n">label_map</span><span class="p">[</span><span class="n">VocLabel</span><span class="o">.</span><span class="n">person</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">VocBodyPart</span><span class="p">]</span>
     <span class="n">label_map</span><span class="p">[</span><span class="n">VocLabel</span><span class="o">.</span><span class="n">person</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">VocAction</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">label_map</span></div>
+    <span class="k">return</span> <span class="n">label_map</span>
 
-<div class="viewcode-block" id="parse_label_map"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.voc_format.format.parse_label_map">[docs]</a><span class="k">def</span> <span class="nf">parse_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">parse_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
 
@@ -237,9 +237,9 @@
                 <span class="n">actions</span> <span class="o">=</span> <span class="p">[]</span>
 
             <span class="n">label_map</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span> <span class="n">actions</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">label_map</span></div>
+    <span class="k">return</span> <span class="n">label_map</span>
 
-<div class="viewcode-block" id="write_label_map"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.voc_format.format.write_label_map">[docs]</a><span class="k">def</span> <span class="nf">write_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">label_map</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">write_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">label_map</span><span class="p">):</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;# label:color_rgb:parts:actions</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">label_name</span><span class="p">,</span> <span class="n">label_desc</span> <span class="ow">in</span> <span class="n">label_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -251,9 +251,9 @@
             <span class="n">parts</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">label_desc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
             <span class="n">actions</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">label_desc</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 
-            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="s1">&#39;:&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">label_name</span><span class="p">,</span> <span class="n">color_rgb</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span> <span class="n">actions</span><span class="p">]))</span></div>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="s1">&#39;:&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">label_name</span><span class="p">,</span> <span class="n">color_rgb</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span> <span class="n">actions</span><span class="p">]))</span>
 
-<div class="viewcode-block" id="make_voc_categories"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.voc_format.format.make_voc_categories">[docs]</a><span class="k">def</span> <span class="nf">make_voc_categories</span><span class="p">(</span><span class="n">label_map</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">make_voc_categories</span><span class="p">(</span><span class="n">label_map</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">label_map</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">label_map</span> <span class="o">=</span> <span class="n">make_voc_label_map</span><span class="p">()</span>
 
@@ -280,7 +280,7 @@
     <span class="n">mask_categories</span><span class="o">.</span><span class="n">inverse_colormap</span> <span class="c1"># pylint: disable=pointless-statement</span>
     <span class="n">categories</span><span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask_categories</span>
 
-    <span class="k">return</span> <span class="n">categories</span></div>
+    <span class="k">return</span> <span class="n">categories</span>
 </pre></div>
 
            </div>

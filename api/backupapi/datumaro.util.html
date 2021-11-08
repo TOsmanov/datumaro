@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Utilities &mdash; Datumaro API documentation 0.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../index.html" class="icon"> Datumaro API documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Datumaro API documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Utilities</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/backupapi/datumaro.util.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="utilities">
+<h1>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-datumaro.util.annotation_util">
+<span id="datumaro-util-annotation-util-module"></span><h2>datumaro.util.annotation_util module<a class="headerlink" href="#module-datumaro.util.annotation_util" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.annotation_util.nms">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">nms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iou_thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/annotation_util.html#nms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.annotation_util.nms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Non-maxima suppression algorithm.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.annotation_util.bbox_iou">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">bbox_iou</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union[typing_extensions.Literal[-1],</span> <span class="pre">float]</span></span></span><a class="reference internal" href="../_modules/datumaro/util/annotation_util.html#bbox_iou"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.annotation_util.bbox_iou" title="Permalink to this definition">¶</a></dt>
+<dd><p>IoU computations for simple cases with bounding boxes</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.annotation_util.segment_iou">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">segment_iou</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/annotation_util.html#segment_iou"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.annotation_util.segment_iou" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic IoU computation with masks, polygons, and boxes.
+Returns -1 if no intersection, [0; 1] otherwise</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.annotation_util.PDJ">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">PDJ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/annotation_util.html#PDJ"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.annotation_util.PDJ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Percentage of Detected Joints metric.
+Counts the number of matching points.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.annotation_util.OKS">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">OKS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/annotation_util.html#OKS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.annotation_util.OKS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Object Keypoint Similarity metric.
+<a class="reference external" href="https://cocodataset.org/#keypoints-eval">https://cocodataset.org/#keypoints-eval</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.annotation_util.make_label_id_mapping">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">make_label_id_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="datumaro.components.html#id11" title="datumaro.components.annotation.LabelCategories"><span class="pre">datumaro.components.annotation.LabelCategories</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="datumaro.components.html#id11" title="datumaro.components.annotation.LabelCategories"><span class="pre">datumaro.components.annotation.LabelCategories</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fallback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/datumaro/util/annotation_util.html#make_label_id_mapping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.annotation_util.make_label_id_mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maps label ids from source to destination. Fallback is used for missing
+labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>src id -&gt; dst id
+dict: src id -&gt; dst id
+dict: src id -&gt; src label
+dict: dst id -&gt; dst label</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>function to map labels</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datumaro.util.attrs_util">
+<span id="datumaro-util-attrs-util-module"></span><h2>datumaro.util.attrs_util module<a class="headerlink" href="#module-datumaro.util.attrs_util" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="datumaro-util-image-module">
+<h2>datumaro.util.image module<a class="headerlink" href="#datumaro-util-image-module" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.util.image._IMAGE_BACKENDS">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.util.image.</span></span><span class="sig-name descname"><span class="pre">_IMAGE_BACKENDS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/image.html#_IMAGE_BACKENDS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.image._IMAGE_BACKENDS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.util.image._IMAGE_BACKENDS.cv2">
+<span class="sig-name descname"><span class="pre">cv2</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.util.image._IMAGE_BACKENDS.cv2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.util.image._IMAGE_BACKENDS.PIL">
+<span class="sig-name descname"><span class="pre">PIL</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.util.image._IMAGE_BACKENDS.PIL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.util.image._IMAGE_BACKENDS.__module__">
+<span class="sig-name descname"><span class="pre">__module__</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'datumaro.util.image'</span></em><a class="headerlink" href="#datumaro.util.image._IMAGE_BACKENDS.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-datumaro.util.image"></span><dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.image.load_image">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.image.</span></span><span class="sig-name descname"><span class="pre">load_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em>, <em class="sig-param"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/image.html#load_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.image.load_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads an image in the HWC Grayscale/BGR(A) float [0; 255] format.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.image.load_image_meta_file">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.image.</span></span><span class="sig-name descname"><span class="pre">load_image_meta_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_meta_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/datumaro/util/image.html#load_image_meta_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.image.load_image_meta_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads image metadata from a file with the following format:</p>
+<blockquote>
+<div><p>&lt;image name 1&gt; &lt;height 1&gt; &lt;width 1&gt;
+&lt;image name 2&gt; &lt;height 2&gt; &lt;width 2&gt;
+…</p>
+</div></blockquote>
+<p>Shell-like comments and quoted fields are allowed.</p>
+<p>This can be useful to support datasets in which image dimensions are
+required to interpret annotations.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.image.save_image_meta_file">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.image.</span></span><span class="sig-name descname"><span class="pre">save_image_meta_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_meta</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_meta_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/datumaro/util/image.html#save_image_meta_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.image.save_image_meta_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves image_meta to the path specified by image_meta_path in the format
+defined in load_image_meta_file’s documentation.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datumaro.util.image_cache">
+<span id="datumaro-util-image-cache-module"></span><h2>datumaro.util.image_cache module<a class="headerlink" href="#module-datumaro.util.image_cache" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-datumaro.util.log_utils">
+<span id="datumaro-util-log-utils-module"></span><h2>datumaro.util.log_utils module<a class="headerlink" href="#module-datumaro.util.log_utils" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-datumaro.util.mask_tools">
+<span id="datumaro-util-mask-tools-module"></span><h2>datumaro.util.mask_tools module<a class="headerlink" href="#module-datumaro.util.mask_tools" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.generate_colormap">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">generate_colormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/mask_tools.html#generate_colormap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.generate_colormap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates colors using PASCAL VOC algorithm.</p>
+<dl class="simple">
+<dt>If include_background is True, the result will include the item</dt><dd><p>“0: (0, 0, 0)”, which is typically used as a background color.
+Otherwise, indices will start from 0, but (0, 0, 0) is not included.</p>
+</dd>
+</dl>
+<p>Returns index -&gt; (R, G, B) mapping.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.paint_mask">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">paint_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colormap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/mask_tools.html#paint_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.paint_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies colormap to index mask</p>
+<p>mask: HW(C) [0; max_index] mask
+colormap: index -&gt; (R, G, B)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.remap_mask">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">remap_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_fn</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/mask_tools.html#remap_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.remap_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes mask elements from one colormap to another</p>
+<p># mask: HW(C) [0; max_index] mask</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.mask_to_polygons">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">mask_to_polygons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/mask_tools.html#mask_to_polygons"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.mask_to_polygons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert an instance mask to polygons</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mask</strong> – a 2d binary mask</p></li>
+<li><p><strong>tolerance</strong> – maximum distance from original points of
+a polygon to the approximated ones</p></li>
+<li><p><strong>area_threshold</strong> – minimal area of generated polygons</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of polygons like [[x1,y1, x2,y2 …], […]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.crop_covered_segments">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">crop_covered_segments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iou_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio_tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_masks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/mask_tools.html#crop_covered_segments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.crop_covered_segments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find all segments occluded by others and crop them to the visible part only.
+Input segments are expected to be sorted from background to foreground.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segments</strong> – 1d list of segment RLEs (in COCO format)</p></li>
+<li><p><strong>width</strong> – width of the image</p></li>
+<li><p><strong>height</strong> – height of the image</p></li>
+<li><p><strong>iou_threshold</strong> – IoU threshold for objects to be counted as intersected
+By default is set to 0 to process any intersected objects</p></li>
+<li><p><strong>ratio_tolerance</strong> – an IoU “handicap” value for a situation
+when an object is (almost) fully covered by another one and we
+don’t want make a “hole” in the background object</p></li>
+<li><p><strong>area_threshold</strong> – minimal area of included segments</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>[</dt><dd><p>[[x1,y1, x2,y2 …], …], # input segment #0 parts
+mask1, # input segment #1 mask (if source segment is mask)
+[], # when source segment is too small
+…</p>
+</dd>
+</dl>
+<p>]</p>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A list of input segments’ parts (in the same order as input)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.merge_masks">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">merge_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">masks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/mask_tools.html#merge_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.merge_masks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges masks into one, mask order is responsible for z order.
+To avoid memory explosion on mask materialization, consider passing
+a generator.</p>
+<p>Inputs: a sequence of index masks or (binary mask, index) pairs
+Outputs: an index mask</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datumaro.util.os_util">
+<span id="datumaro-util-os-util-module"></span><h2>datumaro.util.os_util module<a class="headerlink" href="#module-datumaro.util.os_util" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.os_util.is_subpath">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.os_util.</span></span><span class="sig-name descname"><span class="pre">is_subpath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/datumaro/util/os_util.html#is_subpath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.os_util.is_subpath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if a path is subpath of another path or the paths are equal.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.os_util.make_file_name">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.os_util.</span></span><span class="sig-name descname"><span class="pre">make_file_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/datumaro/util/os_util.html#make_file_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.os_util.make_file_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalizes string, converts to lowercase, removes non-alpha characters,
+and converts spaces to hyphens.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.os_util.generate_next_name">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.os_util.</span></span><span class="sig-name descname"><span class="pre">generate_next_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/datumaro/util/os_util.html#generate_next_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.os_util.generate_next_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates the “next” name by appending a next index to the occurrence
+of the basename with the highest index in the input collection.</p>
+<p>Returns: next string name</p>
+<p>Example:</p>
+<dl class="simple">
+<dt>Inputs:</dt><dd><p>name_abc
+name_base
+name_base1
+name_base5</p>
+</dd>
+</dl>
+<p>Basename: name_base</p>
+<p>Output: name_base6</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datumaro.util.scope">
+<span id="datumaro-util-scope-module"></span><h2>datumaro.util.scope module<a class="headerlink" href="#module-datumaro.util.scope" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.util.scope.</span></span><span class="sig-name descname"><span class="pre">Scope</span></span><a class="reference internal" href="../_modules/datumaro/util/scope.html#Scope"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.scope.Scope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A context manager that allows to register error and exit callbacks.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/scope.html#Scope.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.scope.Scope.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.on_error_do">
+<span class="sig-name descname"><span class="pre">on_error_do</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_errors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/scope.html#Scope.on_error_do"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.scope.Scope.on_error_do" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers a function to be called on scope exit because of an error.</p>
+<p>If ignore_errors is True, the errors from this function call
+will be ignored.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.on_exit_do">
+<span class="sig-name descname"><span class="pre">on_exit_do</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_errors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/scope.html#Scope.on_exit_do"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.scope.Scope.on_exit_do" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers a function to be called on scope exit.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">AbstractContextManager</span><span class="p"><span class="pre">[</span></span><span class="pre">datumaro.util.scope.T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">datumaro.util.scope.T</span></span></span><a class="reference internal" href="../_modules/datumaro/util/scope.html#Scope.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.scope.Scope.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enters a context manager and adds it to the exit stack.</p>
+<p>Returns: cm.__enter__() result</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.__weakref__">
+<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#datumaro.util.scope.Scope.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.scope.scoped">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.scope.</span></span><span class="sig-name descname"><span class="pre">scoped</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/scope.html#scoped"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.scope.scoped" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function decorator, which allows to do actions with the current scope,
+such as registering error and exit callbacks and context managers.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datumaro.util.telemetry_stub">
+<span id="datumaro-util-telemetry-stub-module"></span><h2>datumaro.util.telemetry_stub module<a class="headerlink" href="#module-datumaro.util.telemetry_stub" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.util.telemetry_stub.Telemetry">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.util.telemetry_stub.</span></span><span class="sig-name descname"><span class="pre">Telemetry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">arg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/telemetry_stub.html#Telemetry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.telemetry_stub.Telemetry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A stub for the Telemetry class, which is used when the Telemetry class
+is not available.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.util.telemetry_stub.Telemetry.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">arg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/telemetry_stub.html#Telemetry.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.telemetry_stub.Telemetry.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.util.telemetry_stub.Telemetry.__weakref__">
+<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#datumaro.util.telemetry_stub.Telemetry.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-datumaro.util.telemetry_utils">
+<span id="datumaro-util-telemetry-utils-module"></span><h2>datumaro.util.telemetry_utils module<a class="headerlink" href="#module-datumaro.util.telemetry_utils" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="datumaro-util-test-utils-module">
+<h2>datumaro.util.test_utils module<a class="headerlink" href="#datumaro-util-test-utils-module" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.util.test_utils.Dimensions">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.util.test_utils.</span></span><span class="sig-name descname"><span class="pre">Dimensions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/test_utils.html#Dimensions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.test_utils.Dimensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.util.test_utils.Dimensions.dim_2d">
+<span class="sig-name descname"><span class="pre">dim_2d</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.util.test_utils.Dimensions.dim_2d" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.util.test_utils.Dimensions.dim_3d">
+<span class="sig-name descname"><span class="pre">dim_3d</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.util.test_utils.Dimensions.dim_3d" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.util.test_utils.Dimensions.__module__">
+<span class="sig-name descname"><span class="pre">__module__</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'datumaro.util.test_utils'</span></em><a class="headerlink" href="#datumaro.util.test_utils.Dimensions.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-datumaro.util.test_utils"></span><dl class="py class">
+<dt class="sig sig-object py" id="datumaro.util.test_utils.TestDir">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.util.test_utils.</span></span><span class="sig-name descname"><span class="pre">TestDir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/test_utils.html#TestDir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.test_utils.TestDir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.util.test_utils.FileRemover</span></code></p>
+<p>Creates a temporary directory for a test. Uses the name of
+the test function to name the directory.</p>
+<p>Usage:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>with TestDir() as test_dir:</dt><dd><p>…</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.util.test_utils.TestDir.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/test_utils.html#TestDir.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.test_utils.TestDir.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.util.test_utils.TestDir.__enter__">
+<span class="sig-name descname"><span class="pre">__enter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/datumaro/util/test_utils.html#TestDir.__enter__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.test_utils.TestDir.__enter__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a test directory.</p>
+<p>Returns: path to the directory</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.test_utils.compare_dirs">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.test_utils.</span></span><span class="sig-name descname"><span class="pre">compare_dirs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/test_utils.html#compare_dirs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.test_utils.compare_dirs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compares file and directory structures in the given directories.
+Empty directories are skipped.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datumaro.util.tf_util">
+<span id="datumaro-util-tf-util-module"></span><h2>datumaro.util.tf_util module<a class="headerlink" href="#module-datumaro.util.tf_util" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-datumaro.util">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datumaro.util" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.take_by">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.</span></span><span class="sig-name descname"><span class="pre">take_by</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util.html#take_by"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.take_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns elements from the input iterable by batches of N items.
+(‘abcdefg’, 3) -&gt; [‘a’, ‘b’, ‘c’], [‘d’, ‘e’, ‘f’], [‘g’]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.escape">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.</span></span><span class="sig-name descname"><span class="pre">escape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">escapes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/datumaro/util.html#escape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.escape" title="Permalink to this definition">¶</a></dt>
+<dd><p>‘escapes’ is an iterable of (pattern, substitute) pairs</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.unescape">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.</span></span><span class="sig-name descname"><span class="pre">unescape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">escapes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/datumaro/util.html#unescape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.unescape" title="Permalink to this definition">¶</a></dt>
+<dd><p>‘escapes’ is an iterable of (pattern, substitute) pairs</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>&#169; Copyright 2021, Intel.
+    <div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
