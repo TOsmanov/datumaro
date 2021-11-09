@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>datumaro.cli.contexts.project &mdash; Datumaro API documentation 0.2 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../../../index.html" class="icon"> Datumaro API documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datum.html">datum</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.cli.html">CLI</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.components.html">Components</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.plugins.html">Plugins</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.util.html">Utilities</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Datumaro API documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      <li>datumaro.cli.contexts.project</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for datumaro.cli.contexts.project</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2019-2021 Intel Corporation</span>
+<span class="c1">#</span>
+<span class="c1"># SPDX-License-Identifier: MIT</span>
+
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">logging</span> <span class="k">as</span> <span class="nn">log</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">os.path</span> <span class="k">as</span> <span class="nn">osp</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">datumaro.components.dataset_filter</span> <span class="kn">import</span> <span class="n">DatasetItemEncoder</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.environment</span> <span class="kn">import</span> <span class="n">Environment</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.errors</span> <span class="kn">import</span> <span class="n">MigrationError</span><span class="p">,</span> <span class="n">ProjectNotFoundError</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.operations</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">compute_ann_statistics</span><span class="p">,</span> <span class="n">compute_image_statistics</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.project</span> <span class="kn">import</span> <span class="n">Project</span><span class="p">,</span> <span class="n">ProjectBuildTargets</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.validator</span> <span class="kn">import</span> <span class="n">TaskType</span>
+<span class="kn">from</span> <span class="nn">datumaro.util</span> <span class="kn">import</span> <span class="n">str_to_bool</span>
+<span class="kn">from</span> <span class="nn">datumaro.util.os_util</span> <span class="kn">import</span> <span class="n">make_file_name</span>
+<span class="kn">from</span> <span class="nn">datumaro.util.scope</span> <span class="kn">import</span> <span class="n">scope_add</span><span class="p">,</span> <span class="n">scoped</span>
+
+<span class="kn">from</span> <span class="nn">...util</span> <span class="kn">import</span> <span class="n">MultilineFormatter</span><span class="p">,</span> <span class="n">add_subparser</span>
+<span class="kn">from</span> <span class="nn">...util.errors</span> <span class="kn">import</span> <span class="n">CliException</span>
+<span class="kn">from</span> <span class="nn">...util.project</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">generate_next_file_name</span><span class="p">,</span> <span class="n">load_project</span><span class="p">,</span> <span class="n">parse_full_revpath</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="FilterModes"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.contexts.project.FilterModes">[docs]</a><span class="k">class</span> <span class="nc">FilterModes</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="c1"># primary</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">annotations</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">items_annotations</span> <span class="o">=</span> <span class="mi">3</span>
+
+    <span class="c1"># shortcuts</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">i_a</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">a_i</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">annotations_items</span> <span class="o">=</span> <span class="mi">3</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">FilterModes</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">make_filter_args</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="bp">cls</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="bp">cls</span><span class="o">.</span><span class="n">annotations</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="s1">&#39;filter_annotations&#39;</span><span class="p">:</span> <span class="kc">True</span>
+            <span class="p">}</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="bp">cls</span><span class="o">.</span><span class="n">items_annotations</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="s1">&#39;filter_annotations&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="s1">&#39;remove_empty&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">list_options</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">]</span></div>
+
+<span class="k">def</span> <span class="nf">build_export_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+    <span class="n">builtins</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">Environment</span><span class="p">()</span><span class="o">.</span><span class="n">converters</span><span class="p">)</span>
+
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Export project&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        Exports a project in some format.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Each dataset format has its own export</span>
+<span class="s2">        options, which are passed after the &#39;--&#39; separator (see examples),</span>
+<span class="s2">        pass &#39;-- -h&#39; for more info. If not stated otherwise, by default</span>
+<span class="s2">        only annotations are exported, to include images pass</span>
+<span class="s2">        &#39;--save-images&#39; parameter.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        A filter can be passed, check the &#39;filter&#39; command description for</span>
+<span class="s2">        more info.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Formats:|n</span>
+<span class="s2">        Datasets come in a wide variety of formats. Each dataset</span>
+<span class="s2">        format defines its own data structure and rules on how to</span>
+<span class="s2">        interpret the data. Check the user manual for the list of</span>
+<span class="s2">        supported formats, examples and documentation.</span>
+<span class="s2">        |n</span>
+<span class="s2">        The list of supported formats can be extended by plugins.</span>
+<span class="s2">        Check the &quot;plugins&quot; section of the developer guide for information</span>
+<span class="s2">        about plugin implementation.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        List of builtin dataset formats: </span><span class="si">{}</span><span class="s2">|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        The command can only be applied to a project build target, a stage</span>
+<span class="s2">        or the combined &#39;project&#39; target, in which case all the targets will</span>
+<span class="s2">        be affected.</span>
+<span class="s2">        |n</span>
+<span class="s2">        Examples:|n</span>
+<span class="s2">        - Export project as a VOC-like dataset, include images:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -f voc -- --save-images|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Export project as a COCO-like dataset in other directory:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -f coco -o path/I/like/</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">builtins</span><span class="p">)),</span>
+        <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;_positionals&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">REMAINDER</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">SUPPRESS</span><span class="p">)</span> <span class="c1"># workaround for -- eaten by positionals</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;project&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;A project target to be exported (default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-e&#39;</span><span class="p">,</span> <span class="s1">&#39;--filter&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;XML XPath filter expression for dataset items&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--filter-mode&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">FilterModes</span><span class="o">.</span><span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="n">FilterModes</span><span class="o">.</span><span class="n">parse</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Filter mode (options: </span><span class="si">%s</span><span class="s2">; default: </span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> \
+            <span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">FilterModes</span><span class="o">.</span><span class="n">list_options</span><span class="p">())</span> <span class="p">,</span> <span class="s1">&#39;</span><span class="si">%(default)s</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-dir&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;dst_dir&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Directory to save output (default: a subdir in the current one)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--overwrite&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Overwrite existing files in the save directory&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--project&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;project_dir&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Directory of the project to operate on (default: current dir)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;--format&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Output format&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;extra_args&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">REMAINDER</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Additional arguments for converter (pass &#39;-- -h&#39; for help). &quot;</span>
+            <span class="s2">&quot;Must be specified after the main command arguments and after &quot;</span>
+            <span class="s2">&quot;the &#39;--&#39; separator&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">export_command</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">parser</span>
+
+<span class="k">def</span> <span class="nf">get_export_sensitive_args</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="n">export_command</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dst_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;project_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;extra_args&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;filter&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+<span class="nd">@scoped</span>
+<span class="k">def</span> <span class="nf">export_command</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">has_sep</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">_positionals</span>
+    <span class="k">if</span> <span class="n">has_sep</span><span class="p">:</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">_positionals</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">pos</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentError</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Expected no more than 1 target argument&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">args</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">_positionals</span><span class="p">[:</span><span class="n">pos</span><span class="p">]</span> <span class="ow">or</span> \
+        <span class="p">[</span><span class="n">ProjectBuildTargets</span><span class="o">.</span><span class="n">MAIN_TARGET</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">args</span><span class="o">.</span><span class="n">extra_args</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">_positionals</span><span class="p">[</span><span class="n">pos</span> <span class="o">+</span> <span class="n">has_sep</span><span class="p">:]</span>
+
+    <span class="n">show_plugin_help</span> <span class="o">=</span> <span class="s1">&#39;-h&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">extra_args</span> <span class="ow">or</span> <span class="s1">&#39;--help&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">extra_args</span>
+
+    <span class="n">project</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">project</span> <span class="o">=</span> <span class="n">scope_add</span><span class="p">(</span><span class="n">load_project</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">project_dir</span><span class="p">))</span>
+    <span class="k">except</span> <span class="n">ProjectNotFoundError</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">show_plugin_help</span> <span class="ow">and</span> <span class="n">args</span><span class="o">.</span><span class="n">project_dir</span><span class="p">:</span>
+            <span class="k">raise</span>
+
+    <span class="k">if</span> <span class="n">project</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">env</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">converter</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">converters</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">format</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">CliException</span><span class="p">(</span><span class="s2">&quot;Converter for format &#39;</span><span class="si">%s</span><span class="s2">&#39; is not found&quot;</span> <span class="o">%</span> \
+            <span class="n">args</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+
+    <span class="n">extra_args</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">parse_cmdline</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">extra_args</span><span class="p">)</span>
+
+    <span class="n">dst_dir</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">dst_dir</span>
+    <span class="k">if</span> <span class="n">dst_dir</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">overwrite</span> <span class="ow">and</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">CliException</span><span class="p">(</span><span class="s2">&quot;Directory &#39;</span><span class="si">%s</span><span class="s2">&#39; already exists &quot;</span>
+                <span class="s2">&quot;(pass --overwrite to overwrite)&quot;</span> <span class="o">%</span> <span class="n">dst_dir</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">dst_dir</span> <span class="o">=</span> <span class="n">generate_next_file_name</span><span class="p">(</span><span class="s1">&#39;export-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> \
+            <span class="n">make_file_name</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">format</span><span class="p">))</span>
+    <span class="n">dst_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">filter</span><span class="p">:</span>
+        <span class="n">filter_args</span> <span class="o">=</span> <span class="n">FilterModes</span><span class="o">.</span><span class="n">make_filter_args</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">filter_mode</span><span class="p">)</span>
+        <span class="n">filter_expr</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">filter</span>
+
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Loading the project...&quot;</span><span class="p">)</span>
+
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">filter</span><span class="p">:</span>
+        <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">filter_expr</span><span class="p">,</span> <span class="o">**</span><span class="n">filter_args</span><span class="p">)</span>
+
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Exporting...&quot;</span><span class="p">)</span>
+
+    <span class="n">dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">save_dir</span><span class="o">=</span><span class="n">dst_dir</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">converter</span><span class="p">,</span> <span class="o">**</span><span class="n">extra_args</span><span class="p">)</span>
+
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Results have been saved to &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">dst_dir</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">build_filter_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Extract subdataset&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        Extracts a subdataset that contains only items matching filter.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        By default, datasets are updated in-place. The &#39;-o/--output-dir&#39;</span>
+<span class="s2">        option can be used to specify another output directory. When</span>
+<span class="s2">        updating in-place, use the &#39;--overwrite&#39; parameter (in-place</span>
+<span class="s2">        updates fail by default to prevent data loss), unless a project</span>
+<span class="s2">        target is modified.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        A filter is an XPath expression, which is applied to XML</span>
+<span class="s2">        representation of a dataset item. Check &#39;--dry-run&#39; parameter</span>
+<span class="s2">        to see XML representations of the dataset items.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        To filter annotations use the mode (&#39;-m&#39;) parameter.|n</span>
+<span class="s2">        Supported modes:|n</span>
+<span class="s2">        - &#39;i&#39;, &#39;items&#39;|n</span>
+<span class="s2">        - &#39;a&#39;, &#39;annotations&#39;|n</span>
+<span class="s2">        - &#39;i+a&#39;, &#39;a+i&#39;, &#39;items+annotations&#39;, &#39;annotations+items&#39;|n</span>
+<span class="s2">        When filtering annotations, use the &#39;items+annotations&#39;</span>
+<span class="s2">        mode to point that annotation-less dataset items should be</span>
+<span class="s2">        removed. To select an annotation, write an XPath that</span>
+<span class="s2">        returns &#39;annotation&#39; elements (see examples).|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        This command has the following invocation syntax:</span>
+<span class="s2">        - </span><span class="si">%(prog)s</span><span class="s2"> &lt;target dataset revpath&gt;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        &lt;revpath&gt; - either a dataset path or a revision path. The full</span>
+<span class="s2">        syntax is:|n</span>
+<span class="s2">        - Dataset paths:|n</span>
+<span class="s2">        |s|s- &lt;dataset path&gt;[ :&lt;format&gt; ]|n</span>
+<span class="s2">        - Revision paths:|n</span>
+<span class="s2">        |s|s- &lt;project path&gt; [ @&lt;rev&gt; ] [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;rev&gt; [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;target&gt;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        The current project (-p/--project) is also used as a context for</span>
+<span class="s2">        plugins, so it can be useful for dataset paths having custom formats.</span>
+<span class="s2">        When not specified, the current project&#39;s working tree is used.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        The command can be applied to a dataset or a project build target,</span>
+<span class="s2">        a stage or the combined &#39;project&#39; target, in which case all the</span>
+<span class="s2">        targets will be affected. A build tree stage will be recorded</span>
+<span class="s2">        if &#39;--stage&#39; is enabled, and the resulting dataset(-s) will be</span>
+<span class="s2">        saved if &#39;--apply&#39; is enabled.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Examples:|n</span>
+<span class="s2">        - Filter images with width &lt; height:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -e &#39;/item[image/width &lt; image/height]&#39;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Filter images with large-area bboxes:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -e &#39;/item[annotation/type=&quot;bbox&quot; and</span>
+<span class="s2">            annotation/area&gt;2000]&#39;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Filter out all irrelevant annotations from items:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -m a -e &#39;/item/annotation[label = &quot;person&quot;]&#39;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Filter out all irrelevant annotations from items:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -m a -e &#39;/item/annotation[label=&quot;cat&quot; and</span>
+<span class="s2">        area &gt; 99.5]&#39;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Filter occluded annotations and items, if no annotations left:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -m i+a -e &#39;/item/annotation[occluded=&quot;True&quot;]&#39;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Filter a VOC-like dataset inplace:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -e &#39;/item/annotation[label = &quot;bus&quot;]&#39; --overwrite dataset/:voc</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;project&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Target dataset revpath (default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-e&#39;</span><span class="p">,</span> <span class="s1">&#39;--filter&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;XML XPath filter expression for dataset items&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;--mode&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">FilterModes</span><span class="o">.</span><span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="n">FilterModes</span><span class="o">.</span><span class="n">parse</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Filter mode (options: </span><span class="si">%s</span><span class="s2">; default: </span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> \
+            <span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">FilterModes</span><span class="o">.</span><span class="n">list_options</span><span class="p">())</span> <span class="p">,</span> <span class="s1">&#39;</span><span class="si">%(default)s</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--dry-run&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Print XML representations to be filtered and exit&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-dir&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;dst_dir&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            Output directory. Can be omitted for main project targets</span>
+<span class="s2">            (i.e. data sources and the &#39;project&#39; target, but not</span>
+<span class="s2">            intermediate stages) and dataset targets.</span>
+<span class="s2">            If not specified, the results will be saved inplace.</span>
+<span class="s2">            &quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--stage&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">str_to_bool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            Include this action as a project build step.</span>
+<span class="s2">            If true, this operation will be saved in the project</span>
+<span class="s2">            build tree, allowing to reproduce the resulting dataset later.</span>
+<span class="s2">            Applicable only to main project targets (i.e. data sources</span>
+<span class="s2">            and the &#39;project&#39; target, but not intermediate stages)</span>
+<span class="s2">            (default: </span><span class="si">%(default)s</span><span class="s2">)</span>
+<span class="s2">            &quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--apply&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">str_to_bool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Run this command immediately. If disabled, only the &quot;</span>
+            <span class="s2">&quot;build tree stage will be written (default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--overwrite&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Overwrite existing files in the save directory&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--project&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;project_dir&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Directory of the project to operate on (default: current dir)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">filter_command</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">parser</span>
+
+<span class="k">def</span> <span class="nf">get_filter_sensitive_args</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="n">filter_command</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;filter&#39;</span><span class="p">,</span> <span class="s1">&#39;dst_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;project_dir&#39;</span><span class="p">,],</span>
+    <span class="p">}</span>
+
+<span class="nd">@scoped</span>
+<span class="k">def</span> <span class="nf">filter_command</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">project</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">project</span> <span class="o">=</span> <span class="n">scope_add</span><span class="p">(</span><span class="n">load_project</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">project_dir</span><span class="p">))</span>
+    <span class="k">except</span> <span class="n">ProjectNotFoundError</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">project_dir</span><span class="p">:</span>
+            <span class="k">raise</span>
+
+    <span class="n">filter_args</span> <span class="o">=</span> <span class="n">FilterModes</span><span class="o">.</span><span class="n">make_filter_args</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+    <span class="n">filter_expr</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">filter</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">dry_run</span><span class="p">:</span>
+        <span class="n">dataset</span><span class="p">,</span> <span class="n">_project</span> <span class="o">=</span> <span class="n">parse_full_revpath</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">_project</span><span class="p">:</span>
+            <span class="n">scope_add</span><span class="p">(</span><span class="n">_project</span><span class="p">)</span>
+
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">filter_expr</span><span class="p">,</span> <span class="o">**</span><span class="n">filter_args</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+            <span class="n">encoded_item</span> <span class="o">=</span> <span class="n">DatasetItemEncoder</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">categories</span><span class="p">())</span>
+            <span class="n">xml_item</span> <span class="o">=</span> <span class="n">DatasetItemEncoder</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">encoded_item</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">xml_item</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">filter</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">CliException</span><span class="p">(</span><span class="s2">&quot;Expected a filter expression (&#39;-e&#39; argument)&quot;</span><span class="p">)</span>
+
+    <span class="n">is_target</span> <span class="o">=</span> <span class="n">project</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> \
+        <span class="n">args</span><span class="o">.</span><span class="n">target</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">build_targets</span>
+    <span class="k">if</span> <span class="n">is_target</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">dst_dir</span> <span class="ow">and</span> <span class="n">args</span><span class="o">.</span><span class="n">stage</span> <span class="ow">and</span> <span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">target</span> <span class="o">!=</span> \
+                <span class="n">ProjectBuildTargets</span><span class="o">.</span><span class="n">strip_target_name</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">target</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">CliException</span><span class="p">(</span><span class="s2">&quot;Adding a stage is only allowed for &quot;</span>
+                <span class="s2">&quot;project targets, not their stages.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">target</span> <span class="o">==</span> <span class="n">ProjectBuildTargets</span><span class="o">.</span><span class="n">MAIN_TARGET</span><span class="p">:</span>
+            <span class="n">targets</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">sources</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">targets</span> <span class="o">=</span> <span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">target</span><span class="p">]</span>
+
+        <span class="n">build_tree</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+            <span class="n">build_tree</span><span class="o">.</span><span class="n">build_targets</span><span class="o">.</span><span class="n">add_filter_stage</span><span class="p">(</span><span class="n">target</span><span class="p">,</span>
+                <span class="n">expr</span><span class="o">=</span><span class="n">filter_expr</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">filter_args</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">apply</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Filtering...&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">is_target</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">dst_dir</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+                <span class="n">dataset</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span>
+                    <span class="n">build_tree</span><span class="o">.</span><span class="n">make_pipeline</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
+
+                <span class="c1"># Source might be missing in the working dir, so we specify</span>
+                <span class="c1"># the output directory.</span>
+                <span class="c1"># We specify save_images here as a heuristic. It can probably</span>
+                <span class="c1"># be improved by checking if there are images in the dataset</span>
+                <span class="c1"># directory.</span>
+                <span class="n">dataset</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">source_data_dir</span><span class="p">(</span><span class="n">target</span><span class="p">),</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Finished&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dataset</span><span class="p">,</span> <span class="n">_project</span> <span class="o">=</span> <span class="n">parse_full_revpath</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">_project</span><span class="p">:</span>
+                <span class="n">scope_add</span><span class="p">(</span><span class="n">_project</span><span class="p">)</span>
+
+            <span class="n">dst_dir</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">dst_dir</span> <span class="ow">or</span> <span class="n">dataset</span><span class="o">.</span><span class="n">data_path</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">overwrite</span> <span class="ow">and</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">CliException</span><span class="p">(</span><span class="s2">&quot;Directory &#39;</span><span class="si">%s</span><span class="s2">&#39; already exists &quot;</span>
+                    <span class="s2">&quot;(pass --overwrite to overwrite)&quot;</span> <span class="o">%</span> <span class="n">dst_dir</span><span class="p">)</span>
+            <span class="n">dst_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">)</span>
+
+            <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">filter_expr</span><span class="p">,</span> <span class="o">*</span><span class="n">filter_args</span><span class="p">)</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">,</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Results have been saved to &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">dst_dir</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">is_target</span> <span class="ow">and</span> <span class="n">args</span><span class="o">.</span><span class="n">stage</span><span class="p">:</span>
+        <span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">build_tree</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+        <span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">build_transform_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+    <span class="n">builtins</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">Environment</span><span class="p">()</span><span class="o">.</span><span class="n">transforms</span><span class="p">)</span>
+
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Transform project&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        Applies a batch operation to a dataset and produces a new dataset.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        By default, datasets are updated in-place. The &#39;-o/--output-dir&#39;</span>
+<span class="s2">        option can be used to specify another output directory. When</span>
+<span class="s2">        updating in-place, use the &#39;--overwrite&#39; parameter (in-place</span>
+<span class="s2">        updates fail by default to prevent data loss), unless a project</span>
+<span class="s2">        target is modified.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Builtin transforms: </span><span class="si">{}</span><span class="s2">|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        This command has the following invocation syntax:</span>
+<span class="s2">        - </span><span class="si">%(prog)s</span><span class="s2"> &lt;target dataset revpath&gt;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        &lt;revpath&gt; - either a dataset path or a revision path. The full</span>
+<span class="s2">        syntax is:|n</span>
+<span class="s2">        - Dataset paths:|n</span>
+<span class="s2">        |s|s- &lt;dataset path&gt;[ :&lt;format&gt; ]|n</span>
+<span class="s2">        - Revision paths:|n</span>
+<span class="s2">        |s|s- &lt;project path&gt; [ @&lt;rev&gt; ] [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;rev&gt; [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;target&gt;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        The current project (-p/--project) is also used as a context for</span>
+<span class="s2">        plugins, so it can be useful for dataset paths having custom formats.</span>
+<span class="s2">        When not specified, the current project&#39;s working tree is used.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        The command can be applied to a dataset or a project build target,</span>
+<span class="s2">        a stage or the combined &#39;project&#39; target, in which case all the</span>
+<span class="s2">        targets will be affected. A build tree stage will be recorded</span>
+<span class="s2">        if &#39;--stage&#39; is enabled, and the resulting dataset(-s) will be</span>
+<span class="s2">        saved if &#39;--apply&#39; is enabled.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Examples:|n</span>
+<span class="s2">        - Convert instance polygons to masks:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -t polygons_to_masks|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Rename dataset items by a regular expression|n</span>
+<span class="s2">        |s|s- Replace &#39;pattern&#39; with &#39;replacement&#39;|n|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -t rename -- -e &#39;|pattern|replacement|&#39;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        |s|s- Remove &#39;frame_&#39; from item ids|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -t rename -- -e &#39;|frame_(</span><span class="se">\\</span><span class="s2">d+)|</span><span class="se">\\</span><span class="s2">1|&#39;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Split a dataset randomly:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -t random_split --overwrite path/to/dataset:voc</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">builtins</span><span class="p">)),</span>
+        <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;_positionals&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">REMAINDER</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">SUPPRESS</span><span class="p">)</span> <span class="c1"># workaround for -- eaten by positionals</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;project&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Target dataset revpath (default: project)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-t&#39;</span><span class="p">,</span> <span class="s1">&#39;--transform&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Transform to apply to the dataset&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-dir&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;dst_dir&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            Output directory. Can be omitted for main project targets</span>
+<span class="s2">            (i.e. data sources and the &#39;project&#39; target, but not</span>
+<span class="s2">            intermediate stages) and dataset targets.</span>
+<span class="s2">            If not specified, the results will be saved inplace.</span>
+<span class="s2">            &quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--overwrite&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Overwrite existing files in the save directory&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--project&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;project_dir&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Directory of the project to operate on (default: current dir)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--stage&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">str_to_bool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            Include this action as a project build step.</span>
+<span class="s2">            If true, this operation will be saved in the project</span>
+<span class="s2">            build tree, allowing to reproduce the resulting dataset later.</span>
+<span class="s2">            Applicable only to main project targets (i.e. data sources</span>
+<span class="s2">            and the &#39;project&#39; target, but not intermediate stages)</span>
+<span class="s2">            (default: </span><span class="si">%(default)s</span><span class="s2">)</span>
+<span class="s2">            &quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--apply&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">str_to_bool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Run this command immediately. If disabled, only the &quot;</span>
+            <span class="s2">&quot;build tree stage will be written (default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;extra_args&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">REMAINDER</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Additional arguments for transformation (pass &#39;-- -h&#39; for help). &quot;</span>
+            <span class="s2">&quot;Must be specified after the main command arguments and after &quot;</span>
+            <span class="s2">&quot;the &#39;--&#39; separator&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">transform_command</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">parser</span>
+
+<span class="k">def</span> <span class="nf">get_transform_sensitive_args</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="n">transform_command</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dst_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;project_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;extra_args&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+<span class="nd">@scoped</span>
+<span class="k">def</span> <span class="nf">transform_command</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">has_sep</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">_positionals</span>
+    <span class="k">if</span> <span class="n">has_sep</span><span class="p">:</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">_positionals</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">pos</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentError</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Expected no more than 1 target argument&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">args</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">_positionals</span><span class="p">[:</span><span class="n">pos</span><span class="p">]</span> <span class="ow">or</span> \
+        <span class="p">[</span><span class="n">ProjectBuildTargets</span><span class="o">.</span><span class="n">MAIN_TARGET</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">args</span><span class="o">.</span><span class="n">extra_args</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">_positionals</span><span class="p">[</span><span class="n">pos</span> <span class="o">+</span> <span class="n">has_sep</span><span class="p">:]</span>
+
+    <span class="n">show_plugin_help</span> <span class="o">=</span> <span class="s1">&#39;-h&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">extra_args</span> <span class="ow">or</span> <span class="s1">&#39;--help&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">extra_args</span>
+
+    <span class="n">project</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">project</span> <span class="o">=</span> <span class="n">scope_add</span><span class="p">(</span><span class="n">load_project</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">project_dir</span><span class="p">))</span>
+    <span class="k">except</span> <span class="n">ProjectNotFoundError</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">show_plugin_help</span> <span class="ow">and</span> <span class="n">args</span><span class="o">.</span><span class="n">project_dir</span><span class="p">:</span>
+            <span class="k">raise</span>
+
+    <span class="k">if</span> <span class="n">project</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">env</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">transform</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">transforms</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">transform</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">CliException</span><span class="p">(</span><span class="s2">&quot;Transform &#39;</span><span class="si">%s</span><span class="s2">&#39; is not found&quot;</span> <span class="o">%</span> <span class="n">args</span><span class="o">.</span><span class="n">transform</span><span class="p">)</span>
+
+    <span class="n">extra_args</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">parse_cmdline</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">extra_args</span><span class="p">)</span>
+
+    <span class="n">is_target</span> <span class="o">=</span> <span class="n">project</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> \
+        <span class="n">args</span><span class="o">.</span><span class="n">target</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">build_targets</span>
+    <span class="k">if</span> <span class="n">is_target</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">dst_dir</span> <span class="ow">and</span> <span class="n">args</span><span class="o">.</span><span class="n">stage</span> <span class="ow">and</span> <span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">target</span> <span class="o">!=</span> \
+                <span class="n">ProjectBuildTargets</span><span class="o">.</span><span class="n">strip_target_name</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">target</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">CliException</span><span class="p">(</span><span class="s2">&quot;Adding a stage is only allowed for &quot;</span>
+                <span class="s2">&quot;project targets, not their stages.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">target</span> <span class="o">==</span> <span class="n">ProjectBuildTargets</span><span class="o">.</span><span class="n">MAIN_TARGET</span><span class="p">:</span>
+            <span class="n">targets</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">sources</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">targets</span> <span class="o">=</span> <span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">target</span><span class="p">]</span>
+
+        <span class="n">build_tree</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+            <span class="n">build_tree</span><span class="o">.</span><span class="n">build_targets</span><span class="o">.</span><span class="n">add_transform_stage</span><span class="p">(</span><span class="n">target</span><span class="p">,</span>
+                <span class="n">args</span><span class="o">.</span><span class="n">transform</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">extra_args</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">apply</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Transforming...&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">is_target</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">dst_dir</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+                <span class="n">dataset</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span>
+                    <span class="n">build_tree</span><span class="o">.</span><span class="n">make_pipeline</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
+
+                <span class="c1"># Source might be missing in the working dir, so we specify</span>
+                <span class="c1"># the output directory</span>
+                <span class="c1"># We specify save_images here as a heuristic. It can probably</span>
+                <span class="c1"># be improved by checking if there are images in the dataset</span>
+                <span class="c1"># directory.</span>
+                <span class="n">dataset</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">source_data_dir</span><span class="p">(</span><span class="n">target</span><span class="p">),</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Finished&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dataset</span><span class="p">,</span> <span class="n">_project</span> <span class="o">=</span> <span class="n">parse_full_revpath</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">_project</span><span class="p">:</span>
+                <span class="n">scope_add</span><span class="p">(</span><span class="n">_project</span><span class="p">)</span>
+
+            <span class="n">dst_dir</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">dst_dir</span> <span class="ow">or</span> <span class="n">dataset</span><span class="o">.</span><span class="n">data_path</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">overwrite</span> <span class="ow">and</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">CliException</span><span class="p">(</span><span class="s2">&quot;Directory &#39;</span><span class="si">%s</span><span class="s2">&#39; already exists &quot;</span>
+                    <span class="s2">&quot;(pass --overwrite to overwrite)&quot;</span> <span class="o">%</span> <span class="n">dst_dir</span><span class="p">)</span>
+            <span class="n">dst_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">)</span>
+
+            <span class="n">dataset</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">transform</span><span class="p">,</span> <span class="o">**</span><span class="n">extra_args</span><span class="p">)</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">,</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Results have been saved to &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">dst_dir</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">is_target</span> <span class="ow">and</span> <span class="n">args</span><span class="o">.</span><span class="n">stage</span><span class="p">:</span>
+        <span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">build_tree</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+        <span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">build_stats_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Get project statistics&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        Outputs various project statistics like image mean and std,</span>
+<span class="s2">        annotations count etc.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Target dataset is specified by a revpath. The full syntax is:|n</span>
+<span class="s2">        - Dataset paths:|n</span>
+<span class="s2">        |s|s- &lt;dataset path&gt;[ :&lt;format&gt; ]|n</span>
+<span class="s2">        - Revision paths:|n</span>
+<span class="s2">        |s|s- &lt;project path&gt; [ @&lt;rev&gt; ] [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;rev&gt; [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;target&gt;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Both forms use the -p/--project as a context for plugins. It can be</span>
+<span class="s2">        useful for dataset paths in targets. When not specified, the current</span>
+<span class="s2">        project&#39;s working tree is used.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Examples:|n</span>
+<span class="s2">        - Compute project statistics:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"></span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;project&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Target dataset revpath (default: project)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--project&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;project_dir&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Directory of the project to operate on (default: current dir)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">stats_command</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">parser</span>
+
+<span class="k">def</span> <span class="nf">get_stats_sensitive_args</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="n">stats_command</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;project_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+<span class="nd">@scoped</span>
+<span class="k">def</span> <span class="nf">stats_command</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">project</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">project</span> <span class="o">=</span> <span class="n">scope_add</span><span class="p">(</span><span class="n">load_project</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">project_dir</span><span class="p">))</span>
+    <span class="k">except</span> <span class="n">ProjectNotFoundError</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">project_dir</span><span class="p">:</span>
+            <span class="k">raise</span>
+
+    <span class="n">dataset</span><span class="p">,</span> <span class="n">target_project</span> <span class="o">=</span> <span class="n">parse_full_revpath</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">target_project</span><span class="p">:</span>
+        <span class="n">scope_add</span><span class="p">(</span><span class="n">target_project</span><span class="p">)</span>
+
+    <span class="n">stats</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">stats</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">compute_image_statistics</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
+    <span class="n">stats</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">compute_ann_statistics</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
+
+    <span class="n">dst_file</span> <span class="o">=</span> <span class="n">generate_next_file_name</span><span class="p">(</span><span class="s1">&#39;statistics&#39;</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s1">&#39;.json&#39;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Writing project statistics to &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">dst_file</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dst_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">stats</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">build_info_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Get project info&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        Outputs project info - information about plugins,</span>
+<span class="s2">        sources, build tree, models and revisions.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Examples:|n</span>
+<span class="s2">        - Print project info for the current working tree:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2">|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        - Print project info for the previous revision:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> HEAD~1</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;revision&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Target revision (default: current working tree)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--project&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;project_dir&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Directory of the project to operate on (default: current dir)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">info_command</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">parser</span>
+
+<span class="k">def</span> <span class="nf">get_info_sensitive_args</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="n">info_command</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;project_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;revision&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+<span class="nd">@scoped</span>
+<span class="k">def</span> <span class="nf">info_command</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">project</span> <span class="o">=</span> <span class="n">scope_add</span><span class="p">(</span><span class="n">load_project</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">project_dir</span><span class="p">))</span>
+    <span class="n">rev</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_rev</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">revision</span><span class="p">)</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">rev</span><span class="o">.</span><span class="n">env</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Project:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  location:&quot;</span><span class="p">,</span> <span class="n">project</span><span class="o">.</span><span class="n">_root_dir</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Plugins:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  extractors:&quot;</span><span class="p">,</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">extractors</span><span class="p">)</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">importers</span><span class="p">))))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  converters:&quot;</span><span class="p">,</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">converters</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  launchers:&quot;</span><span class="p">,</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">launchers</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Models:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  model &#39;</span><span class="si">%s</span><span class="s2">&#39;:&quot;</span> <span class="o">%</span> <span class="n">model_name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    type:&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">launcher</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sources:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">source_name</span><span class="p">,</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">rev</span><span class="o">.</span><span class="n">sources</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  &#39;</span><span class="si">%s</span><span class="s2">&#39;:&quot;</span> <span class="o">%</span> <span class="n">source_name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    format:&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    url:&quot;</span><span class="p">,</span> <span class="n">osp</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">url</span><span class="p">)</span> <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">url</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    location:&quot;</span><span class="p">,</span> <span class="n">osp</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">project</span><span class="o">.</span><span class="n">source_data_dir</span><span class="p">(</span><span class="n">source_name</span><span class="p">),</span> <span class="n">source</span><span class="o">.</span><span class="n">path</span><span class="p">)))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    options:&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    stages:&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">stage</span> <span class="ow">in</span> <span class="n">rev</span><span class="o">.</span><span class="n">build_targets</span><span class="p">[</span><span class="n">source_name</span><span class="p">]</span><span class="o">.</span><span class="n">stages</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;      &#39;</span><span class="si">%s</span><span class="s2">&#39;:&quot;</span> <span class="o">%</span> <span class="n">stage</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;        type:&quot;</span><span class="p">,</span> <span class="n">stage</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;        hash:&quot;</span><span class="p">,</span> <span class="n">stage</span><span class="o">.</span><span class="n">hash</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;        cached:&quot;</span><span class="p">,</span>
+                <span class="n">project</span><span class="o">.</span><span class="n">is_obj_cached</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">hash</span><span class="p">)</span> <span class="k">if</span> <span class="n">stage</span><span class="o">.</span><span class="n">hash</span> <span class="k">else</span> <span class="s1">&#39;n/a&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">stage</span><span class="o">.</span><span class="n">kind</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;        kind:&quot;</span><span class="p">,</span> <span class="n">stage</span><span class="o">.</span><span class="n">kind</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">stage</span><span class="o">.</span><span class="n">params</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;        parameters:&quot;</span><span class="p">,</span> <span class="n">stage</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">build_validate_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Validate project&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        Validates a dataset according to the task type and</span>
+<span class="s2">        reports summary in a JSON file.|n</span>
+<span class="s2">        Target dataset is specified by a revpath. The full syntax is:|n</span>
+<span class="s2">        - Dataset paths:|n</span>
+<span class="s2">        |s|s- &lt;dataset path&gt;[ :&lt;format&gt; ]|n</span>
+<span class="s2">        - Revision paths:|n</span>
+<span class="s2">        |s|s- &lt;project path&gt; [ @&lt;rev&gt; ] [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;rev&gt; [ :&lt;target&gt; ]|n</span>
+<span class="s2">        |s|s- &lt;target&gt;|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Both forms use the -p/--project as a context for plugins. It can be</span>
+<span class="s2">        useful for dataset paths in targets. When not specified, the current</span>
+<span class="s2">        project&#39;s working tree is used.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Examples:|n</span>
+<span class="s2">        - Validate a project&#39;s subset as a classification dataset:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -t classification -s train</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
+
+    <span class="n">task_types</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">TaskType</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_parse_task_type</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">TaskType</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">(</span><span class="s2">&quot;Unknown task type </span><span class="si">%s</span><span class="s2">. Expected &quot;</span>
+                <span class="s2">&quot;one of: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">task_types</span><span class="p">))</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;_positionals&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">REMAINDER</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">SUPPRESS</span><span class="p">)</span> <span class="c1"># workaround for -- eaten by positionals</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;project&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Target dataset revpath (default: project)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-t&#39;</span><span class="p">,</span> <span class="s1">&#39;--task&#39;</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="n">_parse_task_type</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Task type for validation, one of </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">task_types</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;--subset&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;subset_name&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Subset to validate (default: whole dataset)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--project&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;project_dir&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Directory of the project to validate (default: current dir)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;extra_args&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">REMAINDER</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Optional arguments for validator (pass &#39;-- -h&#39; for help)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">validate_command</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">parser</span>
+
+<span class="k">def</span> <span class="nf">get_validate_sensitive_args</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="n">validate_command</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;project_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;subset_name&#39;</span><span class="p">,</span> <span class="s1">&#39;extra_args&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+<span class="nd">@scoped</span>
+<span class="k">def</span> <span class="nf">validate_command</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">has_sep</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">_positionals</span>
+    <span class="k">if</span> <span class="n">has_sep</span><span class="p">:</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">_positionals</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">pos</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentError</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Expected no more than 1 target argument&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">args</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">_positionals</span><span class="p">[:</span><span class="n">pos</span><span class="p">]</span> <span class="ow">or</span> <span class="p">[</span><span class="s1">&#39;project&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">args</span><span class="o">.</span><span class="n">extra_args</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">_positionals</span><span class="p">[</span><span class="n">pos</span> <span class="o">+</span> <span class="n">has_sep</span><span class="p">:]</span>
+
+    <span class="n">show_plugin_help</span> <span class="o">=</span> <span class="s1">&#39;-h&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">extra_args</span> <span class="ow">or</span> <span class="s1">&#39;--help&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">extra_args</span>
+
+    <span class="n">project</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">project</span> <span class="o">=</span> <span class="n">scope_add</span><span class="p">(</span><span class="n">load_project</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">project_dir</span><span class="p">))</span>
+    <span class="k">except</span> <span class="n">ProjectNotFoundError</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">show_plugin_help</span> <span class="ow">and</span> <span class="n">args</span><span class="o">.</span><span class="n">project_dir</span><span class="p">:</span>
+            <span class="k">raise</span>
+
+    <span class="k">if</span> <span class="n">project</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">env</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">validator_type</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">validators</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">task</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">CliException</span><span class="p">(</span><span class="s2">&quot;Validator type &#39;</span><span class="si">%s</span><span class="s2">&#39; is not found&quot;</span> <span class="o">%</span> <span class="n">args</span><span class="o">.</span><span class="n">task</span><span class="p">)</span>
+
+    <span class="n">extra_args</span> <span class="o">=</span> <span class="n">validator_type</span><span class="o">.</span><span class="n">parse_cmdline</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">extra_args</span><span class="p">)</span>
+
+    <span class="n">dataset</span><span class="p">,</span> <span class="n">target_project</span> <span class="o">=</span> <span class="n">parse_full_revpath</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">target_project</span><span class="p">:</span>
+        <span class="n">scope_add</span><span class="p">(</span><span class="n">target_project</span><span class="p">)</span>
+
+    <span class="n">dst_file_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;validation-report&#39;</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">subset_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">subset_name</span><span class="p">)</span>
+        <span class="n">dst_file_name</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;-</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">subset_name</span><span class="si">}</span><span class="s1">&#39;</span>
+
+    <span class="n">validator</span> <span class="o">=</span> <span class="n">validator_type</span><span class="p">(</span><span class="o">**</span><span class="n">extra_args</span><span class="p">)</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">validator</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">numpy_encoder</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">generic</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_make_serializable</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="c1"># tuple key to str</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+                <span class="n">d</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span> <span class="o">=</span> <span class="n">val</span>
+                <span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="n">_make_serializable</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="n">_make_serializable</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+
+    <span class="n">dst_file</span> <span class="o">=</span> <span class="n">generate_next_file_name</span><span class="p">(</span><span class="n">dst_file_name</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s1">&#39;.json&#39;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Writing project validation results to &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">dst_file</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dst_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">report</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                  <span class="n">default</span><span class="o">=</span><span class="n">numpy_encoder</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">build_migrate_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Migrate project&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        Migrates the project from the old version to a new one.|n</span>
+<span class="s2">        |n</span>
+<span class="s2">        Examples:|n</span>
+<span class="s2">        - Migrate a project from v1 to v2, save the new project in other dir:|n</span>
+<span class="s2">        |s|s</span><span class="si">%(prog)s</span><span class="s2"> -o &lt;output/dir&gt;</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-dir&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;dst_dir&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Output directory for the updated project&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;--force&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Ignore source import errors (default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--project&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;project_dir&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Directory of the project to migrate (default: current dir)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--overwrite&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Overwrite existing files in the save directory&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">migrate_command</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">parser</span>
+
+<span class="k">def</span> <span class="nf">get_migrate_sensitive_args</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="n">migrate_command</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dst_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;project_dir&#39;</span><span class="p">,],</span>
+    <span class="p">}</span>
+
+<span class="nd">@scoped</span>
+<span class="k">def</span> <span class="nf">migrate_command</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">dst_dir</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">dst_dir</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">overwrite</span> <span class="ow">and</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">CliException</span><span class="p">(</span><span class="s2">&quot;Directory &#39;</span><span class="si">%s</span><span class="s2">&#39; already exists &quot;</span>
+            <span class="s2">&quot;(pass --overwrite to overwrite)&quot;</span> <span class="o">%</span> <span class="n">dst_dir</span><span class="p">)</span>
+    <span class="n">dst_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">)</span>
+
+    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Migrating project from v1 to v2...&quot;</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">Project</span><span class="o">.</span><span class="n">migrate_from_v1_to_v2</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">project_dir</span><span class="p">,</span> <span class="n">dst_dir</span><span class="p">,</span>
+            <span class="n">skip_import_errors</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">force</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">MigrationError</span><span class="p">(</span><span class="s2">&quot;Failed to migrate the project &quot;</span>
+            <span class="s2">&quot;automatically. Try to create a new project and import sources &quot;</span>
+            <span class="s2">&quot;manually with &#39;datum create&#39; and &#39;datum import&#39;.&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Finished&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">build_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            Manipulate projects.|n</span>
+<span class="s2">            |n</span>
+<span class="s2">            By default, the project to be operated on is searched for</span>
+<span class="s2">            in the current directory. An additional &#39;-p&#39; argument can be</span>
+<span class="s2">            passed to specify project location.</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="n">formatter_class</span><span class="o">=</span><span class="n">MultilineFormatter</span><span class="p">)</span>
+
+    <span class="n">subparsers</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_subparsers</span><span class="p">()</span>
+    <span class="n">add_subparser</span><span class="p">(</span><span class="n">subparsers</span><span class="p">,</span> <span class="s1">&#39;export&#39;</span><span class="p">,</span> <span class="n">build_export_parser</span><span class="p">)</span>
+    <span class="n">add_subparser</span><span class="p">(</span><span class="n">subparsers</span><span class="p">,</span> <span class="s1">&#39;filter&#39;</span><span class="p">,</span> <span class="n">build_filter_parser</span><span class="p">)</span>
+    <span class="n">add_subparser</span><span class="p">(</span><span class="n">subparsers</span><span class="p">,</span> <span class="s1">&#39;transform&#39;</span><span class="p">,</span> <span class="n">build_transform_parser</span><span class="p">)</span>
+    <span class="n">add_subparser</span><span class="p">(</span><span class="n">subparsers</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="n">build_info_parser</span><span class="p">)</span>
+    <span class="n">add_subparser</span><span class="p">(</span><span class="n">subparsers</span><span class="p">,</span> <span class="s1">&#39;stats&#39;</span><span class="p">,</span> <span class="n">build_stats_parser</span><span class="p">)</span>
+    <span class="n">add_subparser</span><span class="p">(</span><span class="n">subparsers</span><span class="p">,</span> <span class="s1">&#39;validate&#39;</span><span class="p">,</span> <span class="n">build_validate_parser</span><span class="p">)</span>
+    <span class="n">add_subparser</span><span class="p">(</span><span class="n">subparsers</span><span class="p">,</span> <span class="s1">&#39;migrate&#39;</span><span class="p">,</span> <span class="n">build_migrate_parser</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">parser</span>
+
+<span class="k">def</span> <span class="nf">get_sensitive_args</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="o">**</span><span class="n">get_export_sensitive_args</span><span class="p">(),</span>
+        <span class="o">**</span><span class="n">get_filter_sensitive_args</span><span class="p">(),</span>
+        <span class="o">**</span><span class="n">get_transform_sensitive_args</span><span class="p">(),</span>
+        <span class="o">**</span><span class="n">get_stats_sensitive_args</span><span class="p">(),</span>
+        <span class="o">**</span><span class="n">get_info_sensitive_args</span><span class="p">(),</span>
+        <span class="o">**</span><span class="n">get_validate_sensitive_args</span><span class="p">(),</span>
+        <span class="o">**</span><span class="n">get_migrate_sensitive_args</span><span class="p">(),</span>
+    <span class="p">}</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>&#169; Copyright 2021, Intel.
+    <div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
