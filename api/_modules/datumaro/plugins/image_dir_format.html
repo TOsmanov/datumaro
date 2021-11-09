@@ -36,7 +36,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../api/setup.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/setup.html">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datum.html">datum</a></li>
 </ul>
 <ul>
@@ -93,15 +93,15 @@
 <span class="kn">from</span> <span class="nn">datumaro.util.image</span> <span class="kn">import</span> <span class="n">find_images</span>
 
 
-<div class="viewcode-block" id="ImageDirImporter"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.image_dir_format.ImageDirImporter">[docs]</a><span class="k">class</span> <span class="nc">ImageDirImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
-<div class="viewcode-block" id="ImageDirImporter.find_sources"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.image_dir_format.ImageDirImporter.find_sources">[docs]</a>    <span class="nd">@classmethod</span>
+<span class="k">class</span> <span class="nc">ImageDirImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">find_sources</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">[]</span>
-        <span class="k">return</span> <span class="p">[{</span> <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="n">ImageDirExtractor</span><span class="o">.</span><span class="n">NAME</span> <span class="p">}]</span></div></div>
+        <span class="k">return</span> <span class="p">[{</span> <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="n">ImageDirExtractor</span><span class="o">.</span><span class="n">NAME</span> <span class="p">}]</span>
 
 <div class="viewcode-block" id="ImageDirExtractor"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.image_dir_format.ImageDirExtractor">[docs]</a><span class="k">class</span> <span class="nc">ImageDirExtractor</span><span class="p">(</span><span class="n">SourceExtractor</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">exts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ImageDirExtractor.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.image_dir_format.ImageDirExtractor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">exts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">subset</span><span class="p">)</span>
 
         <span class="k">assert</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">url</span><span class="p">),</span> <span class="n">url</span>
@@ -110,19 +110,19 @@
                 <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">):</span>
             <span class="n">item_id</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">url</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">item_id</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_subset</span><span class="p">,</span>
-                <span class="n">image</span><span class="o">=</span><span class="n">path</span><span class="p">))</span></div>
+                <span class="n">image</span><span class="o">=</span><span class="n">path</span><span class="p">))</span></div></div>
 
-<div class="viewcode-block" id="ImageDirConverter"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.image_dir_format.ImageDirConverter">[docs]</a><span class="k">class</span> <span class="nc">ImageDirConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">ImageDirConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
     <span class="n">DEFAULT_IMAGE_EXT</span> <span class="o">=</span> <span class="s1">&#39;.jpg&#39;</span>
 
-<div class="viewcode-block" id="ImageDirConverter.apply"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.image_dir_format.ImageDirConverter.apply">[docs]</a>    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">has_image</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_save_image</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Item &#39;</span><span class="si">%s</span><span class="s2">&#39; has no image info&quot;</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></div></div>
+                <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Item &#39;</span><span class="si">%s</span><span class="s2">&#39; has no image info&quot;</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
 </pre></div>
 
            </div>

@@ -36,7 +36,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/setup.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/setup.html">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datum.html">datum</a></li>
 </ul>
 <ul>
@@ -98,7 +98,7 @@
 
 
 <div class="viewcode-block" id="DatumaroExtractor"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.datumaro_format.extractor.DatumaroExtractor">[docs]</a><span class="k">class</span> <span class="nc">DatumaroExtractor</span><span class="p">(</span><span class="n">SourceExtractor</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<div class="viewcode-block" id="DatumaroExtractor.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.datumaro_format.extractor.DatumaroExtractor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="k">assert</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">path</span>
 
         <span class="n">rootpath</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
@@ -125,7 +125,7 @@
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">parsed_anns</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_categories</span><span class="p">(</span><span class="n">parsed_anns</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_items</span><span class="p">(</span><span class="n">parsed_anns</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_items</span><span class="p">(</span><span class="n">parsed_anns</span><span class="p">)</span></div>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_load_categories</span><span class="p">(</span><span class="n">parsed</span><span class="p">):</span>
@@ -271,11 +271,11 @@
 
         <span class="k">return</span> <span class="n">loaded</span></div>
 
-<div class="viewcode-block" id="DatumaroImporter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.datumaro_format.extractor.DatumaroImporter">[docs]</a><span class="k">class</span> <span class="nc">DatumaroImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
-<div class="viewcode-block" id="DatumaroImporter.find_sources"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.datumaro_format.extractor.DatumaroImporter.find_sources">[docs]</a>    <span class="nd">@classmethod</span>
+<span class="k">class</span> <span class="nc">DatumaroImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">find_sources</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_find_sources_recursive</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;.json&#39;</span><span class="p">,</span> <span class="s1">&#39;datumaro&#39;</span><span class="p">,</span>
-            <span class="n">dirname</span><span class="o">=</span><span class="s1">&#39;annotations&#39;</span><span class="p">)</span></div></div>
+            <span class="n">dirname</span><span class="o">=</span><span class="s1">&#39;annotations&#39;</span><span class="p">)</span>
 </pre></div>
 
            </div>

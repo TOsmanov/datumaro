@@ -36,7 +36,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/setup.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/setup.html">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datum.html">datum</a></li>
 </ul>
 <ul>
@@ -102,11 +102,11 @@
 
 <div class="viewcode-block" id="YoloExtractor"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.yolo_format.extractor.YoloExtractor">[docs]</a><span class="k">class</span> <span class="nc">YoloExtractor</span><span class="p">(</span><span class="n">SourceExtractor</span><span class="p">):</span>
 <div class="viewcode-block" id="YoloExtractor.Subset"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.yolo_format.extractor.YoloExtractor.Subset">[docs]</a>    <span class="k">class</span> <span class="nc">Subset</span><span class="p">(</span><span class="n">Extractor</span><span class="p">):</span>
-        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+<div class="viewcode-block" id="YoloExtractor.Subset.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.yolo_format.extractor.YoloExtractor.Subset.__init__">[docs]</a>        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span></div>
 
         <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">item_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
@@ -115,10 +115,10 @@
         <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
 
-<div class="viewcode-block" id="YoloExtractor.Subset.categories"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.yolo_format.extractor.YoloExtractor.Subset.categories">[docs]</a>        <span class="k">def</span> <span class="nf">categories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">categories</span><span class="p">()</span></div></div>
+        <span class="k">def</span> <span class="nf">categories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">categories</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_path</span><span class="p">,</span> <span class="n">image_info</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="YoloExtractor.__init__"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.yolo_format.extractor.YoloExtractor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_path</span><span class="p">,</span> <span class="n">image_info</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">config_path</span><span class="p">):</span>
@@ -181,17 +181,17 @@
             <span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_load_categories</span><span class="p">(</span>
                     <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">localize_path</span><span class="p">(</span><span class="n">names_path</span><span class="p">)))</span>
-        <span class="p">}</span>
+        <span class="p">}</span></div>
 
-<div class="viewcode-block" id="YoloExtractor.localize_path"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.yolo_format.extractor.YoloExtractor.localize_path">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">localize_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="n">default_base</span> <span class="o">=</span> <span class="s1">&#39;data&#39;</span> <span class="o">+</span> <span class="n">osp</span><span class="o">.</span><span class="n">sep</span>
         <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">default_base</span><span class="p">):</span> <span class="c1"># default path</span>
             <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">default_base</span><span class="p">)</span> <span class="p">:</span> <span class="p">]</span>
-        <span class="k">return</span> <span class="n">path</span></div>
+        <span class="k">return</span> <span class="n">path</span>
 
-<div class="viewcode-block" id="YoloExtractor.name_from_path"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.yolo_format.extractor.YoloExtractor.name_from_path">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">name_from_path</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="n">path</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">localize_path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
         <span class="n">parts</span> <span class="o">=</span> <span class="n">split_path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
@@ -200,7 +200,7 @@
             <span class="c1"># drop everything but &lt;image name&gt;</span>
             <span class="c1"># &lt;image name&gt; can be &lt;a/b/c/filename.ext&gt;, so not just basename()</span>
             <span class="n">path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="o">*</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="c1"># pylint: disable=no-value-for-parameter</span>
-        <span class="k">return</span> <span class="n">osp</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="n">osp</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="n">subset_name</span><span class="p">):</span>
         <span class="n">subset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subsets</span><span class="p">[</span><span class="n">subset_name</span><span class="p">]</span>
@@ -269,13 +269,13 @@
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subsets</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
-<div class="viewcode-block" id="YoloExtractor.get_subset"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.yolo_format.extractor.YoloExtractor.get_subset">[docs]</a>    <span class="k">def</span> <span class="nf">get_subset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subsets</span><span class="p">[</span><span class="n">name</span><span class="p">]</span></div></div>
+    <span class="k">def</span> <span class="nf">get_subset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subsets</span><span class="p">[</span><span class="n">name</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="YoloImporter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.yolo_format.extractor.YoloImporter">[docs]</a><span class="k">class</span> <span class="nc">YoloImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
-<div class="viewcode-block" id="YoloImporter.find_sources"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.yolo_format.extractor.YoloImporter.find_sources">[docs]</a>    <span class="nd">@classmethod</span>
+<span class="k">class</span> <span class="nc">YoloImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">find_sources</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_find_sources_recursive</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;.data&#39;</span><span class="p">,</span> <span class="s1">&#39;yolo&#39;</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_find_sources_recursive</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;.data&#39;</span><span class="p">,</span> <span class="s1">&#39;yolo&#39;</span><span class="p">)</span>
 </pre></div>
 
            </div>

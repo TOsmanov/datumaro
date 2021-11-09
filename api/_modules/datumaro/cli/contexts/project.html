@@ -36,7 +36,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/setup.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/setup.html">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datum.html">datum</a></li>
 </ul>
 <ul>
@@ -112,7 +112,7 @@
 <span class="p">)</span>
 
 
-<div class="viewcode-block" id="FilterModes"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.FilterModes">[docs]</a><span class="k">class</span> <span class="nc">FilterModes</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<div class="viewcode-block" id="FilterModes"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.contexts.project.FilterModes">[docs]</a><span class="k">class</span> <span class="nc">FilterModes</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
     <span class="c1"># primary</span>
     <span class="n">items</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">annotations</span> <span class="o">=</span> <span class="mi">2</span>
@@ -125,13 +125,13 @@
     <span class="n">a_i</span> <span class="o">=</span> <span class="mi">3</span>
     <span class="n">annotations_items</span> <span class="o">=</span> <span class="mi">3</span>
 
-<div class="viewcode-block" id="FilterModes.parse"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.FilterModes.parse">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">FilterModes</span><span class="p">[</span><span class="n">s</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="n">FilterModes</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
 
-<div class="viewcode-block" id="FilterModes.make_filter_args"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.FilterModes.make_filter_args">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">make_filter_args</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="bp">cls</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">{}</span>
@@ -145,13 +145,13 @@
                 <span class="s1">&#39;remove_empty&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
-<div class="viewcode-block" id="FilterModes.list_options"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.FilterModes.list_options">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">list_options</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">]</span></div></div>
+        <span class="k">return</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="build_export_parser"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.build_export_parser">[docs]</a><span class="k">def</span> <span class="nf">build_export_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">build_export_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
     <span class="n">builtins</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">Environment</span><span class="p">()</span><span class="o">.</span><span class="n">converters</span><span class="p">)</span>
 
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Export project&quot;</span><span class="p">,</span>
@@ -216,15 +216,15 @@
             <span class="s2">&quot;the &#39;--&#39; separator&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">export_command</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">parser</span></div>
+    <span class="k">return</span> <span class="n">parser</span>
 
-<div class="viewcode-block" id="get_export_sensitive_args"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.get_export_sensitive_args">[docs]</a><span class="k">def</span> <span class="nf">get_export_sensitive_args</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">get_export_sensitive_args</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="n">export_command</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dst_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;project_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;extra_args&#39;</span><span class="p">,</span>
             <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;filter&#39;</span><span class="p">],</span>
-    <span class="p">}</span></div>
+    <span class="p">}</span>
 
-<div class="viewcode-block" id="export_command"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.export_command">[docs]</a><span class="nd">@scoped</span>
+<span class="nd">@scoped</span>
 <span class="k">def</span> <span class="nf">export_command</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">has_sep</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">_positionals</span>
     <span class="k">if</span> <span class="n">has_sep</span><span class="p">:</span>
@@ -286,9 +286,9 @@
 
     <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Results have been saved to &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">dst_dir</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="mi">0</span></div>
+    <span class="k">return</span> <span class="mi">0</span>
 
-<div class="viewcode-block" id="build_filter_parser"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.build_filter_parser">[docs]</a><span class="k">def</span> <span class="nf">build_filter_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">build_filter_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Extract subdataset&quot;</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        Extracts a subdataset that contains only items matching filter.|n</span>
@@ -393,14 +393,14 @@
         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Directory of the project to operate on (default: current dir)&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">filter_command</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">parser</span></div>
+    <span class="k">return</span> <span class="n">parser</span>
 
-<div class="viewcode-block" id="get_filter_sensitive_args"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.get_filter_sensitive_args">[docs]</a><span class="k">def</span> <span class="nf">get_filter_sensitive_args</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">get_filter_sensitive_args</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="n">filter_command</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;filter&#39;</span><span class="p">,</span> <span class="s1">&#39;dst_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;project_dir&#39;</span><span class="p">,],</span>
-    <span class="p">}</span></div>
+    <span class="p">}</span>
 
-<div class="viewcode-block" id="filter_command"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.filter_command">[docs]</a><span class="nd">@scoped</span>
+<span class="nd">@scoped</span>
 <span class="k">def</span> <span class="nf">filter_command</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">project</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">try</span><span class="p">:</span>
@@ -482,9 +482,9 @@
         <span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">build_tree</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
         <span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-    <span class="k">return</span> <span class="mi">0</span></div>
+    <span class="k">return</span> <span class="mi">0</span>
 
-<div class="viewcode-block" id="build_transform_parser"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.build_transform_parser">[docs]</a><span class="k">def</span> <span class="nf">build_transform_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">build_transform_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
     <span class="n">builtins</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">Environment</span><span class="p">()</span><span class="o">.</span><span class="n">transforms</span><span class="p">)</span>
 
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Transform project&quot;</span><span class="p">,</span>
@@ -572,14 +572,14 @@
             <span class="s2">&quot;the &#39;--&#39; separator&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">transform_command</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">parser</span></div>
+    <span class="k">return</span> <span class="n">parser</span>
 
-<div class="viewcode-block" id="get_transform_sensitive_args"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.get_transform_sensitive_args">[docs]</a><span class="k">def</span> <span class="nf">get_transform_sensitive_args</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">get_transform_sensitive_args</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="n">transform_command</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dst_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;project_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;extra_args&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">],</span>
-    <span class="p">}</span></div>
+    <span class="p">}</span>
 
-<div class="viewcode-block" id="transform_command"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.transform_command">[docs]</a><span class="nd">@scoped</span>
+<span class="nd">@scoped</span>
 <span class="k">def</span> <span class="nf">transform_command</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">has_sep</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">_positionals</span>
     <span class="k">if</span> <span class="n">has_sep</span><span class="p">:</span>
@@ -668,9 +668,9 @@
         <span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">build_tree</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
         <span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-    <span class="k">return</span> <span class="mi">0</span></div>
+    <span class="k">return</span> <span class="mi">0</span>
 
-<div class="viewcode-block" id="build_stats_parser"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.build_stats_parser">[docs]</a><span class="k">def</span> <span class="nf">build_stats_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">build_stats_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Get project statistics&quot;</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        Outputs various project statistics like image mean and std,</span>
@@ -700,14 +700,14 @@
         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Directory of the project to operate on (default: current dir)&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">stats_command</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">parser</span></div>
+    <span class="k">return</span> <span class="n">parser</span>
 
-<div class="viewcode-block" id="get_stats_sensitive_args"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.get_stats_sensitive_args">[docs]</a><span class="k">def</span> <span class="nf">get_stats_sensitive_args</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">get_stats_sensitive_args</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="n">stats_command</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;project_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">],</span>
-    <span class="p">}</span></div>
+    <span class="p">}</span>
 
-<div class="viewcode-block" id="stats_command"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.stats_command">[docs]</a><span class="nd">@scoped</span>
+<span class="nd">@scoped</span>
 <span class="k">def</span> <span class="nf">stats_command</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">project</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">try</span><span class="p">:</span>
@@ -727,9 +727,9 @@
     <span class="n">dst_file</span> <span class="o">=</span> <span class="n">generate_next_file_name</span><span class="p">(</span><span class="s1">&#39;statistics&#39;</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s1">&#39;.json&#39;</span><span class="p">)</span>
     <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Writing project statistics to &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">dst_file</span><span class="p">)</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dst_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">stats</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">stats</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<div class="viewcode-block" id="build_info_parser"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.build_info_parser">[docs]</a><span class="k">def</span> <span class="nf">build_info_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">build_info_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Get project info&quot;</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        Outputs project info - information about plugins,</span>
@@ -750,14 +750,14 @@
         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Directory of the project to operate on (default: current dir)&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">info_command</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">parser</span></div>
+    <span class="k">return</span> <span class="n">parser</span>
 
-<div class="viewcode-block" id="get_info_sensitive_args"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.get_info_sensitive_args">[docs]</a><span class="k">def</span> <span class="nf">get_info_sensitive_args</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">get_info_sensitive_args</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="n">info_command</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;project_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;revision&#39;</span><span class="p">],</span>
-    <span class="p">}</span></div>
+    <span class="p">}</span>
 
-<div class="viewcode-block" id="info_command"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.info_command">[docs]</a><span class="nd">@scoped</span>
+<span class="nd">@scoped</span>
 <span class="k">def</span> <span class="nf">info_command</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">project</span> <span class="o">=</span> <span class="n">scope_add</span><span class="p">(</span><span class="n">load_project</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">project_dir</span><span class="p">))</span>
     <span class="n">rev</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_rev</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">revision</span><span class="p">)</span>
@@ -797,9 +797,9 @@
             <span class="k">if</span> <span class="n">stage</span><span class="o">.</span><span class="n">params</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;        parameters:&quot;</span><span class="p">,</span> <span class="n">stage</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="mi">0</span></div>
+    <span class="k">return</span> <span class="mi">0</span>
 
-<div class="viewcode-block" id="build_validate_parser"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.build_validate_parser">[docs]</a><span class="k">def</span> <span class="nf">build_validate_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">build_validate_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Validate project&quot;</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        Validates a dataset according to the task type and</span>
@@ -845,14 +845,14 @@
         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Optional arguments for validator (pass &#39;-- -h&#39; for help)&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">validate_command</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">parser</span></div>
+    <span class="k">return</span> <span class="n">parser</span>
 
-<div class="viewcode-block" id="get_validate_sensitive_args"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.get_validate_sensitive_args">[docs]</a><span class="k">def</span> <span class="nf">get_validate_sensitive_args</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">get_validate_sensitive_args</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="n">validate_command</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;project_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;subset_name&#39;</span><span class="p">,</span> <span class="s1">&#39;extra_args&#39;</span><span class="p">],</span>
-    <span class="p">}</span></div>
+    <span class="p">}</span>
 
-<div class="viewcode-block" id="validate_command"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.validate_command">[docs]</a><span class="nd">@scoped</span>
+<span class="nd">@scoped</span>
 <span class="k">def</span> <span class="nf">validate_command</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">has_sep</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">_positionals</span>
     <span class="k">if</span> <span class="n">has_sep</span><span class="p">:</span>
@@ -917,9 +917,9 @@
     <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Writing project validation results to &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">dst_file</span><span class="p">)</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dst_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">report</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                  <span class="n">default</span><span class="o">=</span><span class="n">numpy_encoder</span><span class="p">)</span></div>
+                  <span class="n">default</span><span class="o">=</span><span class="n">numpy_encoder</span><span class="p">)</span>
 
-<div class="viewcode-block" id="build_migrate_parser"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.build_migrate_parser">[docs]</a><span class="k">def</span> <span class="nf">build_migrate_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">build_migrate_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Migrate project&quot;</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        Migrates the project from the old version to a new one.|n</span>
@@ -940,14 +940,14 @@
         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Overwrite existing files in the save directory&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">migrate_command</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">parser</span></div>
+    <span class="k">return</span> <span class="n">parser</span>
 
-<div class="viewcode-block" id="get_migrate_sensitive_args"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.get_migrate_sensitive_args">[docs]</a><span class="k">def</span> <span class="nf">get_migrate_sensitive_args</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">get_migrate_sensitive_args</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="n">migrate_command</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dst_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;project_dir&#39;</span><span class="p">,],</span>
-    <span class="p">}</span></div>
+    <span class="p">}</span>
 
-<div class="viewcode-block" id="migrate_command"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.migrate_command">[docs]</a><span class="nd">@scoped</span>
+<span class="nd">@scoped</span>
 <span class="k">def</span> <span class="nf">migrate_command</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">dst_dir</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">dst_dir</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">overwrite</span> <span class="ow">and</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">):</span>
@@ -965,9 +965,9 @@
             <span class="s2">&quot;automatically. Try to create a new project and import sources &quot;</span>
             <span class="s2">&quot;manually with &#39;datum create&#39; and &#39;datum import&#39;.&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
 
-    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Finished&quot;</span><span class="p">)</span></div>
+    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Finished&quot;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="build_parser"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.build_parser">[docs]</a><span class="k">def</span> <span class="nf">build_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">build_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">            Manipulate projects.|n</span>
@@ -987,9 +987,9 @@
     <span class="n">add_subparser</span><span class="p">(</span><span class="n">subparsers</span><span class="p">,</span> <span class="s1">&#39;validate&#39;</span><span class="p">,</span> <span class="n">build_validate_parser</span><span class="p">)</span>
     <span class="n">add_subparser</span><span class="p">(</span><span class="n">subparsers</span><span class="p">,</span> <span class="s1">&#39;migrate&#39;</span><span class="p">,</span> <span class="n">build_migrate_parser</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">parser</span></div>
+    <span class="k">return</span> <span class="n">parser</span>
 
-<div class="viewcode-block" id="get_sensitive_args"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.export.get_sensitive_args">[docs]</a><span class="k">def</span> <span class="nf">get_sensitive_args</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">get_sensitive_args</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="o">**</span><span class="n">get_export_sensitive_args</span><span class="p">(),</span>
         <span class="o">**</span><span class="n">get_filter_sensitive_args</span><span class="p">(),</span>
@@ -998,7 +998,7 @@
         <span class="o">**</span><span class="n">get_info_sensitive_args</span><span class="p">(),</span>
         <span class="o">**</span><span class="n">get_validate_sensitive_args</span><span class="p">(),</span>
         <span class="o">**</span><span class="n">get_migrate_sensitive_args</span><span class="p">(),</span>
-    <span class="p">}</span></div>
+    <span class="p">}</span>
 </pre></div>
 
            </div>

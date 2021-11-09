@@ -36,7 +36,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../api/setup.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/setup.html">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datum.html">datum</a></li>
 </ul>
 <ul>
@@ -134,29 +134,29 @@
     <span class="n">item_id</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">subset</span><span class="p">:</span> <span class="nb">str</span>
 
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UnsupportedSubsetNameError.__str__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.open_images_format.UnsupportedSubsetNameError.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;Item </span><span class="si">%s</span><span class="s2"> has an unsupported subset name </span><span class="si">%r</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">item_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">subset</span><span class="p">)</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">item_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">subset</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="UnsupportedBoxIdError"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.open_images_format.UnsupportedBoxIdError">[docs]</a><span class="nd">@attrs</span><span class="p">(</span><span class="n">auto_attribs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">UnsupportedBoxIdError</span><span class="p">(</span><span class="n">DatasetError</span><span class="p">):</span>
     <span class="n">item_id</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">box_id</span><span class="p">:</span> <span class="nb">str</span>
 
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UnsupportedBoxIdError.__str__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.open_images_format.UnsupportedBoxIdError.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;Item </span><span class="si">%s</span><span class="s2"> has a mask with an unsupported box ID </span><span class="si">%r</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">item_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_id</span><span class="p">)</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">item_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_id</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="UnsupportedMaskPathError"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.open_images_format.UnsupportedMaskPathError">[docs]</a><span class="nd">@attrs</span><span class="p">(</span><span class="n">auto_attribs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">UnsupportedMaskPathError</span><span class="p">(</span><span class="n">DatasetError</span><span class="p">):</span>
     <span class="n">item_id</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">mask_path</span><span class="p">:</span> <span class="nb">str</span>
 
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UnsupportedMaskPathError.__str__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.open_images_format.UnsupportedMaskPathError.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;Item </span><span class="si">%s</span><span class="s2"> has a mask with an unsupported path </span><span class="si">%r</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">item_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask_path</span><span class="p">)</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">item_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask_path</span><span class="p">)</span></div></div>
 
-<div class="viewcode-block" id="OpenImagesPath"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.open_images_format.OpenImagesPath">[docs]</a><span class="k">class</span> <span class="nc">OpenImagesPath</span><span class="p">:</span>
+<span class="k">class</span> <span class="nc">OpenImagesPath</span><span class="p">:</span>
     <span class="n">ANNOTATIONS_DIR</span> <span class="o">=</span> <span class="s1">&#39;annotations&#39;</span>
     <span class="n">IMAGES_DIR</span> <span class="o">=</span> <span class="s1">&#39;images&#39;</span>
     <span class="n">MASKS_DIR</span> <span class="o">=</span> <span class="s1">&#39;masks&#39;</span>
@@ -231,10 +231,10 @@
         <span class="s1">&#39;BoxYMax&#39;</span><span class="p">,</span>
         <span class="s1">&#39;PredictedIoU&#39;</span><span class="p">,</span>
         <span class="s1">&#39;Clicks&#39;</span><span class="p">,</span>
-    <span class="p">)</span></div>
+    <span class="p">)</span>
 
 <div class="viewcode-block" id="OpenImagesExtractor"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.open_images_format.OpenImagesExtractor">[docs]</a><span class="k">class</span> <span class="nc">OpenImagesExtractor</span><span class="p">(</span><span class="n">Extractor</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">image_meta</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="OpenImagesExtractor.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.open_images_format.OpenImagesExtractor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">image_meta</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t read dataset directory &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">path</span><span class="p">)</span>
 
@@ -263,13 +263,13 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_image_meta</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_load_categories</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_load_items</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_load_items</span><span class="p">()</span></div>
 
     <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span>
 
-<div class="viewcode-block" id="OpenImagesExtractor.categories"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.open_images_format.OpenImagesExtractor.categories">[docs]</a>    <span class="k">def</span> <span class="nf">categories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span></div>
+    <span class="k">def</span> <span class="nf">categories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span>
 
     <span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
     <span class="k">def</span> <span class="nf">_open_csv_annotation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
@@ -632,8 +632,8 @@
             <span class="n">interpolation</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">INTER_NEAREST</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">resized</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="OpenImagesImporter"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.open_images_format.OpenImagesImporter">[docs]</a><span class="k">class</span> <span class="nc">OpenImagesImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
-<div class="viewcode-block" id="OpenImagesImporter.find_sources"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.open_images_format.OpenImagesImporter.find_sources">[docs]</a>    <span class="nd">@classmethod</span>
+<span class="k">class</span> <span class="nc">OpenImagesImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">find_sources</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="p">[</span>
             <span class="n">OpenImagesPath</span><span class="o">.</span><span class="n">FULL_IMAGE_DESCRIPTION_FILE_NAME</span><span class="p">,</span>
@@ -646,10 +646,10 @@
                     <span class="n">OpenImagesPath</span><span class="o">.</span><span class="n">ANNOTATIONS_DIR</span><span class="p">,</span> <span class="n">pattern</span><span class="p">)):</span>
                 <span class="k">return</span> <span class="p">[{</span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="n">OpenImagesExtractor</span><span class="o">.</span><span class="n">NAME</span><span class="p">}]</span>
 
-        <span class="k">return</span> <span class="p">[]</span></div></div>
+        <span class="k">return</span> <span class="p">[]</span>
 
 
-<span class="k">class</span> <span class="nc">_LazyCsvDictWriter</span><span class="p">:</span>
+<div class="viewcode-block" id="_LazyCsvDictWriter"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.open_images_format._LazyCsvDictWriter">[docs]</a><span class="k">class</span> <span class="nc">_LazyCsvDictWriter</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    For annotation files, we only learn that the file is required after</span>
 <span class="sd">    we find at least one occurrence of the corresponding annotation type.</span>
@@ -660,10 +660,10 @@
 <span class="sd">    once the first row is written.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">writer_manager_factory</span><span class="p">):</span>
+<div class="viewcode-block" id="_LazyCsvDictWriter.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.open_images_format._LazyCsvDictWriter.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">writer_manager_factory</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_writer_manager_factory</span> <span class="o">=</span> <span class="n">writer_manager_factory</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_writer_manager</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_writer</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_writer</span> <span class="o">=</span> <span class="kc">None</span></div>
 
     <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span>
@@ -677,7 +677,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_writer_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_writer_manager_factory</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_writer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_writer_manager</span><span class="o">.</span><span class="fm">__enter__</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">rowdict</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">rowdict</span><span class="p">)</span></div>
 
 
 <span class="k">class</span> <span class="nc">_AnnotationWriter</span><span class="p">:</span>
@@ -735,13 +735,13 @@
             <span class="p">):</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_annotations_dir</span><span class="p">,</span> <span class="n">file_name</span><span class="p">))</span>
 
-<div class="viewcode-block" id="OpenImagesConverter"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.open_images_format.OpenImagesConverter">[docs]</a><span class="k">class</span> <span class="nc">OpenImagesConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">OpenImagesConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
     <span class="n">DEFAULT_IMAGE_EXT</span> <span class="o">=</span> <span class="s1">&#39;.jpg&#39;</span>
 
-<div class="viewcode-block" id="OpenImagesConverter.apply"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.open_images_format.OpenImagesConverter.apply">[docs]</a>    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_save</span><span class="p">(</span><span class="n">_AnnotationWriter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_dir</span><span class="p">))</span></div>
+    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_save</span><span class="p">(</span><span class="n">_AnnotationWriter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_dir</span><span class="p">))</span>
 
-<div class="viewcode-block" id="OpenImagesConverter.patch"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.open_images_format.OpenImagesConverter.patch">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">patch</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">patch</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
         <span class="n">converter</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
         <span class="n">annotation_writer</span> <span class="o">=</span> <span class="n">_AnnotationWriter</span><span class="p">(</span><span class="n">save_dir</span><span class="p">)</span>
@@ -759,7 +759,7 @@
                 <span class="n">converter</span><span class="o">.</span><span class="n">_make_image_filename</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">subdir</span><span class="o">=</span><span class="n">subset</span><span class="p">))</span>
 
             <span class="k">if</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">image_path</span><span class="p">):</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span></div>
+                <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">annotation_writer</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_save_categories</span><span class="p">(</span><span class="n">annotation_writer</span><span class="p">)</span>
@@ -986,7 +986,7 @@
                     <span class="p">})</span>
 
                     <span class="n">save_image</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mask_dir</span><span class="p">,</span> <span class="n">mask_file_name</span><span class="p">),</span>
-                        <span class="n">annotation</span><span class="o">.</span><span class="n">image</span><span class="p">,</span> <span class="n">create_dir</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+                        <span class="n">annotation</span><span class="o">.</span><span class="n">image</span><span class="p">,</span> <span class="n">create_dir</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
            </div>

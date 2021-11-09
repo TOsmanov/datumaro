@@ -36,7 +36,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../api/setup.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/setup.html">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/datum.html">datum</a></li>
 </ul>
 <ul>
@@ -98,11 +98,11 @@
 
 <span class="n">NEAR_ZERO</span> <span class="o">=</span> <span class="mf">1e-7</span>
 
-<div class="viewcode-block" id="SplitTask"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter.SplitTask">[docs]</a><span class="k">class</span> <span class="nc">SplitTask</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">SplitTask</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
     <span class="n">classification</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
     <span class="n">detection</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
     <span class="n">segmentation</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
-    <span class="n">reid</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+    <span class="n">reid</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
 
 
 <div class="viewcode-block" id="Split"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter.Split">[docs]</a><span class="k">class</span> <span class="nc">Split</span><span class="p">(</span><span class="n">Transform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
@@ -157,7 +157,7 @@
     <span class="n">_default_split</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;val&quot;</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)]</span>
     <span class="n">_default_query_ratio</span> <span class="o">=</span> <span class="mf">0.5</span>
 
-<div class="viewcode-block" id="Split.build_cmdline_parser"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter.Split.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
@@ -193,7 +193,7 @@
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Attribute name representing the ID (default: use label)&quot;</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--seed&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Random seed&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">parser</span></div>
+        <span class="k">return</span> <span class="n">parser</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_split_arg</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
@@ -204,7 +204,7 @@
             <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">()</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attr_for_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Split.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter.Split.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attr_for_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">splits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -215,7 +215,7 @@
             <span class="n">task</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">attr_for_id</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_subsets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">splitter</span><span class="o">.</span><span class="n">_subsets</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subsets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">splitter</span><span class="o">.</span><span class="n">_subsets</span></div>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_get_splitter</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">attr_for_id</span><span class="p">):</span>
@@ -248,19 +248,19 @@
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="p">):</span>
             <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">splitter</span><span class="o">.</span><span class="n">_find_split</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 
-<div class="viewcode-block" id="Split.get_subset"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter.Split.get_subset">[docs]</a>    <span class="k">def</span> <span class="nf">get_subset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_subset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="c1"># lazy splitting</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">splitter</span><span class="o">.</span><span class="n">_split_dataset</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Split.subsets"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter.Split.subsets">[docs]</a>    <span class="k">def</span> <span class="nf">subsets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">subsets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># lazy splitting</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">splitter</span><span class="o">.</span><span class="n">_split_dataset</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">subsets</span><span class="p">()</span></div></div>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">subsets</span><span class="p">()</span></div>
 
 
 <span class="k">class</span> <span class="nc">_TaskSpecificSplit</span><span class="p">:</span>
@@ -485,7 +485,7 @@
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
 
-<span class="k">class</span> <span class="nc">_ClassificationSplit</span><span class="p">(</span><span class="n">_TaskSpecificSplit</span><span class="p">):</span>
+<div class="viewcode-block" id="_ClassificationSplit"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter._ClassificationSplit">[docs]</a><span class="k">class</span> <span class="nc">_ClassificationSplit</span><span class="p">(</span><span class="n">_TaskSpecificSplit</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Splits dataset into subsets(train/val/test) in class-wise manner. |n</span>
 <span class="sd">    Splits dataset images in the specified ratio, keeping the initial class</span>
@@ -502,7 +502,7 @@
 <span class="sd">    |s|s%(prog)s -t classification --subset train:.5 --subset val:.2 --subset test:.3</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="_ClassificationSplit.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter._ClassificationSplit.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -512,7 +512,7 @@
 <span class="sd">            The sum of ratios is expected to be 1.</span>
 <span class="sd">        seed : int, optional</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_split_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_seed</span><span class="p">)</span>
@@ -540,10 +540,10 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_split_unlabeled</span><span class="p">(</span><span class="n">unlabeled</span><span class="p">,</span> <span class="n">by_splits</span><span class="p">)</span>
 
         <span class="c1"># 4. set parts</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_set_parts</span><span class="p">(</span><span class="n">by_splits</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_parts</span><span class="p">(</span><span class="n">by_splits</span><span class="p">)</span></div>
 
 
-<span class="k">class</span> <span class="nc">_ReidentificationSplit</span><span class="p">(</span><span class="n">_TaskSpecificSplit</span><span class="p">):</span>
+<div class="viewcode-block" id="_ReidentificationSplit"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter._ReidentificationSplit">[docs]</a><span class="k">class</span> <span class="nc">_ReidentificationSplit</span><span class="p">(</span><span class="n">_TaskSpecificSplit</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Splits a dataset for re-identification task.|n</span>
 <span class="sd">    Produces a split with a specified ratio of images, avoiding having same</span>
@@ -577,7 +577,7 @@
 
     <span class="n">_default_query_ratio</span> <span class="o">=</span> <span class="mf">0.5</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attr_for_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="_ReidentificationSplit.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter._ReidentificationSplit.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attr_for_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -607,7 +607,7 @@
         <span class="c1"># remove subset name restriction</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_subsets</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">,</span> <span class="s2">&quot;test-gallery&quot;</span><span class="p">,</span> <span class="s2">&quot;test-query&quot;</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_test_splits</span> <span class="o">=</span> <span class="n">test_splits</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_attr_for_id</span> <span class="o">=</span> <span class="n">attr_for_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_attr_for_id</span> <span class="o">=</span> <span class="n">attr_for_id</span></div>
 
     <span class="k">def</span> <span class="nf">_split_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_seed</span><span class="p">)</span>
@@ -756,10 +756,10 @@
         <span class="c1"># exchange</span>
         <span class="k">for</span> <span class="n">id_test</span><span class="p">,</span> <span class="n">id_trval</span> <span class="ow">in</span> <span class="n">exchanges</span><span class="p">:</span>
             <span class="n">test</span><span class="p">[</span><span class="n">id_trval</span><span class="p">]</span> <span class="o">=</span> <span class="n">trval</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">id_trval</span><span class="p">)</span>
-            <span class="n">trval</span><span class="p">[</span><span class="n">id_test</span><span class="p">]</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">id_test</span><span class="p">)</span>
+            <span class="n">trval</span><span class="p">[</span><span class="n">id_test</span><span class="p">]</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">id_test</span><span class="p">)</span></div>
 
 
-<span class="k">class</span> <span class="nc">_InstanceSpecificSplit</span><span class="p">(</span><span class="n">_TaskSpecificSplit</span><span class="p">):</span>
+<div class="viewcode-block" id="_InstanceSpecificSplit"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter._InstanceSpecificSplit">[docs]</a><span class="k">class</span> <span class="nc">_InstanceSpecificSplit</span><span class="p">(</span><span class="n">_TaskSpecificSplit</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Splits a dataset into subsets(train/val/test),</span>
 <span class="sd">    using object annotations as a basis for splitting.|n</span>
@@ -785,7 +785,7 @@
 <span class="sd">    |s|s%(prog)s -t segmentation --subset train:.5 --subset val:.2 --subset test:.3</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="_InstanceSpecificSplit.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.splitter._InstanceSpecificSplit.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -800,7 +800,7 @@
         <span class="k">if</span> <span class="n">task</span> <span class="o">==</span> <span class="n">SplitTask</span><span class="o">.</span><span class="n">detection</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">annotation_type</span> <span class="o">=</span> <span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">bbox</span><span class="p">]</span>
         <span class="k">elif</span> <span class="n">task</span> <span class="o">==</span> <span class="n">SplitTask</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">annotation_type</span> <span class="o">=</span> <span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">polygon</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">annotation_type</span> <span class="o">=</span> <span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">polygon</span><span class="p">]</span></div>
 
     <span class="k">def</span> <span class="nf">_group_by_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
         <span class="n">by_labels</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
@@ -939,7 +939,7 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">unlabeled</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_split_unlabeled</span><span class="p">(</span><span class="n">unlabeled</span><span class="p">,</span> <span class="n">by_splits</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_set_parts</span><span class="p">(</span><span class="n">by_splits</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_parts</span><span class="p">(</span><span class="n">by_splits</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

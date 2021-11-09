@@ -36,7 +36,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/setup.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/setup.html">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/datum.html">datum</a></li>
 </ul>
 <ul>
@@ -94,13 +94,13 @@
 <span class="kn">from</span> <span class="nn">datumaro.util.annotation_util</span> <span class="kn">import</span> <span class="n">nms</span>
 
 
-<div class="viewcode-block" id="flatmatvec"><a class="viewcode-back" href="../../../../api/datumaro.components.html#datumaro.components.algorithms.rise.flatmatvec">[docs]</a><span class="k">def</span> <span class="nf">flatmatvec</span><span class="p">(</span><span class="n">mat</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mat</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span></div>
+<span class="k">def</span> <span class="nf">flatmatvec</span><span class="p">(</span><span class="n">mat</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mat</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 
-<div class="viewcode-block" id="expand"><a class="viewcode-back" href="../../../../api/datumaro.components.html#datumaro.components.algorithms.rise.expand">[docs]</a><span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">axis</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">axis</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
 
 <div class="viewcode-block" id="RISE"><a class="viewcode-back" href="../../../../api/datumaro.components.html#datumaro.components.algorithms.rise.RISE">[docs]</a><span class="k">class</span> <span class="nc">RISE</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -109,7 +109,7 @@
 <span class="sd">    See explanations at: https://arxiv.org/pdf/1806.07421.pdf</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span>
+<div class="viewcode-block" id="RISE.__init__"><a class="viewcode-back" href="../../../../api/datumaro.components.html#datumaro.components.algorithms.rise.RISE.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span>
             <span class="n">max_samples</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask_width</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">mask_height</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">prob</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
             <span class="n">iou_thresh</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">nms_thresh</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">det_conf_thresh</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
             <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
@@ -121,9 +121,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">iou_thresh</span> <span class="o">=</span> <span class="n">iou_thresh</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nms_thresh</span> <span class="o">=</span> <span class="n">nms_thresh</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">det_conf_thresh</span> <span class="o">=</span> <span class="n">det_conf_thresh</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span></div>
 
-<div class="viewcode-block" id="RISE.split_outputs"><a class="viewcode-back" href="../../../../api/datumaro.components.html#datumaro.components.algorithms.rise.RISE.split_outputs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">split_outputs</span><span class="p">(</span><span class="n">annotations</span><span class="p">):</span>
         <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">bboxes</span> <span class="o">=</span> <span class="p">[]</span>
@@ -132,17 +132,17 @@
                 <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">r</span><span class="o">.</span><span class="n">type</span> <span class="ow">is</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">bbox</span><span class="p">:</span>
                 <span class="n">bboxes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">labels</span><span class="p">,</span> <span class="n">bboxes</span></div>
+        <span class="k">return</span> <span class="n">labels</span><span class="p">,</span> <span class="n">bboxes</span>
 
-<div class="viewcode-block" id="RISE.normalize_hmaps"><a class="viewcode-back" href="../../../../api/datumaro.components.html#datumaro.components.algorithms.rise.RISE.normalize_hmaps">[docs]</a>    <span class="k">def</span> <span class="nf">normalize_hmaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">heatmaps</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">normalize_hmaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">heatmaps</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
         <span class="n">eps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">heatmaps</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
         <span class="n">mhmaps</span> <span class="o">=</span> <span class="n">flatmatvec</span><span class="p">(</span><span class="n">heatmaps</span><span class="p">)</span>
         <span class="n">mhmaps</span> <span class="o">/=</span> <span class="n">expand</span><span class="p">(</span><span class="n">counts</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">prob</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
         <span class="n">mhmaps</span> <span class="o">-=</span> <span class="n">expand</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mhmaps</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
         <span class="n">mhmaps</span> <span class="o">/=</span> <span class="n">expand</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">mhmaps</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">mhmaps</span><span class="p">,</span> <span class="n">heatmaps</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">mhmaps</span><span class="p">,</span> <span class="n">heatmaps</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-<div class="viewcode-block" id="RISE.apply"><a class="viewcode-back" href="../../../../api/datumaro.components.html#datumaro.components.algorithms.rise.RISE.apply">[docs]</a>    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">progressive</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">progressive</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="kn">import</span> <span class="nn">cv2</span>
 
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> \
@@ -282,7 +282,7 @@
                 <span class="k">if</span> <span class="n">progressive</span><span class="p">:</span>
                     <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalize_hmaps</span><span class="p">(</span><span class="n">heatmaps</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">total_counts</span><span class="p">)</span>
 
-        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalize_hmaps</span><span class="p">(</span><span class="n">heatmaps</span><span class="p">,</span> <span class="n">total_counts</span><span class="p">)</span></div></div>
+        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalize_hmaps</span><span class="p">(</span><span class="n">heatmaps</span><span class="p">,</span> <span class="n">total_counts</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
