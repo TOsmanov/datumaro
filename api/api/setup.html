@@ -18,7 +18,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="datum" href="datum.html" />
+    <link rel="next" title="CLI" href="datumaro.cli.html" />
     <link rel="prev" title="Welcome to Datumaro API documentation!" href="../index.html" /> 
 </head>
 
@@ -42,7 +42,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#module-setuptools">Description of third-party modules</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="datum.html">datum</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.cli.html">CLI</a></li>
@@ -89,37 +88,37 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="setup.find_version">
 <span class="sig-prename descclassname"><span class="pre">setup.</span></span><span class="sig-name descname"><span class="pre">find_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#setup.find_version" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a version of the Datumaro</p>
+<dd><p>Return a version of the Datumaro.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="setup.parse_requirements">
 <span class="sig-prename descclassname"><span class="pre">setup.</span></span><span class="sig-name descname"><span class="pre">parse_requirements</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#setup.parse_requirements" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parsing a list from a text file</p>
+<dd><p>Parsing a requirements list from a text file.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="DEFAULT_REQUIREMENTS">
 <span class="sig-name descname"><span class="pre">DEFAULT_REQUIREMENTS</span></span><a class="headerlink" href="#DEFAULT_REQUIREMENTS" title="Permalink to this definition">¶</a></dt>
-<dd><p>Variable containing a list of default required packages</p>
+<dd><p>Variable containing a list of default required packages.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="CORE_REQUIREMENTS">
 <span class="sig-name descname"><span class="pre">CORE_REQUIREMENTS</span></span><a class="headerlink" href="#CORE_REQUIREMENTS" title="Permalink to this definition">¶</a></dt>
-<dd><p>Variable containing a list of core required packages</p>
+<dd><p>Variable containing a list of core required packages.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="setup.open">
 <span class="sig-prename descclassname"><span class="pre">setup.</span></span><span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#setup.open" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the <code class="xref py py-data docutils literal notranslate"><span class="pre">long_description</span></code> variable to contain the path to the package description file</p>
+<dd><p>Sets the <code class="xref py py-data docutils literal notranslate"><span class="pre">long_description</span></code> variable to contain the path to the package description file.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="setup.setuptools.setup">
 <span class="sig-prename descclassname"><span class="pre">setup.setuptools.</span></span><span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#setup.setuptools.setup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Installation Datumaro with use module <a class="reference internal" href="#setuptools.setup" title="setuptools.setup"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setuptools.setup</span></code></a></p>
+<dd><p>Installation Datumaro with use module <a class="reference internal" href="#setuptools.setup" title="setuptools.setup"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setuptools.setup</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -128,7 +127,7 @@
 <li><p><strong>author</strong> – project author.</p></li>
 <li><p><strong>author_email</strong> – author email.</p></li>
 <li><p><strong>description</strong> – description of the package.</p></li>
-<li><p><strong>long_description</strong> – readme file opened <a class="reference internal" href="#setup.open" title="setup.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">setup.open()</span></code></a>.</p></li>
+<li><p><strong>long_description</strong> – text file opened with function <a class="reference internal" href="#setup.open" title="setup.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">setup.open()</span></code></a>.</p></li>
 <li><p><strong>long_description_content_type</strong> – type of the long decription.</p></li>
 <li><p><strong>url</strong> – main package url.</p></li>
 <li><p><strong>packages</strong> – specifies the list of packages using <a class="reference internal" href="#setuptools.find_packages" title="setuptools.find_packages"><code class="xref py py-mod docutils literal notranslate"><span class="pre">setuptools.find_packages</span></code></a>.</p></li>
@@ -141,7 +140,7 @@ set to a variable <a class="reference internal" href="#CORE_REQUIREMENTS" title=
 сan be set to a variable <a class="reference internal" href="#DEFAULT_REQUIREMENTS" title="DEFAULT_REQUIREMENTS"><code class="xref py py-data docutils literal notranslate"><span class="pre">DEFAULT_REQUIREMENTS</span></code></a>.</p></li>
 <li><p><strong>entry_points</strong> – point in a program where the execution of a program begins,
 and where the program has access to command line arguments.</p></li>
-<li><p><strong>include_package_data</strong> – include package data</p></li>
+<li><p><strong>include_package_data</strong> – include package data.</p></li>
 </ul>
 </dd>
 </dl>
@@ -206,13 +205,13 @@ shell style wildcard patterns just like ‘exclude’.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Datumaro API documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="datum.html" class="btn btn-neutral float-right" title="datum" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="datumaro.cli.html" class="btn btn-neutral float-right" title="CLI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-  <p>&#169; Copyright 2021, Intel.
+  <p>&#169; Copyright .
     <div>
       <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
       |

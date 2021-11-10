@@ -39,7 +39,6 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datum.html">datum</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="datumaro.cli.html">CLI</a></li>
@@ -917,19 +916,17 @@ This function splits a dataset in the following way:
 <div><p>based on person or object ID.</p>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li><dl class="simple">
-<dt>Splits ‘test’ set into ‘test-gallery’ and ‘test-query’ sets
-</dt><dd><p>in class-wise manner.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Splits the ‘train + val’ set into ‘train’ and ‘val’ sets
-</dt><dd><p>in the same way.</p>
-</dd>
-</dl>
-</li>
+<li><p>Splits ‘test’ set into ‘test-gallery’ and ‘test-query’ sets</p></li>
 </ol>
+<blockquote>
+<div><p>in class-wise manner.</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Splits the ‘train + val’ set into ‘train’ and ‘val’ sets</p></li>
+</ol>
+<blockquote>
+<div><p>in the same way.</p>
+</div></blockquote>
 <p>The final subsets would be
 ‘train’, ‘val’, ‘test-gallery’ and ‘test-query’.</p>
 <p>Notes:
@@ -1030,19 +1027,17 @@ This function splits a dataset in the following way:
 <div><p>based on person or object ID.</p>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li><dl class="simple">
-<dt>Splits ‘test’ set into ‘test-gallery’ and ‘test-query’ sets
-</dt><dd><p>in class-wise manner.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Splits the ‘train + val’ set into ‘train’ and ‘val’ sets
-</dt><dd><p>in the same way.</p>
-</dd>
-</dl>
-</li>
+<li><p>Splits ‘test’ set into ‘test-gallery’ and ‘test-query’ sets</p></li>
 </ol>
+<blockquote>
+<div><p>in class-wise manner.</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Splits the ‘train + val’ set into ‘train’ and ‘val’ sets</p></li>
+</ol>
+<blockquote>
+<div><p>in the same way.</p>
+</div></blockquote>
 <p>The final subsets would be
 ‘train’, ‘val’, ‘test-gallery’ and ‘test-query’.</p>
 <p>Notes:
@@ -1053,12 +1048,9 @@ This function splits a dataset in the following way:
 </div></blockquote>
 <ul class="simple">
 <li><p>Object ID can be described by Label, or by attribute (–attr parameter)</p></li>
-<li><dl class="simple">
-<dt>The splits of the test set are controlled by ‘–query’ parameter. 
-</dt><dd><p>Gallery ratio would be 1.0 - query.</p>
-</dd>
-</dl>
-</li>
+<li><p>The splits of the test set are controlled by ‘–query’ parameter. 
+
+Gallery ratio would be 1.0 - query.</p></li>
 </ul>
 <dl>
 <dt>Example: split a dataset in the specified ratio, split the test set
@@ -1310,18 +1302,12 @@ contain string.format tokens with ‘item’ object available.</p>
 <dl class="simple">
 <dt>Examples:
 </dt><dd><ul class="simple">
-<li><dl class="simple">
-<dt>Replace ‘pattern’ with ‘replacement’:
-</dt><dd><p>rename -e ‘<a href="#id13"><span class="problematic" id="id14">|pattern|replacement|</span></a>’</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Remove ‘<a href="#id17"><span class="problematic" id="id18">frame_</span></a>’ from item ids:
-</dt><dd><p>rename -e ‘<a href="#id15"><span class="problematic" id="id16">|frame_(\d+)|</span></a>1|’</p>
-</dd>
-</dl>
-</li>
+<li><p>Replace ‘pattern’ with ‘replacement’:
+
+rename -e ‘<a href="#id13"><span class="problematic" id="id14">|pattern|replacement|</span></a>’</p></li>
+<li><p>Remove ‘<a href="#id17"><span class="problematic" id="id18">frame_</span></a>’ from item ids:
+
+rename -e ‘<a href="#id15"><span class="problematic" id="id16">|frame_(\d+)|</span></a>1|’</p></li>
 </ul>
 </dd>
 </dl>
@@ -1344,26 +1330,17 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 <dl class="simple">
 <dt>A label can be:
 </dt><dd><ul class="simple">
-<li><dl class="simple">
-<dt>renamed (and joined with existing) -
-</dt><dd><p>when specified ‘–label &lt;old_name&gt;:&lt;new_name&gt;’</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>deleted - when specified ‘–label &lt;name&gt;:’ or default action is ‘delete’
-</dt><dd><p>and the label is not mentioned in the list. When a label
+<li><p>renamed (and joined with existing) -
 
-is deleted, all the associated annotations are removed</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>kept unchanged - when specified ‘–label &lt;name&gt;:&lt;name&gt;’
-</dt><dd><p>or default action is ‘keep’ and the label is not mentioned in the list</p>
-</dd>
-</dl>
-</li>
+when specified ‘–label &lt;old_name&gt;:&lt;new_name&gt;’</p></li>
+<li><p>deleted - when specified ‘–label &lt;name&gt;:’ or default action is ‘delete’
+
+and the label is not mentioned in the list. When a label
+
+is deleted, all the associated annotations are removed</p></li>
+<li><p>kept unchanged - when specified ‘–label &lt;name&gt;:&lt;name&gt;’
+
+or default action is ‘keep’ and the label is not mentioned in the list</p></li>
 </ul>
 </dd>
 </dl>
@@ -1371,24 +1348,15 @@ is deleted, all the associated annotations are removed</p>
 <dl class="simple">
 <dt>Examples:
 </dt><dd><ul class="simple">
-<li><dl class="simple">
-<dt>Remove the ‘person’ label (and corresponding annotations):
-</dt><dd><p>%(prog)s -l person: –default keep</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rename ‘person’ to ‘pedestrian’ and ‘human’ to ‘pedestrian’, join:
-</dt><dd><p>%(prog)s -l person:pedestrian -l human:pedestrian –default keep</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rename ‘person’ to ‘car’ and ‘cat’ to ‘dog’, keep ‘bus’, remove others:
-</dt><dd><p>%(prog)s -l person:car -l bus:bus -l cat:dog –default delete</p>
-</dd>
-</dl>
-</li>
+<li><p>Remove the ‘person’ label (and corresponding annotations):
+
+%(prog)s -l person: –default keep</p></li>
+<li><p>Rename ‘person’ to ‘pedestrian’ and ‘human’ to ‘pedestrian’, join:
+
+%(prog)s -l person:pedestrian -l human:pedestrian –default keep</p></li>
+<li><p>Rename ‘person’ to ‘car’ and ‘cat’ to ‘dog’, keep ‘bus’, remove others:
+
+%(prog)s -l person:car -l bus:bus -l cat:dog –default delete</p></li>
 </ul>
 </dd>
 </dl>
@@ -1396,26 +1364,17 @@ is deleted, all the associated annotations are removed</p>
 <dl class="simple">
 <dt>A label can be:
 </dt><dd><ul class="simple">
-<li><dl class="simple">
-<dt>renamed (and joined with existing) -
-</dt><dd><p>when specified ‘–label &lt;old_name&gt;:&lt;new_name&gt;’</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>deleted - when specified ‘–label &lt;name&gt;:’ or default action is ‘delete’
-</dt><dd><p>and the label is not mentioned in the list. When a label
+<li><p>renamed (and joined with existing) -
 
-is deleted, all the associated annotations are removed</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>kept unchanged - when specified ‘–label &lt;name&gt;:&lt;name&gt;’
-</dt><dd><p>or default action is ‘keep’ and the label is not mentioned in the list</p>
-</dd>
-</dl>
-</li>
+when specified ‘–label &lt;old_name&gt;:&lt;new_name&gt;’</p></li>
+<li><p>deleted - when specified ‘–label &lt;name&gt;:’ or default action is ‘delete’
+
+and the label is not mentioned in the list. When a label
+
+is deleted, all the associated annotations are removed</p></li>
+<li><p>kept unchanged - when specified ‘–label &lt;name&gt;:&lt;name&gt;’
+
+or default action is ‘keep’ and the label is not mentioned in the list</p></li>
 </ul>
 </dd>
 </dl>
@@ -1423,24 +1382,15 @@ is deleted, all the associated annotations are removed</p>
 <dl class="simple">
 <dt>Examples:
 </dt><dd><ul class="simple">
-<li><dl class="simple">
-<dt>Remove the ‘person’ label (and corresponding annotations):
-</dt><dd><p>%(prog)s -l person: –default keep</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rename ‘person’ to ‘pedestrian’ and ‘human’ to ‘pedestrian’, join:
-</dt><dd><p>%(prog)s -l person:pedestrian -l human:pedestrian –default keep</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rename ‘person’ to ‘car’ and ‘cat’ to ‘dog’, keep ‘bus’, remove others:
-</dt><dd><p>%(prog)s -l person:car -l bus:bus -l cat:dog –default delete</p>
-</dd>
-</dl>
-</li>
+<li><p>Remove the ‘person’ label (and corresponding annotations):
+
+%(prog)s -l person: –default keep</p></li>
+<li><p>Rename ‘person’ to ‘pedestrian’ and ‘human’ to ‘pedestrian’, join:
+
+%(prog)s -l person:pedestrian -l human:pedestrian –default keep</p></li>
+<li><p>Rename ‘person’ to ‘car’ and ‘cat’ to ‘dog’, keep ‘bus’, remove others:
+
+%(prog)s -l person:car -l bus:bus -l cat:dog –default delete</p></li>
 </ul>
 </dd>
 </dl>
@@ -2815,7 +2765,7 @@ for sample selection. default: ‘entropy’</p></li>
   <hr/>
 
   <div role="contentinfo">
-  <p>&#169; Copyright 2021, Intel.
+  <p>&#169; Copyright .
     <div>
       <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
       |
