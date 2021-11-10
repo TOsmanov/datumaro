@@ -51,11 +51,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#plugins-package">Plugins package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#module-datumaro.plugins.ade20k2017_format">datumaro.plugins.ade20k2017_format module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-datumaro.plugins.ade20k2020_format">datumaro.plugins.ade20k2020_format module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#datumaro-plugins-camvid-format-module">datumaro.plugins.camvid_format module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.plugins.camvid_format">datumaro.plugins.camvid_format module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-datumaro.plugins.cifar_format">datumaro.plugins.cifar_format module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#datumaro-plugins-cityscapes-format-module">datumaro.plugins.cityscapes_format module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.plugins.cityscapes_format">datumaro.plugins.cityscapes_format module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-datumaro.plugins.image_dir_format">datumaro.plugins.image_dir_format module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#datumaro-plugins-image-zip-format-module">datumaro.plugins.image_zip_format module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datumaro.plugins.image_zip_format">datumaro.plugins.image_zip_format module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-datumaro.plugins.imagenet_format">datumaro.plugins.imagenet_format module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-datumaro.plugins.imagenet_txt_format">datumaro.plugins.imagenet_txt_format module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-datumaro.plugins.labelme_format">datumaro.plugins.labelme_format module</a></li>
@@ -231,15 +231,62 @@
 </dd></dl>
 
 </div>
-<div class="section" id="datumaro-plugins-camvid-format-module">
-<h3>datumaro.plugins.camvid_format module<a class="headerlink" href="#datumaro-plugins-camvid-format-module" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="module-datumaro.plugins.camvid_format">
+<span id="datumaro-plugins-camvid-format-module"></span><h3>datumaro.plugins.camvid_format module<a class="headerlink" href="#module-datumaro.plugins.camvid_format" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.CamvidPath">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.camvid_format.</span></span><span class="sig-name descname"><span class="pre">CamvidPath</span></span><a class="reference internal" href="../_modules/datumaro/plugins/camvid_format.html#CamvidPath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.camvid_format.CamvidPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.CamvidPath.LABELMAP_FILE">
+<span class="sig-name descname"><span class="pre">LABELMAP_FILE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'label_colors.txt'</span></em><a class="headerlink" href="#datumaro.plugins.camvid_format.CamvidPath.LABELMAP_FILE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.CamvidPath.SEGM_DIR">
+<span class="sig-name descname"><span class="pre">SEGM_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'annot'</span></em><a class="headerlink" href="#datumaro.plugins.camvid_format.CamvidPath.SEGM_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.CamvidPath.IMAGE_EXT">
+<span class="sig-name descname"><span class="pre">IMAGE_EXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'.jpg'</span></em><a class="headerlink" href="#datumaro.plugins.camvid_format.CamvidPath.IMAGE_EXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.CamvidPath.MASK_EXT">
+<span class="sig-name descname"><span class="pre">MASK_EXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'.png'</span></em><a class="headerlink" href="#datumaro.plugins.camvid_format.CamvidPath.MASK_EXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.parse_label_map">
+<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.camvid_format.</span></span><span class="sig-name descname"><span class="pre">parse_label_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/camvid_format.html#parse_label_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.camvid_format.parse_label_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.write_label_map">
+<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.camvid_format.</span></span><span class="sig-name descname"><span class="pre">write_label_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_map</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/camvid_format.html#write_label_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.camvid_format.write_label_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.make_camvid_categories">
+<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.camvid_format.</span></span><span class="sig-name descname"><span class="pre">make_camvid_categories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/camvid_format.html#make_camvid_categories"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.camvid_format.make_camvid_categories" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.camvid_format.CamvidExtractor">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.camvid_format.</span></span><span class="sig-name descname"><span class="pre">CamvidExtractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/camvid_format.html#CamvidExtractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.camvid_format.CamvidExtractor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.SourceExtractor" title="datumaro.components.extractor.SourceExtractor"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.SourceExtractor</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.CamvidImporter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.camvid_format.</span></span><span class="sig-name descname"><span class="pre">CamvidImporter</span></span><a class="reference internal" href="../_modules/datumaro/plugins/camvid_format.html#CamvidImporter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.camvid_format.CamvidImporter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Importer</span></code></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.CamvidExtractor.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/camvid_format.html#CamvidExtractor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.camvid_format.CamvidExtractor.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.CamvidImporter.find_sources">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">find_sources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/camvid_format.html#CamvidImporter.find_sources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.camvid_format.CamvidImporter.find_sources" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -257,6 +304,47 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.camvid_format.LabelmapType.source">
 <span class="sig-name descname"><span class="pre">source</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.camvid_format.LabelmapType.source" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.CamvidConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.camvid_format.</span></span><span class="sig-name descname"><span class="pre">CamvidConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_colormap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/camvid_format.html#CamvidConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.camvid_format.CamvidConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.converter.Converter</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.CamvidConverter.DEFAULT_IMAGE_EXT">
+<span class="sig-name descname"><span class="pre">DEFAULT_IMAGE_EXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'.jpg'</span></em><a class="headerlink" href="#datumaro.plugins.camvid_format.CamvidConverter.DEFAULT_IMAGE_EXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.CamvidConverter.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/camvid_format.html#CamvidConverter.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.camvid_format.CamvidConverter.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.CamvidConverter.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/camvid_format.html#CamvidConverter.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.camvid_format.CamvidConverter.apply" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.CamvidConverter.save_segm">
+<span class="sig-name descname"><span class="pre">save_segm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colormap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/camvid_format.html#CamvidConverter.save_segm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.camvid_format.CamvidConverter.save_segm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.CamvidConverter.save_segm_lists">
+<span class="sig-name descname"><span class="pre">save_segm_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segm_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/camvid_format.html#CamvidConverter.save_segm_lists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.camvid_format.CamvidConverter.save_segm_lists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.CamvidConverter.save_label_map">
+<span class="sig-name descname"><span class="pre">save_label_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/camvid_format.html#CamvidConverter.save_label_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.camvid_format.CamvidConverter.save_label_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.camvid_format.CamvidConverter.patch">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">patch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/camvid_format.html#CamvidConverter.patch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.camvid_format.CamvidConverter.patch" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -299,15 +387,87 @@ needed.  Both arguments passed are str objects.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="datumaro-plugins-cityscapes-format-module">
-<h3>datumaro.plugins.cityscapes_format module<a class="headerlink" href="#datumaro-plugins-cityscapes-format-module" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="module-datumaro.plugins.cityscapes_format">
+<span id="datumaro-plugins-cityscapes-format-module"></span><h3>datumaro.plugins.cityscapes_format module<a class="headerlink" href="#module-datumaro.plugins.cityscapes_format" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesPath">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.cityscapes_format.</span></span><span class="sig-name descname"><span class="pre">CityscapesPath</span></span><a class="reference internal" href="../_modules/datumaro/plugins/cityscapes_format.html#CityscapesPath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesPath.GT_FINE_DIR">
+<span class="sig-name descname"><span class="pre">GT_FINE_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'gtFine'</span></em><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesPath.GT_FINE_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesPath.IMGS_FINE_DIR">
+<span class="sig-name descname"><span class="pre">IMGS_FINE_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'imgsFine'</span></em><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesPath.IMGS_FINE_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesPath.ORIGINAL_IMAGE_DIR">
+<span class="sig-name descname"><span class="pre">ORIGINAL_IMAGE_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'leftImg8bit'</span></em><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesPath.ORIGINAL_IMAGE_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesPath.ORIGINAL_IMAGE">
+<span class="sig-name descname"><span class="pre">ORIGINAL_IMAGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'_leftImg8bit'</span></em><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesPath.ORIGINAL_IMAGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesPath.INSTANCES_IMAGE">
+<span class="sig-name descname"><span class="pre">INSTANCES_IMAGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'_instanceIds.png'</span></em><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesPath.INSTANCES_IMAGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesPath.GT_INSTANCE_MASK_SUFFIX">
+<span class="sig-name descname"><span class="pre">GT_INSTANCE_MASK_SUFFIX</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'_gtFine_instanceIds.png'</span></em><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesPath.GT_INSTANCE_MASK_SUFFIX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesPath.COLOR_IMAGE">
+<span class="sig-name descname"><span class="pre">COLOR_IMAGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'_color.png'</span></em><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesPath.COLOR_IMAGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesPath.LABELIDS_IMAGE">
+<span class="sig-name descname"><span class="pre">LABELIDS_IMAGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'_labelIds.png'</span></em><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesPath.LABELIDS_IMAGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesPath.LABELMAP_FILE">
+<span class="sig-name descname"><span class="pre">LABELMAP_FILE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'label_colors.txt'</span></em><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesPath.LABELMAP_FILE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.make_cityscapes_categories">
+<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.cityscapes_format.</span></span><span class="sig-name descname"><span class="pre">make_cityscapes_categories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/cityscapes_format.html#make_cityscapes_categories"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.cityscapes_format.make_cityscapes_categories" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.parse_label_map">
+<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.cityscapes_format.</span></span><span class="sig-name descname"><span class="pre">parse_label_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/cityscapes_format.html#parse_label_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.cityscapes_format.parse_label_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.write_label_map">
+<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.cityscapes_format.</span></span><span class="sig-name descname"><span class="pre">write_label_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_map</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/cityscapes_format.html#write_label_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.cityscapes_format.write_label_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesExtractor">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.cityscapes_format.</span></span><span class="sig-name descname"><span class="pre">CityscapesExtractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/cityscapes_format.html#CityscapesExtractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesExtractor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.SourceExtractor" title="datumaro.components.extractor.SourceExtractor"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.SourceExtractor</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesImporter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.cityscapes_format.</span></span><span class="sig-name descname"><span class="pre">CityscapesImporter</span></span><a class="reference internal" href="../_modules/datumaro/plugins/cityscapes_format.html#CityscapesImporter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesImporter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Importer</span></code></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesExtractor.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/cityscapes_format.html#CityscapesExtractor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesExtractor.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesImporter.find_sources">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">find_sources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/cityscapes_format.html#CityscapesImporter.find_sources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesImporter.find_sources" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -329,6 +489,42 @@ needed.  Both arguments passed are str objects.</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.cityscapes_format.</span></span><span class="sig-name descname"><span class="pre">CityscapesConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_colormap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/cityscapes_format.html#CityscapesConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.converter.Converter</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesConverter.DEFAULT_IMAGE_EXT">
+<span class="sig-name descname"><span class="pre">DEFAULT_IMAGE_EXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'.png'</span></em><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesConverter.DEFAULT_IMAGE_EXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesConverter.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/cityscapes_format.html#CityscapesConverter.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesConverter.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesConverter.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/cityscapes_format.html#CityscapesConverter.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesConverter.apply" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesConverter.save_label_map">
+<span class="sig-name descname"><span class="pre">save_label_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/cityscapes_format.html#CityscapesConverter.save_label_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesConverter.save_label_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesConverter.save_mask">
+<span class="sig-name descname"><span class="pre">save_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em>, <em class="sig-param"><span class="pre">mask</span></em>, <em class="sig-param"><span class="pre">colormap=None</span></em>, <em class="sig-param"><span class="pre">apply_colormap=True</span></em>, <em class="sig-param"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.uint8'&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/cityscapes_format.html#CityscapesConverter.save_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesConverter.save_mask" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.cityscapes_format.CityscapesConverter.patch">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">patch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/cityscapes_format.html#CityscapesConverter.patch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.cityscapes_format.CityscapesConverter.patch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-datumaro.plugins.image_dir_format">
 <span id="datumaro-plugins-image-dir-format-module"></span><h3>datumaro.plugins.image_dir_format module<a class="headerlink" href="#module-datumaro.plugins.image_dir_format" title="Permalink to this headline">¶</a></h3>
@@ -344,8 +540,8 @@ needed.  Both arguments passed are str objects.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="datumaro-plugins-image-zip-format-module">
-<h3>datumaro.plugins.image_zip_format module<a class="headerlink" href="#datumaro-plugins-image-zip-format-module" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="module-datumaro.plugins.image_zip_format">
+<span id="datumaro-plugins-image-zip-format-module"></span><h3>datumaro.plugins.image_zip_format module<a class="headerlink" href="#module-datumaro.plugins.image_zip_format" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.image_zip_format.Compression">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.image_zip_format.</span></span><span class="sig-name descname"><span class="pre">Compression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/image_zip_format.html#Compression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.image_zip_format.Compression" title="Permalink to this definition">¶</a></dt>
@@ -374,12 +570,55 @@ needed.  Both arguments passed are str objects.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.image_zip_format.ImageZipPath">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.image_zip_format.</span></span><span class="sig-name descname"><span class="pre">ImageZipPath</span></span><a class="reference internal" href="../_modules/datumaro/plugins/image_zip_format.html#ImageZipPath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.image_zip_format.ImageZipPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.image_zip_format.ImageZipPath.DEFAULT_ARCHIVE_NAME">
+<span class="sig-name descname"><span class="pre">DEFAULT_ARCHIVE_NAME</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'default.zip'</span></em><a class="headerlink" href="#datumaro.plugins.image_zip_format.ImageZipPath.DEFAULT_ARCHIVE_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.image_zip_format.ImageZipPath.DEFAULT_COMPRESSION">
+<span class="sig-name descname"><span class="pre">DEFAULT_COMPRESSION</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#datumaro.plugins.image_zip_format.ImageZipPath.DEFAULT_COMPRESSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.image_zip_format.ImageZipExtractor">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.image_zip_format.</span></span><span class="sig-name descname"><span class="pre">ImageZipExtractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/image_zip_format.html#ImageZipExtractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.image_zip_format.ImageZipExtractor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.SourceExtractor" title="datumaro.components.extractor.SourceExtractor"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.SourceExtractor</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.image_zip_format.ImageZipImporter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.image_zip_format.</span></span><span class="sig-name descname"><span class="pre">ImageZipImporter</span></span><a class="reference internal" href="../_modules/datumaro/plugins/image_zip_format.html#ImageZipImporter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.image_zip_format.ImageZipImporter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Importer</span></code></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.image_zip_format.ImageZipExtractor.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/image_zip_format.html#ImageZipExtractor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.image_zip_format.ImageZipExtractor.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="datumaro.plugins.image_zip_format.ImageZipImporter.find_sources">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">find_sources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/image_zip_format.html#ImageZipImporter.find_sources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.image_zip_format.ImageZipImporter.find_sources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.image_zip_format.ImageZipConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.image_zip_format.</span></span><span class="sig-name descname"><span class="pre">ImageZipConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/image_zip_format.html#ImageZipConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.image_zip_format.ImageZipConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.converter.Converter</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.image_zip_format.ImageZipConverter.DEFAULT_IMAGE_EXT">
+<span class="sig-name descname"><span class="pre">DEFAULT_IMAGE_EXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'.jpg'</span></em><a class="headerlink" href="#datumaro.plugins.image_zip_format.ImageZipConverter.DEFAULT_IMAGE_EXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.image_zip_format.ImageZipConverter.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/image_zip_format.html#ImageZipConverter.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.image_zip_format.ImageZipConverter.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.image_zip_format.ImageZipConverter.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/image_zip_format.html#ImageZipConverter.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.image_zip_format.ImageZipConverter.apply" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -402,29 +641,55 @@ needed.  Both arguments passed are str objects.</p>
 <div class="section" id="module-datumaro.plugins.imagenet_txt_format">
 <span id="datumaro-plugins-imagenet-txt-format-module"></span><h3>datumaro.plugins.imagenet_txt_format module<a class="headerlink" href="#module-datumaro.plugins.imagenet_txt_format" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
-<dt class="sig sig-object py" id="datumaro.plugins.imagenet_txt_format.ImagenetTxtExtractor">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.imagenet_txt_format.</span></span><span class="sig-name descname"><span class="pre">ImagenetTxtExtractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'file'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels_file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'synsets.txt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/imagenet_txt_format.html#ImagenetTxtExtractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.imagenet_txt_format.ImagenetTxtExtractor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.SourceExtractor" title="datumaro.components.extractor.SourceExtractor"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.SourceExtractor</span></code></a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.imagenet_txt_format.ImagenetTxtExtractor.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'file'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels_file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'synsets.txt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/imagenet_txt_format.html#ImagenetTxtExtractor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.imagenet_txt_format.ImagenetTxtExtractor.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="datumaro.plugins.imagenet_txt_format.ImagenetTxtPath">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.imagenet_txt_format.</span></span><span class="sig-name descname"><span class="pre">ImagenetTxtPath</span></span><a class="reference internal" href="../_modules/datumaro/plugins/imagenet_txt_format.html#ImagenetTxtPath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.imagenet_txt_format.ImagenetTxtPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.imagenet_txt_format.ImagenetTxtPath.LABELS_FILE">
+<span class="sig-name descname"><span class="pre">LABELS_FILE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'synsets.txt'</span></em><a class="headerlink" href="#datumaro.plugins.imagenet_txt_format.ImagenetTxtPath.LABELS_FILE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.imagenet_txt_format.ImagenetTxtPath.IMAGE_DIR">
+<span class="sig-name descname"><span class="pre">IMAGE_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'images'</span></em><a class="headerlink" href="#datumaro.plugins.imagenet_txt_format.ImagenetTxtPath.IMAGE_DIR" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="datumaro.plugins.imagenet_txt_format._LabelsSource">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.imagenet_txt_format.</span></span><span class="sig-name descname"><span class="pre">_LabelsSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/imagenet_txt_format.html#_LabelsSource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.imagenet_txt_format._LabelsSource" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
-<p>An enumeration.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="datumaro.plugins.imagenet_txt_format._LabelsSource.file">
-<span class="sig-name descname"><span class="pre">file</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.imagenet_txt_format._LabelsSource.file" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="datumaro.plugins.imagenet_txt_format.ImagenetTxtExtractor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.imagenet_txt_format.</span></span><span class="sig-name descname"><span class="pre">ImagenetTxtExtractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'file'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels_file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'synsets.txt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/imagenet_txt_format.html#ImagenetTxtExtractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.imagenet_txt_format.ImagenetTxtExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.SourceExtractor" title="datumaro.components.extractor.SourceExtractor"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.SourceExtractor</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.imagenet_txt_format.ImagenetTxtImporter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.imagenet_txt_format.</span></span><span class="sig-name descname"><span class="pre">ImagenetTxtImporter</span></span><a class="reference internal" href="../_modules/datumaro/plugins/imagenet_txt_format.html#ImagenetTxtImporter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.imagenet_txt_format.ImagenetTxtImporter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Importer</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.imagenet_txt_format.ImagenetTxtImporter.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/imagenet_txt_format.html#ImagenetTxtImporter.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.imagenet_txt_format.ImagenetTxtImporter.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.imagenet_txt_format.ImagenetTxtImporter.find_sources_with_params">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">find_sources_with_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/imagenet_txt_format.html#ImagenetTxtImporter.find_sources_with_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.imagenet_txt_format.ImagenetTxtImporter.find_sources_with_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.imagenet_txt_format.ImagenetTxtConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.imagenet_txt_format.</span></span><span class="sig-name descname"><span class="pre">ImagenetTxtConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_images</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_image_ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/imagenet_txt_format.html#ImagenetTxtConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.imagenet_txt_format.ImagenetTxtConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.converter.Converter</span></code></p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="datumaro.plugins.imagenet_txt_format._LabelsSource.generate">
-<span class="sig-name descname"><span class="pre">generate</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.imagenet_txt_format._LabelsSource.generate" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="datumaro.plugins.imagenet_txt_format.ImagenetTxtConverter.DEFAULT_IMAGE_EXT">
+<span class="sig-name descname"><span class="pre">DEFAULT_IMAGE_EXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'.jpg'</span></em><a class="headerlink" href="#datumaro.plugins.imagenet_txt_format.ImagenetTxtConverter.DEFAULT_IMAGE_EXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.imagenet_txt_format.ImagenetTxtConverter.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/imagenet_txt_format.html#ImagenetTxtConverter.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.imagenet_txt_format.ImagenetTxtConverter.apply" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -544,13 +809,76 @@ needed.  Both arguments passed are str objects.</p>
 
 </dd></dl>
 
-<span class="target" id="module-0"></span><dl class="py class">
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.mot_format.MotPath">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.mot_format.</span></span><span class="sig-name descname"><span class="pre">MotPath</span></span><a class="reference internal" href="../_modules/datumaro/plugins/mot_format.html#MotPath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.mot_format.MotPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.mot_format.MotPath.IMAGE_DIR">
+<span class="sig-name descname"><span class="pre">IMAGE_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'img1'</span></em><a class="headerlink" href="#datumaro.plugins.mot_format.MotPath.IMAGE_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.mot_format.MotPath.SEQINFO_FILE">
+<span class="sig-name descname"><span class="pre">SEQINFO_FILE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'seqinfo.ini'</span></em><a class="headerlink" href="#datumaro.plugins.mot_format.MotPath.SEQINFO_FILE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.mot_format.MotPath.LABELS_FILE">
+<span class="sig-name descname"><span class="pre">LABELS_FILE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'labels.txt'</span></em><a class="headerlink" href="#datumaro.plugins.mot_format.MotPath.LABELS_FILE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.mot_format.MotPath.GT_FILENAME">
+<span class="sig-name descname"><span class="pre">GT_FILENAME</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'gt.txt'</span></em><a class="headerlink" href="#datumaro.plugins.mot_format.MotPath.GT_FILENAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.mot_format.MotPath.DET_FILENAME">
+<span class="sig-name descname"><span class="pre">DET_FILENAME</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'det.txt'</span></em><a class="headerlink" href="#datumaro.plugins.mot_format.MotPath.DET_FILENAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.mot_format.MotPath.IMAGE_EXT">
+<span class="sig-name descname"><span class="pre">IMAGE_EXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'.jpg'</span></em><a class="headerlink" href="#datumaro.plugins.mot_format.MotPath.IMAGE_EXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.mot_format.MotPath.FIELDS">
+<span class="sig-name descname"><span class="pre">FIELDS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">['frame_id',</span> <span class="pre">'track_id',</span> <span class="pre">'x',</span> <span class="pre">'y',</span> <span class="pre">'w',</span> <span class="pre">'h',</span> <span class="pre">'confidence',</span> <span class="pre">'class_id',</span> <span class="pre">'visibility']</span></em><a class="headerlink" href="#datumaro.plugins.mot_format.MotPath.FIELDS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.mot_format.MotSeqExtractor">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.mot_format.</span></span><span class="sig-name descname"><span class="pre">MotSeqExtractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occlusion_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_gt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/mot_format.html#MotSeqExtractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.mot_format.MotSeqExtractor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.SourceExtractor" title="datumaro.components.extractor.SourceExtractor"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.SourceExtractor</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.mot_format.MotSeqImporter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.mot_format.</span></span><span class="sig-name descname"><span class="pre">MotSeqImporter</span></span><a class="reference internal" href="../_modules/datumaro/plugins/mot_format.html#MotSeqImporter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.mot_format.MotSeqImporter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Importer</span></code></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.mot_format.MotSeqExtractor.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occlusion_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_gt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/mot_format.html#MotSeqExtractor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.mot_format.MotSeqExtractor.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="datumaro.plugins.mot_format.MotSeqImporter.find_sources">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">find_sources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/mot_format.html#MotSeqImporter.find_sources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.mot_format.MotSeqImporter.find_sources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.mot_format.MotSeqGtConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.mot_format.</span></span><span class="sig-name descname"><span class="pre">MotSeqGtConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_images</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_image_ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/mot_format.html#MotSeqGtConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.mot_format.MotSeqGtConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.converter.Converter</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.mot_format.MotSeqGtConverter.DEFAULT_IMAGE_EXT">
+<span class="sig-name descname"><span class="pre">DEFAULT_IMAGE_EXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'.jpg'</span></em><a class="headerlink" href="#datumaro.plugins.mot_format.MotSeqGtConverter.DEFAULT_IMAGE_EXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.mot_format.MotSeqGtConverter.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/mot_format.html#MotSeqGtConverter.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.mot_format.MotSeqGtConverter.apply" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -558,39 +886,6 @@ needed.  Both arguments passed are str objects.</p>
 </div>
 <div class="section" id="datumaro-plugins-mots-format-module">
 <h3>datumaro.plugins.mots_format module<a class="headerlink" href="#datumaro-plugins-mots-format-module" title="Permalink to this headline">¶</a></h3>
-<dl class="py class">
-<dt class="sig sig-object py" id="datumaro.plugins.mots_format.MotsLabels">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.mots_format.</span></span><span class="sig-name descname"><span class="pre">MotsLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/mots_format.html#MotsLabels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.mots_format.MotsLabels" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
-<p>An enumeration.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="datumaro.plugins.mots_format.MotsLabels.background">
-<span class="sig-name descname"><span class="pre">background</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#datumaro.plugins.mots_format.MotsLabels.background" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="datumaro.plugins.mots_format.MotsLabels.car">
-<span class="sig-name descname"><span class="pre">car</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.mots_format.MotsLabels.car" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="datumaro.plugins.mots_format.MotsLabels.pedestrian">
-<span class="sig-name descname"><span class="pre">pedestrian</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.mots_format.MotsLabels.pedestrian" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="datumaro.plugins.mots_format.MotsLabels.ignored">
-<span class="sig-name descname"><span class="pre">ignored</span></span><em class="property"> <span class="pre">=</span> <span class="pre">10</span></em><a class="headerlink" href="#datumaro.plugins.mots_format.MotsLabels.ignored" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="datumaro.plugins.mots_format">
-<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.</span></span><span class="sig-name descname"><span class="pre">mots_format</span></span><a class="headerlink" href="#datumaro.plugins.mots_format" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of &lt;module ‘datumaro.plugins.mots_format’ from ‘C:\Git\api-documentation-sphinx\datumaro\datumaro\plugins\mots_format.py’&gt;</p>
-</dd></dl>
-
 </div>
 <div class="section" id="module-datumaro.plugins.ndr">
 <span id="datumaro-plugins-ndr-module"></span><h3>datumaro.plugins.ndr module<a class="headerlink" href="#module-datumaro.plugins.ndr" title="Permalink to this headline">¶</a></h3>
@@ -640,10 +935,34 @@ needed.  Both arguments passed are str objects.</p>
 
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="datumaro.plugins.ndr">
-<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.</span></span><span class="sig-name descname"><span class="pre">ndr</span></span><a class="headerlink" href="#datumaro.plugins.ndr" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of &lt;module ‘datumaro.plugins.ndr’ from ‘C:\Git\api-documentation-sphinx\datumaro\datumaro\plugins\ndr.py’&gt;</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.ndr.NDR">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.ndr.</span></span><span class="sig-name descname"><span class="pre">NDR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">working_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duplicated_subset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'duplicated'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cut</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">over_sample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">under_sample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/ndr.html#NDR"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.ndr.NDR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.Transform" title="datumaro.components.extractor.Transform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Transform</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></p>
+<p>Near-duplicated image removal.</p>
+<p>Removes near-duplicated images in subset</p>
+<dl class="simple">
+<dt>Example: apply NDR, return no more than 100 images
+</dt><dd><dl class="simple">
+<dt>%(prog)s
+</dt><dd><p>–working_subset train
+
+–algorithm gradient
+
+–num_cut 100
+
+–over_sample random
+
+–under_sample uniform</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.ndr.NDR.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/ndr.html#NDR.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.ndr.NDR.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </div>
@@ -882,6 +1201,33 @@ once the first row is written.</p>
 <div class="section" id="module-datumaro.plugins.splitter">
 <span id="datumaro-plugins-splitter-module"></span><h3>datumaro.plugins.splitter module<a class="headerlink" href="#module-datumaro.plugins.splitter" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.splitter.SplitTask">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.splitter.</span></span><span class="sig-name descname"><span class="pre">SplitTask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/splitter.html#SplitTask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.splitter.SplitTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.splitter.SplitTask.classification">
+<span class="sig-name descname"><span class="pre">classification</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.splitter.SplitTask.classification" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.splitter.SplitTask.detection">
+<span class="sig-name descname"><span class="pre">detection</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.splitter.SplitTask.detection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.splitter.SplitTask.segmentation">
+<span class="sig-name descname"><span class="pre">segmentation</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#datumaro.plugins.splitter.SplitTask.segmentation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.splitter.SplitTask.reid">
+<span class="sig-name descname"><span class="pre">reid</span></span><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#datumaro.plugins.splitter.SplitTask.reid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.splitter.Split">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.splitter.</span></span><span class="sig-name descname"><span class="pre">Split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr_for_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/splitter.html#Split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.splitter.Split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.Transform" title="datumaro.components.extractor.Transform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Transform</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></p>
@@ -962,177 +1308,19 @@ In reidentification task,
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.splitter.Split.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr_for_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/splitter.html#Split.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.splitter.Split.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="datumaro.plugins.splitter.Split.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/splitter.html#Split.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.splitter.Split.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="datumaro.plugins.splitter._ClassificationSplit">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.splitter.</span></span><span class="sig-name descname"><span class="pre">_ClassificationSplit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/splitter.html#_ClassificationSplit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.splitter._ClassificationSplit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.splitter._TaskSpecificSplit</span></code></p>
-<p>Splits dataset into subsets(train/val/test) in class-wise manner. 
-
-Splits dataset images in the specified ratio, keeping the initial class
-distribution.</p>
-<p>Notes:
-
-- Each image is expected to have only one Label. Unlabeled or</p>
-<blockquote>
-<div><p>multi-labeled images will be split into subsets randomly.</p>
-</div></blockquote>
-<ul class="simple">
-<li><p>If Labels also have attributes, also splits by attribute values.</p></li>
-<li><p>If there is not enough images in some class or attributes group,
-the split ratio can’t be guaranteed.</p></li>
-</ul>
-<dl class="simple">
-<dt>Example:
-</dt><dd><p>%(prog)s -t classification –subset train:.5 –subset val:.2 –subset test:.3</p>
-</dd>
-</dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.splitter._ClassificationSplit.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/splitter.html#_ClassificationSplit.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.splitter._ClassificationSplit.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataset</strong> (<em>Dataset</em>) – </p></li>
-<li><p><strong>splits</strong> (<em>list</em>) – A list of (subset(str), ratio(float))
-The sum of ratios is expected to be 1.</p></li>
-<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
+<dt class="sig sig-object py" id="datumaro.plugins.splitter.Split.get_subset">
+<span class="sig-name descname"><span class="pre">get_subset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/splitter.html#Split.get_subset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.splitter.Split.get_subset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="datumaro.plugins.splitter._ReidentificationSplit">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.splitter.</span></span><span class="sig-name descname"><span class="pre">_ReidentificationSplit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr_for_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/splitter.html#_ReidentificationSplit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.splitter._ReidentificationSplit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.splitter._TaskSpecificSplit</span></code></p>
-<p>Splits a dataset for re-identification task.
-
-Produces a split with a specified ratio of images, avoiding having same
-labels in different subsets.</p>
-<p>In this task, the test set should consist of images of unseen
-people or objects during the training phase. 
-
-This function splits a dataset in the following way:
-
-1. Splits the dataset into ‘train + val’ and ‘test’ sets</p>
-<blockquote>
-<div><p>based on person or object ID.</p>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li><p>Splits ‘test’ set into ‘test-gallery’ and ‘test-query’ sets</p></li>
-</ol>
-<blockquote>
-<div><p>in class-wise manner.</p>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li><p>Splits the ‘train + val’ set into ‘train’ and ‘val’ sets</p></li>
-</ol>
-<blockquote>
-<div><p>in the same way.</p>
-</div></blockquote>
-<p>The final subsets would be
-‘train’, ‘val’, ‘test-gallery’ and ‘test-query’.</p>
-<p>Notes:
-
-- Each image is expected to have a single Label. Unlabeled or multi-labeled</p>
-<blockquote>
-<div><p>images will be split into ‘not-supported’.</p>
-</div></blockquote>
-<ul class="simple">
-<li><p>Object ID can be described by Label, or by attribute (–attr parameter)</p></li>
-<li><p>The splits of the test set are controlled by ‘–query’ parameter. 
-
-Gallery ratio would be 1.0 - query.</p></li>
-</ul>
-<dl>
-<dt>Example: split a dataset in the specified ratio, split the test set
-</dt><dd><blockquote>
-<div><p>into gallery and query in 1:1 ratio</p>
-</div></blockquote>
-<p>%(prog)s -t reidentification –subset train:.5 –subset val:.2 –subset test:.3 –query .5</p>
-</dd>
-<dt>Example: use ‘person_id’ attribute for splitting
-</dt><dd><p>%(prog)s –attr person_id</p>
-</dd>
-</dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.splitter._ReidentificationSplit.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr_for_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/splitter.html#_ReidentificationSplit.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.splitter._ReidentificationSplit.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataset</strong> (<em>Dataset</em>) – </p></li>
-<li><p><strong>splits</strong> (<em>list</em>) – A list of (subset(str), ratio(float))
-Subset is expected to be one of [“train”, “val”, “test”].
-The sum of ratios is expected to be 1.</p></li>
-<li><p><strong>query</strong> (<em>float</em>) – The ratio of ‘test-query’ set.
-The ratio of ‘test-gallery’ set would be 1.0 - query.</p></li>
-<li><p><strong>attr_for_id</strong> (<em>str</em>) – attribute name representing the person/object id.
-if this is not specified, label would be used.</p></li>
-<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="datumaro.plugins.splitter._InstanceSpecificSplit">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.splitter.</span></span><span class="sig-name descname"><span class="pre">_InstanceSpecificSplit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/splitter.html#_InstanceSpecificSplit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.splitter._InstanceSpecificSplit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.splitter._TaskSpecificSplit</span></code></p>
-<p>Splits a dataset into subsets(train/val/test),
-using object annotations as a basis for splitting.
-
-Tries to produce an image split with the specified ratio, keeping the
-initial distribution of class objects.</p>
-<p>each image can have multiple object annotations -
-(instance bounding boxes, masks, polygons). Since an image shouldn’t be included
-in multiple subsets at the same time, and image annotations
-shouldn’t be split, in general, dataset annotations are unlikely to be split
-exactly in the specified ratio. 
-
-This split tries to split dataset images as close as possible
-to the specified ratio, keeping the initial class distribution.</p>
-<dl>
-<dt>Notes:
-</dt><dd><ul class="simple">
-<li><p>Each image is expected to have one or more annotations.</p></li>
-<li><p>Only bbox annotations are considered in detection task.</p></li>
-<li><p>Mask or Polygon annotations are considered in segmentation task.</p></li>
-</ul>
-</dd>
-<dt>Example: split dataset so that each object class annotations were split
-</dt><dd><blockquote>
-<div><p>in the specified ratio between subsets</p>
-</div></blockquote>
-<p>%(prog)s -t detection –subset train:.5 –subset val:.2 –subset test:.3 
-
-%(prog)s -t segmentation –subset train:.5 –subset val:.2 –subset test:.3</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.splitter._InstanceSpecificSplit.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/splitter.html#_InstanceSpecificSplit.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.splitter._InstanceSpecificSplit.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataset</strong> (<em>Dataset</em>) – </p></li>
-<li><p><strong>splits</strong> (<em>list</em>) – A list of (subset(str), ratio(float))
-The sum of ratios is expected to be 1.</p></li>
-<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
+<dt class="sig sig-object py" id="datumaro.plugins.splitter.Split.subsets">
+<span class="sig-name descname"><span class="pre">subsets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/splitter.html#Split.subsets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.splitter.Split.subsets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1151,6 +1339,11 @@ The sum of ratios is expected to be 1.</p></li>
 unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.CropCoveredSegments.crop_segments">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">crop_segments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment_anns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img_height</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#CropCoveredSegments.crop_segments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.CropCoveredSegments.crop_segments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -1159,8 +1352,8 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 <dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.ItemTransform" title="datumaro.components.extractor.ItemTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.ItemTransform</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></p>
 <p>Replaces instance masks and, optionally, polygons with a single mask.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.transforms.MergeInstanceSegments.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_polygons</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#MergeInstanceSegments.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.MergeInstanceSegments.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.MergeInstanceSegments.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#MergeInstanceSegments.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.MergeInstanceSegments.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1170,6 +1363,16 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 <p>Avoid changing and returning the input item, because it can lead to
 unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.MergeInstanceSegments.merge_segments">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">merge_segments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img_height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_polygons</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#MergeInstanceSegments.merge_segments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.MergeInstanceSegments.merge_segments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.MergeInstanceSegments.find_instances">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">find_instances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">annotations</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#MergeInstanceSegments.find_instances"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.MergeInstanceSegments.find_instances" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1185,6 +1388,11 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.PolygonsToMasks.convert_polygon">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">convert_polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polygon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img_w</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#PolygonsToMasks.convert_polygon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.PolygonsToMasks.convert_polygon" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -1198,6 +1406,11 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 <p>Avoid changing and returning the input item, because it can lead to
 unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.BoxesToMasks.convert_bbox">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">convert_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bbox</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img_w</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#BoxesToMasks.convert_bbox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.BoxesToMasks.convert_bbox" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1213,6 +1426,11 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.MasksToPolygons.convert_mask">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">convert_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#MasksToPolygons.convert_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.MasksToPolygons.convert_mask" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -1227,6 +1445,11 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.ShapesToBoxes.convert_shape">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">convert_shape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#ShapesToBoxes.convert_shape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.ShapesToBoxes.convert_shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -1234,8 +1457,8 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.transforms.</span></span><span class="sig-name descname"><span class="pre">Reindex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#Reindex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.Reindex" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.Transform" title="datumaro.components.extractor.Transform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Transform</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.transforms.Reindex.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#Reindex.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.Reindex.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.Reindex.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#Reindex.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.Reindex.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1245,8 +1468,8 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.transforms.</span></span><span class="sig-name descname"><span class="pre">MapSubsets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#MapSubsets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.MapSubsets" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.ItemTransform" title="datumaro.components.extractor.ItemTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.ItemTransform</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.transforms.MapSubsets.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#MapSubsets.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.MapSubsets.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.MapSubsets.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#MapSubsets.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.MapSubsets.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1271,8 +1494,8 @@ It is expected that item ids are unique and subset ratios sum up to 1.</p>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.transforms.RandomSplit.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#RandomSplit.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RandomSplit.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RandomSplit.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#RandomSplit.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RandomSplit.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1312,8 +1535,8 @@ rename -e ‘<a href="#id15"><span class="problematic" id="id16">|frame_(\d+)|</
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.transforms.Rename.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#Rename.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.Rename.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.Rename.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#Rename.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.Rename.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1326,7 +1549,11 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 
 </dd></dl>
 
-<span class="target" id="module-datumaro.plugins.transforms.RemapLabels"></span><p>Changes labels in the dataset.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemapLabels">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.transforms.</span></span><span class="sig-name descname"><span class="pre">RemapLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">datumaro.components.extractor.IExtractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#datumaro.plugins.transforms.RemapLabels.DefaultAction" title="datumaro.plugins.transforms.RemapLabels.DefaultAction"><span class="pre">datumaro.plugins.transforms.RemapLabels.DefaultAction</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#RemapLabels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemapLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.ItemTransform" title="datumaro.components.extractor.ItemTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.ItemTransform</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></p>
+<p>Changes labels in the dataset.</p>
 <dl class="simple">
 <dt>A label can be:
 </dt><dd><ul class="simple">
@@ -1360,40 +1587,115 @@ or default action is ‘keep’ and the label is not mentioned in the list</p></
 </ul>
 </dd>
 </dl>
-<span class="target" id="module-1"></span><p>Changes labels in the dataset.</p>
-<dl class="simple">
-<dt>A label can be:
-</dt><dd><ul class="simple">
-<li><p>renamed (and joined with existing) -
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemapLabels.DefaultAction">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">DefaultAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#RemapLabels.DefaultAction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemapLabels.DefaultAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemapLabels.DefaultAction.keep">
+<span class="sig-name descname"><span class="pre">keep</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.transforms.RemapLabels.DefaultAction.keep" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-when specified ‘–label &lt;old_name&gt;:&lt;new_name&gt;’</p></li>
-<li><p>deleted - when specified ‘–label &lt;name&gt;:’ or default action is ‘delete’
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemapLabels.DefaultAction.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.transforms.RemapLabels.DefaultAction.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-and the label is not mentioned in the list. When a label
+</dd></dl>
 
-is deleted, all the associated annotations are removed</p></li>
-<li><p>kept unchanged - when specified ‘–label &lt;name&gt;:&lt;name&gt;’
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemapLabels.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#RemapLabels.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemapLabels.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-or default action is ‘keep’ and the label is not mentioned in the list</p></li>
-</ul>
-</dd>
-</dl>
-<p>Annotations with no label are managed by the default action policy.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemapLabels.categories">
+<span class="sig-name descname"><span class="pre">categories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#RemapLabels.categories"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemapLabels.categories" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemapLabels.transform_item">
+<span class="sig-name descname"><span class="pre">transform_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#RemapLabels.transform_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemapLabels.transform_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a modified copy of the input item.</p>
+<p>Avoid changing and returning the input item, because it can lead to
+unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.ProjectLabels">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.transforms.</span></span><span class="sig-name descname"><span class="pre">ProjectLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">datumaro.components.extractor.IExtractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="datumaro.components.html#datumaro.components.annotation.LabelCategories" title="datumaro.components.annotation.LabelCategories"><span class="pre">datumaro.components.annotation.LabelCategories</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#ProjectLabels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.ProjectLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.ItemTransform" title="datumaro.components.extractor.ItemTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.ItemTransform</span></code></a></p>
+<p>Changes the order of labels in the dataset from the existing
+to the desired one, removes unknown labels and adds new labels.
+Updates or removes the corresponding annotations.</p>
+<p>Labels are matched by names (case dependent). Parent labels are only kept
+if they are present in the resulting set of labels. If new labels are
+added, and the dataset has mask colors defined, new labels will obtain
+generated colors.</p>
+<p>Useful for merging similar datasets, whose labels need to be aligned.</p>
 <dl class="simple">
 <dt>Examples:
 </dt><dd><ul class="simple">
-<li><p>Remove the ‘person’ label (and corresponding annotations):
+<li><p>Align the source dataset labels to [person, cat, dog]:
 
-%(prog)s -l person: –default keep</p></li>
-<li><p>Rename ‘person’ to ‘pedestrian’ and ‘human’ to ‘pedestrian’, join:
-
-%(prog)s -l person:pedestrian -l human:pedestrian –default keep</p></li>
-<li><p>Rename ‘person’ to ‘car’ and ‘cat’ to ‘dog’, keep ‘bus’, remove others:
-
-%(prog)s -l person:car -l bus:bus -l cat:dog –default delete</p></li>
+%(prog)s -l person -l cat -l dog</p></li>
 </ul>
 </dd>
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.ProjectLabels.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#ProjectLabels.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.ProjectLabels.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.ProjectLabels.categories">
+<span class="sig-name descname"><span class="pre">categories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#ProjectLabels.categories"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.ProjectLabels.categories" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.ProjectLabels.transform_item">
+<span class="sig-name descname"><span class="pre">transform_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#ProjectLabels.transform_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.ProjectLabels.transform_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a modified copy of the input item.</p>
+<p>Avoid changing and returning the input item, because it can lead to
+unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.AnnsToLabels">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.transforms.</span></span><span class="sig-name descname"><span class="pre">AnnsToLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">datumaro.components.extractor.IExtractor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#AnnsToLabels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.AnnsToLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.ItemTransform" title="datumaro.components.extractor.ItemTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.ItemTransform</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></p>
+<p>Collects all labels from annotations (of all types) and
+transforms them into a set of annotations of type Label</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.AnnsToLabels.transform_item">
+<span class="sig-name descname"><span class="pre">transform_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#AnnsToLabels.transform_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.AnnsToLabels.transform_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a modified copy of the input item.</p>
+<p>Avoid changing and returning the input item, because it can lead to
+unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.BboxValuesDecrement">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.transforms.</span></span><span class="sig-name descname"><span class="pre">BboxValuesDecrement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">datumaro.components.extractor.IExtractor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#BboxValuesDecrement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.BboxValuesDecrement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.ItemTransform" title="datumaro.components.extractor.ItemTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.ItemTransform</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></p>
+<p>Subtracts one from the coordinates of bounding boxes</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.BboxValuesDecrement.transform_item">
+<span class="sig-name descname"><span class="pre">transform_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/transforms.html#BboxValuesDecrement.transform_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.BboxValuesDecrement.transform_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a modified copy of the input item.</p>
+<p>Avoid changing and returning the input item, because it can lead to
+unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-datumaro.plugins.validators">
 <span id="datumaro-plugins-validators-module"></span><h3>datumaro.plugins.validators module<a class="headerlink" href="#module-datumaro.plugins.validators" title="Permalink to this headline">¶</a></h3>
@@ -1660,7 +1962,75 @@ warn user when values are not evenly distributed</p></li>
 
 </dd></dl>
 
-<span class="target" id="module-2"></span></div>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.coco_format.converter.</span></span><span class="sig-name descname"><span class="pre">CocoConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tasks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segmentation_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop_covered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_attributes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reindex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge_images</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/coco_format/converter.html#CocoConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.converter.Converter</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoConverter.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/coco_format/converter.html#CocoConverter.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoConverter.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoConverter.DEFAULT_IMAGE_EXT">
+<span class="sig-name descname"><span class="pre">DEFAULT_IMAGE_EXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'.jpg'</span></em><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoConverter.DEFAULT_IMAGE_EXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoConverter.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/coco_format/converter.html#CocoConverter.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoConverter.apply" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoConverter.patch">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">patch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/coco_format/converter.html#CocoConverter.patch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoConverter.patch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoInstancesConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.coco_format.converter.</span></span><span class="sig-name descname"><span class="pre">CocoInstancesConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/coco_format/converter.html#CocoInstancesConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoInstancesConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.coco_format.converter.CocoConverter" title="datumaro.plugins.coco_format.converter.CocoConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.coco_format.converter.CocoConverter</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoImageInfoConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.coco_format.converter.</span></span><span class="sig-name descname"><span class="pre">CocoImageInfoConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/coco_format/converter.html#CocoImageInfoConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoImageInfoConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.coco_format.converter.CocoConverter" title="datumaro.plugins.coco_format.converter.CocoConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.coco_format.converter.CocoConverter</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoPersonKeypointsConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.coco_format.converter.</span></span><span class="sig-name descname"><span class="pre">CocoPersonKeypointsConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/coco_format/converter.html#CocoPersonKeypointsConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoPersonKeypointsConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.coco_format.converter.CocoConverter" title="datumaro.plugins.coco_format.converter.CocoConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.coco_format.converter.CocoConverter</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoCaptionsConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.coco_format.converter.</span></span><span class="sig-name descname"><span class="pre">CocoCaptionsConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/coco_format/converter.html#CocoCaptionsConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoCaptionsConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.coco_format.converter.CocoConverter" title="datumaro.plugins.coco_format.converter.CocoConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.coco_format.converter.CocoConverter</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoLabelsConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.coco_format.converter.</span></span><span class="sig-name descname"><span class="pre">CocoLabelsConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/coco_format/converter.html#CocoLabelsConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoLabelsConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.coco_format.converter.CocoConverter" title="datumaro.plugins.coco_format.converter.CocoConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.coco_format.converter.CocoConverter</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoPanopticConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.coco_format.converter.</span></span><span class="sig-name descname"><span class="pre">CocoPanopticConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/coco_format/converter.html#CocoPanopticConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoPanopticConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.coco_format.converter.CocoConverter" title="datumaro.plugins.coco_format.converter.CocoConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.coco_format.converter.CocoConverter</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoStuffConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.coco_format.converter.</span></span><span class="sig-name descname"><span class="pre">CocoStuffConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/coco_format/converter.html#CocoStuffConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoStuffConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.coco_format.converter.CocoConverter" title="datumaro.plugins.coco_format.converter.CocoConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.coco_format.converter.CocoConverter</span></code></a></p>
+</dd></dl>
+
+</div>
 <div class="section" id="module-datumaro.plugins.coco_format.extractor">
 <span id="datumaro-plugins-coco-format-extractor-module"></span><h3>datumaro.plugins.coco_format.extractor module<a class="headerlink" href="#module-datumaro.plugins.coco_format.extractor" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
@@ -2385,7 +2755,7 @@ as input.
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>extractor</strong> (<a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.Extractor" title="datumaro.components.extractor.Extractor"><em>Extractor</em></a><em>, </em><em>Dataset</em>) – </p></li>
+<li><p><strong>extractor</strong> (<a class="reference internal" href="datumaro.components.html#datumaro.components.extractor.Extractor" title="datumaro.components.extractor.Extractor"><em>Extractor</em></a><em>, </em><a class="reference internal" href="datumaro.components.html#datumaro.components.dataset.Dataset" title="datumaro.components.dataset.Dataset"><em>Dataset</em></a>) – </p></li>
 <li><p><strong>algorithm</strong> (<em>str</em>) – Specifying the algorithm to calculate the uncertainty
 for sample selection. default: ‘entropy’</p></li>
 <li><p><strong>subset_name</strong> (<em>str</em>) – The name of the subset to which you want to select a sample.</p></li>
@@ -2672,11 +3042,36 @@ for sample selection. default: ‘entropy’</p></li>
 </div>
 <div class="section" id="module-datumaro.plugins.voc_format.format">
 <span id="datumaro-plugins-voc-format-format-module"></span><h3>datumaro.plugins.voc_format.format module<a class="headerlink" href="#module-datumaro.plugins.voc_format.format" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="module-3"></span><dl class="py class">
+<dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocTask">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">VocTask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/format.html#VocTask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocTask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
 <p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocTask.classification">
+<span class="sig-name descname"><span class="pre">classification</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocTask.classification" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocTask.detection">
+<span class="sig-name descname"><span class="pre">detection</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocTask.detection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocTask.segmentation">
+<span class="sig-name descname"><span class="pre">segmentation</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocTask.segmentation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocTask.action_classification">
+<span class="sig-name descname"><span class="pre">action_classification</span></span><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocTask.action_classification" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocTask.person_layout">
+<span class="sig-name descname"><span class="pre">person_layout</span></span><em class="property"> <span class="pre">=</span> <span class="pre">5</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocTask.person_layout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -2684,6 +3079,116 @@ for sample selection. default: ‘entropy’</p></li>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">VocLabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/format.html#VocLabel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
 <p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.background">
+<span class="sig-name descname"><span class="pre">background</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.background" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.aeroplane">
+<span class="sig-name descname"><span class="pre">aeroplane</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.aeroplane" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.bicycle">
+<span class="sig-name descname"><span class="pre">bicycle</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.bicycle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.bird">
+<span class="sig-name descname"><span class="pre">bird</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.bird" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.boat">
+<span class="sig-name descname"><span class="pre">boat</span></span><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.boat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.bottle">
+<span class="sig-name descname"><span class="pre">bottle</span></span><em class="property"> <span class="pre">=</span> <span class="pre">5</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.bottle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.bus">
+<span class="sig-name descname"><span class="pre">bus</span></span><em class="property"> <span class="pre">=</span> <span class="pre">6</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.bus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.car">
+<span class="sig-name descname"><span class="pre">car</span></span><em class="property"> <span class="pre">=</span> <span class="pre">7</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.car" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.cat">
+<span class="sig-name descname"><span class="pre">cat</span></span><em class="property"> <span class="pre">=</span> <span class="pre">8</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.cat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.chair">
+<span class="sig-name descname"><span class="pre">chair</span></span><em class="property"> <span class="pre">=</span> <span class="pre">9</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.chair" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.cow">
+<span class="sig-name descname"><span class="pre">cow</span></span><em class="property"> <span class="pre">=</span> <span class="pre">10</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.cow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.diningtable">
+<span class="sig-name descname"><span class="pre">diningtable</span></span><em class="property"> <span class="pre">=</span> <span class="pre">11</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.diningtable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.dog">
+<span class="sig-name descname"><span class="pre">dog</span></span><em class="property"> <span class="pre">=</span> <span class="pre">12</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.dog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.horse">
+<span class="sig-name descname"><span class="pre">horse</span></span><em class="property"> <span class="pre">=</span> <span class="pre">13</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.horse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.motorbike">
+<span class="sig-name descname"><span class="pre">motorbike</span></span><em class="property"> <span class="pre">=</span> <span class="pre">14</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.motorbike" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.person">
+<span class="sig-name descname"><span class="pre">person</span></span><em class="property"> <span class="pre">=</span> <span class="pre">15</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.person" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.pottedplant">
+<span class="sig-name descname"><span class="pre">pottedplant</span></span><em class="property"> <span class="pre">=</span> <span class="pre">16</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.pottedplant" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.sheep">
+<span class="sig-name descname"><span class="pre">sheep</span></span><em class="property"> <span class="pre">=</span> <span class="pre">17</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.sheep" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.sofa">
+<span class="sig-name descname"><span class="pre">sofa</span></span><em class="property"> <span class="pre">=</span> <span class="pre">18</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.sofa" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.train">
+<span class="sig-name descname"><span class="pre">train</span></span><em class="property"> <span class="pre">=</span> <span class="pre">19</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.train" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.tvmonitor">
+<span class="sig-name descname"><span class="pre">tvmonitor</span></span><em class="property"> <span class="pre">=</span> <span class="pre">20</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.tvmonitor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocLabel.ignored">
+<span class="sig-name descname"><span class="pre">ignored</span></span><em class="property"> <span class="pre">=</span> <span class="pre">255</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocLabel.ignored" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -2691,6 +3196,31 @@ for sample selection. default: ‘entropy’</p></li>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">VocPose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/format.html#VocPose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPose" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
 <p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPose.Unspecified">
+<span class="sig-name descname"><span class="pre">Unspecified</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPose.Unspecified" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPose.Left">
+<span class="sig-name descname"><span class="pre">Left</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPose.Left" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPose.Right">
+<span class="sig-name descname"><span class="pre">Right</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPose.Right" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPose.Frontal">
+<span class="sig-name descname"><span class="pre">Frontal</span></span><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPose.Frontal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPose.Rear">
+<span class="sig-name descname"><span class="pre">Rear</span></span><em class="property"> <span class="pre">=</span> <span class="pre">5</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPose.Rear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -2698,6 +3228,21 @@ for sample selection. default: ‘entropy’</p></li>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">VocBodyPart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/format.html#VocBodyPart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocBodyPart" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
 <p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocBodyPart.head">
+<span class="sig-name descname"><span class="pre">head</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocBodyPart.head" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocBodyPart.hand">
+<span class="sig-name descname"><span class="pre">hand</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocBodyPart.hand" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocBodyPart.foot">
+<span class="sig-name descname"><span class="pre">foot</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocBodyPart.foot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -2705,7 +3250,138 @@ for sample selection. default: ‘entropy’</p></li>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">VocAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/format.html#VocAction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
 <p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.other">
+<span class="sig-name descname"><span class="pre">other</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.other" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.jumping">
+<span class="sig-name descname"><span class="pre">jumping</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.jumping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.phoning">
+<span class="sig-name descname"><span class="pre">phoning</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.phoning" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.playinginstrument">
+<span class="sig-name descname"><span class="pre">playinginstrument</span></span><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.playinginstrument" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.reading">
+<span class="sig-name descname"><span class="pre">reading</span></span><em class="property"> <span class="pre">=</span> <span class="pre">5</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.reading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.ridingbike">
+<span class="sig-name descname"><span class="pre">ridingbike</span></span><em class="property"> <span class="pre">=</span> <span class="pre">6</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.ridingbike" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.ridinghorse">
+<span class="sig-name descname"><span class="pre">ridinghorse</span></span><em class="property"> <span class="pre">=</span> <span class="pre">7</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.ridinghorse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.running">
+<span class="sig-name descname"><span class="pre">running</span></span><em class="property"> <span class="pre">=</span> <span class="pre">8</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.running" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.takingphoto">
+<span class="sig-name descname"><span class="pre">takingphoto</span></span><em class="property"> <span class="pre">=</span> <span class="pre">9</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.takingphoto" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.usingcomputer">
+<span class="sig-name descname"><span class="pre">usingcomputer</span></span><em class="property"> <span class="pre">=</span> <span class="pre">10</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.usingcomputer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocAction.walking">
+<span class="sig-name descname"><span class="pre">walking</span></span><em class="property"> <span class="pre">=</span> <span class="pre">11</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocAction.walking" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.generate_colormap">
+<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">generate_colormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/format.html#generate_colormap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.format.generate_colormap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">VocPath</span></span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/format.html#VocPath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.IMAGES_DIR">
+<span class="sig-name descname"><span class="pre">IMAGES_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'JPEGImages'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.IMAGES_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.ANNOTATIONS_DIR">
+<span class="sig-name descname"><span class="pre">ANNOTATIONS_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'Annotations'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.ANNOTATIONS_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.SEGMENTATION_DIR">
+<span class="sig-name descname"><span class="pre">SEGMENTATION_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'SegmentationClass'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.SEGMENTATION_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.INSTANCES_DIR">
+<span class="sig-name descname"><span class="pre">INSTANCES_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'SegmentationObject'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.INSTANCES_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.SUBSETS_DIR">
+<span class="sig-name descname"><span class="pre">SUBSETS_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'ImageSets'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.SUBSETS_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.IMAGE_EXT">
+<span class="sig-name descname"><span class="pre">IMAGE_EXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'.jpg'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.IMAGE_EXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.SEGM_EXT">
+<span class="sig-name descname"><span class="pre">SEGM_EXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'.png'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.SEGM_EXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.LABELMAP_FILE">
+<span class="sig-name descname"><span class="pre">LABELMAP_FILE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'labelmap.txt'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.LABELMAP_FILE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.VocPath.TASK_DIR">
+<span class="sig-name descname"><span class="pre">TASK_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{&lt;VocTask.classification:</span> <span class="pre">1&gt;:</span> <span class="pre">'Main',</span> <span class="pre">&lt;VocTask.detection:</span> <span class="pre">2&gt;:</span> <span class="pre">'Main',</span> <span class="pre">&lt;VocTask.segmentation:</span> <span class="pre">3&gt;:</span> <span class="pre">'Segmentation',</span> <span class="pre">&lt;VocTask.action_classification:</span> <span class="pre">4&gt;:</span> <span class="pre">'Action',</span> <span class="pre">&lt;VocTask.person_layout:</span> <span class="pre">5&gt;:</span> <span class="pre">'Layout'}</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.format.VocPath.TASK_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.make_voc_label_map">
+<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">make_voc_label_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/format.html#make_voc_label_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.format.make_voc_label_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.parse_label_map">
+<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">parse_label_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/format.html#parse_label_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.format.parse_label_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.write_label_map">
+<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">write_label_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_map</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/format.html#write_label_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.format.write_label_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.plugins.voc_format.format.make_voc_categories">
+<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.format.</span></span><span class="sig-name descname"><span class="pre">make_voc_categories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/format.html#make_voc_categories"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.format.make_voc_categories" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <div class="section" id="module-datumaro.plugins.voc_format.importer">
@@ -2765,7 +3441,7 @@ for sample selection. default: ‘entropy’</p></li>
   <hr/>
 
   <div role="contentinfo">
-  <p>&#169; Copyright .
+  <p>&#169; Copyright 2021, Intel.
     <div>
       <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
       |

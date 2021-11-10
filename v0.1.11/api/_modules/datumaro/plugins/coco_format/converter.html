@@ -593,12 +593,12 @@
         <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">CocoConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoConverter">[docs]</a><span class="k">class</span> <span class="nc">CocoConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_split_tasks_string</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">CocoTask</span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="CocoConverter.build_cmdline_parser"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoConverter.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">            Segmentation mask modes (&#39;--segmentation-mode&#39;):|n</span>
@@ -644,7 +644,7 @@
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--tasks&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">_split_tasks_string</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;COCO task filter, comma-separated list of {</span><span class="si">%s</span><span class="s2">} &quot;</span>
                 <span class="s2">&quot;(default: all)&quot;</span> <span class="o">%</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">CocoTask</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">parser</span>
+        <span class="k">return</span> <span class="n">parser</span></div>
 
     <span class="n">DEFAULT_IMAGE_EXT</span> <span class="o">=</span> <span class="n">CocoPath</span><span class="o">.</span><span class="n">IMAGE_EXT</span>
 
@@ -729,7 +729,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_image_ids</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_id</span>
         <span class="k">return</span> <span class="n">image_id</span>
 
-    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoConverter.apply"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoConverter.apply">[docs]</a>    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_make_dirs</span><span class="p">()</span>
 
         <span class="k">for</span> <span class="n">subset_name</span><span class="p">,</span> <span class="n">subset</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="o">.</span><span class="n">subsets</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -764,9 +764,9 @@
                             <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">ann_file</span><span class="p">)</span>
                     <span class="k">continue</span>
 
-                <span class="n">task_conv</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ann_file</span><span class="p">)</span>
+                <span class="n">task_conv</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ann_file</span><span class="p">)</span></div>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="CocoConverter.patch"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoConverter.patch">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">patch</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">patch</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">subset</span> <span class="ow">in</span> <span class="n">patch</span><span class="o">.</span><span class="n">updated_subsets</span><span class="p">:</span>
             <span class="n">conv</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="n">subset</span><span class="p">),</span> <span class="n">save_dir</span><span class="o">=</span><span class="n">save_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -793,44 +793,44 @@
             <span class="n">image_path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">images_dir</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span>
                 <span class="n">conv</span><span class="o">.</span><span class="n">_make_image_filename</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
             <span class="k">if</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">image_path</span><span class="p">):</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span></div></div>
 
 
-<span class="k">class</span> <span class="nc">CocoInstancesConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoInstancesConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoInstancesConverter">[docs]</a><span class="k">class</span> <span class="nc">CocoInstancesConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CocoTask</span><span class="o">.</span><span class="n">instances</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-<span class="k">class</span> <span class="nc">CocoImageInfoConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoImageInfoConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoImageInfoConverter">[docs]</a><span class="k">class</span> <span class="nc">CocoImageInfoConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CocoTask</span><span class="o">.</span><span class="n">image_info</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-<span class="k">class</span> <span class="nc">CocoPersonKeypointsConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoPersonKeypointsConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoPersonKeypointsConverter">[docs]</a><span class="k">class</span> <span class="nc">CocoPersonKeypointsConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CocoTask</span><span class="o">.</span><span class="n">person_keypoints</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-<span class="k">class</span> <span class="nc">CocoCaptionsConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoCaptionsConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoCaptionsConverter">[docs]</a><span class="k">class</span> <span class="nc">CocoCaptionsConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CocoTask</span><span class="o">.</span><span class="n">captions</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-<span class="k">class</span> <span class="nc">CocoLabelsConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoLabelsConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoLabelsConverter">[docs]</a><span class="k">class</span> <span class="nc">CocoLabelsConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CocoTask</span><span class="o">.</span><span class="n">labels</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-<span class="k">class</span> <span class="nc">CocoPanopticConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoPanopticConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoPanopticConverter">[docs]</a><span class="k">class</span> <span class="nc">CocoPanopticConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CocoTask</span><span class="o">.</span><span class="n">panoptic</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-<span class="k">class</span> <span class="nc">CocoStuffConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
+<div class="viewcode-block" id="CocoStuffConverter"><a class="viewcode-back" href="../../../../api/datumaro.plugins.html#datumaro.plugins.coco_format.converter.CocoStuffConverter">[docs]</a><span class="k">class</span> <span class="nc">CocoStuffConverter</span><span class="p">(</span><span class="n">CocoConverter</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CocoTask</span><span class="o">.</span><span class="n">stuff</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;segmentation_mode&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SegmentationMode</span><span class="o">.</span><span class="n">mask</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -840,7 +840,7 @@
   <hr/>
 
   <div role="contentinfo">
-  <p>&#169; Copyright .
+  <p>&#169; Copyright 2021, Intel.
     <div>
       <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
       |
