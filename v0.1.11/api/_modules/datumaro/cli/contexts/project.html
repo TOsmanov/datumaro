@@ -124,13 +124,13 @@
     <span class="n">a_i</span> <span class="o">=</span> <span class="mi">3</span>
     <span class="n">annotations_items</span> <span class="o">=</span> <span class="mi">3</span>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="FilterModes.parse"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.contexts.project.FilterModes.parse">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">FilterModes</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">FilterModes</span><span class="p">[</span><span class="n">s</span><span class="p">]</span></div>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="FilterModes.make_filter_args"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.contexts.project.FilterModes.make_filter_args">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">make_filter_args</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="bp">cls</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">{}</span>
@@ -144,11 +144,11 @@
                 <span class="s1">&#39;remove_empty&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="FilterModes.list_options"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.contexts.project.FilterModes.list_options">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">list_options</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">]</span></div></div>
 
 <span class="k">def</span> <span class="nf">build_export_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
     <span class="n">builtins</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">Environment</span><span class="p">()</span><span class="o">.</span><span class="n">converters</span><span class="p">)</span>
@@ -1007,7 +1007,7 @@
   <hr/>
 
   <div role="contentinfo">
-  <p>&#169; Copyright .
+  <p>&#169; Copyright 2021, Intel.
     <div>
       <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
       |

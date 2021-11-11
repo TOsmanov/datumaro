@@ -109,7 +109,7 @@
 
 <span class="n">eq_default_if</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="c1"># avoid https://bugs.python.org/issue16399</span>
 
-<div class="viewcode-block" id="build_parser"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.diff.build_parser">[docs]</a><span class="k">def</span> <span class="nf">build_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">build_parser</span><span class="p">(</span><span class="n">parser_ctor</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">parser_ctor</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Compares two datasets&quot;</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        Compares two datasets. This command has multiple forms:|n</span>
@@ -211,14 +211,14 @@
     <span class="n">equality_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--all&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Include matches in the output&quot;</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">parser</span></div>
+    <span class="k">return</span> <span class="n">parser</span>
 
-<div class="viewcode-block" id="get_sensitive_args"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.diff.get_sensitive_args">[docs]</a><span class="k">def</span> <span class="nf">get_sensitive_args</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">get_sensitive_args</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="n">diff_command</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;first_target&#39;</span><span class="p">,</span> <span class="s1">&#39;second_target&#39;</span><span class="p">,</span> <span class="s1">&#39;dst_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;project_dir&#39;</span><span class="p">,],</span>
-    <span class="p">}</span></div>
+    <span class="p">}</span>
 
-<div class="viewcode-block" id="diff_command"><a class="viewcode-back" href="../../../../api/datumaro.cli.html#datumaro.cli.commands.diff.diff_command">[docs]</a><span class="nd">@scoped</span>
+<span class="nd">@scoped</span>
 <span class="k">def</span> <span class="nf">diff_command</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">dst_dir</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">dst_dir</span>
     <span class="k">if</span> <span class="n">dst_dir</span><span class="p">:</span>
@@ -300,7 +300,7 @@
             <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Saving diff to &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">dst_dir</span><span class="p">)</span>
             <span class="n">visualizer</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">first_dataset</span><span class="p">,</span> <span class="n">second_dataset</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="mi">0</span></div>
+    <span class="k">return</span> <span class="mi">0</span>
 </pre></div>
 
            </div>

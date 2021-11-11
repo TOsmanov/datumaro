@@ -140,7 +140,7 @@
     <span class="p">(</span><span class="s1">&#39;licenseplate&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">142</span><span class="p">)),</span>
 <span class="p">])</span>
 
-<div class="viewcode-block" id="CityscapesPath"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.cityscapes_format.CityscapesPath">[docs]</a><span class="k">class</span> <span class="nc">CityscapesPath</span><span class="p">:</span>
+<span class="k">class</span> <span class="nc">CityscapesPath</span><span class="p">:</span>
     <span class="n">GT_FINE_DIR</span> <span class="o">=</span> <span class="s1">&#39;gtFine&#39;</span>
     <span class="n">IMGS_FINE_DIR</span> <span class="o">=</span> <span class="s1">&#39;imgsFine&#39;</span>
     <span class="n">ORIGINAL_IMAGE_DIR</span> <span class="o">=</span> <span class="s1">&#39;leftImg8bit&#39;</span>
@@ -150,9 +150,9 @@
     <span class="n">COLOR_IMAGE</span> <span class="o">=</span> <span class="s1">&#39;_color.png&#39;</span>
     <span class="n">LABELIDS_IMAGE</span> <span class="o">=</span> <span class="s1">&#39;_labelIds.png&#39;</span>
 
-    <span class="n">LABELMAP_FILE</span> <span class="o">=</span> <span class="s1">&#39;label_colors.txt&#39;</span></div>
+    <span class="n">LABELMAP_FILE</span> <span class="o">=</span> <span class="s1">&#39;label_colors.txt&#39;</span>
 
-<div class="viewcode-block" id="make_cityscapes_categories"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.cityscapes_format.make_cityscapes_categories">[docs]</a><span class="k">def</span> <span class="nf">make_cityscapes_categories</span><span class="p">(</span><span class="n">label_map</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">make_cityscapes_categories</span><span class="p">(</span><span class="n">label_map</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">label_map</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">label_map</span> <span class="o">=</span> <span class="n">CityscapesLabelMap</span>
 
@@ -184,9 +184,9 @@
     <span class="n">mask_categories</span> <span class="o">=</span> <span class="n">MaskCategories</span><span class="p">(</span><span class="n">colormap</span><span class="p">)</span>
     <span class="n">mask_categories</span><span class="o">.</span><span class="n">inverse_colormap</span> <span class="c1"># pylint: disable=pointless-statement</span>
     <span class="n">categories</span><span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask_categories</span>
-    <span class="k">return</span> <span class="n">categories</span></div>
+    <span class="k">return</span> <span class="n">categories</span>
 
-<div class="viewcode-block" id="parse_label_map"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.cityscapes_format.parse_label_map">[docs]</a><span class="k">def</span> <span class="nf">parse_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">parse_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
 
@@ -212,19 +212,19 @@
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Label &#39;</span><span class="si">%s</span><span class="s2">&#39; is already defined&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
 
             <span class="n">label_map</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
-    <span class="k">return</span> <span class="n">label_map</span></div>
+    <span class="k">return</span> <span class="n">label_map</span>
 
-<div class="viewcode-block" id="write_label_map"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.cityscapes_format.write_label_map">[docs]</a><span class="k">def</span> <span class="nf">write_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">label_map</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">write_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">label_map</span><span class="p">):</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">label_name</span><span class="p">,</span> <span class="n">label_desc</span> <span class="ow">in</span> <span class="n">label_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">label_desc</span><span class="p">:</span>
                 <span class="n">color_rgb</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">label_desc</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">color_rgb</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">color_rgb</span><span class="p">,</span> <span class="n">label_name</span><span class="p">))</span></div>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">color_rgb</span><span class="p">,</span> <span class="n">label_name</span><span class="p">))</span>
 
 <div class="viewcode-block" id="CityscapesExtractor"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.cityscapes_format.CityscapesExtractor">[docs]</a><span class="k">class</span> <span class="nc">CityscapesExtractor</span><span class="p">(</span><span class="n">SourceExtractor</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="CityscapesExtractor.__init__"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.cityscapes_format.CityscapesExtractor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">assert</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">path</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">subset</span><span class="p">:</span>
@@ -249,7 +249,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">subset</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_categories</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_load_items</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_load_items</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></div>
 
     <span class="k">def</span> <span class="nf">_load_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="n">label_map</span> <span class="o">=</span> <span class="kc">None</span>
@@ -317,8 +317,8 @@
     <span class="k">def</span> <span class="nf">_lazy_extract_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
         <span class="k">return</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">mask</span> <span class="o">==</span> <span class="n">c</span></div>
 
-<div class="viewcode-block" id="CityscapesImporter"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.cityscapes_format.CityscapesImporter">[docs]</a><span class="k">class</span> <span class="nc">CityscapesImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
-<div class="viewcode-block" id="CityscapesImporter.find_sources"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.cityscapes_format.CityscapesImporter.find_sources">[docs]</a>    <span class="nd">@classmethod</span>
+<span class="k">class</span> <span class="nc">CityscapesImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">find_sources</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="n">sources</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_find_sources_recursive</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;cityscapes&#39;</span><span class="p">,</span>
             <span class="n">dirname</span><span class="o">=</span><span class="n">CityscapesPath</span><span class="o">.</span><span class="n">GT_FINE_DIR</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -329,13 +329,13 @@
                     <span class="n">CityscapesPath</span><span class="o">.</span><span class="n">ORIGINAL_IMAGE_DIR</span><span class="p">),</span>
                 <span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">sources</span></div></div>
+        <span class="k">return</span> <span class="n">sources</span>
 
 <div class="viewcode-block" id="LabelmapType"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.cityscapes_format.LabelmapType">[docs]</a><span class="k">class</span> <span class="nc">LabelmapType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
     <span class="n">cityscapes</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
     <span class="n">source</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="CityscapesConverter"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.cityscapes_format.CityscapesConverter">[docs]</a><span class="k">class</span> <span class="nc">CityscapesConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">CityscapesConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
     <span class="n">DEFAULT_IMAGE_EXT</span> <span class="o">=</span> <span class="s1">&#39;.png&#39;</span>
 
     <span class="nd">@staticmethod</span>
@@ -348,14 +348,14 @@
             <span class="kn">import</span> <span class="nn">argparse</span>
             <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">()</span>
 
-<div class="viewcode-block" id="CityscapesConverter.build_cmdline_parser"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.cityscapes_format.CityscapesConverter.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--label-map&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">_get_labelmap</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Labelmap file path or one of </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> \
                 <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">LabelmapType</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">parser</span></div>
+        <span class="k">return</span> <span class="n">parser</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span>
             <span class="n">apply_colormap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label_map</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -367,7 +367,7 @@
             <span class="n">label_map</span> <span class="o">=</span> <span class="n">LabelmapType</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_load_categories</span><span class="p">(</span><span class="n">label_map</span><span class="p">)</span>
 
-<div class="viewcode-block" id="CityscapesConverter.apply"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.cityscapes_format.CityscapesConverter.apply">[docs]</a>    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">subset_name</span><span class="p">,</span> <span class="n">subset</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="o">.</span><span class="n">subsets</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -413,14 +413,14 @@
                     <span class="n">mask_name</span> <span class="o">+</span> <span class="n">CityscapesPath</span><span class="o">.</span><span class="n">INSTANCES_IMAGE</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">save_mask</span><span class="p">(</span><span class="n">inst_mask_path</span><span class="p">,</span> <span class="n">compiled_mask</span><span class="o">.</span><span class="n">instance_mask</span><span class="p">,</span>
                     <span class="n">apply_colormap</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">save_label_map</span><span class="p">()</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_label_map</span><span class="p">()</span>
 
-<div class="viewcode-block" id="CityscapesConverter.save_label_map"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.cityscapes_format.CityscapesConverter.save_label_map">[docs]</a>    <span class="k">def</span> <span class="nf">save_label_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">save_label_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_dir</span><span class="p">,</span> <span class="n">CityscapesPath</span><span class="o">.</span><span class="n">LABELMAP_FILE</span><span class="p">)</span>
         <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="o">.</span><span class="n">categories</span><span class="p">()[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">]</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_label_map</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_label_map</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;background&#39;</span><span class="p">)</span>
-        <span class="n">write_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label_map</span><span class="p">)</span></div>
+        <span class="n">write_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label_map</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_load_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_map_source</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">label_map_source</span> <span class="o">==</span> <span class="n">LabelmapType</span><span class="o">.</span><span class="n">cityscapes</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
@@ -485,15 +485,15 @@
 
         <span class="k">return</span> <span class="n">map_id</span>
 
-<div class="viewcode-block" id="CityscapesConverter.save_mask"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.cityscapes_format.CityscapesConverter.save_mask">[docs]</a>    <span class="k">def</span> <span class="nf">save_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">apply_colormap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">save_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">apply_colormap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">apply_colormap</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">colormap</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">colormap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">colormap</span>
             <span class="n">mask</span> <span class="o">=</span> <span class="n">paint_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">colormap</span><span class="p">)</span>
-        <span class="n">save_image</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">create_dir</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span></div>
+        <span class="n">save_image</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">create_dir</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
 
-<div class="viewcode-block" id="CityscapesConverter.patch"><a class="viewcode-back" href="../../../api/datumaro.plugins.html#datumaro.plugins.cityscapes_format.CityscapesConverter.patch">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">patch</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">patch</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">subset</span> <span class="ow">in</span> <span class="n">patch</span><span class="o">.</span><span class="n">updated_subsets</span><span class="p">:</span>
             <span class="n">conv</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_subset</span><span class="p">(</span><span class="n">subset</span><span class="p">),</span> <span class="n">save_dir</span><span class="o">=</span><span class="n">save_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -538,7 +538,7 @@
             <span class="n">img_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">save_dir</span><span class="p">,</span> <span class="n">CityscapesPath</span><span class="o">.</span><span class="n">IMGS_FINE_DIR</span><span class="p">,</span>
                 <span class="n">CityscapesPath</span><span class="o">.</span><span class="n">ORIGINAL_IMAGE_DIR</span><span class="p">,</span> <span class="n">subset</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">img_dir</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">img_dir</span><span class="p">):</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">img_dir</span><span class="p">)</span></div></div>
+                <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">img_dir</span><span class="p">)</span>
 </pre></div>
 
            </div>
