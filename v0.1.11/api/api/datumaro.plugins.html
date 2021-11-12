@@ -965,9 +965,11 @@ to the specified ratio, keeping the initial class distribution.</p>
 <p>In this task, the test set should consist of images of unseen
 people or objects during the training phase. 
 
-This function splits a dataset in the following way:
-
-1. Splits the dataset into ‘train + val’ and ‘test’ sets</p>
+This function splits a dataset in the following way:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Splits the dataset into ‘train + val’ and ‘test’ sets</p></li>
+</ol>
 <blockquote>
 <div><p>based on person or object ID.</p>
 </div></blockquote>
@@ -983,27 +985,25 @@ This function splits a dataset in the following way:
 <blockquote>
 <div><p>in the same way.</p>
 </div></blockquote>
+</div></blockquote>
 <p>The final subsets would be
 ‘train’, ‘val’, ‘test-gallery’ and ‘test-query’.</p>
-<p>Notes:
-
-- Each image is expected to have only one Annotation. Unlabeled or
-multi-labeled images will be split into subsets randomly. 
-
-- If Labels also have attributes, also splits by attribute values.
-
-- If there is not enough images in some class or attributes group,
+<dl class="simple">
+<dt>Notes:
+</dt><dd><ul class="simple">
+<li><p>Each image is expected to have only one Annotation. Unlabeled or
+multi-labeled images will be split into subsets randomly.</p></li>
+<li><p>If Labels also have attributes, also splits by attribute values.</p></li>
+<li><p>If there is not enough images in some class or attributes group,
 the split ratio can’t be guaranteed.
 
-In reidentification task, 
+In reidentification task,</p></li>
+<li><p>Object ID can be described by Label, or by attribute (–attr parameter)</p></li>
+<li><p>The splits of the test set are controlled by ‘–query’ parameter 
 
-- Object ID can be described by Label, or by attribute (–attr parameter)
-
-- The splits of the test set are controlled by ‘–query’ parameter</p>
-<blockquote>
-<div><p>Gallery ratio would be 1.0 - query.</p>
-</div></blockquote>
-<dl class="simple">
+Gallery ratio would be 1.0 - query.</p></li>
+</ul>
+</dd>
 <dt>Example:
 </dt><dd><p>%(prog)s -t classification –subset train:.5 –subset val:.2 –subset test:.3 
 

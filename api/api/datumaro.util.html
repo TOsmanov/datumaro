@@ -52,7 +52,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Utilities</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-datumaro.util.annotation_util">Annotation_util module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-datumaro.util.attrs_util">Attrs_util module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#image-module">Image module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datumaro.util.image">Image module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-datumaro.util.image_cache">Image_cache module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-datumaro.util.log_utils">Log_utils module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-datumaro.util.mask_tools">Mask_tools module</a></li>
@@ -153,15 +153,9 @@ dict: dst id -&gt; dst label</p>
 <div class="section" id="module-datumaro.util.attrs_util">
 <span id="attrs-util-module"></span><h2>Attrs_util module<a class="headerlink" href="#module-datumaro.util.attrs_util" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="image-module">
-<h2>Image module<a class="headerlink" href="#image-module" title="Permalink to this headline">¶</a></h2>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="datumaro.util.image">
-<span class="sig-prename descclassname"><span class="pre">datumaro.util.</span></span><span class="sig-name descname"><span class="pre">image</span></span><a class="headerlink" href="#datumaro.util.image" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of &lt;module ‘datumaro.util.image’ from ‘C:\Git\api-documentation-sphinx\datumaro\datumaro\util\image.py’&gt;</p>
-</dd></dl>
-
-<span class="target" id="module-datumaro.util.image"></span><dl class="py function">
+<div class="section" id="module-datumaro.util.image">
+<span id="image-module"></span><h2>Image module<a class="headerlink" href="#module-datumaro.util.image" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-0"></span><dl class="py function">
 <dt class="sig sig-object py" id="datumaro.util.image.load_image">
 <span class="sig-prename descclassname"><span class="pre">datumaro.util.image.</span></span><span class="sig-name descname"><span class="pre">load_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em>, <em class="sig-param"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/image.html#load_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.image.load_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads an image in the HWC Grayscale/BGR(A) float [0; 255] format.</p>
@@ -403,6 +397,23 @@ is not available.</p>
 <div class="section" id="module-datumaro.util.test_utils">
 <span id="test-utils-module"></span><h2>Test_utils module<a class="headerlink" href="#module-datumaro.util.test_utils" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
+<dt class="sig sig-object py" id="datumaro.util.test_utils.Dimensions">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.util.test_utils.</span></span><span class="sig-name descname"><span class="pre">Dimensions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/test_utils.html#Dimensions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.test_utils.Dimensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.util.test_utils.Dimensions.dim_2d">
+<span class="sig-name descname"><span class="pre">dim_2d</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.util.test_utils.Dimensions.dim_2d" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.util.test_utils.Dimensions.dim_3d">
+<span class="sig-name descname"><span class="pre">dim_3d</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.util.test_utils.Dimensions.dim_3d" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-1"></span><dl class="py class">
 <dt class="sig sig-object py" id="datumaro.util.test_utils.TestDir">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.util.test_utils.</span></span><span class="sig-name descname"><span class="pre">TestDir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/util/test_utils.html#TestDir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.test_utils.TestDir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.util.test_utils.FileRemover</span></code></p>
