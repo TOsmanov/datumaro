@@ -1076,9 +1076,11 @@ labels in different subsets.</p>
 <p>In this task, the test set should consist of images of unseen
 people or objects during the training phase. 
 
-This function splits a dataset in the following way:
-
-1. Splits the dataset into ‘train + val’ and ‘test’ sets</p>
+This function splits a dataset in the following way:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Splits the dataset into ‘train + val’ and ‘test’ sets</p></li>
+</ol>
 <blockquote>
 <div><p>based on person or object ID.</p>
 </div></blockquote>
@@ -1094,21 +1096,20 @@ This function splits a dataset in the following way:
 <blockquote>
 <div><p>in the same way.</p>
 </div></blockquote>
+</div></blockquote>
 <p>The final subsets would be
 ‘train’, ‘val’, ‘test-gallery’ and ‘test-query’.</p>
-<p>Notes:
-
-- Each image is expected to have a single Label. Unlabeled or multi-labeled</p>
-<blockquote>
-<div><p>images will be split into ‘not-supported’.</p>
-</div></blockquote>
-<ul class="simple">
+<dl>
+<dt>Notes:
+</dt><dd><ul class="simple">
+<li><p>Each image is expected to have a single Label. Unlabeled or multi-labeled
+images will be split into ‘not-supported’.</p></li>
 <li><p>Object ID can be described by Label, or by attribute (–attr parameter)</p></li>
 <li><p>The splits of the test set are controlled by ‘–query’ parameter. 
 
 Gallery ratio would be 1.0 - query.</p></li>
 </ul>
-<dl>
+</dd>
 <dt>Example: split a dataset in the specified ratio, split the test set
 </dt><dd><blockquote>
 <div><p>into gallery and query in 1:1 ratio</p>
@@ -2613,118 +2614,7 @@ for sample selection. default: ‘entropy’</p></li>
 
 </dd></dl>
 
-<dl class="py class">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.converter.</span></span><span class="sig-name descname"><span class="pre">VocConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tasks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_colormap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_attributes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_empty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.converter.Converter</span></code></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.DEFAULT_IMAGE_EXT">
-<span class="sig-name descname"><span class="pre">DEFAULT_IMAGE_EXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'.jpg'</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.DEFAULT_IMAGE_EXT" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.BUILTIN_ATTRS">
-<span class="sig-name descname"><span class="pre">BUILTIN_ATTRS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'difficult',</span> <span class="pre">'occluded',</span> <span class="pre">'pose',</span> <span class="pre">'truncated'}</span></em><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.BUILTIN_ATTRS" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.build_cmdline_parser">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocConverter.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.build_cmdline_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.apply">
-<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocConverter.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.apply" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.make_dirs">
-<span class="sig-name descname"><span class="pre">make_dirs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocConverter.make_dirs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.make_dirs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.get_label">
-<span class="sig-name descname"><span class="pre">get_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocConverter.get_label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.get_label" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.save_subsets">
-<span class="sig-name descname"><span class="pre">save_subsets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocConverter.save_subsets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.save_subsets" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.save_action_lists">
-<span class="sig-name descname"><span class="pre">save_action_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocConverter.save_action_lists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.save_action_lists" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.save_class_lists">
-<span class="sig-name descname"><span class="pre">save_class_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_lists</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocConverter.save_class_lists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.save_class_lists" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.save_clsdet_lists">
-<span class="sig-name descname"><span class="pre">save_clsdet_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clsdet_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocConverter.save_clsdet_lists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.save_clsdet_lists" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.save_segm_lists">
-<span class="sig-name descname"><span class="pre">save_segm_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segm_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocConverter.save_segm_lists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.save_segm_lists" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.save_layout_lists">
-<span class="sig-name descname"><span class="pre">save_layout_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocConverter.save_layout_lists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.save_layout_lists" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.save_segm">
-<span class="sig-name descname"><span class="pre">save_segm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colormap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocConverter.save_segm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.save_segm" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.save_label_map">
-<span class="sig-name descname"><span class="pre">save_label_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocConverter.save_label_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.save_label_map" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocConverter.patch">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">patch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocConverter.patch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocConverter.patch" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocClassificationConverter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.converter.</span></span><span class="sig-name descname"><span class="pre">VocClassificationConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocClassificationConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocClassificationConverter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.voc_format.converter.VocConverter" title="datumaro.plugins.voc_format.converter.VocConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.converter.VocConverter</span></code></a></p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocDetectionConverter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.converter.</span></span><span class="sig-name descname"><span class="pre">VocDetectionConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocDetectionConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocDetectionConverter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.voc_format.converter.VocConverter" title="datumaro.plugins.voc_format.converter.VocConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.converter.VocConverter</span></code></a></p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocLayoutConverter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.converter.</span></span><span class="sig-name descname"><span class="pre">VocLayoutConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocLayoutConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocLayoutConverter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.voc_format.converter.VocConverter" title="datumaro.plugins.voc_format.converter.VocConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.converter.VocConverter</span></code></a></p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocActionConverter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.converter.</span></span><span class="sig-name descname"><span class="pre">VocActionConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocActionConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocActionConverter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.voc_format.converter.VocConverter" title="datumaro.plugins.voc_format.converter.VocConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.converter.VocConverter</span></code></a></p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="datumaro.plugins.voc_format.converter.VocSegmentationConverter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.voc_format.converter.</span></span><span class="sig-name descname"><span class="pre">VocSegmentationConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/datumaro/plugins/voc_format/converter.html#VocSegmentationConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.voc_format.converter.VocSegmentationConverter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.voc_format.converter.VocConverter" title="datumaro.plugins.voc_format.converter.VocConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.voc_format.converter.VocConverter</span></code></a></p>
-</dd></dl>
-
-</div>
+<span class="target" id="module-9"></span></div>
 <div class="section" id="module-datumaro.plugins.voc_format.extractor">
 <span id="datumaro-plugins-voc-format-extractor-module"></span><h3>datumaro.plugins.voc_format.extractor module<a class="headerlink" href="#module-datumaro.plugins.voc_format.extractor" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
