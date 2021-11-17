@@ -118,120 +118,120 @@
            <div itemprop="articleBody">
              
   <div class="section" id="module-datumaro.plugins.kitti_raw_format.format">
-<span id="format-module"></span><h1>format module<a class="headerlink" href="#module-datumaro.plugins.kitti_raw_format.format" title="Permalink to this headline">¶</a></h1>
+<span id="format-module"></span><h1>format module<a class="headerlink" href="#module-datumaro.plugins.kitti_raw_format.format" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.KittiRawPath">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.kitti_raw_format.format.</span></span><span class="sig-name descname"><span class="pre">KittiRawPath</span></span><a class="reference internal" href="../../../_modules/datumaro/plugins/kitti_raw_format/format.html#KittiRawPath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.KittiRawPath" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.kitti_raw_format.format.</span></span><span class="sig-name descname"><span class="pre">KittiRawPath</span></span><a class="reference internal" href="../../../_modules/datumaro/plugins/kitti_raw_format/format.html#KittiRawPath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.KittiRawPath" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.KittiRawPath.PCD_DIR">
-<span class="sig-name descname"><span class="pre">PCD_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'velodyne_points\\data'</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.KittiRawPath.PCD_DIR" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">PCD_DIR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'velodyne_points\\data'</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.KittiRawPath.PCD_DIR" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.KittiRawPath.IMG_DIR_PREFIX">
-<span class="sig-name descname"><span class="pre">IMG_DIR_PREFIX</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'image_'</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.KittiRawPath.IMG_DIR_PREFIX" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">IMG_DIR_PREFIX</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'image_'</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.KittiRawPath.IMG_DIR_PREFIX" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.KittiRawPath.BUILTIN_ATTRS">
-<span class="sig-name descname"><span class="pre">BUILTIN_ATTRS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'occluded',</span> <span class="pre">'occlusion',</span> <span class="pre">'truncation'}</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.KittiRawPath.BUILTIN_ATTRS" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">BUILTIN_ATTRS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'occluded',</span> <span class="pre">'occlusion',</span> <span class="pre">'truncation'}</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.KittiRawPath.BUILTIN_ATTRS" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.KittiRawPath.SPECIAL_ATTRS">
-<span class="sig-name descname"><span class="pre">SPECIAL_ATTRS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'track_id'}</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.KittiRawPath.SPECIAL_ATTRS" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">SPECIAL_ATTRS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'track_id'}</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.KittiRawPath.SPECIAL_ATTRS" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.KittiRawPath.ANNO_FILE">
-<span class="sig-name descname"><span class="pre">ANNO_FILE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'tracklet_labels.xml'</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.KittiRawPath.ANNO_FILE" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">ANNO_FILE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'tracklet_labels.xml'</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.KittiRawPath.ANNO_FILE" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.KittiRawPath.NAME_MAPPING_FILE">
-<span class="sig-name descname"><span class="pre">NAME_MAPPING_FILE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'frame_list.txt'</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.KittiRawPath.NAME_MAPPING_FILE" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">NAME_MAPPING_FILE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'frame_list.txt'</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.KittiRawPath.NAME_MAPPING_FILE" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.PoseStates">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.kitti_raw_format.format.</span></span><span class="sig-name descname"><span class="pre">PoseStates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/kitti_raw_format/format.html#PoseStates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.PoseStates" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.kitti_raw_format.format.</span></span><span class="sig-name descname"><span class="pre">PoseStates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/kitti_raw_format/format.html#PoseStates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.PoseStates" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
 <p>An enumeration.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.PoseStates.UNSET">
-<span class="sig-name descname"><span class="pre">UNSET</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.PoseStates.UNSET" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">UNSET</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.PoseStates.UNSET" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.PoseStates.INTERP">
-<span class="sig-name descname"><span class="pre">INTERP</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.PoseStates.INTERP" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">INTERP</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.PoseStates.INTERP" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.PoseStates.LABELED">
-<span class="sig-name descname"><span class="pre">LABELED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.PoseStates.LABELED" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">LABELED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.PoseStates.LABELED" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.OcclusionStates">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.kitti_raw_format.format.</span></span><span class="sig-name descname"><span class="pre">OcclusionStates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/kitti_raw_format/format.html#OcclusionStates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.OcclusionStates" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.kitti_raw_format.format.</span></span><span class="sig-name descname"><span class="pre">OcclusionStates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/kitti_raw_format/format.html#OcclusionStates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.OcclusionStates" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
 <p>An enumeration.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.OcclusionStates.OCCLUSION_UNSET">
-<span class="sig-name descname"><span class="pre">OCCLUSION_UNSET</span></span><em class="property"> <span class="pre">=</span> <span class="pre">-1</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.OcclusionStates.OCCLUSION_UNSET" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">OCCLUSION_UNSET</span></span><em class="property"> <span class="pre">=</span> <span class="pre">-1</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.OcclusionStates.OCCLUSION_UNSET" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.OcclusionStates.VISIBLE">
-<span class="sig-name descname"><span class="pre">VISIBLE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.OcclusionStates.VISIBLE" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">VISIBLE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.OcclusionStates.VISIBLE" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.OcclusionStates.PARTLY">
-<span class="sig-name descname"><span class="pre">PARTLY</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.OcclusionStates.PARTLY" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">PARTLY</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.OcclusionStates.PARTLY" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.OcclusionStates.FULLY">
-<span class="sig-name descname"><span class="pre">FULLY</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.OcclusionStates.FULLY" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">FULLY</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.OcclusionStates.FULLY" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.TruncationStates">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.kitti_raw_format.format.</span></span><span class="sig-name descname"><span class="pre">TruncationStates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/kitti_raw_format/format.html#TruncationStates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.TruncationStates" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.kitti_raw_format.format.</span></span><span class="sig-name descname"><span class="pre">TruncationStates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/kitti_raw_format/format.html#TruncationStates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.TruncationStates" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
 <p>An enumeration.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.TruncationStates.TRUNCATION_UNSET">
-<span class="sig-name descname"><span class="pre">TRUNCATION_UNSET</span></span><em class="property"> <span class="pre">=</span> <span class="pre">-1</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.TruncationStates.TRUNCATION_UNSET" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">TRUNCATION_UNSET</span></span><em class="property"> <span class="pre">=</span> <span class="pre">-1</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.TruncationStates.TRUNCATION_UNSET" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.TruncationStates.IN_IMAGE">
-<span class="sig-name descname"><span class="pre">IN_IMAGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.TruncationStates.IN_IMAGE" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">IN_IMAGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.TruncationStates.IN_IMAGE" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.TruncationStates.TRUNCATED">
-<span class="sig-name descname"><span class="pre">TRUNCATED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.TruncationStates.TRUNCATED" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">TRUNCATED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.TruncationStates.TRUNCATED" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.TruncationStates.OUT_IMAGE">
-<span class="sig-name descname"><span class="pre">OUT_IMAGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.TruncationStates.OUT_IMAGE" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">OUT_IMAGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.TruncationStates.OUT_IMAGE" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.plugins.kitti_raw_format.format.TruncationStates.BEHIND_IMAGE">
-<span class="sig-name descname"><span class="pre">BEHIND_IMAGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">99</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.TruncationStates.BEHIND_IMAGE" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">BEHIND_IMAGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">99</span></em><a class="headerlink" href="#datumaro.plugins.kitti_raw_format.format.TruncationStates.BEHIND_IMAGE" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
