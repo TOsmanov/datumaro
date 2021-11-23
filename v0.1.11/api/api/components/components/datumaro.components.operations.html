@@ -87,14 +87,90 @@
   <div class="section" id="operations-module">
 <h1>operations module<a class="headerlink" href="#operations-module" title="Permalink to this headline"></a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="datumaro.components.operations.IntersectMerge">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">IntersectMerge</span></span><a class="headerlink" href="#datumaro.components.operations.IntersectMerge" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="IntersectMerge">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">IntersectMerge</span></span><a class="headerlink" href="#IntersectMerge" title="Permalink to this definition"></a></dt>
+<dd><p><strong>Error trackers:</strong></p>
+<dl class="py data">
+<dt class="sig sig-object py" id="IntersectMerge.attrib">
+<span class="sig-name descname"><span class="pre">attrib</span></span><a class="headerlink" href="#IntersectMerge.attrib" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="IntersectMerge.add_item_error">
+<span class="sig-name descname"><span class="pre">add_item_error</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#IntersectMerge.add_item_error" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<p><strong>Indexes:</strong></p>
+<dl class="py data">
+<dt class="sig sig-object py" id="IntersectMerge._dataset_map">
+<span class="sig-name descname"><span class="pre">_dataset_map</span></span><a class="headerlink" href="#IntersectMerge._dataset_map" title="Permalink to this definition"></a></dt>
+<dd><p>id(dataset) -&gt; (dataset, index)</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="IntersectMerge._item_map">
+<span class="sig-name descname"><span class="pre">_item_map</span></span><a class="headerlink" href="#IntersectMerge._item_map" title="Permalink to this definition"></a></dt>
+<dd><p>id(item) -&gt; (item, id(dataset))</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="IntersectMerge._ann_map">
+<span class="sig-name descname"><span class="pre">_ann_map</span></span><a class="headerlink" href="#IntersectMerge._ann_map" title="Permalink to this definition"></a></dt>
+<dd><p>id(ann) -&gt; (ann, id(item))</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="IntersectMerge._item_id">
+<span class="sig-name descname"><span class="pre">_item_id</span></span><a class="headerlink" href="#IntersectMerge._item_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="IntersectMerge._item">
+<span class="sig-name descname"><span class="pre">_item</span></span><a class="headerlink" href="#IntersectMerge._item" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<p><strong>Misc.</strong></p>
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">_categories</span> <span class="pre">=</span> <span class="pre">attrib(init=False)</span>&#160; <span class="pre">merged</span> <span class="pre">categories</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="find_cluster_groups">
+<span id="_find_cluster_groups"></span><span class="sig-name descname"><span class="pre">_find_cluster_groups</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clusters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#find_cluster_groups" title="Permalink to this definition"></a></dt>
+<dd><p>Find segment groups in the cluster group.
+And also find adjacent clusters after all the segment groups
+in this cluster group have been found.
+Annotation without a group will be skipped.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="match_annotations">
+<span class="sig-name descname"><span class="pre">match_annotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#match_annotations" title="Permalink to this definition"></a></dt>
+<dd><p>Match segments in sources, pairwise.
+Join all segments into matching clusters.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="LineMatcher">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">LineMatcher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_ShapeMatcher</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#LineMatcher" title="Permalink to this definition"></a></dt>
+<dd><p>Compute inter-line area, normalize by common bbox</p>
+</dd></dl>
 
 <span class="target" id="module-datumaro.components.operations"></span><dl class="py function">
 <dt class="sig sig-object py" id="datumaro.components.operations.mean_std">
 <span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">mean_std</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#mean_std"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.mean_std" title="Permalink to this definition"></a></dt>
 <dd><p>Computes unbiased mean and std. dev. for dataset images, channel-wise.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.operations.StatsCounter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">StatsCounter</span></span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#StatsCounter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.StatsCounter" title="Permalink to this definition"></a></dt>
+<dd><p>Implements online parallel computation of sample variance
+<a class="reference external" href="https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Parallel_algorithm">https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Parallel_algorithm</a>
+Needed do avoid catastrophic cancellation in floating point computations</p>
 </dd></dl>
 
 </div>
