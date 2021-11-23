@@ -218,7 +218,7 @@
     <span class="k">def</span> <span class="nf">merge_categories</span><span class="p">(</span><span class="n">sources</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">merge_categories</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
 
-<span class="nd">@attrs</span>
+<div class="viewcode-block" id="IntersectMerge"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.IntersectMerge">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">IntersectMerge</span><span class="p">(</span><span class="n">MergingStrategy</span><span class="p">):</span>
     <span class="nd">@attrs</span><span class="p">(</span><span class="n">repr_ns</span><span class="o">=</span><span class="s1">&#39;IntersectMerge&#39;</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">class</span> <span class="nc">Conf</span><span class="p">:</span>
@@ -245,8 +245,8 @@
 
     <span class="c1"># Error trackers:</span>
     <span class="n">errors</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">list</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">add_item_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_item_id</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+<div class="viewcode-block" id="IntersectMerge.add_item_error"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.IntersectMerge.add_item_error">[docs]</a>    <span class="k">def</span> <span class="nf">add_item_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_item_id</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span></div>
 
     <span class="c1"># Indexes:</span>
     <span class="n">_dataset_map</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># id(dataset) -&gt; (dataset, index)</span>
@@ -549,7 +549,7 @@
     <span class="k">def</span> <span class="nf">_merge_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">clusters</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mergers</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">.</span><span class="n">merge_clusters</span><span class="p">(</span><span class="n">clusters</span><span class="p">)</span>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="IntersectMerge._find_cluster_groups"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.IntersectMerge._find_cluster_groups">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_find_cluster_groups</span><span class="p">(</span><span class="n">clusters</span><span class="p">):</span>
         <span class="n">cluster_groups</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
@@ -579,7 +579,7 @@
             <span class="k">if</span> <span class="n">a_groups</span> <span class="o">==</span> <span class="p">{</span><span class="mi">0</span><span class="p">}:</span>
                 <span class="k">continue</span> <span class="c1"># skip annotations without a group</span>
             <span class="n">cluster_groups</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">(</span><span class="n">cluster_group</span><span class="p">,</span> <span class="n">a_groups</span><span class="p">)</span> <span class="p">)</span>
-        <span class="k">return</span> <span class="n">cluster_groups</span>
+        <span class="k">return</span> <span class="n">cluster_groups</span></div>
 
     <span class="k">def</span> <span class="nf">_find_cluster_attrs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">ann</span><span class="p">):</span>
         <span class="n">quorum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">quorum</span> <span class="ow">or</span> <span class="mi">0</span>
@@ -712,7 +712,7 @@
                         <span class="s2">&quot;label &#39;</span><span class="si">%s</span><span class="s2">&#39;, available labels </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> \
                         <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span>
                             <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">])</span>
-                    <span class="p">)</span>
+                    <span class="p">)</span></div>
 
 <span class="nd">@attrs</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">AnnotationMatcher</span><span class="p">:</span>
@@ -731,12 +731,12 @@
     <span class="k">def</span> <span class="nf">match_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sources</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="p">[])]</span>
 
-<span class="nd">@attrs</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="viewcode-block" id="_ShapeMatcher"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations._ShapeMatcher">[docs]</a><span class="nd">@attrs</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">_ShapeMatcher</span><span class="p">(</span><span class="n">AnnotationMatcher</span><span class="p">):</span>
     <span class="n">pairwise_dist</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
     <span class="n">cluster_dist</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">match_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sources</span><span class="p">):</span>
+<div class="viewcode-block" id="_ShapeMatcher.match_annotations"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations._ShapeMatcher.match_annotations">[docs]</a>    <span class="k">def</span> <span class="nf">match_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sources</span><span class="p">):</span>
         <span class="n">distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance</span>
         <span class="n">label_matcher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">label_matcher</span>
         <span class="n">pairwise_dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pairwise_dist</span>
@@ -800,7 +800,7 @@
 
             <span class="n">clusters</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">id_segm</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">])</span>
 
-        <span class="k">return</span> <span class="n">clusters</span>
+        <span class="k">return</span> <span class="n">clusters</span></div>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -809,7 +809,7 @@
     <span class="k">def</span> <span class="nf">label_matcher</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="n">a_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">_get_any_label_name</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
         <span class="n">b_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">_get_any_label_name</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">a_label</span> <span class="o">==</span> <span class="n">b_label</span>
+        <span class="k">return</span> <span class="n">a_label</span> <span class="o">==</span> <span class="n">b_label</span></div>
 
 <span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">BboxMatcher</span><span class="p">(</span><span class="n">_ShapeMatcher</span><span class="p">):</span>
@@ -836,7 +836,7 @@
         <span class="n">bbox</span> <span class="o">=</span> <span class="n">mean_bbox</span><span class="p">([</span><span class="n">a_bbox</span><span class="p">,</span> <span class="n">b_bbox</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">OKS</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">)</span>
 
-<span class="nd">@attrs</span>
+<div class="viewcode-block" id="LineMatcher"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.LineMatcher">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">LineMatcher</span><span class="p">(</span><span class="n">_ShapeMatcher</span><span class="p">):</span>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -854,7 +854,7 @@
         <span class="n">dists</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">dists</span> <span class="o">=</span> <span class="p">(</span><span class="n">dists</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dists</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">*</span> <span class="mf">0.5</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dists</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">sa</span> <span class="o">+</span> <span class="n">sb</span><span class="p">)</span> <span class="o">/</span> <span class="n">area</span>
-        <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span></div>
 
 <span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">CaptionsMatcher</span><span class="p">(</span><span class="n">AnnotationMatcher</span><span class="p">):</span>
