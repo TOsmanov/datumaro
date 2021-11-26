@@ -94,7 +94,7 @@
       <a class="dropdown-item" href="../../../v0.1.11/docs/user-manual/">v0.1.11</a>
   
     
-      <a class="dropdown-item" href="../../../v0.2/docs/user-manual/">v0.2</a>
+      <a class="dropdown-item" href="../../../v0.2.1/docs/user-manual/">v0.2.1</a>
   
 </div>
 
@@ -114,7 +114,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.8e2162d9f4e90f2f1eea740ce0b8844e.json"
+  data-offline-search-index-json-src="../../../offline-search-index.f172a40528072ff5821c6df7cbb8cdff.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -1072,6 +1072,13 @@ datum <span style="color:#204a87">export</span> -f voc -- --save-images
 <li><a href="../../../docs/formats/sly_pointcloud">Format documentation</a></li>
 </ul>
 </li>
+<li>SYNTHIA (<code>segmentation</code>)
+<ul>
+<li><a href="https://synthia-dataset.net/">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/synthia_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/synthia">Format documentation</a></li>
+</ul>
+</li>
 <li>CVAT
 <ul>
 <li><a href="https://openvinotoolkit.github.io/cvat/docs/manual/advanced/xml_format">Format specification</a></li>
@@ -1131,6 +1138,21 @@ datum <span style="color:#204a87">export</span> -f voc -- --save-images
 <p>Datumaro does not separate datasets by tasks like classification, detection
 etc. Instead, datasets can have any annotations. When a dataset is exported
 in a specific format, only relevant annotations are exported.</p>
+<h3 id="dataset-meta-info-file-a-iddataset-meta-filea">Dataset meta info file <a id="dataset-meta-file"></a></h3>
+<p>It is possible to use classes that are not original to the format.
+To do this, use <code>dataset_meta.json</code>.</p>
+<pre><code>{
+&quot;label_map&quot;: {&quot;0&quot;: &quot;background&quot;, &quot;1&quot;: &quot;car&quot;, &quot;2&quot;: &quot;person&quot;},
+&quot;segmentation_colors&quot;: [[0, 0, 0], [255, 0, 0], [0, 0, 255]],
+&quot;background_label&quot;: &quot;0&quot;
+}
+</code></pre><ul>
+<li><code>label_map</code> is a dictionary where the class ID is the key and
+the class name is the value.</li>
+<li><code>segmentation_colors</code> is a list of channel-wise values for each class.
+This is only necessary for the segmentation task.</li>
+<li><code>background_label</code> is a background label ID in the dataset.</li>
+</ul>
 
 </div>
 
@@ -1594,6 +1616,12 @@ were the same, we could just join the datasets. But in this case we need
 to merge labels and adjust the annotations in the resulting dataset.</p>
 <p>In Datumaro, it can be done with the <code>merge</code> command. This command merges 2
 or more datasets and checks annotations for errors.</p>
+<blockquote>
+<p>In simple cases, when dataset images do not intersect and new
+labels are not added, the recommended way of merging is using
+<a href="../../../docs/user-manual/command-reference/patch/">the <code>patch</code> command</a>.
+It will offer better performance and provide the same results.</p>
+</blockquote>
 <p>Datasets are merged by items, and item annotations are merged by finding the
 unique ones across datasets. Annotations are matched between matching dataset
 items by distance. Spatial annotations are compared by the applicable distance
@@ -1628,11 +1656,16 @@ in the working tree with the specified dataset.</p>
 <p>2 - Merges the specified datasets.
 Note that the current project is not included in the list of merged
 sources automatically.</p>
+<p>The command supports passing extra exporting options for the output
+dataset. The format can be specified with the <code>-f/--format</code> option.
+Extra options should be passed after the main arguments
+and after the <code>--</code> separator. Particularly, this is useful to include
+images in the output dataset with <code>--save-images</code>.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum merge <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-iou IOU_THRESH<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-oconf OUTPUT_CONF_THRESH<span style="color:#ce5c00;font-weight:bold">]</span>
   <span style="color:#ce5c00;font-weight:bold">[</span>--quorum QUORUM<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-g GROUPS<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-o DST_DIR<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--overwrite<span style="color:#ce5c00;font-weight:bold">]</span>
-  <span style="color:#ce5c00;font-weight:bold">[</span>-p PROJECT_DIR<span style="color:#ce5c00;font-weight:bold">]</span>
-  target <span style="color:#ce5c00;font-weight:bold">[</span>target ...<span style="color:#ce5c00;font-weight:bold">]</span>
+  <span style="color:#ce5c00;font-weight:bold">[</span>-p PROJECT_DIR<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-f FORMAT<span style="color:#ce5c00;font-weight:bold">]</span>
+  target <span style="color:#ce5c00;font-weight:bold">[</span>target ...<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-- EXTRA_FORMAT_ARGS<span style="color:#ce5c00;font-weight:bold">]</span>
 </code></pre></div><p>Parameters:</p>
 <ul>
 <li><code>&lt;target&gt;</code> (string) - Target <a href="../../../docs/user-manual/how_to_use_datumaro/#revpath">dataset revpaths</a> (repeatable)</li>
@@ -1649,9 +1682,12 @@ annotations to be included in the resulting dataset. Default is 0.</li>
 is created in the current directory.</li>
 <li><code>--overwrite</code> - Allows to overwrite existing files in the output directory,
 when it is specified and is not empty.</li>
+<li><code>-f, --format</code> (string) - Output format. The default format is <code>datumaro</code>.</li>
 <li><code>-p, --project</code> (string) - Directory of the project to operate on
 (default: current directory).</li>
 <li><code>-h, --help</code> - Print the help message and exit.</li>
+<li><code>-- &lt;extra format args&gt;</code> - Additional arguments for the format writer
+(use <code>-- -h</code> for help). Must be specified after the main command arguments.</li>
 </ul>
 <p>Examples:</p>
 <p>Merge 4 (partially-)intersecting projects,</p>
@@ -1676,6 +1712,8 @@ look for groups consisting of <code>person</code>, <code>hand</code> <code>head<
 <code>datum merge path/to/dataset2:coco</code></p>
 <p>Merge a source from a previous revision and a dataset:
 <code>datum merge HEAD~2:source-2 path/to/dataset2:yolo</code></p>
+<p>Merge datasets and save in different format:
+<code>datum merge -f voc dataset1/:yolo path2/:coco -- --save-images</code></p>
 
 </div>
 

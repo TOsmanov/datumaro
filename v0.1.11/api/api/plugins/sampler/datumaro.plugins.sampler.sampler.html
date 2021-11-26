@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sampler module &mdash; Datumaro API documentation 0.2 documentation</title>
+  <title>sampler module &mdash; Datumaro API documentation 0.2.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
@@ -92,7 +92,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.sampler.sampler.Sampler">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.sampler.sampler.</span></span><span class="sig-name descname"><span class="pre">Sampler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unsampled_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/sampler/sampler.html#Sampler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.sampler.sampler.Sampler" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.Transform" title="datumaro.components.extractor.Transform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Transform</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.Transform" title="datumaro.components.extractor.Transform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Transform</span></code></a>, <a class="reference internal" href="../../components/components/datumaro.components.cli_plugin.html#datumaro.components.cli_plugin.CliPlugin" title="datumaro.components.cli_plugin.CliPlugin"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></a></p>
 <p>Sampler that analyzes model inference results on the dataset 
 
 and picks the best sample for training.</p>
@@ -130,7 +130,7 @@ as input.
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>extractor</strong> (<a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.Extractor" title="datumaro.components.extractor.Extractor"><em>Extractor</em></a><em>, </em><em>Dataset</em>) – </p></li>
+<li><p><strong>extractor</strong> (<a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.Extractor" title="datumaro.components.extractor.Extractor"><em>Extractor</em></a><em>, </em><a class="reference internal" href="../../components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset" title="datumaro.components.dataset.Dataset"><em>Dataset</em></a>) – </p></li>
 <li><p><strong>algorithm</strong> (<em>str</em>) – Specifying the algorithm to calculate the uncertainty
 for sample selection. default: ‘entropy’</p></li>
 <li><p><strong>subset_name</strong> (<em>str</em>) – The name of the subset to which you want to select a sample.</p></li>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>datumaro.plugins.open_images_format &mdash; Datumaro API documentation 0.2 documentation</title>
+  <title>datumaro.plugins.open_images_format &mdash; Datumaro API documentation 0.2.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
@@ -100,10 +100,12 @@
     <span class="n">DatasetError</span><span class="p">,</span> <span class="n">RepeatedItemError</span><span class="p">,</span> <span class="n">UndefinedLabel</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">datumaro.components.extractor</span> <span class="kn">import</span> <span class="n">DatasetItem</span><span class="p">,</span> <span class="n">Extractor</span><span class="p">,</span> <span class="n">Importer</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.format_detection</span> <span class="kn">import</span> <span class="n">FormatDetectionContext</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.media</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">from</span> <span class="nn">datumaro.components.validator</span> <span class="kn">import</span> <span class="n">Severity</span>
 <span class="kn">from</span> <span class="nn">datumaro.util.annotation_util</span> <span class="kn">import</span> <span class="n">find_instances</span>
 <span class="kn">from</span> <span class="nn">datumaro.util.image</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">DEFAULT_IMAGE_META_FILE_NAME</span><span class="p">,</span> <span class="n">Image</span><span class="p">,</span> <span class="n">find_images</span><span class="p">,</span> <span class="n">lazy_image</span><span class="p">,</span> <span class="n">load_image</span><span class="p">,</span>
+    <span class="n">DEFAULT_IMAGE_META_FILE_NAME</span><span class="p">,</span> <span class="n">find_images</span><span class="p">,</span> <span class="n">lazy_image</span><span class="p">,</span> <span class="n">load_image</span><span class="p">,</span>
     <span class="n">load_image_meta_file</span><span class="p">,</span> <span class="n">save_image</span><span class="p">,</span> <span class="n">save_image_meta_file</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">datumaro.util.os_util</span> <span class="kn">import</span> <span class="n">make_file_name</span><span class="p">,</span> <span class="n">split_path</span>
@@ -623,15 +625,25 @@
         <span class="k">return</span> <span class="n">resized</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span></div>
 
 <span class="k">class</span> <span class="nc">OpenImagesImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
+    <span class="n">POSSIBLE_ANNOTATION_PATTERNS</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">OpenImagesPath</span><span class="o">.</span><span class="n">FULL_IMAGE_DESCRIPTION_FILE_NAME</span><span class="p">,</span>
+        <span class="o">*</span><span class="n">OpenImagesPath</span><span class="o">.</span><span class="n">SUBSET_IMAGE_DESCRIPTION_FILE_PATTERNS</span><span class="p">,</span>
+        <span class="s1">&#39;*&#39;</span> <span class="o">+</span> <span class="n">OpenImagesPath</span><span class="o">.</span><span class="n">LABEL_DESCRIPTION_FILE_SUFFIX</span><span class="p">,</span>
+        <span class="s1">&#39;*&#39;</span> <span class="o">+</span> <span class="n">OpenImagesPath</span><span class="o">.</span><span class="n">BBOX_DESCRIPTION_FILE_SUFFIX</span><span class="p">,</span>
+        <span class="s1">&#39;*&#39;</span> <span class="o">+</span> <span class="n">OpenImagesPath</span><span class="o">.</span><span class="n">MASK_DESCRIPTION_FILE_SUFFIX</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">detect</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">FormatDetectionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">context</span><span class="o">.</span><span class="n">require_any</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">POSSIBLE_ANNOTATION_PATTERNS</span><span class="p">:</span>
+                <span class="k">with</span> <span class="n">context</span><span class="o">.</span><span class="n">alternative</span><span class="p">():</span>
+                    <span class="n">context</span><span class="o">.</span><span class="n">require_file</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">OpenImagesPath</span><span class="o">.</span><span class="n">ANNOTATIONS_DIR</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">pattern</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">find_sources</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="p">[</span>
-            <span class="n">OpenImagesPath</span><span class="o">.</span><span class="n">FULL_IMAGE_DESCRIPTION_FILE_NAME</span><span class="p">,</span>
-            <span class="o">*</span><span class="n">OpenImagesPath</span><span class="o">.</span><span class="n">SUBSET_IMAGE_DESCRIPTION_FILE_PATTERNS</span><span class="p">,</span>
-            <span class="s1">&#39;*&#39;</span> <span class="o">+</span> <span class="n">OpenImagesPath</span><span class="o">.</span><span class="n">LABEL_DESCRIPTION_FILE_SUFFIX</span><span class="p">,</span>
-            <span class="s1">&#39;*&#39;</span> <span class="o">+</span> <span class="n">OpenImagesPath</span><span class="o">.</span><span class="n">BBOX_DESCRIPTION_FILE_SUFFIX</span><span class="p">,</span>
-            <span class="s1">&#39;*&#39;</span> <span class="o">+</span> <span class="n">OpenImagesPath</span><span class="o">.</span><span class="n">MASK_DESCRIPTION_FILE_SUFFIX</span><span class="p">,</span>
-        <span class="p">]:</span>
+        <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">POSSIBLE_ANNOTATION_PATTERNS</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">path</span><span class="p">),</span>
                     <span class="n">OpenImagesPath</span><span class="o">.</span><span class="n">ANNOTATIONS_DIR</span><span class="p">,</span> <span class="n">pattern</span><span class="p">)):</span>
                 <span class="k">return</span> <span class="p">[{</span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="n">OpenImagesExtractor</span><span class="o">.</span><span class="n">NAME</span><span class="p">}]</span>

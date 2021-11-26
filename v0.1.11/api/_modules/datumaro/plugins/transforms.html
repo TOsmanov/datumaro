@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>datumaro.plugins.transforms &mdash; Datumaro API documentation 0.2 documentation</title>
+  <title>datumaro.plugins.transforms &mdash; Datumaro API documentation 0.2.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
@@ -555,7 +555,7 @@
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Action for unspecified labels (default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">parser</span></div>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">:</span> <span class="n">IExtractor</span><span class="p">,</span>
+<div class="viewcode-block" id="RemapLabels.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RemapLabels.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">:</span> <span class="n">IExtractor</span><span class="p">,</span>
             <span class="n">mapping</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]],</span>
             <span class="n">default</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">DefaultAction</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">extractor</span><span class="p">)</span>
@@ -600,7 +600,7 @@
 
             <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">points</span><span class="p">]</span> <span class="o">=</span> <span class="n">dst_point_cat</span>
 
-        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">src_categories</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">src_categories</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_make_label_id_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src_label_cat</span><span class="p">,</span> <span class="n">label_mapping</span><span class="p">,</span> <span class="n">default_action</span><span class="p">):</span>
         <span class="n">dst_label_cat</span> <span class="o">=</span> <span class="n">LabelCategories</span><span class="p">(</span>
@@ -677,7 +677,7 @@
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Label name (repeatable, ordered)&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">parser</span></div>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">:</span> <span class="n">IExtractor</span><span class="p">,</span>
+<div class="viewcode-block" id="ProjectLabels.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.ProjectLabels.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">:</span> <span class="n">IExtractor</span><span class="p">,</span>
             <span class="n">dst_labels</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">LabelCategories</span><span class="p">]):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">extractor</span><span class="p">)</span>
 
@@ -752,7 +752,7 @@
                 <span class="k">if</span> <span class="n">new_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">new_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dst_point_cat</span><span class="p">:</span>
                     <span class="n">dst_point_cat</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">new_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">old_cat</span><span class="p">)</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">points</span><span class="p">]</span> <span class="o">=</span> <span class="n">dst_point_cat</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">points</span><span class="p">]</span> <span class="o">=</span> <span class="n">dst_point_cat</span></div>
 
     <span class="k">def</span> <span class="nf">_make_label_id_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src_label_cat</span><span class="p">,</span> <span class="n">dst_label_cat</span><span class="p">):</span>
         <span class="n">id_mapping</span> <span class="o">=</span> <span class="p">{</span>

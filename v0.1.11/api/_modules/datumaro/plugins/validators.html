@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>datumaro.plugins.validators &mdash; Datumaro API documentation 0.2 documentation</title>
+  <title>datumaro.plugins.validators &mdash; Datumaro API documentation 0.2.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
@@ -93,6 +93,12 @@
 
 
 <span class="k">class</span> <span class="nc">_TaskValidator</span><span class="p">(</span><span class="n">Validator</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
+    <span class="n">DEFAULT_FEW_SAMPLES_THR</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">DEFAULT_IMBALANCE_RATIO_THR</span> <span class="o">=</span> <span class="mi">50</span>
+    <span class="n">DEFAULT_FAR_FROM_MEAN_THR</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">DEFAULT_DOMINANCE_RATIO_THR</span> <span class="o">=</span> <span class="mf">0.8</span>
+    <span class="n">DEFAULT_TOPK_BINS</span> <span class="o">=</span> <span class="mf">0.1</span>
+
     <span class="c1"># statistics templates</span>
     <span class="n">numerical_stat_template</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">&#39;items_far_from_mean&#39;</span><span class="p">:</span> <span class="p">{},</span>
@@ -121,25 +127,26 @@
     <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-fs&#39;</span><span class="p">,</span> <span class="s1">&#39;--few-samples-thr&#39;</span><span class="p">,</span>
-            <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">DEFAULT_FEW_SAMPLES_THR</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Threshold for giving a warning for minimum number of &quot;</span>
                 <span class="s2">&quot;samples per class (default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-ir&#39;</span><span class="p">,</span> <span class="s1">&#39;--imbalance-ratio-thr&#39;</span><span class="p">,</span>
-            <span class="n">default</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">DEFAULT_IMBALANCE_RATIO_THR</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Threshold for giving data imbalance warning. &quot;</span>
                 <span class="s2">&quot;IR(imbalance ratio) = majority/minority &quot;</span>
                 <span class="s2">&quot;(default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;--far-from-mean-thr&#39;</span><span class="p">,</span>
-            <span class="n">default</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">DEFAULT_FAR_FROM_MEAN_THR</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Threshold for giving a warning that data is far from mean. &quot;</span>
                 <span class="s2">&quot;A constant used to define mean +/- k * standard deviation &quot;</span>
                 <span class="s2">&quot;(default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-dr&#39;</span><span class="p">,</span> <span class="s1">&#39;--dominance-ratio-thr&#39;</span><span class="p">,</span>
-            <span class="n">default</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">DEFAULT_DOMINANCE_RATIO_THR</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Threshold for giving a warning for bounding box imbalance. &quot;</span>
                 <span class="s2">&quot;Dominace_ratio = ratio of Top-k bin to total in histogram &quot;</span>
                 <span class="s2">&quot;(default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
-        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-k&#39;</span><span class="p">,</span> <span class="s1">&#39;--topk-bins&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-k&#39;</span><span class="p">,</span> <span class="s1">&#39;--topk-bins&#39;</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">DEFAULT_TOPK_BINS</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Ratio of bins with the highest number of data &quot;</span>
                 <span class="s2">&quot;to total bins in the histogram. A value in the range [0, 1] &quot;</span>
                 <span class="s2">&quot;(default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
@@ -181,6 +188,21 @@
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">task_type</span> <span class="o">==</span> <span class="n">TaskType</span><span class="o">.</span><span class="n">segmentation</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ann_types</span> <span class="o">=</span> <span class="p">{</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">polygon</span><span class="p">}</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">str_ann_type</span> <span class="o">=</span> <span class="s2">&quot;mask or polygon&quot;</span>
+
+        <span class="k">if</span> <span class="n">few_samples_thr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">few_samples_thr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_FEW_SAMPLES_THR</span>
+
+        <span class="k">if</span> <span class="n">imbalance_ratio_thr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">imbalance_ratio_thr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_IMBALANCE_RATIO_THR</span>
+
+        <span class="k">if</span> <span class="n">far_from_mean_thr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">far_from_mean_thr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_FAR_FROM_MEAN_THR</span>
+
+        <span class="k">if</span> <span class="n">dominance_ratio_thr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dominance_ratio_thr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_DOMINANCE_RATIO_THR</span>
+
+        <span class="k">if</span> <span class="n">topk_bins</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">topk_bins</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_TOPK_BINS</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">few_samples_thr</span> <span class="o">=</span> <span class="n">few_samples_thr</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">imbalance_ratio_thr</span> <span class="o">=</span> <span class="n">imbalance_ratio_thr</span>
@@ -624,8 +646,8 @@
 <span class="sd">    A specific validator class for classification task.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="ClassificationValidator.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.validators.html#datumaro.plugins.validators.ClassificationValidator.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">few_samples_thr</span><span class="p">,</span> <span class="n">imbalance_ratio_thr</span><span class="p">,</span>
-            <span class="n">far_from_mean_thr</span><span class="p">,</span> <span class="n">dominance_ratio_thr</span><span class="p">,</span> <span class="n">topk_bins</span><span class="p">):</span>
+<div class="viewcode-block" id="ClassificationValidator.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.validators.html#datumaro.plugins.validators.ClassificationValidator.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">few_samples_thr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">imbalance_ratio_thr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">far_from_mean_thr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dominance_ratio_thr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">topk_bins</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task_type</span><span class="o">=</span><span class="n">TaskType</span><span class="o">.</span><span class="n">classification</span><span class="p">,</span>
             <span class="n">few_samples_thr</span><span class="o">=</span><span class="n">few_samples_thr</span><span class="p">,</span>
             <span class="n">imbalance_ratio_thr</span><span class="o">=</span><span class="n">imbalance_ratio_thr</span><span class="p">,</span>
@@ -729,8 +751,8 @@
 <span class="sd">    A specific validator class for detection task.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="DetectionValidator.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.validators.html#datumaro.plugins.validators.DetectionValidator.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">few_samples_thr</span><span class="p">,</span> <span class="n">imbalance_ratio_thr</span><span class="p">,</span>
-            <span class="n">far_from_mean_thr</span><span class="p">,</span> <span class="n">dominance_ratio_thr</span><span class="p">,</span> <span class="n">topk_bins</span><span class="p">):</span>
+<div class="viewcode-block" id="DetectionValidator.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.validators.html#datumaro.plugins.validators.DetectionValidator.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">few_samples_thr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">imbalance_ratio_thr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">far_from_mean_thr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dominance_ratio_thr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">topk_bins</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task_type</span><span class="o">=</span><span class="n">TaskType</span><span class="o">.</span><span class="n">detection</span><span class="p">,</span>
             <span class="n">few_samples_thr</span><span class="o">=</span><span class="n">few_samples_thr</span><span class="p">,</span>
             <span class="n">imbalance_ratio_thr</span><span class="o">=</span><span class="n">imbalance_ratio_thr</span><span class="p">,</span>
@@ -1015,8 +1037,8 @@
 <span class="sd">    A specific validator class for (instance) segmentation task.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="SegmentationValidator.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.validators.html#datumaro.plugins.validators.SegmentationValidator.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">few_samples_thr</span><span class="p">,</span> <span class="n">imbalance_ratio_thr</span><span class="p">,</span>
-            <span class="n">far_from_mean_thr</span><span class="p">,</span> <span class="n">dominance_ratio_thr</span><span class="p">,</span> <span class="n">topk_bins</span><span class="p">):</span>
+<div class="viewcode-block" id="SegmentationValidator.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.validators.html#datumaro.plugins.validators.SegmentationValidator.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">few_samples_thr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">imbalance_ratio_thr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">far_from_mean_thr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dominance_ratio_thr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">topk_bins</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">task_type</span><span class="o">=</span><span class="n">TaskType</span><span class="o">.</span><span class="n">segmentation</span><span class="p">,</span>
             <span class="n">few_samples_thr</span><span class="o">=</span><span class="n">few_samples_thr</span><span class="p">,</span>
             <span class="n">imbalance_ratio_thr</span><span class="o">=</span><span class="n">imbalance_ratio_thr</span><span class="p">,</span>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>project module &mdash; Datumaro API documentation 0.2 documentation</title>
+  <title>project module &mdash; Datumaro API documentation 0.2.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
@@ -42,11 +42,15 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../components.html">Components</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../algorithms/algorithms.html">Algorithms module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.annotation.html">annotation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.cli_plugin.html">cli_plugin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.converter.html">converter module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.dataset.html">dataset module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.dataset_filter.html">dataset_filter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.environment.html">environment module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.errors.html">errors module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.extractor.html">extractor module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.launcher.html">launcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.media.html">media module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.operations.html">operations module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">project module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.validator.html">validator module</a></li>
@@ -109,6 +113,17 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.project.ProjectSources">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.project.</span></span><span class="sig-name descname"><span class="pre">ProjectSources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#datumaro.components.project.Tree" title="datumaro.components.project.Tree"><span class="pre">datumaro.components.project.Tree</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#ProjectSources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.ProjectSources" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.project.CrudProxy</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.config_model.Source</span></code>]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.ProjectSources.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#datumaro.components.project.Tree" title="datumaro.components.project.Tree"><span class="pre">datumaro.components.project.Tree</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#ProjectSources.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.ProjectSources.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.project.BuildStageType">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.project.</span></span><span class="sig-name descname"><span class="pre">BuildStageType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#BuildStageType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.BuildStageType" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
@@ -146,6 +161,188 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.project.Pipeline">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.project.</span></span><span class="sig-name descname"><span class="pre">Pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datumaro.components.config_model.PipelineConfig</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Pipeline" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.Pipeline._get_subgraph">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">_get_subgraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Pipeline._get_subgraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Pipeline._get_subgraph" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a subgraph with all the target dependencies and
+the target itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.Pipeline.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datumaro.components.config_model.PipelineConfig</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Pipeline.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Pipeline.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datumaro.components.project.Pipeline.head">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">head</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#datumaro.components.project.Pipeline.head" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datumaro.components.project.Pipeline.head_node">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">head_node</span></span><a class="headerlink" href="#datumaro.components.project.Pipeline.head_node" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.Pipeline.get_slice">
+<span class="sig-name descname"><span class="pre">get_slice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#datumaro.components.project.Pipeline" title="datumaro.components.project.Pipeline"><span class="pre">datumaro.components.project.Pipeline</span></a></span></span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Pipeline.get_slice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Pipeline.get_slice" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.project.ProjectBuilder">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.project.</span></span><span class="sig-name descname"><span class="pre">ProjectBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#datumaro.components.project.Project" title="datumaro.components.project.Project"><span class="pre">datumaro.components.project.Project</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#datumaro.components.project.Tree" title="datumaro.components.project.Tree"><span class="pre">datumaro.components.project.Tree</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#ProjectBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.ProjectBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.ProjectBuilder._init_pipeline">
+<span class="sig-name descname"><span class="pre">_init_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipeline</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#datumaro.components.project.Pipeline" title="datumaro.components.project.Pipeline"><span class="pre">datumaro.components.project.Pipeline</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">working_dir_hashes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#ProjectBuilder._init_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.ProjectBuilder._init_pipeline" title="Permalink to this definition"></a></dt>
+<dd><p>Initializes datasets in the pipeline nodes. Currently, only the head
+node will have a dataset on exit, so no extra memory is wasted
+for the intermediate nodes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.ProjectBuilder.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#datumaro.components.project.Project" title="datumaro.components.project.Project"><span class="pre">datumaro.components.project.Project</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#datumaro.components.project.Tree" title="datumaro.components.project.Tree"><span class="pre">datumaro.components.project.Tree</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#ProjectBuilder.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.ProjectBuilder.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.ProjectBuilder.make_dataset">
+<span class="sig-name descname"><span class="pre">make_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipeline</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#datumaro.components.project.Pipeline" title="datumaro.components.project.Pipeline"><span class="pre">datumaro.components.project.Pipeline</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="datumaro.components.extractor.html#datumaro.components.extractor.IExtractor" title="datumaro.components.extractor.IExtractor"><span class="pre">datumaro.components.extractor.IExtractor</span></a></span></span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#ProjectBuilder.make_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.ProjectBuilder.make_dataset" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.project.ProjectBuildTargets">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.project.</span></span><span class="sig-name descname"><span class="pre">ProjectBuildTargets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#datumaro.components.project.Tree" title="datumaro.components.project.Tree"><span class="pre">datumaro.components.project.Tree</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#ProjectBuildTargets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.ProjectBuildTargets" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.project.CrudProxy</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.config_model.BuildTarget</span></code>]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.ProjectBuildTargets.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#datumaro.components.project.Tree" title="datumaro.components.project.Tree"><span class="pre">datumaro.components.project.Tree</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#ProjectBuildTargets.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.ProjectBuildTargets.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.project.GitWrapper">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.project.</span></span><span class="sig-name descname"><span class="pre">GitWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#GitWrapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.GitWrapper" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.GitWrapper.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#GitWrapper.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.GitWrapper.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.GitWrapper.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#GitWrapper.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.GitWrapper.add" title="Permalink to this definition"></a></dt>
+<dd><p>Adds paths to index.
+Paths can be truncated relatively to base.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.GitWrapper.commit">
+<span class="sig-name descname"><span class="pre">commit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#GitWrapper.commit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.GitWrapper.commit" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new revision from index.
+Returns: new revision hash.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.GitWrapper.status">
+<span class="sig-name descname"><span class="pre">status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">GitTree</span><span class="p"><span class="pre">,</span> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">GitStatus</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#GitWrapper.status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.GitWrapper.status" title="Permalink to this definition"></a></dt>
+<dd><p>Compares working directory and index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>compare</strong> (<em>- paths - an iterable of paths to</em>) – When None, uses all the paths from HEAD.</p></li>
+<li><p><strong>git.Tree</strong> (<em>a</em>) – When None, uses all the paths from HEAD.</p></li>
+<li><p><strong>None.</strong> (<em>or</em>) – When None, uses all the paths from HEAD.</p></li>
+<li><p><strong>this.</strong> (<em>- base_dir - a base path for paths. Paths will be prepended by</em>) – When None or ‘’, uses repo root. Can be useful, if index contains
+displaced paths, which needs to be mapped on real paths.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>The statuses are:</dt><dd><ul class="simple">
+<li><p>“A” for added paths</p></li>
+<li><p>“D” for deleted paths</p></li>
+<li><p>“R” for renamed paths</p></li>
+<li><p>“M” for paths with modified data</p></li>
+<li><p>“T” for changed in the type paths</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns: { abspath(base_dir + path): status }</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.GitWrapper.rev_parse">
+<span class="sig-name descname"><span class="pre">rev_parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#GitWrapper.rev_parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.GitWrapper.rev_parse" title="Permalink to this definition"></a></dt>
+<dd><p>Expands named refs and tags.</p>
+<p>Returns: object type, object hash</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.GitWrapper.log">
+<span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#GitWrapper.log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.GitWrapper.log" title="Permalink to this definition"></a></dt>
+<dd><p>Returns: a list of (commit, index) pairs</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.project.GitWrapper.__weakref__">
+<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#datumaro.components.project.GitWrapper.__weakref__" title="Permalink to this definition"></a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.project.Revision">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.project.</span></span><span class="sig-name descname"><span class="pre">Revision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.components.project.Revision" title="Permalink to this definition"></a></dt>
+<dd><p>Bases:</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Revision</span> <span class="pre">=</span> <span class="pre">NewType('Revision',</span> <span class="pre">str)</span></span></dt>
+<dd><p>a commit hash or a named reference</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ObjectId</span> <span class="pre">=</span> <span class="pre">NewType('ObjectId',</span> <span class="pre">str)</span></span></dt>
+<dd><p>a commit or an object hash</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.project.Tree">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.project.</span></span><span class="sig-name descname"><span class="pre">Tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#datumaro.components.project.Project" title="datumaro.components.project.Project"><span class="pre">datumaro.components.project.Project</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">Dict</span><span class="p"><span class="pre">,</span> </span><span class="pre">datumaro.components.config.Config</span><span class="p"><span class="pre">,</span> </span><span class="pre">datumaro.components.config_model.TreeConfig</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rev</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#datumaro.components.project.Revision" title="datumaro.components.project.Revision"><span class="pre">Revision</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Tree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Tree" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="simple">
+<dt>can be:</dt><dd><ul class="simple">
+<li><p>attached to the work dir</p></li>
+<li><p>attached to a revision</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.Tree.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#datumaro.components.project.Project" title="datumaro.components.project.Project"><span class="pre">datumaro.components.project.Project</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">Dict</span><span class="p"><span class="pre">,</span> </span><span class="pre">datumaro.components.config.Config</span><span class="p"><span class="pre">,</span> </span><span class="pre">datumaro.components.config_model.TreeConfig</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rev</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#datumaro.components.project.Revision" title="datumaro.components.project.Revision"><span class="pre">Revision</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Tree.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Tree.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.project.Tree.__weakref__">
+<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#datumaro.components.project.Tree.__weakref__" title="Permalink to this definition"></a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.project.DiffStatus">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.project.</span></span><span class="sig-name descname"><span class="pre">DiffStatus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#DiffStatus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.DiffStatus" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
@@ -177,19 +374,179 @@
 
 </dd></dl>
 
-<span class="target" id="module-datumaro.components.project.Pipeline"></span><dl class="py function">
-<dt class="sig sig-object py" id="datumaro.components.project.Pipeline._get_subgraph">
-<span class="sig-prename descclassname"><span class="pre">datumaro.components.project.Pipeline.</span></span><span class="sig-name descname"><span class="pre">_get_subgraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.components.project.Pipeline._get_subgraph" title="Permalink to this definition"></a></dt>
-<dd><p>Returns a subgraph with all the target dependencies and
-the target itself.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.project.Project">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.project.</span></span><span class="sig-name descname"><span class="pre">Project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">readonly</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Project" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.Project.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">readonly</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Project.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Project.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.Project.get_rev">
+<span class="sig-name descname"><span class="pre">get_rev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rev</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#datumaro.components.project.Revision" title="datumaro.components.project.Revision"><span class="pre">Revision</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#datumaro.components.project.Tree" title="datumaro.components.project.Tree"><span class="pre">datumaro.components.project.Tree</span></a></span></span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Project.get_rev"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Project.get_rev" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Reference conventions:</dt><dd><ul class="simple">
+<li><p>None or “” - working dir</p></li>
+<li><p>“&lt;40 symbols&gt;” - revision hash</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
-<span class="target" id="module-datumaro.components.project.ProjectBuilder"></span><dl class="py function">
-<dt class="sig sig-object py" id="datumaro.components.project.ProjectBuilder._init_pipeline">
-<span class="sig-prename descclassname"><span class="pre">datumaro.components.project.ProjectBuilder.</span></span><span class="sig-name descname"><span class="pre">_init_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipeline</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#module-datumaro.components.project.Pipeline" title="datumaro.components.project.Pipeline"><span class="pre">datumaro.components.project.Pipeline</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">working_dir_hashes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.components.project.ProjectBuilder._init_pipeline" title="Permalink to this definition"></a></dt>
-<dd><p>Initializes datasets in the pipeline nodes. Currently, only the head
-node will have a dataset on exit, so no extra memory is wasted
-for the intermediate nodes.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.project.Project._ObjectIdKind">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">_ObjectIdKind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Project._ObjectIdKind"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Project._ObjectIdKind" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.Project._parse_ref">
+<span class="sig-name descname"><span class="pre">_parse_ref</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#datumaro.components.project.Revision" title="datumaro.components.project.Revision"><span class="pre">Revision</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">ObjectId</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#datumaro.components.project.Project._ObjectIdKind" title="datumaro.components.project.Project._ObjectIdKind"><span class="pre">datumaro.components.project.Project._ObjectIdKind</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">ObjectId</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Project._parse_ref"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Project._parse_ref" title="Permalink to this definition"></a></dt>
+<dd><p>Resolves the reference to an object hash.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.Project._materialize_rev">
+<span class="sig-name descname"><span class="pre">_materialize_rev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rev</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#datumaro.components.project.Revision" title="datumaro.components.project.Revision"><span class="pre">Revision</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Project._materialize_rev"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Project._materialize_rev" title="Permalink to this definition"></a></dt>
+<dd><p>Restores the revision tree data in the project cache from Git.</p>
+<p>Returns: cache object path</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.Project._source_dvcfile_path">
+<span class="sig-name descname"><span class="pre">_source_dvcfile_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Project._source_dvcfile_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Project._source_dvcfile_path" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>root - Path to the tree root directory. If not set,</dt><dd><p>the working tree is used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.Project.refresh_source_hash">
+<span class="sig-name descname"><span class="pre">refresh_source_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_cache</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ObjectId</span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Project.refresh_source_hash"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Project.refresh_source_hash" title="Permalink to this definition"></a></dt>
+<dd><p>Computes and updates the source hash in the working directory.</p>
+<p>Returns: hash</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.Project._materialize_obj">
+<span class="sig-name descname"><span class="pre">_materialize_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj_hash</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">ObjectId</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Project._materialize_obj"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Project._materialize_obj" title="Permalink to this definition"></a></dt>
+<dd><p>Restores the object data in the project cache from DVC.</p>
+<p>Returns: cache object path</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.Project.import_source">
+<span class="sig-name descname"><span class="pre">import_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_cache</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_hash</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rpath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">datumaro.components.config_model.Source</span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Project.import_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Project.import_source" title="Permalink to this definition"></a></dt>
+<dd><p>Adds a new source (dataset) to the working directory of the project.</p>
+<p>When ‘rpath’ is specified, will copy all the data from URL, but read
+only the specified file. Required to support subtasks and subsets
+in datasets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>-</em>) – </p></li>
+<li><p><strong>url</strong> (<em>-</em>) – </p></li>
+<li><p><strong>format</strong> (<em>-</em>) – </p></li>
+<li><p><strong>options</strong> (<em>-</em>) – </p></li>
+<li><p><strong>no_cache</strong> (<em>-</em>) – Can be used to reduce project cache size.</p></li>
+<li><p><strong>no_hash</strong> (<em>-</em>) – Useful to reduce import time at the cost of disabled data
+integrity checks.</p></li>
+<li><p><strong>rpath</strong> (<em>-</em>) – inside of the directory pointed by URL.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns: the new source config</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.Project.add_source">
+<span class="sig-name descname"><span class="pre">add_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rpath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">datumaro.components.config_model.Source</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Project.add_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Project.add_source" title="Permalink to this definition"></a></dt>
+<dd><p>Adds a new source (dataset) from the working directory of the project.</p>
+<p>Only directories from the project root can be added. This command is
+useful after a source was removed and you need to re-add it, or when
+the dataset was copied or downloaded manually.</p>
+<p>When ‘rpath’ is specified, will copy all the data from URL, but read
+only the specified file. Required to support subtasks and subsets
+in datasets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>-</em>) – </p></li>
+<li><p><strong>format</strong> (<em>-</em>) – </p></li>
+<li><p><strong>options</strong> (<em>-</em>) – </p></li>
+<li><p><strong>rpath</strong> (<em>-</em>) – inside of the directory pointed by URL.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns: the name and the config of the new source</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.Project.remove_source">
+<span class="sig-name descname"><span class="pre">remove_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Project.remove_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Project.remove_source" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Options:</dt><dd><ul class="simple">
+<li><p>force (bool) - ignores errors and tries to wipe remaining data</p></li>
+<li><p>keep_data (bool) - leaves source data untouched</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.Project.commit">
+<span class="sig-name descname"><span class="pre">commit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_cache</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_empty</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_foreign</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#datumaro.components.project.Revision" title="datumaro.components.project.Revision"><span class="pre">Revision</span></a></span></span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Project.commit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Project.commit" title="Permalink to this definition"></a></dt>
+<dd><p>Copies tree and objects from the working dir to the cache.
+Creates a new commit. Moves the HEAD pointer to the new commit.</p>
+<dl class="simple">
+<dt>Options:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>no_cache (bool) - don’t put added dataset data into cache,</dt><dd><p>store only metainfo. Can be used to reduce storage size.</p>
+</dd>
+</dl>
+</li>
+<li><p>allow_empty (bool) - allow commits with no changes.</p></li>
+<li><p>allow_foreign (bool) - allow commits with changes made not by Datumaro.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns: the new commit hash</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.Project.checkout">
+<span class="sig-name descname"><span class="pre">checkout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rev</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#datumaro.components.project.Revision" title="datumaro.components.project.Revision"><span class="pre">Revision</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Project.checkout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Project.checkout" title="Permalink to this definition"></a></dt>
+<dd><p>Copies tree and objects from the cache to the working tree.</p>
+<p>Sets HEAD to the specified revision, unless sources specified.
+When sources specified, only copies objects from the cache to
+the working tree. When no revision and no sources is specified,
+restores the sources from the current revision.</p>
+<p>By default, uses the current (HEAD) revision.</p>
+<dl class="simple">
+<dt>Options:</dt><dd><ul class="simple">
+<li><p>force (bool) - ignore unsaved changes. By default, an error is raised</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.project.Project.diff">
+<span class="sig-name descname"><span class="pre">diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rev_a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#datumaro.components.project.Tree" title="datumaro.components.project.Tree"><span class="pre">datumaro.components.project.Tree</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#datumaro.components.project.Revision" title="datumaro.components.project.Revision"><span class="pre">Revision</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rev_b</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#datumaro.components.project.Tree" title="datumaro.components.project.Tree"><span class="pre">datumaro.components.project.Tree</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#datumaro.components.project.Revision" title="datumaro.components.project.Revision"><span class="pre">Revision</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#datumaro.components.project.DiffStatus" title="datumaro.components.project.DiffStatus"><span class="pre">datumaro.components.project.DiffStatus</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/project.html#Project.diff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.project.Project.diff" title="Permalink to this definition"></a></dt>
+<dd><p>Compares 2 revision trees.</p>
+<p>Returns: { target_name: status } for changed targets</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.project.Project.__weakref__">
+<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#datumaro.components.project.Project.__weakref__" title="Permalink to this definition"></a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>

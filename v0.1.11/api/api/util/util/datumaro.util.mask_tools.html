@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mask_tools module &mdash; Datumaro API documentation 0.2 documentation</title>
+  <title>mask_tools module &mdash; Datumaro API documentation 0.2.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
@@ -86,7 +86,7 @@
 <span id="mask-tools-module"></span><h1>mask_tools module<a class="headerlink" href="#module-datumaro.util.mask_tools" title="Permalink to this headline"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="datumaro.util.mask_tools.generate_colormap">
-<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">generate_colormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/mask_tools.html#generate_colormap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.generate_colormap" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">generate_colormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/mask_tools.html#generate_colormap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.generate_colormap" title="Permalink to this definition"></a></dt>
 <dd><p>Generates colors using PASCAL VOC algorithm.</p>
 <dl class="simple">
 <dt>If include_background is True, the result will include the item</dt><dd><p>“0: (0, 0, 0)”, which is typically used as a background color.
@@ -95,6 +95,21 @@ Otherwise, indices will start from 0, but (0, 0, 0) is not included.</p>
 </dl>
 <p>Returns index -&gt; (R, G, B) mapping.</p>
 </dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.invert_colormap">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">invert_colormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colormap</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/mask_tools.html#invert_colormap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.invert_colormap" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.check_is_mask">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">check_is_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/mask_tools.html#check_is_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.check_is_mask" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.unpaint_mask">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">unpaint_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">painted_mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse_colormap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/mask_tools.html#unpaint_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.unpaint_mask" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="datumaro.util.mask_tools.paint_mask">
@@ -110,6 +125,41 @@ colormap: index -&gt; (R, G, B)</p>
 <dd><p>Changes mask elements from one colormap to another</p>
 <p># mask: HW(C) [0; max_index] mask</p>
 </dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.make_index_mask">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">make_index_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binary_mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/mask_tools.html#make_index_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.make_index_mask" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.make_binary_mask">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">make_binary_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/mask_tools.html#make_binary_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.make_binary_mask" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.bgr2index">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">bgr2index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/mask_tools.html#bgr2index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.bgr2index" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.index2bgr">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">index2bgr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_map</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/mask_tools.html#index2bgr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.index2bgr" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.load_mask">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">load_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse_colormap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/mask_tools.html#load_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.load_mask" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.lazy_mask">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">lazy_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse_colormap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/mask_tools.html#lazy_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.lazy_mask" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.mask_to_rle">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">mask_to_rle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binary_mask</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/mask_tools.html#mask_to_rle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.mask_to_rle" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="datumaro.util.mask_tools.mask_to_polygons">
@@ -165,6 +215,16 @@ mask1, # input segment #1 mask (if source segment is mask)
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.rles_to_mask">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">rles_to_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/mask_tools.html#rles_to_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.rles_to_mask" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.mask_tools.find_mask_bbox">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.mask_tools.</span></span><span class="sig-name descname"><span class="pre">find_mask_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/util/mask_tools.html#find_mask_bbox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.mask_tools.find_mask_bbox" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="datumaro.util.mask_tools.merge_masks">

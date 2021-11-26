@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>operations module &mdash; Datumaro API documentation 0.2 documentation</title>
+  <title>operations module &mdash; Datumaro API documentation 0.2.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="project module" href="datumaro.components.project.html" />
-    <link rel="prev" title="launcher module" href="datumaro.components.launcher.html" /> 
+    <link rel="prev" title="media module" href="datumaro.components.media.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,11 +42,15 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../components.html">Components</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../algorithms/algorithms.html">Algorithms module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.annotation.html">annotation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.cli_plugin.html">cli_plugin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.converter.html">converter module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.dataset.html">dataset module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.dataset_filter.html">dataset_filter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.environment.html">environment module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.errors.html">errors module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.extractor.html">extractor module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.launcher.html">launcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.media.html">media module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">operations module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.project.html">project module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.validator.html">validator module</a></li>
@@ -86,10 +90,52 @@
              
   <div class="section" id="module-datumaro.components.operations">
 <span id="operations-module"></span><h1>operations module<a class="headerlink" href="#module-datumaro.components.operations" title="Permalink to this headline"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.components.operations.match_annotations_equal">
+<span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">match_annotations_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#match_annotations_equal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.match_annotations_equal" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.components.operations.merge_annotations_equal">
+<span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">merge_annotations_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#merge_annotations_equal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.merge_annotations_equal" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.operations.ExactMerge">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">ExactMerge</span></span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#ExactMerge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.ExactMerge" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.components.operations.ExactMerge.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#ExactMerge.merge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.ExactMerge.merge" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.components.operations.ExactMerge.merge_items">
+<span class="sig-name descname"><span class="pre">merge_items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#ExactMerge.merge_items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.ExactMerge.merge_items" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.components.operations.ExactMerge.merge_images">
+<span class="sig-name descname"><span class="pre">merge_images</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#ExactMerge.merge_images"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.ExactMerge.merge_images" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.components.operations.ExactMerge.merge_anno">
+<span class="sig-name descname"><span class="pre">merge_anno</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#ExactMerge.merge_anno"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.ExactMerge.merge_anno" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.components.operations.ExactMerge.merge_categories">
+<span class="sig-name descname"><span class="pre">merge_categories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#ExactMerge.merge_categories"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.ExactMerge.merge_categories" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.operations.IntersectMerge">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">IntersectMerge</span></span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#IntersectMerge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.IntersectMerge" title="Permalink to this definition"></a></dt>
-<dd><blockquote>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">IntersectMerge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">NOTHING</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#IntersectMerge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.IntersectMerge" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.operations.MergingStrategy</span></code></p>
+<blockquote>
 <div><p><strong>Error trackers:</strong></p>
 <dl class="py data">
 <dt class="sig sig-object py" id="datumaro.components.operations.IntersectMerge.attrib">
@@ -148,37 +194,92 @@ Annotation without a group will be skipped.</p>
 
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.components.operations.match_segments">
+<span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">match_segments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">a_segms</span></em>, <em class="sig-param"><span class="pre">b_segms</span></em>, <em class="sig-param"><span class="pre">distance=&lt;function</span> <span class="pre">segment_iou&gt;</span></em>, <em class="sig-param"><span class="pre">dist_thresh=1.0</span></em>, <em class="sig-param"><span class="pre">label_matcher=&lt;function</span> <span class="pre">&lt;lambda&gt;&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#match_segments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.match_segments" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.operations._ShapeMatcher">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">_ShapeMatcher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">AnnotationMatcher</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#_ShapeMatcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations._ShapeMatcher" title="Permalink to this definition"></a></dt>
-<dd><dl class="py function">
-<dt class="sig sig-object py" id="datumaro.components.operations._ShapeMatcher.match_annotations">
-<span class="sig-name descname"><span class="pre">match_annotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#_ShapeMatcher.match_annotations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations._ShapeMatcher.match_annotations" title="Permalink to this definition"></a></dt>
-<dd><p>Match segments in sources, pairwise.
-Join all segments into matching clusters.</p>
-</dd></dl>
-
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.operations.AnnotationMatcher</span></code></p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.operations.LineMatcher">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">LineMatcher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_ShapeMatcher</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#LineMatcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.LineMatcher" title="Permalink to this definition"></a></dt>
-<dd><p>Compute inter-line area, normalize by common bbox</p>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.components.operations._ShapeMatcher" title="datumaro.components.operations._ShapeMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.operations._ShapeMatcher</span></code></a></p>
+<p>Compute inter-line area, normalize by common bbox</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.operations.mean_std">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">mean_std</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#mean_std"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.mean_std" title="Permalink to this definition"></a></dt>
-<dd><p>Computes unbiased mean and std. dev. for dataset images, channel-wise.</p>
+<dd><p>Bases:</p>
+<p>Computes unbiased mean and std. dev. for dataset images, channel-wise.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.operations.StatsCounter">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">StatsCounter</span></span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#StatsCounter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.StatsCounter" title="Permalink to this definition"></a></dt>
-<dd><p>Implements online parallel computation of sample variance
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Implements online parallel computation of sample variance
 <a class="reference external" href="https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Parallel_algorithm">https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Parallel_algorithm</a>
 Needed do avoid catastrophic cancellation in floating point computations</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.operations.StatsCounter.__weakref__">
+<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#datumaro.components.operations.StatsCounter.__weakref__" title="Permalink to this definition"></a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.components.operations.compute_image_statistics">
+<span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">compute_image_statistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#compute_image_statistics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.compute_image_statistics" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.components.operations.compute_ann_statistics">
+<span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">compute_ann_statistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#compute_ann_statistics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.compute_ann_statistics" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.operations.DistanceComparator">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">DistanceComparator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iou_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#DistanceComparator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.DistanceComparator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.operations.ExactComparator">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">ExactComparator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_images</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignored_fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignored_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignored_item_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">NOTHING</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#ExactComparator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.ExactComparator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.components.operations.match_classes">
+<span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">match_classes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="datumaro.components.annotation.html#datumaro.components.annotation.AnnotationType" title="datumaro.components.annotation.AnnotationType"><span class="pre">datumaro.components.annotation.AnnotationType</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="datumaro.components.annotation.html#datumaro.components.annotation.Categories" title="datumaro.components.annotation.Categories"><span class="pre">datumaro.components.annotation.Categories</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="datumaro.components.annotation.html#datumaro.components.annotation.AnnotationType" title="datumaro.components.annotation.AnnotationType"><span class="pre">datumaro.components.annotation.AnnotationType</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="datumaro.components.annotation.html#datumaro.components.annotation.Categories" title="datumaro.components.annotation.Categories"><span class="pre">datumaro.components.annotation.Categories</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#match_classes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.match_classes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.components.operations.find_unique_images">
+<span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">find_unique_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="datumaro.components.extractor.html#datumaro.components.extractor.IExtractor" title="datumaro.components.extractor.IExtractor"><span class="pre">datumaro.components.extractor.IExtractor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">item_hash</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#find_unique_images"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.find_unique_images" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.components.operations.match_items_by_image_hash">
+<span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">match_items_by_image_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="datumaro.components.extractor.html#datumaro.components.extractor.IExtractor" title="datumaro.components.extractor.IExtractor"><span class="pre">datumaro.components.extractor.IExtractor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="datumaro.components.extractor.html#datumaro.components.extractor.IExtractor" title="datumaro.components.extractor.IExtractor"><span class="pre">datumaro.components.extractor.IExtractor</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#match_items_by_image_hash"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.match_items_by_image_hash" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.components.operations.match_items_by_id">
+<span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">match_items_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="datumaro.components.extractor.html#datumaro.components.extractor.IExtractor" title="datumaro.components.extractor.IExtractor"><span class="pre">datumaro.components.extractor.IExtractor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="datumaro.components.extractor.html#datumaro.components.extractor.IExtractor" title="datumaro.components.extractor.IExtractor"><span class="pre">datumaro.components.extractor.IExtractor</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#match_items_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.match_items_by_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.components.operations.merge_categories">
+<span class="sig-prename descclassname"><span class="pre">datumaro.components.operations.</span></span><span class="sig-name descname"><span class="pre">merge_categories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sources</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/operations.html#merge_categories"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.operations.merge_categories" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </div>
 
@@ -186,7 +287,7 @@ Needed do avoid catastrophic cancellation in floating point computations</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="datumaro.components.launcher.html" class="btn btn-neutral float-left" title="launcher module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="datumaro.components.media.html" class="btn btn-neutral float-left" title="media module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="datumaro.components.project.html" class="btn btn-neutral float-right" title="project module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>splitter module &mdash; Datumaro API documentation 0.2 documentation</title>
+  <title>splitter module &mdash; Datumaro API documentation 0.2.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
@@ -115,7 +115,7 @@
 <span class="target" id="module-0"></span><dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.splitter.Split">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.splitter.</span></span><span class="sig-name descname"><span class="pre">Split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr_for_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/splitter.html#Split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.splitter.Split" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.Transform" title="datumaro.components.extractor.Transform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Transform</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.Transform" title="datumaro.components.extractor.Transform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Transform</span></code></a>, <a class="reference internal" href="../../components/components/datumaro.components.cli_plugin.html#datumaro.components.cli_plugin.CliPlugin" title="datumaro.components.cli_plugin.CliPlugin"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></a></p>
 <ul class="simple">
 <li><p>classification split</p></li>
 </ul>
@@ -229,7 +229,7 @@ the split ratio can’t be guaranteed.</p></li>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dataset</strong> (<em>Dataset</em>) – </p></li>
+<li><p><strong>dataset</strong> (<a class="reference internal" href="../../components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset" title="datumaro.components.dataset.Dataset"><em>Dataset</em></a>) – </p></li>
 <li><p><strong>splits</strong> (<em>list</em>) – A list of (subset(str), ratio(float))
 The sum of ratios is expected to be 1.</p></li>
 <li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
@@ -301,7 +301,7 @@ Gallery ratio would be 1.0 - query.</p></li>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dataset</strong> (<em>Dataset</em>) – </p></li>
+<li><p><strong>dataset</strong> (<a class="reference internal" href="../../components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset" title="datumaro.components.dataset.Dataset"><em>Dataset</em></a>) – </p></li>
 <li><p><strong>splits</strong> (<em>list</em>) – A list of (subset(str), ratio(float))
 Subset is expected to be one of [“train”, “val”, “test”].
 The sum of ratios is expected to be 1.</p></li>
@@ -357,7 +357,7 @@ to the specified ratio, keeping the initial class distribution.</p>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dataset</strong> (<em>Dataset</em>) – </p></li>
+<li><p><strong>dataset</strong> (<a class="reference internal" href="../../components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset" title="datumaro.components.dataset.Dataset"><em>Dataset</em></a>) – </p></li>
 <li><p><strong>splits</strong> (<em>list</em>) – A list of (subset(str), ratio(float))
 The sum of ratios is expected to be 1.</p></li>
 <li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
