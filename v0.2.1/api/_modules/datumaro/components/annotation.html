@@ -285,7 +285,7 @@
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="p">)</span>
 
-<div class="viewcode-block" id="MaskCategories.__eq__"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.MaskCategories.__eq__">[docs]</a>    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="vm">__class__</span><span class="p">):</span>
@@ -294,7 +294,7 @@
             <span class="n">other_color</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">label_id</span><span class="p">)</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">my_color</span><span class="p">,</span> <span class="n">other_color</span><span class="p">):</span>
                 <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">return</span> <span class="kc">True</span></div></div>
+        <span class="k">return</span> <span class="kc">True</span></div>
 
 <span class="n">BinaryMaskImage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="c1"># 2d array of type bool</span>
 <span class="n">IndexMaskImage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="c1"># 2d array of type int</span>
@@ -357,7 +357,7 @@
         <span class="kn">from</span> <span class="nn">datumaro.util.mask_tools</span> <span class="kn">import</span> <span class="n">paint_mask</span>
         <span class="k">return</span> <span class="n">paint_mask</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">as_class_mask</span><span class="p">(),</span> <span class="n">colormap</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Mask.__eq__"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Mask.__eq__">[docs]</a>    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="vm">__class__</span><span class="p">):</span>
@@ -365,7 +365,7 @@
         <span class="k">return</span> \
             <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">label</span><span class="p">)</span> <span class="ow">and</span> \
             <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z_order</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">z_order</span><span class="p">)</span> <span class="ow">and</span> \
-            <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">image</span><span class="p">))</span></div></div>
+            <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">image</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="RleMask"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.RleMask">[docs]</a><span class="nd">@attrs</span><span class="p">(</span><span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">RleMask</span><span class="p">(</span><span class="n">Mask</span><span class="p">):</span>
@@ -392,10 +392,10 @@
         <span class="kn">from</span> <span class="nn">pycocotools</span> <span class="kn">import</span> <span class="n">mask</span> <span class="k">as</span> <span class="n">mask_utils</span>
         <span class="k">return</span> <span class="n">mask_utils</span><span class="o">.</span><span class="n">toBbox</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rle</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RleMask.__eq__"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.RleMask.__eq__">[docs]</a>    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="vm">__class__</span><span class="p">):</span>
             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rle</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">rle</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rle</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">rle</span></div>
 
 <span class="n">CompiledMaskImage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="c1"># 2d of integers (of different precision)</span>
 
@@ -479,7 +479,7 @@
         <span class="k">return</span> <span class="vm">__class__</span><span class="p">(</span><span class="n">class_mask</span><span class="o">=</span><span class="n">merged_class_mask</span><span class="p">,</span>
             <span class="n">instance_mask</span><span class="o">=</span><span class="n">merged_instance_mask</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CompiledMask.__init__"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.CompiledMask.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
             <span class="n">class_mask</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span>
                 <span class="n">CompiledMaskImage</span><span class="p">,</span>
                 <span class="n">Callable</span><span class="p">[[],</span> <span class="n">CompiledMaskImage</span><span class="p">]</span>
@@ -489,7 +489,7 @@
                 <span class="n">Callable</span><span class="p">[[],</span> <span class="n">CompiledMaskImage</span><span class="p">]</span>
             <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_class_mask</span> <span class="o">=</span> <span class="n">class_mask</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_instance_mask</span> <span class="o">=</span> <span class="n">instance_mask</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_instance_mask</span> <span class="o">=</span> <span class="n">instance_mask</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_get_image</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
@@ -594,14 +594,14 @@
             <span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">COORDINATE_ROUNDING_DIGITS</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_points</span> <span class="o">=</span> <span class="n">points</span>
 
-<div class="viewcode-block" id="Cuboid3d.__init__"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Cuboid3d.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">position</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">,</span> <span class="n">position</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">rotation</span><span class="p">:</span>
             <span class="n">rotation</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">scale</span><span class="p">:</span>
             <span class="n">scale</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span>
         <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;points&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__attrs_init__</span><span class="p">(</span><span class="n">points</span><span class="o">=</span><span class="p">[</span><span class="o">*</span><span class="n">position</span><span class="p">,</span> <span class="o">*</span><span class="n">rotation</span><span class="p">,</span> <span class="o">*</span><span class="n">scale</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__attrs_init__</span><span class="p">(</span><span class="n">points</span><span class="o">=</span><span class="p">[</span><span class="o">*</span><span class="n">position</span><span class="p">,</span> <span class="o">*</span><span class="n">rotation</span><span class="p">,</span> <span class="o">*</span><span class="n">scale</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -658,9 +658,9 @@
 <span class="k">class</span> <span class="nc">Bbox</span><span class="p">(</span><span class="n">_Shape</span><span class="p">):</span>
     <span class="n">_type</span> <span class="o">=</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">bbox</span>
 
-<div class="viewcode-block" id="Bbox.__init__"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Bbox.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;points&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="c1"># comes from wrap()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__attrs_init__</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">w</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__attrs_init__</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">w</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
