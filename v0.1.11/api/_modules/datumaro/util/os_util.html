@@ -104,7 +104,7 @@
 
 <span class="n">DEFAULT_MAX_DEPTH</span> <span class="o">=</span> <span class="mi">10</span>
 
-<span class="k">def</span> <span class="nf">check_instruction_set</span><span class="p">(</span><span class="n">instruction</span><span class="p">):</span>
+<div class="viewcode-block" id="check_instruction_set"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.os_util.html#datumaro.util.os_util.check_instruction_set">[docs]</a><span class="k">def</span> <span class="nf">check_instruction_set</span><span class="p">(</span><span class="n">instruction</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">instruction</span> <span class="o">==</span> <span class="nb">str</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span>
         <span class="c1"># Let&#39;s ignore a warning from bandit about using shell=True.</span>
         <span class="c1"># In this case it isn&#39;t a security issue and we use some</span>
@@ -112,9 +112,9 @@
         <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span>
             <span class="s1">&#39;lscpu | grep -o &quot;</span><span class="si">%s</span><span class="s1">&quot; | head -1&#39;</span> <span class="o">%</span> <span class="n">instruction</span><span class="p">,</span>
             <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="c1"># nosec</span>
-    <span class="p">)</span>
+    <span class="p">)</span></div>
 
-<span class="k">def</span> <span class="nf">import_foreign_module</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<div class="viewcode-block" id="import_foreign_module"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.os_util.html#datumaro.util.os_util.import_foreign_module">[docs]</a><span class="k">def</span> <span class="nf">import_foreign_module</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
     <span class="n">module</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">default_path</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="k">try</span><span class="p">:</span>
@@ -124,9 +124,9 @@
         <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="c1"># remove from cache</span>
     <span class="k">finally</span><span class="p">:</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">default_path</span>
-    <span class="k">return</span> <span class="n">module</span>
+    <span class="k">return</span> <span class="n">module</span></div>
 
-<span class="k">def</span> <span class="nf">walk</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="walk"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.os_util.html#datumaro.util.os_util.walk">[docs]</a><span class="k">def</span> <span class="nf">walk</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">max_depth</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">max_depth</span> <span class="o">=</span> <span class="n">DEFAULT_MAX_DEPTH</span>
 
@@ -136,9 +136,9 @@
         <span class="k">if</span> <span class="n">baselevel</span> <span class="o">+</span> <span class="n">max_depth</span> <span class="o">&lt;=</span> <span class="n">curlevel</span><span class="p">:</span>
             <span class="n">dirnames</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span> <span class="c1"># topdown=True allows to modify the list</span>
 
-        <span class="k">yield</span> <span class="n">dirpath</span><span class="p">,</span> <span class="n">dirnames</span><span class="p">,</span> <span class="n">filenames</span>
+        <span class="k">yield</span> <span class="n">dirpath</span><span class="p">,</span> <span class="n">dirnames</span><span class="p">,</span> <span class="n">filenames</span></div>
 
-<span class="k">def</span> <span class="nf">copytree</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">):</span>
+<div class="viewcode-block" id="copytree"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.os_util.html#datumaro.util.os_util.copytree">[docs]</a><span class="k">def</span> <span class="nf">copytree</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">):</span>
     <span class="c1"># Serves as a replacement for shutil.copytree().</span>
     <span class="c1">#</span>
     <span class="c1"># Shutil works very slow pre 3.8</span>
@@ -182,9 +182,9 @@
     <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Failed to copy data. The command &#39;</span><span class="si">%s</span><span class="s2">&#39; &quot;</span>
             <span class="s2">&quot;has failed with the following output: &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">cmd</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">stdout</span><span class="p">))</span> \
-            <span class="kn">from</span> <span class="nn">e</span>
+            <span class="kn">from</span> <span class="nn">e</span></div>
 
-<span class="nd">@contextmanager</span>
+<div class="viewcode-block" id="suppress_output"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.os_util.html#datumaro.util.os_util.suppress_output">[docs]</a><span class="nd">@contextmanager</span>
 <span class="k">def</span> <span class="nf">suppress_output</span><span class="p">(</span><span class="n">stdout</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">stderr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">devnull</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">devnull</span><span class="p">,</span> <span class="n">ExitStack</span><span class="p">()</span> <span class="k">as</span> <span class="n">es</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">stdout</span><span class="p">:</span>
@@ -192,17 +192,17 @@
         <span class="k">elif</span> <span class="n">stderr</span><span class="p">:</span>
             <span class="n">es</span><span class="o">.</span><span class="n">enter_context</span><span class="p">(</span><span class="n">redirect_stderr</span><span class="p">(</span><span class="n">devnull</span><span class="p">))</span>
 
-        <span class="k">yield</span>
+        <span class="k">yield</span></div>
 
-<span class="nd">@contextmanager</span>
+<div class="viewcode-block" id="catch_output"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.os_util.html#datumaro.util.os_util.catch_output">[docs]</a><span class="nd">@contextmanager</span>
 <span class="k">def</span> <span class="nf">catch_output</span><span class="p">():</span>
     <span class="n">stdout</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
     <span class="n">stderr</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
 
     <span class="k">with</span> <span class="n">redirect_stdout</span><span class="p">(</span><span class="n">stdout</span><span class="p">),</span> <span class="n">redirect_stderr</span><span class="p">(</span><span class="n">stderr</span><span class="p">):</span>
-        <span class="k">yield</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span>
+        <span class="k">yield</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span></div>
 
-<span class="k">def</span> <span class="nf">dir_items</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">ext</span><span class="p">,</span> <span class="n">truncate_ext</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="dir_items"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.os_util.html#datumaro.util.os_util.dir_items">[docs]</a><span class="k">def</span> <span class="nf">dir_items</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">ext</span><span class="p">,</span> <span class="n">truncate_ext</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
         <span class="n">ext_pos</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span>
@@ -210,9 +210,9 @@
             <span class="k">if</span> <span class="n">truncate_ext</span><span class="p">:</span>
                 <span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="p">[:</span><span class="n">ext_pos</span><span class="p">]</span>
             <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">items</span>
+    <span class="k">return</span> <span class="n">items</span></div>
 
-<span class="k">def</span> <span class="nf">split_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<div class="viewcode-block" id="split_path"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.os_util.html#datumaro.util.os_util.split_path">[docs]</a><span class="k">def</span> <span class="nf">split_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="n">path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="n">parts</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -226,7 +226,7 @@
             <span class="k">break</span>
     <span class="n">parts</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
 
-    <span class="k">return</span> <span class="n">parts</span>
+    <span class="k">return</span> <span class="n">parts</span></div>
 
 <div class="viewcode-block" id="is_subpath"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.os_util.html#datumaro.util.os_util.is_subpath">[docs]</a><span class="k">def</span> <span class="nf">is_subpath</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>

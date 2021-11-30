@@ -107,7 +107,7 @@
 <span class="sd">    |s|s|s|s--sampling_method topk -k 20</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Sampler.build_cmdline_parser"><a class="viewcode-back" href="../../../../api/plugins/sampler/datumaro.plugins.sampler.sampler.html#datumaro.plugins.sampler.sampler.Sampler.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-k&quot;</span><span class="p">,</span> <span class="s2">&quot;--count&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -130,7 +130,7 @@
                 <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">SamplingMethod</span><span class="p">)))</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-d&quot;</span><span class="p">,</span> <span class="s2">&quot;--output_file&quot;</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;A .csv file path to dump sampling results file path&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">parser</span>
+        <span class="k">return</span> <span class="n">parser</span></div>
 
 <div class="viewcode-block" id="Sampler.__init__"><a class="viewcode-back" href="../../../../api/plugins/sampler/datumaro.plugins.sampler.sampler.html#datumaro.plugins.sampler.sampler.Sampler.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">,</span> <span class="n">algorithm</span><span class="p">,</span> <span class="n">input_subset</span><span class="p">,</span> <span class="n">sampled_subset</span><span class="p">,</span>
             <span class="n">unsampled_subset</span><span class="p">,</span> <span class="n">sampling_method</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">output_file</span><span class="p">):</span>
@@ -234,7 +234,7 @@
             <span class="c1"># 2. Returns the existing subset name if it is not a sample</span>
             <span class="k">return</span> <span class="n">image</span><span class="o">.</span><span class="n">subset</span>
 
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Sampler.__iter__"><a class="viewcode-back" href="../../../../api/plugins/sampler/datumaro.plugins.sampler.sampler.html#datumaro.plugins.sampler.sampler.Sampler.__iter__">[docs]</a>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Import data into a subset name and convert it</span>
         <span class="c1"># to a format that will be used in the sampler algorithm with the inference result.</span>
         <span class="n">data_df</span><span class="p">,</span> <span class="n">infer_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_inference_from_subset</span><span class="p">(</span>
@@ -253,7 +253,7 @@
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="p">:</span>
             <span class="c1"># After checking whether each item belongs to a sample,</span>
             <span class="c1"># rename the subset</span>
-            <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_sample_subset</span><span class="p">(</span><span class="n">item</span><span class="p">))</span></div>
+            <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_sample_subset</span><span class="p">(</span><span class="n">item</span><span class="p">))</span></div></div>
 </pre></div>
 
            </div>

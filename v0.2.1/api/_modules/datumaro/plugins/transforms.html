@@ -119,7 +119,7 @@
         <span class="n">annotations</span> <span class="o">+=</span> <span class="n">segments</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="n">annotations</span><span class="p">)</span></div>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="CropCoveredSegments.crop_segments"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.CropCoveredSegments.crop_segments">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">crop_segments</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">segment_anns</span><span class="p">,</span> <span class="n">img_width</span><span class="p">,</span> <span class="n">img_height</span><span class="p">):</span>
         <span class="n">segment_anns</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">segment_anns</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">z_order</span><span class="p">)</span>
 
@@ -153,7 +153,7 @@
                 <span class="n">rle</span> <span class="o">=</span> <span class="n">mask_utils</span><span class="o">.</span><span class="n">frPyObjects</span><span class="p">(</span><span class="n">rle</span><span class="p">,</span> <span class="o">*</span><span class="n">rle</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">])</span>
                 <span class="n">new_anns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RleMask</span><span class="p">(</span><span class="n">rle</span><span class="o">=</span><span class="n">rle</span><span class="p">,</span> <span class="o">**</span><span class="n">fields</span><span class="p">))</span>
 
-        <span class="k">return</span> <span class="n">new_anns</span>
+        <span class="k">return</span> <span class="n">new_anns</span></div>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_make_group_id</span><span class="p">(</span><span class="n">anns</span><span class="p">,</span> <span class="n">ann_id</span><span class="p">):</span>
@@ -167,12 +167,12 @@
 <span class="sd">    Replaces instance masks and, optionally, polygons with a single mask.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="MergeInstanceSegments.build_cmdline_parser"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.MergeInstanceSegments.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--include-polygons&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Include polygons&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">parser</span>
+        <span class="k">return</span> <span class="n">parser</span></div>
 
 <div class="viewcode-block" id="MergeInstanceSegments.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.MergeInstanceSegments.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">,</span> <span class="n">include_polygons</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">extractor</span><span class="p">)</span>
@@ -201,7 +201,7 @@
         <span class="n">annotations</span> <span class="o">+=</span> <span class="n">segments</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="n">annotations</span><span class="p">)</span></div>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="MergeInstanceSegments.merge_segments"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.MergeInstanceSegments.merge_segments">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">merge_segments</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">img_width</span><span class="p">,</span> <span class="n">img_height</span><span class="p">,</span>
             <span class="n">include_polygons</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">polygons</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">instance</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">polygon</span><span class="p">]</span>
@@ -239,12 +239,12 @@
                 <span class="nb">id</span><span class="o">=</span><span class="n">leader</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">attributes</span><span class="o">=</span><span class="n">leader</span><span class="o">.</span><span class="n">attributes</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">leader</span><span class="o">.</span><span class="n">group</span>
             <span class="p">)</span>
         <span class="p">)</span>
-        <span class="k">return</span> <span class="n">instance</span>
+        <span class="k">return</span> <span class="n">instance</span></div>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="MergeInstanceSegments.find_instances"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.MergeInstanceSegments.find_instances">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">find_instances</span><span class="p">(</span><span class="n">annotations</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">find_instances</span><span class="p">(</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">annotations</span>
-            <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="p">{</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">polygon</span><span class="p">,</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">mask</span><span class="p">})</span></div>
+            <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="p">{</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">polygon</span><span class="p">,</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">mask</span><span class="p">})</span></div></div>
 
 <div class="viewcode-block" id="PolygonsToMasks"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.PolygonsToMasks">[docs]</a><span class="k">class</span> <span class="nc">PolygonsToMasks</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
 <div class="viewcode-block" id="PolygonsToMasks.transform_item"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.PolygonsToMasks.transform_item">[docs]</a>    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
@@ -260,12 +260,12 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="n">annotations</span><span class="p">)</span></div>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="PolygonsToMasks.convert_polygon"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.PolygonsToMasks.convert_polygon">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">convert_polygon</span><span class="p">(</span><span class="n">polygon</span><span class="p">,</span> <span class="n">img_h</span><span class="p">,</span> <span class="n">img_w</span><span class="p">):</span>
         <span class="n">rle</span> <span class="o">=</span> <span class="n">mask_utils</span><span class="o">.</span><span class="n">frPyObjects</span><span class="p">([</span><span class="n">polygon</span><span class="o">.</span><span class="n">points</span><span class="p">],</span> <span class="n">img_h</span><span class="p">,</span> <span class="n">img_w</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
         <span class="k">return</span> <span class="n">RleMask</span><span class="p">(</span><span class="n">rle</span><span class="o">=</span><span class="n">rle</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">polygon</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">z_order</span><span class="o">=</span><span class="n">polygon</span><span class="o">.</span><span class="n">z_order</span><span class="p">,</span>
-            <span class="nb">id</span><span class="o">=</span><span class="n">polygon</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">attributes</span><span class="o">=</span><span class="n">polygon</span><span class="o">.</span><span class="n">attributes</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">polygon</span><span class="o">.</span><span class="n">group</span><span class="p">)</span></div>
+            <span class="nb">id</span><span class="o">=</span><span class="n">polygon</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">attributes</span><span class="o">=</span><span class="n">polygon</span><span class="o">.</span><span class="n">attributes</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">polygon</span><span class="o">.</span><span class="n">group</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="BoxesToMasks"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.BoxesToMasks">[docs]</a><span class="k">class</span> <span class="nc">BoxesToMasks</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
 <div class="viewcode-block" id="BoxesToMasks.transform_item"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.BoxesToMasks.transform_item">[docs]</a>    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
@@ -281,12 +281,12 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="n">annotations</span><span class="p">)</span></div>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="BoxesToMasks.convert_bbox"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.BoxesToMasks.convert_bbox">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">convert_bbox</span><span class="p">(</span><span class="n">bbox</span><span class="p">,</span> <span class="n">img_h</span><span class="p">,</span> <span class="n">img_w</span><span class="p">):</span>
         <span class="n">rle</span> <span class="o">=</span> <span class="n">mask_utils</span><span class="o">.</span><span class="n">frPyObjects</span><span class="p">([</span><span class="n">bbox</span><span class="o">.</span><span class="n">as_polygon</span><span class="p">()],</span> <span class="n">img_h</span><span class="p">,</span> <span class="n">img_w</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
         <span class="k">return</span> <span class="n">RleMask</span><span class="p">(</span><span class="n">rle</span><span class="o">=</span><span class="n">rle</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">bbox</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">z_order</span><span class="o">=</span><span class="n">bbox</span><span class="o">.</span><span class="n">z_order</span><span class="p">,</span>
-            <span class="nb">id</span><span class="o">=</span><span class="n">bbox</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">attributes</span><span class="o">=</span><span class="n">bbox</span><span class="o">.</span><span class="n">attributes</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">bbox</span><span class="o">.</span><span class="n">group</span><span class="p">)</span></div>
+            <span class="nb">id</span><span class="o">=</span><span class="n">bbox</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">attributes</span><span class="o">=</span><span class="n">bbox</span><span class="o">.</span><span class="n">attributes</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">bbox</span><span class="o">.</span><span class="n">group</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="MasksToPolygons"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.MasksToPolygons">[docs]</a><span class="k">class</span> <span class="nc">MasksToPolygons</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
 <div class="viewcode-block" id="MasksToPolygons.transform_item"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.MasksToPolygons.transform_item">[docs]</a>    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
@@ -305,7 +305,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="n">annotations</span><span class="p">)</span></div>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="MasksToPolygons.convert_mask"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.MasksToPolygons.convert_mask">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">convert_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">):</span>
         <span class="n">polygons</span> <span class="o">=</span> <span class="n">mask_tools</span><span class="o">.</span><span class="n">mask_to_polygons</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">image</span><span class="p">)</span>
 
@@ -313,7 +313,7 @@
             <span class="n">Polygon</span><span class="p">(</span><span class="n">points</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">mask</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">z_order</span><span class="o">=</span><span class="n">mask</span><span class="o">.</span><span class="n">z_order</span><span class="p">,</span>
                 <span class="nb">id</span><span class="o">=</span><span class="n">mask</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">attributes</span><span class="o">=</span><span class="n">mask</span><span class="o">.</span><span class="n">attributes</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">mask</span><span class="o">.</span><span class="n">group</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">polygons</span>
-        <span class="p">]</span></div>
+        <span class="p">]</span></div></div>
 
 <div class="viewcode-block" id="ShapesToBoxes"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.ShapesToBoxes">[docs]</a><span class="k">class</span> <span class="nc">ShapesToBoxes</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
 <div class="viewcode-block" id="ShapesToBoxes.transform_item"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.ShapesToBoxes.transform_item">[docs]</a>    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
@@ -328,28 +328,28 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="n">annotations</span><span class="p">)</span></div>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="ShapesToBoxes.convert_shape"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.ShapesToBoxes.convert_shape">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">convert_shape</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
         <span class="n">bbox</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">get_bbox</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">Bbox</span><span class="p">(</span><span class="o">*</span><span class="n">bbox</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">shape</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">z_order</span><span class="o">=</span><span class="n">shape</span><span class="o">.</span><span class="n">z_order</span><span class="p">,</span>
-            <span class="nb">id</span><span class="o">=</span><span class="n">shape</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">attributes</span><span class="o">=</span><span class="n">shape</span><span class="o">.</span><span class="n">attributes</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">shape</span><span class="o">.</span><span class="n">group</span><span class="p">)</span></div>
+            <span class="nb">id</span><span class="o">=</span><span class="n">shape</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">attributes</span><span class="o">=</span><span class="n">shape</span><span class="o">.</span><span class="n">attributes</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">shape</span><span class="o">.</span><span class="n">group</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="Reindex"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.Reindex">[docs]</a><span class="k">class</span> <span class="nc">Reindex</span><span class="p">(</span><span class="n">Transform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Reindex.build_cmdline_parser"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.Reindex.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;--start&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Start value for item ids&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">parser</span>
+        <span class="k">return</span> <span class="n">parser</span></div>
 
 <div class="viewcode-block" id="Reindex.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.Reindex.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">extractor</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_length</span> <span class="o">=</span> <span class="s1">&#39;parent&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_start</span> <span class="o">=</span> <span class="n">start</span></div>
 
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Reindex.__iter__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.Reindex.__iter__">[docs]</a>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="p">):</span>
-            <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span><span class="p">)</span></div>
+            <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="MapSubsets"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.MapSubsets">[docs]</a><span class="k">class</span> <span class="nc">MapSubsets</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
     <span class="nd">@staticmethod</span>
@@ -360,13 +360,13 @@
             <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">parts</span>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="MapSubsets.build_cmdline_parser"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.MapSubsets.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;--subset&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">,</span>
             <span class="nb">type</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">_mapping_arg</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;mapping&#39;</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Subset mapping of the form: &#39;src:dst&#39; (repeatable)&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">parser</span>
+        <span class="k">return</span> <span class="n">parser</span></div>
 
 <div class="viewcode-block" id="MapSubsets.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.MapSubsets.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">extractor</span><span class="p">)</span>
@@ -408,7 +408,7 @@
             <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">()</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="RandomSplit.build_cmdline_parser"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RandomSplit.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;--subset&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">,</span>
@@ -416,7 +416,7 @@
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Subsets in the form: &#39;&lt;subset&gt;:&lt;ratio&gt;&#39; &quot;</span>
                 <span class="s2">&quot;(repeatable, default: </span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_default_split</span><span class="p">))</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--seed&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Random seed&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">parser</span>
+        <span class="k">return</span> <span class="n">parser</span></div>
 
 <div class="viewcode-block" id="RandomSplit.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RandomSplit.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">extractor</span><span class="p">)</span>
@@ -460,9 +460,9 @@
                 <span class="k">return</span> <span class="n">subset</span>
         <span class="k">return</span> <span class="n">subset</span> <span class="c1"># all the possible remainder goes to the last split</span>
 
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="RandomSplit.__iter__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RandomSplit.__iter__">[docs]</a>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="p">):</span>
-            <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_find_split</span><span class="p">(</span><span class="n">i</span><span class="p">))</span></div>
+            <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_find_split</span><span class="p">(</span><span class="n">i</span><span class="p">))</span></div></div>
 
 <div class="viewcode-block" id="IdFromImageName"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.IdFromImageName">[docs]</a><span class="k">class</span> <span class="nc">IdFromImageName</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
 <div class="viewcode-block" id="IdFromImageName.transform_item"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.IdFromImageName.transform_item">[docs]</a>    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
@@ -488,12 +488,12 @@
 <span class="sd">    |s|s|s|srename -e &#39;|frame_(\d+)|\1|&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Rename.build_cmdline_parser"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.Rename.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-e&#39;</span><span class="p">,</span> <span class="s1">&#39;--regex&#39;</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Regex for renaming.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">parser</span>
+        <span class="k">return</span> <span class="n">parser</span></div>
 
 <div class="viewcode-block" id="Rename.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.Rename.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">,</span> <span class="n">regex</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">extractor</span><span class="p">)</span>

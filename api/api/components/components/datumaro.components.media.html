@@ -40,9 +40,11 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../cli/cli.html">CLI</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../components.html">Components</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../algorithms/algorithms.html">Algorithms module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/algorithms.html">algorithms module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.annotation.html">annotation module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.cli_plugin.html">cli_plugin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.config.html">config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.config_model.html">config_model module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.converter.html">converter module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.dataset.html">dataset module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.dataset_filter.html">dataset_filter module</a></li>
@@ -99,15 +101,15 @@
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/media.html#MediaElement.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.media.MediaElement.__init__" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
+<dl class="py property">
 <dt class="sig sig-object py" id="datumaro.components.media.MediaElement.path">
-<span class="sig-name descname"><span class="pre">path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.components.media.MediaElement.path" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#datumaro.components.media.MediaElement.path" title="Permalink to this definition"></a></dt>
 <dd><p>Path to the media file</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="py property">
 <dt class="sig sig-object py" id="datumaro.components.media.MediaElement.ext">
-<span class="sig-name descname"><span class="pre">ext</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.components.media.MediaElement.ext" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">ext</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#datumaro.components.media.MediaElement.ext" title="Permalink to this definition"></a></dt>
 <dd><p>Media file extension</p>
 </dd></dl>
 
@@ -115,18 +117,6 @@
 <dt class="sig sig-object py" id="datumaro.components.media.MediaElement.__eq__">
 <span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/media.html#MediaElement.__eq__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.media.MediaElement.__eq__" title="Permalink to this definition"></a></dt>
 <dd><p>Return self==value.</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="id0">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#id0" title="Permalink to this definition"></a></dt>
-<dd><p>Path to the media file</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="id1">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">ext</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#id1" title="Permalink to this definition"></a></dt>
-<dd><p>Media file extension</p>
 </dd></dl>
 
 </dd></dl>
@@ -140,25 +130,25 @@
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/media.html#Image.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.media.Image.__init__" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
+<dl class="py property">
 <dt class="sig sig-object py" id="datumaro.components.media.Image.data">
-<span class="sig-name descname"><span class="pre">data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.components.media.Image.data" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#datumaro.components.media.Image.data" title="Permalink to this definition"></a></dt>
 <dd><p>Image data in BGR HWC [0; 255] (float) format</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="py property">
 <dt class="sig sig-object py" id="datumaro.components.media.Image.has_data">
-<span class="sig-name descname"><span class="pre">has_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.components.media.Image.has_data" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">has_data</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#datumaro.components.media.Image.has_data" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
+<dl class="py property">
 <dt class="sig sig-object py" id="datumaro.components.media.Image.has_size">
-<span class="sig-name descname"><span class="pre">has_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.components.media.Image.has_size" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">has_size</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#datumaro.components.media.Image.has_size" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
+<dl class="py property">
 <dt class="sig sig-object py" id="datumaro.components.media.Image.size">
-<span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.components.media.Image.size" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#datumaro.components.media.Image.size" title="Permalink to this definition"></a></dt>
 <dd><p>Returns (H, W)</p>
 </dd></dl>
 
@@ -172,18 +162,6 @@
 <dt class="sig sig-object py" id="datumaro.components.media.Image.save">
 <span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/media.html#Image.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.media.Image.save" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="id2">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id2" title="Permalink to this definition"></a></dt>
-<dd><p>Image data in BGR HWC [0; 255] (float) format</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="id3">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id3" title="Permalink to this definition"></a></dt>
-<dd><p>Returns (H, W)</p>
-</dd></dl>
 
 </dd></dl>
 
@@ -201,16 +179,16 @@
 <span class="sig-name descname"><span class="pre">get_bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/media.html#ByteImage.get_bytes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.media.ByteImage.get_bytes" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.components.media.ByteImage.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/media.html#ByteImage.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.media.ByteImage.save" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
 <dl class="py property">
 <dt class="sig sig-object py" id="datumaro.components.media.ByteImage.ext">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">ext</span></span><a class="headerlink" href="#datumaro.components.media.ByteImage.ext" title="Permalink to this definition"></a></dt>
 <dd><p>Media file extension</p>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.media.ByteImage.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/media.html#ByteImage.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.media.ByteImage.save" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 

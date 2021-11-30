@@ -18,7 +18,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="COCO format package" href="coco_format/coco_format.html" />
+    <link rel="next" title="Accuracy checker plugin package" href="accuracy_checker_plugin/accuracy_checker_plugin.html" />
     <link rel="prev" title="validator module" href="../components/components/datumaro.components.validator.html" /> 
 </head>
 
@@ -41,15 +41,39 @@
 <li class="toctree-l1"><a class="reference internal" href="../cli/cli.html">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../components/components.html">Components</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="accuracy_checker_plugin/accuracy_checker_plugin.html">Accuracy checker plugin package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coco_format/coco_format.html">COCO format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cvat_format/cvat_format.html">CVAT format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro_format/datumaro_format.html">Datumaro format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icdar_format/icdar_format.html">ICDAR format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kitti_format/kitti_format.html">KITTI format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kitti_raw_format/kitti_raw_format.html">KITTI raw format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openvino_plugin/openvino_plugin.html">OpenVino plugin package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sampler/sampler.html">Sampler package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sly_pointcloud_format/sly_pointcloud_format.html">sly Pointcloud format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tf_detection_api_format/tf_detection_api_format.html">tf detection api format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voc_format/voc_format.html">VOC format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo_format/yolo_format.html">YOLO format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.ade20k2017_format.html">ade20k2017_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.ade20k2020_format.html">ade20k2020_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.camvid_format.html">camvid_format module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.cifar_format.html">cifar_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.cityscapes_format.html">cityscapes_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.image_dir_format.html">image_dir_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.image_zip_format.html">image_zip_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.imagenet_format.html">imagenet_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.imagenet_txt_format.html">imagenet_txt_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.labelme_format.html">labelme_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.lfw_format.html">lfw_format module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.mot_format.html">mot_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.mots_format.html">mots_format module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.ndr.html">ndr module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.open_images_format.html">open_images_format module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.splitter.html">splitter module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.transforms.html">transforms module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.validators.html">validators module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.vgg_face2_format.html">vgg_face2_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/datumaro.plugins.widerface_format.html">widerface_format module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../util/util/util.html">Utilities</a></li>
@@ -86,23 +110,106 @@
 <h1>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="accuracy_checker_plugin/accuracy_checker_plugin.html">Accuracy checker plugin package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="accuracy_checker_plugin/datumaro.plugins.accuracy_checker_plugin.launcher.html">launcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accuracy_checker_plugin/details/details.html">details package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.ac.html">ac module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.representation.html">representation module</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="coco_format/coco_format.html">COCO format package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="coco_format/datumaro.plugins.coco_format.converter.html">converter module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coco_format/datumaro.plugins.coco_format.extractor.html">extractor module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coco_format/datumaro.plugins.coco_format.format.html">format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coco_format/datumaro.plugins.coco_format.importer.html">importer module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cvat_format/cvat_format.html">CVAT format package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cvat_format/datumaro.plugins.cvat_format.converter.html">converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cvat_format/datumaro.plugins.cvat_format.extractor.html">extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cvat_format/datumaro.plugins.cvat_format.format.html">format module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datumaro_format/datumaro_format.html">Datumaro format package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="datumaro_format/datumaro.plugins.datumaro_format.converter.html">converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro_format/datumaro.plugins.datumaro_format.extractor.html">extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro_format/datumaro.plugins.datumaro_format.format.html">format module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="icdar_format/icdar_format.html">ICDAR format package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="icdar_format/datumaro.plugins.icdar_format.converter.html">converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icdar_format/datumaro.plugins.icdar_format.extractor.html">extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icdar_format/datumaro.plugins.icdar_format.format.html">format module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kitti_format/kitti_format.html">KITTI format package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kitti_format/datumaro.plugins.kitti_format.converter.html">converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kitti_format/datumaro.plugins.kitti_format.extractor.html">extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kitti_format/datumaro.plugins.kitti_format.format.html">format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kitti_format/datumaro.plugins.kitti_format.importer.html">importer module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kitti_raw_format/kitti_raw_format.html">KITTI raw format package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kitti_raw_format/datumaro.plugins.kitti_raw_format.converter.html">converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kitti_raw_format/datumaro.plugins.kitti_raw_format.extractor.html">extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kitti_raw_format/datumaro.plugins.kitti_raw_format.format.html">format module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="openvino_plugin/openvino_plugin.html">OpenVino plugin package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html">launcher module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sampler/sampler.html">Sampler package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="sampler/datumaro.plugins.sampler.sampler.html">sampler module</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="sly_pointcloud_format/sly_pointcloud_format.html">sly Pointcloud format package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.converter.html">converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.extractor.html">extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.format.html">format module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tf_detection_api_format/tf_detection_api_format.html">tf detection api format package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tf_detection_api_format/datumaro.plugins.tf_detection_api_format.converter.html">converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tf_detection_api_format/datumaro.plugins.tf_detection_api_format.extractor.html">extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tf_detection_api_format/datumaro.plugins.tf_detection_api_format.format.html">format module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="voc_format/voc_format.html">VOC format package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="voc_format/datumaro.plugins.voc_format.converter.html">converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voc_format/datumaro.plugins.voc_format.extractor.html">extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voc_format/datumaro.plugins.voc_format.format.html">format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="voc_format/datumaro.plugins.voc_format.importer.html">importer module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="yolo_format/yolo_format.html">YOLO format package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="yolo_format/datumaro.plugins.yolo_format.converter.html">converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo_format/datumaro.plugins.yolo_format.extractor.html">extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo_format/datumaro.plugins.yolo_format.format.html">format module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.ade20k2017_format.html">ade20k2017_format module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.ade20k2020_format.html">ade20k2020_format module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.camvid_format.html">camvid_format module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.cifar_format.html">cifar_format module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.cityscapes_format.html">cityscapes_format module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.image_dir_format.html">image_dir_format module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.image_zip_format.html">image_zip_format module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.imagenet_format.html">imagenet_format module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.imagenet_txt_format.html">imagenet_txt_format module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.labelme_format.html">labelme_format module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.lfw_format.html">lfw_format module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.mot_format.html">mot_format module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.mots_format.html">mots_format module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.ndr.html">ndr module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.open_images_format.html">open_images_format module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.splitter.html">splitter module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.transforms.html">transforms module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.validators.html">validators module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.vgg_face2_format.html">vgg_face2_format module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/datumaro.plugins.widerface_format.html">widerface_format module</a></li>
 </ul>
 </div>
 </div>
@@ -112,7 +219,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../components/components/datumaro.components.validator.html" class="btn btn-neutral float-left" title="validator module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="coco_format/coco_format.html" class="btn btn-neutral float-right" title="COCO format package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="accuracy_checker_plugin/accuracy_checker_plugin.html" class="btn btn-neutral float-right" title="Accuracy checker plugin package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

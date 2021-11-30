@@ -93,7 +93,7 @@
 <div class="viewcode-block" id="Converter"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.converter.html#datumaro.components.converter.Converter">[docs]</a><span class="k">class</span> <span class="nc">Converter</span><span class="p">(</span><span class="n">CliPlugin</span><span class="p">):</span>
     <span class="n">DEFAULT_IMAGE_EXT</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Converter.build_cmdline_parser"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.converter.html#datumaro.components.converter.Converter.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--save-images&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
@@ -104,12 +104,12 @@
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--save-dataset-meta&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Save dataset meta file (default: </span><span class="si">%(default)s</span><span class="s2">)&quot;</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">parser</span>
+        <span class="k">return</span> <span class="n">parser</span></div>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Converter.convert"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.converter.html#datumaro.components.converter.Converter.convert">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">extractor</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
         <span class="n">converter</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">extractor</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">converter</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">converter</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Converter.patch"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.converter.html#datumaro.components.converter.Converter.patch">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="nd">@scoped</span>
@@ -141,8 +141,8 @@
 
         <span class="k">return</span> <span class="n">retval</span></div>
 
-    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Should be implemented in a subclass&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="Converter.apply"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.converter.html#datumaro.components.converter.Converter.apply">[docs]</a>    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Should be implemented in a subclass&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Converter.__init__"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.converter.html#datumaro.components.converter.Converter.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">image_ext</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default_image_ext</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save_dataset_meta</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>

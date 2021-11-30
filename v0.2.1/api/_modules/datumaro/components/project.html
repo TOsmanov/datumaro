@@ -772,7 +772,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">find_stage</span><span class="p">(</span><span class="n">stage</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
 
-    <span class="k">def</span> <span class="nf">add_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BuildTarget</span><span class="p">:</span>
+<div class="viewcode-block" id="ProjectBuildTargets.add_target"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.ProjectBuildTargets.add_target">[docs]</a>    <span class="k">def</span> <span class="nf">add_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BuildTarget</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">{</span>
             <span class="s1">&#39;stages&#39;</span><span class="p">:</span> <span class="p">[</span>
                 <span class="n">BuildStage</span><span class="p">({</span>
@@ -780,9 +780,9 @@
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">BuildStageType</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
                 <span class="p">}),</span>
             <span class="p">]</span>
-        <span class="p">})</span>
+        <span class="p">})</span></div>
 
-    <span class="k">def</span> <span class="nf">add_stage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">prev</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="ProjectBuildTargets.add_stage"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.ProjectBuildTargets.add_stage">[docs]</a>    <span class="k">def</span> <span class="nf">add_stage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">prev</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="n">target_name</span> <span class="o">=</span> <span class="n">target</span>
         <span class="n">target_stage_name</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="s1">&#39;.&#39;</span> <span class="ow">in</span> <span class="n">target</span><span class="p">:</span>
@@ -815,22 +815,22 @@
         <span class="k">assert</span> <span class="n">value</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="n">BuildStageType</span><span class="o">.</span><span class="n">__members__</span>
         <span class="n">target</span><span class="o">.</span><span class="n">stages</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">prev_stage</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_target_name</span><span class="p">(</span><span class="n">target_name</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_target_name</span><span class="p">(</span><span class="n">target_name</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">remove_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="ProjectBuildTargets.remove_target"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.ProjectBuildTargets.remove_target">[docs]</a>    <span class="k">def</span> <span class="nf">remove_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">assert</span> <span class="n">name</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MAIN_TARGET</span><span class="p">,</span> <span class="s2">&quot;Can&#39;t remove the main target&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">remove_stage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="ProjectBuildTargets.remove_stage"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.ProjectBuildTargets.remove_stage">[docs]</a>    <span class="k">def</span> <span class="nf">remove_stage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">assert</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">BASE_STAGE</span><span class="p">},</span> <span class="s2">&quot;Can&#39;t remove a default stage&quot;</span>
 
         <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">stages</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">idx</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t find stage &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
-        <span class="n">target</span><span class="o">.</span><span class="n">stages</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+        <span class="n">target</span><span class="o">.</span><span class="n">stages</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">add_transform_stage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">transform</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<div class="viewcode-block" id="ProjectBuildTargets.add_transform_stage"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.ProjectBuildTargets.add_transform_stage">[docs]</a>    <span class="k">def</span> <span class="nf">add_transform_stage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">transform</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
             <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">transform</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tree</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">transforms</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;Unknown transform &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">transform</span><span class="p">)</span>
@@ -839,9 +839,9 @@
             <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">BuildStageType</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
             <span class="s1">&#39;kind&#39;</span><span class="p">:</span> <span class="n">transform</span><span class="p">,</span>
             <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="n">params</span> <span class="ow">or</span> <span class="p">{},</span>
-        <span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">add_inference_stage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<div class="viewcode-block" id="ProjectBuildTargets.add_inference_stage"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.ProjectBuildTargets.add_inference_stage">[docs]</a>    <span class="k">def</span> <span class="nf">add_inference_stage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
             <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">model</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tree</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">models</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;Unknown model &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">model</span><span class="p">)</span>
@@ -850,18 +850,18 @@
             <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">BuildStageType</span><span class="o">.</span><span class="n">inference</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
             <span class="s1">&#39;kind&#39;</span><span class="p">:</span> <span class="n">model</span><span class="p">,</span>
             <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="n">params</span> <span class="ow">or</span> <span class="p">{},</span>
-        <span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">add_filter_stage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">expr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<div class="viewcode-block" id="ProjectBuildTargets.add_filter_stage"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.ProjectBuildTargets.add_filter_stage">[docs]</a>    <span class="k">def</span> <span class="nf">add_filter_stage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">expr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
             <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="n">params</span> <span class="o">=</span> <span class="n">params</span> <span class="ow">or</span> <span class="p">{}</span>
         <span class="n">params</span><span class="p">[</span><span class="s1">&#39;expr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">expr</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="p">{</span>
             <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">BuildStageType</span><span class="o">.</span><span class="n">filter</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
             <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="n">params</span><span class="p">,</span>
-        <span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">add_convert_stage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<div class="viewcode-block" id="ProjectBuildTargets.add_convert_stage"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.ProjectBuildTargets.add_convert_stage">[docs]</a>    <span class="k">def</span> <span class="nf">add_convert_stage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
             <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tree</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">is_format_known</span><span class="p">(</span><span class="nb">format</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;Unknown format &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="nb">format</span><span class="p">)</span>
@@ -870,15 +870,15 @@
             <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">BuildStageType</span><span class="o">.</span><span class="n">convert</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
             <span class="s1">&#39;kind&#39;</span><span class="p">:</span> <span class="nb">format</span><span class="p">,</span>
             <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="n">params</span> <span class="ow">or</span> <span class="p">{},</span>
-        <span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="ProjectBuildTargets.make_target_name"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.ProjectBuildTargets.make_target_name">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">make_target_name</span><span class="p">(</span><span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">stage</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">stage</span><span class="p">:</span>
             <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">stage</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">target</span>
+        <span class="k">return</span> <span class="n">target</span></div>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="ProjectBuildTargets.split_target_name"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.ProjectBuildTargets.split_target_name">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">split_target_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
         <span class="k">if</span> <span class="s1">&#39;.&#39;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
             <span class="n">target</span><span class="p">,</span> <span class="n">stage</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">maxsplit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -891,11 +891,11 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">target</span> <span class="o">=</span> <span class="n">name</span>
             <span class="n">stage</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">BASE_STAGE</span>
-        <span class="k">return</span> <span class="n">target</span><span class="p">,</span> <span class="n">stage</span>
+        <span class="k">return</span> <span class="n">target</span><span class="p">,</span> <span class="n">stage</span></div>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="ProjectBuildTargets.strip_target_name"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.ProjectBuildTargets.strip_target_name">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">strip_target_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">split_target_name</span><span class="p">(</span><span class="n">name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">split_target_name</span><span class="p">(</span><span class="n">name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div>
 
     <span class="k">def</span> <span class="nf">_make_full_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pipeline</span><span class="p">:</span>
         <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">()</span>
@@ -921,7 +921,7 @@
 
         <span class="k">return</span> <span class="n">pipeline</span>
 
-    <span class="k">def</span> <span class="nf">make_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pipeline</span><span class="p">:</span>
+<div class="viewcode-block" id="ProjectBuildTargets.make_pipeline"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.ProjectBuildTargets.make_pipeline">[docs]</a>    <span class="k">def</span> <span class="nf">make_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pipeline</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">target</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">UnknownTargetError</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
 
@@ -929,10 +929,10 @@
         <span class="k">if</span> <span class="s1">&#39;.&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">target</span><span class="p">:</span>
             <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_target_name</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_full_pipeline</span><span class="p">()</span><span class="o">.</span><span class="n">get_slice</span><span class="p">(</span><span class="n">target</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_full_pipeline</span><span class="p">()</span><span class="o">.</span><span class="n">get_slice</span><span class="p">(</span><span class="n">target</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="GitWrapper"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.GitWrapper">[docs]</a><span class="k">class</span> <span class="nc">GitWrapper</span><span class="p">:</span>
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="GitWrapper.module"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.GitWrapper.module">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">module</span><span class="p">():</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="kn">import</span> <span class="nn">git</span>
@@ -941,7 +941,7 @@
             <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t import the &#39;git&#39; package. &quot;</span>
                 <span class="s2">&quot;Make sure GitPython is installed, or install it with &quot;</span>
                 <span class="s2">&quot;&#39;pip install datumaro[default]&#39;.&quot;</span>
-            <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+            <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span></div>
 
     <span class="k">def</span> <span class="nf">_git_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_project_dir</span><span class="p">,</span> <span class="s1">&#39;.git&#39;</span><span class="p">)</span>
@@ -958,7 +958,7 @@
     <span class="k">def</span> <span class="nf">initialized</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
 
-    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="GitWrapper.init"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.GitWrapper.init">[docs]</a>    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialized</span><span class="p">:</span>
             <span class="k">return</span>
 
@@ -974,18 +974,18 @@
         <span class="c1"># Call &quot;git init&quot; directly to have the desired behaviour.</span>
         <span class="n">repo</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">repo</span> <span class="o">=</span> <span class="n">repo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repo</span> <span class="o">=</span> <span class="n">repo</span></div>
 
-    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="GitWrapper.close"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.GitWrapper.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">repo</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">repo</span> <span class="o">=</span> <span class="kc">None</span></div>
 
     <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">checkout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dst_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="GitWrapper.checkout"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.GitWrapper.checkout">[docs]</a>    <span class="k">def</span> <span class="nf">checkout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dst_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="c1"># If user wants to navigate to a head, we need to supply its object</span>
         <span class="c1"># insted of just a string. Otherwise, we&#39;ll get a detached head.</span>
         <span class="k">try</span><span class="p">:</span>
@@ -1019,7 +1019,7 @@
         <span class="k">if</span> <span class="n">clean</span><span class="p">:</span>
             <span class="n">rmtree</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">write_tree</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">dst_dir</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_tree</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">dst_dir</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="GitWrapper.add"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.GitWrapper.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paths</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1128,20 +1128,20 @@
 
         <span class="k">return</span> <span class="n">statuses</span></div>
 
-    <span class="k">def</span> <span class="nf">is_ref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rev</span><span class="p">):</span>
+<div class="viewcode-block" id="GitWrapper.is_ref"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.GitWrapper.is_ref">[docs]</a>    <span class="k">def</span> <span class="nf">is_ref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rev</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">commit</span><span class="p">(</span><span class="n">rev</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="p">()</span><span class="o">.</span><span class="n">exc</span><span class="o">.</span><span class="n">BadName</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
 
-    <span class="k">def</span> <span class="nf">has_commits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_ref</span><span class="p">(</span><span class="s1">&#39;HEAD&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="GitWrapper.has_commits"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.GitWrapper.has_commits">[docs]</a>    <span class="k">def</span> <span class="nf">has_commits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_ref</span><span class="p">(</span><span class="s1">&#39;HEAD&#39;</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">get_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">tree</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span>
+<div class="viewcode-block" id="GitWrapper.get_tree"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.GitWrapper.get_tree">[docs]</a>    <span class="k">def</span> <span class="nf">get_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">tree</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">write_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<div class="viewcode-block" id="GitWrapper.write_tree"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.GitWrapper.write_tree">[docs]</a>    <span class="k">def</span> <span class="nf">write_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
             <span class="n">include_files</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -1158,7 +1158,7 @@
                 <span class="k">pass</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unexpected object type in a &quot;</span>
-                    <span class="s2">&quot;git tree: </span><span class="si">%s</span><span class="s2"> (</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">hexsha</span><span class="p">))</span>
+                    <span class="s2">&quot;git tree: </span><span class="si">%s</span><span class="s2"> (</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">hexsha</span><span class="p">))</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">head</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -1179,7 +1179,7 @@
         <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">rev_parse</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">hexsha</span></div>
 
-    <span class="k">def</span> <span class="nf">ignore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paths</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+<div class="viewcode-block" id="GitWrapper.ignore"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.GitWrapper.ignore">[docs]</a>    <span class="k">def</span> <span class="nf">ignore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paths</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
             <span class="n">mode</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">IgnoreMode</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">gitignore</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">gitignore</span><span class="p">:</span>
@@ -1189,13 +1189,13 @@
         <span class="k">assert</span> <span class="n">is_subpath</span><span class="p">(</span><span class="n">gitignore</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="n">repo_root</span><span class="p">),</span> <span class="n">gitignore</span>
 
         <span class="n">_update_ignore_file</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="n">repo_root</span><span class="o">=</span><span class="n">repo_root</span><span class="p">,</span>
-            <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">filepath</span><span class="o">=</span><span class="n">gitignore</span><span class="p">)</span>
+            <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">filepath</span><span class="o">=</span><span class="n">gitignore</span><span class="p">)</span></div>
 
     <span class="n">HASH_LEN</span> <span class="o">=</span> <span class="mi">40</span>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="GitWrapper.is_hash"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.GitWrapper.is_hash">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">is_hash</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="bp">cls</span><span class="o">.</span><span class="n">HASH_LEN</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="bp">cls</span><span class="o">.</span><span class="n">HASH_LEN</span></div>
 
 <div class="viewcode-block" id="GitWrapper.log"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.GitWrapper.log">[docs]</a>    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1444,15 +1444,15 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span> <span class="o">=</span> <span class="n">ProjectSources</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_targets</span> <span class="o">=</span> <span class="n">ProjectBuildTargets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">config_path</span><span class="p">)</span>
+<div class="viewcode-block" id="Tree.save"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Tree.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">config_path</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<div class="viewcode-block" id="Tree.dump"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Tree.dump">[docs]</a>    <span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Tree&#39;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">Tree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="p">,</span> <span class="n">TreeConfig</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rev</span><span class="p">)</span>
+<div class="viewcode-block" id="Tree.clone"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Tree.clone">[docs]</a>    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Tree&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Tree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="p">,</span> <span class="n">TreeConfig</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rev</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sources</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProjectSources</span><span class="p">:</span>
@@ -1474,13 +1474,13 @@
     <span class="k">def</span> <span class="nf">rev</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Revision&#39;</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rev</span>
 
-    <span class="k">def</span> <span class="nf">make_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pipeline</span><span class="p">:</span>
+<div class="viewcode-block" id="Tree.make_pipeline"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Tree.make_pipeline">[docs]</a>    <span class="k">def</span> <span class="nf">make_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pipeline</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">target</span><span class="p">:</span>
             <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;project&#39;</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_targets</span><span class="o">.</span><span class="n">make_pipeline</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_targets</span><span class="o">.</span><span class="n">make_pipeline</span><span class="p">(</span><span class="n">target</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">make_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="Tree.make_dataset"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Tree.make_dataset">[docs]</a>    <span class="k">def</span> <span class="nf">make_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
             <span class="n">target</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">Pipeline</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dataset</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">target</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="n">pipeline</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_pipeline</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
@@ -1489,18 +1489,18 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected target type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">target</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">ProjectBuilder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span><span class="n">pipeline</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ProjectBuilder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">(</span><span class="n">pipeline</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_working_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rev</span>
 
-    <span class="k">def</span> <span class="nf">source_data_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="Tree.source_data_dir"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Tree.source_data_dir">[docs]</a>    <span class="k">def</span> <span class="nf">source_data_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_working_tree</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">source_data_dir</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
 
         <span class="n">obj_hash</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_targets</span><span class="p">[</span><span class="n">source</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">hash</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">cache_path</span><span class="p">(</span><span class="n">obj_hash</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">cache_path</span><span class="p">(</span><span class="n">obj_hash</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="DiffStatus"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.DiffStatus">[docs]</a><span class="k">class</span> <span class="nc">DiffStatus</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
@@ -1514,7 +1514,7 @@
 <span class="n">ObjectId</span> <span class="o">=</span> <span class="n">NewType</span><span class="p">(</span><span class="s1">&#39;ObjectId&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="c1"># a commit or an object hash</span>
 
 <div class="viewcode-block" id="Project"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project">[docs]</a><span class="k">class</span> <span class="nc">Project</span><span class="p">:</span>
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Project.find_project_dir"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.find_project_dir">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">find_project_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
@@ -1524,9 +1524,9 @@
         <span class="k">if</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">path</span>
 
-        <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Project.migrate_from_v1_to_v2"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.migrate_from_v1_to_v2">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="nd">@scoped</span>
     <span class="k">def</span> <span class="nf">migrate_from_v1_to_v2</span><span class="p">(</span><span class="n">src_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dst_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
             <span class="n">skip_import_errors</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -1630,7 +1630,7 @@
             <span class="n">source</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 
         <span class="n">new_project</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-        <span class="n">new_project</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">new_project</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="p">:</span>
@@ -1692,7 +1692,7 @@
                 <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_root_dir</span><span class="p">,</span> <span class="s1">&#39;.dvc&#39;</span><span class="p">,</span> <span class="s1">&#39;plots&#39;</span><span class="p">),</span> <span class="n">r</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">commit</span><span class="p">(</span><span class="s1">&#39;Initial commit&#39;</span><span class="p">,</span> <span class="n">allow_empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Project.init"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.init">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="nd">@scoped</span>
     <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Project&#39;</span><span class="p">:</span>
         <span class="n">existing_project</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">find_project_dir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
@@ -1721,16 +1721,16 @@
         <span class="n">project</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
         <span class="n">project</span><span class="o">.</span><span class="n">_init_vcs</span><span class="p">()</span>
 
-        <span class="k">return</span> <span class="n">project</span>
+        <span class="k">return</span> <span class="n">project</span></div>
 
-    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Project.close"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dvc</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_dvc</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_dvc</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_git</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_git</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_git</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_git</span> <span class="o">=</span> <span class="kc">None</span></div>
 
     <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
@@ -1742,11 +1742,11 @@
     <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Project.save"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aux_dir</span><span class="p">,</span> <span class="n">ProjectLayout</span><span class="o">.</span><span class="n">conf_file</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_working_tree</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_working_tree</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_working_tree</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">readonly</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -1817,27 +1817,27 @@
             <span class="n">tree</span> <span class="o">=</span> <span class="n">Tree</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">tree_config</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">rev</span><span class="o">=</span><span class="n">obj_hash</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">tree</span></div>
 
-    <span class="k">def</span> <span class="nf">is_rev_cached</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rev</span><span class="p">:</span> <span class="n">Revision</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="Project.is_rev_cached"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.is_rev_cached">[docs]</a>    <span class="k">def</span> <span class="nf">is_rev_cached</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rev</span><span class="p">:</span> <span class="n">Revision</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="n">obj_type</span><span class="p">,</span> <span class="n">obj_hash</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_ref</span><span class="p">(</span><span class="n">rev</span><span class="p">)</span>
         <span class="k">assert</span> <span class="n">obj_type</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ObjectIdKind</span><span class="o">.</span><span class="n">tree</span><span class="p">,</span> <span class="n">obj_type</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_cached</span><span class="p">(</span><span class="n">obj_hash</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_cached</span><span class="p">(</span><span class="n">obj_hash</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">is_obj_cached</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_hash</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="Project.is_obj_cached"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.is_obj_cached">[docs]</a>    <span class="k">def</span> <span class="nf">is_obj_cached</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_hash</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_cached</span><span class="p">(</span><span class="n">obj_hash</span><span class="p">)</span> <span class="ow">or</span> \
-            <span class="bp">self</span><span class="o">.</span><span class="n">_can_retrieve_from_vcs_cache</span><span class="p">(</span><span class="n">obj_hash</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_can_retrieve_from_vcs_cache</span><span class="p">(</span><span class="n">obj_hash</span><span class="p">)</span></div>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_is_working_tree_ref</span><span class="p">(</span><span class="n">ref</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">Revision</span><span class="p">,</span> <span class="n">ObjectId</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="ow">not</span> <span class="n">ref</span>
 
-<div class="viewcode-block" id="Project._ObjectIdKind"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project._ObjectIdKind">[docs]</a>    <span class="k">class</span> <span class="nc">_ObjectIdKind</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">_ObjectIdKind</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
         <span class="c1"># Project revision data. Currently, a Git commit hash.</span>
         <span class="n">tree</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
 
         <span class="c1"># Source revision data. DVC directories and files.</span>
-        <span class="n">blob</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+        <span class="n">blob</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
 
-<div class="viewcode-block" id="Project._parse_ref"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project._parse_ref">[docs]</a>    <span class="k">def</span> <span class="nf">_parse_ref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">Revision</span><span class="p">,</span> <span class="n">ObjectId</span><span class="p">])</span> \
+    <span class="k">def</span> <span class="nf">_parse_ref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">Revision</span><span class="p">,</span> <span class="n">ObjectId</span><span class="p">])</span> \
             <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">_ObjectIdKind</span><span class="p">,</span> <span class="n">ObjectId</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resolves the reference to an object hash.</span>
@@ -1860,9 +1860,9 @@
             <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dvc</span><span class="o">.</span><span class="n">is_hash</span><span class="p">(</span><span class="n">ref</span><span class="p">),</span> <span class="n">ref</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ObjectIdKind</span><span class="o">.</span><span class="n">blob</span><span class="p">,</span> <span class="n">ref</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">UnknownRefError</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span></div>
+            <span class="k">raise</span> <span class="n">UnknownRefError</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
 
-<div class="viewcode-block" id="Project._materialize_rev"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project._materialize_rev">[docs]</a>    <span class="k">def</span> <span class="nf">_materialize_rev</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rev</span><span class="p">:</span> <span class="n">Revision</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_materialize_rev</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rev</span><span class="p">:</span> <span class="n">Revision</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Restores the revision tree data in the project cache from Git.</span>
 
@@ -1880,18 +1880,18 @@
 
         <span class="n">tree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_git</span><span class="o">.</span><span class="n">get_tree</span><span class="p">(</span><span class="n">rev</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_git</span><span class="o">.</span><span class="n">write_tree</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">obj_dir</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">obj_dir</span></div>
+        <span class="k">return</span> <span class="n">obj_dir</span>
 
     <span class="k">def</span> <span class="nf">_is_cached</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_hash</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_path</span><span class="p">(</span><span class="n">obj_hash</span><span class="p">))</span>
 
-    <span class="k">def</span> <span class="nf">cache_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_hash</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="Project.cache_path"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.cache_path">[docs]</a>    <span class="k">def</span> <span class="nf">cache_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_hash</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_git</span><span class="o">.</span><span class="n">is_hash</span><span class="p">(</span><span class="n">obj_hash</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dvc</span><span class="o">.</span><span class="n">is_hash</span><span class="p">(</span><span class="n">obj_hash</span><span class="p">),</span> <span class="n">obj_hash</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dvc</span><span class="o">.</span><span class="n">is_dir_hash</span><span class="p">(</span><span class="n">obj_hash</span><span class="p">):</span>
             <span class="n">obj_hash</span> <span class="o">=</span> <span class="n">obj_hash</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">_dvc</span><span class="o">.</span><span class="n">FILE_HASH_LEN</span><span class="p">]</span>
 
         <span class="k">return</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aux_dir</span><span class="p">,</span> <span class="n">ProjectLayout</span><span class="o">.</span><span class="n">cache_dir</span><span class="p">,</span>
-            <span class="n">obj_hash</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">obj_hash</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+            <span class="n">obj_hash</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">obj_hash</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span></div>
 
     <span class="k">def</span> <span class="nf">_can_retrieve_from_vcs_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_hash</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dvc</span><span class="o">.</span><span class="n">is_dir_hash</span><span class="p">(</span><span class="n">obj_hash</span><span class="p">):</span>
@@ -1901,10 +1901,10 @@
             <span class="n">dir_check</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="n">dir_check</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dvc</span><span class="o">.</span><span class="n">is_cached</span><span class="p">(</span><span class="n">obj_hash</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">source_data_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_root_dir</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<div class="viewcode-block" id="Project.source_data_dir"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.source_data_dir">[docs]</a>    <span class="k">def</span> <span class="nf">source_data_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_root_dir</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Project._source_dvcfile_path"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project._source_dvcfile_path">[docs]</a>    <span class="k">def</span> <span class="nf">_source_dvcfile_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">_source_dvcfile_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
             <span class="n">root</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        root - Path to the tree root directory. If not set,</span>
@@ -1913,7 +1913,7 @@
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span>
             <span class="n">root</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aux_dir</span><span class="p">,</span> <span class="n">ProjectLayout</span><span class="o">.</span><span class="n">working_tree_dir</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">TreeLayout</span><span class="o">.</span><span class="n">sources_dir</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;source.dvc&#39;</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">TreeLayout</span><span class="o">.</span><span class="n">sources_dir</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;source.dvc&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_make_tmp_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">suffix</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="n">project_tmp_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aux_dir</span><span class="p">,</span> <span class="n">ProjectLayout</span><span class="o">.</span><span class="n">tmp_dir</span><span class="p">)</span>
@@ -1923,7 +1923,7 @@
 
         <span class="k">return</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">(</span><span class="n">suffix</span><span class="o">=</span><span class="n">suffix</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="n">project_tmp_dir</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">remove_cache_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Revision</span><span class="p">,</span> <span class="n">ObjectId</span><span class="p">]):</span>
+<div class="viewcode-block" id="Project.remove_cache_obj"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.remove_cache_obj">[docs]</a>    <span class="k">def</span> <span class="nf">remove_cache_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Revision</span><span class="p">,</span> <span class="n">ObjectId</span><span class="p">]):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">readonly</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">ReadonlyProjectError</span><span class="p">()</span>
 
@@ -1939,9 +1939,9 @@
         <span class="k">elif</span> <span class="n">obj_type</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ObjectIdKind</span><span class="o">.</span><span class="n">blob</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_dvc</span><span class="o">.</span><span class="n">remove_cache_obj</span><span class="p">(</span><span class="n">obj_hash</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unexpected object type &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">obj_type</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unexpected object type &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">obj_type</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">validate_source_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="Project.validate_source_name"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.validate_source_name">[docs]</a>    <span class="k">def</span> <span class="nf">validate_source_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Source name cannot be empty&quot;</span><span class="p">)</span>
 
@@ -1961,7 +1961,7 @@
 
         <span class="n">reserved_names</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dataset&#39;</span><span class="p">,</span> <span class="s1">&#39;build&#39;</span><span class="p">,</span> <span class="s1">&#39;project&#39;</span><span class="p">}</span>
         <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">reserved_names</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Source name is reserved for internal use&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Source name is reserved for internal use&quot;</span><span class="p">)</span></div>
 
     <span class="nd">@scoped</span>
     <span class="k">def</span> <span class="nf">_download_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dst_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
@@ -2004,7 +2004,7 @@
             <span class="n">obj_hash</span> <span class="o">=</span> <span class="n">obj_hash</span><span class="p">[:</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">DvcWrapper</span><span class="o">.</span><span class="n">DIR_HASH_SUFFIX</span><span class="p">)]</span>
         <span class="k">return</span> <span class="n">obj_hash</span>
 
-    <span class="nd">@scoped</span>
+<div class="viewcode-block" id="Project.compute_source_hash"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.compute_source_hash">[docs]</a>    <span class="nd">@scoped</span>
     <span class="k">def</span> <span class="nf">compute_source_hash</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dvcfile</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">no_cache</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">allow_external</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ObjectId</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">dvcfile</span><span class="p">:</span>
@@ -2014,7 +2014,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_dvc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">dvc_path</span><span class="o">=</span><span class="n">dvcfile</span><span class="p">,</span> <span class="n">no_commit</span><span class="o">=</span><span class="n">no_cache</span><span class="p">,</span>
             <span class="n">allow_external</span><span class="o">=</span><span class="n">allow_external</span><span class="p">)</span>
         <span class="n">obj_hash</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_source_hash</span><span class="p">(</span><span class="n">dvcfile</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">obj_hash</span>
+        <span class="k">return</span> <span class="n">obj_hash</span></div>
 
 <div class="viewcode-block" id="Project.refresh_source_hash"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.refresh_source_hash">[docs]</a>    <span class="k">def</span> <span class="nf">refresh_source_hash</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
             <span class="n">no_cache</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ObjectId</span><span class="p">:</span>
@@ -2044,7 +2044,7 @@
 
         <span class="k">return</span> <span class="n">obj_hash</span></div>
 
-<div class="viewcode-block" id="Project._materialize_obj"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project._materialize_obj">[docs]</a>    <span class="k">def</span> <span class="nf">_materialize_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_hash</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_materialize_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_hash</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Restores the object data in the project cache from DVC.</span>
 
@@ -2064,7 +2064,7 @@
             <span class="k">return</span> <span class="n">dst_dir</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_dvc</span><span class="o">.</span><span class="n">write_obj</span><span class="p">(</span><span class="n">obj_hash</span><span class="p">,</span> <span class="n">dst_dir</span><span class="p">,</span> <span class="n">allow_links</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">dst_dir</span></div>
+        <span class="k">return</span> <span class="n">dst_dir</span>
 
 <div class="viewcode-block" id="Project.import_source"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.import_source">[docs]</a>    <span class="nd">@scoped</span>
     <span class="k">def</span> <span class="nf">import_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
@@ -2458,15 +2458,15 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_working_tree</span> <span class="o">=</span> <span class="kc">None</span></div>
 
-    <span class="k">def</span> <span class="nf">is_ref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="Project.is_ref"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.is_ref">[docs]</a>    <span class="k">def</span> <span class="nf">is_ref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_working_tree_ref</span><span class="p">(</span><span class="n">ref</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_git</span><span class="o">.</span><span class="n">is_ref</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_git</span><span class="o">.</span><span class="n">is_ref</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">has_commits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_git</span><span class="o">.</span><span class="n">has_commits</span><span class="p">()</span>
+<div class="viewcode-block" id="Project.has_commits"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.has_commits">[docs]</a>    <span class="k">def</span> <span class="nf">has_commits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_git</span><span class="o">.</span><span class="n">has_commits</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DiffStatus</span><span class="p">]:</span>
+<div class="viewcode-block" id="Project.status"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.status">[docs]</a>    <span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DiffStatus</span><span class="p">]:</span>
         <span class="n">wd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">working_tree</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_commits</span><span class="p">():</span>
@@ -2512,10 +2512,10 @@
             <span class="k">if</span> <span class="n">status</span><span class="p">:</span>
                 <span class="n">changed_targets</span><span class="p">[</span><span class="n">t_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">status</span>
 
-        <span class="k">return</span> <span class="n">changed_targets</span>
+        <span class="k">return</span> <span class="n">changed_targets</span></div>
 
-    <span class="k">def</span> <span class="nf">history</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_count</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Revision</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
-        <span class="k">return</span> <span class="p">[(</span><span class="n">c</span><span class="o">.</span><span class="n">hexsha</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">message</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_git</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">max_count</span><span class="p">)]</span>
+<div class="viewcode-block" id="Project.history"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.history">[docs]</a>    <span class="k">def</span> <span class="nf">history</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_count</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Revision</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+        <span class="k">return</span> <span class="p">[(</span><span class="n">c</span><span class="o">.</span><span class="n">hexsha</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">message</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_git</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">max_count</span><span class="p">)]</span></div>
 
 <div class="viewcode-block" id="Project.diff"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.diff">[docs]</a>    <span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rev_a</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tree</span><span class="p">,</span> <span class="n">Revision</span><span class="p">],</span>
             <span class="n">rev_b</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tree</span><span class="p">,</span> <span class="n">Revision</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DiffStatus</span><span class="p">]:</span>
@@ -2563,18 +2563,18 @@
 
         <span class="k">return</span> <span class="n">changed_targets</span></div>
 
-    <span class="k">def</span> <span class="nf">model_data_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aux_dir</span><span class="p">,</span> <span class="n">ProjectLayout</span><span class="o">.</span><span class="n">models_dir</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<div class="viewcode-block" id="Project.model_data_dir"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.model_data_dir">[docs]</a>    <span class="k">def</span> <span class="nf">model_data_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aux_dir</span><span class="p">,</span> <span class="n">ProjectLayout</span><span class="o">.</span><span class="n">models_dir</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">make_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Launcher</span><span class="p">:</span>
+<div class="viewcode-block" id="Project.make_model"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.make_model">[docs]</a>    <span class="k">def</span> <span class="nf">make_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Launcher</span><span class="p">:</span>
         <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">models</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
         <span class="n">model_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_data_dir</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">model_dir</span><span class="p">):</span>
             <span class="n">model_dir</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_env</span><span class="o">.</span><span class="n">make_launcher</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">launcher</span><span class="p">,</span>
-            <span class="o">**</span><span class="n">model</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">model_dir</span><span class="o">=</span><span class="n">model_dir</span><span class="p">)</span>
+            <span class="o">**</span><span class="n">model</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">model_dir</span><span class="o">=</span><span class="n">model_dir</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">add_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">launcher</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<div class="viewcode-block" id="Project.add_model"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.add_model">[docs]</a>    <span class="k">def</span> <span class="nf">add_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">launcher</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
             <span class="n">options</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Model</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">readonly</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">ReadonlyProjectError</span><span class="p">()</span>
@@ -2591,9 +2591,9 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">{</span>
             <span class="s1">&#39;launcher&#39;</span><span class="p">:</span> <span class="n">launcher</span><span class="p">,</span>
             <span class="s1">&#39;options&#39;</span><span class="p">:</span> <span class="n">options</span> <span class="ow">or</span> <span class="p">{}</span>
-        <span class="p">})</span>
+        <span class="p">})</span></div>
 
-    <span class="k">def</span> <span class="nf">remove_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="Project.remove_model"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.remove_model">[docs]</a>    <span class="k">def</span> <span class="nf">remove_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">readonly</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">ReadonlyProjectError</span><span class="p">()</span>
 
@@ -2602,7 +2602,7 @@
 
         <span class="n">data_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_data_dir</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">data_dir</span><span class="p">):</span>
-            <span class="n">rmtree</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span></div>
+            <span class="n">rmtree</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

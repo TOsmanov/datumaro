@@ -351,12 +351,12 @@
 <span class="k">class</span> <span class="nc">DatasetValidationError</span><span class="p">(</span><span class="n">DatumaroError</span><span class="p">):</span>
     <span class="n">severity</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="DatasetValidationError.to_dict"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.errors.html#datumaro.components.errors.DatasetValidationError.to_dict">[docs]</a>    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">{</span>
             <span class="s1">&#39;anomaly_type&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
             <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
             <span class="s1">&#39;severity&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">severity</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-        <span class="p">}</span></div>
+        <span class="p">}</span></div></div>
 
 
 <div class="viewcode-block" id="DatasetItemValidationError"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.errors.html#datumaro.components.errors.DatasetItemValidationError">[docs]</a><span class="nd">@attrs</span>
@@ -364,11 +364,11 @@
     <span class="n">item_id</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">()</span>
     <span class="n">subset</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="DatasetItemValidationError.to_dict"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.errors.html#datumaro.components.errors.DatasetItemValidationError.to_dict">[docs]</a>    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">dict_repr</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
         <span class="n">dict_repr</span><span class="p">[</span><span class="s1">&#39;item_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">item_id</span>
         <span class="n">dict_repr</span><span class="p">[</span><span class="s1">&#39;subset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">subset</span>
-        <span class="k">return</span> <span class="n">dict_repr</span></div>
+        <span class="k">return</span> <span class="n">dict_repr</span></div></div>
 
 <div class="viewcode-block" id="MissingLabelCategories"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.errors.html#datumaro.components.errors.MissingLabelCategories">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">MissingLabelCategories</span><span class="p">(</span><span class="n">DatasetValidationError</span><span class="p">):</span>
