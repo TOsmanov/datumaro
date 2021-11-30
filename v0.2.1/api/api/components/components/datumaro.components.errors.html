@@ -40,9 +40,11 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../cli/cli.html">CLI</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../components.html">Components</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../algorithms/algorithms.html">Algorithms module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/algorithms.html">algorithms module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.annotation.html">annotation module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.cli_plugin.html">cli_plugin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.config.html">config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.config_model.html">config_model module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.converter.html">converter module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.dataset.html">dataset module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.dataset_filter.html">dataset_filter module</a></li>
@@ -376,12 +378,22 @@
 <dt class="sig sig-object py" id="datumaro.components.errors.DatasetValidationError">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.errors.</span></span><span class="sig-name descname"><span class="pre">DatasetValidationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">severity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/errors.html#DatasetValidationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.errors.DatasetValidationError" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#datumaro.components.errors.DatumaroError" title="datumaro.components.errors.DatumaroError"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.errors.DatumaroError</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.errors.DatasetValidationError.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/errors.html#DatasetValidationError.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.errors.DatasetValidationError.to_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.errors.DatasetItemValidationError">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.errors.</span></span><span class="sig-name descname"><span class="pre">DatasetItemValidationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">severity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/errors.html#DatasetItemValidationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.errors.DatasetItemValidationError" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#datumaro.components.errors.DatasetValidationError" title="datumaro.components.errors.DatasetValidationError"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.errors.DatasetValidationError</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.errors.DatasetItemValidationError.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/errors.html#DatasetItemValidationError.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.errors.DatasetItemValidationError.to_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">

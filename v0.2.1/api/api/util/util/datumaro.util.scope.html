@@ -42,14 +42,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../../components/components.html">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/plugins.html">Plugins</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="util.html">Utilities</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="datumaro.plugins.market1501_format.html">market1501_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.plugins.mnist_csv_format.html">mnist_csv_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.plugins.mnist_format.html">mnist_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.util.html">Module contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.util.annotation_util.html">annotation_util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.util.attrs_util.html">attrs_util module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.util.image.html">image module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.util.image_cache.html">image_cache module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.util.log_utils.html">log_utils module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.util.mask_tools.html">mask_tools module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.util.os_util.html">os_util module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">scope module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.util.telemetry_stub.html">telemetry_stub module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.util.telemetry_utils.html">telemetry_utils module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.util.test_utils.html">test_utils module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module_contents.html">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.util.tf_util.html">tf_util module</a></li>
 </ul>
 </li>
 </ul>
@@ -89,6 +97,62 @@
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.util.scope.</span></span><span class="sig-name descname"><span class="pre">Scope</span></span><a class="reference internal" href="../../../_modules/datumaro/util/scope.html#Scope"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.scope.Scope" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A context manager that allows to register error and exit callbacks.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.ExitHandler">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">ExitHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_errors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/scope.html#Scope.ExitHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.scope.Scope.ExitHandler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.ExitHandler.callback">
+<span class="sig-name descname"><span class="pre">callback</span></span><em class="property"><span class="pre">:</span> <span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#datumaro.util.scope.Scope.ExitHandler.callback" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.ExitHandler.ignore_errors">
+<span class="sig-name descname"><span class="pre">ignore_errors</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#datumaro.util.scope.Scope.ExitHandler.ignore_errors" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.ExitHandler.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.util.scope.Scope.ExitHandler.__eq__" title="Permalink to this definition"></a></dt>
+<dd><p>Method generated by attrs for class Scope.ExitHandler.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.ExitHandler.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_errors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#datumaro.util.scope.Scope.ExitHandler.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Method generated by attrs for class Scope.ExitHandler.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.ErrorHandler">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">ErrorHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_errors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/scope.html#Scope.ErrorHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.scope.Scope.ErrorHandler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.util.scope.Scope.ExitHandler" title="datumaro.util.scope.Scope.ExitHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.util.scope.Scope.ExitHandler</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.ErrorHandler.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.util.scope.Scope.ErrorHandler.__eq__" title="Permalink to this definition"></a></dt>
+<dd><p>Method generated by attrs for class Scope.ErrorHandler.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.ErrorHandler.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_errors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#datumaro.util.scope.Scope.ErrorHandler.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Method generated by attrs for class Scope.ErrorHandler.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.ErrorHandler.callback">
+<span class="sig-name descname"><span class="pre">callback</span></span><em class="property"><span class="pre">:</span> <span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#datumaro.util.scope.Scope.ErrorHandler.callback" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.ErrorHandler.ignore_errors">
+<span class="sig-name descname"><span class="pre">ignore_errors</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#datumaro.util.scope.Scope.ErrorHandler.ignore_errors" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.util.scope.Scope.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/scope.html#Scope.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.scope.Scope.__init__" title="Permalink to this definition"></a></dt>
@@ -115,11 +179,30 @@ will be ignored.</p>
 <p>Returns: cm.__enter__() result</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="datumaro.util.scope.Scope.__weakref__">
-<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#datumaro.util.scope.Scope.__weakref__" title="Permalink to this definition"></a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
-</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.enable">
+<span class="sig-name descname"><span class="pre">enable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/scope.html#Scope.enable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.scope.Scope.enable" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.disable">
+<span class="sig-name descname"><span class="pre">disable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/scope.html#Scope.disable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.scope.Scope.disable" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/scope.html#Scope.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.scope.Scope.close" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.current">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">current</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#datumaro.util.scope.Scope" title="datumaro.util.scope.Scope"><span class="pre">datumaro.util.scope.Scope</span></a></span></span><a class="reference internal" href="../../../_modules/datumaro/util/scope.html#Scope.current"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.scope.Scope.current" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.util.scope.Scope.as_current">
+<span class="sig-name descname"><span class="pre">as_current</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/scope.html#Scope.as_current"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.scope.Scope.as_current" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 

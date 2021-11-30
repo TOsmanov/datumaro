@@ -41,20 +41,45 @@
 <li class="toctree-l1"><a class="reference internal" href="../../cli/cli.html">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../components/components.html">Components</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../plugins.html">Plugins</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../accuracy_checker_plugin/accuracy_checker_plugin.html">Accuracy checker plugin package</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="coco_format.html">COCO format package</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">converter module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="datumaro.plugins.coco_format.extractor.html">extractor module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="datumaro.plugins.coco_format.format.html">format module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.plugins.coco_format.importer.html">importer module</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../cvat_format/cvat_format.html">CVAT format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datumaro_format/datumaro_format.html">Datumaro format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../icdar_format/icdar_format.html">ICDAR format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kitti_format/kitti_format.html">KITTI format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kitti_raw_format/kitti_raw_format.html">KITTI raw format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../openvino_plugin/openvino_plugin.html">OpenVino plugin package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sampler/sampler.html">Sampler package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sly_pointcloud_format/sly_pointcloud_format.html">sly Pointcloud format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tf_detection_api_format/tf_detection_api_format.html">tf detection api format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../voc_format/voc_format.html">VOC format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yolo_format/yolo_format.html">YOLO format package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.ade20k2017_format.html">ade20k2017_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.ade20k2020_format.html">ade20k2020_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.camvid_format.html">camvid_format module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.cifar_format.html">cifar_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.cityscapes_format.html">cityscapes_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.image_dir_format.html">image_dir_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.image_zip_format.html">image_zip_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.imagenet_format.html">imagenet_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.imagenet_txt_format.html">imagenet_txt_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.labelme_format.html">labelme_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.lfw_format.html">lfw_format module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.mot_format.html">mot_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.mots_format.html">mots_format module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.ndr.html">ndr module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.open_images_format.html">open_images_format module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.splitter.html">splitter module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.transforms.html">transforms module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.validators.html">validators module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.vgg_face2_format.html">vgg_face2_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/datumaro.plugins.widerface_format.html">widerface_format module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../util/util/util.html">Utilities</a></li>
@@ -113,7 +138,115 @@
 
 </dd></dl>
 
-<span class="target" id="module-0"></span></div>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.coco_format.converter.</span></span><span class="sig-name descname"><span class="pre">CocoConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tasks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segmentation_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop_covered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_attributes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reindex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge_images</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoConverter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../components/components/datumaro.components.converter.html#datumaro.components.converter.Converter" title="datumaro.components.converter.Converter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.converter.Converter</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoConverter.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoConverter.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoConverter.build_cmdline_parser" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoConverter.DEFAULT_IMAGE_EXT">
+<span class="sig-name descname"><span class="pre">DEFAULT_IMAGE_EXT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'.jpg'</span></em><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoConverter.DEFAULT_IMAGE_EXT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoConverter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tasks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segmentation_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop_covered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_attributes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reindex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge_images</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoConverter.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoConverter.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoConverter.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoConverter.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoConverter.apply" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoConverter.patch">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">patch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoConverter.patch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoConverter.patch" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoInstancesConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.coco_format.converter.</span></span><span class="sig-name descname"><span class="pre">CocoInstancesConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoInstancesConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoInstancesConverter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.coco_format.converter.CocoConverter" title="datumaro.plugins.coco_format.converter.CocoConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.coco_format.converter.CocoConverter</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoInstancesConverter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoInstancesConverter.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoInstancesConverter.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoImageInfoConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.coco_format.converter.</span></span><span class="sig-name descname"><span class="pre">CocoImageInfoConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoImageInfoConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoImageInfoConverter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.coco_format.converter.CocoConverter" title="datumaro.plugins.coco_format.converter.CocoConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.coco_format.converter.CocoConverter</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoImageInfoConverter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoImageInfoConverter.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoImageInfoConverter.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoPersonKeypointsConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.coco_format.converter.</span></span><span class="sig-name descname"><span class="pre">CocoPersonKeypointsConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoPersonKeypointsConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoPersonKeypointsConverter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.coco_format.converter.CocoConverter" title="datumaro.plugins.coco_format.converter.CocoConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.coco_format.converter.CocoConverter</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoPersonKeypointsConverter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoPersonKeypointsConverter.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoPersonKeypointsConverter.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoCaptionsConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.coco_format.converter.</span></span><span class="sig-name descname"><span class="pre">CocoCaptionsConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoCaptionsConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoCaptionsConverter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.coco_format.converter.CocoConverter" title="datumaro.plugins.coco_format.converter.CocoConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.coco_format.converter.CocoConverter</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoCaptionsConverter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoCaptionsConverter.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoCaptionsConverter.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoLabelsConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.coco_format.converter.</span></span><span class="sig-name descname"><span class="pre">CocoLabelsConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoLabelsConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoLabelsConverter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.coco_format.converter.CocoConverter" title="datumaro.plugins.coco_format.converter.CocoConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.coco_format.converter.CocoConverter</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoLabelsConverter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoLabelsConverter.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoLabelsConverter.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoPanopticConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.coco_format.converter.</span></span><span class="sig-name descname"><span class="pre">CocoPanopticConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoPanopticConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoPanopticConverter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.coco_format.converter.CocoConverter" title="datumaro.plugins.coco_format.converter.CocoConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.coco_format.converter.CocoConverter</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoPanopticConverter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoPanopticConverter.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoPanopticConverter.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoStuffConverter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.coco_format.converter.</span></span><span class="sig-name descname"><span class="pre">CocoStuffConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoStuffConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoStuffConverter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.plugins.coco_format.converter.CocoConverter" title="datumaro.plugins.coco_format.converter.CocoConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.coco_format.converter.CocoConverter</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.coco_format.converter.CocoStuffConverter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/coco_format/converter.html#CocoStuffConverter.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.coco_format.converter.CocoStuffConverter.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
 
 
            </div>

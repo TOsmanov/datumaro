@@ -42,14 +42,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../../components/components.html">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/plugins.html">Plugins</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="util.html">Utilities</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="datumaro.plugins.market1501_format.html">market1501_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.plugins.mnist_csv_format.html">mnist_csv_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.plugins.mnist_format.html">mnist_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.util.html">Module contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.util.annotation_util.html">annotation_util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.util.attrs_util.html">attrs_util module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.util.image.html">image module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.util.image_cache.html">image_cache module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.util.log_utils.html">log_utils module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.util.mask_tools.html">mask_tools module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">os_util module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.util.scope.html">scope module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.util.telemetry_stub.html">telemetry_stub module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.util.telemetry_utils.html">telemetry_utils module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.util.test_utils.html">test_utils module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module_contents.html">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.util.tf_util.html">tf_util module</a></li>
 </ul>
 </li>
 </ul>
@@ -84,6 +92,46 @@
              
   <div class="section" id="module-datumaro.util.os_util">
 <span id="os-util-module"></span><h1>os_util module<a class="headerlink" href="#module-datumaro.util.os_util" title="Permalink to this headline"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.os_util.check_instruction_set">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.os_util.</span></span><span class="sig-name descname"><span class="pre">check_instruction_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instruction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/os_util.html#check_instruction_set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.os_util.check_instruction_set" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.os_util.import_foreign_module">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.os_util.</span></span><span class="sig-name descname"><span class="pre">import_foreign_module</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/os_util.html#import_foreign_module"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.os_util.import_foreign_module" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.os_util.walk">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.os_util.</span></span><span class="sig-name descname"><span class="pre">walk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/os_util.html#walk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.os_util.walk" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.os_util.copytree">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.os_util.</span></span><span class="sig-name descname"><span class="pre">copytree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/os_util.html#copytree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.os_util.copytree" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.os_util.suppress_output">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.os_util.</span></span><span class="sig-name descname"><span class="pre">suppress_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stdout</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stderr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/os_util.html#suppress_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.os_util.suppress_output" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.os_util.catch_output">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.os_util.</span></span><span class="sig-name descname"><span class="pre">catch_output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/os_util.html#catch_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.os_util.catch_output" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.os_util.dir_items">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.os_util.</span></span><span class="sig-name descname"><span class="pre">dir_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">truncate_ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/os_util.html#dir_items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.os_util.dir_items" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.os_util.split_path">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.os_util.</span></span><span class="sig-name descname"><span class="pre">split_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/os_util.html#split_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.os_util.split_path" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="datumaro.util.os_util.is_subpath">
 <span class="sig-prename descclassname"><span class="pre">datumaro.util.os_util.</span></span><span class="sig-name descname"><span class="pre">is_subpath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../_modules/datumaro/util/os_util.html#is_subpath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.os_util.is_subpath" title="Permalink to this definition"></a></dt>

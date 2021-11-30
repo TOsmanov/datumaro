@@ -40,9 +40,11 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../cli/cli.html">CLI</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../components.html">Components</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../algorithms/algorithms.html">Algorithms module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/algorithms.html">algorithms module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.annotation.html">annotation module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.cli_plugin.html">cli_plugin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.config.html">config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.config_model.html">config_model module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.converter.html">converter module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.dataset.html">dataset module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">dataset_filter module</a></li>
@@ -90,6 +92,72 @@
              
   <div class="section" id="module-datumaro.components.dataset_filter">
 <span id="dataset-filter-module"></span><h1>dataset_filter module<a class="headerlink" href="#module-datumaro.components.dataset_filter" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.dataset_filter.DatasetItemEncoder">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.dataset_filter.</span></span><span class="sig-name descname"><span class="pre">DatasetItemEncoder</span></span><a class="reference internal" href="../../../_modules/datumaro/components/dataset_filter.html#DatasetItemEncoder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.dataset_filter.DatasetItemEncoder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.dataset_filter.DatasetItemEncoder.encode">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/dataset_filter.html#DatasetItemEncoder.encode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.dataset_filter.DatasetItemEncoder.encode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.dataset_filter.DatasetItemEncoder.encode_image">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">encode_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/dataset_filter.html#DatasetItemEncoder.encode_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.dataset_filter.DatasetItemEncoder.encode_image" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.dataset_filter.DatasetItemEncoder.encode_annotation_base">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">encode_annotation_base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">annotation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/dataset_filter.html#DatasetItemEncoder.encode_annotation_base"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.dataset_filter.DatasetItemEncoder.encode_annotation_base" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.dataset_filter.DatasetItemEncoder.encode_label_object">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">encode_label_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/dataset_filter.html#DatasetItemEncoder.encode_label_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.dataset_filter.DatasetItemEncoder.encode_label_object" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.dataset_filter.DatasetItemEncoder.encode_mask_object">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">encode_mask_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/dataset_filter.html#DatasetItemEncoder.encode_mask_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.dataset_filter.DatasetItemEncoder.encode_mask_object" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.dataset_filter.DatasetItemEncoder.encode_bbox_object">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">encode_bbox_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/dataset_filter.html#DatasetItemEncoder.encode_bbox_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.dataset_filter.DatasetItemEncoder.encode_bbox_object" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.dataset_filter.DatasetItemEncoder.encode_points_object">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">encode_points_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/dataset_filter.html#DatasetItemEncoder.encode_points_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.dataset_filter.DatasetItemEncoder.encode_points_object" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.dataset_filter.DatasetItemEncoder.encode_polygon_object">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">encode_polygon_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/dataset_filter.html#DatasetItemEncoder.encode_polygon_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.dataset_filter.DatasetItemEncoder.encode_polygon_object" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.dataset_filter.DatasetItemEncoder.encode_polyline_object">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">encode_polyline_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/dataset_filter.html#DatasetItemEncoder.encode_polyline_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.dataset_filter.DatasetItemEncoder.encode_polyline_object" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.dataset_filter.DatasetItemEncoder.encode_caption_object">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">encode_caption_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/dataset_filter.html#DatasetItemEncoder.encode_caption_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.dataset_filter.DatasetItemEncoder.encode_caption_object" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.dataset_filter.DatasetItemEncoder.encode_annotation">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">encode_annotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/dataset_filter.html#DatasetItemEncoder.encode_annotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.dataset_filter.DatasetItemEncoder.encode_annotation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.dataset_filter.DatasetItemEncoder.to_string">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">encoded_item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/dataset_filter.html#DatasetItemEncoder.to_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.dataset_filter.DatasetItemEncoder.to_string" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.dataset_filter.XPathDatasetFilter">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.dataset_filter.</span></span><span class="sig-name descname"><span class="pre">XPathDatasetFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xpath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/dataset_filter.html#XPathDatasetFilter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.dataset_filter.XPathDatasetFilter" title="Permalink to this definition"></a></dt>
