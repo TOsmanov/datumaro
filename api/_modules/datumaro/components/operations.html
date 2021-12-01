@@ -106,8 +106,8 @@
 <span class="kn">from</span> <span class="nn">datumaro.util.attrs_util</span> <span class="kn">import</span> <span class="n">default_if_none</span><span class="p">,</span> <span class="n">ensure_cls</span>
 
 
-<span class="k">def</span> <span class="nf">get_ann_type</span><span class="p">(</span><span class="n">anns</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">anns</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">t</span><span class="p">]</span>
+<div class="viewcode-block" id="get_ann_type"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.get_ann_type">[docs]</a><span class="k">def</span> <span class="nf">get_ann_type</span><span class="p">(</span><span class="n">anns</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">anns</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">t</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="match_annotations_equal"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.match_annotations_equal">[docs]</a><span class="k">def</span> <span class="nf">match_annotations_equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="n">matches</span> <span class="o">=</span> <span class="p">[]</span>
@@ -144,18 +144,18 @@
                         <span class="n">sources</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">source_idx</span><span class="p">)))</span>
     <span class="k">return</span> <span class="n">categories</span></div>
 
-<span class="k">class</span> <span class="nc">MergingStrategy</span><span class="p">(</span><span class="n">CliPlugin</span><span class="p">):</span>
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="MergingStrategy"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.MergingStrategy">[docs]</a><span class="k">class</span> <span class="nc">MergingStrategy</span><span class="p">(</span><span class="n">CliPlugin</span><span class="p">):</span>
+<div class="viewcode-block" id="MergingStrategy.merge"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.MergingStrategy.merge">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
         <span class="n">instance</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">instance</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">instance</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+<div class="viewcode-block" id="MergingStrategy.__init__"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.MergingStrategy.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s1">&#39;_sources&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s1">&#39;_sources&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sources</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="ExactMerge"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.ExactMerge">[docs]</a><span class="k">class</span> <span class="nc">ExactMerge</span><span class="p">:</span>
 <div class="viewcode-block" id="ExactMerge.merge"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.ExactMerge.merge">[docs]</a>    <span class="nd">@classmethod</span>
@@ -549,7 +549,7 @@
     <span class="k">def</span> <span class="nf">_merge_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">clusters</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mergers</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">.</span><span class="n">merge_clusters</span><span class="p">(</span><span class="n">clusters</span><span class="p">)</span>
 
-<div class="viewcode-block" id="IntersectMerge._find_cluster_groups"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.IntersectMerge._find_cluster_groups">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_find_cluster_groups</span><span class="p">(</span><span class="n">clusters</span><span class="p">):</span>
         <span class="n">cluster_groups</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
@@ -579,7 +579,7 @@
             <span class="k">if</span> <span class="n">a_groups</span> <span class="o">==</span> <span class="p">{</span><span class="mi">0</span><span class="p">}:</span>
                 <span class="k">continue</span> <span class="c1"># skip annotations without a group</span>
             <span class="n">cluster_groups</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">(</span><span class="n">cluster_group</span><span class="p">,</span> <span class="n">a_groups</span><span class="p">)</span> <span class="p">)</span>
-        <span class="k">return</span> <span class="n">cluster_groups</span></div>
+        <span class="k">return</span> <span class="n">cluster_groups</span>
 
     <span class="k">def</span> <span class="nf">_find_cluster_attrs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">ann</span><span class="p">):</span>
         <span class="n">quorum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">quorum</span> <span class="ow">or</span> <span class="mi">0</span>
@@ -714,14 +714,14 @@
                             <span class="bp">self</span><span class="o">.</span><span class="n">_categories</span><span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">])</span>
                     <span class="p">)</span></div>
 
-<span class="nd">@attrs</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="viewcode-block" id="AnnotationMatcher"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.AnnotationMatcher">[docs]</a><span class="nd">@attrs</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">AnnotationMatcher</span><span class="p">:</span>
     <span class="n">_context</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">IntersectMerge</span><span class="p">]</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">match_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sources</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
-<span class="nd">@attrs</span>
+<div class="viewcode-block" id="LabelMatcher"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.LabelMatcher">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">LabelMatcher</span><span class="p">(</span><span class="n">AnnotationMatcher</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="n">a_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">_get_any_label_name</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
@@ -729,14 +729,14 @@
         <span class="k">return</span> <span class="n">a_label</span> <span class="o">==</span> <span class="n">b_label</span>
 
     <span class="k">def</span> <span class="nf">match_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sources</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="p">[])]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="p">[])]</span></div>
 
-<span class="nd">@attrs</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="viewcode-block" id="_ShapeMatcher"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations._ShapeMatcher">[docs]</a><span class="nd">@attrs</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">_ShapeMatcher</span><span class="p">(</span><span class="n">AnnotationMatcher</span><span class="p">):</span>
     <span class="n">pairwise_dist</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
     <span class="n">cluster_dist</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">match_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sources</span><span class="p">):</span>
+<div class="viewcode-block" id="_ShapeMatcher.match_annotations"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations._ShapeMatcher.match_annotations">[docs]</a>    <span class="k">def</span> <span class="nf">match_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sources</span><span class="p">):</span>
         <span class="n">distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance</span>
         <span class="n">label_matcher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">label_matcher</span>
         <span class="n">pairwise_dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pairwise_dist</span>
@@ -800,45 +800,45 @@
 
             <span class="n">clusters</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">id_segm</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">])</span>
 
-        <span class="k">return</span> <span class="n">clusters</span>
+        <span class="k">return</span> <span class="n">clusters</span></div>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="_ShapeMatcher.distance"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations._ShapeMatcher.distance">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">segment_iou</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">segment_iou</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">label_matcher</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="viewcode-block" id="_ShapeMatcher.label_matcher"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations._ShapeMatcher.label_matcher">[docs]</a>    <span class="k">def</span> <span class="nf">label_matcher</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="n">a_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">_get_any_label_name</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
         <span class="n">b_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">_get_any_label_name</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">a_label</span> <span class="o">==</span> <span class="n">b_label</span>
+        <span class="k">return</span> <span class="n">a_label</span> <span class="o">==</span> <span class="n">b_label</span></div></div>
 
-<span class="nd">@attrs</span>
+<div class="viewcode-block" id="BboxMatcher"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.BboxMatcher">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">BboxMatcher</span><span class="p">(</span><span class="n">_ShapeMatcher</span><span class="p">):</span>
-    <span class="k">pass</span>
+    <span class="k">pass</span></div>
 
-<span class="nd">@attrs</span>
+<div class="viewcode-block" id="PolygonMatcher"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.PolygonMatcher">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">PolygonMatcher</span><span class="p">(</span><span class="n">_ShapeMatcher</span><span class="p">):</span>
-    <span class="k">pass</span>
+    <span class="k">pass</span></div>
 
-<span class="nd">@attrs</span>
+<div class="viewcode-block" id="MaskMatcher"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.MaskMatcher">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">MaskMatcher</span><span class="p">(</span><span class="n">_ShapeMatcher</span><span class="p">):</span>
-    <span class="k">pass</span>
+    <span class="k">pass</span></div>
 
-<span class="nd">@attrs</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="viewcode-block" id="PointsMatcher"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.PointsMatcher">[docs]</a><span class="nd">@attrs</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">PointsMatcher</span><span class="p">(</span><span class="n">_ShapeMatcher</span><span class="p">):</span>
     <span class="n">sigma</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
     <span class="n">instance_map</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="viewcode-block" id="PointsMatcher.distance"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.PointsMatcher.distance">[docs]</a>    <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="n">a_bbox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">instance_map</span><span class="p">[</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)][</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">b_bbox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">instance_map</span><span class="p">[</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">)][</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">bbox_iou</span><span class="p">(</span><span class="n">a_bbox</span><span class="p">,</span> <span class="n">b_bbox</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span>
         <span class="n">bbox</span> <span class="o">=</span> <span class="n">mean_bbox</span><span class="p">([</span><span class="n">a_bbox</span><span class="p">,</span> <span class="n">b_bbox</span><span class="p">])</span>
-        <span class="k">return</span> <span class="n">OKS</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">OKS</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">)</span></div></div>
 
-<span class="nd">@attrs</span>
+<div class="viewcode-block" id="LineMatcher"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.LineMatcher">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">LineMatcher</span><span class="p">(</span><span class="n">_ShapeMatcher</span><span class="p">):</span>
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="LineMatcher.distance"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.LineMatcher.distance">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="n">a_bbox</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">get_bbox</span><span class="p">()</span>
         <span class="n">b_bbox</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">get_bbox</span><span class="p">()</span>
@@ -854,29 +854,29 @@
         <span class="n">dists</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">dists</span> <span class="o">=</span> <span class="p">(</span><span class="n">dists</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dists</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">*</span> <span class="mf">0.5</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dists</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">sa</span> <span class="o">+</span> <span class="n">sb</span><span class="p">)</span> <span class="o">/</span> <span class="n">area</span>
-        <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span></div></div>
 
-<span class="nd">@attrs</span>
+<div class="viewcode-block" id="CaptionsMatcher"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.CaptionsMatcher">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">CaptionsMatcher</span><span class="p">(</span><span class="n">AnnotationMatcher</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">match_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sources</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<div class="viewcode-block" id="CaptionsMatcher.match_annotations"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.CaptionsMatcher.match_annotations">[docs]</a>    <span class="k">def</span> <span class="nf">match_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sources</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div></div>
 
-<span class="nd">@attrs</span>
+<div class="viewcode-block" id="Cuboid3dMatcher"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.Cuboid3dMatcher">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">Cuboid3dMatcher</span><span class="p">(</span><span class="n">_ShapeMatcher</span><span class="p">):</span>
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Cuboid3dMatcher.distance"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.Cuboid3dMatcher.distance">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div></div>
 
-<span class="nd">@attrs</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="viewcode-block" id="AnnotationMerger"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.AnnotationMerger">[docs]</a><span class="nd">@attrs</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">AnnotationMerger</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">merge_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clusters</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<div class="viewcode-block" id="AnnotationMerger.merge_clusters"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.AnnotationMerger.merge_clusters">[docs]</a>    <span class="k">def</span> <span class="nf">merge_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clusters</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div></div>
 
-<span class="nd">@attrs</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="viewcode-block" id="LabelMerger"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.LabelMerger">[docs]</a><span class="nd">@attrs</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">LabelMerger</span><span class="p">(</span><span class="n">AnnotationMerger</span><span class="p">,</span> <span class="n">LabelMatcher</span><span class="p">):</span>
     <span class="n">quorum</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">merge_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clusters</span><span class="p">):</span>
+<div class="viewcode-block" id="LabelMerger.merge_clusters"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.LabelMerger.merge_clusters">[docs]</a>    <span class="k">def</span> <span class="nf">merge_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clusters</span><span class="p">):</span>
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">clusters</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">clusters</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[]</span>
@@ -901,16 +901,16 @@
                 <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="n">count</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">_dataset_map</span><span class="p">)</span>
             <span class="p">}))</span>
 
-        <span class="k">return</span> <span class="n">merged</span>
+        <span class="k">return</span> <span class="n">merged</span></div></div>
 
-<span class="nd">@attrs</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="viewcode-block" id="_ShapeMerger"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations._ShapeMerger">[docs]</a><span class="nd">@attrs</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">_ShapeMerger</span><span class="p">(</span><span class="n">AnnotationMerger</span><span class="p">,</span> <span class="n">_ShapeMatcher</span><span class="p">):</span>
     <span class="n">quorum</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">merge_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clusters</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">merge_cluster</span><span class="p">,</span> <span class="n">clusters</span><span class="p">))</span>
+<div class="viewcode-block" id="_ShapeMerger.merge_clusters"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations._ShapeMerger.merge_clusters">[docs]</a>    <span class="k">def</span> <span class="nf">merge_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clusters</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">merge_cluster</span><span class="p">,</span> <span class="n">clusters</span><span class="p">))</span></div>
 
-    <span class="k">def</span> <span class="nf">find_cluster_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cluster</span><span class="p">):</span>
+<div class="viewcode-block" id="_ShapeMerger.find_cluster_label"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations._ShapeMerger.find_cluster_label">[docs]</a>    <span class="k">def</span> <span class="nf">find_cluster_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cluster</span><span class="p">):</span>
         <span class="n">votes</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">:</span>
             <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">_get_src_label_name</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
@@ -924,7 +924,7 @@
             <span class="n">label</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">score</span> <span class="o">=</span> <span class="n">score</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">_dataset_map</span><span class="p">)</span>
         <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">_get_label_id</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">label</span><span class="p">,</span> <span class="n">score</span>
+        <span class="k">return</span> <span class="n">label</span><span class="p">,</span> <span class="n">score</span></div>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_merge_cluster_shape_mean_box_nearest</span><span class="p">(</span><span class="n">cluster</span><span class="p">):</span>
@@ -933,13 +933,13 @@
         <span class="n">nearest_pos</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">dist</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">cluster</span><span class="p">[</span><span class="n">nearest_pos</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">merge_cluster_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cluster</span><span class="p">):</span>
+<div class="viewcode-block" id="_ShapeMerger.merge_cluster_shape"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations._ShapeMerger.merge_cluster_shape">[docs]</a>    <span class="k">def</span> <span class="nf">merge_cluster_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cluster</span><span class="p">):</span>
         <span class="n">shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_cluster_shape_mean_box_nearest</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
         <span class="n">shape_score</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
             <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">shape</span><span class="p">,</span> <span class="n">shape_score</span>
+        <span class="k">return</span> <span class="n">shape</span><span class="p">,</span> <span class="n">shape_score</span></div>
 
-    <span class="k">def</span> <span class="nf">merge_cluster</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cluster</span><span class="p">):</span>
+<div class="viewcode-block" id="_ShapeMerger.merge_cluster"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations._ShapeMerger.merge_cluster">[docs]</a>    <span class="k">def</span> <span class="nf">merge_cluster</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cluster</span><span class="p">):</span>
         <span class="n">label</span><span class="p">,</span> <span class="n">label_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_cluster_label</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
         <span class="n">shape</span><span class="p">,</span> <span class="n">shape_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">merge_cluster_shape</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
 
@@ -948,33 +948,33 @@
         <span class="n">shape</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label_score</span> <span class="o">*</span> <span class="n">shape_score</span> \
             <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">shape_score</span>
 
-        <span class="k">return</span> <span class="n">shape</span>
+        <span class="k">return</span> <span class="n">shape</span></div></div>
 
-<span class="nd">@attrs</span>
+<div class="viewcode-block" id="BboxMerger"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.BboxMerger">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">BboxMerger</span><span class="p">(</span><span class="n">_ShapeMerger</span><span class="p">,</span> <span class="n">BboxMatcher</span><span class="p">):</span>
-    <span class="k">pass</span>
+    <span class="k">pass</span></div>
 
-<span class="nd">@attrs</span>
+<div class="viewcode-block" id="PolygonMerger"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.PolygonMerger">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">PolygonMerger</span><span class="p">(</span><span class="n">_ShapeMerger</span><span class="p">,</span> <span class="n">PolygonMatcher</span><span class="p">):</span>
-    <span class="k">pass</span>
+    <span class="k">pass</span></div>
 
-<span class="nd">@attrs</span>
+<div class="viewcode-block" id="MaskMerger"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.MaskMerger">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">MaskMerger</span><span class="p">(</span><span class="n">_ShapeMerger</span><span class="p">,</span> <span class="n">MaskMatcher</span><span class="p">):</span>
-    <span class="k">pass</span>
+    <span class="k">pass</span></div>
 
-<span class="nd">@attrs</span>
+<div class="viewcode-block" id="PointsMerger"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.PointsMerger">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">PointsMerger</span><span class="p">(</span><span class="n">_ShapeMerger</span><span class="p">,</span> <span class="n">PointsMatcher</span><span class="p">):</span>
-    <span class="k">pass</span>
+    <span class="k">pass</span></div>
 
-<span class="nd">@attrs</span>
+<div class="viewcode-block" id="LineMerger"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.LineMerger">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">LineMerger</span><span class="p">(</span><span class="n">_ShapeMerger</span><span class="p">,</span> <span class="n">LineMatcher</span><span class="p">):</span>
-    <span class="k">pass</span>
+    <span class="k">pass</span></div>
 
-<span class="nd">@attrs</span>
+<div class="viewcode-block" id="CaptionsMerger"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.CaptionsMerger">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">CaptionsMerger</span><span class="p">(</span><span class="n">AnnotationMerger</span><span class="p">,</span> <span class="n">CaptionsMatcher</span><span class="p">):</span>
-    <span class="k">pass</span>
+    <span class="k">pass</span></div>
 
-<span class="nd">@attrs</span>
+<div class="viewcode-block" id="Cuboid3dMerger"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.Cuboid3dMerger">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">Cuboid3dMerger</span><span class="p">(</span><span class="n">_ShapeMerger</span><span class="p">,</span> <span class="n">Cuboid3dMatcher</span><span class="p">):</span>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_merge_cluster_shape_mean_box_nearest</span><span class="p">(</span><span class="n">cluster</span><span class="p">):</span>
@@ -984,7 +984,7 @@
         <span class="c1"># nearest_pos, _ = max(enumerate(dist), key=lambda e: e[1])</span>
         <span class="c1"># return cluster[nearest_pos]</span>
 
-    <span class="k">def</span> <span class="nf">merge_cluster</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cluster</span><span class="p">):</span>
+<div class="viewcode-block" id="Cuboid3dMerger.merge_cluster"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.Cuboid3dMerger.merge_cluster">[docs]</a>    <span class="k">def</span> <span class="nf">merge_cluster</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cluster</span><span class="p">):</span>
         <span class="n">label</span><span class="p">,</span> <span class="n">label_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_cluster_label</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
         <span class="n">shape</span><span class="p">,</span> <span class="n">shape_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">merge_cluster_shape</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
 
@@ -992,7 +992,7 @@
         <span class="n">shape</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label_score</span> <span class="o">*</span> <span class="n">shape_score</span> \
             <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">shape_score</span>
 
-        <span class="k">return</span> <span class="n">shape</span>
+        <span class="k">return</span> <span class="n">shape</span></div></div>
 
 <div class="viewcode-block" id="match_segments"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.match_segments">[docs]</a><span class="k">def</span> <span class="nf">match_segments</span><span class="p">(</span><span class="n">a_segms</span><span class="p">,</span> <span class="n">b_segms</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="n">segment_iou</span><span class="p">,</span> <span class="n">dist_thresh</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
         <span class="n">label_matcher</span><span class="o">=</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">b</span><span class="o">.</span><span class="n">label</span><span class="p">):</span>

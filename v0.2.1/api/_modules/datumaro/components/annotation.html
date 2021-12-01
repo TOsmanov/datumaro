@@ -123,7 +123,7 @@
     <span class="c1"># There are some established names for common attributes like:</span>
     <span class="c1"># - &quot;occluded&quot; (bool)</span>
     <span class="c1"># - &quot;visible&quot; (bool)</span>
-    <span class="c1"># Possible dataset attributes can be descibed in Categories.attributes.</span>
+    <span class="c1"># Possible dataset attributes can be described in Categories.attributes.</span>
     <span class="n">attributes</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span>
         <span class="n">factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">default_if_none</span><span class="p">(</span><span class="nb">dict</span><span class="p">))</span>
 
@@ -150,19 +150,19 @@
 <span class="sd">    label attributes etc.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1"># Describes the list of possible annotation-type specific attrbutes</span>
+    <span class="c1"># Describes the list of possible annotation-type specific attributes</span>
     <span class="c1"># in a dataset.</span>
     <span class="n">attributes</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span>
         <span class="n">factory</span><span class="o">=</span><span class="nb">set</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">default_if_none</span><span class="p">(</span><span class="nb">set</span><span class="p">),</span> <span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="LabelCategories"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.LabelCategories">[docs]</a><span class="nd">@attrs</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">LabelCategories</span><span class="p">(</span><span class="n">Categories</span><span class="p">):</span>
-<div class="viewcode-block" id="LabelCategories.Category"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.LabelCategories.Category">[docs]</a>    <span class="nd">@attrs</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="nd">@attrs</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">class</span> <span class="nc">Category</span><span class="p">:</span>
         <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">not_empty</span><span class="p">)</span>
         <span class="n">parent</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">default_if_none</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
         <span class="n">attributes</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span>
-            <span class="n">factory</span><span class="o">=</span><span class="nb">set</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">default_if_none</span><span class="p">(</span><span class="nb">set</span><span class="p">))</span></div>
+            <span class="n">factory</span><span class="o">=</span><span class="nb">set</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">default_if_none</span><span class="p">(</span><span class="nb">set</span><span class="p">))</span>
 
     <span class="n">items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">list</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">default_if_none</span><span class="p">(</span><span class="nb">list</span><span class="p">))</span>
     <span class="n">_indices</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
