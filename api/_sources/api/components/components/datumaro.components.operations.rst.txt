@@ -42,48 +42,48 @@ operations module
       :special-members:
       :show-inheritance:
 
-         .. autoclass:: Conf
-            .. py:data:: pairwise_dist = attrib(converter=float, default=0.5)
-                         sigma = attrib(converter=list, factory=list)
+      .. autoclass:: Conf
+         .. py:data:: pairwise_dist = attrib(converter=float, default=0.5)
+                        sigma = attrib(converter=list, factory=list)
 
-            .. py:data:: output_conf_thresh = attrib(converter=float, default=0)
-                         quorum = attrib(converter=int, default=0)
-                         ignored_attributes = attrib(converter=set, factory=set)
+         .. py:data:: output_conf_thresh = attrib(converter=float, default=0)
+                        quorum = attrib(converter=int, default=0)
+                        ignored_attributes = attrib(converter=set, factory=set)
 
-         **Error trackers:**
+      **Error trackers:**
 
-         .. py:data:: attrib
+      .. py:data:: attrib
 
-         .. automethod:: add_item_error
+      .. automethod:: add_item_error
 
-         **Indexes:**
+      **Indexes:**
 
-         .. py:data:: _dataset_map
+      .. py:data:: _dataset_map
 
-            id(dataset) -> (dataset, index)
+         id(dataset) -> (dataset, index)
 
-         .. py:data:: _item_map
+      .. py:data:: _item_map
 
-            id(item) -> (item, id(dataset))
+         id(item) -> (item, id(dataset))
 
-         .. py:data:: _ann_map
+      .. py:data:: _ann_map
 
-            id(ann) -> (ann, id(item))
+         id(ann) -> (ann, id(item))
 
-         .. py:data:: _item_id
-         .. py:data:: _item
+      .. py:data:: _item_id
+      .. py:data:: _item
 
-         **Misc.**
+      **Misc.**
 
-         .. py:data:: _categories = attrib(init=False)  merged categories
+      .. py:data:: _categories = attrib(init=False)  merged categories
 
-         .. autofunction:: get_ann_source
+      .. autofunction:: get_ann_source
 
-         .. autofunction:: merge_items
+      .. autofunction:: merge_items
 
-         .. autofunction:: merge_annotations
+      .. autofunction:: merge_annotations
 
-         .. autofunction:: match_items
+      .. autofunction:: match_items
 
    .. autoclass:: AnnotationMatcher
 
@@ -96,14 +96,14 @@ operations module
       :special-members:
       :show-inheritance:
 
-         .. py:data:: pairwise_dist = attrib(converter=float, default=0.9)
-                      cluster_dist = attrib(converter=float, default=-1.0)
+      .. py:data:: pairwise_dist = attrib(converter=float, default=0.9)
+                     cluster_dist = attrib(converter=float, default=-1.0)
 
-         .. autofunction:: match_annotations
+      .. autofunction:: match_annotations
 
-         .. autofunction:: distance
+      .. autofunction:: distance
 
-         .. autofunction:: label_matcher
+      .. autofunction:: label_matcher
 
    .. autoclass:: BboxMatcher
       :members:
@@ -133,8 +133,8 @@ operations module
       :special-members:
       :show-inheritance:
 
-         .. py:data:: sigma: Optional[list] = attrib(default=None)
-                      instance_map = attrib(converter=dict)
+      .. py:data:: sigma: Optional[list] = attrib(default=None)
+                     instance_map = attrib(converter=dict)
 
    .. autoclass:: LineMatcher
       :members:
@@ -171,7 +171,7 @@ operations module
       :special-members:
       :show-inheritance:
 
-         .. py:data:: quorum = attrib(converter=int, default=0)
+      .. py:data:: quorum = attrib(converter=int, default=0)
 
    .. autoclass:: _ShapeMerger
       :members:
@@ -180,7 +180,7 @@ operations module
       :special-members:
       :show-inheritance:
 
-         .. py:data:: quorum = attrib(converter=int, default=0)
+      .. py:data:: quorum = attrib(converter=int, default=0)
 
    .. autoclass:: BboxMerger
       :members:
