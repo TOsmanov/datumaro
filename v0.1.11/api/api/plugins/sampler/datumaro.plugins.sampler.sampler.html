@@ -18,7 +18,7 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="sly Pointcloud format package" href="../sly_pointcloud_format/sly_pointcloud_format.html" />
+    <link rel="next" title="algorithm package" href="algorithm/algorithm.html" />
     <link rel="prev" title="sampler package" href="sampler.html" /> 
 </head>
 
@@ -51,6 +51,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../openvino_plugin/openvino_plugin.html">OpenVino plugin package</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="sampler.html">sampler package</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">sampler module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="algorithm/algorithm.html">algorithm package</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../sly_pointcloud_format/sly_pointcloud_format.html">sly Pointcloud format package</a></li>
@@ -153,30 +154,6 @@ as input.
 <em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/sampler/sampler.html#Sampler.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.sampler.sampler.Sampler.build_cmdline_parser" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.sampler.sampler.Sampler.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unsampled_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/sampler/sampler.html#Sampler.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.sampler.sampler.Sampler.__init__" title="Permalink to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>extractor</strong> (<a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.Extractor" title="datumaro.components.extractor.Extractor"><em>Extractor</em></a><em>, </em><a class="reference internal" href="../../components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset" title="datumaro.components.dataset.Dataset"><em>Dataset</em></a>) – </p></li>
-<li><p><strong>algorithm</strong> (<em>str</em>) – Specifying the algorithm to calculate the uncertainty
-for sample selection. default: ‘entropy’</p></li>
-<li><p><strong>subset_name</strong> (<em>str</em>) – The name of the subset to which you want to select a sample.</p></li>
-<li><p><strong>sample_name</strong> (<em>str</em>) – Subset name of the selected sample, default: ‘sample’</p></li>
-<li><p><strong>sampling_method</strong> (<em>str</em>) – Method of sampling, ‘topk’ or ‘lowk’ or ‘randk’</p></li>
-<li><p><strong>num_sample</strong> (<em>int</em>) – Number of samples extracted</p></li>
-<li><p><strong>output_file</strong> (<em>str</em>) – Path of sampler result, Use when user want to save results</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datumaro.plugins.sampler.sampler.Sampler.__iter__">
-<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/sampler/sampler.html#Sampler.__iter__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.sampler.sampler.Sampler.__iter__" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 </div>
@@ -186,7 +163,7 @@ for sample selection. default: ‘entropy’</p></li>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="sampler.html" class="btn btn-neutral float-left" title="sampler package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../sly_pointcloud_format/sly_pointcloud_format.html" class="btn btn-neutral float-right" title="sly Pointcloud format package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="algorithm/algorithm.html" class="btn btn-neutral float-right" title="algorithm package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
