@@ -354,10 +354,10 @@ Returns: new revision hash.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>compare</strong> (<em>- paths - an iterable of paths to</em>) – When None, uses all the paths from HEAD.</p></li>
-<li><p><strong>git.Tree</strong> (<em>a</em>) – When None, uses all the paths from HEAD.</p></li>
-<li><p><strong>None.</strong> (<em>or</em>) – When None, uses all the paths from HEAD.</p></li>
-<li><p><strong>this.</strong> (<em>- base_dir - a base path for paths. Paths will be prepended by</em>) – When None or ‘’, uses repo root. Can be useful, if index contains
+<li><p><strong>paths</strong> – an iterable of paths to compare, a git.Tree, or None.
+When None, uses all the paths from HEAD.</p></li>
+<li><p><strong>base_dir</strong> – a base path for paths. Paths will be prepended by this.
+When None or ‘’, uses repo root. Can be useful, if index contains
 displaced paths, which needs to be mapped on real paths.</p></li>
 </ul>
 </dd>
@@ -679,14 +679,17 @@ in datasets.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<em>-</em>) – </p></li>
-<li><p><strong>url</strong> (<em>-</em>) – </p></li>
-<li><p><strong>format</strong> (<em>-</em>) – </p></li>
-<li><p><strong>options</strong> (<em>-</em>) – </p></li>
-<li><p><strong>no_cache</strong> (<em>-</em>) – Can be used to reduce project cache size.</p></li>
-<li><p><strong>no_hash</strong> (<em>-</em>) – Useful to reduce import time at the cost of disabled data
+<li><p><strong>name</strong> (<em>str</em>) – Name of the new source</p></li>
+<li><p><strong>url</strong> (<em>str</em>) – URL of the new source. A path to a file or directory</p></li>
+<li><p><strong>format</strong> (<em>str</em>) – Dataset format</p></li>
+<li><p><strong>options</strong> (<em>dict</em>) – Options for the format Extractor</p></li>
+<li><p><strong>no_cache</strong> (<em>bool</em>) – Don’t put a copy of files into the project cache.
+Can be used to reduce project cache size.</p></li>
+<li><p><strong>no_hash</strong> (<em>bool</em>) – Don’t compute source data hash. Implies “no_cache”.
+Useful to reduce import time at the cost of disabled data
 integrity checks.</p></li>
-<li><p><strong>rpath</strong> (<em>-</em>) – inside of the directory pointed by URL.</p></li>
+<li><p><strong>rpath</strong> (<em>str</em>) – Used to specify a relative path to the dataset
+inside of the directory pointed by URL.</p></li>
 </ul>
 </dd>
 </dl>
@@ -706,10 +709,11 @@ in datasets.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>url</strong> (<em>-</em>) – </p></li>
-<li><p><strong>format</strong> (<em>-</em>) – </p></li>
-<li><p><strong>options</strong> (<em>-</em>) – </p></li>
-<li><p><strong>rpath</strong> (<em>-</em>) – inside of the directory pointed by URL.</p></li>
+<li><p><strong>url</strong> (<em>str</em>) – URL of the new source. A path to a file or directory</p></li>
+<li><p><strong>format</strong> (<em>str</em>) – Dataset format</p></li>
+<li><p><strong>options</strong> (<em>dict</em>) – Options for the format Extractor</p></li>
+<li><p><strong>rpath</strong> (<em>str</em>) – Used to specify a relative path to the dataset
+inside of the directory pointed by URL.</p></li>
 </ul>
 </dd>
 </dl>

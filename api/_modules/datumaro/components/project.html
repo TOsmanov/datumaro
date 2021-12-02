@@ -1070,9 +1070,9 @@
 <span class="sd">        Compares working directory and index.</span>
 
 <span class="sd">        Parameters:</span>
-<span class="sd">            - paths - an iterable of paths to compare, a git.Tree, or None.</span>
+<span class="sd">            paths: an iterable of paths to compare, a git.Tree, or None.</span>
 <span class="sd">                When None, uses all the paths from HEAD.</span>
-<span class="sd">            - base_dir - a base path for paths. Paths will be prepended by this.</span>
+<span class="sd">            base_dir: a base path for paths. Paths will be prepended by this.</span>
 <span class="sd">                When None or &#39;&#39;, uses repo root. Can be useful, if index contains</span>
 <span class="sd">                displaced paths, which needs to be mapped on real paths.</span>
 
@@ -2079,16 +2079,16 @@
 <span class="sd">        in datasets.</span>
 
 <span class="sd">        Parameters:</span>
-<span class="sd">            - name (str) - Name of the new source</span>
-<span class="sd">            - url (str) - URL of the new source. A path to a file or directory</span>
-<span class="sd">            - format (str) - Dataset format</span>
-<span class="sd">            - options (dict) - Options for the format Extractor</span>
-<span class="sd">            - no_cache (bool) - Don&#39;t put a copy of files into the project cache.</span>
+<span class="sd">            name (str): Name of the new source</span>
+<span class="sd">            url (str): URL of the new source. A path to a file or directory</span>
+<span class="sd">            format (str): Dataset format</span>
+<span class="sd">            options (dict): Options for the format Extractor</span>
+<span class="sd">            no_cache (bool): Don&#39;t put a copy of files into the project cache.</span>
 <span class="sd">                Can be used to reduce project cache size.</span>
-<span class="sd">            - no_hash (bool) - Don&#39;t compute source data hash. Implies &quot;no_cache&quot;.</span>
+<span class="sd">            no_hash (bool): Don&#39;t compute source data hash. Implies &quot;no_cache&quot;.</span>
 <span class="sd">                Useful to reduce import time at the cost of disabled data</span>
 <span class="sd">                integrity checks.</span>
-<span class="sd">            - rpath (str) - Used to specify a relative path to the dataset</span>
+<span class="sd">            rpath (str): Used to specify a relative path to the dataset</span>
 <span class="sd">                inside of the directory pointed by URL.</span>
 
 <span class="sd">        Returns: the new source config</span>
@@ -2184,10 +2184,10 @@
 <span class="sd">        in datasets.</span>
 
 <span class="sd">        Parameters:</span>
-<span class="sd">            - url (str) - URL of the new source. A path to a file or directory</span>
-<span class="sd">            - format (str) - Dataset format</span>
-<span class="sd">            - options (dict) - Options for the format Extractor</span>
-<span class="sd">            - rpath (str) - Used to specify a relative path to the dataset</span>
+<span class="sd">            url (str): URL of the new source. A path to a file or directory</span>
+<span class="sd">            format (str): Dataset format</span>
+<span class="sd">            options (dict): Options for the format Extractor</span>
+<span class="sd">            rpath (str): Used to specify a relative path to the dataset</span>
 <span class="sd">                inside of the directory pointed by URL.</span>
 
 <span class="sd">        Returns: the name and the config of the new source</span>

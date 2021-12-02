@@ -243,6 +243,33 @@ Should be used by default for user-defined extractors.</p>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.extractor.</span></span><span class="sig-name descname"><span class="pre">Importer</span></span><a class="reference internal" href="../../../_modules/datumaro/components/extractor.html#Importer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.extractor.Importer" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="datumaro.components.cli_plugin.html#datumaro.components.cli_plugin.CliPlugin" title="datumaro.components.cli_plugin.CliPlugin"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></a></p>
 <dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.extractor.Importer._find_sources_recursive">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">_find_sources_recursive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extractor_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirname</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_filter</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_depth</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/extractor.html#Importer._find_sources_recursive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.extractor.Importer._find_sources_recursive" title="Permalink to this definition"></a></dt>
+<dd><p>Finds sources in the specified location, using the matching pattern
+to filter file names and directories.
+Supposed to be used, and to be the only call in subclasses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – a directory or file path, where sources need to be found.</p></li>
+<li><p><strong>ext</strong> – file extension to match. To match directories,
+set this parameter to None or ‘’. Comparison is case-independent,
+a starting dot is not required.</p></li>
+<li><p><strong>extractor_name</strong> – the name of the associated Extractor type</p></li>
+<li><p><strong>filename</strong> – a glob pattern for file names</p></li>
+<li><p><strong>dirname</strong> – a glob pattern for filename prefixes</p></li>
+<li><p><strong>file_filter</strong> – a callable (abspath: str) -&gt; bool, to filter paths found</p></li>
+<li><p><strong>max_depth</strong> – the maximum depth for recursive search.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Returns: a list of source configurations</dt><dd><p>(i.e. Extractor type names and c-tor parameters)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="datumaro.components.extractor.Importer.detect">
 <em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">detect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">datumaro.components.format_detection.FormatDetectionContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datumaro.components.format_detection.FormatDetectionConfidence</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/extractor.html#Importer.detect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.extractor.Importer.detect" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
