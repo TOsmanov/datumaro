@@ -101,11 +101,11 @@
         <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">t</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">s</span></div>
 
-<div class="viewcode-block" id="_PluginNameDescriptor"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.cli_plugin.html#datumaro.components.cli_plugin._PluginNameDescriptor">[docs]</a><span class="k">class</span> <span class="nc">_PluginNameDescriptor</span><span class="p">:</span>
+<span class="k">class</span> <span class="nc">_PluginNameDescriptor</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">objtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">objtype</span><span class="p">:</span>
             <span class="n">objtype</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">remove_plugin_type</span><span class="p">(</span><span class="n">to_snake_case</span><span class="p">(</span><span class="n">objtype</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="n">remove_plugin_type</span><span class="p">(</span><span class="n">to_snake_case</span><span class="p">(</span><span class="n">objtype</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
 
 <div class="viewcode-block" id="CliPlugin"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.cli_plugin.html#datumaro.components.cli_plugin.CliPlugin">[docs]</a><span class="k">class</span> <span class="nc">CliPlugin</span><span class="p">:</span>
     <span class="n">NAME</span> <span class="o">=</span> <span class="n">_PluginNameDescriptor</span><span class="p">()</span>
