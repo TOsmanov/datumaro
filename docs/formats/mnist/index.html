@@ -29,7 +29,7 @@ Supported formats:
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/formats/mnist/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-09-22T17:13:20+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="article:modified_time" content="2021-11-30T16:02:51+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="MNIST">
 <meta itemprop="description" content="Format specification MNIST format specification is available here.
@@ -39,8 +39,8 @@ The dataset has several data formats available. Datumaro supports the binary (Py
 Supported formats:
  Binary (Python pickle) - mnist CSV - mnist_csv  Supported annotation types:
  Label  The format only supports single channel 28 x 28 images.">
-<meta itemprop="dateModified" content="2021-09-22T17:13:20+03:00" />
-<meta itemprop="wordCount" content="607">
+<meta itemprop="dateModified" content="2021-11-30T16:02:51+03:00" />
+<meta itemprop="wordCount" content="657">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MNIST"/>
 <meta name="twitter:description" content="Format specification MNIST format specification is available here.
@@ -136,7 +136,7 @@ Supported formats:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.f172a40528072ff5821c6df7cbb8cdff.json"
+  data-offline-search-index-json-src="../../../offline-search-index.8e71bb576317fc03228dadb25f8de03c.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -164,7 +164,7 @@ Supported formats:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.f172a40528072ff5821c6df7cbb8cdff.json"
+  data-offline-search-index-json-src="../../../offline-search-index.8e71bb576317fc03228dadb25f8de03c.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -263,6 +263,10 @@ Supported formats:
   <a href="../../../docs/formats/cifar/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatscifar"><span class="">CIFAR</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatssynthia-li">
   <a href="../../../docs/formats/synthia/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatssynthia"><span class="">SYNTHIA</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsvott_csv-li">
+  <a href="../../../docs/formats/vott_csv/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsvott_csv"><span class="">VoTT CSV</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsvott_json-li">
+  <a href="../../../docs/formats/vott_json/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsvott_json"><span class="">VoTT JSON</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatscityscapes-li">
   <a href="../../../docs/formats/cityscapes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatscityscapes"><span class="">Cityscapes</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatscoco-li">
@@ -494,7 +498,8 @@ datum import --format mnist_csv &lt;path/to/dataset&gt;
 </code></pre></div><p>MNIST dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
-    ├── labels.txt # list of non-digit labels (optional)
+    ├── dataset_meta.json # a list of non-format labels (optional)
+    ├── labels.txt # a list of non-digit labels  in other format (optional)
     ├── t10k-images-idx3-ubyte.gz
     ├── t10k-labels-idx1-ubyte.gz
     ├── train-images-idx3-ubyte.gz
@@ -502,12 +507,15 @@ datum import --format mnist_csv &lt;path/to/dataset&gt;
 </code></pre><p>MNIST in CSV dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
-    ├── labels.txt # list of non-digit labels (optional)
+    ├── dataset_meta.json # a list of non-format labels (optional)
+    ├── labels.txt # a list of non-digit labels  in other format (optional)
     ├── mnist_test.csv
     └── mnist_train.csv
-</code></pre><p>If the dataset needs non-digit labels, you need to add the <code>labels.txt</code>
-to the dataset folder. For example, <code>labels.txt</code> for Fashion MNIST the
-following contents:</p>
+</code></pre><p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>
+and <code>labels.txt</code>.
+If the <code>dataset_meta.json</code> is not represented in the dataset, then
+<code>labels.txt</code> will be imported if possible.</p>
+<p>For example, <code>labels.txt</code> for Fashion MNIST the following contents:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>T-shirt/top
 Trouser
@@ -551,6 +559,8 @@ datum convert -if imagenet -i &lt;path/to/dataset&gt; <span style="color:#4e9a06
 (by default <code>False</code>)</li>
 <li><code>--image-ext &lt;IMAGE_EXT&gt;</code> allow to specify image extension
 for exporting dataset (by default <code>.png</code>)</li>
+<li><code>--save-dataset-meta</code> - allow to export dataset with saving dataset meta
+file (by default <code>False</code>)</li>
 </ul>
 <p>These commands also work for MNIST in CSV if you use <code>mnist_csv</code> instead of <code>mnist</code>.</p>
 <h2 id="examples">Examples</h2>
@@ -591,8 +601,8 @@ the <a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    September 22, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/cfee19859bd584c9a5a6d754eba2455c6268d92c">Rename datum add to datum import (#469) (cfee1985)</a>
+    November 30, 2021
+    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/82cdb62ab2262ab6a0b10d24b345735829ac45bf">Dataset meta file for some formats (#569) (82cdb62)</a>
 
 </div>
 

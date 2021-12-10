@@ -114,7 +114,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.f172a40528072ff5821c6df7cbb8cdff.json"
+  data-offline-search-index-json-src="../../../offline-search-index.8e71bb576317fc03228dadb25f8de03c.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -213,7 +213,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>7: <a href="#pg-b4837f6e880fb91ac1bc5f75998df382">Cityscapes</a></li>
+<li>7: <a href="#pg-380867834e6811ae51a317687af11e27">VoTT CSV</a></li>
 
 
     
@@ -221,7 +221,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>8: <a href="#pg-f3691abbbae7eae85ce83b256e5aec64">COCO</a></li>
+<li>8: <a href="#pg-8a75782b4046ca46b25aa3933564c2f1">VoTT JSON</a></li>
 
 
     
@@ -229,7 +229,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>9: <a href="#pg-69397e43070456769c1b4fdb55f75baf">Image zip</a></li>
+<li>9: <a href="#pg-b4837f6e880fb91ac1bc5f75998df382">Cityscapes</a></li>
 
 
     
@@ -237,7 +237,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>10: <a href="#pg-bc1c599a20f4d5c48cfd2ed514e3f166">Velodyne Points / KITTI Raw 3D</a></li>
+<li>10: <a href="#pg-f3691abbbae7eae85ce83b256e5aec64">COCO</a></li>
 
 
     
@@ -245,7 +245,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>11: <a href="#pg-342fda6e82df12e35a4cf02ae46d4bab">KITTI</a></li>
+<li>11: <a href="#pg-69397e43070456769c1b4fdb55f75baf">Image zip</a></li>
 
 
     
@@ -253,7 +253,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>12: <a href="#pg-1e4c6d683fee0e4d48d435e66064eab9">Mapillary Vistas</a></li>
+<li>12: <a href="#pg-bc1c599a20f4d5c48cfd2ed514e3f166">Velodyne Points / KITTI Raw 3D</a></li>
 
 
     
@@ -261,7 +261,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>13: <a href="#pg-a2db7ecd3bd406d8822366b9b33229dd">MNIST</a></li>
+<li>13: <a href="#pg-342fda6e82df12e35a4cf02ae46d4bab">KITTI</a></li>
 
 
     
@@ -269,7 +269,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>14: <a href="#pg-9c502db72874fd0b813f297ee04b2391">ICDAR</a></li>
+<li>14: <a href="#pg-1e4c6d683fee0e4d48d435e66064eab9">Mapillary Vistas</a></li>
 
 
     
@@ -277,7 +277,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>15: <a href="#pg-f97053c70a29d6713d3412af07bcdcca">Open Images</a></li>
+<li>15: <a href="#pg-a2db7ecd3bd406d8822366b9b33229dd">MNIST</a></li>
 
 
     
@@ -285,7 +285,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>16: <a href="#pg-db1d30fa5536c19aa2aa75b33dbf92ea">Pascal VOC</a></li>
+<li>16: <a href="#pg-9c502db72874fd0b813f297ee04b2391">ICDAR</a></li>
 
 
     
@@ -293,7 +293,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>17: <a href="#pg-0c9b196a180c68b9b42be11ddc52c8bb">Supervisely Point Cloud</a></li>
+<li>17: <a href="#pg-f97053c70a29d6713d3412af07bcdcca">Open Images</a></li>
 
 
     
@@ -301,7 +301,23 @@ This the multi-page printable view of this section.
     
     
 	
-<li>18: <a href="#pg-f638f1a110145e49bc81ee72961dd7ef">YOLO</a></li>
+<li>18: <a href="#pg-db1d30fa5536c19aa2aa75b33dbf92ea">Pascal VOC</a></li>
+
+
+    
+  
+    
+    
+	
+<li>19: <a href="#pg-0c9b196a180c68b9b42be11ddc52c8bb">Supervisely Point Cloud</a></li>
+
+
+    
+  
+    
+    
+	
+<li>20: <a href="#pg-f638f1a110145e49bc81ee72961dd7ef">YOLO</a></li>
 
 
     
@@ -360,6 +376,7 @@ datum import --format ade20k2017 &lt;path/to/dataset&gt;
 </code></pre></div><p>ADE20K dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>dataset/
+├── dataset_meta.json # a list of non-format labels (optional)
 ├── subset1/
 │   └── super_label_1/
 │       ├── img1.jpg
@@ -396,6 +413,7 @@ image. Each line in the text file contains:</p>
 Each column is separated by a <code>#</code>. See example of dataset
 <a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/ade20k2017_dataset">here</a>.</li>
 </ul>
+<p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>.</p>
 <h2 id="export-to-other-formats">Export to other formats</h2>
 <p>Datumaro can convert an ADE20K dataset into any other format <a href="../../../docs/user-manual/supported_formats/">Datumaro supports</a>.
 To get the expected result, convert the dataset to a format
@@ -459,6 +477,7 @@ datum import --format ade20k2020 &lt;path/to/dataset&gt;
 </code></pre></div><p>ADE20K dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>dataset/
+├── dataset_meta.json # a list of non-format labels (optional)
 ├── subset1/
 │   ├── img1/  # directory with instance masks for img1
 │   |    ├── instance_001_img1.png
@@ -511,6 +530,7 @@ each pixel of which indicates an affinity to a specific object.</p>
 See our <a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/ade20k2020_dataset">tests asset</a>
 for example of this file,
 or check <a href="https://github.com/CSAILVision/ADE20K">ADE20K toolkit</a> for it.</p>
+<p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>.</p>
 <h2 id="export-to-other-formats">Export to other formats</h2>
 <p>Datumaro can convert an ADE20K dataset into any other format <a href="../../../docs/user-manual/supported_formats/">Datumaro supports</a>.
 To get the expected result, convert the dataset to a format
@@ -580,6 +600,7 @@ datum import --format align_celeba &lt;path/to/dataset&gt;
 </code></pre></div><p>Align CelebA dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>dataset/
+├── dataset_meta.json # a list of non-format labels (optional)
 ├── Anno/
 │   ├── identity_CelebA.txt
 │   ├── list_attr_celeba.txt
@@ -597,6 +618,7 @@ The <code>list_attr_celeba.txt</code>, <code>list_landmarks_align_celeba.txt</co
 landmarks and subsets respectively (optional).</p>
 <p>The original CelebA dataset stores images in a .7z archive. The archive
 needs to be unpacked before importing.</p>
+<p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>.</p>
 <h2 id="export-to-other-formats">Export to other formats</h2>
 <p>Datumaro can convert an align CelebA dataset into any other format <a href="../../../docs/user-manual/supported_formats/">Datumaro supports</a>.
 To get the expected result, convert the dataset to a format
@@ -666,6 +688,7 @@ datum import --format celeba &lt;path/to/dataset&gt;
 </code></pre></div><p>CelebA dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>dataset/
+├── dataset_meta.json # a list of non-format labels (optional)
 ├── Anno/
 │   ├── identity_CelebA.txt
 │   ├── list_attr_celeba.txt
@@ -685,6 +708,7 @@ attributes, bounding boxes, landmarks and subsets respectively
 (optional).</p>
 <p>The original CelebA dataset stores images in a .7z archive. The archive
 needs to be unpacked before importing.</p>
+<p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>.</p>
 <h2 id="export-to-other-formats">Export to other formats</h2>
 <p>Datumaro can convert a CelebA dataset into any other format <a href="../../../docs/user-manual/supported_formats/">Datumaro supports</a>.
 To get the expected result, convert the dataset to a format
@@ -752,6 +776,7 @@ datum import --format cifar &lt;path/to/dataset&gt;
 <p>CIFAR-10 dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
+    ├── dataset_meta.json # a list of non-format labels (optional)
     ├── batches.meta
     ├── &lt;subset_name1&gt;
     ├── &lt;subset_name2&gt;
@@ -759,6 +784,7 @@ datum import --format cifar &lt;path/to/dataset&gt;
 </code></pre><p>CIFAR-100 dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
+    ├── dataset_meta.json # a list of non-format labels (optional)
     ├── meta
     ├── &lt;subset_name1&gt;
     ├── &lt;subset_name2&gt;
@@ -791,7 +817,8 @@ CIFAR-10:
 CIFAR-100:
     'fine_labels': list of integers
     'coarse_labels': list of integers
-</code></pre><h2 id="export-to-other-formats">Export to other formats</h2>
+</code></pre><p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>.</p>
+<h2 id="export-to-other-formats">Export to other formats</h2>
 <p>Datumaro can convert a CIFAR dataset into any other format <a href="../../../docs/user-manual/supported_formats">Datumaro supports</a>.
 To get the expected result, convert the dataset to a format
 that supports the classification task (e.g. MNIST, ImageNet, PascalVOC, etc.)</p>
@@ -823,6 +850,8 @@ datum convert -if imagenet -i &lt;path/to/dataset&gt; <span style="color:#4e9a06
 (by default <code>False</code>)</li>
 <li><code>--image-ext &lt;IMAGE_EXT&gt;</code> allow to specify image extension
 for exporting the dataset (by default <code>.png</code>)</li>
+<li><code>--save-dataset-meta</code> - allow to export dataset with saving dataset meta
+file (by default <code>False</code>)</li>
 </ul>
 <p>The format (CIFAR-10 or CIFAR-100) in which the dataset will be
 exported depends on the presence of superclasses in the <code>LabelCategories</code>.</p>
@@ -898,6 +927,7 @@ datum import --format synthia &lt;path/to/dataset&gt;
 </code></pre></div><p>SYNTHIA dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>dataset/
+├── dataset_meta.json # a list of non-format labels (optional)
 ├── GT/
 │   ├── COLOR/
 │   │   ├── Stereo_Left/
@@ -952,6 +982,7 @@ Annotations are given using a color representation.</li>
 If it is missing, <code>GT/COLOR</code> folder will be used.</p>
 <p>The original dataset also contains depth information, but Datumaro
 does not currently support it.</p>
+<p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>.</p>
 <h2 id="export-to-other-formats">Export to other formats</h2>
 <p>Datumaro can convert a SYNTHIA dataset into any other format <a href="../../../docs/user-manual/supported_formats/">Datumaro supports</a>.
 To get the expected result, convert the dataset to a format
@@ -987,7 +1018,141 @@ datum convert -if synthia -i &lt;path/to/dataset&gt; <span style="color:#4e9a06"
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-b4837f6e880fb91ac1bc5f75998df382">7 - Cityscapes</h1>
+	<h1 id="pg-380867834e6811ae51a317687af11e27">7 - VoTT CSV</h1>
+    
+	<h2 id="format-specification">Format specification</h2>
+<p><a href="https://github.com/microsoft/VoTT">VoTT</a> (Visual Object Tagging Tool) is
+an open source annotation tool released by Microsoft.
+<a href="https://roboflow.com/formats/vott-csv">VoTT CSV</a> is the format used by VoTT
+when the user exports a project and selects &ldquo;CSV&rdquo; as the export format.</p>
+<p>Supported annotation types:</p>
+<ul>
+<li><code>Bbox</code></li>
+</ul>
+<h2 id="import-vott-dataset">Import VoTT dataset</h2>
+<p>A Datumaro project with a VoTT CSV source can be created in the following way:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
+datum import --format vott_csv &lt;path/to/dataset&gt;
+</code></pre></div><p>It is also possible to import the dataset using Python API:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+
+<span style="color:#000">vott_csv_dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;vott_csv&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>VoTT CSV dataset directory should have the following structure:</p>
+<!--lint disable fenced-code-flag-->
+<pre><code>dataset/
+├── dataset_meta.json # a list of custom labels (optional)
+├── img0001.jpg
+├── img0002.jpg
+├── img0003.jpg
+├── img0004.jpg
+├── ...
+├── test-export.csv
+├── train-export.csv
+└── ...
+</code></pre><p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>.</p>
+<h2 id="export-to-other-formats">Export to other formats</h2>
+<p>Datumaro can convert a VoTT CSV dataset into any other format <a href="../../../docs/user-manual/supported_formats/">Datumaro supports</a>.
+To get the expected result, convert the dataset to a format
+that supports bounding boxes.</p>
+<p>There are several ways to convert a VoTT CSV dataset to other dataset
+formats using CLI:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
+datum import -f vott_csv &lt;path/to/dataset&gt;
+datum <span style="color:#204a87">export</span> -f voc -o ./save_dir -- --save-images
+<span style="color:#8f5902;font-style:italic"># or</span>
+datum convert -if vott_csv -i &lt;path/to/dataset&gt; <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    -f voc -o &lt;output/dir&gt; -- --save-images
+</code></pre></div><p>Or, using Python API:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;vott_csv&#39;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;save_dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;voc&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><h2 id="examples">Examples</h2>
+<p>Examples of using this format from the code can be found in
+<a href="https://github.com/openvinotoolkit/datumaro/blob/develop/tests/test_vott_csv_format.py">VoTT CSV tests</a>.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-8a75782b4046ca46b25aa3933564c2f1">8 - VoTT JSON</h1>
+    
+	<h2 id="format-specification">Format specification</h2>
+<p><a href="https://github.com/microsoft/VoTT">VoTT</a> (Visual Object Tagging Tool) is
+an open source annotation tool released by Microsoft.
+<a href="https://roboflow.com/formats/vott-json">VoTT JSON</a> is the format used by VoTT
+when the user exports a project and selects &ldquo;VoTT JSON&rdquo; as the export format.</p>
+<p>Supported annotation types:</p>
+<ul>
+<li><code>Bbox</code></li>
+</ul>
+<h2 id="import-vott-dataset">Import VoTT dataset</h2>
+<p>A Datumaro project with a VoTT JSON source can be created in the following way:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
+datum import --format vott_json &lt;path/to/dataset&gt;
+</code></pre></div><p>It is also possible to import the dataset using Python API:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+
+<span style="color:#000">vott_json_dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;vott_json&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>VoTT JSON dataset directory should have the following structure:</p>
+<!--lint disable fenced-code-flag-->
+<pre><code>dataset/
+├── dataset_meta.json # a list of custom labels (optional)
+├── img0001.jpg
+├── img0002.jpg
+├── img0003.jpg
+├── img0004.jpg
+├── ...
+├── test-export.json
+├── train-export.json
+└── ...
+</code></pre><p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>.</p>
+<h2 id="export-to-other-formats">Export to other formats</h2>
+<p>Datumaro can convert a VoTT JSON dataset into any other format <a href="../../../docs/user-manual/supported_formats/">Datumaro supports</a>.
+To get the expected result, convert the dataset to a format
+that supports bounding boxes.</p>
+<p>There are several ways to convert a VoTT JSON dataset to other dataset
+formats using CLI:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
+datum import -f vott_json &lt;path/to/dataset&gt;
+datum <span style="color:#204a87">export</span> -f voc -o ./save_dir -- --save-images
+<span style="color:#8f5902;font-style:italic"># or</span>
+datum convert -if vott_json -i &lt;path/to/dataset&gt; <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    -f voc -o &lt;output/dir&gt; -- --save-images
+</code></pre></div><p>Or, using Python API:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;vott_json&#39;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;save_dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;voc&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><h2 id="examples">Examples</h2>
+<p>Examples of using this format from the code can be found in
+<a href="https://github.com/openvinotoolkit/datumaro/blob/develop/tests/test_vott_json_format.py">VoTT JSON tests</a>.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-b4837f6e880fb91ac1bc5f75998df382">9 - Cityscapes</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>Cityscapes format overview is available <a href="https://www.cityscapes-dataset.com/dataset-overview/">here</a>.</p>
@@ -1010,8 +1175,8 @@ datum import --format cityscapes &lt;path/to/dataset&gt;
 </code></pre></div><p>Cityscapes dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
-    ├── dataset_meta.json # a list of non-Pascal labels (optional)
-    ├── label_colors.txt # a list of non-Pascal labels in other format (optional)
+    ├── dataset_meta.json # a list of non-Cityscapes labels (optional)
+    ├── label_colors.txt # a list of non-Cityscapes labels in other format (optional)
     ├── imgsFine/
     │   ├── leftImg8bit
     │   │   ├── &lt;split: train,val, ...&gt;
@@ -1042,10 +1207,10 @@ of a division by 1000 of each ID provides class ID, the remainder
 is the instance ID. If a certain annotation describes multiple instances,
 then the pixels have the regular ID of that class</li>
 </ol>
-<p>To add unformatted classes, you can use <code>dataset_meta.json</code> and <code>label_colors.txt</code>.
+<p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>
+and <code>label_colors.txt</code>.
 If the <code>dataset_meta.json</code> is not represented in the dataset, then
 <code>label_colors.txt</code> will be imported if possible.</p>
-<p>Information about <code>dataset_meta.json</code> can be found <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file">here</a>.</p>
 <p>In <code>label_colors.txt</code> you can define custom color map and non-cityscapes labels,
 for example:</p>
 <pre><code># label_colors [color_rgb name]
@@ -1083,7 +1248,7 @@ datum convert -if voc -i &lt;path/to/dataset&gt; <span style="color:#4e9a06">\
 (by default <code>False</code>)</li>
 <li><code>--image-ext IMAGE_EXT</code> allow to specify image extension
 for exporting dataset (by default - keep original or use <code>.png</code>, if none)</li>
-<li><code>--save-meta-file</code> - allow to export dataset with saving dataset meta
+<li><code>--save-dataset-meta</code> - allow to export dataset with saving dataset meta
 file (by default <code>False</code>)</li>
 <li><code>--label_map</code> allow to define a custom colormap. Example:</li>
 </ul>
@@ -1150,7 +1315,7 @@ datum <span style="color:#204a87">export</span> -p project -o dataset/ -f voc --
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f3691abbbae7eae85ce83b256e5aec64">8 - COCO</h1>
+	<h1 id="pg-f3691abbbae7eae85ce83b256e5aec64">10 - COCO</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>COCO format specification is available <a href="https://cocodataset.org/#format-data">here</a>.</p>
@@ -1389,7 +1554,7 @@ datum <span style="color:#204a87">export</span> -p project -f voc -- --save-imag
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-69397e43070456769c1b4fdb55f75baf">9 - Image zip</h1>
+	<h1 id="pg-69397e43070456769c1b4fdb55f75baf">11 - Image zip</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>The image zip format allows to export/import unannotated datasets
@@ -1472,7 +1637,7 @@ for more information.</li>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-bc1c599a20f4d5c48cfd2ed514e3f166">10 - Velodyne Points / KITTI Raw 3D</h1>
+	<h1 id="pg-bc1c599a20f4d5c48cfd2ed514e3f166">12 - Velodyne Points / KITTI Raw 3D</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>Velodyne Points / KITTI Raw 3D data format homepage is
@@ -1619,7 +1784,7 @@ datum stats -p project
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-342fda6e82df12e35a4cf02ae46d4bab">11 - KITTI</h1>
+	<h1 id="pg-342fda6e82df12e35a4cf02ae46d4bab">13 - KITTI</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>The KITTI dataset has many annotations for different tasks. Datumaro supports
@@ -1643,6 +1808,7 @@ The format specification is available in <code>README.md</code> <a href="https:/
 the object does not correspond to the full extent of the object</li>
 <li><code>occluded</code> (boolean) - indicates that a significant portion of the object
 within the bounding box is occluded by another object</li>
+<li><code>score</code> (float) - indicates confidence in detection</li>
 </ul>
 <h2 id="import-kitti-dataset">Import KITTI dataset</h2>
 <p>The KITTI left color images for object detection are available <a href="http://www.cvlibs.net/download.php?file=data_object_image_2.zip">here</a>.
@@ -1653,9 +1819,27 @@ The KITTI segmentation dataset is available <a href="http://www.cvlibs.net/downl
 datum import --format kitti &lt;path/to/dataset&gt;
 </code></pre></div><p>It is possible to specify project name and project directory. Run
 <code>datum create --help</code> for more information.</p>
-<p>KITTI segmentation dataset directory should have the following structure:</p>
+<p>KITTI detection dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
+    ├── testing/
+    │   └── image_2/
+    │       ├── &lt;name_1&gt;.&lt;img_ext&gt;
+    │       ├── &lt;name_2&gt;.&lt;img_ext&gt;
+    │       └── ...
+    └── training/
+        ├── image_2/ # left color camera images
+        │   ├── &lt;name_1&gt;.&lt;img_ext&gt;
+        │   ├── &lt;name_2&gt;.&lt;img_ext&gt;
+        │   └── ...
+        └─── label_2/ # left color camera label files
+            ├── &lt;name_1&gt;.txt
+            ├── &lt;name_2&gt;.txt
+            └── ...
+</code></pre><p>KITTI segmentation dataset directory should have the following structure:</p>
+<!--lint disable fenced-code-flag-->
+<pre><code>└─ Dataset/
+    ├── dataset_meta.json # a list of non-format labels (optional)
     ├── label_colors.txt # optional, color map for non-original segmentation labels
     ├── testing/
     │   └── image_2/
@@ -1683,7 +1867,11 @@ datum import --format kitti &lt;path/to/dataset&gt;
             ├── &lt;name_1&gt;.png
             ├── &lt;name_2&gt;.png
             └── ...
-</code></pre><p>You can import a dataset for specific tasks
+</code></pre><p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>
+and <code>label_colors.txt</code>.
+If the <code>dataset_meta.json</code> is not represented in the dataset, then
+<code>label_colors.txt</code> will be imported if possible.</p>
+<p>You can import a dataset for specific tasks
 of KITTI dataset instead of the whole dataset,
 for example:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum import --format kitti_detection &lt;path/to/dataset&gt;
@@ -1720,6 +1908,8 @@ datum convert -if cityscapes -i &lt;path/to/dataset&gt; <span style="color:#4e9a
 (by default <code>False</code>)</li>
 <li><code>--image-ext IMAGE_EXT</code> allow to specify image extension
 for exporting dataset (by default - keep original or use <code>.png</code>, if none)</li>
+<li><code>--save-dataset-meta</code> - allow to export dataset with saving dataset meta
+file (by default <code>False</code>)</li>
 <li><code>--apply-colormap APPLY_COLORMAP</code> allow to use colormap for class masks
 (in folder <code>semantic_rgb</code>, by default <code>True</code>)</li>
 <li><code>--label_map</code> allow to define a custom colormap. Example:</li>
@@ -1797,7 +1987,7 @@ datum <span style="color:#204a87">export</span> -p project -f cityscapes -- --sa
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-1e4c6d683fee0e4d48d435e66064eab9">12 - Mapillary Vistas</h1>
+	<h1 id="pg-1e4c6d683fee0e4d48d435e66064eab9">14 - Mapillary Vistas</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>Mapillary Vistas dataset homepage is available
@@ -2052,7 +2242,7 @@ dataset
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-a2db7ecd3bd406d8822366b9b33229dd">13 - MNIST</h1>
+	<h1 id="pg-a2db7ecd3bd406d8822366b9b33229dd">15 - MNIST</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>MNIST format specification is available <a href="http://yann.lecun.com/exdb/mnist/">here</a>.</p>
@@ -2106,7 +2296,8 @@ datum import --format mnist_csv &lt;path/to/dataset&gt;
 </code></pre></div><p>MNIST dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
-    ├── labels.txt # list of non-digit labels (optional)
+    ├── dataset_meta.json # a list of non-format labels (optional)
+    ├── labels.txt # a list of non-digit labels  in other format (optional)
     ├── t10k-images-idx3-ubyte.gz
     ├── t10k-labels-idx1-ubyte.gz
     ├── train-images-idx3-ubyte.gz
@@ -2114,12 +2305,15 @@ datum import --format mnist_csv &lt;path/to/dataset&gt;
 </code></pre><p>MNIST in CSV dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
-    ├── labels.txt # list of non-digit labels (optional)
+    ├── dataset_meta.json # a list of non-format labels (optional)
+    ├── labels.txt # a list of non-digit labels  in other format (optional)
     ├── mnist_test.csv
     └── mnist_train.csv
-</code></pre><p>If the dataset needs non-digit labels, you need to add the <code>labels.txt</code>
-to the dataset folder. For example, <code>labels.txt</code> for Fashion MNIST the
-following contents:</p>
+</code></pre><p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>
+and <code>labels.txt</code>.
+If the <code>dataset_meta.json</code> is not represented in the dataset, then
+<code>labels.txt</code> will be imported if possible.</p>
+<p>For example, <code>labels.txt</code> for Fashion MNIST the following contents:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>T-shirt/top
 Trouser
@@ -2163,6 +2357,8 @@ datum convert -if imagenet -i &lt;path/to/dataset&gt; <span style="color:#4e9a06
 (by default <code>False</code>)</li>
 <li><code>--image-ext &lt;IMAGE_EXT&gt;</code> allow to specify image extension
 for exporting dataset (by default <code>.png</code>)</li>
+<li><code>--save-dataset-meta</code> - allow to export dataset with saving dataset meta
+file (by default <code>False</code>)</li>
 </ul>
 <p>These commands also work for MNIST in CSV if you use <code>mnist_csv</code> instead of <code>mnist</code>.</p>
 <h2 id="examples">Examples</h2>
@@ -2212,7 +2408,7 @@ the <a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-9c502db72874fd0b813f297ee04b2391">14 - ICDAR</h1>
+	<h1 id="pg-9c502db72874fd0b813f297ee04b2391">16 - ICDAR</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>ICDAR is a dataset for text recognition task, it&rsquo;s available
@@ -2364,7 +2560,7 @@ for exporting dataset (by default - keep original)</li>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f97053c70a29d6713d3412af07bcdcca">15 - Open Images</h1>
+	<h1 id="pg-f97053c70a29d6713d3412af07bcdcca">17 - Open Images</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>A description of the Open Images Dataset (OID) format is available
@@ -2654,7 +2850,7 @@ datum <span style="color:#204a87">export</span> -p project -f cvat -- --save-ima
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-db1d30fa5536c19aa2aa75b33dbf92ea">16 - Pascal VOC</h1>
+	<h1 id="pg-db1d30fa5536c19aa2aa75b33dbf92ea">18 - Pascal VOC</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>Pascal VOC format specification is available
@@ -2747,10 +2943,10 @@ datum import --format voc &lt;path/to/dataset&gt;
 These directories contain <code>.txt</code> files with a list of images in a subset,
 the subset name is the same as the <code>.txt</code> file name. Subset names can be
 arbitrary.</p>
-<p>To add unformatted classes, you can use <code>dataset_meta.json</code> and <code>label_map.txt</code>.
+<p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>
+and <code>label_map.txt</code>.
 If the <code>dataset_meta.json</code> is not represented in the dataset, then
 <code>label_map.txt</code> will be imported if possible.</p>
-<p>Information about <code>dataset_meta.json</code> can be found <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file">here</a>.</p>
 <p>In <code>label_map.txt</code> you can define custom color map and non-pascal labels,
 for example:</p>
 <pre><code># label_map [label : color_rgb : parts : actions]
@@ -2812,7 +3008,7 @@ datum convert -if imagenet -i &lt;path/to/dataset&gt; <span style="color:#4e9a06
 (by default <code>False</code>)</li>
 <li><code>--image-ext IMAGE_EXT</code> - allow to specify image extension
 for exporting dataset (by default use original or <code>.jpg</code> if none)</li>
-<li><code>--save-meta-file</code> - allow to export dataset with saving dataset meta
+<li><code>--save-dataset-meta</code> - allow to export dataset with saving dataset meta
 file (by default <code>False</code>)</li>
 <li><code>--apply-colormap APPLY_COLORMAP</code> - allow to use colormap for class
 and instance masks (by default <code>True</code>)</li>
@@ -2939,7 +3135,7 @@ in Pascal VOC 2012 has for segmentation task and this result is the same as the
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-0c9b196a180c68b9b42be11ddc52c8bb">17 - Supervisely Point Cloud</h1>
+	<h1 id="pg-0c9b196a180c68b9b42be11ddc52c8bb">19 - Supervisely Point Cloud</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>Specification for the Point Cloud data format is available
@@ -3096,7 +3292,7 @@ datum stats -p project
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f638f1a110145e49bc81ee72961dd7ef">18 - YOLO</h1>
+	<h1 id="pg-f638f1a110145e49bc81ee72961dd7ef">20 - YOLO</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>The YOLO dataset format is for training and validating object detection
@@ -3117,6 +3313,7 @@ datum import --format yolo &lt;path/to/dataset&gt;
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ yolo_dataset/
    │
+   ├── dataset_meta.json # a list of non-format labels (optional)
    ├── obj.names  # file with list of classes
    ├── obj.data   # file with dataset information
    ├── train.txt  # list of image paths in train subset
@@ -3178,6 +3375,7 @@ for images:</li>
 </code></pre><p>Here <code>x_center</code>, <code>y_center</code>, <code>width</code>, and <code>height</code> are relative to the image&rsquo;s
 width and height. The <code>x_center</code> and <code>y_center</code> are center of rectangle
 (are not top-left corner).</p>
+<p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>.</p>
 <h2 id="export-to-other-formats">Export to other formats</h2>
 <p>Datumaro can convert YOLO dataset into any other format
 <a href="../../../docs/user-manual/supported_formats/">Datumaro supports</a>.

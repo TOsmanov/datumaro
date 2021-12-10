@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>media module &mdash; Datumaro API documentation 0.2.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -90,7 +91,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="module-datumaro.components.media">
+  <section id="module-datumaro.components.media">
 <span id="media-module"></span><h1>media module<a class="headerlink" href="#module-datumaro.components.media" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.media.MediaElement">
@@ -192,7 +193,92 @@
 
 </dd></dl>
 
-</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.media.VideoFrame">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.media.</span></span><span class="sig-name descname"><span class="pre">VideoFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#datumaro.components.media.Video" title="datumaro.components.media.Video"><span class="pre">datumaro.components.media.Video</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/media.html#VideoFrame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.media.VideoFrame" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.components.media.Image" title="datumaro.components.media.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.media.Image</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.media.VideoFrame.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#datumaro.components.media.Video" title="datumaro.components.media.Video"><span class="pre">datumaro.components.media.Video</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/media.html#VideoFrame.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.media.VideoFrame.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datumaro.components.media.VideoFrame.size">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#datumaro.components.media.VideoFrame.size" title="Permalink to this definition"></a></dt>
+<dd><p>Returns (H, W)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datumaro.components.media.VideoFrame.index">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">index</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#datumaro.components.media.VideoFrame.index" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datumaro.components.media.VideoFrame.video">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">video</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#datumaro.components.media.Video" title="datumaro.components.media.Video"><span class="pre">datumaro.components.media.Video</span></a></em><a class="headerlink" href="#datumaro.components.media.VideoFrame.video" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.media.Video">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.media.</span></span><span class="sig-name descname"><span class="pre">Video</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_frame</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_frame</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/media.html#Video"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.media.Video" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.components.media.MediaElement" title="datumaro.components.media.MediaElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.media.MediaElement</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<a class="reference internal" href="#datumaro.components.media.VideoFrame" title="datumaro.components.media.VideoFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.media.VideoFrame</span></code></a>]</p>
+<p>Provides random access to the video frames.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.media.Video.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_frame</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_frame</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/media.html#Video.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.media.Video.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.media.Video.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/media.html#Video.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.media.Video.close" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.media.Video.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#datumaro.components.media.VideoFrame" title="datumaro.components.media.VideoFrame"><span class="pre">datumaro.components.media.VideoFrame</span></a></span></span><a class="reference internal" href="../../../_modules/datumaro/components/media.html#Video.__getitem__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.media.Video.__getitem__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.media.Video.get_frame_data">
+<span class="sig-name descname"><span class="pre">get_frame_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#datumaro.components.media.VideoFrame" title="datumaro.components.media.VideoFrame"><span class="pre">datumaro.components.media.VideoFrame</span></a></span></span><a class="reference internal" href="../../../_modules/datumaro/components/media.html#Video.get_frame_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.media.Video.get_frame_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.media.Video.__iter__">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#datumaro.components.media.VideoFrame" title="datumaro.components.media.VideoFrame"><span class="pre">datumaro.components.media.VideoFrame</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/media.html#Video.__iter__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.media.Video.__iter__" title="Permalink to this definition"></a></dt>
+<dd><p>Iterates over frames lazily, if possible.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datumaro.components.media.Video.length">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#datumaro.components.media.Video.length" title="Permalink to this definition"></a></dt>
+<dd><p>Returns frame count, if video provides such information.</p>
+<p>Note that not all videos provide length / duration metainfo, so the
+result may be undefined.</p>
+<p>Also note, that information may be inaccurate because of variable
+FPS in video or incorrect metainfo. The count is only guaranteed to
+be valid after video is completely read once.</p>
+<p>The count is affected by the frame filtering options of the object,
+i.e. start frame, end frame and frame step.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datumaro.components.media.Video.frame_size">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">frame_size</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#datumaro.components.media.Video.frame_size" title="Permalink to this definition"></a></dt>
+<dd><p>Returns (H, W)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.media.Video.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/media.html#Video.__eq__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.media.Video.__eq__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self==value.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
 
 
            </div>
