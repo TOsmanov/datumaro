@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>datumaro.plugins.coco_format.converter &mdash; Datumaro API documentation 0.2.1 documentation</title>
+  <title>datumaro.plugins.coco_format.converter &mdash; Datumaro API documentation 0.2.2 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
@@ -398,9 +399,9 @@
                 <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Item &#39;</span><span class="si">%s</span><span class="s2">&#39;: failed to convert attribute &quot;</span>
                     <span class="s2">&quot;&#39;score&#39;: </span><span class="si">%e</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">_allow_attributes</span><span class="p">:</span>
-                <span class="n">attrs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_attributes</span><span class="p">(</span><span class="n">ann</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">attrs</span><span class="p">:</span>
-                    <span class="n">elem</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">attrs</span>
+            <span class="n">attrs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_attributes</span><span class="p">(</span><span class="n">ann</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">attrs</span><span class="p">:</span>
+                <span class="n">elem</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">attrs</span>
 
         <span class="k">return</span> <span class="n">elem</span>
 
@@ -854,7 +855,23 @@
       </div>
     </section>
   </div>
-  <script>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: update-docs-versioning-for-api-documentation
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="../../../../v0.2.2/index.html">v0.2.2</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../../../../update-docs-versioning-for-api-documentation/_modules/datumaro/plugins/coco_format/converter.html">update-docs-versioning-for-api-documentation</a></dd>
+        </dl>
+    </div>
+</div><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
