@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>datumaro.plugins.camvid_format &mdash; Datumaro API documentation 0.2.2 documentation</title>
+  <title>datumaro.plugins.camvid_format &mdash; Datumaro API documentation 0.2.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
@@ -96,6 +96,9 @@
 <span class="kn">from</span> <span class="nn">datumaro.util.annotation_util</span> <span class="kn">import</span> <span class="n">make_label_id_mapping</span>
 <span class="kn">from</span> <span class="nn">datumaro.util.image</span> <span class="kn">import</span> <span class="n">save_image</span>
 <span class="kn">from</span> <span class="nn">datumaro.util.mask_tools</span> <span class="kn">import</span> <span class="n">generate_colormap</span><span class="p">,</span> <span class="n">lazy_mask</span><span class="p">,</span> <span class="n">paint_mask</span>
+<span class="kn">from</span> <span class="nn">datumaro.util.meta_file_util</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">has_meta_file</span><span class="p">,</span> <span class="n">is_meta_file</span><span class="p">,</span> <span class="n">parse_meta_file</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="n">CamvidLabelMap</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">([</span>
     <span class="p">(</span><span class="s1">&#39;Void&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span>
@@ -243,11 +246,14 @@
 
     <span class="k">def</span> <span class="nf">_load_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="n">label_map</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">label_map_path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">CamvidPath</span><span class="o">.</span><span class="n">LABELMAP_FILE</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">label_map_path</span><span class="p">):</span>
-            <span class="n">label_map</span> <span class="o">=</span> <span class="n">parse_label_map</span><span class="p">(</span><span class="n">label_map_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">has_meta_file</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="n">label_map</span> <span class="o">=</span> <span class="n">parse_meta_file</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">label_map</span> <span class="o">=</span> <span class="n">CamvidLabelMap</span>
+            <span class="n">label_map_path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">CamvidPath</span><span class="o">.</span><span class="n">LABELMAP_FILE</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">label_map_path</span><span class="p">):</span>
+                <span class="n">label_map</span> <span class="o">=</span> <span class="n">parse_label_map</span><span class="p">(</span><span class="n">label_map_path</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">label_map</span> <span class="o">=</span> <span class="n">CamvidLabelMap</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">label</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">label_map</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">make_camvid_categories</span><span class="p">(</span><span class="n">label_map</span><span class="p">)</span>
 
@@ -408,11 +414,14 @@
                 <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">image_path</span><span class="p">,</span> <span class="n">mask_path</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="CamvidConverter.save_label_map"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.camvid_format.html#datumaro.plugins.camvid_format.CamvidConverter.save_label_map">[docs]</a>    <span class="k">def</span> <span class="nf">save_label_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_dir</span><span class="p">,</span> <span class="n">CamvidPath</span><span class="o">.</span><span class="n">LABELMAP_FILE</span><span class="p">)</span>
-        <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="o">.</span><span class="n">categories</span><span class="p">()[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">]</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_label_map</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_label_map</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;background&#39;</span><span class="p">)</span>
-        <span class="n">write_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label_map</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_save_dataset_meta</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_save_meta_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_dir</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_dir</span><span class="p">,</span> <span class="n">CamvidPath</span><span class="o">.</span><span class="n">LABELMAP_FILE</span><span class="p">)</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="o">.</span><span class="n">categories</span><span class="p">()[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_label_map</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_label_map</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;background&#39;</span><span class="p">)</span>
+            <span class="n">write_label_map</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label_map</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_load_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_map_source</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">label_map_source</span> <span class="o">==</span> <span class="n">LabelmapType</span><span class="o">.</span><span class="n">camvid</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
@@ -443,7 +452,10 @@
                 <span class="nb">sorted</span><span class="p">(</span><span class="n">label_map_source</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">label_map_source</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">label_map_source</span><span class="p">):</span>
-            <span class="n">label_map</span> <span class="o">=</span> <span class="n">parse_label_map</span><span class="p">(</span><span class="n">label_map_source</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">is_meta_file</span><span class="p">(</span><span class="n">label_map_source</span><span class="p">):</span>
+                <span class="n">label_map</span> <span class="o">=</span> <span class="n">parse_meta_file</span><span class="p">(</span><span class="n">label_map_source</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">label_map</span> <span class="o">=</span> <span class="n">parse_label_map</span><span class="p">(</span><span class="n">label_map_source</span><span class="p">)</span>
 
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Wrong labelmap specified, &quot;</span>
@@ -547,17 +559,13 @@
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: update-docs-versioning-for-api-documentation
+        v: develop
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
         <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../v0.2.2/index.html">v0.2.2</a></dd>
-        </dl>
-        <dl>
             <dt>Branches</dt>
-            <dd><a href="../../../update-docs-versioning-for-api-documentation/_modules/datumaro/plugins/camvid_format.html">update-docs-versioning-for-api-documentation</a></dd>
+            <dd><a href="../../../develop/_modules/datumaro/plugins/camvid_format.html">develop</a></dd>
         </dl>
     </div>
 </div><script>

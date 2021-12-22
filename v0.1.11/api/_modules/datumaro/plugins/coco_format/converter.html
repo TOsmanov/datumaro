@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>datumaro.plugins.coco_format.converter &mdash; Datumaro API documentation 0.2.2 documentation</title>
+  <title>datumaro.plugins.coco_format.converter &mdash; Datumaro API documentation 0.2.1 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" />
@@ -288,7 +288,7 @@
         <span class="n">polygons</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">points</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">polygons</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">_segmentation_mode</span> <span class="o">==</span> <span class="n">SegmentationMode</span><span class="o">.</span><span class="n">guess</span><span class="p">:</span>
-            <span class="n">use_masks</span> <span class="o">=</span> <span class="kc">True</span> <span class="o">==</span> <span class="n">leader</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;is_crowd&#39;</span><span class="p">,</span>
+            <span class="n">use_masks</span> <span class="o">=</span> <span class="kc">True</span> <span class="ow">is</span> <span class="n">leader</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;is_crowd&#39;</span><span class="p">,</span>
                 <span class="n">find</span><span class="p">(</span><span class="n">masks</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">leader</span><span class="o">.</span><span class="n">label</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">_segmentation_mode</span> <span class="o">==</span> <span class="n">SegmentationMode</span><span class="o">.</span><span class="n">polygons</span><span class="p">:</span>
             <span class="n">use_masks</span> <span class="o">=</span> <span class="kc">False</span>
@@ -724,6 +724,9 @@
 <div class="viewcode-block" id="CocoConverter.apply"><a class="viewcode-back" href="../../../../api/plugins/coco_format/datumaro.plugins.coco_format.converter.html#datumaro.plugins.coco_format.converter.CocoConverter.apply">[docs]</a>    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_make_dirs</span><span class="p">()</span>
 
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_save_dataset_meta</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_save_meta_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_dir</span><span class="p">)</span>
+
         <span class="k">for</span> <span class="n">subset_name</span><span class="p">,</span> <span class="n">subset</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="o">.</span><span class="n">subsets</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">task_converters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_task_converters</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">task_conv</span> <span class="ow">in</span> <span class="n">task_converters</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
@@ -858,17 +861,13 @@
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: update-docs-versioning-for-api-documentation
+        v: develop
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
         <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../../v0.2.2/index.html">v0.2.2</a></dd>
-        </dl>
-        <dl>
             <dt>Branches</dt>
-            <dd><a href="../../../../update-docs-versioning-for-api-documentation/_modules/datumaro/plugins/coco_format/converter.html">update-docs-versioning-for-api-documentation</a></dd>
+            <dd><a href="../../../../develop/_modules/datumaro/plugins/coco_format/converter.html">develop</a></dd>
         </dl>
     </div>
 </div><script>

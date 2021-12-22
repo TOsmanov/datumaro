@@ -27,7 +27,7 @@ Supported annotation types:
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/formats/open_images/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2021-10-16T11:40:06+03:00" /><meta property="og:site_name" content="Dataset Management Framework" />
+<meta property="og:site_name" content="Dataset Management Framework" />
 
 <meta itemprop="name" content="Open Images">
 <meta itemprop="description" content="Format specification A description of the Open Images Dataset (OID) format is available here. Datumaro supports versions 4, 5 and 6.
@@ -35,8 +35,8 @@ Supported annotation types:
  Label (human-verified image-level labels) Bbox (bounding boxes) Mask (segmentation masks)  Supported annotation attributes:
   Labels
  score (read/write, float). The confidence level from 0 to 1. A score of 0 indicates that the image does not contain objects of the corresponding class.    Bounding boxes">
-<meta itemprop="dateModified" content="2021-10-16T11:40:06+03:00" />
-<meta itemprop="wordCount" content="1112">
+
+<meta itemprop="wordCount" content="1143">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Open Images"/>
 <meta name="twitter:description" content="Format specification A description of the Open Images Dataset (OID) format is available here. Datumaro supports versions 4, 5 and 6.
@@ -110,7 +110,7 @@ Supported annotation types:
       <a class="dropdown-item" href="../../../v0.1.11/docs/formats/open_images/">v0.1.11</a>
   
     
-      <a class="dropdown-item" href="../../../v0.2.2/docs/formats/open_images/">v0.2.2</a>
+      <a class="dropdown-item" href="../../../v0.2.1/docs/formats/open_images/">v0.2.1</a>
   
 </div>
 
@@ -130,7 +130,7 @@ Supported annotation types:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.8e71bb576317fc03228dadb25f8de03c.json"
+  data-offline-search-index-json-src="../../../offline-search-index.711e89c5485c3ee8ed4ef3e60822310f.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -158,7 +158,7 @@ Supported annotation types:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.8e71bb576317fc03228dadb25f8de03c.json"
+  data-offline-search-index-json-src="../../../offline-search-index.711e89c5485c3ee8ed4ef3e60822310f.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -589,6 +589,7 @@ datum import --format open_images &lt;path/to/dataset&gt;
 <code>datum create --help</code> for more information.</p>
 <p>Open Images dataset directory should have the following structure:</p>
 <pre><code>└─ Dataset/
+    ├── dataset_meta.json # a list of custom labels (optional)
     ├── annotations/
     │   └── bbox_labels_600_hierarchy.json
     │   └── image_ids_and_rotation.csv  # optional
@@ -625,6 +626,7 @@ datum import --format open_images &lt;path/to/dataset&gt;
 </code></pre><p>The mask images must be extracted from the ZIP archives linked above.</p>
 <p>To use per-subset image description files instead of <code>image_ids_and_rotation.csv</code>,
 place them in the <code>annotations</code> subdirectory.</p>
+<p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>.</p>
 <h3 id="creating-an-image-metadata-file">Creating an image metadata file</h3>
 <p>To load bounding box and segmentation mask annotations,
 Datumaro needs to know the sizes of the corresponding images.
@@ -681,6 +683,8 @@ datum convert -if imagenet -i &lt;path/to/dataset&gt; <span style="color:#4e9a06
 <li><code>--image-ext IMAGE_EXT</code> - save image files with the specified extension
 when exporting the dataset (by default, uses the original extension
 or <code>.jpg</code> if there isn&rsquo;t one)</li>
+<li><code>--save-dataset-meta</code> - allow to export dataset with saving dataset meta
+file (by default <code>False</code>)</li>
 </ul>
 <h2 id="examples">Examples</h2>
 <p>Datumaro supports filtering, transformation, merging etc. for all formats
@@ -721,10 +725,6 @@ datum <span style="color:#204a87">export</span> -p project -f cvat -- --save-ima
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-
-    Last modified
-    October 16, 2021
-    : <a  href="https://github.com/openvinotoolkit/datumaro/commit/8e60add5b732d11e2792df417ea332e541b77b89">Improve formats: COCO, Open Images, LFW (#509) (8e60add5)</a>
 
 </div>
 

@@ -94,7 +94,7 @@
       <a class="dropdown-item" href="../../../v0.1.11/docs/formats/">v0.1.11</a>
   
     
-      <a class="dropdown-item" href="../../../v0.2.2/docs/formats/">v0.2.2</a>
+      <a class="dropdown-item" href="../../../v0.2.1/docs/formats/">v0.2.1</a>
   
 </div>
 
@@ -114,7 +114,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.8e71bb576317fc03228dadb25f8de03c.json"
+  data-offline-search-index-json-src="../../../offline-search-index.711e89c5485c3ee8ed4ef3e60822310f.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -1386,6 +1386,7 @@ in the original annotation file.</li>
 <p>A COCO dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
+    ├── dataset_meta.json # a list of custom labels (optional)
     ├── images/
     │   ├── train/
     │   │   ├── &lt;image_name1.ext&gt;
@@ -1401,6 +1402,7 @@ in the original annotation file.</li>
 </code></pre><p>For the panoptic task, a dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
+    ├── dataset_meta.json # a list of custom labels (optional)
     ├── images/
     │   ├── train/
     │   │   ├── &lt;image_name1.ext&gt;
@@ -1428,6 +1430,7 @@ task-specific formats instead of plain <code>coco</code>: <code>coco_captions</c
 <code>coco_image_info</code>, <code>coco_instances</code>, <code>coco_labels</code>, <code>coco_panoptic</code>,
 <code>coco_person_keypoints</code>, <code>coco_stuff</code>. In this case all items of the
 dataset will be added to the <code>default</code> subset.</p>
+<p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>.</p>
 <p>You can import a dataset for one or several tasks
 instead of the whole dataset. This option also allows to import annotation
 files with non-default names. For example:</p>
@@ -1471,6 +1474,8 @@ datum convert -if voc -i &lt;path/to/dataset&gt; <span style="color:#4e9a06">\
 (by default <code>False</code>)</li>
 <li><code>--image-ext IMAGE_EXT</code> allow to specify image extension
 for exporting dataset (by default - keep original or use <code>.jpg</code>, if none)</li>
+<li><code>--save-dataset-meta</code> - allow to export dataset with saving dataset meta
+file (by default <code>False</code>)</li>
 <li><code>--segmentation-mode MODE</code> allow to specify save mode for instance
 segmentation:
 <ul>
@@ -1671,6 +1676,7 @@ annotations, represent tracks.</li>
 <p>KITTI Raw dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
+    ├── dataset_meta.json # a list of custom labels (optional)
     ├── image_00/ # optional, aligned images from different cameras
     │   └── data/
     │       ├── &lt;name1.ext&gt;
@@ -1694,7 +1700,8 @@ provides an option to use a special index file to allow this.</p>
 <pre><code>12345 relative/path/to/name1/from/data
 46 relative/path/to/name2/from/data
 ...
-</code></pre><p>A Datumaro project with a KITTI source can be created in the following way:</p>
+</code></pre><p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>.</p>
+<p>A Datumaro project with a KITTI source can be created in the following way:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
 datum import --format kitti_raw &lt;path/to/dataset&gt;
 </code></pre></div><p>To make sure that the selected dataset has been added to the project,
@@ -2127,6 +2134,7 @@ So, the directory with dataset should have one of these structures:</p>
 <div class="tab-content" id="tabs-0-content"><div class="tab-pane fade show active"
         id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><pre tabindex="0"><code class="language-en" data-lang="en">
 dataset
+├── dataset_meta.json # a list of custom labels (optional)
 ├── config_v1.2.json # config file with description of classes (id, color, name)
 ├── &lt;subset_name1&gt;
 │   ├── images
@@ -2225,6 +2233,7 @@ dataset
   
 </div>
 
+<p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>.</p>
 <p>See examples of annotation files in
 <a href="https://github.com/openvinotoolkit/datumaro/blob/develop/tests/assets/mappilary_vistas_dataset">test assets</a>.</p>
 
@@ -2707,6 +2716,7 @@ datum import --format open_images &lt;path/to/dataset&gt;
 <code>datum create --help</code> for more information.</p>
 <p>Open Images dataset directory should have the following structure:</p>
 <pre><code>└─ Dataset/
+    ├── dataset_meta.json # a list of custom labels (optional)
     ├── annotations/
     │   └── bbox_labels_600_hierarchy.json
     │   └── image_ids_and_rotation.csv  # optional
@@ -2743,6 +2753,7 @@ datum import --format open_images &lt;path/to/dataset&gt;
 </code></pre><p>The mask images must be extracted from the ZIP archives linked above.</p>
 <p>To use per-subset image description files instead of <code>image_ids_and_rotation.csv</code>,
 place them in the <code>annotations</code> subdirectory.</p>
+<p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>.</p>
 <h3 id="creating-an-image-metadata-file">Creating an image metadata file</h3>
 <p>To load bounding box and segmentation mask annotations,
 Datumaro needs to know the sizes of the corresponding images.
@@ -2799,6 +2810,8 @@ datum convert -if imagenet -i &lt;path/to/dataset&gt; <span style="color:#4e9a06
 <li><code>--image-ext IMAGE_EXT</code> - save image files with the specified extension
 when exporting the dataset (by default, uses the original extension
 or <code>.jpg</code> if there isn&rsquo;t one)</li>
+<li><code>--save-dataset-meta</code> - allow to export dataset with saving dataset meta
+file (by default <code>False</code>)</li>
 </ul>
 <h2 id="examples">Examples</h2>
 <p>Datumaro supports filtering, transformation, merging etc. for all formats
@@ -2902,7 +2915,7 @@ datum import --format voc &lt;path/to/dataset&gt;
 <!--lint disable fenced-code-flag-->
 <pre><code>└─ Dataset/
    ├── dataset_meta.json # a list of non-Pascal labels (optional)
-   ├── label_map.txt # or a list of non-Pascal labels in other format (optional)
+   ├── labelmap.txt # or a list of non-Pascal labels in other format (optional)
    │
    ├── Annotations/
    │     ├── ann1.xml # Pascal VOC format annotation file
@@ -2944,10 +2957,10 @@ These directories contain <code>.txt</code> files with a list of images in a sub
 the subset name is the same as the <code>.txt</code> file name. Subset names can be
 arbitrary.</p>
 <p>To add custom classes, you can use <a href="../../../docs/user_manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>
-and <code>label_map.txt</code>.
+and <code>labelmap.txt</code>.
 If the <code>dataset_meta.json</code> is not represented in the dataset, then
-<code>label_map.txt</code> will be imported if possible.</p>
-<p>In <code>label_map.txt</code> you can define custom color map and non-pascal labels,
+<code>labelmap.txt</code> will be imported if possible.</p>
+<p>In <code>labelmap.txt</code> you can define custom color map and non-pascal labels,
 for example:</p>
 <pre><code># label_map [label : color_rgb : parts : actions]
 helicopter:::

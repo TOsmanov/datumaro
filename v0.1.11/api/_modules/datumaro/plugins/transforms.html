@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>datumaro.plugins.transforms &mdash; Datumaro API documentation 0.2.2 documentation</title>
+  <title>datumaro.plugins.transforms &mdash; Datumaro API documentation 0.2.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
@@ -85,17 +85,19 @@
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pycocotools.mask</span> <span class="k">as</span> <span class="nn">mask_utils</span>
 
 <span class="kn">from</span> <span class="nn">datumaro.components.annotation</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">AnnotationType</span><span class="p">,</span> <span class="n">Bbox</span><span class="p">,</span> <span class="n">Label</span><span class="p">,</span> <span class="n">LabelCategories</span><span class="p">,</span> <span class="n">MaskCategories</span><span class="p">,</span>
-    <span class="n">PointsCategories</span><span class="p">,</span> <span class="n">Polygon</span><span class="p">,</span> <span class="n">RleMask</span><span class="p">,</span>
+    <span class="n">AnnotationType</span><span class="p">,</span> <span class="n">Bbox</span><span class="p">,</span> <span class="n">Caption</span><span class="p">,</span> <span class="n">Label</span><span class="p">,</span> <span class="n">LabelCategories</span><span class="p">,</span> <span class="n">Mask</span><span class="p">,</span> <span class="n">MaskCategories</span><span class="p">,</span>
+    <span class="n">Points</span><span class="p">,</span> <span class="n">PointsCategories</span><span class="p">,</span> <span class="n">Polygon</span><span class="p">,</span> <span class="n">PolyLine</span><span class="p">,</span> <span class="n">RleMask</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">datumaro.components.cli_plugin</span> <span class="kn">import</span> <span class="n">CliPlugin</span>
 <span class="kn">from</span> <span class="nn">datumaro.components.extractor</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">DEFAULT_SUBSET_NAME</span><span class="p">,</span> <span class="n">IExtractor</span><span class="p">,</span> <span class="n">ItemTransform</span><span class="p">,</span> <span class="n">Transform</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">datumaro.util</span> <span class="kn">import</span> <span class="n">NOTSET</span><span class="p">,</span> <span class="n">parse_str_enum_value</span>
+<span class="kn">from</span> <span class="nn">datumaro.util</span> <span class="kn">import</span> <span class="n">NOTSET</span><span class="p">,</span> <span class="n">parse_str_enum_value</span><span class="p">,</span> <span class="n">take_by</span>
 <span class="kn">from</span> <span class="nn">datumaro.util.annotation_util</span> <span class="kn">import</span> <span class="n">find_group_leader</span><span class="p">,</span> <span class="n">find_instances</span>
 <span class="kn">import</span> <span class="nn">datumaro.util.mask_tools</span> <span class="k">as</span> <span class="nn">mask_tools</span>
 
@@ -784,7 +786,7 @@
 
 <div class="viewcode-block" id="AnnsToLabels.transform_item"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.AnnsToLabels.transform_item">[docs]</a>    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="n">labels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">annotations</span>
-            <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
         <span class="n">annotations</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
             <span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Label</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">))</span>
@@ -807,6 +809,88 @@
                 <span class="n">label</span><span class="o">=</span><span class="n">bbox</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">attributes</span><span class="o">=</span><span class="n">bbox</span><span class="o">.</span><span class="n">attributes</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">annotations</span><span class="o">=</span><span class="n">annotations</span><span class="p">)</span></div></div>
+
+<div class="viewcode-block" id="ResizeTransform"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.ResizeTransform">[docs]</a><span class="k">class</span> <span class="nc">ResizeTransform</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Resizes images and annotations in the dataset to the specified size.</span>
+<span class="sd">    Supports upscaling, downscaling and mixed variants.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Examples:|n</span>
+<span class="sd">    - Resize all images to 256x256 size|n</span>
+<span class="sd">    |s|s%(prog)s -dw 256 -dh 256</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ResizeTransform.build_cmdline_parser"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.ResizeTransform.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-dw&#39;</span><span class="p">,</span> <span class="s1">&#39;--width&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Destination image width&quot;</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-dh&#39;</span><span class="p">,</span> <span class="s1">&#39;--height&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Destination image height&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">parser</span></div>
+
+<div class="viewcode-block" id="ResizeTransform.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.ResizeTransform.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">:</span> <span class="n">IExtractor</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">extractor</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">width</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">height</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="n">height</span></div>
+
+<div class="viewcode-block" id="ResizeTransform.transform_item"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.ResizeTransform.transform_item">[docs]</a>    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">has_image</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Image info is required for this transform&quot;</span><span class="p">)</span>
+
+        <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">xscale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+        <span class="n">yscale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">has_data</span><span class="p">:</span>
+            <span class="c1"># LANCZOS4 is preferable for upscaling, but it works quite slow</span>
+            <span class="n">method</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">INTER_AREA</span> <span class="k">if</span> <span class="p">(</span><span class="n">xscale</span> <span class="o">*</span> <span class="n">yscale</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span> \
+                <span class="k">else</span> <span class="n">cv2</span><span class="o">.</span><span class="n">INTER_CUBIC</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <span class="mf">255.0</span>
+            <span class="n">resized_image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">),</span>
+                <span class="n">interpolation</span><span class="o">=</span><span class="n">method</span><span class="p">)</span>
+
+        <span class="n">resized_annotations</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ann</span><span class="p">,</span> <span class="n">Bbox</span><span class="p">):</span>
+                <span class="n">resized_annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ann</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span>
+                    <span class="n">x</span><span class="o">=</span><span class="n">ann</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">xscale</span><span class="p">,</span>
+                    <span class="n">y</span><span class="o">=</span><span class="n">ann</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">yscale</span><span class="p">,</span>
+                    <span class="n">w</span><span class="o">=</span><span class="n">ann</span><span class="o">.</span><span class="n">w</span> <span class="o">*</span> <span class="n">xscale</span><span class="p">,</span>
+                    <span class="n">h</span><span class="o">=</span><span class="n">ann</span><span class="o">.</span><span class="n">h</span> <span class="o">*</span> <span class="n">yscale</span><span class="p">,</span>
+                <span class="p">))</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ann</span><span class="p">,</span> <span class="p">(</span><span class="n">Polygon</span><span class="p">,</span> <span class="n">Points</span><span class="p">,</span> <span class="n">PolyLine</span><span class="p">)):</span>
+                <span class="n">resized_annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ann</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span>
+                    <span class="n">points</span><span class="o">=</span><span class="p">[</span><span class="n">p</span>
+                        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">((</span><span class="n">x</span> <span class="o">*</span> <span class="n">xscale</span><span class="p">,</span> <span class="n">y</span> <span class="o">*</span> <span class="n">yscale</span><span class="p">)</span>
+                            <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">take_by</span><span class="p">(</span><span class="n">ann</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+                        <span class="p">)</span>
+                        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">t</span>
+                    <span class="p">]</span>
+                <span class="p">))</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ann</span><span class="p">,</span> <span class="n">Mask</span><span class="p">):</span>
+                <span class="c1"># Can use only NEAREST for masks,</span>
+                <span class="c1"># because we can&#39;t have interpolated values</span>
+                <span class="n">rescaled_mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">ann</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
+                    <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">),</span>
+                    <span class="n">interpolation</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">INTER_NEAREST</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ann</span><span class="p">,</span> <span class="n">RleMask</span><span class="p">):</span>
+                    <span class="n">rle</span> <span class="o">=</span> <span class="n">mask_tools</span><span class="o">.</span><span class="n">mask_to_rle</span><span class="p">(</span><span class="n">rescaled_mask</span><span class="p">)</span>
+                    <span class="n">resized_annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ann</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span>
+                        <span class="n">rle</span><span class="o">=</span><span class="n">mask_utils</span><span class="o">.</span><span class="n">frPyObjects</span><span class="p">(</span><span class="n">rle</span><span class="p">,</span> <span class="o">*</span><span class="n">rle</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">])))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">resized_annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ann</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">rescaled_mask</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ann</span><span class="p">,</span> <span class="p">(</span><span class="n">Caption</span><span class="p">,</span> <span class="n">Label</span><span class="p">)):</span>
+                <span class="n">resized_annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ann</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Unexpected annotation type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">ann</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span>
+            <span class="n">image</span><span class="o">=</span><span class="n">resized_image</span><span class="p">,</span>
+            <span class="n">annotations</span><span class="o">=</span><span class="n">resized_annotations</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>
@@ -842,17 +926,13 @@
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: update-docs-versioning-for-api-documentation
+        v: develop
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
         <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../v0.2.2/index.html">v0.2.2</a></dd>
-        </dl>
-        <dl>
             <dt>Branches</dt>
-            <dd><a href="../../../update-docs-versioning-for-api-documentation/_modules/datumaro/plugins/transforms.html">update-docs-versioning-for-api-documentation</a></dd>
+            <dd><a href="../../../develop/_modules/datumaro/plugins/transforms.html">develop</a></dd>
         </dl>
     </div>
 </div><script>

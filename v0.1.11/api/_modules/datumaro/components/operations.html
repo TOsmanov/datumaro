@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>datumaro.components.operations &mdash; Datumaro API documentation 0.2.2 documentation</title>
+  <title>datumaro.components.operations &mdash; Datumaro API documentation 0.2.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
@@ -101,8 +101,8 @@
 <span class="kn">from</span> <span class="nn">datumaro.components.extractor</span> <span class="kn">import</span> <span class="n">CategoriesInfo</span>
 <span class="kn">from</span> <span class="nn">datumaro.util</span> <span class="kn">import</span> <span class="n">filter_dict</span><span class="p">,</span> <span class="n">find</span>
 <span class="kn">from</span> <span class="nn">datumaro.util.annotation_util</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">OKS</span><span class="p">,</span> <span class="n">bbox_iou</span><span class="p">,</span> <span class="n">find_instances</span><span class="p">,</span> <span class="n">max_bbox</span><span class="p">,</span> <span class="n">mean_bbox</span><span class="p">,</span> <span class="n">segment_iou</span><span class="p">,</span>
-    <span class="n">smooth_line</span><span class="p">,</span>
+    <span class="n">OKS</span><span class="p">,</span> <span class="n">approximate_line</span><span class="p">,</span> <span class="n">bbox_iou</span><span class="p">,</span> <span class="n">find_instances</span><span class="p">,</span> <span class="n">max_bbox</span><span class="p">,</span> <span class="n">mean_bbox</span><span class="p">,</span>
+    <span class="n">segment_iou</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">datumaro.util.attrs_util</span> <span class="kn">import</span> <span class="n">default_if_none</span><span class="p">,</span> <span class="n">ensure_cls</span>
 
@@ -474,8 +474,7 @@
 
         <span class="n">label_cat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_label_categories</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">label_cat</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">dst_categories</span>
-
+            <span class="n">label_cat</span> <span class="o">=</span> <span class="n">LabelCategories</span><span class="p">()</span>
         <span class="n">dst_categories</span><span class="p">[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">label_cat</span>
 
         <span class="n">points_cat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_point_categories</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">label_cat</span><span class="p">)</span>
@@ -841,21 +840,46 @@
 <span class="k">class</span> <span class="nc">LineMatcher</span><span class="p">(</span><span class="n">_ShapeMatcher</span><span class="p">):</span>
 <div class="viewcode-block" id="LineMatcher.distance"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.LineMatcher.distance">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-        <span class="n">a_bbox</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">get_bbox</span><span class="p">()</span>
-        <span class="n">b_bbox</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">get_bbox</span><span class="p">()</span>
-        <span class="n">bbox</span> <span class="o">=</span> <span class="n">max_bbox</span><span class="p">([</span><span class="n">a_bbox</span><span class="p">,</span> <span class="n">b_bbox</span><span class="p">])</span>
-        <span class="n">area</span> <span class="o">=</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">area</span><span class="p">:</span>
+        <span class="c1"># Compute inter-line area by using the Trapezoid formulae</span>
+        <span class="c1"># https://en.wikipedia.org/wiki/Trapezoidal_rule</span>
+        <span class="c1"># Normalize by common bbox and get the bbox fill ratio</span>
+        <span class="c1"># Call this ratio the &quot;distance&quot;</span>
+
+        <span class="c1"># The box area is an early-exit filter for non-intersected figures</span>
+        <span class="n">bbox</span> <span class="o">=</span> <span class="n">max_bbox</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
+        <span class="n">box_area</span> <span class="o">=</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">box_area</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">1</span>
 
-        <span class="c1"># compute inter-line area, normalize by common bbox</span>
-        <span class="n">point_count</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">points</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">points</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
-        <span class="n">a</span><span class="p">,</span> <span class="n">sa</span> <span class="o">=</span> <span class="n">smooth_line</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">point_count</span><span class="p">)</span>
-        <span class="n">b</span><span class="p">,</span> <span class="n">sb</span> <span class="o">=</span> <span class="n">smooth_line</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">point_count</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">_approx</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">segments</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">!=</span> <span class="n">segments</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">approximate_line</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">segments</span><span class="o">=</span><span class="n">segments</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="n">segments</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">points</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">points</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+        <span class="n">a</span> <span class="o">=</span> <span class="n">_approx</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">segments</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">_approx</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">segments</span><span class="p">)</span>
         <span class="n">dists</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">dists</span> <span class="o">=</span> <span class="p">(</span><span class="n">dists</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dists</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">*</span> <span class="mf">0.5</span>
-        <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dists</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">sa</span> <span class="o">+</span> <span class="n">sb</span><span class="p">)</span> <span class="o">/</span> <span class="n">area</span>
-        <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span></div></div>
+        <span class="n">dists</span> <span class="o">=</span> <span class="n">dists</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dists</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">a_steps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">b_steps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># For the common bbox we can&#39;t use</span>
+        <span class="c1"># - the AABB (axis-alinged bbox) of a point set</span>
+        <span class="c1"># - the exterior of a point set</span>
+        <span class="c1"># - the convex hull of a point set</span>
+        <span class="c1"># because these soultions won&#39;t be correctly normalized.</span>
+        <span class="c1"># The lines can have multiple self-intersections, which can give</span>
+        <span class="c1"># the inter-line area more than internal area of the options above,</span>
+        <span class="c1"># producing the value of the distance outside of the [0; 1] range.</span>
+        <span class="c1">#</span>
+        <span class="c1"># Instead, we can compute the upper boundary for the inter-line</span>
+        <span class="c1"># area based on the maximum point distance and line length.</span>
+        <span class="n">max_area</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">dists</span><span class="p">)</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a_steps</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">b_steps</span><span class="p">))</span>
+
+        <span class="n">area</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">dists</span><span class="p">,</span> <span class="n">a_steps</span> <span class="o">+</span> <span class="n">b_steps</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">/</span> <span class="n">max_area</span>
+
+        <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">area</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="CaptionsMatcher"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.CaptionsMatcher">[docs]</a><span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">CaptionsMatcher</span><span class="p">(</span><span class="n">AnnotationMatcher</span><span class="p">):</span>
@@ -1655,17 +1679,13 @@
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: update-docs-versioning-for-api-documentation
+        v: develop
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
         <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../v0.2.2/index.html">v0.2.2</a></dd>
-        </dl>
-        <dl>
             <dt>Branches</dt>
-            <dd><a href="../../../update-docs-versioning-for-api-documentation/_modules/datumaro/components/operations.html">update-docs-versioning-for-api-documentation</a></dd>
+            <dd><a href="../../../develop/_modules/datumaro/components/operations.html">develop</a></dd>
         </dl>
     </div>
 </div><script>

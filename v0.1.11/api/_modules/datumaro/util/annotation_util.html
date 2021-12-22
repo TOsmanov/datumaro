@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>datumaro.util.annotation_util &mdash; Datumaro API documentation 0.2.2 documentation</title>
+  <title>datumaro.util.annotation_util &mdash; Datumaro API documentation 0.2.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
@@ -77,7 +77,9 @@
 <span class="c1"># SPDX-License-Identifier: MIT</span>
 
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">groupby</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">NewType</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Literal</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -102,13 +104,28 @@
 <div class="viewcode-block" id="find_group_leader"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util.find_group_leader">[docs]</a><span class="k">def</span> <span class="nf">find_group_leader</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">get_area</span><span class="p">())</span></div>
 
-<div class="viewcode-block" id="_get_bbox"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util._get_bbox">[docs]</a><span class="k">def</span> <span class="nf">_get_bbox</span><span class="p">(</span><span class="n">ann</span><span class="p">):</span>
+<span class="n">BboxCoords</span> <span class="o">=</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">Shape</span> <span class="o">=</span> <span class="n">NewType</span><span class="p">(</span><span class="s1">&#39;Shape&#39;</span><span class="p">,</span> <span class="n">_Shape</span><span class="p">)</span>
+<span class="n">SpatialAnnotation</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">Shape</span><span class="p">,</span> <span class="n">Mask</span><span class="p">]</span>
+
+<div class="viewcode-block" id="_get_bbox"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util._get_bbox">[docs]</a><span class="k">def</span> <span class="nf">_get_bbox</span><span class="p">(</span><span class="n">ann</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Sequence</span><span class="p">,</span> <span class="n">SpatialAnnotation</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">BboxCoords</span><span class="p">:</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ann</span><span class="p">,</span> <span class="p">(</span><span class="n">_Shape</span><span class="p">,</span> <span class="n">Mask</span><span class="p">)):</span>
         <span class="k">return</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_bbox</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">ann</span><span class="p">,</span> <span class="s1">&#39;__len__&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">ann</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ann</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">ann</span></div>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The value of type &#39;</span><span class="si">%s</span><span class="s2">&#39; can&#39;t be treated as a &quot;</span>
+            <span class="s2">&quot;bounding box&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">ann</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="max_bbox"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util.max_bbox">[docs]</a><span class="k">def</span> <span class="nf">max_bbox</span><span class="p">(</span><span class="n">annotations</span><span class="p">):</span>
+<div class="viewcode-block" id="max_bbox"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util.max_bbox">[docs]</a><span class="k">def</span> <span class="nf">max_bbox</span><span class="p">(</span><span class="n">annotations</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">BboxCoords</span><span class="p">,</span> <span class="n">SpatialAnnotation</span><span class="p">]])</span> \
+        <span class="o">-&gt;</span> <span class="n">BboxCoords</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the maximum bbox for the set of spatial annotations and boxes.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      bbox (tuple): (x, y, w, h)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">boxes</span> <span class="o">=</span> <span class="p">[</span><span class="n">_get_bbox</span><span class="p">(</span><span class="n">ann</span><span class="p">)</span> <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">annotations</span><span class="p">]</span>
     <span class="n">x0</span> <span class="o">=</span> <span class="nb">min</span><span class="p">((</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">boxes</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">y0</span> <span class="o">=</span> <span class="nb">min</span><span class="p">((</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">boxes</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -116,7 +133,15 @@
     <span class="n">y1</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">boxes</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y1</span> <span class="o">-</span> <span class="n">y0</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="mean_bbox"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util.mean_bbox">[docs]</a><span class="k">def</span> <span class="nf">mean_bbox</span><span class="p">(</span><span class="n">annotations</span><span class="p">):</span>
+<div class="viewcode-block" id="mean_bbox"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util.mean_bbox">[docs]</a><span class="k">def</span> <span class="nf">mean_bbox</span><span class="p">(</span><span class="n">annotations</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">BboxCoords</span><span class="p">,</span> <span class="n">SpatialAnnotation</span><span class="p">]])</span> \
+        <span class="o">-&gt;</span> <span class="n">BboxCoords</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the mean bbox for the set of spatial annotations and boxes.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      bbox (tuple): (x, y, w, h)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">le</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">annotations</span><span class="p">)</span>
     <span class="n">boxes</span> <span class="o">=</span> <span class="p">[</span><span class="n">_get_bbox</span><span class="p">(</span><span class="n">ann</span><span class="p">)</span> <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">annotations</span><span class="p">]</span>
     <span class="n">mlb</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">boxes</span><span class="p">)</span> <span class="o">/</span> <span class="n">le</span>
@@ -252,11 +277,23 @@
     <span class="n">dists</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">p1</span> <span class="o">-</span> <span class="n">p2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">dists</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">scale</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)))</span></div>
 
-<div class="viewcode-block" id="smooth_line"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util.smooth_line">[docs]</a><span class="k">def</span> <span class="nf">smooth_line</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">segments</span><span class="p">):</span>
-    <span class="k">assert</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">def</span> <span class="nf">approximate_line</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">segments</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Approximates a 2d line to the required number of segments. The new points</span>
+<span class="sd">    are distributed uniformly across the input line.</span>
 
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">==</span> <span class="n">segments</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">points</span>
+<span class="sd">    Args:</span>
+<span class="sd">      points (Sequence): an array of line point coordinates.</span>
+<span class="sd">        The size is [points * 2], the layout is [x0, y0, x1, y1, ...].</span>
+<span class="sd">      segments (int): the required numebr of segments in the resulting line.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      new_points (ndarray): an array of new line point coordinates.</span>
+<span class="sd">        The size is [(segments + 1) * 2], the layout is [x0, y0, x1, y1, ...].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">assert</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">segments</span>
 
     <span class="n">points</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
@@ -287,7 +324,7 @@
 
         <span class="n">new_points</span><span class="p">[</span><span class="n">new_segment</span><span class="p">]</span> <span class="o">=</span> <span class="n">prev_p</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">r</span><span class="p">)</span> <span class="o">+</span> <span class="n">next_p</span> <span class="o">*</span> <span class="n">r</span>
 
-    <span class="k">return</span> <span class="n">new_points</span><span class="p">,</span> <span class="n">step</span></div>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">new_points</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">))</span>
 
 <div class="viewcode-block" id="make_label_id_mapping"><a class="viewcode-back" href="../../../api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util.make_label_id_mapping">[docs]</a><span class="k">def</span> <span class="nf">make_label_id_mapping</span><span class="p">(</span>
         <span class="n">src_labels</span><span class="p">:</span> <span class="n">LabelCategories</span><span class="p">,</span> <span class="n">dst_labels</span><span class="p">:</span> <span class="n">LabelCategories</span><span class="p">,</span>
@@ -299,14 +336,14 @@
             <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
         <span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Maps label ids from source to destination. Fallback is used for missing</span>
+<span class="sd">    Maps label ids from source to destination. Fallback id is used for missing</span>
 <span class="sd">    labels.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">      function to map labels: src id -&gt; dst id</span>
-<span class="sd">        dict: src id -&gt; dst id</span>
-<span class="sd">        dict: src id -&gt; src label</span>
-<span class="sd">        dict: dst id -&gt; dst label</span>
+<span class="sd">      map_id (callable): src id -&gt; dst id</span>
+<span class="sd">      id_mapping (dict): src id -&gt; dst id</span>
+<span class="sd">      src_labels (dict): src id -&gt; src label</span>
+<span class="sd">      dst_labels (dict): dst id -&gt; dst label</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">source_labels</span> <span class="o">=</span> <span class="p">{</span> <span class="nb">id</span><span class="p">:</span> <span class="n">label</span><span class="o">.</span><span class="n">name</span>
@@ -357,17 +394,13 @@
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: update-docs-versioning-for-api-documentation
+        v: develop
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
         <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../v0.2.2/index.html">v0.2.2</a></dd>
-        </dl>
-        <dl>
             <dt>Branches</dt>
-            <dd><a href="../../../update-docs-versioning-for-api-documentation/_modules/datumaro/util/annotation_util.html">update-docs-versioning-for-api-documentation</a></dd>
+            <dd><a href="../../../develop/_modules/datumaro/util/annotation_util.html">develop</a></dd>
         </dl>
     </div>
 </div><script>
