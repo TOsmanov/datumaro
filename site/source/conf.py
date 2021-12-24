@@ -67,13 +67,7 @@ html_theme_options = {
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static','_templates/_static' ]
-# html_css_files = ['_static/custom.css',]
-html_context = {
-    'extra_css_files': [
-        '_static/custom.css',
-        '_static/css/custom_theme.css',
-    ],
-}
+html_css_files = ['custom.css',]
 
 # -- Extension configuration -------------------------------------------------
 autodoc_docstring_signature = True
