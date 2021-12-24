@@ -35,7 +35,6 @@ extensions = [
     'sphinx.ext.napoleon', # Support for NumPy and Google style docstrings
     'sphinx.ext.autodoc',  # Core library for html generation from docstrings
     'sphinx.ext.viewcode', # Find the source files
-    'sphinx.ext.githubpages', # Creates .nojekyll file
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -67,8 +66,14 @@ html_theme_options = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static', ]
-html_css_files = ['custom.css', ]
+html_static_path = ['_static','_templates/_static' ]
+# html_css_files = ['_static/custom.css',]
+html_context = {
+    'extra_css_files': [
+        '_static/custom.css',
+        '_static/css/custom_theme.css',
+    ],
+}
 
 # -- Extension configuration -------------------------------------------------
 autodoc_docstring_signature = True
@@ -85,7 +90,7 @@ include_members_list = [
 ]
 
 def skip_member(app, what, name, obj, skip, options):
-    if all(name != a for a in include_members_list) == True:
+    if all(name != a for a in include_members_list):
         return name.startswith('_')
 
 def replace(app, what, name, obj, options, lines):
