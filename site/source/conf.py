@@ -69,7 +69,7 @@ html_theme_options = {
 html_static_path = ['_static', ]
 html_css_files = ['custom.css', 'versionig_menu.css']
 html_context = {
-    'css_files': ['../_static/versionig_menu.css', 'custom.css', 'versionig_menu.css'],
+    'css_files': ['../_static/versionig_menu.css', '_static/custom.css', '_static/versionig_menu.css'],
 }
 # -- Extension configuration -------------------------------------------------
 autodoc_docstring_signature = True
