@@ -66,7 +66,7 @@ html_theme_options = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static', ]
+html_static_path = ['_static', '../_static/versionig_menu.css' ]
 html_css_files = ['custom.css', ]
 
 # -- Extension configuration -------------------------------------------------
@@ -83,6 +83,10 @@ include_members_list = [
     '__getitem__',
 ]
 
+# Sphinxcontrib-versioning parameters.
+scv_grm_exclude = ('site/source/_static/custom.css',)
+
+# Preprocessing.
 def skip_member(app, what, name, obj, skip, options):
     if all(name != a for a in include_members_list):
         return name.startswith('_')
