@@ -99,5 +99,6 @@ def replace(app, what, name, obj, options, lines):
                     lines[i] = lines[i].replace("|n", "\n").replace("|s", " ")
 
 def setup(app):
+    app.add_stylesheet('versionig_menu.css')
     app.connect('autodoc-skip-member', skip_member)
     app.connect('autodoc-process-docstring', replace)
