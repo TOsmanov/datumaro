@@ -66,8 +66,8 @@ html_theme_options = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static', os.path.abspath(os.path.join( '..', '_static'))]
-html_css_files = ['custom.css', 'versionig_menu.css' ]
+html_static_path = ['_static', ]
+html_css_files = ['custom.css', 'versionig_menu.css']
 
 # -- Extension configuration -------------------------------------------------
 autodoc_docstring_signature = True
@@ -99,5 +99,6 @@ def replace(app, what, name, obj, options, lines):
                     lines[i] = lines[i].replace("|n", "\n").replace("|s", " ")
 
 def setup(app):
+    app.add_css_file("../_static/versionig_menu.css")
     app.connect('autodoc-skip-member', skip_member)
     app.connect('autodoc-process-docstring', replace)
