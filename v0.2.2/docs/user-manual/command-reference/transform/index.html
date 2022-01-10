@@ -30,7 +30,7 @@ This command allows to modify dataset images or annotations all at once." />
 <meta itemprop="description" content="Often datasets need to be modified during preparation for model training and experimenting. In trivial cases it can be done manually - e.g. image renaming or label renaming. However, in more complex cases even simple modifications can require too much efforts, distracting the user from the real work. Datumaro provides the datum transform command to help in such cases.
 This command allows to modify dataset images or annotations all at once.">
 
-<meta itemprop="wordCount" content="1078">
+<meta itemprop="wordCount" content="1107">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Transform Dataset"/>
 <meta name="twitter:description" content="Often datasets need to be modified during preparation for model training and experimenting. In trivial cases it can be done manually - e.g. image renaming or label renaming. However, in more complex cases even simple modifications can require too much efforts, distracting the user from the real work. Datumaro provides the datum transform command to help in such cases.
@@ -39,8 +39,8 @@ This command allows to modify dataset images or annotations all at once."/>
 
 
 
-<link rel="preload" href="../../../../scss/main.min.21c2cea19bc82cf1072148e20b3bc957c31d04e918eba026f810d093e6f85412.css" as="style">
-<link href="../../../../scss/main.min.21c2cea19bc82cf1072148e20b3bc957c31d04e918eba026f810d093e6f85412.css" rel="stylesheet" integrity="">
+<link rel="preload" href="../../../../scss/main.min.1f1e7e5bc653cf34e7b33c067918428fa616f4724d5b46d4a69e071de2b59191.css" as="style">
+<link href="../../../../scss/main.min.1f1e7e5bc653cf34e7b33c067918428fa616f4724d5b46d4a69e071de2b59191.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -56,6 +56,9 @@ This command allows to modify dataset images or annotations all at once."/>
 
 
 
+
+
+<link rel="stylesheet" href="../../../../css/prism.css"/>
 
 
 
@@ -121,7 +124,7 @@ This command allows to modify dataset images or annotations all at once."/>
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.8e71bb576317fc03228dadb25f8de03c.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.711e89c5485c3ee8ed4ef3e60822310f.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -149,7 +152,7 @@ This command allows to modify dataset images or annotations all at once."/>
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.8e71bb576317fc03228dadb25f8de03c.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.711e89c5485c3ee8ed4ef3e60822310f.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -500,6 +503,7 @@ datum transform -t rename source-1 -- -e <span style="color:#4e9a06">&#39;|frame
 <li><code>reindex</code> - Renames dataset items with numbers</li>
 <li><code>ndr</code> - Removes duplicated images from dataset</li>
 <li><code>sampler</code> - Runs inference and leaves only the most representative images</li>
+<li><code>resize</code> - Resizes images and annotations in the dataset</li>
 </ul>
 <p>Subset manipulations:</p>
 <ul>
@@ -617,7 +621,12 @@ the topk among them.</li>
 </span><span style="color:#4e9a06"></span>  -k <span style="color:#0000cf;font-weight:bold">100</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -e random <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -u uniform
-</code></pre></div>
+</code></pre></div><ul>
+<li>Resize dataset images and annotations. Supports upscaling, downscaling
+and mixed variants.</li>
+</ul>
+<pre><code>datum transform -t resize -- -dw 256 -dh 256
+</code></pre>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
@@ -710,6 +719,9 @@ the topk among them.</li>
 
 <script src="../../../../js/main.min.ee00f42d1b949caa55ccf416202998d65afac8f58091e2719c89d4fc3518550e.js" integrity="sha256-7gD0LRuUnKpVzPQWICmY1lr6yPWAkeJxnInU/DUYVQ4=" crossorigin="anonymous"></script>
 
+
+
+<script src='../../../../js/prism.js'></script>
 
 
 
