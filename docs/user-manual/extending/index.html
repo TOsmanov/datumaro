@@ -32,7 +32,7 @@ TensorFlow The plugin provides support of TensorFlow Detection API format, which
  &lt;project_dir&gt;/.datumaro/plugins for project-specific plugins &lt;datumaro_dir&gt;/plugins for global plugins  Built-in plugins  Datumaro provides several builtin plugins. Plugins can have dependencies, which need to be installed separately.
 TensorFlow The plugin provides support of TensorFlow Detection API format, which includes boxes and masks.">
 
-<meta itemprop="wordCount" content="360">
+<meta itemprop="wordCount" content="357">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Extending"/>
 <meta name="twitter:description" content="There are few ways to extend and customize Datumaro behavior, which is supported by plugins. Check our contribution guide for details on plugin implementation. In general, a plugin is a Python module. It must be put into a plugin directory:
@@ -42,8 +42,8 @@ TensorFlow The plugin provides support of TensorFlow Detection API format, which
 
 
 
-<link rel="preload" href="../../../scss/main.min.1f1e7e5bc653cf34e7b33c067918428fa616f4724d5b46d4a69e071de2b59191.css" as="style">
-<link href="../../../scss/main.min.1f1e7e5bc653cf34e7b33c067918428fa616f4724d5b46d4a69e071de2b59191.css" rel="stylesheet" integrity="">
+<link rel="preload" href="../../../scss/main.min.94f50249a071f900d8f6ca438aac6a9e0b559ae82663a7b52c3d7bbf4f76efe5.css" as="style">
+<link href="../../../scss/main.min.94f50249a071f900d8f6ca438aac6a9e0b559ae82663a7b52c3d7bbf4f76efe5.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -127,7 +127,7 @@ TensorFlow The plugin provides support of TensorFlow Detection API format, which
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.5a1702a2631a9b551e36eddcb2a7a4f5.json"
+  data-offline-search-index-json-src="../../../offline-search-index.0c7499c54b8f709ff7aa1b005b33e2a3.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -155,7 +155,7 @@ TensorFlow The plugin provides support of TensorFlow Detection API format, which
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.5a1702a2631a9b551e36eddcb2a7a4f5.json"
+  data-offline-search-index-json-src="../../../offline-search-index.0c7499c54b8f709ff7aa1b005b33e2a3.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -462,12 +462,12 @@ boxes and masks.</p>
 <p><strong>Dependencies</strong></p>
 <p>The plugin depends on TensorFlow, which can be installed with <code>pip</code>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install tensorflow
-<span style="color:#8f5902;font-style:italic"># or</span>
-pip install tensorflow-gpu
-<span style="color:#8f5902;font-style:italic"># or</span>
-pip install datumaro<span style="color:#ce5c00;font-weight:bold">[</span>tf<span style="color:#ce5c00;font-weight:bold">]</span>
-<span style="color:#8f5902;font-style:italic"># or</span>
-pip install datumaro<span style="color:#ce5c00;font-weight:bold">[</span>tf-gpu<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install tensorflow-gpu
+</code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install datumaro<span style="color:#ce5c00;font-weight:bold">[</span>tf<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install datumaro<span style="color:#ce5c00;font-weight:bold">[</span>tf-gpu<span style="color:#ce5c00;font-weight:bold">]</span>
 </code></pre></div><h4 id="accuracy-checker">Accuracy Checker</h4>
 <p>This plugin allows to use <a href="https://github.com/openvinotoolkit/open_model_zoo/tree/master/tools/accuracy_checker">Accuracy Checker</a>
 to launch deep learning models from various frameworks

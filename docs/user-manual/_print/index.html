@@ -32,8 +32,8 @@
 
 
 
-<link rel="preload" href="../../../scss/main.min.1f1e7e5bc653cf34e7b33c067918428fa616f4724d5b46d4a69e071de2b59191.css" as="style">
-<link href="../../../scss/main.min.1f1e7e5bc653cf34e7b33c067918428fa616f4724d5b46d4a69e071de2b59191.css" rel="stylesheet" integrity="">
+<link rel="preload" href="../../../scss/main.min.94f50249a071f900d8f6ca438aac6a9e0b559ae82663a7b52c3d7bbf4f76efe5.css" as="style">
+<link href="../../../scss/main.min.94f50249a071f900d8f6ca438aac6a9e0b559ae82663a7b52c3d7bbf4f76efe5.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -117,7 +117,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.5a1702a2631a9b551e36eddcb2a7a4f5.json"
+  data-offline-search-index-json-src="../../../offline-search-index.0c7499c54b8f709ff7aa1b005b33e2a3.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -515,8 +515,7 @@ python -m virtualenv venv
 </code></pre></div><p>Install:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># From PyPI:</span>
 pip install datumaro<span style="color:#ce5c00;font-weight:bold">[</span>default<span style="color:#ce5c00;font-weight:bold">]</span>
-
-<span style="color:#8f5902;font-style:italic"># From the GitHub repository:</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># From the GitHub repository:</span>
 pip install <span style="color:#4e9a06">&#39;git+https://github.com/openvinotoolkit/datumaro[default]&#39;</span>
 </code></pre></div><p>Read more about choosing between <code>datumaro</code> and <code>datumaro[default]</code>
 <a href="#core-install">here</a>.</p>
@@ -2091,262 +2090,262 @@ By default, computes statistics of the merged dataset.</li>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum stats -p test_project
 </code></pre></div><p>Sample output:</p>
 <details>
-<pre><code>{
-    &quot;annotations&quot;: {
-        &quot;labels&quot;: {
-            &quot;attributes&quot;: {
-                &quot;gender&quot;: {
-                    &quot;count&quot;: 358,
-                    &quot;distribution&quot;: {
-                        &quot;female&quot;: [
-                            149,
-                            0.41620111731843573
-                        ],
-                        &quot;male&quot;: [
-                            209,
-                            0.5837988826815642
-                        ]
-                    },
-                    &quot;values count&quot;: 2,
-                    &quot;values present&quot;: [
-                        &quot;female&quot;,
-                        &quot;male&quot;
-                    ]
-                },
-                &quot;view&quot;: {
-                    &quot;count&quot;: 340,
-                    &quot;distribution&quot;: {
-                        &quot;__undefined__&quot;: [
-                            4,
-                            0.011764705882352941
-                        ],
-                        &quot;front&quot;: [
-                            54,
-                            0.1588235294117647
-                        ],
-                        &quot;left&quot;: [
-                            14,
-                            0.041176470588235294
-                        ],
-                        &quot;rear&quot;: [
-                            235,
-                            0.6911764705882353
-                        ],
-                        &quot;right&quot;: [
-                            33,
-                            0.09705882352941177
-                        ]
-                    },
-                    &quot;values count&quot;: 5,
-                    &quot;values present&quot;: [
-                        &quot;__undefined__&quot;,
-                        &quot;front&quot;,
-                        &quot;left&quot;,
-                        &quot;rear&quot;,
-                        &quot;right&quot;
-                    ]
-                }
-            },
-            &quot;count&quot;: 2038,
-            &quot;distribution&quot;: {
-                &quot;car&quot;: [
-                    340,
-                    0.16683022571148184
-                ],
-                &quot;cyclist&quot;: [
-                    194,
-                    0.09519136408243375
-                ],
-                &quot;head&quot;: [
-                    354,
-                    0.17369970559371933
-                ],
-                &quot;ignore&quot;: [
-                    100,
-                    0.04906771344455348
-                ],
-                &quot;left_hand&quot;: [
-                    238,
-                    0.11678115799803729
-                ],
-                &quot;person&quot;: [
-                    358,
-                    0.17566241413150147
-                ],
-                &quot;right_hand&quot;: [
-                    77,
-                    0.037782139352306184
-                ],
-                &quot;road_arrows&quot;: [
-                    326,
-                    0.15996074582924436
-                ],
-                &quot;traffic_sign&quot;: [
-                    51,
-                    0.025024533856722278
-                ]
-            }
-        },
-        &quot;segments&quot;: {
-            &quot;area distribution&quot;: [
-                {
-                    &quot;count&quot;: 1318,
-                    &quot;max&quot;: 11425.1,
-                    &quot;min&quot;: 0.0,
-                    &quot;percent&quot;: 0.9627465303140978
-                },
-                {
-                    &quot;count&quot;: 1,
-                    &quot;max&quot;: 22850.2,
-                    &quot;min&quot;: 11425.1,
-                    &quot;percent&quot;: 0.0007304601899196494
-                },
-                {
-                    &quot;count&quot;: 0,
-                    &quot;max&quot;: 34275.3,
-                    &quot;min&quot;: 22850.2,
-                    &quot;percent&quot;: 0.0
-                },
-                {
-                    &quot;count&quot;: 0,
-                    &quot;max&quot;: 45700.4,
-                    &quot;min&quot;: 34275.3,
-                    &quot;percent&quot;: 0.0
-                },
-                {
-                    &quot;count&quot;: 0,
-                    &quot;max&quot;: 57125.5,
-                    &quot;min&quot;: 45700.4,
-                    &quot;percent&quot;: 0.0
-                },
-                {
-                    &quot;count&quot;: 0,
-                    &quot;max&quot;: 68550.6,
-                    &quot;min&quot;: 57125.5,
-                    &quot;percent&quot;: 0.0
-                },
-                {
-                    &quot;count&quot;: 0,
-                    &quot;max&quot;: 79975.7,
-                    &quot;min&quot;: 68550.6,
-                    &quot;percent&quot;: 0.0
-                },
-                {
-                    &quot;count&quot;: 0,
-                    &quot;max&quot;: 91400.8,
-                    &quot;min&quot;: 79975.7,
-                    &quot;percent&quot;: 0.0
-                },
-                {
-                    &quot;count&quot;: 0,
-                    &quot;max&quot;: 102825.90000000001,
-                    &quot;min&quot;: 91400.8,
-                    &quot;percent&quot;: 0.0
-                },
-                {
-                    &quot;count&quot;: 50,
-                    &quot;max&quot;: 114251.0,
-                    &quot;min&quot;: 102825.90000000001,
-                    &quot;percent&quot;: 0.036523009495982466
-                }
-            ],
-            &quot;avg. area&quot;: 5411.624543462382,
-            &quot;pixel distribution&quot;: {
-                &quot;car&quot;: [
-                    13655,
-                    0.0018431496518735067
-                ],
-                &quot;cyclist&quot;: [
-                    939005,
-                    0.12674674030446592
-                ],
-                &quot;head&quot;: [
-                    0,
-                    0.0
-                ],
-                &quot;ignore&quot;: [
-                    5501200,
-                    0.7425510702956085
-                ],
-                &quot;left_hand&quot;: [
-                    0,
-                    0.0
-                ],
-                &quot;person&quot;: [
-                    954654,
-                    0.12885903974805205
-                ],
-                &quot;right_hand&quot;: [
-                    0,
-                    0.0
-                ],
-                &quot;road_arrows&quot;: [
-                    0,
-                    0.0
-                ],
-                &quot;traffic_sign&quot;: [
-                    0,
-                    0.0
-                ]
-            }
-        }
-    },
-    &quot;annotations by type&quot;: {
-        &quot;bbox&quot;: {
-            &quot;count&quot;: 548
-        },
-        &quot;caption&quot;: {
-            &quot;count&quot;: 0
-        },
-        &quot;label&quot;: {
-            &quot;count&quot;: 0
-        },
-        &quot;mask&quot;: {
-            &quot;count&quot;: 0
-        },
-        &quot;points&quot;: {
-            &quot;count&quot;: 669
-        },
-        &quot;polygon&quot;: {
-            &quot;count&quot;: 821
-        },
-        &quot;polyline&quot;: {
-            &quot;count&quot;: 0
-        }
-    },
-    &quot;annotations count&quot;: 2038,
-    &quot;dataset&quot;: {
-        &quot;image mean&quot;: [
-            107.06903686941979,
-            79.12831698580979,
-            52.95829558185416
-        ],
-        &quot;image std&quot;: [
-            49.40237673503467,
-            43.29600731496902,
-            35.47373007603151
-        ],
-        &quot;images count&quot;: 100
-    },
-    &quot;images count&quot;: 100,
-    &quot;subsets&quot;: {},
-    &quot;unannotated images&quot;: [
-        &quot;img00051&quot;,
-        &quot;img00052&quot;,
-        &quot;img00053&quot;,
-        &quot;img00054&quot;,
-        &quot;img00055&quot;,
-    ],
-    &quot;unannotated images count&quot;: 5,
-    &quot;unique images count&quot;: 97,
-    &quot;repeating images count&quot;: 3,
-    &quot;repeating images&quot;: [
-        [(&quot;img00057&quot;, &quot;default&quot;), (&quot;img00058&quot;, &quot;default&quot;)],
-        [(&quot;img00059&quot;, &quot;default&quot;), (&quot;img00060&quot;, &quot;default&quot;)],
-        [(&quot;img00061&quot;, &quot;default&quot;), (&quot;img00062&quot;, &quot;default&quot;)],
-    ],
-}
-</code></pre></details>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;annotations&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;labels&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;attributes&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                <span style="color:#204a87;font-weight:bold">&#34;gender&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">358</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;distribution&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;female&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                            <span style="color:#0000cf;font-weight:bold">149</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#0000cf;font-weight:bold">0.41620111731843573</span>
+                        <span style="color:#000;font-weight:bold">],</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;male&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                            <span style="color:#0000cf;font-weight:bold">209</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#0000cf;font-weight:bold">0.5837988826815642</span>
+                        <span style="color:#000;font-weight:bold">]</span>
+                    <span style="color:#000;font-weight:bold">},</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;values count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;values present&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                        <span style="color:#4e9a06">&#34;female&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#4e9a06">&#34;male&#34;</span>
+                    <span style="color:#000;font-weight:bold">]</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#204a87;font-weight:bold">&#34;view&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">340</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;distribution&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;__undefined__&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                            <span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#0000cf;font-weight:bold">0.011764705882352941</span>
+                        <span style="color:#000;font-weight:bold">],</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;front&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                            <span style="color:#0000cf;font-weight:bold">54</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#0000cf;font-weight:bold">0.1588235294117647</span>
+                        <span style="color:#000;font-weight:bold">],</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;left&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                            <span style="color:#0000cf;font-weight:bold">14</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#0000cf;font-weight:bold">0.041176470588235294</span>
+                        <span style="color:#000;font-weight:bold">],</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;rear&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                            <span style="color:#0000cf;font-weight:bold">235</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#0000cf;font-weight:bold">0.6911764705882353</span>
+                        <span style="color:#000;font-weight:bold">],</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;right&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                            <span style="color:#0000cf;font-weight:bold">33</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#0000cf;font-weight:bold">0.09705882352941177</span>
+                        <span style="color:#000;font-weight:bold">]</span>
+                    <span style="color:#000;font-weight:bold">},</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;values count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;values present&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                        <span style="color:#4e9a06">&#34;__undefined__&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#4e9a06">&#34;front&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#4e9a06">&#34;left&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#4e9a06">&#34;rear&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#4e9a06">&#34;right&#34;</span>
+                    <span style="color:#000;font-weight:bold">]</span>
+                <span style="color:#000;font-weight:bold">}</span>
+            <span style="color:#000;font-weight:bold">},</span>
+            <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2038</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;distribution&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                <span style="color:#204a87;font-weight:bold">&#34;car&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">340</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.16683022571148184</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;cyclist&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">194</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.09519136408243375</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;head&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">354</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.17369970559371933</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;ignore&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">100</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.04906771344455348</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;left_hand&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">238</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.11678115799803729</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;person&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">358</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.17566241413150147</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;right_hand&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">77</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.037782139352306184</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;road_arrows&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">326</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.15996074582924436</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;traffic_sign&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">51</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.025024533856722278</span>
+                <span style="color:#000;font-weight:bold">]</span>
+            <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#204a87;font-weight:bold">&#34;segments&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;area distribution&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1318</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;max&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">11425.1</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;min&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.0</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;percent&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.9627465303140978</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;max&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">22850.2</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;min&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">11425.1</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;percent&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.0007304601899196494</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;max&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">34275.3</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;min&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">22850.2</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;percent&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.0</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;max&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">45700.4</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;min&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">34275.3</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;percent&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.0</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;max&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">57125.5</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;min&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">45700.4</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;percent&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.0</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;max&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">68550.6</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;min&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">57125.5</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;percent&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.0</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;max&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">79975.7</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;min&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">68550.6</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;percent&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.0</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;max&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">91400.8</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;min&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">79975.7</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;percent&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.0</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;max&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">102825.90000000001</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;min&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">91400.8</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;percent&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.0</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">50</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;max&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">114251.0</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;min&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">102825.90000000001</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;percent&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.036523009495982466</span>
+                <span style="color:#000;font-weight:bold">}</span>
+            <span style="color:#000;font-weight:bold">],</span>
+            <span style="color:#204a87;font-weight:bold">&#34;avg. area&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">5411.624543462382</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;pixel distribution&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                <span style="color:#204a87;font-weight:bold">&#34;car&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">13655</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.0018431496518735067</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;cyclist&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">939005</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.12674674030446592</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;head&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.0</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;ignore&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">5501200</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.7425510702956085</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;left_hand&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.0</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;person&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">954654</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.12885903974805205</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;right_hand&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.0</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;road_arrows&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.0</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;traffic_sign&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#0000cf;font-weight:bold">0.0</span>
+                <span style="color:#000;font-weight:bold">]</span>
+            <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#204a87;font-weight:bold">&#34;annotations by type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;bbox&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">548</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#204a87;font-weight:bold">&#34;caption&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#204a87;font-weight:bold">&#34;label&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#204a87;font-weight:bold">&#34;mask&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#204a87;font-weight:bold">&#34;points&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">669</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#204a87;font-weight:bold">&#34;polygon&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">821</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#204a87;font-weight:bold">&#34;polyline&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#204a87;font-weight:bold">&#34;annotations count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2038</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;dataset&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;image mean&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+            <span style="color:#0000cf;font-weight:bold">107.06903686941979</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#0000cf;font-weight:bold">79.12831698580979</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#0000cf;font-weight:bold">52.95829558185416</span>
+        <span style="color:#000;font-weight:bold">],</span>
+        <span style="color:#204a87;font-weight:bold">&#34;image std&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+            <span style="color:#0000cf;font-weight:bold">49.40237673503467</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#0000cf;font-weight:bold">43.29600731496902</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#0000cf;font-weight:bold">35.47373007603151</span>
+        <span style="color:#000;font-weight:bold">],</span>
+        <span style="color:#204a87;font-weight:bold">&#34;images count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">100</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#204a87;font-weight:bold">&#34;images count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">100</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;subsets&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{},</span>
+    <span style="color:#204a87;font-weight:bold">&#34;unannotated images&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#4e9a06">&#34;img00051&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#4e9a06">&#34;img00052&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#4e9a06">&#34;img00053&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#4e9a06">&#34;img00054&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#4e9a06">&#34;img00055&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;unannotated images count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;unique images count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">97</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;repeating images count&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;repeating images&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#000;font-weight:bold">[</span><span style="color:#a40000">(</span><span style="color:#4e9a06">&#34;img00057&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#a40000">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">(</span><span style="color:#4e9a06">&#34;img00058&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#a40000">)</span><span style="color:#000;font-weight:bold">],</span>
+        <span style="color:#000;font-weight:bold">[</span><span style="color:#a40000">(</span><span style="color:#4e9a06">&#34;img00059&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#a40000">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">(</span><span style="color:#4e9a06">&#34;img00060&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#a40000">)</span><span style="color:#000;font-weight:bold">],</span>
+        <span style="color:#000;font-weight:bold">[</span><span style="color:#a40000">(</span><span style="color:#4e9a06">&#34;img00061&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#a40000">)</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">(</span><span style="color:#4e9a06">&#34;img00062&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#a40000">)</span><span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#000;font-weight:bold">],</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div></details>
 
 </div>
 
@@ -3589,12 +3588,12 @@ boxes and masks.</p>
 <p><strong>Dependencies</strong></p>
 <p>The plugin depends on TensorFlow, which can be installed with <code>pip</code>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install tensorflow
-<span style="color:#8f5902;font-style:italic"># or</span>
-pip install tensorflow-gpu
-<span style="color:#8f5902;font-style:italic"># or</span>
-pip install datumaro<span style="color:#ce5c00;font-weight:bold">[</span>tf<span style="color:#ce5c00;font-weight:bold">]</span>
-<span style="color:#8f5902;font-style:italic"># or</span>
-pip install datumaro<span style="color:#ce5c00;font-weight:bold">[</span>tf-gpu<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install tensorflow-gpu
+</code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install datumaro<span style="color:#ce5c00;font-weight:bold">[</span>tf<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install datumaro<span style="color:#ce5c00;font-weight:bold">[</span>tf-gpu<span style="color:#ce5c00;font-weight:bold">]</span>
 </code></pre></div><h4 id="accuracy-checker">Accuracy Checker</h4>
 <p>This plugin allows to use <a href="https://github.com/openvinotoolkit/open_model_zoo/tree/master/tools/accuracy_checker">Accuracy Checker</a>
 to launch deep learning models from various frameworks

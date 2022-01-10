@@ -34,7 +34,7 @@ Supported annotation types:
  Bbox  Import VoTT dataset A Datumaro project with a VoTT JSON source can be created in the following way:
 datum create datum import --format vott_json &lt;path/to/dataset&gt; It is also possible to import the dataset using Python API:">
 
-<meta itemprop="wordCount" content="237">
+<meta itemprop="wordCount" content="236">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="VoTT JSON"/>
 <meta name="twitter:description" content="Format specification VoTT (Visual Object Tagging Tool) is an open source annotation tool released by Microsoft. VoTT JSON is the format used by VoTT when the user exports a project and selects &ldquo;VoTT JSON&rdquo; as the export format.
@@ -45,8 +45,8 @@ datum create datum import --format vott_json &lt;path/to/dataset&gt; It is also 
 
 
 
-<link rel="preload" href="../../../scss/main.min.1f1e7e5bc653cf34e7b33c067918428fa616f4724d5b46d4a69e071de2b59191.css" as="style">
-<link href="../../../scss/main.min.1f1e7e5bc653cf34e7b33c067918428fa616f4724d5b46d4a69e071de2b59191.css" rel="stylesheet" integrity="">
+<link rel="preload" href="../../../scss/main.min.94f50249a071f900d8f6ca438aac6a9e0b559ae82663a7b52c3d7bbf4f76efe5.css" as="style">
+<link href="../../../scss/main.min.94f50249a071f900d8f6ca438aac6a9e0b559ae82663a7b52c3d7bbf4f76efe5.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -130,7 +130,7 @@ datum create datum import --format vott_json &lt;path/to/dataset&gt; It is also 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.5a1702a2631a9b551e36eddcb2a7a4f5.json"
+  data-offline-search-index-json-src="../../../offline-search-index.0c7499c54b8f709ff7aa1b005b33e2a3.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -158,7 +158,7 @@ datum create datum import --format vott_json &lt;path/to/dataset&gt; It is also 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.5a1702a2631a9b551e36eddcb2a7a4f5.json"
+  data-offline-search-index-json-src="../../../offline-search-index.0c7499c54b8f709ff7aa1b005b33e2a3.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -483,8 +483,8 @@ formats using CLI:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
 datum import -f vott_json &lt;path/to/dataset&gt;
 datum <span style="color:#204a87">export</span> -f voc -o ./save_dir -- --save-images
-<span style="color:#8f5902;font-style:italic"># or</span>
-datum convert -if vott_json -i &lt;path/to/dataset&gt; <span style="color:#4e9a06">\
+</code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum convert -if vott_json -i &lt;path/to/dataset&gt; <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    -f voc -o &lt;output/dir&gt; -- --save-images
 </code></pre></div><p>Or, using Python API:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>

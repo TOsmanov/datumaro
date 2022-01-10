@@ -36,7 +36,7 @@ Supported annotation types:
   Labels
  score (read/write, float). The confidence level from 0 to 1. A score of 0 indicates that the image does not contain objects of the corresponding class.    Bounding boxes">
 
-<meta itemprop="wordCount" content="1143">
+<meta itemprop="wordCount" content="1142">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Open Images"/>
 <meta name="twitter:description" content="Format specification A description of the Open Images Dataset (OID) format is available here. Datumaro supports versions 4, 5 and 6.
@@ -48,8 +48,8 @@ Supported annotation types:
 
 
 
-<link rel="preload" href="../../../scss/main.min.1f1e7e5bc653cf34e7b33c067918428fa616f4724d5b46d4a69e071de2b59191.css" as="style">
-<link href="../../../scss/main.min.1f1e7e5bc653cf34e7b33c067918428fa616f4724d5b46d4a69e071de2b59191.css" rel="stylesheet" integrity="">
+<link rel="preload" href="../../../scss/main.min.94f50249a071f900d8f6ca438aac6a9e0b559ae82663a7b52c3d7bbf4f76efe5.css" as="style">
+<link href="../../../scss/main.min.94f50249a071f900d8f6ca438aac6a9e0b559ae82663a7b52c3d7bbf4f76efe5.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -133,7 +133,7 @@ Supported annotation types:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.5a1702a2631a9b551e36eddcb2a7a4f5.json"
+  data-offline-search-index-json-src="../../../offline-search-index.0c7499c54b8f709ff7aa1b005b33e2a3.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -161,7 +161,7 @@ Supported annotation types:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.5a1702a2631a9b551e36eddcb2a7a4f5.json"
+  data-offline-search-index-json-src="../../../offline-search-index.0c7499c54b8f709ff7aa1b005b33e2a3.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -652,8 +652,8 @@ you can extract the image size information in advance
 and record it in an image metadata file.
 This file must be placed at <code>annotations/images.meta</code>,
 and must contain one line per image, with the following structure:</p>
-<pre><code>&lt;ID&gt; &lt;height&gt; &lt;width&gt;
-</code></pre><p>Where <code>&lt;ID&gt;</code> is the file name of the image without the extension,
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&lt;ID&gt; &lt;height&gt; &lt;width&gt;
+</code></pre></div><p>Where <code>&lt;ID&gt;</code> is the file name of the image without the extension,
 and <code>&lt;height&gt;</code> and <code>&lt;width&gt;</code> are the dimensions of that image.
 <code>&lt;ID&gt;</code> may be quoted with either single or double quotes.</p>
 <p>The image metadata file, if present, will be used to determine the image
@@ -672,8 +672,8 @@ There are several ways to convert OID to other dataset formats:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
 datum import -f open_images &lt;path/to/open_images&gt;
 datum <span style="color:#204a87">export</span> -f cvat -o &lt;output/dir&gt;
-<span style="color:#8f5902;font-style:italic"># or</span>
-datum convert -if open_images -i &lt;path/to/open_images&gt; -f cvat -o &lt;output/dir&gt;
+</code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum convert -if open_images -i &lt;path/to/open_images&gt; -f cvat -o &lt;output/dir&gt;
 </code></pre></div><p>Or, using Python API:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
 
@@ -684,8 +684,7 @@ datum convert -if open_images -i &lt;path/to/open_images&gt; -f cvat -o &lt;outp
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># export dataset into Open Images format from existing project</span>
 datum <span style="color:#204a87">export</span> -p &lt;path/to/project&gt; -f open_images -o &lt;output/dir&gt; <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -- --save_images
-
-<span style="color:#8f5902;font-style:italic"># convert a dataset in another format to the Open Images format</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># convert a dataset in another format to the Open Images format</span>
 datum convert -if imagenet -i &lt;path/to/dataset&gt; <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    -f open_images -o &lt;output/dir&gt; <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    -- --save-images

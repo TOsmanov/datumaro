@@ -38,7 +38,7 @@ Supported annotation types:
 The format only supports subsets named train or valid.
 Import YOLO dataset A Datumaro project with a YOLO source can be created in the following way:">
 
-<meta itemprop="wordCount" content="823">
+<meta itemprop="wordCount" content="822">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="YOLO"/>
 <meta name="twitter:description" content="Format specification The YOLO dataset format is for training and validating object detection models. Specification for this format is available here.
@@ -51,8 +51,8 @@ Import YOLO dataset A Datumaro project with a YOLO source can be created in the 
 
 
 
-<link rel="preload" href="../../../scss/main.min.1f1e7e5bc653cf34e7b33c067918428fa616f4724d5b46d4a69e071de2b59191.css" as="style">
-<link href="../../../scss/main.min.1f1e7e5bc653cf34e7b33c067918428fa616f4724d5b46d4a69e071de2b59191.css" rel="stylesheet" integrity="">
+<link rel="preload" href="../../../scss/main.min.94f50249a071f900d8f6ca438aac6a9e0b559ae82663a7b52c3d7bbf4f76efe5.css" as="style">
+<link href="../../../scss/main.min.94f50249a071f900d8f6ca438aac6a9e0b559ae82663a7b52c3d7bbf4f76efe5.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -136,7 +136,7 @@ Import YOLO dataset A Datumaro project with a YOLO source can be created in the 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.5a1702a2631a9b551e36eddcb2a7a4f5.json"
+  data-offline-search-index-json-src="../../../offline-search-index.0c7499c54b8f709ff7aa1b005b33e2a3.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -164,7 +164,7 @@ Import YOLO dataset A Datumaro project with a YOLO source can be created in the 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.5a1702a2631a9b551e36eddcb2a7a4f5.json"
+  data-offline-search-index-json-src="../../../offline-search-index.0c7499c54b8f709ff7aa1b005b33e2a3.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -508,35 +508,35 @@ will be saved in <code>train</code> subset.</p>
 <li><code>obj.data</code> should have the following content, it is not necessary to have both
 subsets, but necessary to have one of them:</li>
 </ul>
-<pre><code>classes = 5 # optional
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">classes = 5 # optional
 names = &lt;path/to/obj.names&gt;
 train = &lt;path/to/train.txt&gt;
 valid = &lt;path/to/valid.txt&gt;
 backup = backup/ # optional
-</code></pre><ul>
+</code></pre></div><ul>
 <li><code>obj.names</code> contains a list of classes.
 The line number for the class is the same as its index:</li>
 </ul>
-<pre><code>label1  # label1 has index 0
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">label1  # label1 has index 0
 label2  # label2 has index 1
 label3  # label2 has index 2
 ...
-</code></pre><ul>
+</code></pre></div><ul>
 <li>Files <code>train.txt</code> and <code>valid.txt</code> should have the following structure:</li>
 </ul>
-<pre><code>&lt;path/to/image1.jpg&gt;
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">&lt;path/to/image1.jpg&gt;
 &lt;path/to/image2.jpg&gt;
 ...
-</code></pre><ul>
+</code></pre></div><ul>
 <li>Files in directories <code>obj_train_data/</code> and <code>obj_valid_data/</code>
 should contain information about labeled bounding boxes
 for images:</li>
 </ul>
-<pre><code># image1.txt:
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt"># image1.txt:
 # &lt;label_index&gt; &lt;x_center&gt; &lt;y_center&gt; &lt;width&gt; &lt;height&gt;
 0 0.250000 0.400000 0.300000 0.400000
 3 0.600000 0.400000 0.400000 0.266667
-</code></pre><p>Here <code>x_center</code>, <code>y_center</code>, <code>width</code>, and <code>height</code> are relative to the image&rsquo;s
+</code></pre></div><p>Here <code>x_center</code>, <code>y_center</code>, <code>width</code>, and <code>height</code> are relative to the image&rsquo;s
 width and height. The <code>x_center</code> and <code>y_center</code> are center of rectangle
 (are not top-left corner).</p>
 <p>To add custom classes, you can use <a href="../../../docs/user-manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>.</p>
@@ -549,8 +549,8 @@ object detection task (e.g. Pascal VOC, COCO, TF Detection API etc.)</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
 datum add -f yolo &lt;path/to/yolo/&gt;
 datum <span style="color:#204a87">export</span> -f voc -o &lt;output/dir&gt;
-<span style="color:#8f5902;font-style:italic"># or</span>
-datum convert -if yolo -i &lt;path/to/dataset&gt; <span style="color:#4e9a06">\
+</code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum convert -if yolo -i &lt;path/to/dataset&gt; <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>              -f coco_instances -o &lt;path/to/dataset&gt;
 </code></pre></div><p>Or, using Python API:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>

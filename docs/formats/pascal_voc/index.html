@@ -30,7 +30,7 @@ The dataset has annotations for multiple tasks. Each task has its own format in 
 <meta itemprop="description" content="Format specification Pascal VOC format specification is available here.
 The dataset has annotations for multiple tasks. Each task has its own format in Datumaro, and there is also a combined voc format, which includes all the available tasks. The sub-formats have the same options as the &ldquo;main&rdquo; format and only limit the set of annotation files they work with. To work with multiple formats, use the corresponding option of the voc format.">
 
-<meta itemprop="wordCount" content="1449">
+<meta itemprop="wordCount" content="1447">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Pascal VOC"/>
 <meta name="twitter:description" content="Format specification Pascal VOC format specification is available here.
@@ -39,8 +39,8 @@ The dataset has annotations for multiple tasks. Each task has its own format in 
 
 
 
-<link rel="preload" href="../../../scss/main.min.1f1e7e5bc653cf34e7b33c067918428fa616f4724d5b46d4a69e071de2b59191.css" as="style">
-<link href="../../../scss/main.min.1f1e7e5bc653cf34e7b33c067918428fa616f4724d5b46d4a69e071de2b59191.css" rel="stylesheet" integrity="">
+<link rel="preload" href="../../../scss/main.min.94f50249a071f900d8f6ca438aac6a9e0b559ae82663a7b52c3d7bbf4f76efe5.css" as="style">
+<link href="../../../scss/main.min.94f50249a071f900d8f6ca438aac6a9e0b559ae82663a7b52c3d7bbf4f76efe5.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -124,7 +124,7 @@ The dataset has annotations for multiple tasks. Each task has its own format in 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.5a1702a2631a9b551e36eddcb2a7a4f5.json"
+  data-offline-search-index-json-src="../../../offline-search-index.0c7499c54b8f709ff7aa1b005b33e2a3.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -152,7 +152,7 @@ The dataset has annotations for multiple tasks. Each task has its own format in 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.5a1702a2631a9b551e36eddcb2a7a4f5.json"
+  data-offline-search-index-json-src="../../../offline-search-index.0c7499c54b8f709ff7aa1b005b33e2a3.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -543,17 +543,17 @@ If the <code>dataset_meta.json</code> is not represented in the dataset, then
 <code>labelmap.txt</code> will be imported if possible.</p>
 <p>In <code>labelmap.txt</code> you can define custom color map and non-pascal labels,
 for example:</p>
-<pre><code># label_map [label : color_rgb : parts : actions]
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt"># label_map [label : color_rgb : parts : actions]
 helicopter:::
 elephant:0:124:134:head,ear,foot:
-</code></pre><p>It is also possible to import grayscale (1-channel) PNG masks.
+</code></pre></div><p>It is also possible to import grayscale (1-channel) PNG masks.
 For grayscale masks provide a list of labels with the number of lines
 equal to the maximum color index on images. The lines must be in the
 right order so that line index is equal to the color index. Lines can
 have arbitrary, but different, colors. If there are gaps in the used
 color indices in the annotations, they must be filled with arbitrary
 dummy labels. Example:</p>
-<pre><code>car:0,128,0:: # color index 0
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">car:0,128,0:: # color index 0
 aeroplane:10,10,128:: # color index 1
 _dummy2:2,2,2:: # filler for color index 2
 _dummy3:3,3,3:: # filler for color index 3
@@ -562,7 +562,7 @@ boat:108,0,100:: # color index 3
 _dummy198:198,198,198:: # filler for color index 198
 _dummy199:199,199,199:: # filler for color index 199
 the_last_label:12,28,0:: # color index 200
-</code></pre><p>You can import dataset for specific tasks
+</code></pre></div><p>You can import dataset for specific tasks
 of Pascal VOC dataset instead of the whole dataset,
 for example:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum import -f voc_detection -r ImageSets/Main/train.txt &lt;path/to/dataset&gt;
@@ -579,9 +579,8 @@ saved in <code>ImageNet</code> format, but not as <code>COCO keypoints</code>.</
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
 datum import -f voc &lt;path/to/voc&gt;
 datum <span style="color:#204a87">export</span> -f coco -o &lt;output/dir&gt;
-<span style="color:#8f5902;font-style:italic"># or</span>
-datum convert -if voc -i &lt;path/to/voc&gt; -f coco -o &lt;output/dir&gt;
-
+</code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum convert -if voc -i &lt;path/to/voc&gt; -f coco -o &lt;output/dir&gt;
 </code></pre></div><p>Or, using Python API:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
 
@@ -591,8 +590,7 @@ datum convert -if voc -i &lt;path/to/voc&gt; -f coco -o &lt;output/dir&gt;
 <p>There are several ways to convert an existing dataset to Pascal VOC format:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># export dataset into Pascal VOC format (classification) from existing project</span>
 datum <span style="color:#204a87">export</span> -p &lt;path/to/project&gt; -f voc -o &lt;output/dir&gt; -- --tasks classification
-
-<span style="color:#8f5902;font-style:italic"># converting to Pascal VOC format from other format</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># converting to Pascal VOC format from other format</span>
 datum convert -if imagenet -i &lt;path/to/dataset&gt; <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    -f voc -o &lt;output/dir&gt; <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    -- --label_map voc --save-images
@@ -621,9 +619,8 @@ by default Datumaro uses all tasks. Example:</li>
 <span style="color:#8f5902;font-style:italic"># cat:0,0,255::</span>
 <span style="color:#8f5902;font-style:italic"># person:255,0,0:head:</span>
 datum <span style="color:#204a87">export</span> -f voc_segmentation -- --label-map mycolormap.txt
-
-<span style="color:#8f5902;font-style:italic"># or you can use original voc colomap:</span>
-datum <span style="color:#204a87">export</span> -f voc_segmentation -- --label-map voc
+</code></pre></div><p>or you can use original voc colomap:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum <span style="color:#204a87">export</span> -f voc_segmentation -- --label-map voc
 </code></pre></div><h2 id="examples">Examples</h2>
 <p>Datumaro supports filtering, transformation, merging etc. for all formats
 and for the Pascal VOC format in particular. Follow
