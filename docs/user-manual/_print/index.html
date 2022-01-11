@@ -117,7 +117,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.0c7499c54b8f709ff7aa1b005b33e2a3.json"
+  data-offline-search-index-json-src="../../../offline-search-index.adb2b1a906d9030ad1bd6f43d625332b.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -545,19 +545,6 @@ the package. It requires installation from sources (using <code>--no-binary</cod
 </code></pre></div><p>This option can&rsquo;t be covered by extras due to Python packaging system
 limitations.</p>
 </li>
-<li>
-<p>Although Datumaro excludes <code>pycocotools</code> of version 2.0.2 in
-requirements, it works with this version perfectly fine. The
-reason for such requirement is binary incompatibility of the <code>numpy</code>
-dependency in the <code>TensorFlow</code> and <code>pycocotools</code> binary packages,
-and the current workaround forces this package to be build from sources
-on most platforms
-(see <a href="https://github.com/openvinotoolkit/datumaro/issues/253">#253</a>).
-If you need to use 2.0.2, make sure it is linked with the same version
-of <code>numpy</code> as <code>TensorFlow</code> by reinstalling the package:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip uninstall pycocotools
-pip install pycocotools --no-binary<span style="color:#ce5c00;font-weight:bold">=</span>pycocotools
-</code></pre></div></li>
 <li>
 <p>When installing directly from the repository, you can change the
 installation branch with <code>...@&lt;branch_name&gt;</code>. Also use <code>--force-reinstall</code>

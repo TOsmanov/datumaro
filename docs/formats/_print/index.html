@@ -117,7 +117,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.0c7499c54b8f709ff7aa1b005b33e2a3.json"
+  data-offline-search-index-json-src="../../../offline-search-index.adb2b1a906d9030ad1bd6f43d625332b.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -288,7 +288,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>16: <a href="#pg-1e4c6d683fee0e4d48d435e66064eab9">Mapillary Vistas</a></li>
+<li>16: <a href="#pg-3a73527e621d046bb88cc355b73eb8dd">LFW</a></li>
 
 
     
@@ -296,7 +296,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>17: <a href="#pg-a2db7ecd3bd406d8822366b9b33229dd">MNIST</a></li>
+<li>17: <a href="#pg-1e4c6d683fee0e4d48d435e66064eab9">Mapillary Vistas</a></li>
 
 
     
@@ -304,7 +304,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>18: <a href="#pg-9c502db72874fd0b813f297ee04b2391">ICDAR</a></li>
+<li>18: <a href="#pg-a2db7ecd3bd406d8822366b9b33229dd">MNIST</a></li>
 
 
     
@@ -312,7 +312,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>19: <a href="#pg-f97053c70a29d6713d3412af07bcdcca">Open Images</a></li>
+<li>19: <a href="#pg-9c502db72874fd0b813f297ee04b2391">ICDAR</a></li>
 
 
     
@@ -320,7 +320,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>20: <a href="#pg-db1d30fa5536c19aa2aa75b33dbf92ea">Pascal VOC</a></li>
+<li>20: <a href="#pg-f97053c70a29d6713d3412af07bcdcca">Open Images</a></li>
 
 
     
@@ -328,7 +328,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>21: <a href="#pg-0c9b196a180c68b9b42be11ddc52c8bb">Supervisely Point Cloud</a></li>
+<li>21: <a href="#pg-91e6aa400d029f03bff463e9b96b334c">ImageNet</a></li>
 
 
     
@@ -336,7 +336,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>22: <a href="#pg-f638f1a110145e49bc81ee72961dd7ef">YOLO</a></li>
+<li>22: <a href="#pg-db1d30fa5536c19aa2aa75b33dbf92ea">Pascal VOC</a></li>
 
 
     
@@ -344,7 +344,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>23: <a href="#pg-bbc15af9ed7559fac248c0c8bbffadd9">Market-1501</a></li>
+<li>23: <a href="#pg-0c9b196a180c68b9b42be11ddc52c8bb">Supervisely Point Cloud</a></li>
 
 
     
@@ -352,7 +352,39 @@ This the multi-page printable view of this section.
     
     
 	
-<li>24: <a href="#pg-bf920c551f5225f4f58da3de45a4a820">MARS</a></li>
+<li>24: <a href="#pg-f638f1a110145e49bc81ee72961dd7ef">YOLO</a></li>
+
+
+    
+  
+    
+    
+	
+<li>25: <a href="#pg-bbc15af9ed7559fac248c0c8bbffadd9">Market-1501</a></li>
+
+
+    
+  
+    
+    
+	
+<li>26: <a href="#pg-bf920c551f5225f4f58da3de45a4a820">MARS</a></li>
+
+
+    
+  
+    
+    
+	
+<li>27: <a href="#pg-a962132bc0e143f3a9b4c97def6ab2ba">WIDER Face</a></li>
+
+
+    
+  
+    
+    
+	
+<li>28: <a href="#pg-eb23d21da40c4ef53f89d57813e46708">Vgg Face2 CSV</a></li>
 
 
     
@@ -1976,7 +2008,7 @@ only a few of them.</p>
 The format specification is available in <code>README.md</code> <a href="https://s3.eu-central-1.amazonaws.com/avg-kitti/devkit_object.zip">here</a>.</li>
 <li><a href="http://www.cvlibs.net/datasets/kitti/eval_semseg.php?benchmark=semantics2015">Segmentation</a> - <code>kitti_segmentation</code>
 The format specification is available in <code>README.md</code> <a href="https://s3.eu-central-1.amazonaws.com/avg-kitti/devkit_semantics.zip">here</a>.</li>
-<li>Raw 3D / Velodyne Points - described <a href="../../../formats/kitti_raw">here</a></li>
+<li>Raw 3D / Velodyne Points - described <a href="../../../docs/formats/kitti_raw">here</a></li>
 </ul>
 <p>Supported annotation types:</p>
 <ul>
@@ -2168,7 +2200,117 @@ datum <span style="color:#204a87">export</span> -p project -f cityscapes -- --sa
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-1e4c6d683fee0e4d48d435e66064eab9">16 - Mapillary Vistas</h1>
+	<h1 id="pg-3a73527e621d046bb88cc355b73eb8dd">16 - LFW</h1>
+    
+	<h2 id="format-specification">Format specification</h2>
+<p><a href="http://vis-www.cs.umass.edu/lfw/">LFW (Labeled Faces in the Wild Home)</a>
+it&rsquo;s dataset for face identification task,
+specification for this format is available
+<a href="http://vis-www.cs.umass.edu/lfw/README.txt">here</a>.
+You can also download original LFW dataset
+<a href="http://vis-www.cs.umass.edu/lfw/#download">here</a>.</p>
+<p>Original dataset contains images with people faces.
+For each image contains information about person&rsquo;s name, as well as
+information about images that matched with this person
+and mismatched with this person.
+Also LFW contains additional information about landmark points on the face.</p>
+<p>Supported annotation types:</p>
+<ul>
+<li><code>Label</code></li>
+<li><code>Points</code> (face landmark points)</li>
+</ul>
+<p>Supported attributes:</p>
+<ul>
+<li><code>negative_pairs</code>: list with names of mismatched persons;</li>
+<li><code>positive_pairs</code>: list with names of matched persons;</li>
+</ul>
+<h2 id="import-lfw-dataset">Import LFW dataset</h2>
+<p>Importing LFW dataset into the Datumaro project:</p>
+<pre><code>datum create
+datum import -f lfw &lt;path_to_lfw_dataset&gt;
+</code></pre><p>See more information about adding datasets to the project in the
+<a href="../../../docs/user-manual/command-reference/sources/#source-add">docs</a>.</p>
+<p>Also you can import LFW dataset from Python API:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+
+<span style="color:#000">lfw_dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path_to_lfw_dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;lfw&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>For successful importing the LFW dataset, the directory with it
+should has the following structure:</p>
+<pre><code>&lt;path_to_lfw_dataset&gt;/
+├── subset_1
+│    ├── annotations
+│    │   ├── landmarks.txt # list with landmark points for each image
+│    │   ├── pairs.txt # list of matched and mismatched pairs of person
+│    │   └── people.txt # optional file with a list of persons name
+│    └── images
+│        ├── name0
+│        │   ├── name0_0001.jpg
+│        │   ├── name0_0002.jpg
+│        │   ├── ...
+│        ├── name1
+│        │   ├── name1_0001.jpg
+│        │   ├── name1_0002.jpg
+│        │   ├── ...
+├── subset_2
+│    ├── ...
+├── ...
+</code></pre><p>Full description of annotation <code>*.txt</code> files available
+<a href="http://vis-www.cs.umass.edu/lfw/README.txt">here</a>.</p>
+<h2 id="export-lfw-dataset">Export LFW dataset</h2>
+<p>With Datumaro you can convert LFW dataset into any other
+format <a href="../../../docs/user-manual/supported_formats/">Datumaro supports</a>.
+Pay attention that this format should also support <code>Label</code> and/or <code>Points</code>
+annotation types.</p>
+<p>There is few ways to convert LFW dataset into other format:</p>
+<pre><code>
+# Converting to ImageNet with `convert` command:
+datum convert -if lfw -i ./lfw_dataset \
+    -f imagenet -o ./output_dir -- --save-images
+
+
+# Converting to VggFace2 through the Datumaro project:
+datum create
+datum add -f lfw ./lfw_dataset
+datum export -f vgg_face2 -o ./output_dir2
+</code></pre><blockquote>
+<p>Note: some formats have extra export options. For particular format see the
+<a href="../../../docs/formats/">docs</a> to get information about it.</p>
+</blockquote>
+<h2 id="export-dataset-to-the-lfw-format">Export dataset to the LFW format</h2>
+<p>With Datumaro you can export dataset that has <code>Label</code> or/and <code>Points</code>
+annotations to the LFW format, example:</p>
+<pre><code># Converting VGG Face2 dataset into the LFW format
+datum convert -if vgg_face2 -i ./voc_dataset \
+    -f lfw -o ./output_dir
+
+
+# Export dataaset to the LFW format through the Datumaro project:
+datum create
+datum import -f voc_classification ../vgg_dataset
+datum export -f lfw -o ./output_dir -- --save-images --image-ext png
+</code></pre><p>Available extra export options for LFW dataset format:</p>
+<ul>
+<li><code>--save-images</code> allow to export dataset with saving images.
+(by default <code>False</code>)</li>
+<li><code>--image-ext IMAGE_EXT</code> allow to specify image extension
+for exporting dataset (by default - keep original)</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-1e4c6d683fee0e4d48d435e66064eab9">17 - Mapillary Vistas</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>Mapillary Vistas dataset homepage is available
@@ -2409,7 +2551,7 @@ dataset
 
 <p>To add custom classes, you can use <a href="../../../docs/user-manual/supported_formats/#dataset-meta-file"><code>dataset_meta.json</code></a>.</p>
 <p>See examples of annotation files in
-<a href="https://github.com/openvinotoolkit/datumaro/blob/develop/tests/assets/mappilary_vistas_dataset">test assets</a>.</p>
+<a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mapillary_vistas_dataset">test assets</a>.</p>
 
 </div>
 
@@ -2425,7 +2567,7 @@ dataset
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-a2db7ecd3bd406d8822366b9b33229dd">17 - MNIST</h1>
+	<h1 id="pg-a2db7ecd3bd406d8822366b9b33229dd">18 - MNIST</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>MNIST format specification is available <a href="http://yann.lecun.com/exdb/mnist/">here</a>.</p>
@@ -2591,7 +2733,7 @@ the <a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-9c502db72874fd0b813f297ee04b2391">18 - ICDAR</h1>
+	<h1 id="pg-9c502db72874fd0b813f297ee04b2391">19 - ICDAR</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>ICDAR is a dataset for text recognition task, it&rsquo;s available
@@ -2742,7 +2884,7 @@ for exporting dataset (by default - keep original)</li>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f97053c70a29d6713d3412af07bcdcca">19 - Open Images</h1>
+	<h1 id="pg-f97053c70a29d6713d3412af07bcdcca">20 - Open Images</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>A description of the Open Images Dataset (OID) format is available
@@ -3035,7 +3177,190 @@ datum <span style="color:#204a87">export</span> -p project -f cvat -- --save-ima
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-db1d30fa5536c19aa2aa75b33dbf92ea">20 - Pascal VOC</h1>
+	<h1 id="pg-91e6aa400d029f03bff463e9b96b334c">21 - ImageNet</h1>
+    
+	<h2 id="format-specification">Format specification</h2>
+<p>ImageNet is one of the most popular datasets for image classification task,
+this dataset is available for downloading
+<a href="https://image-net.org/download.php">here</a></p>
+<p>Supported types of annotations:</p>
+<ul>
+<li><code>Label</code></li>
+</ul>
+<p>Format doesn&rsquo;t support any attributes for annotations objects.</p>
+<p>The original ImageNet dataset contains about 1.2M images and information
+about class name for each image. Datumaro supports two versions of ImageNet
+format: <code>imagenet</code> and <code>imagenet_txt</code>. The <code>imagenet_txt</code> format assumes storing
+information about the class of the image in <code>*.txt</code> files. And <code>imagenet</code> format
+assumes storing information about the class of the image in the name of
+directory where is this image stored.</p>
+<h2 id="import-imagenet-dataset">Import ImageNet dataset</h2>
+<p>A Datumaro project with a ImageNet dataset can be created
+in the following way:</p>
+<pre><code>datum create
+datum import -f imagenet &lt;path_to_dataset&gt;
+# or
+datum import -f imagenet_txt &lt;path_to_dataset&gt;
+</code></pre><blockquote>
+<p>Note: if you use <code>datum import</code> then &lt;path_to_dataset&gt; should not be a
+subdirectory of directory with Datumaro project, see more information about
+it in the <a href="../../../docs/user-manual/command-reference/sources/#source-add">docs</a>.</p>
+</blockquote>
+<p>Load ImageNet dataset through the Python API:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path_to_dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;imagenet_txt&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>For successful importing of ImageNet dataset the input directory with dataset
+should has the following structure:</p>
+<!--lint disable fenced-code-flag-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-0" role="tablist"><li class="nav-item">
+      <a class="nav-link active"
+        id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab"
+        aria-controls="tabs-0-0" aria-selected="true">
+        imagenet
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link"
+        id="tabs-0-1-tab" data-toggle="tab" href="#tabs-0-1" role="tab"
+        aria-controls="tabs-0-1" aria-selected="false">
+        imagenet_txt
+      </a>
+    </li></ul>
+
+
+<div class="tab-content" id="tabs-0-content"><div class="tab-pane fade show active"
+        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><pre tabindex="0"><code class="language-en" data-lang="en">
+imagenet_dataset/
+├── label_0
+│   ├── &lt;image_name_0&gt;.jpg
+│   ├── &lt;image_name_1&gt;.jpg
+│   ├── &lt;image_name_2&gt;.jpg
+│   ├── ...
+├── label_1
+│    ├── &lt;image_name_0&gt;.jpg
+│    ├── &lt;image_name_1&gt;.jpg
+│    ├── &lt;image_name_2&gt;.jpg
+│    ├── ...
+├── ...
+  </code></pre></div>
+  <div class="tab-pane fade"
+        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><pre tabindex="0"><code class="language-en" data-lang="en">
+imagenet_txt_dataset/
+├── images # directory with images
+│   ├── &lt;image_name_0&gt;.jpg
+│   ├── &lt;image_name_1&gt;.jpg
+│   ├── &lt;image_name_2&gt;.jpg
+│   ├── ...
+├── synsets.txt # optional, list of labels
+└── train.txt   # list of pairs (image_name, label)
+  </code></pre></div>
+  
+</div>
+
+<blockquote>
+<p>Note: if you don&rsquo;t have synsets file then Datumaro will automatically generate
+classes with a name pattern <code>class-&lt;i&gt;</code>.</p>
+</blockquote>
+<p>Datumaro has few import options for <code>imagenet_txt</code> format, to apply them
+use the <code>--</code> after the main command argument.</p>
+<p><code>imagenet_txt</code> import options:</p>
+<ul>
+<li><code>--labels</code> {<code>file</code>, <code>generate</code>}: allow to specify where to get label
+descriptions from (use <code>file</code> to load from the file specified
+by <code>--labels-file</code>; <code>generate</code> to create generic ones)</li>
+<li><code>--labels-file</code> allow to specify path to the file with label descriptions
+(&ldquo;synsets.txt&rdquo;)</li>
+</ul>
+<h2 id="export-imagenet-dataset">Export ImageNet dataset</h2>
+<p>Datumaro can convert ImageNet into any other format
+<a href="../../../docs/user-manual/supported_formats">Datumaro supports</a>.
+To get the expected result, convert the dataset to a format
+that supports <code>Label</code> annotation objects.</p>
+<pre><code># Using `convert` command
+datum convert -if imagenet -i &lt;path_to_imagenet&gt; \
+    -f voc -o &lt;output_dir&gt; -- --save-images
+
+# Using Datumaro project
+datum create
+datum import -f imagenet_txt &lt;path_to_imagenet&gt; -- --labels generate
+datum export -f open_images -o &lt;output_dir&gt;
+</code></pre><p>And also you can convert your ImageNet dataset using Python API</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+
+<span style="color:#000">imagenet_dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path_to_dataset&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;imagenet&#39;</span><span style="color:#000;font-weight:bold">)</span>
+
+<span style="color:#000">imagenet_dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;output_dir&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;vgg_face2&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_images</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><blockquote>
+<p>Note: some formats have extra export options. For particular format see the
+<a href="../../../docs/formats/">docs</a> to get information about it.</p>
+</blockquote>
+<h2 id="export-dataset-to-the-imagenet-format">Export dataset to the ImageNet format</h2>
+<p>If your dataset contains <code>Label</code> for images and you want to convert this
+dataset into the ImagetNet format, you can use Datumaro for it:</p>
+<pre><code># Using convert command
+datum convert -if open_images -i &lt;path_to_oid&gt; \
+    -f imagenet_txt -o &lt;output_dir&gt; -- --save-images --save-dataset-meta
+
+# Using Datumaro project
+datum create
+datum import -f open_images &lt;path_to_oid&gt;
+datum export -f imagenet -o &lt;output_dir&gt;
+</code></pre><p>Extra options for exporting to ImageNet formats:</p>
+<ul>
+<li><code>--save-images</code> allow to export dataset with saving images
+(by default <code>False</code>)</li>
+<li><code>--image-ext &lt;IMAGE_EXT&gt;</code> allow to specify image extension
+for exporting the dataset (by default <code>.png</code>)</li>
+<li><code>--save-dataset-meta</code> - allow to export dataset with saving dataset meta
+file (by default <code>False</code>)</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-db1d30fa5536c19aa2aa75b33dbf92ea">22 - Pascal VOC</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>Pascal VOC format specification is available
@@ -3317,7 +3642,7 @@ in Pascal VOC 2012 has for segmentation task and this result is the same as the
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-0c9b196a180c68b9b42be11ddc52c8bb">21 - Supervisely Point Cloud</h1>
+	<h1 id="pg-0c9b196a180c68b9b42be11ddc52c8bb">23 - Supervisely Point Cloud</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>Specification for the Point Cloud data format is available
@@ -3474,7 +3799,7 @@ datum stats -p project
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f638f1a110145e49bc81ee72961dd7ef">22 - YOLO</h1>
+	<h1 id="pg-f638f1a110145e49bc81ee72961dd7ef">24 - YOLO</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>The YOLO dataset format is for training and validating object detection
@@ -3658,7 +3983,7 @@ datum filter -p project --dry-run -e <span style="color:#4e9a06">&#39;/item&#39;
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-bbc15af9ed7559fac248c0c8bbffadd9">23 - Market-1501</h1>
+	<h1 id="pg-bbc15af9ed7559fac248c0c8bbffadd9">25 - Market-1501</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>Market-1501 is a dataset for person re-identification task, link
@@ -3753,7 +4078,7 @@ for exporting dataset (by default - keep original)</li>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-bf920c551f5225f4f58da3de45a4a820">24 - MARS</h1>
+	<h1 id="pg-bf920c551f5225f4f58da3de45a4a820">26 - MARS</h1>
     
 	<h2 id="format-specification">Format specification</h2>
 <p>MARS is a dataset for the motion analysis and person identification task.
@@ -3815,6 +4140,268 @@ project directory.</p>
 <p>Note: there are two specific pedestrian IDs 0000 and 00-1
 which indicate distracting images and unwanted images respectively.</p>
 </blockquote>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a962132bc0e143f3a9b4c97def6ab2ba">27 - WIDER Face</h1>
+    
+	<h2 id="format-specification">Format specification</h2>
+<p>WIDER Face dataset is a face detection benchmark dataset,
+that available for download <a href="http://shuoyang1213.me/WIDERFACE/#Download">here</a>.</p>
+<p>Supported types of annotation:</p>
+<ul>
+<li><code>Bbox</code></li>
+<li><code>Label</code></li>
+</ul>
+<p>Supported attributes for bboxes:</p>
+<ul>
+<li><code>blur</code>:
+<ul>
+<li>0 face without blur;</li>
+<li>1 face with normal blur;</li>
+<li>2 face with heavy blur.</li>
+</ul>
+</li>
+<li><code>expression</code>:
+<ul>
+<li>0 face with typical expression;</li>
+<li>1 face with exaggerate expression.</li>
+</ul>
+</li>
+<li><code>illumination</code>:
+<ul>
+<li>0 image contains normal illumination;</li>
+<li>1 image contains extreme illumination.</li>
+</ul>
+</li>
+<li><code>pose</code>:
+<ul>
+<li>0 pose is typical;</li>
+<li>1 pose is atypical.</li>
+</ul>
+</li>
+<li><code>invalid</code>:
+<ul>
+<li>0 image is valid;</li>
+<li>1 image is invalid.</li>
+</ul>
+</li>
+<li><code>occluded</code>:
+<ul>
+<li>0 face without occlusion;</li>
+<li>1 face with partial occlusion;</li>
+<li>2 face with heavy occlusion.</li>
+</ul>
+</li>
+</ul>
+<h2 id="import-wider-face-dataset">Import WIDER Face dataset</h2>
+<p>Importing of WIDER Face dataset into the Datumaro project:</p>
+<pre><code>datum create
+datum import -f wider_face &lt;path_to_wider_face&gt;
+</code></pre><p>Directory with WIDER Face dataset should has the following structure:</p>
+<pre><code>&lt;path_to_wider_face&gt;
+├── labels.txt  # optional file with list of classes
+├── wider_face_split # directory with description of bboxes for each image
+│   ├── wider_face_subset1_bbx_gt.txt
+│   ├── wider_face_subset2_bbx_gt.txt
+│   ├── ...
+├── WIDER_subset1 # instead of 'subset1' you can use any other subset name
+│   └── images
+│       ├── 0--label_0 # instead of 'label_&lt;n&gt;' you can use any other class name
+│       │   ├──  0_label_0_image_01.jpg
+│       │   ├──  0_label_0_image_02.jpg
+│       │   ├──  ...
+│       ├── 1--label_1
+│       │   ├──  1_label_1_image_01.jpg
+│       │   ├──  1_label_1_image_02.jpg
+│       │   ├──  ...
+│       ├── ...
+├── WIDER_subset2
+│  └── images
+│      ├── ...
+├── ...
+</code></pre><p>Check <a href="http://shuoyang1213.me/WIDERFACE/support/bbx_annotation/wider_face_split.zip">README</a>
+file of the original WIDER Face dataset to get more information
+about structure of <code>.txt</code> annotation files.
+Also example of WIDER Face dataset available in our
+<a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/widerface_dataset">test assets</a>.</p>
+<h2 id="export-wider-face-dataset">Export WIDER Face dataset</h2>
+<p>With Datumaro you can convert WIDER Face dataset into any other
+format <a href="../../../docs/user-manual/supported_formats/">Datumaro supports</a>.
+Pay attention that this format should also support <code>Label</code> and/or <code>Bbox</code>
+annotation types.</p>
+<p>Few ways to export WIDER Face dataset using CLI:</p>
+<pre><code># Using `convert` command
+datum convert -if wider_face -i &lt;path_to_wider_face&gt; \
+    -f voc -o &lt;output_dir&gt; -- --save-images
+
+# Through the Datumaro project
+datum create
+datum import -f wider_face &lt;path_to_wider_face&gt;
+datum export -f voc -o &lt;output_dir&gt; -- -save-images
+</code></pre><p>Export WIDER Face dataset using Python API:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path_to_wider_face&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;wider_face&#39;</span><span style="color:#000;font-weight:bold">)</span>
+
+<span style="color:#8f5902;font-style:italic"># Here you can perform some transformation using dataset.transform or</span>
+<span style="color:#8f5902;font-style:italic"># dataset.filter</span>
+
+<span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;output_dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;open_images&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_images</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><blockquote>
+<p>Note: some formats have extra export options. For particular format see the
+<a href="../../../docs/formats/">docs</a> to get information about it.</p>
+</blockquote>
+<h2 id="export-to-wider-face-dataset">Export to WIDER Face dataset</h2>
+<p>Using Datumaro you can convert your dataset into the WIDER Face format,
+but for succseful exporting your dataset should contain <code>Label</code> and/or <code>Bbox</code>.</p>
+<p>Here example of exporting VOC dataset (object detection task)
+into the WIDER Face format:</p>
+<pre><code>datum create
+datum import -f voc_detection &lt;path_to_voc&gt;
+datum export -f wider_face -o &lt;output_dir&gt; -- --save-images --image-ext='.png'
+</code></pre><p>Available extra export options for WIDER Face dataset format:</p>
+<ul>
+<li><code>--save-images</code> allow to export dataset with saving images.
+(by default <code>False</code>)</li>
+<li><code>--image-ext IMAGE_EXT</code> allow to specify image extension
+for exporting dataset (by default - keep original)</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-eb23d21da40c4ef53f89d57813e46708">28 - Vgg Face2 CSV</h1>
+    
+	<h2 id="format-specification">Format specification</h2>
+<p>Vgg Face 2 is a dataset for face-recognition task,
+the repository with some information and sample data of Vgg Face 2 is available
+<a href="https://github.com/ox-vgg/vgg_face2">here</a></p>
+<p>Supported types of annotations:</p>
+<ul>
+<li><code>Bbox</code></li>
+<li><code>Points</code></li>
+<li><code>Label</code></li>
+</ul>
+<p>Format doesn&rsquo;t support any attributes for annotations objects.</p>
+<h2 id="import-vgg-face2-dataset">Import Vgg Face2 dataset</h2>
+<p>A Datumaro project with a Vgg Face 2 dataset can be created
+in the following way:</p>
+<pre><code>datum create
+datum import -f vgg_face2 &lt;path_to_dataset&gt;
+</code></pre><blockquote>
+<p>Note: if you use <code>datum import</code> then &lt;path_to_dataset&gt; should not be a
+subdirectory of directory with Datumaro project, see more information about
+it in the <a href="../../../docs/user-manual/command-reference/sources/#source-add">docs</a>.</p>
+</blockquote>
+<p>And you can also load Vgg Face 2 through the Python API:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path_to_dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;vgg_face2&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>For successful importing of Vgg Face2 face the input directory with dataset
+should has the following structure:</p>
+<pre><code>vgg_face2_dataset/
+├── labels.txt # labels mapping
+├── bb_landmark
+│   ├── loose_bb_test.csv  # information about bounding boxes for test subset
+│   ├── loose_bb_train.csv
+│   ├── loose_bb_&lt;any_other_subset_name&gt;.csv
+│   ├── loose_landmark_test.csv # landmark points information for test subset
+│   ├── loose_landmark_train.csv
+│   └── loose_landmark_&lt;any_other_subset_name&gt;.csv
+├── test
+│   ├── n000001 # directory with images for n000001 label
+│   │   ├── 0001_01.jpg
+│   │   ├── 0001_02.jpg
+│   │   ├── ...
+│   ├── n000002 # directory with images for n000002 label
+│   │   ├── 0002_01.jpg
+│   │   ├── 0003_01.jpg
+│   │   ├── ...
+│   ├── ...
+├── train
+│   ├── n000004
+│   │   ├── 0004_01.jpg
+│   │   ├── 0004_02.jpg
+│   │   ├── ...
+│   ├── ...
+└── &lt;any_other_subset_name&gt;
+    ├── ...
+</code></pre><h2 id="export-vgg-face2-dataset">Export Vgg Face2 dataset</h2>
+<p>Datumaro can convert a Vgg Face2 dataset into any other format
+<a href="../../../docs/user-manual/supported_formats/">Datumaro supports</a>.
+There is few examples how to do it:</p>
+<pre><code># Using `convert` command
+datum convert -if vgg_face2 -i &lt;path_to_vgg_face2&gt; \
+    -f voc -o &lt;output_dir&gt; -- --save-images
+
+# Using Datumaro project
+datum create
+datum import -f vgg_face2 &lt;path_to_vgg_face2&gt;
+datum export -f yolo -o &lt;output_dir&gt;
+</code></pre><blockquote>
+<p>Note: to get the expected result from the conversion, the output format
+should support the same types of annotations (one or more) as Vgg Face2
+(<code>Bbox</code>, <code>Points</code>, <code>Label</code>)</p>
+</blockquote>
+<p>And also you can convert your Vgg Face2 dataset using Python API</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+
+<span style="color:#000">vgg_face2_dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path_to_dataset&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;vgg_face2&#39;</span><span style="color:#000;font-weight:bold">)</span>
+
+<span style="color:#000">vgg_face2_dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;output_dir&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;open_images&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_images</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><blockquote>
+<p>Note: some formats have extra export options. For particular format see the
+<a href="../../../docs/formats/">docs</a> to get information about it.</p>
+</blockquote>
+<h2 id="export-dataset-to-the-vgg-face2-format">Export dataset to the Vgg Face2 format</h2>
+<p>If you have dataset in some format and want to convert this dataset
+into the Vgg Face2, ensure that this dataset contains <code>Bbox</code> or/and <code>Points</code>
+or/and <code>Label</code> and use Datumaro to perform conversion.
+There is few examples:</p>
+<pre><code># Using convert command
+datum convert -if wider_face -i &lt;path_to_wider&gt; \
+    -f vgg_face2 -o &lt;output_dir&gt;
+
+# Using Datumaro project
+datum create
+datum import -f wider_face &lt;path_to_wider&gt;
+datum export -f vgg_face2 -o &lt;output_dir&gt; -- --save-images --image-ext '.png'
+</code></pre><blockquote>
+<p>Note: <code>vgg_face2</code> format supports only one <code>Bbox</code> per image</p>
+</blockquote>
+<p>Extra options for exporting to Vgg Face2 format:</p>
+<ul>
+<li><code>--save-images</code> allow to export dataset with saving images
+(by default <code>False</code>)</li>
+<li><code>--image-ext &lt;IMAGE_EXT&gt;</code> allow to specify image extension
+for exporting the dataset (by default <code>.png</code>)</li>
+<li><code>--save-dataset-meta</code> - allow to export dataset with saving dataset meta
+file (by default <code>False</code>)</li>
+</ul>
 
 </div>
 

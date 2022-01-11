@@ -17,27 +17,24 @@
 <link rel="icon" type="image/png" href="../../../favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="../../../favicons/android-192x192.png" sizes="192x192">
 
-<title>How to control telemetry data collection | Dataset Management Framework</title>
-<meta name="description" content=""><meta property="og:title" content="How to control telemetry data collection" />
-<meta property="og:description" content="The OpenVINO™ telemetry library is used to collect basic information about Datumaro usage.
-A short description of the information collected:
-   Event Description     version Datumaro version   session start/end Accessory event, there is no additional info here   {cli_command}_result Datumaro command result with arguments passed*   error Stack trace in case of exception*     * All sensitive arguments, such as filesystem paths or names, are sanitized" />
+<title>LFW | Dataset Management Framework</title>
+<meta name="description" content=""><meta property="og:title" content="LFW" />
+<meta property="og:description" content="Format specification LFW (Labeled Faces in the Wild Home) it&rsquo;s dataset for face identification task, specification for this format is available here. You can also download original LFW dataset here.
+Original dataset contains images with people faces. For each image contains information about person&rsquo;s name, as well as information about images that matched with this person and mismatched with this person. Also LFW contains additional information about landmark points on the face." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/user-manual/how_to_control_tm_data_collection/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="/docs/formats/lfw/" /><meta property="article:section" content="docs" />
 
 <meta property="og:site_name" content="Dataset Management Framework" />
 
-<meta itemprop="name" content="How to control telemetry data collection">
-<meta itemprop="description" content="The OpenVINO™ telemetry library is used to collect basic information about Datumaro usage.
-A short description of the information collected:
-   Event Description     version Datumaro version   session start/end Accessory event, there is no additional info here   {cli_command}_result Datumaro command result with arguments passed*   error Stack trace in case of exception*     * All sensitive arguments, such as filesystem paths or names, are sanitized">
+<meta itemprop="name" content="LFW">
+<meta itemprop="description" content="Format specification LFW (Labeled Faces in the Wild Home) it&rsquo;s dataset for face identification task, specification for this format is available here. You can also download original LFW dataset here.
+Original dataset contains images with people faces. For each image contains information about person&rsquo;s name, as well as information about images that matched with this person and mismatched with this person. Also LFW contains additional information about landmark points on the face.">
 
-<meta itemprop="wordCount" content="117">
+<meta itemprop="wordCount" content="453">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="How to control telemetry data collection"/>
-<meta name="twitter:description" content="The OpenVINO™ telemetry library is used to collect basic information about Datumaro usage.
-A short description of the information collected:
-   Event Description     version Datumaro version   session start/end Accessory event, there is no additional info here   {cli_command}_result Datumaro command result with arguments passed*   error Stack trace in case of exception*     * All sensitive arguments, such as filesystem paths or names, are sanitized"/>
+<meta name="twitter:title" content="LFW"/>
+<meta name="twitter:description" content="Format specification LFW (Labeled Faces in the Wild Home) it&rsquo;s dataset for face identification task, specification for this format is available here. You can also download original LFW dataset here.
+Original dataset contains images with people faces. For each image contains information about person&rsquo;s name, as well as information about images that matched with this person and mismatched with this person. Also LFW contains additional information about landmark points on the face."/>
 
 
 
@@ -101,13 +98,13 @@ A short description of the information collected:
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
   
     
-      <a class="dropdown-item" href="../../../docs/user-manual/how_to_control_tm_data_collection/">develop</a>
+      <a class="dropdown-item" href="../../../docs/formats/lfw/">develop</a>
   
     
-      <a class="dropdown-item" href="../../../v0.1.11/docs/user-manual/how_to_control_tm_data_collection/">v0.1.11</a>
+      <a class="dropdown-item" href="../../../v0.1.11/docs/formats/lfw/">v0.1.11</a>
   
     
-      <a class="dropdown-item" href="../../../v0.2.2/docs/user-manual/how_to_control_tm_data_collection/">v0.2.2</a>
+      <a class="dropdown-item" href="../../../v0.2.2/docs/formats/lfw/">v0.2.2</a>
   
 </div>
 
@@ -175,18 +172,18 @@ A short description of the information collected:
   <a href="../../../docs/getting_started/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsgetting_started"><span class="">Getting started</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsdesign-li">
   <a href="../../../docs/design/" title="Datumaro Design" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsdesign"><span class="">Design</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsuser-manual-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsuser-manual-li">
   <a href="../../../docs/user-manual/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsuser-manual"><span class="">User Manual</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualinstallation-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualinstallation-li">
   <a href="../../../docs/user-manual/installation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualinstallation"><span class="">Installation</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualhow_to_use_datumaro-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualhow_to_use_datumaro-li">
   <a href="../../../docs/user-manual/how_to_use_datumaro/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualhow_to_use_datumaro"><span class="">How to use Datumaro</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualsupported_formats-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualsupported_formats-li">
   <a href="../../../docs/user-manual/supported_formats/" title="Supported Formats" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualsupported_formats"><span class="">Dataset Formats</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualmedia_formats-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualmedia_formats-li">
   <a href="../../../docs/user-manual/media_formats/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualmedia_formats"><span class="">Media formats</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsuser-manualcommand-reference-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-docsuser-manualcommand-reference-li">
   <a href="../../../docs/user-manual/command-reference/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsuser-manualcommand-reference"><span class="">Command reference</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referenceconvert-li">
@@ -231,74 +228,74 @@ A short description of the information collected:
   <a href="../../../docs/user-manual/command-reference/projects/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceprojects"><span class="">Projects</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manualextending-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualextending-li">
   <a href="../../../docs/user-manual/extending/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualextending"><span class="">Extending</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsuser-manuallinks-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manuallinks-li">
   <a href="../../../docs/user-manual/links/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manuallinks"><span class="">Links</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsuser-manualhow_to_control_tm_data_collection-li">
-  <a href="../../../docs/user-manual/how_to_control_tm_data_collection/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualhow_to_control_tm_data_collection"><span class="td-sidebar-nav-active-item">How to control telemetry data collection</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualhow_to_control_tm_data_collection-li">
+  <a href="../../../docs/user-manual/how_to_control_tm_data_collection/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualhow_to_control_tm_data_collection"><span class="">How to control telemetry data collection</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsdeveloper_manual-li">
   <a href="../../../docs/developer_manual/" title="Dataset Management Framework (Datumaro) API and developer manual" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsdeveloper_manual"><span class="">Developer Manual</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsformats-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsformats-li">
   <a href="../../../docs/formats/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsformats"><span class="">Formats</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsade20k2017-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsade20k2017-li">
   <a href="../../../docs/formats/ade20k2017/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsade20k2017"><span class="">ADE20k (v2017)</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsade20k2020-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsade20k2020-li">
   <a href="../../../docs/formats/ade20k2020/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsade20k2020"><span class="">ADE20k (v2020)</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsalign_celeba-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsalign_celeba-li">
   <a href="../../../docs/formats/align_celeba/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsalign_celeba"><span class="">Align CelebA</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsceleba-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsceleba-li">
   <a href="../../../docs/formats/celeba/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsceleba"><span class="">CelebA</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatscifar-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatscifar-li">
   <a href="../../../docs/formats/cifar/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatscifar"><span class="">CIFAR</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmpii-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsmpii-li">
   <a href="../../../docs/formats/mpii/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmpii"><span class="">MPII Human Pose Dataset</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmpii_json-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsmpii_json-li">
   <a href="../../../docs/formats/mpii_json/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmpii_json"><span class="">MPII Human Pose Dataset (JSON)</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatssynthia-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatssynthia-li">
   <a href="../../../docs/formats/synthia/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatssynthia"><span class="">SYNTHIA</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsvott_csv-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsvott_csv-li">
   <a href="../../../docs/formats/vott_csv/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsvott_csv"><span class="">VoTT CSV</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsvott_json-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsvott_json-li">
   <a href="../../../docs/formats/vott_json/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsvott_json"><span class="">VoTT JSON</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatscityscapes-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatscityscapes-li">
   <a href="../../../docs/formats/cityscapes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatscityscapes"><span class="">Cityscapes</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatscoco-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatscoco-li">
   <a href="../../../docs/formats/coco/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatscoco"><span class="">COCO</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsimage_zip-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsimage_zip-li">
   <a href="../../../docs/formats/image_zip/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsimage_zip"><span class="">Image zip</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatskitti_raw-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatskitti_raw-li">
   <a href="../../../docs/formats/kitti_raw/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatskitti_raw"><span class="">Velodyne Points / KITTI Raw 3D</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatskitti-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatskitti-li">
   <a href="../../../docs/formats/kitti/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatskitti"><span class="">KITTI</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatslfw-li">
-  <a href="../../../docs/formats/lfw/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatslfw"><span class="">LFW</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmapillary_vistas-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsformatslfw-li">
+  <a href="../../../docs/formats/lfw/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-docsformatslfw"><span class="td-sidebar-nav-active-item">LFW</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsmapillary_vistas-li">
   <a href="../../../docs/formats/mapillary_vistas/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmapillary_vistas"><span class="">Mapillary Vistas</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmnist-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsmnist-li">
   <a href="../../../docs/formats/mnist/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmnist"><span class="">MNIST</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsicdar-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsicdar-li">
   <a href="../../../docs/formats/icdar/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsicdar"><span class="">ICDAR</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsopen_images-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsopen_images-li">
   <a href="../../../docs/formats/open_images/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsopen_images"><span class="">Open Images</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsimagenet-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsimagenet-li">
   <a href="../../../docs/formats/imagenet/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsimagenet"><span class="">ImageNet</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatspascal_voc-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatspascal_voc-li">
   <a href="../../../docs/formats/pascal_voc/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatspascal_voc"><span class="">Pascal VOC</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatssly_pointcloud-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatssly_pointcloud-li">
   <a href="../../../docs/formats/sly_pointcloud/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatssly_pointcloud"><span class="">Supervisely Point Cloud</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsyolo-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsyolo-li">
   <a href="../../../docs/formats/yolo/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsyolo"><span class="">YOLO</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmarket1501-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsmarket1501-li">
   <a href="../../../docs/formats/market1501/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmarket1501"><span class="">Market-1501</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmars-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsmars-li">
   <a href="../../../docs/formats/mars/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmars"><span class="">MARS</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatswider_face-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatswider_face-li">
   <a href="../../../docs/formats/wider_face/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatswider_face"><span class="">WIDER Face</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsvgg_face2-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsvgg_face2-li">
   <a href="../../../docs/formats/vgg_face2/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsvgg_face2"><span class="">Vgg Face2 CSV</span></a>
 </li>
   </ul>
@@ -342,9 +339,9 @@ A short description of the information collected:
     
     
 
-    <a href="https://github.com/openvinotoolkit/datumaro/edit/develop/site/content/en/docs/user-manual/how_to_control_tm_data_collection.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-    <a href="https://github.com/openvinotoolkit/datumaro/new/develop/site/content/en/docs/user-manual/how_to_control_tm_data_collection.md?filename=change-me.md&amp;value=---%0D%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0D%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0D%0Aweight%3A&#43;100%0D%0Adescription%3A&#43;%3E-%0D%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0D%0A---%0D%0A%0D%0A%23%23&#43;Heading%0D%0A%0D%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0D%0A%0D%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0D%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0D%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0D%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0D%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
-    <a href="https://github.com/openvinotoolkit/datumaro/issues/new?title=How%20to%20control%20telemetry%20data%20collection" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+    <a href="https://github.com/openvinotoolkit/datumaro/edit/develop/site/content/en/docs/formats/lfw.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+    <a href="https://github.com/openvinotoolkit/datumaro/new/develop/site/content/en/docs/formats/lfw.md?filename=change-me.md&amp;value=---%0D%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0D%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0D%0Aweight%3A&#43;100%0D%0Adescription%3A&#43;%3E-%0D%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0D%0A---%0D%0A%0D%0A%23%23&#43;Heading%0D%0A%0D%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0D%0A%0D%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0D%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0D%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0D%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0D%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+    <a href="https://github.com/openvinotoolkit/datumaro/issues/new?title=LFW" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
     
       
       <a href="https://github.com/openvinotoolkit/datumaro/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -352,13 +349,22 @@ A short description of the information collected:
 
   
   
-    <a id="print" href="../../../docs/user-manual/_print/"><i class="fa fa-print fa-fw"></i> Print entire section</a>
+    <a id="print" href="../../../docs/formats/_print/"><i class="fa fa-print fa-fw"></i> Print entire section</a>
   
   </div>
 
 
             
 
+
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#format-specification">Format specification</a></li>
+    <li><a href="#import-lfw-dataset">Import LFW dataset</a></li>
+    <li><a href="#export-lfw-dataset">Export LFW dataset</a></li>
+    <li><a href="#export-dataset-to-the-lfw-format">Export dataset to the LFW format</a></li>
+  </ul>
+</nav></div>
 
 
 
@@ -408,14 +414,14 @@ A short description of the information collected:
 
 
 <li class="breadcrumb-item" >
-	<a href="../../../docs/user-manual/">User Manual</a>
+	<a href="../../../docs/formats/">Formats</a>
 </li>
 
 
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="../../../docs/user-manual/how_to_control_tm_data_collection/">How to control telemetry data collection</a>
+	<a href="../../../docs/formats/lfw/">LFW</a>
 </li>
 
 	</ol>
@@ -423,7 +429,7 @@ A short description of the information collected:
 
             
 <div class="td-content">
-	<h1>How to control telemetry data collection</h1>
+	<h1>LFW</h1>
 	
 	<header class="article-meta">
 		
@@ -440,46 +446,98 @@ A short description of the information collected:
 		
 		
 	</header>    
-	<p>The <a href="https://github.com/openvinotoolkit/telemetry/">OpenVINO™ telemetry library</a>
-is used to collect basic information about Datumaro usage.</p>
-<p>A short description of the information collected:</p>
-<table>
-<thead>
-<tr>
-<th>Event</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>version</td>
-<td>Datumaro version</td>
-</tr>
-<tr>
-<td>session start/end</td>
-<td>Accessory event, there is no additional info here</td>
-</tr>
-<tr>
-<td>{cli_command}_result</td>
-<td>Datumaro command result with arguments passed*</td>
-</tr>
-<tr>
-<td>error</td>
-<td>Stack trace in case of exception*</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>* All sensitive arguments, such as filesystem paths or names, are sanitized</p>
-</blockquote>
-<p>To enable the collection of telemetry data, the ISIP consent file
-must exist and contain <code>1</code>, otherwise telemetry will be disabled.
-The ISIP file can be created/modified by an OpenVINO installer
-or manually and used by other OpenVINO™ tools.</p>
-<p>The location of the ISIP consent file depends on the OS:</p>
+	<h2 id="format-specification">Format specification</h2>
+<p><a href="http://vis-www.cs.umass.edu/lfw/">LFW (Labeled Faces in the Wild Home)</a>
+it&rsquo;s dataset for face identification task,
+specification for this format is available
+<a href="http://vis-www.cs.umass.edu/lfw/README.txt">here</a>.
+You can also download original LFW dataset
+<a href="http://vis-www.cs.umass.edu/lfw/#download">here</a>.</p>
+<p>Original dataset contains images with people faces.
+For each image contains information about person&rsquo;s name, as well as
+information about images that matched with this person
+and mismatched with this person.
+Also LFW contains additional information about landmark points on the face.</p>
+<p>Supported annotation types:</p>
 <ul>
-<li>Windows: <code>%localappdata%\Intel Corporation\isip</code>,</li>
-<li>Linux, MacOS: <code>$HOME/intel/isip</code>.</li>
+<li><code>Label</code></li>
+<li><code>Points</code> (face landmark points)</li>
+</ul>
+<p>Supported attributes:</p>
+<ul>
+<li><code>negative_pairs</code>: list with names of mismatched persons;</li>
+<li><code>positive_pairs</code>: list with names of matched persons;</li>
+</ul>
+<h2 id="import-lfw-dataset">Import LFW dataset</h2>
+<p>Importing LFW dataset into the Datumaro project:</p>
+<pre><code>datum create
+datum import -f lfw &lt;path_to_lfw_dataset&gt;
+</code></pre><p>See more information about adding datasets to the project in the
+<a href="../../../docs/user-manual/command-reference/sources/#source-add">docs</a>.</p>
+<p>Also you can import LFW dataset from Python API:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+
+<span style="color:#000">lfw_dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path_to_lfw_dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;lfw&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>For successful importing the LFW dataset, the directory with it
+should has the following structure:</p>
+<pre><code>&lt;path_to_lfw_dataset&gt;/
+├── subset_1
+│    ├── annotations
+│    │   ├── landmarks.txt # list with landmark points for each image
+│    │   ├── pairs.txt # list of matched and mismatched pairs of person
+│    │   └── people.txt # optional file with a list of persons name
+│    └── images
+│        ├── name0
+│        │   ├── name0_0001.jpg
+│        │   ├── name0_0002.jpg
+│        │   ├── ...
+│        ├── name1
+│        │   ├── name1_0001.jpg
+│        │   ├── name1_0002.jpg
+│        │   ├── ...
+├── subset_2
+│    ├── ...
+├── ...
+</code></pre><p>Full description of annotation <code>*.txt</code> files available
+<a href="http://vis-www.cs.umass.edu/lfw/README.txt">here</a>.</p>
+<h2 id="export-lfw-dataset">Export LFW dataset</h2>
+<p>With Datumaro you can convert LFW dataset into any other
+format <a href="../../../docs/user-manual/supported_formats/">Datumaro supports</a>.
+Pay attention that this format should also support <code>Label</code> and/or <code>Points</code>
+annotation types.</p>
+<p>There is few ways to convert LFW dataset into other format:</p>
+<pre><code>
+# Converting to ImageNet with `convert` command:
+datum convert -if lfw -i ./lfw_dataset \
+    -f imagenet -o ./output_dir -- --save-images
+
+
+# Converting to VggFace2 through the Datumaro project:
+datum create
+datum add -f lfw ./lfw_dataset
+datum export -f vgg_face2 -o ./output_dir2
+</code></pre><blockquote>
+<p>Note: some formats have extra export options. For particular format see the
+<a href="../../../docs/formats/">docs</a> to get information about it.</p>
+</blockquote>
+<h2 id="export-dataset-to-the-lfw-format">Export dataset to the LFW format</h2>
+<p>With Datumaro you can export dataset that has <code>Label</code> or/and <code>Points</code>
+annotations to the LFW format, example:</p>
+<pre><code># Converting VGG Face2 dataset into the LFW format
+datum convert -if vgg_face2 -i ./voc_dataset \
+    -f lfw -o ./output_dir
+
+
+# Export dataaset to the LFW format through the Datumaro project:
+datum create
+datum import -f voc_classification ../vgg_dataset
+datum export -f lfw -o ./output_dir -- --save-images --image-ext png
+</code></pre><p>Available extra export options for LFW dataset format:</p>
+<ul>
+<li><code>--save-images</code> allow to export dataset with saving images.
+(by default <code>False</code>)</li>
+<li><code>--image-ext IMAGE_EXT</code> allow to specify image extension
+for exporting dataset (by default - keep original)</li>
 </ul>
 
 	

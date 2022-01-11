@@ -34,7 +34,7 @@ python -m pip install virtualenv python -m virtualenv venv . venv/bin/activate I
 # From PyPI: pip install datumaro[default] # From the GitHub repository: pip install &#39;git&#43;https://github.com/openvinotoolkit/datumaro[default]&#39; Read more about choosing between datumaro and datumaro[default] here.
 Plugins  Datumaro has many plugins, which are responsible for dataset formats, model launchers and other optional components.">
 
-<meta itemprop="wordCount" content="338">
+<meta itemprop="wordCount" content="256">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Installation"/>
 <meta name="twitter:description" content="Dependencies  Python (3.6&#43;) Optional: OpenVINO, TensorFlow, PyTorch, MxNet, Caffe, Accuracy Checker  Installation steps Optionally, set up a virtual environment:
@@ -130,7 +130,7 @@ Plugins  Datumaro has many plugins, which are responsible for dataset formats, m
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.0c7499c54b8f709ff7aa1b005b33e2a3.json"
+  data-offline-search-index-json-src="../../../offline-search-index.adb2b1a906d9030ad1bd6f43d625332b.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -158,7 +158,7 @@ Plugins  Datumaro has many plugins, which are responsible for dataset formats, m
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.0c7499c54b8f709ff7aa1b005b33e2a3.json"
+  data-offline-search-index-json-src="../../../offline-search-index.adb2b1a906d9030ad1bd6f43d625332b.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -277,6 +277,8 @@ Plugins  Datumaro has many plugins, which are responsible for dataset formats, m
   <a href="../../../docs/formats/kitti_raw/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatskitti_raw"><span class="">Velodyne Points / KITTI Raw 3D</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatskitti-li">
   <a href="../../../docs/formats/kitti/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatskitti"><span class="">KITTI</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatslfw-li">
+  <a href="../../../docs/formats/lfw/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatslfw"><span class="">LFW</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmapillary_vistas-li">
   <a href="../../../docs/formats/mapillary_vistas/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmapillary_vistas"><span class="">Mapillary Vistas</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmnist-li">
@@ -285,6 +287,8 @@ Plugins  Datumaro has many plugins, which are responsible for dataset formats, m
   <a href="../../../docs/formats/icdar/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsicdar"><span class="">ICDAR</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsopen_images-li">
   <a href="../../../docs/formats/open_images/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsopen_images"><span class="">Open Images</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsimagenet-li">
+  <a href="../../../docs/formats/imagenet/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsimagenet"><span class="">ImageNet</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatspascal_voc-li">
   <a href="../../../docs/formats/pascal_voc/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatspascal_voc"><span class="">Pascal VOC</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatssly_pointcloud-li">
@@ -295,6 +299,10 @@ Plugins  Datumaro has many plugins, which are responsible for dataset formats, m
   <a href="../../../docs/formats/market1501/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmarket1501"><span class="">Market-1501</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmars-li">
   <a href="../../../docs/formats/mars/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmars"><span class="">MARS</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatswider_face-li">
+  <a href="../../../docs/formats/wider_face/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatswider_face"><span class="">WIDER Face</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsvgg_face2-li">
+  <a href="../../../docs/formats/vgg_face2/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsvgg_face2"><span class="">Vgg Face2 CSV</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsplugins-li">
@@ -489,19 +497,6 @@ the package. It requires installation from sources (using <code>--no-binary</cod
 </code></pre></div><p>This option can&rsquo;t be covered by extras due to Python packaging system
 limitations.</p>
 </li>
-<li>
-<p>Although Datumaro excludes <code>pycocotools</code> of version 2.0.2 in
-requirements, it works with this version perfectly fine. The
-reason for such requirement is binary incompatibility of the <code>numpy</code>
-dependency in the <code>TensorFlow</code> and <code>pycocotools</code> binary packages,
-and the current workaround forces this package to be build from sources
-on most platforms
-(see <a href="https://github.com/openvinotoolkit/datumaro/issues/253">#253</a>).
-If you need to use 2.0.2, make sure it is linked with the same version
-of <code>numpy</code> as <code>TensorFlow</code> by reinstalling the package:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip uninstall pycocotools
-pip install pycocotools --no-binary<span style="color:#ce5c00;font-weight:bold">=</span>pycocotools
-</code></pre></div></li>
 <li>
 <p>When installing directly from the repository, you can change the
 installation branch with <code>...@&lt;branch_name&gt;</code>. Also use <code>--force-reinstall</code>
