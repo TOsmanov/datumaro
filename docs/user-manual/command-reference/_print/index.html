@@ -117,7 +117,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.adb2b1a906d9030ad1bd6f43d625332b.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.f14955c1aadc2b9bd05c9bafc74f9e6d.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -2498,6 +2498,22 @@ export in YOLO for model training</p>
 datum add -f coco -r annotations/instances_train.json dataset1/
 datum add -f cvat dataset2/train.xml
 datum <span style="color:#204a87">export</span> -f yolo -- --save-images
+</code></pre></div><p>Example: add an existing dataset into a project, avoid data copying</p>
+<p>To add a dataset, we need to have it inside the project directory:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">proj/
+├─ .datumaro/
+├─ .dvc/
+├─ my_coco/
+│  └─ images/
+│     ├─ image1.jpg
+│     └─ ...
+│  └─ annotations/
+│     └─ coco_annotation.json
+├─ .dvcignore
+└─ .gitignore
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create -o proj/
+mv ~/my_coco/ proj/my_coco/ <span style="color:#8f5902;font-style:italic"># move the dataset into the project directory</span>
+datum add -p proj/ -f coco proj/my_coco/
 </code></pre></div><h3 id="remove-datasets-a-idsource-removea">Remove Datasets <a id="source-remove"></a></h3>
 <p>To remove a data source from a project, use the <code>remove</code> command.</p>
 <p>Usage:</p>

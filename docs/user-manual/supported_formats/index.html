@@ -20,7 +20,7 @@
 <title>Supported Formats | Dataset Management Framework</title>
 <meta name="description" content=""><meta property="og:title" content="Supported Formats" />
 <meta property="og:description" content="List of supported formats:
- MS COCO (image_info, instances, person_keypoints, captions, labels,panoptic, stuff)  Format specification Dataset example labels are our extension - like instances with only category_id Format documentation   PASCAL VOC (classification, detection, segmentation (class, instances), action_classification, person_layout)  Format specification Dataset example Format documentation   YOLO (bboxes)  Format specification Dataset example Format documentation   TF Detection API (bboxes, masks)  Format specifications: bboxes, masks Dataset example   WIDER Face (bboxes)  Format specification Dataset example   VGGFace2 (landmarks, bboxes)  Format specification Dataset example   MOT sequences  Format specification Dataset example   MOTS (png)  Format specification Dataset example   ImageNet (classification, detection)  Dataset example Dataset example (txt for classification) Detection format is the same as in PASCAL VOC   CIFAR-10/100 (classification (python version))  Format specification Dataset example CIFAR-10 Dataset example CIFAR-100 Format documentation   MNIST (classification)  Format specification Dataset example Format documentation   MNIST in CSV (classification)  Format specification Dataset example Format documentation   CamVid (segmentation)  Format specification Dataset example   Cityscapes (segmentation)  Format specification Dataset example Format documentation   KITTI (segmentation, detection)  Format specification Dataset example Format documentation   KITTI 3D (raw/tracklets/velodyne points)  Format specification Dataset example Format documentation   Supervisely (pointcloud)  Format specification Dataset example Format documentation   SYNTHIA (segmentation)  Format specification Dataset example Format documentation   CVAT  Format specification Dataset example   LabelMe  Format specification Dataset example   ICDAR13/15 (word_recognition, text_localization, text_segmentation)  Format specification Dataset example   Market-1501 (person re-identification)  Format specification Dataset example   LFW (classification, person re-identification, landmarks)  Format specification Dataset example   CelebA (classification, detection, landmarks)  Format specification Dataset example Format documentation   Align CelebA (classification, landmarks)  Format specification Dataset example Format documentation   VoTT CSV (detection)  Format specification Dataset example Format documentation   VoTT JSON (detection)  Format specification Dataset example Format documentation   MPII Human Pose Dataset (detection, pose estimation)  Format specification Dataset example Format documentation   MPII Human Pose Dataset (JSON) (detection, pose estimation)  Format specification Dataset example Format documentation    Supported annotation types   Labels Bounding boxes Polygons Polylines (Segmentation) Masks (Key-)Points Captions 3D cuboids  Datumaro does not separate datasets by tasks like classification, detection etc." />
+ ADE20k (v2017) (import-only)  Format specification Dataset example Format documentation   ADE20k (v2020) (import-only)  Format specification Dataset example Format documentation   Align CelebA (classification, landmarks) (import-only)  Format specification Dataset example Format documentation   CamVid (segmentation)  Format specification Dataset example   CelebA (classification, detection, landmarks) (import-only)  Format specification Dataset example Format documentation   CIFAR-10/100 (classification (python version))  Format specification Dataset example CIFAR-10 Dataset example CIFAR-100 Format documentation   Cityscapes (segmentation)  Format specification Dataset example Format documentation   CVAT (for images, for video (import-only))  Format specification Dataset example   ICDAR13/15 (word_recognition, text_localization, text_segmentation)  Format specification Dataset example   ImageNet (classification, detection)  Dataset example Dataset example (txt for classification) Detection format is the same as in PASCAL VOC Format documentation   KITTI (segmentation, detection)  Format specification Dataset example Format documentation   KITTI 3D (raw/tracklets/velodyne points)  Format specification Dataset example Format documentation   LabelMe (labels, boxes, masks)  Format specification Dataset example   LFW (classification, person re-identification, landmarks)  Format specification Dataset example Format documentation   Mapillary Vistas (import-only)  Format specification Dataset example Format documentation   Market-1501 (person re-identification)  Format specification Dataset example   MARS (import-only)  Format specification Dataset example Format documentation   MNIST (classification)  Format specification Dataset example Format documentation   MNIST in CSV (classification)  Format specification Dataset example Format documentation   MOT sequences  Format specification Dataset example   MOTS (png)  Format specification Dataset example   MPII Human Pose Dataset (detection, pose estimation) (import-only)  Format specification Dataset example Format documentation   MPII Human Pose Dataset (JSON) (detection, pose estimation) (import-only)  Format specification Dataset example Format documentation   MS COCO (image_info, instances, person_keypoints, captions, labels,panoptic, stuff)  Format specification Dataset example labels are our extension - like instances with only category_id Format documentation   Open Images (classification, detection, segmentation)  Format specification Dataset example Format documentation   PASCAL VOC (classification, detection, segmentation (class, instances), action_classification, person_layout)  Format specification Dataset example Format documentation   Supervisely (pointcloud)  Format specification Dataset example Format documentation   SYNTHIA (segmentation) (import-only)  Format specification Dataset example Format documentation   TF Detection API (bboxes, masks)  Format specifications: bboxes, masks Dataset example   VGGFace2 (landmarks, bboxes)  Format specification Dataset example Format documentation   VoTT CSV (detection) (import-only)  Format specification Dataset example Format documentation   VoTT JSON (detection) (import-only)  Format specification Dataset example Format documentation   WIDER Face (bboxes)  Format specification Dataset example Format documentation   YOLO (bboxes)  Format specification Dataset example Format documentation    Supported annotation types   Labels Bounding boxes Polygons Polylines (Segmentation) Masks (Key-)Points Captions 3D cuboids  Datumaro does not separate datasets by tasks like classification, detection etc." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/user-manual/supported_formats/" /><meta property="article:section" content="docs" />
 
@@ -28,13 +28,13 @@
 
 <meta itemprop="name" content="Supported Formats">
 <meta itemprop="description" content="List of supported formats:
- MS COCO (image_info, instances, person_keypoints, captions, labels,panoptic, stuff)  Format specification Dataset example labels are our extension - like instances with only category_id Format documentation   PASCAL VOC (classification, detection, segmentation (class, instances), action_classification, person_layout)  Format specification Dataset example Format documentation   YOLO (bboxes)  Format specification Dataset example Format documentation   TF Detection API (bboxes, masks)  Format specifications: bboxes, masks Dataset example   WIDER Face (bboxes)  Format specification Dataset example   VGGFace2 (landmarks, bboxes)  Format specification Dataset example   MOT sequences  Format specification Dataset example   MOTS (png)  Format specification Dataset example   ImageNet (classification, detection)  Dataset example Dataset example (txt for classification) Detection format is the same as in PASCAL VOC   CIFAR-10/100 (classification (python version))  Format specification Dataset example CIFAR-10 Dataset example CIFAR-100 Format documentation   MNIST (classification)  Format specification Dataset example Format documentation   MNIST in CSV (classification)  Format specification Dataset example Format documentation   CamVid (segmentation)  Format specification Dataset example   Cityscapes (segmentation)  Format specification Dataset example Format documentation   KITTI (segmentation, detection)  Format specification Dataset example Format documentation   KITTI 3D (raw/tracklets/velodyne points)  Format specification Dataset example Format documentation   Supervisely (pointcloud)  Format specification Dataset example Format documentation   SYNTHIA (segmentation)  Format specification Dataset example Format documentation   CVAT  Format specification Dataset example   LabelMe  Format specification Dataset example   ICDAR13/15 (word_recognition, text_localization, text_segmentation)  Format specification Dataset example   Market-1501 (person re-identification)  Format specification Dataset example   LFW (classification, person re-identification, landmarks)  Format specification Dataset example   CelebA (classification, detection, landmarks)  Format specification Dataset example Format documentation   Align CelebA (classification, landmarks)  Format specification Dataset example Format documentation   VoTT CSV (detection)  Format specification Dataset example Format documentation   VoTT JSON (detection)  Format specification Dataset example Format documentation   MPII Human Pose Dataset (detection, pose estimation)  Format specification Dataset example Format documentation   MPII Human Pose Dataset (JSON) (detection, pose estimation)  Format specification Dataset example Format documentation    Supported annotation types   Labels Bounding boxes Polygons Polylines (Segmentation) Masks (Key-)Points Captions 3D cuboids  Datumaro does not separate datasets by tasks like classification, detection etc.">
+ ADE20k (v2017) (import-only)  Format specification Dataset example Format documentation   ADE20k (v2020) (import-only)  Format specification Dataset example Format documentation   Align CelebA (classification, landmarks) (import-only)  Format specification Dataset example Format documentation   CamVid (segmentation)  Format specification Dataset example   CelebA (classification, detection, landmarks) (import-only)  Format specification Dataset example Format documentation   CIFAR-10/100 (classification (python version))  Format specification Dataset example CIFAR-10 Dataset example CIFAR-100 Format documentation   Cityscapes (segmentation)  Format specification Dataset example Format documentation   CVAT (for images, for video (import-only))  Format specification Dataset example   ICDAR13/15 (word_recognition, text_localization, text_segmentation)  Format specification Dataset example   ImageNet (classification, detection)  Dataset example Dataset example (txt for classification) Detection format is the same as in PASCAL VOC Format documentation   KITTI (segmentation, detection)  Format specification Dataset example Format documentation   KITTI 3D (raw/tracklets/velodyne points)  Format specification Dataset example Format documentation   LabelMe (labels, boxes, masks)  Format specification Dataset example   LFW (classification, person re-identification, landmarks)  Format specification Dataset example Format documentation   Mapillary Vistas (import-only)  Format specification Dataset example Format documentation   Market-1501 (person re-identification)  Format specification Dataset example   MARS (import-only)  Format specification Dataset example Format documentation   MNIST (classification)  Format specification Dataset example Format documentation   MNIST in CSV (classification)  Format specification Dataset example Format documentation   MOT sequences  Format specification Dataset example   MOTS (png)  Format specification Dataset example   MPII Human Pose Dataset (detection, pose estimation) (import-only)  Format specification Dataset example Format documentation   MPII Human Pose Dataset (JSON) (detection, pose estimation) (import-only)  Format specification Dataset example Format documentation   MS COCO (image_info, instances, person_keypoints, captions, labels,panoptic, stuff)  Format specification Dataset example labels are our extension - like instances with only category_id Format documentation   Open Images (classification, detection, segmentation)  Format specification Dataset example Format documentation   PASCAL VOC (classification, detection, segmentation (class, instances), action_classification, person_layout)  Format specification Dataset example Format documentation   Supervisely (pointcloud)  Format specification Dataset example Format documentation   SYNTHIA (segmentation) (import-only)  Format specification Dataset example Format documentation   TF Detection API (bboxes, masks)  Format specifications: bboxes, masks Dataset example   VGGFace2 (landmarks, bboxes)  Format specification Dataset example Format documentation   VoTT CSV (detection) (import-only)  Format specification Dataset example Format documentation   VoTT JSON (detection) (import-only)  Format specification Dataset example Format documentation   WIDER Face (bboxes)  Format specification Dataset example Format documentation   YOLO (bboxes)  Format specification Dataset example Format documentation    Supported annotation types   Labels Bounding boxes Polygons Polylines (Segmentation) Masks (Key-)Points Captions 3D cuboids  Datumaro does not separate datasets by tasks like classification, detection etc.">
 
-<meta itemprop="wordCount" content="420">
+<meta itemprop="wordCount" content="489">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Supported Formats"/>
 <meta name="twitter:description" content="List of supported formats:
- MS COCO (image_info, instances, person_keypoints, captions, labels,panoptic, stuff)  Format specification Dataset example labels are our extension - like instances with only category_id Format documentation   PASCAL VOC (classification, detection, segmentation (class, instances), action_classification, person_layout)  Format specification Dataset example Format documentation   YOLO (bboxes)  Format specification Dataset example Format documentation   TF Detection API (bboxes, masks)  Format specifications: bboxes, masks Dataset example   WIDER Face (bboxes)  Format specification Dataset example   VGGFace2 (landmarks, bboxes)  Format specification Dataset example   MOT sequences  Format specification Dataset example   MOTS (png)  Format specification Dataset example   ImageNet (classification, detection)  Dataset example Dataset example (txt for classification) Detection format is the same as in PASCAL VOC   CIFAR-10/100 (classification (python version))  Format specification Dataset example CIFAR-10 Dataset example CIFAR-100 Format documentation   MNIST (classification)  Format specification Dataset example Format documentation   MNIST in CSV (classification)  Format specification Dataset example Format documentation   CamVid (segmentation)  Format specification Dataset example   Cityscapes (segmentation)  Format specification Dataset example Format documentation   KITTI (segmentation, detection)  Format specification Dataset example Format documentation   KITTI 3D (raw/tracklets/velodyne points)  Format specification Dataset example Format documentation   Supervisely (pointcloud)  Format specification Dataset example Format documentation   SYNTHIA (segmentation)  Format specification Dataset example Format documentation   CVAT  Format specification Dataset example   LabelMe  Format specification Dataset example   ICDAR13/15 (word_recognition, text_localization, text_segmentation)  Format specification Dataset example   Market-1501 (person re-identification)  Format specification Dataset example   LFW (classification, person re-identification, landmarks)  Format specification Dataset example   CelebA (classification, detection, landmarks)  Format specification Dataset example Format documentation   Align CelebA (classification, landmarks)  Format specification Dataset example Format documentation   VoTT CSV (detection)  Format specification Dataset example Format documentation   VoTT JSON (detection)  Format specification Dataset example Format documentation   MPII Human Pose Dataset (detection, pose estimation)  Format specification Dataset example Format documentation   MPII Human Pose Dataset (JSON) (detection, pose estimation)  Format specification Dataset example Format documentation    Supported annotation types   Labels Bounding boxes Polygons Polylines (Segmentation) Masks (Key-)Points Captions 3D cuboids  Datumaro does not separate datasets by tasks like classification, detection etc."/>
+ ADE20k (v2017) (import-only)  Format specification Dataset example Format documentation   ADE20k (v2020) (import-only)  Format specification Dataset example Format documentation   Align CelebA (classification, landmarks) (import-only)  Format specification Dataset example Format documentation   CamVid (segmentation)  Format specification Dataset example   CelebA (classification, detection, landmarks) (import-only)  Format specification Dataset example Format documentation   CIFAR-10/100 (classification (python version))  Format specification Dataset example CIFAR-10 Dataset example CIFAR-100 Format documentation   Cityscapes (segmentation)  Format specification Dataset example Format documentation   CVAT (for images, for video (import-only))  Format specification Dataset example   ICDAR13/15 (word_recognition, text_localization, text_segmentation)  Format specification Dataset example   ImageNet (classification, detection)  Dataset example Dataset example (txt for classification) Detection format is the same as in PASCAL VOC Format documentation   KITTI (segmentation, detection)  Format specification Dataset example Format documentation   KITTI 3D (raw/tracklets/velodyne points)  Format specification Dataset example Format documentation   LabelMe (labels, boxes, masks)  Format specification Dataset example   LFW (classification, person re-identification, landmarks)  Format specification Dataset example Format documentation   Mapillary Vistas (import-only)  Format specification Dataset example Format documentation   Market-1501 (person re-identification)  Format specification Dataset example   MARS (import-only)  Format specification Dataset example Format documentation   MNIST (classification)  Format specification Dataset example Format documentation   MNIST in CSV (classification)  Format specification Dataset example Format documentation   MOT sequences  Format specification Dataset example   MOTS (png)  Format specification Dataset example   MPII Human Pose Dataset (detection, pose estimation) (import-only)  Format specification Dataset example Format documentation   MPII Human Pose Dataset (JSON) (detection, pose estimation) (import-only)  Format specification Dataset example Format documentation   MS COCO (image_info, instances, person_keypoints, captions, labels,panoptic, stuff)  Format specification Dataset example labels are our extension - like instances with only category_id Format documentation   Open Images (classification, detection, segmentation)  Format specification Dataset example Format documentation   PASCAL VOC (classification, detection, segmentation (class, instances), action_classification, person_layout)  Format specification Dataset example Format documentation   Supervisely (pointcloud)  Format specification Dataset example Format documentation   SYNTHIA (segmentation) (import-only)  Format specification Dataset example Format documentation   TF Detection API (bboxes, masks)  Format specifications: bboxes, masks Dataset example   VGGFace2 (landmarks, bboxes)  Format specification Dataset example Format documentation   VoTT CSV (detection) (import-only)  Format specification Dataset example Format documentation   VoTT JSON (detection) (import-only)  Format specification Dataset example Format documentation   WIDER Face (bboxes)  Format specification Dataset example Format documentation   YOLO (bboxes)  Format specification Dataset example Format documentation    Supported annotation types   Labels Bounding boxes Polygons Polylines (Segmentation) Masks (Key-)Points Captions 3D cuboids  Datumaro does not separate datasets by tasks like classification, detection etc."/>
 
 
 
@@ -124,7 +124,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.adb2b1a906d9030ad1bd6f43d625332b.json"
+  data-offline-search-index-json-src="../../../offline-search-index.f14955c1aadc2b9bd05c9bafc74f9e6d.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -152,7 +152,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.adb2b1a906d9030ad1bd6f43d625332b.json"
+  data-offline-search-index-json-src="../../../offline-search-index.f14955c1aadc2b9bd05c9bafc74f9e6d.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -450,66 +450,38 @@
 	</header>    
 	<p>List of supported formats:</p>
 <ul>
-<li>MS COCO
-(<code>image_info</code>, <code>instances</code>, <code>person_keypoints</code>, <code>captions</code>, <code>labels</code>,<code>panoptic</code>, <code>stuff</code>)
+<li>ADE20k (v2017) (import-only)
 <ul>
-<li><a href="http://cocodataset.org/#format-data">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/coco_dataset">Dataset example</a></li>
-<li><code>labels</code> are our extension - like <code>instances</code> with only <code>category_id</code></li>
-<li><a href="../../../docs/formats/coco">Format documentation</a></li>
+<li><a href="https://www.kaggle.com/soumikrakshit/ade20k">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/ade20k2017_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/ade20k2017">Format documentation</a></li>
 </ul>
 </li>
-<li>PASCAL VOC (<code>classification</code>, <code>detection</code>, <code>segmentation</code> (class, instances),
-<code>action_classification</code>, <code>person_layout</code>)
+<li>ADE20k (v2020) (import-only)
 <ul>
-<li><a href="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/htmldoc/index.html">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/voc_dataset">Dataset example</a></li>
-<li><a href="../../../docs/formats/pascal_voc">Format documentation</a></li>
+<li><a href="https://groups.csail.mit.edu/vision/datasets/ADE20K/">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/ade20k2020_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/ade20k2020">Format documentation</a></li>
 </ul>
 </li>
-<li>YOLO (<code>bboxes</code>)
+<li>Align CelebA (<code>classification</code>, <code>landmarks</code>) (import-only)
 <ul>
-<li><a href="https://github.com/AlexeyAB/darknet#how-to-train-pascal-voc-data">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/yolo_dataset">Dataset example</a></li>
-<li><a href="../../../docs/formats/yolo">Format documentation</a></li>
+<li><a href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/align_celeba_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/align_celeba">Format documentation</a></li>
 </ul>
 </li>
-<li>TF Detection API (<code>bboxes</code>, <code>masks</code>)
+<li>CamVid (<code>segmentation</code>)
 <ul>
-<li>Format specifications: <a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/using_your_own_dataset.md">bboxes</a>,
-<a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/instance_segmentation.md">masks</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/tf_detection_api_dataset">Dataset example</a></li>
+<li><a href="http://mi.eng.cam.ac.uk/research/projects/VideoRec/CamVid/">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/camvid_dataset">Dataset example</a></li>
 </ul>
 </li>
-<li>WIDER Face (<code>bboxes</code>)
+<li>CelebA (<code>classification</code>, <code>detection</code>, <code>landmarks</code>) (import-only)
 <ul>
-<li><a href="http://shuoyang1213.me/WIDERFACE/">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/widerface_dataset">Dataset example</a></li>
-</ul>
-</li>
-<li>VGGFace2 (<code>landmarks</code>, <code>bboxes</code>)
-<ul>
-<li><a href="https://github.com/ox-vgg/vgg_face2">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/vgg_face2_dataset">Dataset example</a></li>
-</ul>
-</li>
-<li>MOT sequences
-<ul>
-<li><a href="https://arxiv.org/pdf/1906.04567.pdf">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mot_dataset">Dataset example</a></li>
-</ul>
-</li>
-<li>MOTS (png)
-<ul>
-<li><a href="https://www.vision.rwth-aachen.de/page/mots">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mots_dataset">Dataset example</a></li>
-</ul>
-</li>
-<li>ImageNet (<code>classification</code>, <code>detection</code>)
-<ul>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/imagenet_dataset">Dataset example</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/imagenet_txt_dataset">Dataset example (txt for classification)</a></li>
-<li>Detection format is the same as in PASCAL VOC</li>
+<li><a href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/celeba_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/celeba">Format documentation</a></li>
 </ul>
 </li>
 <li>CIFAR-10/100 (<code>classification</code> (python version))
@@ -520,31 +492,31 @@
 <li><a href="../../../docs/formats/cifar">Format documentation</a></li>
 </ul>
 </li>
-<li>MNIST (<code>classification</code>)
-<ul>
-<li><a href="http://yann.lecun.com/exdb/mnist/">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mnist_dataset">Dataset example</a></li>
-<li><a href="../../../docs/formats/mnist">Format documentation</a></li>
-</ul>
-</li>
-<li>MNIST in CSV (<code>classification</code>)
-<ul>
-<li><a href="https://pjreddie.com/projects/mnist-in-csv/">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mnist_csv_dataset">Dataset example</a></li>
-<li><a href="../../../docs/formats/mnist">Format documentation</a></li>
-</ul>
-</li>
-<li>CamVid (<code>segmentation</code>)
-<ul>
-<li><a href="http://mi.eng.cam.ac.uk/research/projects/VideoRec/CamVid/">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/camvid_dataset">Dataset example</a></li>
-</ul>
-</li>
 <li>Cityscapes (<code>segmentation</code>)
 <ul>
 <li><a href="https://www.cityscapes-dataset.com/dataset-overview/">Format specification</a></li>
 <li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/cityscapes_dataset">Dataset example</a></li>
 <li><a href="../../../docs/formats/cityscapes">Format documentation</a></li>
+</ul>
+</li>
+<li>CVAT (<code>for images</code>, <code>for video</code> (import-only))
+<ul>
+<li><a href="https://openvinotoolkit.github.io/cvat/docs/manual/advanced/xml_format">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/cvat_dataset">Dataset example</a></li>
+</ul>
+</li>
+<li>ICDAR13/15 (<code>word_recognition</code>, <code>text_localization</code>, <code>text_segmentation</code>)
+<ul>
+<li><a href="https://rrc.cvc.uab.es/?ch=2">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/icdar_dataset">Dataset example</a></li>
+</ul>
+</li>
+<li>ImageNet (<code>classification</code>, <code>detection</code>)
+<ul>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/imagenet_dataset">Dataset example</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/imagenet_txt_dataset">Dataset example (txt for classification)</a></li>
+<li>Detection format is the same as in PASCAL VOC</li>
+<li><a href="../../../docs/formats/imagenet">Format documentation</a></li>
 </ul>
 </li>
 <li>KITTI (<code>segmentation</code>, <code>detection</code>)
@@ -561,36 +533,24 @@
 <li><a href="../../../docs/formats/kitti_raw">Format documentation</a></li>
 </ul>
 </li>
-<li>Supervisely (<code>pointcloud</code>)
-<ul>
-<li><a href="https://docs.supervise.ly/data-organization/00_ann_format_navi">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/sly_pointcloud_dataset">Dataset example</a></li>
-<li><a href="../../../docs/formats/sly_pointcloud">Format documentation</a></li>
-</ul>
-</li>
-<li>SYNTHIA (<code>segmentation</code>)
-<ul>
-<li><a href="https://synthia-dataset.net/">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/synthia_dataset">Dataset example</a></li>
-<li><a href="../../../docs/formats/synthia">Format documentation</a></li>
-</ul>
-</li>
-<li>CVAT
-<ul>
-<li><a href="https://openvinotoolkit.github.io/cvat/docs/manual/advanced/xml_format">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/cvat_dataset">Dataset example</a></li>
-</ul>
-</li>
-<li>LabelMe
+<li>LabelMe (<code>labels</code>, <code>boxes</code>, <code>masks</code>)
 <ul>
 <li><a href="http://labelme.csail.mit.edu/Release3.0">Format specification</a></li>
 <li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/labelme_dataset">Dataset example</a></li>
 </ul>
 </li>
-<li>ICDAR13/15 (<code>word_recognition</code>, <code>text_localization</code>, <code>text_segmentation</code>)
+<li>LFW (<code>classification</code>, <code>person re-identification</code>, <code>landmarks</code>)
 <ul>
-<li><a href="https://rrc.cvc.uab.es/?ch=2">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/icdar_dataset">Dataset example</a></li>
+<li><a href="http://vis-www.cs.umass.edu/lfw/">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/lfw_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/lfw">Format documentation</a></li>
+</ul>
+</li>
+<li>Mapillary Vistas (import-only)
+<ul>
+<li><a href="https://www.mapillary.com/dataset/vistas">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mapillary_vistas_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/mapillary_vistas">Format documentation</a></li>
 </ul>
 </li>
 <li>Market-1501 (<code>person re-identification</code>)
@@ -599,52 +559,130 @@
 <li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/market1501_dataset">Dataset example</a></li>
 </ul>
 </li>
-<li>LFW (<code>classification</code>, <code>person re-identification</code>, <code>landmarks</code>)
+<li>MARS (import-only)
 <ul>
-<li><a href="http://vis-www.cs.umass.edu/lfw/">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/lfw_dataset">Dataset example</a></li>
+<li><a href="https://zheng-lab.cecs.anu.edu.au/Project/project_mars.html">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mars_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/mars">Format documentation</a></li>
 </ul>
 </li>
-<li>CelebA (<code>classification</code>, <code>detection</code>, <code>landmarks</code>)
+<li>MNIST (<code>classification</code>)
 <ul>
-<li><a href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/celeba_dataset">Dataset example</a></li>
-<li><a href="../../../docs/formats/celeba">Format documentation</a></li>
+<li><a href="http://yann.lecun.com/exdb/mnist/">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mnist_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/mnist">Format documentation</a></li>
 </ul>
 </li>
-<li>Align CelebA (<code>classification</code>, <code>landmarks</code>)
+<li>MNIST in CSV (<code>classification</code>)
 <ul>
-<li><a href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/align_celeba_dataset">Dataset example</a></li>
-<li><a href="../../../docs/formats/align_celeba">Format documentation</a></li>
+<li><a href="https://pjreddie.com/projects/mnist-in-csv/">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mnist_csv_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/mnist">Format documentation</a></li>
 </ul>
 </li>
-<li>VoTT CSV (<code>detection</code>)
+<li>MOT sequences
 <ul>
-<li><a href="https://github.com/microsoft/VoTT">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/vott_csv_dataset">Dataset example</a></li>
-<li><a href="../../../docs/formats/vott_csv">Format documentation</a></li>
+<li><a href="https://arxiv.org/pdf/1906.04567.pdf">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mot_dataset">Dataset example</a></li>
 </ul>
 </li>
-<li>VoTT JSON (<code>detection</code>)
+<li>MOTS (png)
 <ul>
-<li><a href="https://github.com/microsoft/VoTT">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/vott_json_dataset">Dataset example</a></li>
-<li><a href="../../../docs/formats/vott_json">Format documentation</a></li>
+<li><a href="https://www.vision.rwth-aachen.de/page/mots">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mots_dataset">Dataset example</a></li>
 </ul>
 </li>
-<li>MPII Human Pose Dataset (<code>detection</code>, <code>pose estimation</code>)
+<li>MPII Human Pose Dataset (<code>detection</code>, <code>pose estimation</code>) (import-only)
 <ul>
 <li><a href="http://human-pose.mpi-inf.mpg.de">Format specification</a></li>
 <li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mpii_dataset">Dataset example</a></li>
 <li><a href="../../../docs/formats/mpii">Format documentation</a></li>
 </ul>
 </li>
-<li>MPII Human Pose Dataset (JSON) (<code>detection</code>, <code>pose estimation</code>)
+<li>MPII Human Pose Dataset (JSON) (<code>detection</code>, <code>pose estimation</code>) (import-only)
 <ul>
 <li><a href="http://human-pose.mpi-inf.mpg.de">Format specification</a></li>
 <li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mpii_json_dataset">Dataset example</a></li>
 <li><a href="../../../docs/formats/mpii_json">Format documentation</a></li>
+</ul>
+</li>
+<li>MS COCO (<code>image_info</code>, <code>instances</code>, <code>person_keypoints</code>, <code>captions</code>, <code>labels</code>,<code>panoptic</code>, <code>stuff</code>)
+<ul>
+<li><a href="http://cocodataset.org/#format-data">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/coco_dataset">Dataset example</a></li>
+<li><code>labels</code> are our extension - like <code>instances</code> with only <code>category_id</code></li>
+<li><a href="../../../docs/formats/coco">Format documentation</a></li>
+</ul>
+</li>
+<li>Open Images (<code>classification</code>, <code>detection</code>, <code>segmentation</code>)
+<ul>
+<li><a href="https://storage.googleapis.com/openimages/web/download.html">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/open_images_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/open_images">Format documentation</a></li>
+</ul>
+</li>
+<li>PASCAL VOC (<code>classification</code>, <code>detection</code>, <code>segmentation</code> (class, instances),
+<code>action_classification</code>, <code>person_layout</code>)
+<ul>
+<li><a href="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/htmldoc/index.html">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/voc_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/pascal_voc">Format documentation</a></li>
+</ul>
+</li>
+<li>Supervisely (<code>pointcloud</code>)
+<ul>
+<li><a href="https://docs.supervise.ly/data-organization/00_ann_format_navi">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/sly_pointcloud_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/sly_pointcloud">Format documentation</a></li>
+</ul>
+</li>
+<li>SYNTHIA (<code>segmentation</code>) (import-only)
+<ul>
+<li><a href="https://synthia-dataset.net/">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/synthia_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/synthia">Format documentation</a></li>
+</ul>
+</li>
+<li>TF Detection API (<code>bboxes</code>, <code>masks</code>)
+<ul>
+<li>Format specifications: <a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/using_your_own_dataset.md">bboxes</a>,
+<a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/instance_segmentation.md">masks</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/tf_detection_api_dataset">Dataset example</a></li>
+</ul>
+</li>
+<li>VGGFace2 (<code>landmarks</code>, <code>bboxes</code>)
+<ul>
+<li><a href="https://github.com/ox-vgg/vgg_face2">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/vgg_face2_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/vgg_face2">Format documentation</a></li>
+</ul>
+</li>
+<li>VoTT CSV (<code>detection</code>) (import-only)
+<ul>
+<li><a href="https://github.com/microsoft/VoTT">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/vott_csv_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/vott_csv">Format documentation</a></li>
+</ul>
+</li>
+<li>VoTT JSON (<code>detection</code>) (import-only)
+<ul>
+<li><a href="https://github.com/microsoft/VoTT">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/vott_json_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/vott_json">Format documentation</a></li>
+</ul>
+</li>
+<li>WIDER Face (<code>bboxes</code>)
+<ul>
+<li><a href="http://shuoyang1213.me/WIDERFACE/">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/widerface_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/wider_face">Format documentation</a></li>
+</ul>
+</li>
+<li>YOLO (<code>bboxes</code>)
+<ul>
+<li><a href="https://github.com/AlexeyAB/darknet#how-to-train-pascal-voc-data">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/yolo_dataset">Dataset example</a></li>
+<li><a href="../../../docs/formats/yolo">Format documentation</a></li>
 </ul>
 </li>
 </ul>

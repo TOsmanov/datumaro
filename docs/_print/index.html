@@ -117,7 +117,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.adb2b1a906d9030ad1bd6f43d625332b.json"
+  data-offline-search-index-json-src="../../offline-search-index.f14955c1aadc2b9bd05c9bafc74f9e6d.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -823,7 +823,7 @@ and teams, who are working with datasets and annotations.</p>
 <h2 id="installation">Installation</h2>
 <h3 id="dependencies">Dependencies</h3>
 <ul>
-<li>Python (3.6+)</li>
+<li>Python (3.7+)</li>
 <li>Optional: OpenVINO, TensorFlow, PyTorch, MxNet, Caffe, Accuracy Checker</li>
 </ul>
 <p>Optionally, create a virtual environment:</p>
@@ -1288,26 +1288,26 @@ on CVAT server (in future, support S3, etc)
 <li><a href="./media_formats">Supported media formats</a></li>
 <li><a href="./command-reference">Command reference</a>
 <ul>
+<li><a href="./command-reference/sources/#source-add">Add</a></li>
+<li><a href="./command-reference/checkout">Checkout</a></li>
+<li><a href="./command-reference/commit">Commit</a></li>
 <li><a href="./command-reference/convert">Convert</a></li>
 <li><a href="./command-reference/create">Create</a></li>
+<li><a href="./command-reference/diff">Diff</a></li>
 <li><a href="./command-reference/download">Download</a></li>
-<li><a href="./command-reference/sources/#source-import">Import</a></li>
+<li><a href="./command-reference/explain">Explain</a></li>
 <li><a href="./command-reference/export">Export</a></li>
-<li><a href="./command-reference/sources/#source-add">Add</a></li>
-<li><a href="./command-reference/sources/#source-remove">Remove</a></li>
 <li><a href="./command-reference/filter">Filter</a></li>
+<li><a href="./command-reference/sources/#source-import">Import</a></li>
+<li><a href="./command-reference/info">Info</a></li>
+<li><a href="./command-reference/log">Log</a></li>
 <li><a href="./command-reference/merge">Merge</a></li>
 <li><a href="./command-reference/patch">Patch</a></li>
-<li><a href="./command-reference/diff">Diff</a></li>
-<li><a href="./command-reference/info">Info</a></li>
+<li><a href="./command-reference/sources/#source-remove">Remove</a></li>
 <li><a href="./command-reference/stats">Stats</a></li>
-<li><a href="./command-reference/validate">Validate</a></li>
-<li><a href="./command-reference/transform">Transform</a></li>
-<li><a href="./command-reference/commit">Commit</a></li>
-<li><a href="./command-reference/checkout">Checkout</a></li>
 <li><a href="./command-reference/status">Status</a></li>
-<li><a href="./command-reference/log">Log</a></li>
-<li><a href="./command-reference/explain">Run model inference explanation (explain)</a></li>
+<li><a href="./command-reference/transform">Transform</a></li>
+<li><a href="./command-reference/validate">Validate</a></li>
 <li>Models:
 <ul>
 <li><a href="./command-reference/models/#model-add">Add</a></li>
@@ -1315,17 +1315,17 @@ on CVAT server (in future, support S3, etc)
 <li><a href="./command-reference/models/#model-run">Run</a></li>
 </ul>
 </li>
-<li>Sources:
-<ul>
-<li><a href="./command-reference/sources/#source-import">Import</a></li>
-<li><a href="./command-reference/sources/#source-add">Add</a></li>
-<li><a href="./command-reference/sources/#source-remove">Remove</a></li>
-</ul>
-</li>
 <li>Projects:
 <ul>
-<li><a href="./command-reference/projects/#project-migrate">Migrate</a></li>
 <li><a href="./command-reference/projects/#project-info">Info</a></li>
+<li><a href="./command-reference/projects/#project-migrate">Migrate</a></li>
+</ul>
+</li>
+<li>Sources:
+<ul>
+<li><a href="./command-reference/sources/#source-add">Add</a></li>
+<li><a href="./command-reference/sources/#source-import">Import</a></li>
+<li><a href="./command-reference/sources/#source-remove">Remove</a></li>
 </ul>
 </li>
 </ul>
@@ -1367,7 +1367,7 @@ on CVAT server (in future, support S3, etc)
     
 	<h3 id="dependencies">Dependencies</h3>
 <ul>
-<li>Python (3.6+)</li>
+<li>Python (3.7+)</li>
 <li>Optional: OpenVINO, TensorFlow, PyTorch, MxNet, Caffe, Accuracy Checker</li>
 </ul>
 <h3 id="installation-steps">Installation steps</h3>
@@ -1815,66 +1815,38 @@ datum <span style="color:#204a87">export</span> -f voc -- --save-images
     
 	<p>List of supported formats:</p>
 <ul>
-<li>MS COCO
-(<code>image_info</code>, <code>instances</code>, <code>person_keypoints</code>, <code>captions</code>, <code>labels</code>,<code>panoptic</code>, <code>stuff</code>)
+<li>ADE20k (v2017) (import-only)
 <ul>
-<li><a href="http://cocodataset.org/#format-data">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/coco_dataset">Dataset example</a></li>
-<li><code>labels</code> are our extension - like <code>instances</code> with only <code>category_id</code></li>
-<li><a href="../../docs/formats/coco">Format documentation</a></li>
+<li><a href="https://www.kaggle.com/soumikrakshit/ade20k">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/ade20k2017_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/ade20k2017">Format documentation</a></li>
 </ul>
 </li>
-<li>PASCAL VOC (<code>classification</code>, <code>detection</code>, <code>segmentation</code> (class, instances),
-<code>action_classification</code>, <code>person_layout</code>)
+<li>ADE20k (v2020) (import-only)
 <ul>
-<li><a href="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/htmldoc/index.html">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/voc_dataset">Dataset example</a></li>
-<li><a href="../../docs/formats/pascal_voc">Format documentation</a></li>
+<li><a href="https://groups.csail.mit.edu/vision/datasets/ADE20K/">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/ade20k2020_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/ade20k2020">Format documentation</a></li>
 </ul>
 </li>
-<li>YOLO (<code>bboxes</code>)
+<li>Align CelebA (<code>classification</code>, <code>landmarks</code>) (import-only)
 <ul>
-<li><a href="https://github.com/AlexeyAB/darknet#how-to-train-pascal-voc-data">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/yolo_dataset">Dataset example</a></li>
-<li><a href="../../docs/formats/yolo">Format documentation</a></li>
+<li><a href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/align_celeba_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/align_celeba">Format documentation</a></li>
 </ul>
 </li>
-<li>TF Detection API (<code>bboxes</code>, <code>masks</code>)
+<li>CamVid (<code>segmentation</code>)
 <ul>
-<li>Format specifications: <a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/using_your_own_dataset.md">bboxes</a>,
-<a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/instance_segmentation.md">masks</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/tf_detection_api_dataset">Dataset example</a></li>
+<li><a href="http://mi.eng.cam.ac.uk/research/projects/VideoRec/CamVid/">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/camvid_dataset">Dataset example</a></li>
 </ul>
 </li>
-<li>WIDER Face (<code>bboxes</code>)
+<li>CelebA (<code>classification</code>, <code>detection</code>, <code>landmarks</code>) (import-only)
 <ul>
-<li><a href="http://shuoyang1213.me/WIDERFACE/">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/widerface_dataset">Dataset example</a></li>
-</ul>
-</li>
-<li>VGGFace2 (<code>landmarks</code>, <code>bboxes</code>)
-<ul>
-<li><a href="https://github.com/ox-vgg/vgg_face2">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/vgg_face2_dataset">Dataset example</a></li>
-</ul>
-</li>
-<li>MOT sequences
-<ul>
-<li><a href="https://arxiv.org/pdf/1906.04567.pdf">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mot_dataset">Dataset example</a></li>
-</ul>
-</li>
-<li>MOTS (png)
-<ul>
-<li><a href="https://www.vision.rwth-aachen.de/page/mots">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mots_dataset">Dataset example</a></li>
-</ul>
-</li>
-<li>ImageNet (<code>classification</code>, <code>detection</code>)
-<ul>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/imagenet_dataset">Dataset example</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/imagenet_txt_dataset">Dataset example (txt for classification)</a></li>
-<li>Detection format is the same as in PASCAL VOC</li>
+<li><a href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/celeba_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/celeba">Format documentation</a></li>
 </ul>
 </li>
 <li>CIFAR-10/100 (<code>classification</code> (python version))
@@ -1885,31 +1857,31 @@ datum <span style="color:#204a87">export</span> -f voc -- --save-images
 <li><a href="../../docs/formats/cifar">Format documentation</a></li>
 </ul>
 </li>
-<li>MNIST (<code>classification</code>)
-<ul>
-<li><a href="http://yann.lecun.com/exdb/mnist/">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mnist_dataset">Dataset example</a></li>
-<li><a href="../../docs/formats/mnist">Format documentation</a></li>
-</ul>
-</li>
-<li>MNIST in CSV (<code>classification</code>)
-<ul>
-<li><a href="https://pjreddie.com/projects/mnist-in-csv/">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mnist_csv_dataset">Dataset example</a></li>
-<li><a href="../../docs/formats/mnist">Format documentation</a></li>
-</ul>
-</li>
-<li>CamVid (<code>segmentation</code>)
-<ul>
-<li><a href="http://mi.eng.cam.ac.uk/research/projects/VideoRec/CamVid/">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/camvid_dataset">Dataset example</a></li>
-</ul>
-</li>
 <li>Cityscapes (<code>segmentation</code>)
 <ul>
 <li><a href="https://www.cityscapes-dataset.com/dataset-overview/">Format specification</a></li>
 <li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/cityscapes_dataset">Dataset example</a></li>
 <li><a href="../../docs/formats/cityscapes">Format documentation</a></li>
+</ul>
+</li>
+<li>CVAT (<code>for images</code>, <code>for video</code> (import-only))
+<ul>
+<li><a href="https://openvinotoolkit.github.io/cvat/docs/manual/advanced/xml_format">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/cvat_dataset">Dataset example</a></li>
+</ul>
+</li>
+<li>ICDAR13/15 (<code>word_recognition</code>, <code>text_localization</code>, <code>text_segmentation</code>)
+<ul>
+<li><a href="https://rrc.cvc.uab.es/?ch=2">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/icdar_dataset">Dataset example</a></li>
+</ul>
+</li>
+<li>ImageNet (<code>classification</code>, <code>detection</code>)
+<ul>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/imagenet_dataset">Dataset example</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/imagenet_txt_dataset">Dataset example (txt for classification)</a></li>
+<li>Detection format is the same as in PASCAL VOC</li>
+<li><a href="../../docs/formats/imagenet">Format documentation</a></li>
 </ul>
 </li>
 <li>KITTI (<code>segmentation</code>, <code>detection</code>)
@@ -1926,36 +1898,24 @@ datum <span style="color:#204a87">export</span> -f voc -- --save-images
 <li><a href="../../docs/formats/kitti_raw">Format documentation</a></li>
 </ul>
 </li>
-<li>Supervisely (<code>pointcloud</code>)
-<ul>
-<li><a href="https://docs.supervise.ly/data-organization/00_ann_format_navi">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/sly_pointcloud_dataset">Dataset example</a></li>
-<li><a href="../../docs/formats/sly_pointcloud">Format documentation</a></li>
-</ul>
-</li>
-<li>SYNTHIA (<code>segmentation</code>)
-<ul>
-<li><a href="https://synthia-dataset.net/">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/synthia_dataset">Dataset example</a></li>
-<li><a href="../../docs/formats/synthia">Format documentation</a></li>
-</ul>
-</li>
-<li>CVAT
-<ul>
-<li><a href="https://openvinotoolkit.github.io/cvat/docs/manual/advanced/xml_format">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/cvat_dataset">Dataset example</a></li>
-</ul>
-</li>
-<li>LabelMe
+<li>LabelMe (<code>labels</code>, <code>boxes</code>, <code>masks</code>)
 <ul>
 <li><a href="http://labelme.csail.mit.edu/Release3.0">Format specification</a></li>
 <li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/labelme_dataset">Dataset example</a></li>
 </ul>
 </li>
-<li>ICDAR13/15 (<code>word_recognition</code>, <code>text_localization</code>, <code>text_segmentation</code>)
+<li>LFW (<code>classification</code>, <code>person re-identification</code>, <code>landmarks</code>)
 <ul>
-<li><a href="https://rrc.cvc.uab.es/?ch=2">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/icdar_dataset">Dataset example</a></li>
+<li><a href="http://vis-www.cs.umass.edu/lfw/">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/lfw_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/lfw">Format documentation</a></li>
+</ul>
+</li>
+<li>Mapillary Vistas (import-only)
+<ul>
+<li><a href="https://www.mapillary.com/dataset/vistas">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mapillary_vistas_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/mapillary_vistas">Format documentation</a></li>
 </ul>
 </li>
 <li>Market-1501 (<code>person re-identification</code>)
@@ -1964,52 +1924,130 @@ datum <span style="color:#204a87">export</span> -f voc -- --save-images
 <li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/market1501_dataset">Dataset example</a></li>
 </ul>
 </li>
-<li>LFW (<code>classification</code>, <code>person re-identification</code>, <code>landmarks</code>)
+<li>MARS (import-only)
 <ul>
-<li><a href="http://vis-www.cs.umass.edu/lfw/">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/lfw_dataset">Dataset example</a></li>
+<li><a href="https://zheng-lab.cecs.anu.edu.au/Project/project_mars.html">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mars_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/mars">Format documentation</a></li>
 </ul>
 </li>
-<li>CelebA (<code>classification</code>, <code>detection</code>, <code>landmarks</code>)
+<li>MNIST (<code>classification</code>)
 <ul>
-<li><a href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/celeba_dataset">Dataset example</a></li>
-<li><a href="../../docs/formats/celeba">Format documentation</a></li>
+<li><a href="http://yann.lecun.com/exdb/mnist/">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mnist_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/mnist">Format documentation</a></li>
 </ul>
 </li>
-<li>Align CelebA (<code>classification</code>, <code>landmarks</code>)
+<li>MNIST in CSV (<code>classification</code>)
 <ul>
-<li><a href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/align_celeba_dataset">Dataset example</a></li>
-<li><a href="../../docs/formats/align_celeba">Format documentation</a></li>
+<li><a href="https://pjreddie.com/projects/mnist-in-csv/">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mnist_csv_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/mnist">Format documentation</a></li>
 </ul>
 </li>
-<li>VoTT CSV (<code>detection</code>)
+<li>MOT sequences
 <ul>
-<li><a href="https://github.com/microsoft/VoTT">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/vott_csv_dataset">Dataset example</a></li>
-<li><a href="../../docs/formats/vott_csv">Format documentation</a></li>
+<li><a href="https://arxiv.org/pdf/1906.04567.pdf">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mot_dataset">Dataset example</a></li>
 </ul>
 </li>
-<li>VoTT JSON (<code>detection</code>)
+<li>MOTS (png)
 <ul>
-<li><a href="https://github.com/microsoft/VoTT">Format specification</a></li>
-<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/vott_json_dataset">Dataset example</a></li>
-<li><a href="../../docs/formats/vott_json">Format documentation</a></li>
+<li><a href="https://www.vision.rwth-aachen.de/page/mots">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mots_dataset">Dataset example</a></li>
 </ul>
 </li>
-<li>MPII Human Pose Dataset (<code>detection</code>, <code>pose estimation</code>)
+<li>MPII Human Pose Dataset (<code>detection</code>, <code>pose estimation</code>) (import-only)
 <ul>
 <li><a href="http://human-pose.mpi-inf.mpg.de">Format specification</a></li>
 <li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mpii_dataset">Dataset example</a></li>
 <li><a href="../../docs/formats/mpii">Format documentation</a></li>
 </ul>
 </li>
-<li>MPII Human Pose Dataset (JSON) (<code>detection</code>, <code>pose estimation</code>)
+<li>MPII Human Pose Dataset (JSON) (<code>detection</code>, <code>pose estimation</code>) (import-only)
 <ul>
 <li><a href="http://human-pose.mpi-inf.mpg.de">Format specification</a></li>
 <li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/mpii_json_dataset">Dataset example</a></li>
 <li><a href="../../docs/formats/mpii_json">Format documentation</a></li>
+</ul>
+</li>
+<li>MS COCO (<code>image_info</code>, <code>instances</code>, <code>person_keypoints</code>, <code>captions</code>, <code>labels</code>,<code>panoptic</code>, <code>stuff</code>)
+<ul>
+<li><a href="http://cocodataset.org/#format-data">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/coco_dataset">Dataset example</a></li>
+<li><code>labels</code> are our extension - like <code>instances</code> with only <code>category_id</code></li>
+<li><a href="../../docs/formats/coco">Format documentation</a></li>
+</ul>
+</li>
+<li>Open Images (<code>classification</code>, <code>detection</code>, <code>segmentation</code>)
+<ul>
+<li><a href="https://storage.googleapis.com/openimages/web/download.html">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/open_images_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/open_images">Format documentation</a></li>
+</ul>
+</li>
+<li>PASCAL VOC (<code>classification</code>, <code>detection</code>, <code>segmentation</code> (class, instances),
+<code>action_classification</code>, <code>person_layout</code>)
+<ul>
+<li><a href="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/htmldoc/index.html">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/voc_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/pascal_voc">Format documentation</a></li>
+</ul>
+</li>
+<li>Supervisely (<code>pointcloud</code>)
+<ul>
+<li><a href="https://docs.supervise.ly/data-organization/00_ann_format_navi">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/sly_pointcloud_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/sly_pointcloud">Format documentation</a></li>
+</ul>
+</li>
+<li>SYNTHIA (<code>segmentation</code>) (import-only)
+<ul>
+<li><a href="https://synthia-dataset.net/">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/synthia_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/synthia">Format documentation</a></li>
+</ul>
+</li>
+<li>TF Detection API (<code>bboxes</code>, <code>masks</code>)
+<ul>
+<li>Format specifications: <a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/using_your_own_dataset.md">bboxes</a>,
+<a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/instance_segmentation.md">masks</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/tf_detection_api_dataset">Dataset example</a></li>
+</ul>
+</li>
+<li>VGGFace2 (<code>landmarks</code>, <code>bboxes</code>)
+<ul>
+<li><a href="https://github.com/ox-vgg/vgg_face2">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/vgg_face2_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/vgg_face2">Format documentation</a></li>
+</ul>
+</li>
+<li>VoTT CSV (<code>detection</code>) (import-only)
+<ul>
+<li><a href="https://github.com/microsoft/VoTT">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/vott_csv_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/vott_csv">Format documentation</a></li>
+</ul>
+</li>
+<li>VoTT JSON (<code>detection</code>) (import-only)
+<ul>
+<li><a href="https://github.com/microsoft/VoTT">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/vott_json_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/vott_json">Format documentation</a></li>
+</ul>
+</li>
+<li>WIDER Face (<code>bboxes</code>)
+<ul>
+<li><a href="http://shuoyang1213.me/WIDERFACE/">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/widerface_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/wider_face">Format documentation</a></li>
+</ul>
+</li>
+<li>YOLO (<code>bboxes</code>)
+<ul>
+<li><a href="https://github.com/AlexeyAB/darknet#how-to-train-pascal-voc-data">Format specification</a></li>
+<li><a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/yolo_dataset">Dataset example</a></li>
+<li><a href="../../docs/formats/yolo">Format documentation</a></li>
 </ul>
 </li>
 </ul>
@@ -4281,6 +4319,22 @@ export in YOLO for model training</p>
 datum add -f coco -r annotations/instances_train.json dataset1/
 datum add -f cvat dataset2/train.xml
 datum <span style="color:#204a87">export</span> -f yolo -- --save-images
+</code></pre></div><p>Example: add an existing dataset into a project, avoid data copying</p>
+<p>To add a dataset, we need to have it inside the project directory:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">proj/
+├─ .datumaro/
+├─ .dvc/
+├─ my_coco/
+│  └─ images/
+│     ├─ image1.jpg
+│     └─ ...
+│  └─ annotations/
+│     └─ coco_annotation.json
+├─ .dvcignore
+└─ .gitignore
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create -o proj/
+mv ~/my_coco/ proj/my_coco/ <span style="color:#8f5902;font-style:italic"># move the dataset into the project directory</span>
+datum add -p proj/ -f coco proj/my_coco/
 </code></pre></div><h3 id="remove-datasets-a-idsource-removea">Remove Datasets <a id="source-remove"></a></h3>
 <p>To remove a data source from a project, use the <code>remove</code> command.</p>
 <p>Usage:</p>
@@ -9158,7 +9212,7 @@ datum model run -p proj -m model-0
 <h2 id="installation">Installation</h2>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
-<li>Python (3.6+)</li>
+<li>Python (3.7+)</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/openvinotoolkit/datumaro
 </code></pre></div><p>Optionally, install a virtual environment (recommended):</p>
