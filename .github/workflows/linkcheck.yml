@@ -33,6 +33,7 @@ jobs:
           pip install gitpython packaging toml Sphinx==4.2.0 sphinx-rtd-theme==1.0.0
           pip install -r requirements.txt
           sphinx-build -a -n site/source site/static/api
+          cd site
           hugo
           pip install LinkChecker
-          linkchecker ./site/public > linkchecker_report.txt
+          linkchecker public > linkchecker_report.txt
