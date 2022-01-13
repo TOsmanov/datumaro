@@ -36,4 +36,4 @@ jobs:
           sphinx-versioning -l site/source/conf.py build -r develop -w develop site/source site/static/api
           python site/build_docs.py
           pip install LinkChecker
-          linkchecker ./public/ > linkchecker_report.txt
+          linkchecker public/ > linkchecker_report.txt
