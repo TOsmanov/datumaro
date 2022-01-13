@@ -1,6 +1,5 @@
 name: Linkcheck
 on: pull_request
-
 jobs:
   linkcheck:
     runs-on: ubuntu-20.04
@@ -9,7 +8,6 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
-      
       - uses: actions/setup-python@v2
         with:
           python-version: 3.8
@@ -38,9 +36,7 @@ jobs:
           sphinx-versioning -l site/source/conf.py build -r develop -w develop site/source site/static/api
           python site/build_docs.py
 
-      - name: Linkcheck
-
-      - name: Run checks
+      - name: Run Linkchecks
         run: |
           pip install LinkChecker
           linkchecker public > linkchecker_report.txt
