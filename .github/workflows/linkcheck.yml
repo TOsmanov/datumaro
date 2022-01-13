@@ -2,13 +2,17 @@ name: Linkcheck
 on: pull_request
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: recursive
           fetch-depth: 0
+      
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
@@ -33,14 +37,8 @@ jobs:
           pip install git+https://github.com/pytorch-ignite/sphinxcontrib-versioning.git@a1a1a94ca80a0233f0df3eaf9876812484901e76
           sphinx-versioning -l site/source/conf.py build -r develop -w develop site/source site/static/api
           python site/build_docs.py
-          
-  linkcheck:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
+
+      - name: Linkcheck
 
       - name: Run checks
         run: |
