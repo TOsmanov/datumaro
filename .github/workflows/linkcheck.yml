@@ -1,0 +1,48 @@
+name: Linkcheck
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.83.1'
+          extended: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+
+      - name: Install npm packages
+        working-directory: ./site
+        run: |
+          npm ci
+
+      - name: Build docs
+        run: |
+          pip install gitpython packaging toml Sphinx==4.2.0 sphinx-rtd-theme==1.0.0
+          pip install -r requirements.txt
+          pip install git+https://github.com/pytorch-ignite/sphinxcontrib-versioning.git@a1a1a94ca80a0233f0df3eaf9876812484901e76
+          sphinx-versioning -l site/source/conf.py build -r develop -w develop site/source site/static/api
+          python site/build_docs.py
+          
+  linkcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Run checks
+        run: |
+          pip install LinkChecker
+          linkchecker public > linkchecker_report.txt
