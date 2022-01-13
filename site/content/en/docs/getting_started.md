@@ -6,7 +6,7 @@ no_list: true
 weight: 1
 ---
 
-To read about the design concept and features of Datumaro, go to the [design section](/docs/design/).
+To read about the design concept and features of Datumaro, go to the [design section](/docs/BROKENLINK/).
 
 ## Installation
 
@@ -126,7 +126,7 @@ project.close()
   ```
 
 - Annotate instance polygons in
-  [CVAT](https://github.com/openvinotoolkit/cvat), export as masks in COCO:
+  [CVAT](https://github.com/openvinotoolkit/BROKENLINK), export as masks in COCO:
   ```bash
   datum convert --input-format cvat --input-path <path/to/cvat.xml> \
                 --output-format coco -- --segmentation-mode masks
