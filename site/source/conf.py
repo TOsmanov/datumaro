@@ -19,7 +19,7 @@ from datumaro.version import VERSION
 
 # -- Project information -----------------------------------------------------
 
-project = 'Datumaro API documentation'
+project = 'Datumaro Documentation'
 author = 'Intel'
 
 # The full version, including alpha/beta/rc tags
@@ -35,8 +35,15 @@ extensions = [
     'sphinx.ext.napoleon', # Support for NumPy and Google style docstrings
     'sphinx.ext.autodoc',  # Core library for html generation from docstrings
     'sphinx.ext.viewcode', # Find the source files
+    'myst_parser', # https://www.sphinx-doc.org/en/master/usage/markdown.html
+    'sphinxcontrib.mermaid', # Extension allows you to embed Mermaid graphs
+    'sphinx_copybutton', # Copy buttons for code blocks
 ]
 
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates', ]
 
@@ -66,12 +73,17 @@ html_theme_options = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static', ]
+html_static_path = ['_static', '_static']
 html_css_files = ['custom.css', ]
 
 # -- Extension configuration -------------------------------------------------
+# sphinx.ext.autodoc
 autodoc_docstring_signature = True
 autodoc_member_order = 'bysource'
+# sphinxcontrib.mermaid
+mermaid_params = [
+    '--width', '500',
+]
 
 # Members to be included.
 include_members_list = [

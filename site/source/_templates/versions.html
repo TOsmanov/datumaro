@@ -1,0 +1,5 @@
+{% extends "!versions.html" %} {%- for name, url in versions.tags %}
+<dd><a href="{{ url }}">{{ name }}</a></dd>
+<dd><a href="{{ pathto(v0.1.11) }}">v0.1.11</a></dd>
+<dd><a href="{{ pathto(v0.2.1) }}">v0.2.1</a></dd>
+{%- endfor %}
