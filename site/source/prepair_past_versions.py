@@ -5,19 +5,26 @@ import subprocess
 
 import git
 
-old_versions = ['v0.1.11', 'v0.2.1', 'v0.2.2']
+past_versions = ['v0.1.11', 'v0.2.1', 'v0.2.2']
 
-cwd = 'C:\\Git\\migrating-docs-to-sphinx\\datumaro' # for test
+cwd = repo_root
 docs_dir = os.path.join(cwd, 'site', 'content', 'en', 'docs')
 images_dir = os.path.join(cwd, 'site', 'content', 'en', 'images')
 
-def prepair(old_versions):
-    for ver in old_versions:
+def prepair_past_version(past_versions): # for test
+    for ver in past_versions:
         destination = os.path.join(cwd, 'site', 'source', ver)
         prepair_repo(repo, docs_dir, ver, destination)
         prepair_files(ver, destination)
         prepair_headers(destination)
         generate_docs(destination, cwd, ver)
+
+def prepair_current_repo():
+    ver = repo.active_branch.name
+    destination = os.path.join(cwd, 'site', 'source', ver)
+    prepair_repo(repo, docs_dir, ver, destination)
+    prepair_files(ver, destination)
+    prepair_headers(destination)
 
 def prepair_repo(repo, docs_dir, ver, destination):
     repo.git.checkout(ver, '--', docs_dir)
@@ -83,8 +90,7 @@ def generate_docs(destination, cwd, ver):
         ])
 
 if __name__ == "__main__":
-    repo_root = 'C:\\Git\\migrating-docs-to-sphinx\\datumaro' # for test
-    # repo_root = os.getcwd()
+    repo_root = os.getcwd()
     repo = git.Repo(repo_root)
 
-    prepair(old_versions)
+    prepair_past_version(past_versions)

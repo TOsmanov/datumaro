@@ -15,7 +15,9 @@ import sys
 
 sys.path.insert(0, os.path.abspath('../..'))
 
+import git
 from datumaro.version import VERSION
+from prepair_past_versions import prepair_current_repo
 
 # -- Project information -----------------------------------------------------
 
@@ -106,6 +108,11 @@ def replace(app, what, name, obj, options, lines):
                 if not "'|s'" in lines[i]:
                     lines[i] = lines[i].replace("|n", "\n").replace("|s", " ")
 
+def source_read_handler(app, docname, source):
+    if os.path.exists(os.path.join('site', 'source', 'content'):
+        prepair_current_repo()
+
 def setup(app):
     app.connect('autodoc-skip-member', skip_member)
     app.connect('autodoc-process-docstring', replace)
+    app.connect('source-read', source_read_handler)
