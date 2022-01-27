@@ -1,5 +1,6 @@
 # Image zip
 
+
 ## Format specification
 
 The image zip format allows to export/import unannotated datasets

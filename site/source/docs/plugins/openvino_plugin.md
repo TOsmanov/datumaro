@@ -1,8 +1,8 @@
 <!--lint disable maximum-heading-length-->
 # OpenVINO™ Inference Interpreter
-
-Interpreter samples to parse OpenVINO™ inference outputs.
+Interpreter samples to parse OpenVINO™ inference outputs
   This section on [GitHub](https://github.com/openvinotoolkit/datumaro/tree/develop/datumaro/plugins/openvino_plugin)'
+
 
 <!--lint enable maximum-heading-length-->
 

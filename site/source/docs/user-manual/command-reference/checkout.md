@@ -1,5 +1,6 @@
 # Checkout
 
+
 This command allows to restore a specific project revision in the project
 tree or to restore separate revisions of sources. A revision can be a commit
 hash, branch, tag, or any [relative reference in the Git format](https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection).

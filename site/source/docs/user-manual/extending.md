@@ -1,5 +1,6 @@
 # Extending
 
+
 There are few ways to extend and customize Datumaro behavior, which is
 supported by plugins. Check [our contribution guide](/docs/contributing) for
 details on plugin implementation. In general, a plugin is a Python module.
@@ -23,11 +24,17 @@ The plugin depends on TensorFlow, which can be installed with `pip`:
 
 ``` bash
 pip install tensorflow
-# or
+```
+or
+``` bash
 pip install tensorflow-gpu
-# or
+```
+or
+``` bash
 pip install datumaro[tf]
-# or
+```
+or
+``` bash
 pip install datumaro[tf-gpu]
 ```
 

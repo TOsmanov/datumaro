@@ -1,6 +1,4 @@
-# Developer Manual
-
-Dataset Management Framework (Datumaro) API and developer manual
+# Developer manual
 
 ## Basics
 
@@ -13,7 +11,7 @@ all of this.
 
 Basic library usage and data flow:
 
-```lang-none
+```
 Extractors -> Dataset -> Converter
                  |
              Filtration
@@ -451,10 +449,6 @@ Model-View-ViewModel (MVVM) UI pattern is used.
 ```{mermaid}
 %%{init { 'theme':'neutral' }}%%
 flowchart LR
-    c((CLI))<--CliModel--->d((Domain))
-    g((GUI))<--GuiModel--->d
-    a((API))<--->d
-    t((Tests))<--->d
 ```
 
 </div>

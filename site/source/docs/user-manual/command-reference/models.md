@@ -1,6 +1,7 @@
 # Models
 
-### Register model
+
+### Register model <a id="model-add"></a>
 
 Datumaro can execute deep learning models in various frameworks. Check
 [the plugins section](/docs/user-manual/extending/#builtin-plugins)
@@ -90,7 +91,7 @@ def get_categories():
     return { AnnotationType.label: label_categories }
 ```
 
-### Remove Models
+### Remove Models <a id="model-remove"></a>
 
 
 To remove a model from a project, use the `datum model remove` command.
@@ -115,7 +116,7 @@ datum model add <...> -n model1
 datum remove model1
 ```
 
-### Run Model
+### Run Model <a id="model-run"></a>
 
 This command applies model to dataset images and produces a new dataset.
 

@@ -1,11 +1,11 @@
 # How to control telemetry data collection
 
+
 The [OpenVINO™ telemetry library](https://github.com/openvinotoolkit/telemetry/)
 is used to collect basic information about Datumaro usage.
 
 A short description of the information collected:
 | Event             | Description |
-| ----------------- | ----------- |
 | version           | Datumaro version |
 | session start/end | Accessory event, there is no additional info here |
 | {cli_command}_result | Datumaro command result with arguments passed* |

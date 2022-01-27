@@ -1,5 +1,6 @@
 # CelebA
 
+
 ## Format specification
 
 The original CelebA dataset is available
@@ -67,7 +68,7 @@ attributes, bounding boxes, landmarks and subsets respectively
 The original CelebA dataset stores images in a .7z archive. The archive
 needs to be unpacked before importing.
 
-To add custom classes, you can use [`dataset_meta.json`](/docs/user_manual/supported_formats/#dataset-meta-file).
+To add custom classes, you can use [`dataset_meta.json`](/docs/user-manual/supported_formats/#dataset-meta-file).
 
 ## Export to other formats
 
@@ -82,7 +83,9 @@ formats using CLI:
 datum create
 datum import -f celeba <path/to/dataset>
 datum export -f imagenet_txt -o ./save_dir -- --save-images
-# or
+```
+or
+``` bash
 datum convert -if celeba -i <path/to/dataset> \
     -f imagenet_txt -o <output/dir> -- --save-images
 ```

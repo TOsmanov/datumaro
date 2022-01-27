@@ -1,5 +1,6 @@
 # Projects
 
+
 ### Migrate project <a id="project-migrate"></a>
 
 Updates the project from an old version to the current one and saves the

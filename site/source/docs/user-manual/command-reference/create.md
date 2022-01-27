@@ -1,5 +1,6 @@
 # Create project
 
+
 The command creates an empty project. A project is required for the most of
 Datumaro functionality.
 

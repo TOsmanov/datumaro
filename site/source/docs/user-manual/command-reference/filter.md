@@ -1,5 +1,6 @@
 # Filter datasets
 
+
 This command allows to extract a sub-dataset from a dataset. The new dataset
 includes only items satisfying some condition. The XML [XPath](https://devhints.io/xpath)
 is used as a query format.

@@ -1,6 +1,8 @@
 User Manual
 ###########
 
+.. include:: _index.md
+
 .. toctree::
    :maxdepth: 1
    :glob:

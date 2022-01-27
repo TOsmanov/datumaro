@@ -1,5 +1,6 @@
 # Download datasets
 
+
 This command downloads a publicly available dataset and saves it to a local
 directory.
 In terms of syntax, this command is similar to [`convert`](../convert),

@@ -1,5 +1,6 @@
 # Log
 
+
 This command prints the history of the current project revision.
 
 Prints lines in the following format:

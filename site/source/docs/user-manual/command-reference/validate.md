@@ -1,5 +1,6 @@
 # Validate Dataset
 
+
 This command inspects annotations with respect to the task type
 and stores the results in JSON file.
 
@@ -55,7 +56,6 @@ datum validate -p prj/ -t classification -- -ir 40
 Here is the list of validation items(a.k.a. anomaly types).
 
 | Anomaly Type | Description | Task Type |
-| ------------ | ----------- | --------- |
 | MissingLabelCategories | Metadata (ex. LabelCategories) should be defined | common |
 | MissingAnnotation | No annotation found for an Item | common |
 | MissingAttribute  | An attribute key is missing for an Item | common |

@@ -1,5 +1,6 @@
 # Sources
 
+
 These commands are specific for Data Sources. Read more about them [here](/docs/user-manual/how_to_use_datumaro#data-sources).
 
 ### Import Dataset <a id="source-import"></a>
@@ -118,6 +119,30 @@ datum create
 datum add -f coco -r annotations/instances_train.json dataset1/
 datum add -f cvat dataset2/train.xml
 datum export -f yolo -- --save-images
+```
+
+Example: add an existing dataset into a project, avoid data copying
+
+To add a dataset, we need to have it inside the project directory:
+
+```bash
+proj/
+├─ .datumaro/
+├─ .dvc/
+├─ my_coco/
+│  └─ images/
+│     ├─ image1.jpg
+│     └─ ...
+│  └─ annotations/
+│     └─ coco_annotation.json
+├─ .dvcignore
+└─ .gitignore
+```
+
+``` bash
+datum create -o proj/
+mv ~/my_coco/ proj/my_coco/ # move the dataset into the project directory
+datum add -p proj/ -f coco proj/my_coco/
 ```
 
 ### Remove Datasets <a id="source-remove"></a>

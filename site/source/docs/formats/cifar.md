@@ -1,5 +1,6 @@
 # CIFAR
 
+
 ## Format specification
 
 CIFAR format specification is available [here](https://www.cs.toronto.edu/~kriz/cifar.html).
@@ -97,7 +98,7 @@ CIFAR-100:
     'coarse_labels': list of integers
 ```
 
-To add custom classes, you can use [`dataset_meta.json`](/docs/user_manual/supported_formats/#dataset-meta-file).
+To add custom classes, you can use [`dataset_meta.json`](/docs/user-manual/supported_formats/#dataset-meta-file).
 
 ## Export to other formats
 
@@ -112,7 +113,9 @@ formats using CLI:
 datum create
 datum import -f cifar <path/to/cifar>
 datum export -f imagenet -o <output/dir>
-# or
+```
+or
+``` bash
 datum convert -if cifar -i <path/to/dataset> \
     -f imagenet -o <output/dir> -- --save-images
 ```
@@ -134,7 +137,8 @@ There are several ways to convert a dataset to CIFAR format:
 # export dataset into CIFAR format from existing project
 datum export -p <path/to/project> -f cifar -o <output/dir> \
     -- --save-images
-
+```
+``` bash
 # converting to CIFAR format from other format
 datum convert -if imagenet -i <path/to/dataset> \
     -f cifar -o <output/dir> -- --save-images

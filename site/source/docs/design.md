@@ -1,5 +1,6 @@
 # Datumaro Design
 
+
 <!--lint disable list-item-indent-->
 
 ## Concept
@@ -77,15 +78,11 @@ extending CVAT UI capabilities regarding task and project operations.
 It should be capable of downloading and processing data from CVAT.
 
 <!--lint disable fenced-code-flag-->
-```lang-none
+```
         User
           |
           v
- +------------------+
  |       CVAT       |
- +--------v---------+       +------------------+       +--------------+
- | Datumaro module  | ----> | Datumaro project | <---> | Datumaro CLI | <--- User
- +------------------+       +------------------+       +--------------+
 ```
 <!--lint enable fenced-code-flag-->
 

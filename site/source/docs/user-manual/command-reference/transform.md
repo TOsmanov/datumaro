@@ -1,5 +1,6 @@
 # Transform Dataset
 
+
 Often datasets need to be modified during preparation for model training and
 experimenting. In trivial cases it can be done manually - e.g. image renaming
 or label renaming. However, in more complex cases even simple modifications
@@ -206,5 +207,6 @@ datum transform -t ndr -- \
 - Resize dataset images and annotations. Supports upscaling, downscaling
 and mixed variants.
 
-```
+```bash
 datum transform -t resize -- -dw 256 -dh 256
+```

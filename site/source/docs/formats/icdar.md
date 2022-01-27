@@ -1,5 +1,7 @@
 # ICDAR
 
+
+
 ## Format specification
 ICDAR is a dataset for text recognition task, it's available
 for download [here](https://rrc.cvc.uab.es/). There is exists
@@ -36,7 +38,7 @@ Supported attributes:
 
 There is few ways to import ICDAR dataset with Datumaro:
 - Through the Datumaro project
-```
+``` bash
 datum create
 datum import -f icdar_text_localization <text_localization_dataset>
 datum import -f icdar_text_segmentation <text_segmentation_dataset>
@@ -101,11 +103,12 @@ See more information about adding datasets to the project in the
 ## Export to other formats
 Datumaro can convert ICDAR dataset into any other format
 [Datumaro supports](/docs/user-manual/supported_formats/). Examples:
-```
+``` bash
 # converting ICDAR text segmentation dataset into the VOC with `convert` command
 datum convert -if icdar_text_segmentation -i source_dataset \
     -f voc -o export_dir -- --save-images
-
+```
+``` bash
 # converting ICDAR text localization into the LabelMe through Datumaro project
 datum create
 datum import -f icdar_text_localization source_dataset

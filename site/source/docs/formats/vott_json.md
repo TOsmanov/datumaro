@@ -1,5 +1,6 @@
 # VoTT JSON
 
+
 ## Format specification
 
 [VoTT](https://github.com/microsoft/VoTT) (Visual Object Tagging Tool) is
@@ -43,7 +44,7 @@ dataset/
 └── ...
 ```
 
-To add custom classes, you can use [`dataset_meta.json`](/docs/user_manual/supported_formats/#dataset-meta-file).
+To add custom classes, you can use [`dataset_meta.json`](/docs/user-manual/supported_formats/#dataset-meta-file).
 
 ## Export to other formats
 
@@ -58,7 +59,9 @@ formats using CLI:
 datum create
 datum import -f vott_json <path/to/dataset>
 datum export -f voc -o ./save_dir -- --save-images
-# or
+```
+or
+``` bash
 datum convert -if vott_json -i <path/to/dataset> \
     -f voc -o <output/dir> -- --save-images
 ```
