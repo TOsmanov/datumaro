@@ -39,14 +39,14 @@ extensions = [
     'sphinx.ext.autodoc',  # Core library for html generation from docstrings
     'sphinx.ext.viewcode', # Find the source files
     'sphinxcontrib.mermaid', # Extension allows you to embed Mermaid graphs
-    'myst_parser', # Support Markdown
+    # 'myst_parser', # Support Markdown
     'sphinx_copybutton', # Copy buttons for code blocks
 ]
 
 source_suffix = {
     '.rst': 'restructuredtext',
-    '.txt': 'markdown',
-    '.md': 'markdown',
+    # '.txt': 'markdown',
+    # '.md': 'markdown',
 }
 
 # Add any paths that contain templates here, relative to this directory.
@@ -85,13 +85,16 @@ html_css_files = ['custom.css', ]
 # sphinx.ext.autodoc
 autodoc_docstring_signature = True
 autodoc_member_order = 'bysource'
+
 # sphinxcontrib.mermaid
 mermaid_params = [
     '--width', '500',
 ]
+
 # sphinxcontrib-versioning
-scv_whitelist_branches = ('v0.1.11', 'v0.2.1', 'v0.2.2')
+scv_whitelist_branches = ('v0.1.11', 'v0.2.1', 'v0.2.2', 'migrating-docs-to-sphinx')
 scv_whitelist_tags = (re.compile(r'^v\d+\.\d+\.\d+$'),)
+scv_root_ref = 'migrating-docs-to-sphinx'
 
 # Prepair source files for past versions.
 
@@ -167,4 +170,4 @@ def replace(app, what, name, obj, options, lines):
 def setup(app):
     app.connect('autodoc-skip-member', skip_member)
     app.connect('autodoc-process-docstring', replace)
-    app.connect('source-read', source_read_handler)
+    # app.connect('source-read', source_read_handler)
