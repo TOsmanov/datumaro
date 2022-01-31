@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Format specification &mdash; Datumaro Documentation 0.2.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="YOLO" href="yolo.html" />
+    <link rel="prev" title="VoTT JSON" href="vott_json.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../index.html" class="icon"> Datumaro Documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design.html">Datumaro Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-manual/user-manual.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_manual.html">Developer manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="formats.html">Formats</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ade20k2017.html">ADE20k (v2017)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ade20k2020.html">ADE20k (v2020)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="align_celeba.html">Align CelebA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="celeba.html">CelebA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cifar.html">CIFAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cityscapes.html">Cityscapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coco.html">COCO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icdar.html">ICDAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_zip.html">Image zip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imagenet.html">ImageNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kitti.html">KITTI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kitti_raw.html">Velodyne Points / KITTI Raw 3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lfw.html">LFW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mapillary_vistas.html">Mapillary Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market1501.html">Market-1501</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mars.html">MARS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mnist.html">MNIST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpii.html">MPII Human Pose Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpii_json.html">MPII Human Pose Dataset (JSON)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_images.html">Open Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pascal_voc.html">Pascal VOC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sly_pointcloud.html">Supervisely Point Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="synthia.html">SYNTHIA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vgg_face2.html">Vgg Face2 CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vott_csv.html">VoTT CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vott_json.html">VoTT JSON</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Format specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#import-wider-face-dataset">Import WIDER Face dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#export-wider-face-dataset">Export WIDER Face dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#export-to-wider-face-dataset">Export to WIDER Face dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo.html">YOLO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribution Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/cli/cli.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/util/util/util.html">Utilities</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Datumaro Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="formats.html">Formats</a> &raquo;</li>
+      <li>Format specification</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/formats/wider_face.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p>title: WIDER Face
+linkTitle: WIDER Face</p>
+<section id="format-specification">
+<h1>Format specification<a class="headerlink" href="#format-specification" title="Permalink to this headline"></a></h1>
+<p>WIDER Face dataset is a face detection benchmark dataset,
+that available for download <a class="reference external" href="http://shuoyang1213.me/WIDERFACE/#Download">here</a>.</p>
+<p>Supported types of annotation:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Bbox</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Label</span></code></p></li>
+</ul>
+<p>Supported attributes for bboxes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">blur</span></code>:</p>
+<ul>
+<li><p>0 face without blur;</p></li>
+<li><p>1 face with normal blur;</p></li>
+<li><p>2 face with heavy blur.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expression</span></code>:</p>
+<ul>
+<li><p>0 face with typical expression;</p></li>
+<li><p>1 face with exaggerate expression.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">illumination</span></code>:</p>
+<ul>
+<li><p>0 image contains normal illumination;</p></li>
+<li><p>1 image contains extreme illumination.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pose</span></code>:</p>
+<ul>
+<li><p>0 pose is typical;</p></li>
+<li><p>1 pose is atypical.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">invalid</span></code>:</p>
+<ul>
+<li><p>0 image is valid;</p></li>
+<li><p>1 image is invalid.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">occluded</span></code>:</p>
+<ul>
+<li><p>0 face without occlusion;</p></li>
+<li><p>1 face with partial occlusion;</p></li>
+<li><p>2 face with heavy occlusion.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="import-wider-face-dataset">
+<h1>Import WIDER Face dataset<a class="headerlink" href="#import-wider-face-dataset" title="Permalink to this headline"></a></h1>
+<p>Importing of WIDER Face dataset into the Datumaro project:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">datum</span> <span class="n">create</span>
+<span class="n">datum</span> <span class="kn">import</span> <span class="o">-</span><span class="n">f</span> <span class="n">wider_face</span> <span class="o">&lt;</span><span class="n">path_to_wider_face</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Directory with WIDER Face dataset should has the following structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;path_to_wider_face&gt;
+├── labels.txt  # optional file with list of classes
+├── wider_face_split # directory with description of bboxes for each image
+│   ├── wider_face_subset1_bbx_gt.txt
+│   ├── wider_face_subset2_bbx_gt.txt
+│   ├── ...
+├── WIDER_subset1 # instead of &#39;subset1&#39; you can use any other subset name
+│   └── images
+│       ├── 0--label_0 # instead of &#39;label_&lt;n&gt;&#39; you can use any other class name
+│       │   ├──  0_label_0_image_01.jpg
+│       │   ├──  0_label_0_image_02.jpg
+│       │   ├──  ...
+│       ├── 1--label_1
+│       │   ├──  1_label_1_image_01.jpg
+│       │   ├──  1_label_1_image_02.jpg
+│       │   ├──  ...
+│       ├── ...
+├── WIDER_subset2
+│  └── images
+│      ├── ...
+├── ...
+</pre></div>
+</div>
+<p>Check <a class="reference external" href="http://shuoyang1213.me/WIDERFACE/support/bbx_annotation/wider_face_split.zip">README</a>
+file of the original WIDER Face dataset to get more information
+about structure of <code class="docutils literal notranslate"><span class="pre">.txt</span></code> annotation files.
+Also example of WIDER Face dataset available in our
+<a class="reference external" href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/assets/widerface_dataset">test assets</a>.</p>
+</section>
+<section id="export-wider-face-dataset">
+<h1>Export WIDER Face dataset<a class="headerlink" href="#export-wider-face-dataset" title="Permalink to this headline"></a></h1>
+<p>With Datumaro you can convert WIDER Face dataset into any other
+format <a class="reference internal" href="../user-manual/supported_formats.html"><span class="doc std std-doc">Datumaro supports</span></a>.
+Pay attention that this format should also support <code class="docutils literal notranslate"><span class="pre">Label</span></code> and/or <code class="docutils literal notranslate"><span class="pre">Bbox</span></code>
+annotation types.</p>
+<p>Few ways to export WIDER Face dataset using CLI:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using `convert` command</span>
+<span class="n">datum</span> <span class="n">convert</span> <span class="o">-</span><span class="k">if</span> <span class="n">wider_face</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">path_to_wider_face</span><span class="o">&gt;</span> \
+    <span class="o">-</span><span class="n">f</span> <span class="n">voc</span> <span class="o">-</span><span class="n">o</span> <span class="o">&lt;</span><span class="n">output_dir</span><span class="o">&gt;</span> <span class="o">--</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">images</span>
+
+<span class="c1"># Through the Datumaro project</span>
+<span class="n">datum</span> <span class="n">create</span>
+<span class="n">datum</span> <span class="kn">import</span> <span class="o">-</span><span class="n">f</span> <span class="n">wider_face</span> <span class="o">&lt;</span><span class="n">path_to_wider_face</span><span class="o">&gt;</span>
+<span class="n">datum</span> <span class="n">export</span> <span class="o">-</span><span class="n">f</span> <span class="n">voc</span> <span class="o">-</span><span class="n">o</span> <span class="o">&lt;</span><span class="n">output_dir</span><span class="o">&gt;</span> <span class="o">--</span> <span class="o">-</span><span class="n">save</span><span class="o">-</span><span class="n">images</span>
+</pre></div>
+</div>
+<p>Export WIDER Face dataset using Python API:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datumaro.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="s1">&#39;&lt;path_to_wider_face&#39;</span><span class="p">,</span> <span class="s1">&#39;wider_face&#39;</span><span class="p">)</span>
+
+<span class="c1"># Here you can perform some transformation using dataset.transform or</span>
+<span class="c1"># dataset.filter</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s1">&#39;output_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;open_images&#39;</span><span class="p">,</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: some formats have extra export options. For particular format see the
+<span class="xref myst">docs</span> to get information about it.</p>
+</div></blockquote>
+</section>
+<section id="export-to-wider-face-dataset">
+<h1>Export to WIDER Face dataset<a class="headerlink" href="#export-to-wider-face-dataset" title="Permalink to this headline"></a></h1>
+<p>Using Datumaro you can convert your dataset into the WIDER Face format,
+but for succseful exporting your dataset should contain <code class="docutils literal notranslate"><span class="pre">Label</span></code> and/or <code class="docutils literal notranslate"><span class="pre">Bbox</span></code>.</p>
+<p>Here example of exporting VOC dataset (object detection task)
+into the WIDER Face format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">datum</span> <span class="n">create</span>
+<span class="n">datum</span> <span class="kn">import</span> <span class="o">-</span><span class="n">f</span> <span class="n">voc_detection</span> <span class="o">&lt;</span><span class="n">path_to_voc</span><span class="o">&gt;</span>
+<span class="n">datum</span> <span class="n">export</span> <span class="o">-</span><span class="n">f</span> <span class="n">wider_face</span> <span class="o">-</span><span class="n">o</span> <span class="o">&lt;</span><span class="n">output_dir</span><span class="o">&gt;</span> <span class="o">--</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">images</span> <span class="o">--</span><span class="n">image</span><span class="o">-</span><span class="n">ext</span><span class="o">=</span><span class="s1">&#39;.png&#39;</span>
+</pre></div>
+</div>
+<p>Available extra export options for WIDER Face dataset format:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--save-images</span></code> allow to export dataset with saving images.
+(by default <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--image-ext</span> <span class="pre">IMAGE_EXT</span></code> allow to specify image extension
+for exporting dataset (by default - keep original)</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vott_json.html" class="btn btn-neutral float-left" title="VoTT JSON" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="yolo.html" class="btn btn-neutral float-right" title="YOLO" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

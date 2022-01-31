@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filter datasets &mdash; Datumaro Documentation 0.2.2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Print dataset info" href="info.html" />
+    <link rel="prev" title="Export Datasets" href="export.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../../index.html" class="icon"> Datumaro Documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design.html">Datumaro Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../user-manual.html">User Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../user-manual.html#user-manual">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_index.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending.html">Extending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_control_tm_data_collection.html">How to control telemetry data collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_use_datumaro.html">How to use Datumaro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../links.html">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../media_formats.html">Media formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supported_formats.html">Supported Formats</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="command-reference.html">Command Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="command-reference.html#command-reference">Command reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_index.html">Command reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="checkout.html">Checkout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commit.html">Commit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convert.html">Convert datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create.html">Create project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="detect-format.html">Detect dataset format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff.html">Compare datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download.html">Download datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explain.html">Run model inference explanation (explain)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="export.html">Export Datasets</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Filter datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="info.html">Print dataset info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="merge.html">Merge Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="patch.html">Patch Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sources.html">Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stats.html">Get Project Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="status.html">Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transform.html">Transform Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="util.html">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validate.html">Validate Dataset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_manual.html">Developer manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../formats/formats.html">Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contribution Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/cli/cli.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/util/util/util.html">Utilities</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Datumaro Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../user-manual.html">User Manual</a> &raquo;</li>
+          <li><a href="command-reference.html">Command Reference</a> &raquo;</li>
+      <li>Filter datasets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/user-manual/command-reference/filter.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="filter-datasets">
+<h1>Filter datasets<a class="headerlink" href="#filter-datasets" title="Permalink to this headline"></a></h1>
+<p>This command allows to extract a sub-dataset from a dataset. The new dataset
+includes only items satisfying some condition. The XML <a class="reference external" href="https://devhints.io/xpath">XPath</a>
+is used as a query format.</p>
+<p>The command can be applied to a dataset or a project build target,
+a stage or the combined <code class="docutils literal notranslate"><span class="pre">project</span></code> target, in which case all the project
+targets will be affected. A build tree stage will be recorded
+if <code class="docutils literal notranslate"><span class="pre">--stage</span></code> is enabled, and the resulting dataset(-s) will be
+saved if <code class="docutils literal notranslate"><span class="pre">--apply</span></code> is enabled.</p>
+<p>By default, datasets are updated in-place. The <code class="docutils literal notranslate"><span class="pre">-o/--output-dir</span></code>
+option can be used to specify another output directory. When
+updating in-place, use the <code class="docutils literal notranslate"><span class="pre">--overwrite</span></code> parameter (in-place
+updates fail by default to prevent data loss), unless a project
+target is modified.</p>
+<p>The current project (<code class="docutils literal notranslate"><span class="pre">-p/--project</span></code>) is also used as a context for
+plugins, so it can be useful for dataset paths having custom formats.
+When not specified, the current project’s working tree is used.</p>
+<p>There are several filtering modes available (the <code class="docutils literal notranslate"><span class="pre">-m/--mode</span></code> parameter).
+Supported modes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span></code>, <code class="docutils literal notranslate"><span class="pre">items</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">annotations</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">i+a</span></code>, <code class="docutils literal notranslate"><span class="pre">a+i</span></code>, <code class="docutils literal notranslate"><span class="pre">items+annotations</span></code>, <code class="docutils literal notranslate"><span class="pre">annotations+items</span></code></p></li>
+</ul>
+<p>When filtering annotations, use the <code class="docutils literal notranslate"><span class="pre">items+annotations</span></code>
+mode to point that annotation-less dataset items should be
+removed, otherwise they will be kept in the resulting dataset.
+To select an annotation, write an XPath that returns <code class="docutils literal notranslate"><span class="pre">annotation</span></code>
+elements (see examples).</p>
+<p>Item representations can be printed with the <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> parameter:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;item&gt;</span>
+  <span class="nt">&lt;id&gt;</span>290768<span class="nt">&lt;/id&gt;</span>
+  <span class="nt">&lt;subset&gt;</span>minival2014<span class="nt">&lt;/subset&gt;</span>
+  <span class="nt">&lt;image&gt;</span>
+    <span class="nt">&lt;width&gt;</span>612<span class="nt">&lt;/width&gt;</span>
+    <span class="nt">&lt;height&gt;</span>612<span class="nt">&lt;/height&gt;</span>
+    <span class="nt">&lt;depth&gt;</span>3<span class="nt">&lt;/depth&gt;</span>
+  <span class="nt">&lt;/image&gt;</span>
+  <span class="nt">&lt;annotation&gt;</span>
+    <span class="nt">&lt;id&gt;</span>80154<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;type&gt;</span>bbox<span class="nt">&lt;/type&gt;</span>
+    <span class="nt">&lt;label_id&gt;</span>39<span class="nt">&lt;/label_id&gt;</span>
+    <span class="nt">&lt;x&gt;</span>264.59<span class="nt">&lt;/x&gt;</span>
+    <span class="nt">&lt;y&gt;</span>150.25<span class="nt">&lt;/y&gt;</span>
+    <span class="nt">&lt;w&gt;</span>11.19<span class="nt">&lt;/w&gt;</span>
+    <span class="nt">&lt;h&gt;</span>42.31<span class="nt">&lt;/h&gt;</span>
+    <span class="nt">&lt;area&gt;</span>473.87<span class="nt">&lt;/area&gt;</span>
+  <span class="nt">&lt;/annotation&gt;</span>
+  <span class="nt">&lt;annotation&gt;</span>
+    <span class="nt">&lt;id&gt;</span>669839<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;type&gt;</span>bbox<span class="nt">&lt;/type&gt;</span>
+    <span class="nt">&lt;label_id&gt;</span>41<span class="nt">&lt;/label_id&gt;</span>
+    <span class="nt">&lt;x&gt;</span>163.58<span class="nt">&lt;/x&gt;</span>
+    <span class="nt">&lt;y&gt;</span>191.75<span class="nt">&lt;/y&gt;</span>
+    <span class="nt">&lt;w&gt;</span>76.98<span class="nt">&lt;/w&gt;</span>
+    <span class="nt">&lt;h&gt;</span>73.63<span class="nt">&lt;/h&gt;</span>
+    <span class="nt">&lt;area&gt;</span>5668.77<span class="nt">&lt;/area&gt;</span>
+  <span class="nt">&lt;/annotation&gt;</span>
+  ...
+<span class="nt">&lt;/item&gt;</span>
+</pre></div>
+</div>
+<p>The command can only be applied to a project build target, a stage or the
+combined <code class="docutils literal notranslate"><span class="pre">project</span></code> target, in which case all the targets will be affected.
+A build tree stage will be added if <code class="docutils literal notranslate"><span class="pre">--stage</span></code> is enabled, and the resulting
+dataset(-s) will be saved if <code class="docutils literal notranslate"><span class="pre">--apply</span></code> is enabled.</p>
+<p>Usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum filter <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-e FILTER<span class="o">]</span> <span class="o">[</span>-m MODE<span class="o">]</span> <span class="o">[</span>--dry-run<span class="o">]</span> <span class="o">[</span>--stage STAGE<span class="o">]</span>
+  <span class="o">[</span>--apply APPLY<span class="o">]</span> <span class="o">[</span>-o DST_DIR<span class="o">]</span> <span class="o">[</span>--overwrite<span class="o">]</span> <span class="o">[</span>-p PROJECT_DIR<span class="o">]</span> <span class="o">[</span>target<span class="o">]</span>
+</pre></div>
+</div>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> (string) - Target
+<a class="reference external" href="/docs/user-manual/how_to_use_datumaro/#revpath">dataset revpath</a>.
+By default, filters all targets of the current project.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-e,</span> <span class="pre">--filter</span></code> (string) - XML XPath filter expression for dataset items</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-m,</span> <span class="pre">--mode</span></code> (string) - The filtering mode. Default is the <code class="docutils literal notranslate"><span class="pre">i</span></code> mode.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> - Print XML representations of the filtered dataset and exit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--stage</span></code> (bool) - Include this action as a project build step.
+If true, this operation will be saved in the project
+build tree, allowing to reproduce the resulting dataset later.
+Applicable only to main project targets (i.e. data sources
+and the <code class="docutils literal notranslate"><span class="pre">project</span></code> target, but not intermediate stages). Enabled by default.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--apply</span></code> (bool) - Run this command immediately. If disabled, only the
+build tree stage will be written. Enabled by default.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-o,</span> <span class="pre">--output-dir</span></code> (string) - Output directory. Can be omitted for
+main project targets (i.e. data sources and the <code class="docutils literal notranslate"><span class="pre">project</span></code> target, but not
+intermediate stages) and dataset targets. If not specified, the results
+will be saved inplace.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--overwrite</span></code> - Allows to overwrite existing files in the output directory,
+when it is specified and is not empty.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p,</span> <span class="pre">--project</span></code> (string) - Directory of the project to operate on
+(default: current directory).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h,</span> <span class="pre">--help</span></code> - Print the help message and exit.</p></li>
+</ul>
+<p>Example: extract a dataset with images with <code class="docutils literal notranslate"><span class="pre">width</span></code> &lt; <code class="docutils literal notranslate"><span class="pre">height</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum filter <span class="se">\</span>
+  -p test_project <span class="se">\</span>
+  -e <span class="s1">&#39;/item[image/width &lt; image/height]&#39;</span>
+</pre></div>
+</div>
+<p>Example: extract a dataset with images of the <code class="docutils literal notranslate"><span class="pre">train</span></code> subset</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum filter <span class="se">\</span>
+  -p test_project <span class="se">\</span>
+  -e <span class="s1">&#39;/item[subset=&quot;train&quot;]&#39;</span>
+</pre></div>
+</div>
+<p>Example: extract a dataset with only large annotations of the <code class="docutils literal notranslate"><span class="pre">cat</span></code> class and
+any non-<code class="docutils literal notranslate"><span class="pre">persons</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum filter <span class="se">\</span>
+  -p test_project <span class="se">\</span>
+  --mode annotations <span class="se">\</span>
+  -e <span class="s1">&#39;/item/annotation[(label=&quot;cat&quot; and area &gt; 99.5) or label!=&quot;person&quot;]&#39;</span>
+</pre></div>
+</div>
+<p>Example: extract a dataset with non-occluded annotations, remove empty images.
+Use data only from the “s1” source of the project.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum create
+datum import --format voc -i &lt;path/to/dataset1/&gt; --name s1
+datum import --format voc -i &lt;path/to/dataset2/&gt; --name s2
+datum filter s1 <span class="se">\</span>
+  -m i+a -e <span class="s1">&#39;/item/annotation[occluded=&quot;False&quot;]&#39;</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="export.html" class="btn btn-neutral float-left" title="Export Datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="info.html" class="btn btn-neutral float-right" title="Print dataset info" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

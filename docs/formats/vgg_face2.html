@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vgg Face2 CSV &mdash; Datumaro Documentation 0.2.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="VoTT CSV" href="vott_csv.html" />
+    <link rel="prev" title="SYNTHIA" href="synthia.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../index.html" class="icon"> Datumaro Documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design.html">Datumaro Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-manual/user-manual.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_manual.html">Developer manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="formats.html">Formats</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ade20k2017.html">ADE20k (v2017)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ade20k2020.html">ADE20k (v2020)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="align_celeba.html">Align CelebA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="celeba.html">CelebA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cifar.html">CIFAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cityscapes.html">Cityscapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coco.html">COCO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icdar.html">ICDAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_zip.html">Image zip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imagenet.html">ImageNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kitti.html">KITTI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kitti_raw.html">Velodyne Points / KITTI Raw 3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lfw.html">LFW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mapillary_vistas.html">Mapillary Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market1501.html">Market-1501</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mars.html">MARS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mnist.html">MNIST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpii.html">MPII Human Pose Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpii_json.html">MPII Human Pose Dataset (JSON)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_images.html">Open Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pascal_voc.html">Pascal VOC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sly_pointcloud.html">Supervisely Point Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="synthia.html">SYNTHIA</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Vgg Face2 CSV</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#format-specification">Format specification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#import-vgg-face2-dataset">Import Vgg Face2 dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-vgg-face2-dataset">Export Vgg Face2 dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-dataset-to-the-vgg-face2-format">Export dataset to the Vgg Face2 format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vott_csv.html">VoTT CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vott_json.html">VoTT JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wider_face.html">Format specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wider_face.html#import-wider-face-dataset">Import WIDER Face dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wider_face.html#export-wider-face-dataset">Export WIDER Face dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wider_face.html#export-to-wider-face-dataset">Export to WIDER Face dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo.html">YOLO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribution Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/cli/cli.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/util/util/util.html">Utilities</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Datumaro Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="formats.html">Formats</a> &raquo;</li>
+      <li>Vgg Face2 CSV</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/formats/vgg_face2.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="vgg-face2-csv">
+<h1>Vgg Face2 CSV<a class="headerlink" href="#vgg-face2-csv" title="Permalink to this headline"></a></h1>
+<section id="format-specification">
+<h2>Format specification<a class="headerlink" href="#format-specification" title="Permalink to this headline"></a></h2>
+<p>Vgg Face 2 is a dataset for face-recognition task,
+the repository with some information and sample data of Vgg Face 2 is available
+<a class="reference external" href="https://github.com/ox-vgg/vgg_face2">here</a></p>
+<p>Supported types of annotations:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Bbox</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Points</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Label</span></code></p></li>
+</ul>
+<p>Format doesn’t support any attributes for annotations objects.</p>
+</section>
+<section id="import-vgg-face2-dataset">
+<h2>Import Vgg Face2 dataset<a class="headerlink" href="#import-vgg-face2-dataset" title="Permalink to this headline"></a></h2>
+<p>A Datumaro project with a Vgg Face 2 dataset can be created
+in the following way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">datum</span> <span class="n">create</span>
+<span class="n">datum</span> <span class="kn">import</span> <span class="o">-</span><span class="n">f</span> <span class="n">vgg_face2</span> <span class="o">&lt;</span><span class="n">path_to_dataset</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: if you use <code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">import</span></code> then &lt;path_to_dataset&gt; should not be a
+subdirectory of directory with Datumaro project, see more information about
+it in the <a class="reference external" href="/docs/user-manual/command-reference/sources/#source-add">docs</a>.</p>
+</div></blockquote>
+<p>And you can also load Vgg Face 2 through the Python API:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datumaro.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="s1">&#39;&lt;path_to_dataset&gt;&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;vgg_face2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For successful importing of Vgg Face2 face the input directory with dataset
+should has the following structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vgg_face2_dataset/
+├── labels.txt # labels mapping
+├── bb_landmark
+│   ├── loose_bb_test.csv  # information about bounding boxes for test subset
+│   ├── loose_bb_train.csv
+│   ├── loose_bb_&lt;any_other_subset_name&gt;.csv
+│   ├── loose_landmark_test.csv # landmark points information for test subset
+│   ├── loose_landmark_train.csv
+│   └── loose_landmark_&lt;any_other_subset_name&gt;.csv
+├── test
+│   ├── n000001 # directory with images for n000001 label
+│   │   ├── 0001_01.jpg
+│   │   ├── 0001_02.jpg
+│   │   ├── ...
+│   ├── n000002 # directory with images for n000002 label
+│   │   ├── 0002_01.jpg
+│   │   ├── 0003_01.jpg
+│   │   ├── ...
+│   ├── ...
+├── train
+│   ├── n000004
+│   │   ├── 0004_01.jpg
+│   │   ├── 0004_02.jpg
+│   │   ├── ...
+│   ├── ...
+└── &lt;any_other_subset_name&gt;
+    ├── ...
+</pre></div>
+</div>
+</section>
+<section id="export-vgg-face2-dataset">
+<h2>Export Vgg Face2 dataset<a class="headerlink" href="#export-vgg-face2-dataset" title="Permalink to this headline"></a></h2>
+<p>Datumaro can convert a Vgg Face2 dataset into any other format
+<a class="reference internal" href="../user-manual/supported_formats.html"><span class="doc std std-doc">Datumaro supports</span></a>.
+There is few examples how to do it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using `convert` command</span>
+<span class="n">datum</span> <span class="n">convert</span> <span class="o">-</span><span class="k">if</span> <span class="n">vgg_face2</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">path_to_vgg_face2</span><span class="o">&gt;</span> \
+    <span class="o">-</span><span class="n">f</span> <span class="n">voc</span> <span class="o">-</span><span class="n">o</span> <span class="o">&lt;</span><span class="n">output_dir</span><span class="o">&gt;</span> <span class="o">--</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">images</span>
+
+<span class="c1"># Using Datumaro project</span>
+<span class="n">datum</span> <span class="n">create</span>
+<span class="n">datum</span> <span class="kn">import</span> <span class="o">-</span><span class="n">f</span> <span class="n">vgg_face2</span> <span class="o">&lt;</span><span class="n">path_to_vgg_face2</span><span class="o">&gt;</span>
+<span class="n">datum</span> <span class="n">export</span> <span class="o">-</span><span class="n">f</span> <span class="n">yolo</span> <span class="o">-</span><span class="n">o</span> <span class="o">&lt;</span><span class="n">output_dir</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: to get the expected result from the conversion, the output format
+should support the same types of annotations (one or more) as Vgg Face2
+(<code class="docutils literal notranslate"><span class="pre">Bbox</span></code>, <code class="docutils literal notranslate"><span class="pre">Points</span></code>, <code class="docutils literal notranslate"><span class="pre">Label</span></code>)</p>
+</div></blockquote>
+<p>And also you can convert your Vgg Face2 dataset using Python API</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datumaro.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
+
+<span class="n">vgg_face2_dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="s1">&#39;&lt;path_to_dataset&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;vgg_face2&#39;</span><span class="p">)</span>
+
+<span class="n">vgg_face2_dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s1">&#39;&lt;output_dir&gt;&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;open_images&#39;</span><span class="p">,</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: some formats have extra export options. For particular format see the
+<span class="xref myst">docs</span> to get information about it.</p>
+</div></blockquote>
+</section>
+<section id="export-dataset-to-the-vgg-face2-format">
+<h2>Export dataset to the Vgg Face2 format<a class="headerlink" href="#export-dataset-to-the-vgg-face2-format" title="Permalink to this headline"></a></h2>
+<p>If you have dataset in some format and want to convert this dataset
+into the Vgg Face2, ensure that this dataset contains <code class="docutils literal notranslate"><span class="pre">Bbox</span></code> or/and <code class="docutils literal notranslate"><span class="pre">Points</span></code>
+or/and <code class="docutils literal notranslate"><span class="pre">Label</span></code> and use Datumaro to perform conversion.
+There is few examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using convert command</span>
+<span class="n">datum</span> <span class="n">convert</span> <span class="o">-</span><span class="k">if</span> <span class="n">wider_face</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">path_to_wider</span><span class="o">&gt;</span> \
+    <span class="o">-</span><span class="n">f</span> <span class="n">vgg_face2</span> <span class="o">-</span><span class="n">o</span> <span class="o">&lt;</span><span class="n">output_dir</span><span class="o">&gt;</span>
+
+<span class="c1"># Using Datumaro project</span>
+<span class="n">datum</span> <span class="n">create</span>
+<span class="n">datum</span> <span class="kn">import</span> <span class="o">-</span><span class="n">f</span> <span class="n">wider_face</span> <span class="o">&lt;</span><span class="n">path_to_wider</span><span class="o">&gt;</span>
+<span class="n">datum</span> <span class="n">export</span> <span class="o">-</span><span class="n">f</span> <span class="n">vgg_face2</span> <span class="o">-</span><span class="n">o</span> <span class="o">&lt;</span><span class="n">output_dir</span><span class="o">&gt;</span> <span class="o">--</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">images</span> <span class="o">--</span><span class="n">image</span><span class="o">-</span><span class="n">ext</span> <span class="s1">&#39;.png&#39;</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: <code class="docutils literal notranslate"><span class="pre">vgg_face2</span></code> format supports only one <code class="docutils literal notranslate"><span class="pre">Bbox</span></code> per image</p>
+</div></blockquote>
+<p>Extra options for exporting to Vgg Face2 format:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--save-images</span></code> allow to export dataset with saving images
+(by default <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--image-ext</span> <span class="pre">&lt;IMAGE_EXT&gt;</span></code> allow to specify image extension
+for exporting the dataset (by default <code class="docutils literal notranslate"><span class="pre">.png</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--save-dataset-meta</span></code> - allow to export dataset with saving dataset meta
+file (by default <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="synthia.html" class="btn btn-neutral float-left" title="SYNTHIA" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vott_csv.html" class="btn btn-neutral float-right" title="VoTT CSV" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

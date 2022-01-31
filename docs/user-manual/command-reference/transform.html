@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transform Dataset &mdash; Datumaro Documentation 0.2.2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Utilities" href="util.html" />
+    <link rel="prev" title="Status" href="status.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../../index.html" class="icon"> Datumaro Documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design.html">Datumaro Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../user-manual.html">User Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../user-manual.html#user-manual">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_index.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending.html">Extending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_control_tm_data_collection.html">How to control telemetry data collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_use_datumaro.html">How to use Datumaro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../links.html">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../media_formats.html">Media formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supported_formats.html">Supported Formats</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="command-reference.html">Command Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="command-reference.html#command-reference">Command reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_index.html">Command reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="checkout.html">Checkout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commit.html">Commit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convert.html">Convert datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create.html">Create project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="detect-format.html">Detect dataset format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff.html">Compare datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download.html">Download datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explain.html">Run model inference explanation (explain)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="export.html">Export Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filter.html">Filter datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="info.html">Print dataset info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="merge.html">Merge Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="patch.html">Patch Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sources.html">Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stats.html">Get Project Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="status.html">Status</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Transform Dataset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#built-in-transforms-a-id-builtin-transforms-a">Built-in transforms <a id="builtin-transforms"></a></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="util.html">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validate.html">Validate Dataset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_manual.html">Developer manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../formats/formats.html">Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contribution Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/cli/cli.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/util/util/util.html">Utilities</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Datumaro Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../user-manual.html">User Manual</a> &raquo;</li>
+          <li><a href="command-reference.html">Command Reference</a> &raquo;</li>
+      <li>Transform Dataset</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/user-manual/command-reference/transform.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="transform-dataset">
+<h1>Transform Dataset<a class="headerlink" href="#transform-dataset" title="Permalink to this headline"></a></h1>
+<p>Often datasets need to be modified during preparation for model training and
+experimenting. In trivial cases it can be done manually - e.g. image renaming
+or label renaming. However, in more complex cases even simple modifications
+can require too much efforts, distracting the user from the real work.
+Datumaro provides the <code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">transform</span></code> command to help in such cases.</p>
+<p>This command allows to modify dataset images or annotations all at once.</p>
+<blockquote>
+<div><p>This command is designed for batch dataset processing, so if you only
+need to modify few elements of a dataset, you might want to use
+other approaches for better performance. A possible solution can be
+a simple script, which uses <a class="reference internal" href="../../developer_manual.html"><span class="doc std std-doc">Datumaro API</span></a>.</p>
+</div></blockquote>
+<p>The command can be applied to a dataset or a project build target,
+a stage or the combined <code class="docutils literal notranslate"><span class="pre">project</span></code> target, in which case all the project
+targets will be affected. A build tree stage will be recorded
+if <code class="docutils literal notranslate"><span class="pre">--stage</span></code> is enabled, and the resulting dataset(-s) will be
+saved if <code class="docutils literal notranslate"><span class="pre">--apply</span></code> is enabled.</p>
+<p>By default, datasets are updated in-place. The <code class="docutils literal notranslate"><span class="pre">-o/--output-dir</span></code>
+option can be used to specify another output directory. When
+updating in-place, use the <code class="docutils literal notranslate"><span class="pre">--overwrite</span></code> parameter (in-place
+updates fail by default to prevent data loss), unless a project
+target is modified.</p>
+<p>The current project (<code class="docutils literal notranslate"><span class="pre">-p/--project</span></code>) is also used as a context for
+plugins, so it can be useful for dataset paths having custom formats.
+When not specified, the current project’s working tree is used.</p>
+<p>Usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum transform <span class="o">[</span>-h<span class="o">]</span> -t TRANSFORM <span class="o">[</span>-o DST_DIR<span class="o">]</span> <span class="o">[</span>--overwrite<span class="o">]</span>
+  <span class="o">[</span>-p PROJECT_DIR<span class="o">]</span> <span class="o">[</span>--stage STAGE<span class="o">]</span> <span class="o">[</span>--apply APPLY<span class="o">]</span> <span class="o">[</span>target<span class="o">]</span> <span class="o">[</span>-- EXTRA_ARGS<span class="o">]</span>
+</pre></div>
+</div>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> (string) - Target
+<a class="reference external" href="/docs/user-manual/how_to_use_datumaro/#revpath">dataset revpath</a>.
+By default, transforms all targets of the current project.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-t,</span> <span class="pre">--transform</span></code> (string) - Transform method name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--stage</span></code> (bool) - Include this action as a project build step.
+If true, this operation will be saved in the project
+build tree, allowing to reproduce the resulting dataset later.
+Applicable only to main project targets (i.e. data sources
+and the <code class="docutils literal notranslate"><span class="pre">project</span></code> target, but not intermediate stages). Enabled by default.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--apply</span></code> (bool) - Run this command immediately. If disabled, only the
+build tree stage will be written. Enabled by default.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-o,</span> <span class="pre">--output-dir</span></code> (string) - Output directory. Can be omitted for
+main project targets (i.e. data sources and the <code class="docutils literal notranslate"><span class="pre">project</span></code> target, but not
+intermediate stages) and dataset targets. If not specified, the results
+will be saved inplace.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--overwrite</span></code> - Allows to overwrite existing files in the output directory,
+when it is specified and is not empty.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p,</span> <span class="pre">--project</span></code> (string) - Directory of the project to operate on
+(default: current directory).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h,</span> <span class="pre">--help</span></code> - Print the help message and exit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;extra</span> <span class="pre">args&gt;</span></code> - The list of extra transformation parameters. Should be
+passed after the <code class="docutils literal notranslate"><span class="pre">--</span></code> separator after the main command arguments. See
+transform descriptions for info about extra parameters. Use the <code class="docutils literal notranslate"><span class="pre">--help</span></code>
+option to print parameter info.</p></li>
+</ul>
+<p>Examples:</p>
+<ul class="simple">
+<li><p>Split a VOC-like dataset randomly:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum transform -t random_split --overwrite path/to/dataset:voc
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Rename images in a project data source by a regex from <code class="docutils literal notranslate"><span class="pre">frame_XXX</span></code> to <code class="docutils literal notranslate"><span class="pre">XXX</span></code>:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum create &lt;...&gt;
+datum import &lt;...&gt; -n source-1
+datum transform -t rename source-1 -- -e <span class="s1">&#39;|frame_(\d+)|\\1|&#39;</span>
+</pre></div>
+</div>
+<section id="built-in-transforms-a-id-builtin-transforms-a">
+<h2>Built-in transforms <a id="builtin-transforms"></a><a class="headerlink" href="#built-in-transforms-a-id-builtin-transforms-a" title="Permalink to this headline"></a></h2>
+<p>Basic dataset item manipulations:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rename</span></code> - Renames dataset items by regular expression</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">id_from_image_name</span></code> - Renames dataset items to their image filenames</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reindex</span></code> - Renames dataset items with numbers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ndr</span></code> - Removes duplicated images from dataset</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sampler</span></code> - Runs inference and leaves only the most representative images</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resize</span></code> - Resizes images and annotations in the dataset</p></li>
+</ul>
+<p>Subset manipulations:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">random_split</span></code> - Splits dataset into subsets randomly</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">split</span></code> - Splits dataset into subsets for classification, detection,
+segmentation or re-identification</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">map_subsets</span></code> - Renames and removes subsets</p></li>
+</ul>
+<p>Annotation manipulations:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">remap_labels</span></code> - Renames, adds or removes labels in dataset</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">project_labels</span></code> - Sets dataset labels to the requested sequence</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shapes_to_boxes</span></code> - Replaces spatial annotations with bounding boxes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">boxes_to_masks</span></code> - Converts bounding boxes to instance masks</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">polygons_to_masks</span></code> - Converts polygons to instance masks</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">masks_to_polygons</span></code> - Converts instance masks to polygons</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">anns_to_labels</span></code> - Replaces annotations having labels with label annotations</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">merge_instance_segments</span></code> - Merges grouped spatial annotations into a mask</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">crop_covered_segments</span></code> - Removes occluded segments of covered masks</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bbox_value_decrement</span></code> - Subtracts 1 from bbox coordinates</p></li>
+</ul>
+<p>Examples:</p>
+<ul class="simple">
+<li><p>Split a dataset randomly to <code class="docutils literal notranslate"><span class="pre">train</span></code> and <code class="docutils literal notranslate"><span class="pre">test</span></code> subsets, ratio is 2:1</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum transform -t random_split -- --subset train:.67 --subset test:.33
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Split a dataset for a specific task. The tasks supported are
+classification, detection, segmentation and re-identification.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum transform -t split -- <span class="se">\</span>
+  -t classification --subset train:.5 --subset val:.2 --subset test:.3
+
+datum transform -t split -- <span class="se">\</span>
+  -t detection --subset train:.5 --subset val:.2 --subset test:.3
+
+datum transform -t split -- <span class="se">\</span>
+  -t segmentation --subset train:.5 --subset val:.2 --subset test:.3
+
+datum transform -t split -- <span class="se">\</span>
+  -t reid --subset train:.5 --subset val:.2 --subset test:.3 <span class="se">\</span>
+  --query .5
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Convert spatial annotations between each other</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum transform -t boxes_to_masks
+datum transform -t masks_to_polygons
+datum transform -t polygons_to_masks
+datum transform -t shapes_to_boxes
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Set dataset labels to {<code class="docutils literal notranslate"><span class="pre">person</span></code>, <code class="docutils literal notranslate"><span class="pre">cat</span></code>, <code class="docutils literal notranslate"><span class="pre">dog</span></code>}, remove others, add missing.
+Original labels (can be any): <code class="docutils literal notranslate"><span class="pre">cat</span></code>, <code class="docutils literal notranslate"><span class="pre">dog</span></code>, <code class="docutils literal notranslate"><span class="pre">elephant</span></code>, <code class="docutils literal notranslate"><span class="pre">human</span></code>
+New labels: <code class="docutils literal notranslate"><span class="pre">person</span></code> (added), <code class="docutils literal notranslate"><span class="pre">cat</span></code> (kept), <code class="docutils literal notranslate"><span class="pre">dog</span></code> (kept)</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum transform -t project_labels -- -l person -l cat -l dog
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Remap dataset labels, <code class="docutils literal notranslate"><span class="pre">person</span></code> to <code class="docutils literal notranslate"><span class="pre">car</span></code> and <code class="docutils literal notranslate"><span class="pre">cat</span></code> to <code class="docutils literal notranslate"><span class="pre">dog</span></code>,
+keep <code class="docutils literal notranslate"><span class="pre">bus</span></code>, remove others</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum transform -t remap_labels -- <span class="se">\</span>
+  -l person:car -l bus:bus -l cat:dog <span class="se">\</span>
+  --default delete
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Rename dataset items by a regular expression</p>
+<ul>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">pattern</span></code> with <code class="docutils literal notranslate"><span class="pre">replacement</span></code></p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">frame_</span></code> from item ids</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum transform -t rename -- -e <span class="s1">&#39;|pattern|replacement|&#39;</span>
+datum transform -t rename -- -e <span class="s1">&#39;|frame_(\d+)|\\1|&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Create a dataset from K the most hard items for a model. The dataset will
+be split into the <code class="docutils literal notranslate"><span class="pre">sampled</span></code> and <code class="docutils literal notranslate"><span class="pre">unsampled</span></code> subsets, based on the model
+confidence, which is stored in the <code class="docutils literal notranslate"><span class="pre">scores</span></code> annotation attribute.</p></li>
+</ul>
+<p>There are five methods of sampling (the <code class="docutils literal notranslate"><span class="pre">-m/--method</span></code> option):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">topk</span></code> - Return the k with high uncertainty data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lowk</span></code> - Return the k with low uncertainty data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">randk</span></code> - Return the random k data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mixk</span></code> - Return half to topk method and the rest to lowk method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">randtopk</span></code> - First, select 3 times the number of k randomly, and return
+the topk among them.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum transform -t sampler -- <span class="se">\</span>
+  -a entropy <span class="se">\</span>
+  -i train <span class="se">\</span>
+  -o sampled <span class="se">\</span>
+  -u unsampled <span class="se">\</span>
+  -m topk <span class="se">\</span>
+  -k <span class="m">20</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Remove duplicated images from a dataset. Keep at most N resulting images.</p>
+<ul>
+<li><p>Available sampling options (the <code class="docutils literal notranslate"><span class="pre">-e</span></code> parameter):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">random</span></code> - sample from removed data randomly</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">similarity</span></code> - sample from removed data with ascending</p></li>
+</ul>
+</li>
+<li><p>Available sampling methods (the <code class="docutils literal notranslate"><span class="pre">-u</span></code> parameter):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">uniform</span></code> - sample data with uniform distribution</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inverse</span></code> - sample data with reciprocal of the number</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum transform -t ndr -- <span class="se">\</span>
+  -w train <span class="se">\</span>
+  -a gradient <span class="se">\</span>
+  -k <span class="m">100</span> <span class="se">\</span>
+  -e random <span class="se">\</span>
+  -u uniform
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Resize dataset images and annotations. Supports upscaling, downscaling
+and mixed variants.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum transform -t resize -- -dw <span class="m">256</span> -dh <span class="m">256</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="status.html" class="btn btn-neutral float-left" title="Status" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="util.html" class="btn btn-neutral float-right" title="Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

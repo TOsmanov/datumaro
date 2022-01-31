@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Print dataset info &mdash; Datumaro Documentation 0.2.2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Log" href="log.html" />
+    <link rel="prev" title="Filter datasets" href="filter.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../../index.html" class="icon"> Datumaro Documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design.html">Datumaro Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../user-manual.html">User Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../user-manual.html#user-manual">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_index.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending.html">Extending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_control_tm_data_collection.html">How to control telemetry data collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_use_datumaro.html">How to use Datumaro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../links.html">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../media_formats.html">Media formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supported_formats.html">Supported Formats</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="command-reference.html">Command Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="command-reference.html#command-reference">Command reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_index.html">Command reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="checkout.html">Checkout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commit.html">Commit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convert.html">Convert datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create.html">Create project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="detect-format.html">Detect dataset format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff.html">Compare datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download.html">Download datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explain.html">Run model inference explanation (explain)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="export.html">Export Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filter.html">Filter datasets</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Print dataset info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="merge.html">Merge Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="patch.html">Patch Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sources.html">Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stats.html">Get Project Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="status.html">Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transform.html">Transform Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="util.html">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validate.html">Validate Dataset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_manual.html">Developer manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../formats/formats.html">Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contribution Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/cli/cli.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/util/util/util.html">Utilities</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Datumaro Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../user-manual.html">User Manual</a> &raquo;</li>
+          <li><a href="command-reference.html">Command Reference</a> &raquo;</li>
+      <li>Print dataset info</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/user-manual/command-reference/info.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="print-dataset-info">
+<h1>Print dataset info<a class="headerlink" href="#print-dataset-info" title="Permalink to this headline"></a></h1>
+<p>This command outputs high level dataset information such as sample count,
+categories and subsets.</p>
+<p>Usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum info <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--all<span class="o">]</span> <span class="o">[</span>-p PROJECT_DIR<span class="o">]</span> <span class="o">[</span>revpath<span class="o">]</span>
+</pre></div>
+</div>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> (string) - Target <a class="reference external" href="/docs/user-manual/how_to_use_datumaro/#revpath">dataset revpath</a>.
+By default, prints info about the joined <code class="docutils literal notranslate"><span class="pre">project</span></code> dataset.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--all</span></code> - Print all the information: do not fold long lists of labels etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p,</span> <span class="pre">--project</span></code> (string) - Directory of the project to operate on
+(default: current directory).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h,</span> <span class="pre">--help</span></code> - Print the help message and exit.</p></li>
+</ul>
+<p>Examples:</p>
+<ul class="simple">
+<li><p>Print info about a project dataset:
+<code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">info</span> <span class="pre">-p</span> <span class="pre">test_project/</span></code></p></li>
+<li><p>Print info about a COCO-like dataset:
+<code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">info</span> <span class="pre">path/to/dataset:coco</span></code></p></li>
+</ul>
+<p>Sample output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">length</span><span class="p">:</span> <span class="mi">5000</span>
+<span class="n">categories</span><span class="p">:</span> <span class="n">label</span>
+  <span class="n">label</span><span class="p">:</span>
+    <span class="n">count</span><span class="p">:</span> <span class="mi">80</span>
+    <span class="n">labels</span><span class="p">:</span> <span class="n">person</span><span class="p">,</span> <span class="n">bicycle</span><span class="p">,</span> <span class="n">car</span><span class="p">,</span> <span class="n">motorcycle</span> <span class="p">(</span><span class="ow">and</span> <span class="mi">76</span> <span class="n">more</span><span class="p">)</span>
+<span class="n">subsets</span><span class="p">:</span> <span class="n">minival2014</span>
+  <span class="s1">&#39;minival2014&#39;</span><span class="p">:</span>
+    <span class="n">length</span><span class="p">:</span> <span class="mi">5000</span>
+    <span class="n">categories</span><span class="p">:</span> <span class="n">label</span>
+      <span class="n">label</span><span class="p">:</span>
+        <span class="n">count</span><span class="p">:</span> <span class="mi">80</span>
+        <span class="n">labels</span><span class="p">:</span> <span class="n">person</span><span class="p">,</span> <span class="n">bicycle</span><span class="p">,</span> <span class="n">car</span><span class="p">,</span> <span class="n">motorcycle</span> <span class="p">(</span><span class="ow">and</span> <span class="mi">76</span> <span class="n">more</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="filter.html" class="btn btn-neutral float-left" title="Filter datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="log.html" class="btn btn-neutral float-right" title="Log" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

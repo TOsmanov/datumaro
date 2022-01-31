@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contribution Guide &mdash; Datumaro Documentation 0.2.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Release notes" href="release_notes.html" />
+    <link rel="prev" title="OpenVINO™ Inference Interpreter" href="plugins/openvino_plugin.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../index.html" class="icon"> Datumaro Documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Datumaro Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-manual/user-manual.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_manual.html">Developer manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formats/formats.html">Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contribution Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#related-sections">Related sections:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-style">Code style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#environment">Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-a-id-testing-a">Testing <a id="testing"></a></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#test-cases-a-id-test-case-description-a">Test cases <a id="Test_case_description"></a></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-marking-a-id-test-marking-a">Test marking <a id="Test_marking"></a></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#requirements-a-id-requirements-a">Requirements <a id="Requirements"></a></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#test-documentation-a-id-testdoc-a">Test documentation <a id="TestDoc"></a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/cli/cli.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/util/util/util.html">Utilities</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Datumaro Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Contribution Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/contributing.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="contribution-guide">
+<h1>Contribution Guide<a class="headerlink" href="#contribution-guide" title="Permalink to this headline"></a></h1>
+<section id="related-sections">
+<h2>Related sections:<a class="headerlink" href="#related-sections" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="design.html"><span class="doc std std-doc">Design document</span></a></p></li>
+<li><p><a class="reference internal" href="developer_manual.html"><span class="doc std std-doc">Developer manual</span></a></p></li>
+</ul>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
+<section id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Python (3.7+)</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/openvinotoolkit/datumaro
+</pre></div>
+</div>
+<p>Optionally, install a virtual environment (recommended):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pip install virtualenv
+python -m virtualenv venv
+. venv/bin/activate
+</pre></div>
+</div>
+<p>Then install all dependencies:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -r requirements.txt
+</pre></div>
+</div>
+<p>Install Datumaro:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -e /path/to/the/cloned/repo/
+</pre></div>
+</div>
+<p><strong>Optional dependencies</strong></p>
+<p>These components are only required for plugins and not installed by default:</p>
+<ul class="simple">
+<li><p>OpenVINO</p></li>
+<li><p>Accuracy Checker</p></li>
+<li><p>TensorFlow</p></li>
+<li><p>PyTorch</p></li>
+<li><p>MxNet</p></li>
+<li><p>Caffe</p></li>
+</ul>
+</section>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum --help
+python -m datumaro --help
+python datumaro/ --help
+python datum.py --help
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datumaro</span>
+</pre></div>
+</div>
+</section>
+<section id="code-style">
+<h2>Code style<a class="headerlink" href="#code-style" title="Permalink to this headline"></a></h2>
+<p>Try to be readable and consistent with the existing codebase.</p>
+<p>The project mostly follows PEP8 with little differences.
+Continuation lines have a standard indentation step by default,
+or any other, if it improves readability. For long conditionals use 2 steps.
+No trailing whitespaces, 80 characters per line.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">do_important_work</span><span class="p">(</span><span class="n">parameter1</span><span class="p">,</span> <span class="n">parameter2</span><span class="p">,</span> <span class="n">parameter3</span><span class="p">,</span>
+        <span class="n">option1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">option2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">option3</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Optional description. Mandatory for API.</span>
+<span class="sd">    Use comments for implementation specific information, use docstrings</span>
+<span class="sd">    to give information to user / developer.</span>
+
+<span class="sd">    Returns: status (str) - Possible values: &#39;done&#39;, &#39;failed&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="o">...</span> <span class="n">do</span> <span class="n">stuff</span> <span class="o">...</span>
+
+    <span class="c1"># Use +1 level of indentation for continuation lines</span>
+    <span class="n">variable_with_a_long_but_meaningful_name</span> <span class="o">=</span> \
+        <span class="n">function_with_a_long_but_meaningful_name</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="p">,</span>
+            <span class="n">kwarg1</span><span class="o">=</span><span class="n">value_with_a_long_name</span><span class="p">,</span> <span class="n">kwarg2</span><span class="o">=</span><span class="n">value_with_a_long_name</span><span class="p">)</span>
+
+    <span class="c1"># long conditions, loops, with etc. also use +1 level of indentation</span>
+    <span class="k">if</span> <span class="n">condition1</span> <span class="ow">and</span> <span class="n">long_condition2</span> <span class="ow">or</span> \
+            <span class="ow">not</span> <span class="n">condition3</span> <span class="ow">and</span> <span class="n">condition4</span> <span class="ow">and</span> <span class="n">condition5</span> <span class="ow">or</span> \
+            <span class="n">condition6</span> <span class="ow">and</span> <span class="n">condition7</span><span class="p">:</span>
+
+        <span class="o">...</span> <span class="n">do</span> <span class="n">other</span> <span class="n">stuff</span> <span class="o">...</span>
+
+    <span class="k">elif</span> <span class="n">other_conditions</span><span class="p">:</span>
+
+        <span class="o">...</span> <span class="n">some</span> <span class="n">other</span> <span class="n">things</span> <span class="o">...</span>
+
+    <span class="c1"># in some cases special formatting can improve code readability</span>
+    <span class="n">specific_case_formatting</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">status</span>
+</pre></div>
+</div>
+</section>
+<section id="environment">
+<h2>Environment<a class="headerlink" href="#environment" title="Permalink to this headline"></a></h2>
+<p>The recommended editor is VS Code with the Python language plugin.</p>
+</section>
+<section id="testing-a-id-testing-a">
+<h2>Testing <a id="testing"></a><a class="headerlink" href="#testing-a-id-testing-a" title="Permalink to this headline"></a></h2>
+<p>It is expected that all Datumaro functionality is covered and checked by
+unit tests. Tests are placed in the <code class="docutils literal notranslate"><span class="pre">tests/</span></code> directory. Additional
+pre-generated files for tests can be stored in the <code class="docutils literal notranslate"><span class="pre">tests/assets/</span></code> directory.
+CLI tests are separated from the core tests, they are stored in the
+<code class="docutils literal notranslate"><span class="pre">tests/cli/</span></code> directory.</p>
+<p>Currently, we use <a class="reference external" href="https://docs.pytest.org/"><code class="docutils literal notranslate"><span class="pre">pytest</span></code></a> for testing.</p>
+<p>To run tests use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest -v
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pytest -v
+</pre></div>
+</div>
+<section id="test-cases-a-id-test-case-description-a">
+<h3>Test cases <a id="Test_case_description"></a><a class="headerlink" href="#test-cases-a-id-test-case-description-a" title="Permalink to this headline"></a></h3>
+</section>
+<section id="test-marking-a-id-test-marking-a">
+<h3>Test marking <a id="Test_marking"></a><a class="headerlink" href="#test-marking-a-id-test-marking-a" title="Permalink to this headline"></a></h3>
+<p>For better integration with CI and requirements tracking,
+we use special annotations for tests.</p>
+<p>A test needs to linked with a requirement it is related to. To link a
+test, use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span>
+<span class="kn">from</span> <span class="nn">.requirements</span> <span class="kn">import</span> <span class="n">Requirements</span><span class="p">,</span> <span class="n">mark_requirement</span>
+
+<span class="k">class</span> <span class="nc">MyTests</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_my_requirement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span> <span class="n">do</span> <span class="n">stuff</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>Such marking will apply markings from the requirement specified.
+They can be overridden for a specific test:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
+
+    <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">proirity_low</span>
+    <span class="nd">@mark_requirement</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_my_requirement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span> <span class="n">do</span> <span class="n">stuff</span> <span class="o">...</span>
+</pre></div>
+</div>
+<section id="requirements-a-id-requirements-a">
+<h4>Requirements <a id="Requirements"></a><a class="headerlink" href="#requirements-a-id-requirements-a" title="Permalink to this headline"></a></h4>
+<p>Requirements and other links need to be added to <a class="reference external" href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/requirements.py"><code class="docutils literal notranslate"><span class="pre">tests/requirements.py</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DATUM_244</span> <span class="o">=</span> <span class="s2">&quot;Add Snyk integration&quot;</span>
+<span class="n">DATUM_BUG_219</span> <span class="o">=</span> <span class="s2">&quot;Return format is not uniform&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fully defined in GitHub issues:</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">reqids</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_244</span><span class="p">,</span> <span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_333</span><span class="p">)</span>
+
+<span class="c1"># And defined any other way:</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">reqids</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_GENERAL_REQ</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="available-annotations-for-tests-and-requirements">
+<h5>Available annotations for tests and requirements<a class="headerlink" href="#available-annotations-for-tests-and-requirements" title="Permalink to this headline"></a></h5>
+<p>Markings are defined in <a class="reference external" href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/conftest.py"><code class="docutils literal notranslate"><span class="pre">tests/conftest.py</span></code></a>.</p>
+<p><strong>A list of requirements and bugs</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">requids</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_123</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">bugs</span><span class="p">(</span><span class="n">Requirements</span><span class="o">.</span><span class="n">DATUM_BUG_456</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>A priority</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">priority_low</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">priority_medium</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">priority_high</span>
+</pre></div>
+</div>
+<p><strong>Component</strong>
+The marking used for indication of different system components</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">components</span><span class="p">(</span><span class="n">DatumaroComponent</span><span class="o">.</span><span class="n">Datumaro</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Skipping tests</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="n">SkipMessages</span><span class="o">.</span><span class="n">NOT_IMPLEMENTED</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parametrized runs</strong></p>
+<p>Parameters are used for running the same test with different parameters e.g.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">&quot;numpy_array, batch_size&quot;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">2</span><span class="p">]),</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">2</span><span class="p">]),</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">2</span><span class="p">]),</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">2</span><span class="p">]),</span> <span class="mi">5</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">5</span><span class="p">]),</span> <span class="mi">2</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="test-documentation-a-id-testdoc-a">
+<h3>Test documentation <a id="TestDoc"></a><a class="headerlink" href="#test-documentation-a-id-testdoc-a" title="Permalink to this headline"></a></h3>
+<p>Tests are documented with docs strings. Test descriptions must contain
+the following: sections: <code class="docutils literal notranslate"><span class="pre">Description</span></code>, <code class="docutils literal notranslate"><span class="pre">Expected</span> <span class="pre">results</span></code> and <code class="docutils literal notranslate"><span class="pre">Steps</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_can_convert_polygons_to_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &lt;b&gt;Description:&lt;/b&gt;</span>
+<span class="sd">    Ensure that the dataset polygon annotation can be properly converted</span>
+<span class="sd">    into dataset segmentation mask.</span>
+
+<span class="sd">    &lt;b&gt;Expected results:&lt;/b&gt;</span>
+<span class="sd">    Dataset segmentation mask converted from dataset polygon annotation</span>
+<span class="sd">    is equal to an expected mask.</span>
+
+<span class="sd">    &lt;b&gt;Steps:&lt;/b&gt;</span>
+<span class="sd">    1. Prepare dataset with polygon annotation</span>
+<span class="sd">    2. Prepare dataset with expected mask segmentation mode</span>
+<span class="sd">    3. Convert source dataset to target, with conversion of annotation</span>
+<span class="sd">      from polygon to mask.</span>
+<span class="sd">    4. Verify that resulting segmentation mask is equal to the expected mask.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="plugins/openvino_plugin.html" class="btn btn-neutral float-left" title="OpenVINO™ Inference Interpreter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="release_notes.html" class="btn btn-neutral float-right" title="Release notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

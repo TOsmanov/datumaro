@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Export Datasets &mdash; Datumaro Documentation 0.2.2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Filter datasets" href="filter.html" />
+    <link rel="prev" title="Run model inference explanation (explain)" href="explain.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../../index.html" class="icon"> Datumaro Documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design.html">Datumaro Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../user-manual.html">User Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../user-manual.html#user-manual">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_index.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending.html">Extending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_control_tm_data_collection.html">How to control telemetry data collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_use_datumaro.html">How to use Datumaro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../links.html">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../media_formats.html">Media formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supported_formats.html">Supported Formats</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="command-reference.html">Command Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="command-reference.html#command-reference">Command reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_index.html">Command reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="checkout.html">Checkout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commit.html">Commit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convert.html">Convert datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create.html">Create project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="detect-format.html">Detect dataset format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff.html">Compare datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download.html">Download datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explain.html">Run model inference explanation (explain)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Export Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filter.html">Filter datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="info.html">Print dataset info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="merge.html">Merge Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="patch.html">Patch Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sources.html">Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stats.html">Get Project Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="status.html">Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transform.html">Transform Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="util.html">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validate.html">Validate Dataset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_manual.html">Developer manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../formats/formats.html">Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contribution Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/cli/cli.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/util/util/util.html">Utilities</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Datumaro Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../user-manual.html">User Manual</a> &raquo;</li>
+          <li><a href="command-reference.html">Command Reference</a> &raquo;</li>
+      <li>Export Datasets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/user-manual/command-reference/export.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="export-datasets">
+<h1>Export Datasets<a class="headerlink" href="#export-datasets" title="Permalink to this headline"></a></h1>
+<p>This command exports a project or a source as a dataset in some format.</p>
+<p>Check <a class="reference internal" href="../supported_formats.html"><span class="doc std std-doc">supported formats</span></a> for more info
+about format specifications, supported options and other details.
+The list of formats can be extended by custom plugins, check <a class="reference internal" href="../extending.html"><span class="doc std std-doc">extending tips</span></a>
+for information on this topic.</p>
+<p>Available formats are listed in the command help output.</p>
+<p>Dataset format writers support additional export options. To pass
+such options, use the <code class="docutils literal notranslate"><span class="pre">--</span></code> separator after the main command arguments.
+The usage information can be printed with <code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">import</span> <span class="pre">-f</span> <span class="pre">&lt;format&gt;</span> <span class="pre">--</span> <span class="pre">--help</span></code>.</p>
+<p>Common export options:</p>
+<ul class="simple">
+<li><p>Most formats (where applicable) support the <code class="docutils literal notranslate"><span class="pre">--save-images</span></code> option, which
+allows to export dataset images along with annotations. The option is
+disabled be default.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">--save-images</span></code> is used, the <code class="docutils literal notranslate"><span class="pre">image-ext</span></code> option can be passed to
+specify the output image file extension (<code class="docutils literal notranslate"><span class="pre">.jpg</span></code>, <code class="docutils literal notranslate"><span class="pre">.png</span></code> etc.). By default,
+tries to Datumaro keep the original image extension. This option
+allows to convert all the images from one format into another.</p></li>
+</ul>
+<p>This command allows to use the <code class="docutils literal notranslate"><span class="pre">-f/--filter</span></code> parameter to select dataset
+elements needed for exporting. Read the <a class="reference internal" href="filter.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">filter</span></code></span></a> command
+description for more info about this functionality.</p>
+<p>The command can only be applied to a project build target, a stage
+or the combined <code class="docutils literal notranslate"><span class="pre">project</span></code> target, in which case all the targets will
+be affected.</p>
+<p>Usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum <span class="nb">export</span> <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-e FILTER<span class="o">]</span> <span class="o">[</span>--filter-mode FILTER_MODE<span class="o">]</span> <span class="o">[</span>-o DST_DIR<span class="o">]</span>
+  <span class="o">[</span>--overwrite<span class="o">]</span> <span class="o">[</span>-p PROJECT_DIR<span class="o">]</span> -f FORMAT <span class="o">[</span>target<span class="o">]</span> <span class="o">[</span>-- EXTRA_FORMAT_ARGS<span class="o">]</span>
+</pre></div>
+</div>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> (string) - A project build target to be exported.
+By default, all project targets are affected.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-f,</span> <span class="pre">--format</span></code> (string) - Output format.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-e,</span> <span class="pre">--filter</span></code> (string) - XML XPath filter expression for dataset items</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--filter-mode</span></code> (string) - The filtering mode. Default is the <code class="docutils literal notranslate"><span class="pre">i</span></code> mode.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-o,</span> <span class="pre">--output-dir</span></code> (string) - Output directory. By default, a subdirectory
+in the current directory is used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--overwrite</span></code> - Allows overwriting existing files in the output directory,
+when it is not empty.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p,</span> <span class="pre">--project</span></code> (string) - Directory of the project to operate on
+(default: current directory).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h,</span> <span class="pre">--help</span></code> - Print the help message and exit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">&lt;extra</span> <span class="pre">format</span> <span class="pre">args&gt;</span></code> - Additional arguments for the format writer
+(use <code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">-h</span></code> for help). Must be specified after the main command arguments.</p></li>
+</ul>
+<p>Example: save a project as a VOC-like dataset, include images, convert
+images to <code class="docutils literal notranslate"><span class="pre">PNG</span></code> from other formats.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum <span class="nb">export</span> <span class="se">\</span>
+  -p test_project <span class="se">\</span>
+  -o test_project-export <span class="se">\</span>
+  -f voc <span class="se">\</span>
+  -- --save-images --image-ext<span class="o">=</span><span class="s1">&#39;.png&#39;</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="explain.html" class="btn btn-neutral float-left" title="Run model inference explanation (explain)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="filter.html" class="btn btn-neutral float-right" title="Filter datasets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting started &mdash; Datumaro Documentation 0.2.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Datumaro Design" href="design.html" />
+    <link rel="prev" title="Welcome to Datumaro documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../index.html" class="icon"> Datumaro Documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#standalone-tool">Standalone tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-module">Python module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Datumaro Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-manual/user-manual.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_manual.html">Developer manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formats/formats.html">Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contribution Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/cli/cli.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/util/util/util.html">Utilities</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Datumaro Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Getting started</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/getting_started.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h1>
+<p>no_list: true</p>
+<p>To read about the design concept and features of Datumaro, go to the <a class="reference internal" href="design.html"><span class="doc std std-doc">design section</span></a>.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
+<section id="dependencies">
+<h3>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Python (3.7+)</p></li>
+<li><p>Optional: OpenVINO, TensorFlow, PyTorch, MxNet, Caffe, Accuracy Checker</p></li>
+</ul>
+<p>Optionally, create a virtual environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pip install virtualenv
+python -m virtualenv venv
+. venv/bin/activate
+</pre></div>
+</div>
+<p>Install Datumaro package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install datumaro<span class="o">[</span>default<span class="o">]</span>
+</pre></div>
+</div>
+<p>Read full installation instructions in <a class="reference internal" href="user-manual/installation.html"><span class="doc std std-doc">the user manual</span></a>.</p>
+</section>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h2>
+<p>There are several options available:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#standalone-tool">A standalone command-line tool</a></p></li>
+<li><p><a class="reference external" href="#python-module">A python module</a></p></li>
+</ul>
+<section id="standalone-tool">
+<h3>Standalone tool<a class="headerlink" href="#standalone-tool" title="Permalink to this headline"></a></h3>
+<p>Datuaro as a standalone tool allows to do various dataset operations from
+the command line interface:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum --help
+python -m datumaro --help
+</pre></div>
+</div>
+</section>
+<section id="python-module">
+<h3>Python module<a class="headerlink" href="#python-module" title="Permalink to this headline"></a></h3>
+<p>Datumaro can be used in custom scripts as a Python module. Used this way, it
+allows to use its features from an existing codebase, enabling dataset
+reading, exporting and iteration capabilities, simplifying integration of custom
+formats and providing high performance operations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datumaro.components.project</span> <span class="kn">import</span> <span class="n">Project</span>
+
+<span class="c1"># load a Datumaro project</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="s1">&#39;directory&#39;</span><span class="p">)</span>
+
+<span class="c1"># create a dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">working_tree</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">()</span>
+
+<span class="c1"># keep only annotated images</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># change dataset labels</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;remap_labels&#39;</span><span class="p">,</span>
+  <span class="p">{</span><span class="s1">&#39;cat&#39;</span><span class="p">:</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="c1"># rename cat to dog</span>
+    <span class="s1">&#39;truck&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="c1"># rename truck to car</span>
+    <span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="c1"># remove this label</span>
+  <span class="p">},</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span> <span class="c1"># remove everything else</span>
+
+<span class="c1"># iterate over dataset elements</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">)</span>
+
+<span class="c1"># export the resulting dataset in COCO format</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s1">&#39;dst/dir&#39;</span><span class="p">,</span> <span class="s1">&#39;coco&#39;</span><span class="p">)</span>
+
+<span class="c1"># optionally, release the project resources</span>
+<span class="n">project</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Check our <a class="reference internal" href="developer_manual.html"><span class="doc std std-doc">developer manual</span></a> for additional
+information.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h2>
+<!--lint disable list-item-indent-->
+<!--lint disable list-item-bullet-indent-->
+<ul>
+<li><p>Convert PASCAL VOC dataset to COCO format, keep only images with <code class="docutils literal notranslate"><span class="pre">cat</span></code> class
+presented:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download VOC dataset:</span>
+<span class="c1"># http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar</span>
+datum convert --input-format voc --input-path &lt;path/to/voc&gt; <span class="se">\</span>
+              --output-format coco <span class="se">\</span>
+              --filter <span class="s1">&#39;/item[annotation/label=&quot;cat&quot;]&#39;</span> <span class="se">\</span>
+              -- --reindex <span class="m">1</span> <span class="c1"># avoid annotation id conflicts</span>
+</pre></div>
+</div>
+</li>
+<li><p>Convert only non-<code class="docutils literal notranslate"><span class="pre">occluded</span></code> annotations from a
+<a class="reference external" href="https://github.com/openvinotoolkit/cvat">CVAT</a> project to TFrecord:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># export Datumaro dataset in CVAT UI, extract somewhere, go to the project dir</span>
+datum filter -e <span class="s1">&#39;/item/annotation[occluded=&quot;False&quot;]&#39;</span> --mode items+anno
+datum <span class="nb">export</span> --format tf_detection_api -- --save-images
+</pre></div>
+</div>
+</li>
+<li><p>Annotate MS COCO dataset, extract image subset, re-annotate it in
+<a class="reference external" href="https://github.com/openvinotoolkit/cvat">CVAT</a>, update old dataset:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download COCO dataset http://cocodataset.org/#download</span>
+<span class="c1"># Put images to coco/images/ and annotations to coco/annotations/</span>
+datum create
+datum import --format coco &lt;path/to/coco&gt;
+datum <span class="nb">export</span> --filter <span class="s1">&#39;/image[images_I_dont_like]&#39;</span> --format cvat
+<span class="c1"># import dataset and images to CVAT, re-annotate</span>
+<span class="c1"># export Datumaro project, extract to &#39;reannotation-upd&#39;</span>
+datum project update reannotation-upd
+datum <span class="nb">export</span> --format coco
+</pre></div>
+</div>
+</li>
+<li><p>Annotate instance polygons in
+<a class="reference external" href="https://github.com/openvinotoolkit/cvat">CVAT</a>, export as masks in COCO:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum convert --input-format cvat --input-path &lt;path/to/cvat.xml&gt; <span class="se">\</span>
+              --output-format coco -- --segmentation-mode masks
+</pre></div>
+</div>
+</li>
+<li><p>Apply an OpenVINO detection model to some COCO-like dataset,
+then compare annotations with ground truth and visualize in TensorBoard:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum create
+datum import --format coco &lt;path/to/coco&gt;
+<span class="c1"># create model results interpretation script</span>
+datum model add -n mymodel openvino <span class="se">\</span>
+  --weights model.bin --description model.xml <span class="se">\</span>
+  --interpretation-script parse_results.py
+datum model run --model -n mymodel --output-dir mymodel_inference/
+datum diff mymodel_inference/ --format tensorboard --output-dir diff
+</pre></div>
+</div>
+</li>
+<li><p>Change colors in PASCAL VOC-like <code class="docutils literal notranslate"><span class="pre">.png</span></code> masks:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum create
+datum import --format voc &lt;path/to/voc/dataset&gt;
+
+<span class="c1"># Create a color map file with desired colors:</span>
+<span class="c1">#</span>
+<span class="c1"># label : color_rgb : parts : actions</span>
+<span class="c1"># cat:0,0,255::</span>
+<span class="c1"># dog:255,0,0::</span>
+<span class="c1">#</span>
+<span class="c1"># Save as mycolormap.txt</span>
+
+datum <span class="nb">export</span> --format voc_segmentation -- --label-map mycolormap.txt
+<span class="c1"># add &quot;--apply-colormap=0&quot; to save grayscale (indexed) masks</span>
+<span class="c1"># check &quot;--help&quot; option for more info</span>
+<span class="c1"># use &quot;datum --loglevel debug&quot; for extra conversion info</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create a custom COCO-like dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.annotation</span> <span class="kn">import</span> <span class="p">(</span>
+  <span class="n">AnnotationType</span><span class="p">,</span> <span class="n">Bbox</span><span class="p">,</span> <span class="n">LabelCategories</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.extractor</span> <span class="kn">import</span> <span class="n">DatasetItem</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">([</span>
+  <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+    <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+      <span class="n">Bbox</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="p">]</span>
+  <span class="p">),</span>
+  <span class="c1"># ...</span>
+<span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">])</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s1">&#39;test_dataset/&#39;</span><span class="p">,</span> <span class="s1">&#39;coco&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<!--lint enable list-item-bullet-indent-->
+<!--lint enable list-item-indent-->
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Datumaro documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="design.html" class="btn btn-neutral float-right" title="Datumaro Design" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

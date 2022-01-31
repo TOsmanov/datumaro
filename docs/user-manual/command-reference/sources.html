@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sources &mdash; Datumaro Documentation 0.2.2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Get Project Statistics" href="stats.html" />
+    <link rel="prev" title="Projects" href="projects.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../../index.html" class="icon"> Datumaro Documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design.html">Datumaro Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../user-manual.html">User Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../user-manual.html#user-manual">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_index.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending.html">Extending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_control_tm_data_collection.html">How to control telemetry data collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_use_datumaro.html">How to use Datumaro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../links.html">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../media_formats.html">Media formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supported_formats.html">Supported Formats</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="command-reference.html">Command Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="command-reference.html#command-reference">Command reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_index.html">Command reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="checkout.html">Checkout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commit.html">Commit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convert.html">Convert datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create.html">Create project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="detect-format.html">Detect dataset format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff.html">Compare datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download.html">Download datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explain.html">Run model inference explanation (explain)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="export.html">Export Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filter.html">Filter datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="info.html">Print dataset info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="merge.html">Merge Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="patch.html">Patch Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Sources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#import-dataset-a-id-source-import-a">Import Dataset <a id="source-import"></a></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-dataset-a-id-source-add-a">Add Dataset <a id="source-add"></a></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remove-datasets-a-id-source-remove-a">Remove Datasets <a id="source-remove"></a></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="stats.html">Get Project Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="status.html">Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transform.html">Transform Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="util.html">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validate.html">Validate Dataset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_manual.html">Developer manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../formats/formats.html">Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contribution Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/cli/cli.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/util/util/util.html">Utilities</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Datumaro Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../user-manual.html">User Manual</a> &raquo;</li>
+          <li><a href="command-reference.html">Command Reference</a> &raquo;</li>
+      <li>Sources</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/user-manual/command-reference/sources.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="sources">
+<h1>Sources<a class="headerlink" href="#sources" title="Permalink to this headline"></a></h1>
+<p>These commands are specific for Data Sources. Read more about them <a class="reference external" href="/docs/user-manual/how_to_use_datumaro#data-sources">here</a>.</p>
+<section id="import-dataset-a-id-source-import-a">
+<h2>Import Dataset <a id="source-import"></a><a class="headerlink" href="#import-dataset-a-id-source-import-a" title="Permalink to this headline"></a></h2>
+<p>Datasets can be added to a Datumaro project with the <code class="docutils literal notranslate"><span class="pre">import</span></code> command,
+which adds a dataset link into the project and downloads (or copies)
+the dataset. If you need to add a dataset already copied into the project,
+use the <a class="reference external" href="#source-add"><code class="docutils literal notranslate"><span class="pre">add</span></code></a> command.</p>
+<p>Dataset format readers can provide some additional import options. To pass
+such options, use the <code class="docutils literal notranslate"><span class="pre">--</span></code> separator after the main command arguments.
+The usage information can be printed with <code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">import</span> <span class="pre">-f</span> <span class="pre">&lt;format&gt;</span> <span class="pre">--</span> <span class="pre">--help</span></code>.</p>
+<p>The list of currently available formats is listed in the command help output.</p>
+<p>A dataset is imported by its URL. Currently, only local filesystem
+paths are supported. The URL can be a file or a directory path
+to a dataset. When the dataset is read, it is read as a whole.
+However, many formats can have multiple subsets like <code class="docutils literal notranslate"><span class="pre">train</span></code>, <code class="docutils literal notranslate"><span class="pre">val</span></code>, <code class="docutils literal notranslate"><span class="pre">test</span></code>
+etc. If you want to limit reading only to a specific subset, use
+the <code class="docutils literal notranslate"><span class="pre">-r/--path</span></code> parameter. It can also be useful when subset files have
+non-standard placement or names.</p>
+<p>When a dataset is imported, the following things are done:</p>
+<ul class="simple">
+<li><p>URL is saved in the project config</p></li>
+<li><p>data in copied into the project</p></li>
+</ul>
+<p>Each data source has a name assigned, which can be used in other commands. To
+set a specific name, use the <code class="docutils literal notranslate"><span class="pre">-n/--name</span></code> parameter.</p>
+<p>The dataset is added into the working tree of the project. A new commit
+is <em>not</em> done automatically.</p>
+<p>Usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum import <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-n NAME<span class="o">]</span> -f FORMAT <span class="o">[</span>-r PATH<span class="o">]</span> <span class="o">[</span>--no-check<span class="o">]</span>
+  <span class="o">[</span>-p PROJECT_DIR<span class="o">]</span> url <span class="o">[</span>-- EXTRA_FORMAT_ARGS<span class="o">]</span>
+</pre></div>
+</div>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;url&gt;</span></code> (string) - A file of directory path to the dataset.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-f,</span> <span class="pre">--format</span></code> (string) - Dataset format</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-r,</span> <span class="pre">--path</span></code> (string) - A path relative to the source URL the data source.
+Useful to specify a path to a subset, subtask, or a specific file in URL.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--no-check</span></code> - Don’t try to read the source after importing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code>, <code class="docutils literal notranslate"><span class="pre">--name</span></code> (string) - Name of the new source (default: generate
+automatically)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p,</span> <span class="pre">--project</span></code> (string) - Directory of the project to operate on
+(default: current directory).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h,</span> <span class="pre">--help</span></code> - Print the help message and exit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">&lt;extra</span> <span class="pre">format</span> <span class="pre">args&gt;</span></code> - Additional arguments for the format reader
+(use <code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">-h</span></code> for help). Must be specified after the main command arguments.</p></li>
+</ul>
+<p>Example: create a project from images and annotations in different formats,
+export as TFrecord for TF Detection API for model training</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;default&#39; is the name of the subset below</span>
+datum create
+datum import -f coco_instances -r annotations/instances_default.json path/to/coco
+datum import -f cvat &lt;path/to/cvat/default.xml&gt;
+datum import -f voc_detection -r custom_subset_dir/default.txt &lt;path/to/voc&gt;
+datum import -f datumaro &lt;path/to/datumaro/default.json&gt;
+datum import -f image_dir &lt;path/to/images/dir&gt;
+datum <span class="nb">export</span> -f tf_detection_api -- --save-images
+</pre></div>
+</div>
+</section>
+<section id="add-dataset-a-id-source-add-a">
+<h2>Add Dataset <a id="source-add"></a><a class="headerlink" href="#add-dataset-a-id-source-add-a" title="Permalink to this headline"></a></h2>
+<p>Existing datasets can be added to a Datumaro project with the <code class="docutils literal notranslate"><span class="pre">add</span></code> command.
+The command adds a project-local directory as a data source in the project.
+Unlike the <a class="reference external" href="#source-import"><code class="docutils literal notranslate"><span class="pre">import</span></code></a>
+command, it does not copy datasets and only works with local directories.
+The source name is defined by the directory name.</p>
+<p>Dataset format readers can provide some additional import options. To pass
+such options, use the <code class="docutils literal notranslate"><span class="pre">--</span></code> separator after the main command arguments.
+The usage information can be printed with <code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">add</span> <span class="pre">-f</span> <span class="pre">&lt;format&gt;</span> <span class="pre">--</span> <span class="pre">--help</span></code>.</p>
+<p>The list of currently available formats is listed in the command help output.</p>
+<p>A dataset is imported as a directory. When the dataset is read, it is read
+as a whole. However, many formats can have multiple subsets like <code class="docutils literal notranslate"><span class="pre">train</span></code>,
+<code class="docutils literal notranslate"><span class="pre">val</span></code>, <code class="docutils literal notranslate"><span class="pre">test</span></code> etc. If you want to limit reading only to a specific subset,
+use the <code class="docutils literal notranslate"><span class="pre">-r/--path</span></code> parameter. It can also be useful when subset files have
+non-standard placement or names.</p>
+<p>The dataset is added into the working tree of the project. A new commit
+is <em>not</em> done automatically.</p>
+<p>Usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum add <span class="o">[</span>-h<span class="o">]</span> -f FORMAT <span class="o">[</span>-r PATH<span class="o">]</span> <span class="o">[</span>--no-check<span class="o">]</span>
+  <span class="o">[</span>-p PROJECT_DIR<span class="o">]</span> path <span class="o">[</span>-- EXTRA_FORMAT_ARGS<span class="o">]</span>
+</pre></div>
+</div>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;url&gt;</span></code> (string) - A file of directory path to the dataset.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-f,</span> <span class="pre">--format</span></code> (string) - Dataset format</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-r,</span> <span class="pre">--path</span></code> (string) - A path relative to the source URL the data source.
+Useful to specify a path to a subset, subtask, or a specific file in URL.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--no-check</span></code> - Don’t try to read the source after importing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p,</span> <span class="pre">--project</span></code> (string) - Directory of the project to operate on
+(default: current directory).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h,</span> <span class="pre">--help</span></code> - Print the help message and exit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">&lt;extra</span> <span class="pre">format</span> <span class="pre">args&gt;</span></code> - Additional arguments for the format reader
+(use <code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">-h</span></code> for help). Must be specified after the main command arguments.</p></li>
+</ul>
+<p>Example: create a project from images and annotations in different formats,
+export in YOLO for model training</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum create
+datum add -f coco -r annotations/instances_train.json dataset1/
+datum add -f cvat dataset2/train.xml
+datum <span class="nb">export</span> -f yolo -- --save-images
+</pre></div>
+</div>
+<p>Example: add an existing dataset into a project, avoid data copying</p>
+<p>To add a dataset, we need to have it inside the project directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>proj/
+├─ .datumaro/
+├─ .dvc/
+├─ my_coco/
+│  └─ images/
+│     ├─ image1.jpg
+│     └─ ...
+│  └─ annotations/
+│     └─ coco_annotation.json
+├─ .dvcignore
+└─ .gitignore
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum create -o proj/
+mv ~/my_coco/ proj/my_coco/ <span class="c1"># move the dataset into the project directory</span>
+datum add -p proj/ -f coco proj/my_coco/
+</pre></div>
+</div>
+</section>
+<section id="remove-datasets-a-id-source-remove-a">
+<h2>Remove Datasets <a id="source-remove"></a><a class="headerlink" href="#remove-datasets-a-id-source-remove-a" title="Permalink to this headline"></a></h2>
+<p>To remove a data source from a project, use the <code class="docutils literal notranslate"><span class="pre">remove</span></code> command.</p>
+<p>Usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum remove <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--force<span class="o">]</span> <span class="o">[</span>--keep-data<span class="o">]</span> <span class="o">[</span>-p PROJECT_DIR<span class="o">]</span> name <span class="o">[</span>name ...<span class="o">]</span>
+</pre></div>
+</div>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> (string) - The name of the source to be removed (repeatable)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-f,</span> <span class="pre">--force</span></code> - Do not fail and stop on errors during removal</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--keep-data</span></code> - Do not remove source data from the working directory, remove
+only project metainfo.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p,</span> <span class="pre">--project</span></code> (string) - Directory of the project to operate on
+(default: current directory).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h,</span> <span class="pre">--help</span></code> - Print the help message and exit.</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum create
+datum import -f voc -n src1 &lt;path/to/dataset/&gt;
+datum remove src1
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="projects.html" class="btn btn-neutral float-left" title="Projects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="stats.html" class="btn btn-neutral float-right" title="Get Project Statistics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

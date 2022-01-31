@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Market-1501 &mdash; Datumaro Documentation 0.2.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="MARS" href="mars.html" />
+    <link rel="prev" title="Mapillary Vistas" href="mapillary_vistas.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../index.html" class="icon"> Datumaro Documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design.html">Datumaro Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-manual/user-manual.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_manual.html">Developer manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="formats.html">Formats</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ade20k2017.html">ADE20k (v2017)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ade20k2020.html">ADE20k (v2020)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="align_celeba.html">Align CelebA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="celeba.html">CelebA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cifar.html">CIFAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cityscapes.html">Cityscapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coco.html">COCO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icdar.html">ICDAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_zip.html">Image zip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imagenet.html">ImageNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kitti.html">KITTI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kitti_raw.html">Velodyne Points / KITTI Raw 3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lfw.html">LFW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mapillary_vistas.html">Mapillary Vistas</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Market-1501</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#format-specification">Format specification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#import-market-1501-dataset">Import Market-1501 dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-dataset-to-the-market-1501-format">Export dataset to the Market-1501 format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mars.html">MARS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mnist.html">MNIST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpii.html">MPII Human Pose Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpii_json.html">MPII Human Pose Dataset (JSON)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_images.html">Open Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pascal_voc.html">Pascal VOC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sly_pointcloud.html">Supervisely Point Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="synthia.html">SYNTHIA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vgg_face2.html">Vgg Face2 CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vott_csv.html">VoTT CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vott_json.html">VoTT JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wider_face.html">Format specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wider_face.html#import-wider-face-dataset">Import WIDER Face dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wider_face.html#export-wider-face-dataset">Export WIDER Face dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wider_face.html#export-to-wider-face-dataset">Export to WIDER Face dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo.html">YOLO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribution Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/cli/cli.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/util/util/util.html">Utilities</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Datumaro Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="formats.html">Formats</a> &raquo;</li>
+      <li>Market-1501</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/formats/market1501.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="market-1501">
+<h1>Market-1501<a class="headerlink" href="#market-1501" title="Permalink to this headline"></a></h1>
+<section id="format-specification">
+<h2>Format specification<a class="headerlink" href="#format-specification" title="Permalink to this headline"></a></h2>
+<p>Market-1501 is a dataset for person re-identification task, link
+for downloading this dataset is available
+<a class="reference external" href="https://zheng-lab.cecs.anu.edu.au/Project/project_reid.html">here</a>.</p>
+<p>Supported items attributes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">person_id</span></code> (str): four-digit number that represent ID of pedestrian;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">camera_id</span></code> (int): one-digit number that represent ID of camera that took
+the image (original dataset has totally 6 cameras);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">track_id</span></code> (int): one-digit number that represent ID of the track with
+the particular pedestrian, this attribute matches with <code class="docutils literal notranslate"><span class="pre">sequence_id</span></code>
+in the original dataset;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">frame_id</span></code> (int): six-digit number, that mean number of
+frame within this track. For the tracks, their names are accumulated
+for each ID, but for frames, they start from “0001” in each track;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bbox_id</span></code> (int): two-digit number, that mean number of
+bounding bbox that was selected for that image
+(see the
+<a class="reference external" href="https://zheng-lab.cecs.anu.edu.au/Project/project_reid.html">original docs</a>
+for more info).</p></li>
+</ul>
+<p>These item attributes decodes into the image name with such convention:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0000</span><span class="n">_c1s1_000000_00</span><span class="o">.</span><span class="n">jpg</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>first four digits indicate the <code class="docutils literal notranslate"><span class="pre">person_id</span></code>;</p></li>
+<li><p>digit after <code class="docutils literal notranslate"><span class="pre">c</span></code> indicates the <code class="docutils literal notranslate"><span class="pre">camera_id</span></code>;</p></li>
+<li><p>digit after <code class="docutils literal notranslate"><span class="pre">s</span></code> indicate the <code class="docutils literal notranslate"><span class="pre">track_id</span></code>;</p></li>
+<li><p>six digits after <code class="docutils literal notranslate"><span class="pre">s1_</span></code> indicate the <code class="docutils literal notranslate"><span class="pre">frame_id</span></code>;</p></li>
+<li><p>the last two digits before <code class="docutils literal notranslate"><span class="pre">.jpg</span></code> indicate the <code class="docutils literal notranslate"><span class="pre">bbox_id</span></code>.</p></li>
+</ul>
+</section>
+<section id="import-market-1501-dataset">
+<h2>Import Market-1501 dataset<a class="headerlink" href="#import-market-1501-dataset" title="Permalink to this headline"></a></h2>
+<p>Importing of Market-1501 dataset into the Datumaro project:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum create
+datum import -f market1501 &lt;path_to_market1501&gt;
+</pre></div>
+</div>
+<p>See more information about adding datasets to the project in the
+<a class="reference external" href="/docs/user-manual/command-reference/sources/#source-add">docs</a>.</p>
+<p>Or you can import Market-1501 using Python API:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datumaro.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="s1">&#39;&lt;path_to_dataset&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;market1501&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For successful importing the Market-1501 dataset, the directory with it
+should has the following structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>market1501_dataset/
+├── query # optional directory with query image
+│   ├── 0001_c1s1_001051_00.jpg
+│   ├── 0002_c1s1_001051_00.jpg
+│   ├── ...
+├── bounding_box_&lt;subset_name1&gt;
+│   ├── 0003_c1s1_001051_00.jpg
+│   ├── 0003_c2s1_001054_01.jpg
+│   ├── 0004_c1s1_001051_00.jpg
+│   ├── ...
+├── bounding_box_&lt;subset_name2&gt;
+│   ├── 0005_c1s1_001051_00.jpg
+│   ├── 0006_c1s1_001051_00.jpg
+│   ├── ...
+├── ...
+</pre></div>
+</div>
+</section>
+<section id="export-dataset-to-the-market-1501-format">
+<h2>Export dataset to the Market-1501 format<a class="headerlink" href="#export-dataset-to-the-market-1501-format" title="Permalink to this headline"></a></h2>
+<p>With Datumaro you can export dataset, that has <code class="docutils literal notranslate"><span class="pre">person_id</span></code> item attribute,
+to the Market-1501 format, example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Converting MARS dataset into the Market-1501</span>
+datum convert -if mars -i ./mars_dataset <span class="se">\</span>
+    -f market1501 -o ./output_dir
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Export dataaset to the Market-1501 format through the Datumaro project:</span>
+datum create
+datum add -f mars ../mars
+datum <span class="nb">export</span> -f market1501 -o ./output_dir -- --save-images --image-ext png
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: if your dataset contains only person_id attributes Datumaro
+will assign default values for other attributes (camera_id, track_id, bbox_id)
+and increment frame_id for collisions.</p>
+</div></blockquote>
+<p>Available extra export options for Market-1501 dataset format:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--save-images</span></code> allow to export dataset with saving images.
+(by default <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--image-ext</span> <span class="pre">IMAGE_EXT</span></code> allow to specify image extension
+for exporting dataset (by default - keep original)</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mapillary_vistas.html" class="btn btn-neutral float-left" title="Mapillary Vistas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mars.html" class="btn btn-neutral float-right" title="MARS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

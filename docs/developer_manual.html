@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer manual &mdash; Datumaro Documentation 0.2.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Formats" href="formats/formats.html" />
+    <link rel="prev" title="Validate Dataset" href="user-manual/command-reference/validate.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../index.html" class="icon"> Datumaro Documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Datumaro Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-manual/user-manual.html">User Manual</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basics">Basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-dataset-class">The Dataset class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-merging-a-id-merging-a">Dataset merging <a id="merging"></a></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-simple-merging-joining">The simple merging (“joining”)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-complex-merging">The complex merging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#projects">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#library-contents">Library contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dataset-formats">Dataset Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dataset-conversions-transforms">Dataset Conversions (“Transforms”)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-launchers">Model launchers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#plugins">Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#writing-a-plugin">Writing a plugin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#plugin-example">Plugin example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#command-line">Command-line</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="formats/formats.html">Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contribution Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/cli/cli.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/util/util/util.html">Utilities</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Datumaro Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Developer manual</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/developer_manual.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="developer-manual">
+<h1>Developer manual<a class="headerlink" href="#developer-manual" title="Permalink to this headline"></a></h1>
+<section id="basics">
+<h2>Basics<a class="headerlink" href="#basics" title="Permalink to this headline"></a></h2>
+<p>The central part of the library is the <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> class, which represents
+a dataset and allows to iterate over its elements.
+<code class="docutils literal notranslate"><span class="pre">DatasetItem</span></code>, an element of a dataset, represents a single
+dataset entry with annotations - an image, video sequence, audio track etc.
+It can contain only annotated data or meta information, only annotations, or
+all of this.</p>
+<p>Basic library usage and data flow:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Extractors</span> <span class="o">-&gt;</span> <span class="n">Dataset</span> <span class="o">-&gt;</span> <span class="n">Converter</span>
+                 <span class="o">|</span>
+             <span class="n">Filtration</span>
+          <span class="n">Transformations</span>
+             <span class="n">Statistics</span>
+              <span class="n">Merging</span>
+             <span class="n">Inference</span>
+          <span class="n">Quality</span> <span class="n">Checking</span>
+             <span class="n">Comparison</span>
+                <span class="o">...</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>Data is read (or produced) by one or many <code class="docutils literal notranslate"><span class="pre">Extractor</span></code>s and
+<a class="reference external" href="#merging">merged</a> into a <code class="docutils literal notranslate"><span class="pre">Dataset</span></code></p></li>
+<li><p>The dataset is processed in some way</p></li>
+<li><p>The dataset is saved with a <code class="docutils literal notranslate"><span class="pre">Converter</span></code></p></li>
+</ol>
+<p>Datumaro has a number of dataset and annotation features:</p>
+<ul class="simple">
+<li><p>iteration over dataset elements</p></li>
+<li><p>filtering of datasets and annotations by a custom criteria</p></li>
+<li><p>working with subsets (e.g. <code class="docutils literal notranslate"><span class="pre">train</span></code>, <code class="docutils literal notranslate"><span class="pre">val</span></code>, <code class="docutils literal notranslate"><span class="pre">test</span></code>)</p></li>
+<li><p>computing of dataset statistics</p></li>
+<li><p>comparison and merging of datasets</p></li>
+<li><p>various annotation operations</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datumaro.components.annotation</span> <span class="kn">import</span> <span class="n">Bbox</span><span class="p">,</span> <span class="n">Polygon</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.extractor</span> <span class="kn">import</span> <span class="n">DatasetItem</span>
+
+<span class="c1"># Import and export a dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="s1">&#39;src/dir&#39;</span><span class="p">,</span> <span class="s1">&#39;voc&#39;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s1">&#39;dst/dir&#39;</span><span class="p">,</span> <span class="s1">&#39;coco&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create a dataset, convert polygons to masks, save in PASCAL VOC format</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+  <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image1&#39;</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">Bbox</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">Polygon</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">attributes</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;occluded&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}),</span>
+  <span class="p">]),</span>
+<span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">])</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;polygons_to_masks&#39;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s1">&#39;dst/dir&#39;</span><span class="p">,</span> <span class="s1">&#39;voc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="the-dataset-class">
+<h3>The Dataset class<a class="headerlink" href="#the-dataset-class" title="Permalink to this headline"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> class from the <code class="docutils literal notranslate"><span class="pre">datumaro.components.dataset</span></code> module represents
+a dataset, consisting of multiple <code class="docutils literal notranslate"><span class="pre">DatasetItem</span></code>s. Annotations are
+represented by members of the <code class="docutils literal notranslate"><span class="pre">datumaro.components.extractor</span></code> module,
+such as <code class="docutils literal notranslate"><span class="pre">Label</span></code>, <code class="docutils literal notranslate"><span class="pre">Mask</span></code> or <code class="docutils literal notranslate"><span class="pre">Polygon</span></code>. A dataset can contain items from one or
+multiple subsets (e.g. <code class="docutils literal notranslate"><span class="pre">train</span></code>, <code class="docutils literal notranslate"><span class="pre">test</span></code>, <code class="docutils literal notranslate"><span class="pre">val</span></code> etc.), the list of dataset
+subsets is available in <code class="docutils literal notranslate"><span class="pre">dataset.subsets()</span></code>.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">DatasetItem</span></code> is an element of a dataset. Its <code class="docutils literal notranslate"><span class="pre">id</span></code> is the name of the
+corresponding image, video frame, or other media being annotated.
+An item can have some <code class="docutils literal notranslate"><span class="pre">attributes</span></code>, associated media info and <code class="docutils literal notranslate"><span class="pre">annotations</span></code>.</p>
+<p>Datasets typically have annotations, and these annotations can
+require additional information to be interpreted correctly. For instance, it
+can be class names, class hierarchy, keypoint connections,
+class colors for masks, class attributes.
+Such information is stored in <code class="docutils literal notranslate"><span class="pre">dataset.categories()</span></code>, which is a mapping from
+<code class="docutils literal notranslate"><span class="pre">AnnotationType</span></code> to a corresponding <code class="docutils literal notranslate"><span class="pre">...Categories</span></code> class. Each annotation type
+can have its <code class="docutils literal notranslate"><span class="pre">Categories</span></code>. Typically, there will be at least <code class="docutils literal notranslate"><span class="pre">LabelCategories</span></code>;
+if there are instance masks, the dataset will contain <code class="docutils literal notranslate"><span class="pre">MaskCategories</span></code> etc.
+The “main” type of categories is <code class="docutils literal notranslate"><span class="pre">LabelCategories</span></code> - annotations and other
+categories use label indices from this object.</p>
+<p>The main operation for a dataset is iteration over its elements
+(<code class="docutils literal notranslate"><span class="pre">DatasetItem</span></code>s). An item corresponds to a single image, a video sequence,
+etc. There are also many other operations available, such as filtration
+(<code class="docutils literal notranslate"><span class="pre">dataset.select()</span></code>), transformation (<code class="docutils literal notranslate"><span class="pre">dataset.transform()</span></code>),
+exporting (<code class="docutils literal notranslate"><span class="pre">dataset.export()</span></code>) and others. A <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> is an <code class="docutils literal notranslate"><span class="pre">Iterable</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Extractor</span></code> by itself.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> can be created from scratch by its class constructor.
+Categories can be set immediately or later with the
+<code class="docutils literal notranslate"><span class="pre">define_categories()</span></code> method, but only once. You can create a dataset filled
+with initial <code class="docutils literal notranslate"><span class="pre">DatasetItem</span></code>s with <code class="docutils literal notranslate"><span class="pre">Dataset.from_iterable()</span></code>.
+If you need to create a dataset from one or many other extractors
+(or datasets), it can be done with <code class="docutils literal notranslate"><span class="pre">Dataset.from_extractors()</span></code>.</p>
+<p>If a dataset is created from multiple extractors with
+<code class="docutils literal notranslate"><span class="pre">Dataset.from_extractors()</span></code>, the source datasets will be <a class="reference external" href="#merging">joined</a>,
+so their categories must match. If datasets have mismatching categories,
+use the more complex <code class="docutils literal notranslate"><span class="pre">IntersectMerge</span></code> class from <code class="docutils literal notranslate"><span class="pre">datumaro.components.operations</span></code>,
+which will merge all the labels and remap the shifted indices in annotations.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> can be loaded from an existing dataset on disk with
+<code class="docutils literal notranslate"><span class="pre">Dataset.import_from()</span></code> (for arbitrary formats) and
+<code class="docutils literal notranslate"><span class="pre">Dataset.load()</span></code> (for the Datumaro data format).</p>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> works lazily, which means all the operations requiring
+iteration over inputs will be deferred as much as possible. If you don’t want
+such behavior, use the <code class="docutils literal notranslate"><span class="pre">init_cache()</span></code> method or wrap the code in
+<code class="docutils literal notranslate"><span class="pre">eager_mode</span></code> (from <code class="docutils literal notranslate"><span class="pre">datumaro.components.dataset</span></code>), which will load all
+the annotations into memory. The media won’t be loaded unless the data
+is required, because it can quickly waste all the available memory.
+You can check if the dataset is cached with the <code class="docutils literal notranslate"><span class="pre">is_cache_initialized</span></code>
+attribute.</p>
+<p>Once created, a dataset can be modified in batch mode with transforms or
+directly with the <code class="docutils literal notranslate"><span class="pre">put()</span></code> and <code class="docutils literal notranslate"><span class="pre">remove()</span></code> methods. <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> instances
+record information about changes done, which can be obtained by <code class="docutils literal notranslate"><span class="pre">get_patch()</span></code>.
+The patch information is used automatically on saving and exporting to
+reduce the amount of disk writes. Changes can be flushed with
+<code class="docutils literal notranslate"><span class="pre">flush_changes()</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datumaro.components.annotation</span> <span class="kn">import</span> <span class="n">Bbox</span><span class="p">,</span> <span class="n">Polygon</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.extractor</span> <span class="kn">import</span> <span class="n">DatasetItem</span>
+
+<span class="c1"># create a dataset directly from items</span>
+<span class="n">dataset1</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+  <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image1&#39;</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">Bbox</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">Polygon</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+  <span class="p">]),</span>
+<span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">,</span> <span class="s1">&#39;truck&#39;</span><span class="p">])</span>
+
+<span class="n">dataset2</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">categories</span><span class="o">=</span><span class="n">dataset1</span><span class="o">.</span><span class="n">categories</span><span class="p">())</span>
+<span class="n">dataset2</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;image2&#39;</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+  <span class="n">Label</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+  <span class="n">Bbox</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">]))</span>
+
+<span class="c1"># create a dataset from other datasets</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_extractors</span><span class="p">(</span><span class="n">dataset1</span><span class="p">,</span> <span class="n">dataset2</span><span class="p">)</span>
+
+<span class="c1"># keep only annotated images</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># change dataset labels</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;remap_labels&#39;</span><span class="p">,</span>
+  <span class="p">{</span><span class="s1">&#39;cat&#39;</span><span class="p">:</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="c1"># rename cat to dog</span>
+    <span class="s1">&#39;truck&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="c1"># rename truck to car</span>
+    <span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="c1"># remove this label</span>
+  <span class="p">},</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span>
+
+<span class="c1"># iterate over elements</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">)</span>
+
+<span class="c1"># iterate over subsets as Datasets</span>
+<span class="k">for</span> <span class="n">subset_name</span><span class="p">,</span> <span class="n">subset</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">subsets</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+  <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">subset</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="dataset-merging-a-id-merging-a">
+<h4>Dataset merging <a id="merging"></a><a class="headerlink" href="#dataset-merging-a-id-merging-a" title="Permalink to this headline"></a></h4>
+<p>There are 2 methods of merging datasets in Datumaro:</p>
+<ul class="simple">
+<li><p>simple merging (“joining”)</p></li>
+<li><p>complex merging</p></li>
+</ul>
+</section>
+<section id="the-simple-merging-joining">
+<h4>The simple merging (“joining”)<a class="headerlink" href="#the-simple-merging-joining" title="Permalink to this headline"></a></h4>
+<p>This approach finds the corresponding <code class="docutils literal notranslate"><span class="pre">DatasetItem</span></code>s in inputs,
+finds equal annotations and leaves only the unique set of annotations.
+This approach requires all the inputs to have categories with the same
+labels (or no labels) in the same order.</p>
+<p>This algorithm is applied automatically in <code class="docutils literal notranslate"><span class="pre">Dataset.from_extractors()</span></code>
+and when the build targets are merged in the <code class="docutils literal notranslate"><span class="pre">ProjectTree.make_dataset()</span></code>.</p>
+</section>
+<section id="the-complex-merging">
+<h4>The complex merging<a class="headerlink" href="#the-complex-merging" title="Permalink to this headline"></a></h4>
+<p>If datasets have mismatching categories, they can’t be
+merged by the simple approach, because it can lead to errors in the
+resulting annotations. For complex cases Datumaro provides a more
+sophisticated algorithm, which finds matching annotations by computing
+distances between them. Labels and attributes are deduced by voting,
+spatial annotations use the corresponding metrics like
+Intersection-over-Union (IoU), OKS, PDJ and others.</p>
+<p>The categories of the input datasets are compared, the matching ones
+complement missing information in each other, the mismatching ones are
+appended after next. Label indices in annotations are shifted to the
+new values.</p>
+<p>The complex algorithm is available in the <code class="docutils literal notranslate"><span class="pre">IntersectMerge</span></code> class
+from <code class="docutils literal notranslate"><span class="pre">datumaro.components.operations</span></code>. It must be used explicitly.
+This class also allows to check the inputs and the output dataset
+for errors and problems.</p>
+</section>
+</section>
+<section id="projects">
+<h3>Projects<a class="headerlink" href="#projects" title="Permalink to this headline"></a></h3>
+<p>Projects are intended for complex use of Datumaro. They provide means of
+persistence, versioning, high-level operations for datasets and also
+allow to extend Datumaro via <a class="reference external" href="#plugins">plugins</a>. A project provides
+access to build trees and revisions, data sources, models, configuration,
+plugins and cache. Projects can have multiple data sources, which are
+<a class="reference external" href="#merging">joined</a> on dataset creation. Project configuration is available
+in <code class="docutils literal notranslate"><span class="pre">project.config</span></code>. To add a data source into a <code class="docutils literal notranslate"><span class="pre">Project</span></code>, use
+the <code class="docutils literal notranslate"><span class="pre">import_source()</span></code> method. The build tree of the current working
+directory can be converted to a <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> with
+<code class="docutils literal notranslate"><span class="pre">project.working_tree.make_dataset()</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Environment</span></code> class is responsible for accessing built-in and
+project-specific plugins. For a <code class="docutils literal notranslate"><span class="pre">Project</span></code> object, there is an instance of
+related <code class="docutils literal notranslate"><span class="pre">Environment</span></code> in <code class="docutils literal notranslate"><span class="pre">project.env</span></code>.</p>
+<p>Check the <a class="reference internal" href="user-manual/supported_formats.html"><span class="doc std std-doc">Data Model section of the User Manual</span></a>
+for more info about Project behavior and high-level details.</p>
+</section>
+</section>
+<section id="library-contents">
+<h2>Library contents<a class="headerlink" href="#library-contents" title="Permalink to this headline"></a></h2>
+<section id="dataset-formats">
+<h3>Dataset Formats<a class="headerlink" href="#dataset-formats" title="Permalink to this headline"></a></h3>
+<p>The framework provides functions to read and write datasets in specific formats.
+It is supported by <code class="docutils literal notranslate"><span class="pre">Extractor</span></code>s, <code class="docutils literal notranslate"><span class="pre">Importer</span></code>s, and <code class="docutils literal notranslate"><span class="pre">Converter</span></code>s.</p>
+<p>Dataset reading is supported by <code class="docutils literal notranslate"><span class="pre">Extractor</span></code>s and <code class="docutils literal notranslate"><span class="pre">Importer</span></code>s:</p>
+<ul class="simple">
+<li><p>An <code class="docutils literal notranslate"><span class="pre">Extractor</span></code> produces a list of <code class="docutils literal notranslate"><span class="pre">DatasetItem</span></code>s corresponding to the
+dataset. Annotations are available in the <code class="docutils literal notranslate"><span class="pre">DatasetItem.annotations</span></code> list.
+The <code class="docutils literal notranslate"><span class="pre">SourceExtractor</span></code> class is designed for loading simple, single-subset
+datasets. It should be used by default. The <code class="docutils literal notranslate"><span class="pre">Extractor</span></code> base class should
+be used when <code class="docutils literal notranslate"><span class="pre">SourceExtractor</span></code>’s functionality is not enough.</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">Importer</span></code> detects dataset files and generates dataset loading parameters
+for the corresponding <code class="docutils literal notranslate"><span class="pre">Extractor</span></code>s. <code class="docutils literal notranslate"><span class="pre">Importer</span></code>s are optional, they
+only extend the Extractor functionality and make them more flexible and
+simple. They are mostly used to locate dataset subsets, but they also can
+do some data compatibility checks and have other required logic.</p></li>
+</ul>
+<p>It is possible to add custom <code class="docutils literal notranslate"><span class="pre">Extractor</span></code>s and <code class="docutils literal notranslate"><span class="pre">Importer</span></code>s. To do this, you need
+to put an <code class="docutils literal notranslate"><span class="pre">Extractor</span></code> and <code class="docutils literal notranslate"><span class="pre">Importer</span></code> implementations to a plugin directory.</p>
+<p>Dataset writing is supported by <code class="docutils literal notranslate"><span class="pre">Converter</span></code>s.
+A <code class="docutils literal notranslate"><span class="pre">Converter</span></code> produces a dataset of a specific format from dataset items.
+It is possible to add custom <code class="docutils literal notranslate"><span class="pre">Converter</span></code>s. To do this, you need to put a
+<code class="docutils literal notranslate"><span class="pre">Converter</span></code> implementation script to a plugin directory.</p>
+</section>
+<section id="dataset-conversions-transforms">
+<h3>Dataset Conversions (“Transforms”)<a class="headerlink" href="#dataset-conversions-transforms" title="Permalink to this headline"></a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">Transform</span></code> is a function for altering a dataset and producing a new one.
+It can update dataset items, annotations, classes, and other properties.
+A list of available transforms for dataset conversions can be extended by
+adding a <code class="docutils literal notranslate"><span class="pre">Transform</span></code> implementation script into a plugin directory.</p>
+</section>
+<section id="model-launchers">
+<h3>Model launchers<a class="headerlink" href="#model-launchers" title="Permalink to this headline"></a></h3>
+<p>A list of available launchers for model execution can be extended by
+adding a <code class="docutils literal notranslate"><span class="pre">Launcher</span></code> implementation script into a plugin directory.</p>
+</section>
+</section>
+<section id="plugins">
+<h2>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline"></a></h2>
+<p>Datumaro comes with a number of built-in formats and other tools,
+but it also can be extended by plugins. Plugins are optional components,
+which dependencies are not installed by default.
+In Datumaro there are several types of plugins, which include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">extractor</span></code> - produces dataset items from data source</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">importer</span></code> - recognizes dataset type and creates project</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">converter</span></code> - exports dataset to a specific format</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">transformation</span></code> - modifies dataset items or other properties</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">launcher</span></code> - executes models</p></li>
+</ul>
+<p>A plugin is a regular Python module. It must be present in a plugin directory:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;project_dir&gt;/.datumaro/plugins</span></code> for project-specific plugins</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;datumaro_dir&gt;/plugins</span></code> for global plugins</p></li>
+</ul>
+<p>A plugin can be used either via the <code class="docutils literal notranslate"><span class="pre">Environment</span></code> class instance,
+or by regular module importing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datumaro.components.project</span> <span class="kn">import</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">Project</span>
+<span class="kn">from</span> <span class="nn">datumaro.plugins.yolo_format.converter</span> <span class="kn">import</span> <span class="n">YoloConverter</span>
+
+<span class="c1"># Import a dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">()</span><span class="o">.</span><span class="n">make_importer</span><span class="p">(</span><span class="s1">&#39;voc&#39;</span><span class="p">)(</span><span class="n">src_dir</span><span class="p">)</span><span class="o">.</span><span class="n">make_dataset</span><span class="p">()</span>
+
+<span class="c1"># Load an existing project, save the dataset in some project-specific format</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">Project</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;project/dir&#39;</span><span class="p">)</span>
+<span class="n">project</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">converters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;custom_format&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">save_dir</span><span class="o">=</span><span class="n">dst_dir</span><span class="p">)</span>
+
+<span class="c1"># Save the dataset in some built-in format</span>
+<span class="n">Environment</span><span class="p">()</span><span class="o">.</span><span class="n">converters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;yolo&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">save_dir</span><span class="o">=</span><span class="n">dst_dir</span><span class="p">)</span>
+<span class="n">YoloConverter</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">save_dir</span><span class="o">=</span><span class="n">dst_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="writing-a-plugin">
+<h3>Writing a plugin<a class="headerlink" href="#writing-a-plugin" title="Permalink to this headline"></a></h3>
+<p>A plugin is a Python module with any name, which exports some symbols. Symbols,
+starting with <code class="docutils literal notranslate"><span class="pre">_</span></code> are not exported by default. To export a symbol,
+inherit it from one of the special classes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datumaro.components.extractor</span> <span class="kn">import</span> <span class="n">Importer</span><span class="p">,</span> <span class="n">Extractor</span><span class="p">,</span> <span class="n">Transform</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.launcher</span> <span class="kn">import</span> <span class="n">Launcher</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.converter</span> <span class="kn">import</span> <span class="n">Converter</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">exports</span></code> list of the module can be used to override default behaviour:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyComponent1</span><span class="p">:</span> <span class="o">...</span>
+<span class="k">class</span> <span class="nc">MyComponent2</span><span class="p">:</span> <span class="o">...</span>
+<span class="n">exports</span> <span class="o">=</span> <span class="p">[</span><span class="n">MyComponent2</span><span class="p">]</span> <span class="c1"># exports only MyComponent2</span>
+</pre></div>
+</div>
+<p>There is also an additional class to modify plugin appearance in command line:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datumaro.components.cli_plugin</span> <span class="kn">import</span> <span class="n">CliPlugin</span>
+
+<span class="k">class</span> <span class="nc">MyPlugin</span><span class="p">(</span><span class="n">Converter</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Optional documentation text, which will appear in command-line help</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">NAME</span> <span class="o">=</span> <span class="s1">&#39;optional_custom_plugin_name&#39;</span>
+
+  <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="c1"># set up argparse.ArgumentParser instance</span>
+    <span class="c1"># the parsed args are supposed to be used as invocation options</span>
+    <span class="k">return</span> <span class="n">parser</span>
+</pre></div>
+</div>
+<section id="plugin-example">
+<h4>Plugin example<a class="headerlink" href="#plugin-example" title="Permalink to this headline"></a></h4>
+<!--lint disable fenced-code-flag-->
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">datumaro</span><span class="o">/</span><span class="n">plugins</span><span class="o">/</span>
+<span class="o">-</span> <span class="n">my_plugin1</span><span class="o">/</span><span class="n">file1</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span> <span class="n">my_plugin1</span><span class="o">/</span><span class="n">file2</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span> <span class="n">my_plugin2</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<!--lint enable fenced-code-flag-->
+<p><code class="docutils literal notranslate"><span class="pre">my_plugin1/file2.py</span></code> contents:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datumaro.components.extractor</span> <span class="kn">import</span> <span class="n">Transform</span><span class="p">,</span> <span class="n">CliPlugin</span>
+<span class="kn">from</span> <span class="nn">.file1</span> <span class="kn">import</span> <span class="n">something</span><span class="p">,</span> <span class="n">useful</span>
+
+<span class="k">class</span> <span class="nc">MyTransform</span><span class="p">(</span><span class="n">Transform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
+    <span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;custom_name&quot;</span> <span class="c1"># could be generated automatically</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Some description. The text will be displayed in the command line output.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-q&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Very useful parameter&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">parser</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">extractor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q</span> <span class="o">=</span> <span class="n">q</span>
+
+    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">item</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">my_plugin2.py</span></code> contents:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datumaro.components.extractor</span> <span class="kn">import</span> <span class="n">Extractor</span>
+
+<span class="k">class</span> <span class="nc">MyFormat</span><span class="p">:</span> <span class="o">...</span>
+<span class="k">class</span> <span class="nc">_MyFormatConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span> <span class="o">...</span>
+<span class="k">class</span> <span class="nc">MyFormatExtractor</span><span class="p">(</span><span class="n">Extractor</span><span class="p">):</span> <span class="o">...</span>
+
+<span class="n">exports</span> <span class="o">=</span> <span class="p">[</span><span class="n">MyFormat</span><span class="p">]</span> <span class="c1"># explicit exports declaration</span>
+<span class="c1"># MyFormatExtractor and _MyFormatConverter won&#39;t be exported</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="command-line">
+<h2>Command-line<a class="headerlink" href="#command-line" title="Permalink to this headline"></a></h2>
+<p>Basically, the interface is divided on contexts and single commands.
+Contexts are semantically grouped commands, related to a single topic or target.
+Single commands are handy shorter alternatives for the most used commands
+and also special commands, which are hard to be put into any specific context.
+<a class="reference external" href="https://www.docker.com/">Docker</a> is an example of similar approach.</p>
+<div class="text-center large-scheme-two">
+<div class="mermaid">
+            %%{init { 'theme':'neutral' }}%%
+flowchart LR
+  d((&quot;#0009; datum #0009;&quot;)):::mainclass
+  s(source):::nofillclass
+  m(model):::nofillclass
+  p(project):::nofillclass
+
+  d===s
+    s===id1[add]:::hideclass
+    s===id2[remove]:::hideclass
+    s===id3[info]:::hideclass
+  d===m
+    m===id4[add]:::hideclass
+    m===id5[remove]:::hideclass
+    m===id6[run]:::hideclass
+    m===id7[info]:::hideclass
+  d===p
+    p===migrate:::hideclass
+    p===info:::hideclass
+  d====str1[create]:::filloneclass
+  d====str2[add]:::filloneclass
+  d====str3[remove]:::filloneclass
+  d====str4[export]:::filloneclass
+  d====str5[info]:::filloneclass
+  d====str6[transform]:::filltwoclass
+  d====str7[filter]:::filltwoclass
+  d====str8[diff]:::fillthreeclass
+  d====str9[merge]:::fillthreeclass
+  d====str10[validate]:::fillthreeclass
+  d====str11[explain]:::fillthreeclass
+  d====str12[stats]:::fillthreeclass
+  d====str13[commit]:::fillfourclass
+  d====str14[checkout]:::fillfourclass
+  d====str15[status]:::fillfourclass
+  d====str16[log]:::fillfourclass
+
+  classDef nofillclass fill-opacity:0;
+  classDef hideclass fill-opacity:0,stroke-opacity:0;
+  classDef filloneclass fill:#CCCCFF,stroke-opacity:0;
+  classDef filltwoclass fill:#FFFF99,stroke-opacity:0;
+  classDef fillthreeclass fill:#CCFFFF,stroke-opacity:0;
+  classDef fillfourclass fill:#CCFFCC,stroke-opacity:0;
+        </div></div>
+<p>Model-View-ViewModel (MVVM) UI pattern is used.</p>
+<div class="text-center">
+<div class="mermaid">
+            %%{init { 'theme':'neutral' }}%%
+flowchart LR
+        </div></div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user-manual/command-reference/validate.html" class="btn btn-neutral float-left" title="Validate Dataset" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="formats/formats.html" class="btn btn-neutral float-right" title="Formats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

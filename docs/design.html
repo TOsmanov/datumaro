@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datumaro Design &mdash; Datumaro Documentation 0.2.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="User Manual" href="user-manual/user-manual.html" />
+    <link rel="prev" title="Getting started" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../index.html" class="icon"> Datumaro Documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Datumaro Design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#concept">Concept</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functionality-and-ideas">Functionality and ideas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#research-topics">Research topics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#rc-1-vision">RC 1 vision</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cvat-integration">CVAT integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interfaces">Interfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-features">Optional features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-manual/user-manual.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_manual.html">Developer manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formats/formats.html">Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contribution Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/cli/cli.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/util/util/util.html">Utilities</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Datumaro Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Datumaro Design</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/design.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="datumaro-design">
+<h1>Datumaro Design<a class="headerlink" href="#datumaro-design" title="Permalink to this headline"></a></h1>
+<!--lint disable list-item-indent-->
+<section id="concept">
+<h2>Concept<a class="headerlink" href="#concept" title="Permalink to this headline"></a></h2>
+<p>Datumaro is:</p>
+<ul class="simple">
+<li><p>a tool to build composite datasets and iterate over them</p></li>
+<li><p>a tool to create and maintain datasets</p>
+<ul>
+<li><p>Version control of annotations and images</p></li>
+<li><p>Publication (with removal of sensitive information)</p></li>
+<li><p>Editing</p></li>
+<li><p>Joining and splitting</p></li>
+<li><p>Exporting, format changing</p></li>
+<li><p>Image preprocessing</p></li>
+</ul>
+</li>
+<li><p>a dataset storage</p></li>
+<li><p>a tool to debug datasets</p>
+<ul>
+<li><p>A network can be used to generate
+informative data subsets (e.g. with false-positives)
+to be analyzed further</p></li>
+</ul>
+</li>
+</ul>
+<section id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>User interfaces</p>
+<ul>
+<li><p>a library</p></li>
+<li><p>a console tool with visualization means</p></li>
+</ul>
+</li>
+<li><p>Targets: single datasets, composite datasets, single images / videos</p></li>
+<li><p>Built-in support for well-known annotation formats and datasets:
+CVAT, COCO, PASCAL VOC, Cityscapes, ImageNet</p></li>
+<li><p>Extensibility with user-provided components</p></li>
+<li><p>Lightweightness - it should be easy to start working with Datumaro</p>
+<ul>
+<li><p>Minimal dependency on environment and configuration</p></li>
+<li><p>It should be easier to use Datumaro than writing own code
+for computation of statistics or dataset manipulations</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="functionality-and-ideas">
+<h3>Functionality and ideas<a class="headerlink" href="#functionality-and-ideas" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Blur sensitive areas on dataset images</p></li>
+<li><p>Dataset annotation filters, relabelling etc.</p></li>
+<li><p>Dataset augmentation</p></li>
+<li><p>Calculation of statistics:</p>
+<ul>
+<li><p>Mean &amp; std, custom stats</p></li>
+</ul>
+</li>
+<li><p>“Edit” command to modify annotations</p></li>
+<li><p>Versioning (for images, annotations, subsets, sources etc., comparison)</p></li>
+<li><p>Documentation generation</p></li>
+<li><p>Provision of iterators for user code</p></li>
+<li><p>Dataset downloading</p></li>
+<li><p>Dataset generation</p></li>
+<li><p>Dataset building (export in a specific format, indexation, statistics,
+documentation)</p></li>
+<li><p>Dataset exporting to other formats</p></li>
+<li><p>Dataset debugging (run inference, generate dataset slices, compute statistics)</p></li>
+<li><p>“Explainable AI” - highlight network attention areas (<a class="reference external" href="https://arxiv.org/abs/1901.04592">paper</a>)</p>
+<ul>
+<li><p>Black-box approach</p>
+<ul>
+<li><p>Classification, Detection, Segmentation, Captioning</p></li>
+<li><p>White-box approach</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="research-topics">
+<h3>Research topics<a class="headerlink" href="#research-topics" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>exploration of network prediction uncertainty (aka Bayessian approach)
+Use case: explanation of network “quality”, “stability”, “certainty”</p></li>
+<li><p>adversarial attacks on networks</p></li>
+<li><p>dataset minification / reduction
+Use case: removal of redundant information to reach the same network quality
+with lesser training time</p></li>
+<li><p>dataset expansion and filtration of additions
+Use case: add only important data</p></li>
+<li><p>guidance for key frame selection for tracking (<a class="reference external" href="https://arxiv.org/abs/1903.11779">paper</a>)
+Use case: more effective annotation, better predictions</p></li>
+</ul>
+</section>
+</section>
+<section id="rc-1-vision">
+<h2>RC 1 vision<a class="headerlink" href="#rc-1-vision" title="Permalink to this headline"></a></h2>
+<section id="cvat-integration">
+<h3>CVAT integration<a class="headerlink" href="#cvat-integration" title="Permalink to this headline"></a></h3>
+<p>Datumaro needs to be integrated with <a class="reference external" href="https://github.com/openvinotoolkit/cvat">CVAT</a>,
+extending CVAT UI capabilities regarding task and project operations.
+It should be capable of downloading and processing data from CVAT.</p>
+<!--lint disable fenced-code-flag-->
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="n">User</span>
+          <span class="o">|</span>
+          <span class="n">v</span>
+ <span class="o">|</span>       <span class="n">CVAT</span>       <span class="o">|</span>
+</pre></div>
+</div>
+<!--lint enable fenced-code-flag-->
+</section>
+<section id="interfaces">
+<h3>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>[x] Python API for user code</p>
+<ul>
+<li><p>[x] Installation as a package</p></li>
+<li><p>[x] Installation with <code class="docutils literal notranslate"><span class="pre">pip</span></code> by name</p></li>
+</ul>
+</li>
+<li><p>[x] A command-line tool for dataset manipulations</p></li>
+</ul>
+</section>
+<section id="features">
+<h3>Features<a class="headerlink" href="#features" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Dataset format support (reading, writing)</p>
+<ul>
+<li><p>[x] Own format</p></li>
+<li><p>[x] CVAT</p></li>
+<li><p>[x] COCO</p></li>
+<li><p>[x] PASCAL VOC</p></li>
+<li><p>[x] YOLO</p></li>
+<li><p>[x] TF Detection API</p></li>
+<li><p>[x] Cityscapes</p></li>
+<li><p>[x] ImageNet</p></li>
+</ul>
+</li>
+<li><p>Dataset visualization (<code class="docutils literal notranslate"><span class="pre">show</span></code>)</p>
+<ul>
+<li><p>[ ] Ability to visualize a dataset</p>
+<ul>
+<li><p>[ ] with TensorBoard</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Calculation of statistics for datasets</p>
+<ul>
+<li><p>[x] Pixel mean, std</p></li>
+<li><p>[x] Object counts (detection scenario)</p></li>
+<li><p>[x] Image-Class distribution (classification scenario)</p></li>
+<li><p>[x] Pixel-Class distribution (segmentation scenario)</p></li>
+<li><p>[x] Image similarity clusters</p></li>
+<li><p>[ ] Custom statistics</p></li>
+</ul>
+</li>
+<li><p>Dataset building</p>
+<ul>
+<li><p>[x] Composite dataset building</p></li>
+<li><p>[x] Class remapping</p></li>
+<li><p>[x] Subset splitting</p></li>
+<li><p>[x] Dataset filtering (<code class="docutils literal notranslate"><span class="pre">extract</span></code>)</p></li>
+<li><p>[x] Dataset merging (<code class="docutils literal notranslate"><span class="pre">merge</span></code>)</p></li>
+<li><p>[ ] Dataset item editing (<code class="docutils literal notranslate"><span class="pre">edit</span></code>)</p></li>
+</ul>
+</li>
+<li><p>Dataset comparison (<code class="docutils literal notranslate"><span class="pre">diff</span></code>)</p>
+<ul>
+<li><p>[x] Annotation-annotation comparison</p></li>
+<li><p>[x] Annotation-inference comparison</p></li>
+<li><p>[x] Annotation quality estimation (for CVAT)</p>
+<ul>
+<li><p>Provide a simple method to check
+annotation quality with a model and generate summary</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Dataset and model debugging</p>
+<ul>
+<li><p>[x] Inference explanation (<code class="docutils literal notranslate"><span class="pre">explain</span></code>)</p></li>
+<li><p>[x] Black-box approach (<a class="reference external" href="https://arxiv.org/abs/1806.07421">RISE paper</a>)</p></li>
+<li><p>[x] Ability to run a model on a dataset and read the results</p></li>
+</ul>
+</li>
+<li><p>CVAT-integration features</p>
+<ul>
+<li><p>[x] Task export</p>
+<ul>
+<li><p>[x] Datumaro project export</p></li>
+<li><p>[x] Dataset export</p></li>
+<li><p>[x] Original raw data (images, a video file) can be downloaded (exported)
+together with annotations or just have links
+on CVAT server (in future, support S3, etc)</p>
+<ul>
+<li><p>[x] Be able to use local files instead of remote links</p>
+<ul>
+<li><p>[ ] Specify cache directory</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>[x] Use case “annotate for model training”</p>
+<ul>
+<li><p>create a task</p></li>
+<li><p>annotate</p></li>
+<li><p>export the task</p></li>
+<li><p>convert to a training format</p></li>
+<li><p>train a DL model</p></li>
+</ul>
+</li>
+<li><p>[x] Use case “annotate - reannotate problematic images - merge”</p></li>
+<li><p>[x] Use case “annotate and estimate quality”</p>
+<ul>
+<li><p>create a task</p></li>
+<li><p>annotate</p></li>
+<li><p>estimate quality of annotations</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="optional-features">
+<h3>Optional features<a class="headerlink" href="#optional-features" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Dataset publishing</p>
+<ul>
+<li><p>[x] Versioning (for annotations, subsets, sources, etc.)</p></li>
+<li><p>[ ] Blur sensitive areas on images</p></li>
+<li><p>[ ] Tracking of legal information</p></li>
+<li><p>[ ] Documentation generation</p></li>
+</ul>
+</li>
+<li><p>Dataset building</p>
+<ul>
+<li><p>[x] Dataset minification / Extraction of the most representative subset</p>
+<ul>
+<li><p>Use case: generate low-precision calibration dataset</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Dataset and model debugging</p>
+<ul>
+<li><p>[ ] Training visualization</p></li>
+<li><p>[x] Inference explanation (<code class="docutils literal notranslate"><span class="pre">explain</span></code>)</p>
+<ul>
+<li><p>[ ] White-box approach</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="properties">
+<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Lightweightness</p></li>
+<li><p>Modularity</p></li>
+<li><p>Extensibility</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="user-manual/user-manual.html" class="btn btn-neutral float-right" title="User Manual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

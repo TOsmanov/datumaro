@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KITTI &mdash; Datumaro Documentation 0.2.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Velodyne Points / KITTI Raw 3D" href="kitti_raw.html" />
+    <link rel="prev" title="ImageNet" href="imagenet.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../index.html" class="icon"> Datumaro Documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design.html">Datumaro Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-manual/user-manual.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_manual.html">Developer manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="formats.html">Formats</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ade20k2017.html">ADE20k (v2017)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ade20k2020.html">ADE20k (v2020)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="align_celeba.html">Align CelebA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="celeba.html">CelebA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cifar.html">CIFAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cityscapes.html">Cityscapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coco.html">COCO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icdar.html">ICDAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_zip.html">Image zip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imagenet.html">ImageNet</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">KITTI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#format-specification">Format specification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#import-kitti-dataset">Import KITTI dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-to-other-formats">Export to other formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-to-kitti">Export to KITTI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-1-how-to-load-an-original-kitti-dataset-and-convert-to-cityscapes">Example 1. How to load an original KITTI dataset and convert to Cityscapes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-2-how-to-create-a-custom-kitti-like-dataset">Example 2. How to create a custom KITTI-like dataset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kitti_raw.html">Velodyne Points / KITTI Raw 3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lfw.html">LFW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mapillary_vistas.html">Mapillary Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market1501.html">Market-1501</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mars.html">MARS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mnist.html">MNIST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpii.html">MPII Human Pose Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpii_json.html">MPII Human Pose Dataset (JSON)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_images.html">Open Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pascal_voc.html">Pascal VOC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sly_pointcloud.html">Supervisely Point Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="synthia.html">SYNTHIA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vgg_face2.html">Vgg Face2 CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vott_csv.html">VoTT CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vott_json.html">VoTT JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wider_face.html">Format specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wider_face.html#import-wider-face-dataset">Import WIDER Face dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wider_face.html#export-wider-face-dataset">Export WIDER Face dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wider_face.html#export-to-wider-face-dataset">Export to WIDER Face dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo.html">YOLO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribution Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/cli/cli.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/util/util/util.html">Utilities</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Datumaro Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="formats.html">Formats</a> &raquo;</li>
+      <li>KITTI</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/formats/kitti.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="kitti">
+<h1>KITTI<a class="headerlink" href="#kitti" title="Permalink to this headline"></a></h1>
+<section id="format-specification">
+<h2>Format specification<a class="headerlink" href="#format-specification" title="Permalink to this headline"></a></h2>
+<p>The KITTI dataset has many annotations for different tasks. Datumaro supports
+only a few of them.</p>
+<p>Supported tasks / formats:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark">Object Detection</a> - <code class="docutils literal notranslate"><span class="pre">kitti_detection</span></code>
+The format specification is available in <code class="docutils literal notranslate"><span class="pre">README.md</span></code> <a class="reference external" href="https://s3.eu-central-1.amazonaws.com/avg-kitti/devkit_object.zip">here</a>.</p></li>
+<li><p><a class="reference external" href="http://www.cvlibs.net/datasets/kitti/eval_semseg.php?benchmark=semantics2015">Segmentation</a> - <code class="docutils literal notranslate"><span class="pre">kitti_segmentation</span></code>
+The format specification is available in <code class="docutils literal notranslate"><span class="pre">README.md</span></code> <a class="reference external" href="https://s3.eu-central-1.amazonaws.com/avg-kitti/devkit_semantics.zip">here</a>.</p></li>
+<li><p>Raw 3D / Velodyne Points - described <a class="reference internal" href="kitti_raw.html"><span class="doc std std-doc">here</span></a></p></li>
+</ul>
+<p>Supported annotation types:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Bbox</span></code> (object detection)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Mask</span></code> (segmentation)</p></li>
+</ul>
+<p>Supported annotation attributes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">truncated</span></code> (boolean) - indicates that the bounding box specified for
+the object does not correspond to the full extent of the object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">occluded</span></code> (boolean) - indicates that a significant portion of the object
+within the bounding box is occluded by another object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">score</span></code> (float) - indicates confidence in detection</p></li>
+</ul>
+</section>
+<section id="import-kitti-dataset">
+<h2>Import KITTI dataset<a class="headerlink" href="#import-kitti-dataset" title="Permalink to this headline"></a></h2>
+<p>The KITTI left color images for object detection are available <a class="reference external" href="http://www.cvlibs.net/download.php?file=data_object_image_2.zip">here</a>.
+The KITTI object detection labels are available <a class="reference external" href="http://www.cvlibs.net/download.php?file=data_object_label_2.zip">here</a>.
+The KITTI segmentation dataset is available <a class="reference external" href="http://www.cvlibs.net/download.php?file=data_semantics.zip">here</a>.</p>
+<p>A Datumaro project with a KITTI source can be created in the following way:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum create
+datum import --format kitti &lt;path/to/dataset&gt;
+</pre></div>
+</div>
+<p>It is possible to specify project name and project directory. Run
+<code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">create</span> <span class="pre">--help</span></code> for more information.</p>
+<p>KITTI detection dataset directory should have the following structure:</p>
+<!--lint disable fenced-code-flag-->
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>└─ Dataset/
+    ├── testing/
+    │   └── image_2/
+    │       ├── &lt;name_1&gt;.&lt;img_ext&gt;
+    │       ├── &lt;name_2&gt;.&lt;img_ext&gt;
+    │       └── ...
+    └── training/
+        ├── image_2/ # left color camera images
+        │   ├── &lt;name_1&gt;.&lt;img_ext&gt;
+        │   ├── &lt;name_2&gt;.&lt;img_ext&gt;
+        │   └── ...
+        └─── label_2/ # left color camera label files
+            ├── &lt;name_1&gt;.txt
+            ├── &lt;name_2&gt;.txt
+            └── ...
+</pre></div>
+</div>
+<p>KITTI segmentation dataset directory should have the following structure:</p>
+<!--lint disable fenced-code-flag-->
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>└─ Dataset/
+    ├── dataset_meta.json # a list of non-format labels (optional)
+    ├── label_colors.txt # optional, color map for non-original segmentation labels
+    ├── testing/
+    │   └── image_2/
+    │       ├── &lt;name_1&gt;.&lt;img_ext&gt;
+    │       ├── &lt;name_2&gt;.&lt;img_ext&gt;
+    │       └── ...
+    └── training/
+        ├── image_2/ # left color camera images
+        │   ├── &lt;name_1&gt;.&lt;img_ext&gt;
+        │   ├── &lt;name_2&gt;.&lt;img_ext&gt;
+        │   └── ...
+        ├── label_2/ # left color camera label files
+        │   ├── &lt;name_1&gt;.txt
+        │   ├── &lt;name_2&gt;.txt
+        │   └── ...
+        ├── instance/ # instance segmentation masks
+        │   ├── &lt;name_1&gt;.png
+        │   ├── &lt;name_2&gt;.png
+        │   └── ...
+        ├── semantic/ # semantic segmentation masks (labels are encoded by its id)
+        │   ├── &lt;name_1&gt;.png
+        │   ├── &lt;name_2&gt;.png
+        │   └── ...
+        └── semantic_rgb/ # semantic segmentation masks (labels are encoded by its color)
+            ├── &lt;name_1&gt;.png
+            ├── &lt;name_2&gt;.png
+            └── ...
+</pre></div>
+</div>
+<p>To add custom classes, you can use <a class="reference external" href="/docs/user-manual/supported_formats/#dataset-meta-file"><code class="docutils literal notranslate"><span class="pre">dataset_meta.json</span></code></a>
+and <code class="docutils literal notranslate"><span class="pre">label_colors.txt</span></code>.
+If the <code class="docutils literal notranslate"><span class="pre">dataset_meta.json</span></code> is not represented in the dataset, then
+<code class="docutils literal notranslate"><span class="pre">label_colors.txt</span></code> will be imported if possible.</p>
+<p>You can import a dataset for specific tasks
+of KITTI dataset instead of the whole dataset,
+for example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum import --format kitti_detection &lt;path/to/dataset&gt;
+</pre></div>
+</div>
+<p>To make sure that the selected dataset has been added to the project, you can
+run <code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">project</span> <span class="pre">info</span></code>, which will display the project information.</p>
+</section>
+<section id="export-to-other-formats">
+<h2>Export to other formats<a class="headerlink" href="#export-to-other-formats" title="Permalink to this headline"></a></h2>
+<p>Datumaro can convert a KITTI dataset into any other format <a class="reference internal" href="../user-manual/supported_formats.html"><span class="doc std std-doc">Datumaro supports</span></a>.</p>
+<p>Such conversion will only be successful if the output
+format can represent the type of dataset you want to convert,
+e.g. segmentation annotations can be
+saved in <code class="docutils literal notranslate"><span class="pre">Cityscapes</span></code> format, but not as <code class="docutils literal notranslate"><span class="pre">COCO</span> <span class="pre">keypoints</span></code>.</p>
+<p>There are several ways to convert a KITTI dataset to other dataset formats:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum create
+datum import -f kitti &lt;path/to/kitti&gt;
+datum <span class="nb">export</span> -f cityscapes -o &lt;output/dir&gt;
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum convert -if kitti -i &lt;path/to/kitti&gt; -f cityscapes -o &lt;output/dir&gt;
+</pre></div>
+</div>
+<p>Or, using Python API:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datumaro.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="s1">&#39;&lt;path/to/dataset&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;kitti&#39;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s1">&#39;save_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;cityscapes&#39;</span><span class="p">,</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="export-to-kitti">
+<h2>Export to KITTI<a class="headerlink" href="#export-to-kitti" title="Permalink to this headline"></a></h2>
+<p>There are several ways to convert a dataset to KITTI format:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># export dataset into KITTI format from existing project</span>
+datum <span class="nb">export</span> -p &lt;path/to/project&gt; -f kitti -o &lt;output/dir&gt; <span class="se">\</span>
+    -- --save-images
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># converting to KITTI format from other format</span>
+datum convert -if cityscapes -i &lt;path/to/dataset&gt; <span class="se">\</span>
+    -f kitti -o &lt;output/dir&gt; -- --save-images
+</pre></div>
+</div>
+<p>Extra options for exporting to KITTI format:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--save-images</span></code> allow to export dataset with saving images
+(by default <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--image-ext</span> <span class="pre">IMAGE_EXT</span></code> allow to specify image extension
+for exporting dataset (by default - keep original or use <code class="docutils literal notranslate"><span class="pre">.png</span></code>, if none)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--save-dataset-meta</span></code> - allow to export dataset with saving dataset meta
+file (by default <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--apply-colormap</span> <span class="pre">APPLY_COLORMAP</span></code> allow to use colormap for class masks
+(in folder <code class="docutils literal notranslate"><span class="pre">semantic_rgb</span></code>, by default <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--label_map</span></code> allow to define a custom colormap. Example:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># mycolormap.txt :</span>
+<span class="c1"># 0 0 255 sky</span>
+<span class="c1"># 255 0 0 person</span>
+<span class="c1">#...</span>
+datum <span class="nb">export</span> -f kitti -- --label-map mycolormap.txt
+</pre></div>
+</div>
+<p>or you can use original kitti colomap:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum <span class="nb">export</span> -f kitti -- --label-map kitti
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--tasks</span> <span class="pre">TASKS</span></code> allow to specify tasks for export dataset,
+by default Datumaro uses all tasks. Example:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum <span class="nb">export</span> -f kitti -- --tasks detection
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--allow-attributes</span> <span class="pre">ALLOW_ATTRIBUTES</span></code> allow export of attributes
+(by default <code class="docutils literal notranslate"><span class="pre">True</span></code>).</p></li>
+</ul>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h2>
+<p>Datumaro supports filtering, transformation, merging etc. for all formats
+and for the KITTI format in particular. Follow the
+<span class="xref myst">user manual</span>
+to get more information about these operations.</p>
+<p>There are several examples of using Datumaro operations to solve
+particular problems with KITTI dataset:</p>
+<section id="example-1-how-to-load-an-original-kitti-dataset-and-convert-to-cityscapes">
+<h3>Example 1. How to load an original KITTI dataset and convert to Cityscapes<a class="headerlink" href="#example-1-how-to-load-an-original-kitti-dataset-and-convert-to-cityscapes" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum create -o project
+datum import -p project -f kitti ./KITTI/
+datum stats -p project
+datum <span class="nb">export</span> -p project -f cityscapes -- --save-images
+</pre></div>
+</div>
+</section>
+<section id="example-2-how-to-create-a-custom-kitti-like-dataset">
+<h3>Example 2. How to create a custom KITTI-like dataset<a class="headerlink" href="#example-2-how-to-create-a-custom-kitti-like-dataset" title="Permalink to this headline"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.annotation</span> <span class="kn">import</span> <span class="n">Mask</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.extractor</span> <span class="kn">import</span> <span class="n">DatasetItem</span>
+
+<span class="kn">import</span> <span class="nn">datumaro.plugins.kitti_format</span> <span class="k">as</span> <span class="nn">KITTI</span>
+
+<span class="n">label_map</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">label_map</span><span class="p">[</span><span class="s1">&#39;background&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">label_map</span><span class="p">[</span><span class="s1">&#39;label_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">label_map</span><span class="p">[</span><span class="s1">&#39;label_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">categories</span> <span class="o">=</span> <span class="n">KITTI</span><span class="o">.</span><span class="n">make_kitti_categories</span><span class="p">(</span><span class="n">label_map</span><span class="p">)</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+  <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+    <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+      <span class="n">Mask</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]),</span> <span class="n">label</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;is_crowd&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}),</span>
+      <span class="n">Mask</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]),</span> <span class="n">label</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;is_crowd&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}),</span>
+    <span class="p">]</span>
+  <span class="p">),</span>
+<span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">)</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s1">&#39;./dataset&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;kitti&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Examples of using this format from the code can be found in
+<a class="reference external" href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test_kitti_format.py">the format tests</a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="imagenet.html" class="btn btn-neutral float-left" title="ImageNet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="kitti_raw.html" class="btn btn-neutral float-right" title="Velodyne Points / KITTI Raw 3D" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

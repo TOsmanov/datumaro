@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compare datasets &mdash; Datumaro Documentation 0.2.2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Download datasets" href="download.html" />
+    <link rel="prev" title="Detect dataset format" href="detect-format.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../../index.html" class="icon"> Datumaro Documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design.html">Datumaro Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../user-manual.html">User Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../user-manual.html#user-manual">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_index.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending.html">Extending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_control_tm_data_collection.html">How to control telemetry data collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_use_datumaro.html">How to use Datumaro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../links.html">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../media_formats.html">Media formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supported_formats.html">Supported Formats</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="command-reference.html">Command Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="command-reference.html#command-reference">Command reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_index.html">Command reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="checkout.html">Checkout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commit.html">Commit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convert.html">Convert datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create.html">Create project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="detect-format.html">Detect dataset format</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Compare datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download.html">Download datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explain.html">Run model inference explanation (explain)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="export.html">Export Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filter.html">Filter datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="info.html">Print dataset info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="merge.html">Merge Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="patch.html">Patch Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sources.html">Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stats.html">Get Project Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="status.html">Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transform.html">Transform Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="util.html">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validate.html">Validate Dataset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_manual.html">Developer manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../formats/formats.html">Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contribution Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/cli/cli.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/util/util/util.html">Utilities</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Datumaro Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../user-manual.html">User Manual</a> &raquo;</li>
+          <li><a href="command-reference.html">Command Reference</a> &raquo;</li>
+      <li>Compare datasets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/user-manual/command-reference/diff.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="compare-datasets">
+<h1>Compare datasets<a class="headerlink" href="#compare-datasets" title="Permalink to this headline"></a></h1>
+<p>The command compares two datasets and saves the results in the
+specified directory. The current project is considered to be
+“ground truth”.</p>
+<p>Datasets can be compared using different methods:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">equality</span></code> - Annotations are compared to be equal</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distance</span></code> - A distance metric is used</p></li>
+</ul>
+<p>This command has multiple forms:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">1</span><span class="o">)</span> datum diff &lt;revpath&gt;
+<span class="m">2</span><span class="o">)</span> datum diff &lt;revpath&gt; &lt;revpath&gt;
+</pre></div>
+</div>
+<p>1 - Compares the current project’s main target (<code class="docutils literal notranslate"><span class="pre">project</span></code>)
+in the working tree with the specified dataset.</p>
+<p>2 - Compares two specified datasets.</p>
+<p>&lt;revpath&gt; - <a class="reference external" href="/docs/user-manual/how_to_use_datumaro/#revpath">a dataset path or a revision path</a>.</p>
+<p>Usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum diff <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-o DST_DIR<span class="o">]</span> <span class="o">[</span>-m METHOD<span class="o">]</span> <span class="o">[</span>--overwrite<span class="o">]</span> <span class="o">[</span>-p PROJECT_DIR<span class="o">]</span>
+  <span class="o">[</span>--iou-thresh IOU_THRESH<span class="o">]</span> <span class="o">[</span>-f FORMAT<span class="o">]</span>
+  <span class="o">[</span>-iia IGNORE_ITEM_ATTR<span class="o">]</span> <span class="o">[</span>-ia IGNORE_ATTR<span class="o">]</span> <span class="o">[</span>-if IGNORE_FIELD<span class="o">]</span>
+  <span class="o">[</span>--match-images<span class="o">]</span> <span class="o">[</span>--all<span class="o">]</span>
+  first_target <span class="o">[</span>second_target<span class="o">]</span>
+</pre></div>
+</div>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> (string) - Target <a class="reference external" href="/docs/user-manual/how_to_use_datumaro/#revpath">dataset revpaths</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-m,</span> <span class="pre">--method</span></code> (string) - Comparison method.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-o,</span> <span class="pre">--output-dir</span></code> (string) - Output directory. By default, a new directory
+is created in the current directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--overwrite</span></code> - Allows to overwrite existing files in the output directory,
+when it is specified and is not empty.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p,</span> <span class="pre">--project</span></code> (string) - Directory of the project to operate on
+(default: current directory).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h,</span> <span class="pre">--help</span></code> - Print the help message and exit.</p></li>
+<li><p>Distance comparison options:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--iou-thresh</span></code> (number) - The IoU threshold for spatial annotations
+(default is 0.5).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-f,</span> <span class="pre">--format</span></code> (string) - Output format, one of <code class="docutils literal notranslate"><span class="pre">simple</span></code>
+(text files and images) and <code class="docutils literal notranslate"><span class="pre">tensorboard</span></code> (a TB log directory)</p></li>
+</ul>
+</li>
+<li><p>Equality comparison options:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">-iia,</span> <span class="pre">--ignore-item-attr</span></code> (string) - Ignore an item attribute (repeatable)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-ia,</span> <span class="pre">--ignore-attr</span></code> (string) - Ignore an annotation attribute (repeatable)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-if,</span> <span class="pre">--ignore-field</span></code> (string) - Ignore an annotation field (repeatable)
+Default is <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">group</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--match-images</span></code> - Match dataset items by image pixels instead of ids</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--all</span></code> - Include matches in the output. By default, only differences are
+printed.</p></li>
+</ul>
+</li>
+</ul>
+<p>Examples:</p>
+<ul class="simple">
+<li><p>Compare two projects by distance, match boxes if IoU &gt; 0.7,
+save results to TensorBoard:
+<code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">diff</span> <span class="pre">other/project</span> <span class="pre">-o</span> <span class="pre">diff/</span> <span class="pre">-f</span> <span class="pre">tensorboard</span> <span class="pre">--iou-thresh</span> <span class="pre">0.7</span></code></p></li>
+<li><p>Compare two projects for equality, exclude annotation groups
+and the <code class="docutils literal notranslate"><span class="pre">is_crowd</span></code> attribute from comparison:
+<code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">diff</span> <span class="pre">other/project/</span> <span class="pre">-if</span> <span class="pre">group</span> <span class="pre">-ia</span> <span class="pre">is_crowd</span></code></p></li>
+<li><p>Compare two datasets, specify formats:
+<code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">diff</span> <span class="pre">path/to/dataset1:voc</span> <span class="pre">path/to/dataset2:coco</span></code></p></li>
+<li><p>Compare the current working tree and a dataset:
+<code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">diff</span> <span class="pre">path/to/dataset2:coco</span></code></p></li>
+<li><p>Compare a source from a previous revision and a dataset:
+<code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">diff</span> <span class="pre">HEAD~2:source-2</span> <span class="pre">path/to/dataset2:yolo</span></code></p></li>
+<li><p>Compare a dataset with model inference</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum create
+datum import &lt;...&gt;
+datum model add mymodel &lt;...&gt;
+datum transform &lt;...&gt; -o inference
+datum diff inference -o diff
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="detect-format.html" class="btn btn-neutral float-left" title="Detect dataset format" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="download.html" class="btn btn-neutral float-right" title="Download datasets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

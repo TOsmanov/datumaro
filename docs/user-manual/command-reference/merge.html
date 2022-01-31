@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merge Datasets &mdash; Datumaro Documentation 0.2.2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Models" href="models.html" />
+    <link rel="prev" title="Log" href="log.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../../index.html" class="icon"> Datumaro Documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design.html">Datumaro Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../user-manual.html">User Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../user-manual.html#user-manual">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_index.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending.html">Extending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_control_tm_data_collection.html">How to control telemetry data collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_use_datumaro.html">How to use Datumaro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../links.html">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../media_formats.html">Media formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supported_formats.html">Supported Formats</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="command-reference.html">Command Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="command-reference.html#command-reference">Command reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_index.html">Command reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="checkout.html">Checkout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="commit.html">Commit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convert.html">Convert datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create.html">Create project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="detect-format.html">Detect dataset format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diff.html">Compare datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download.html">Download datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="explain.html">Run model inference explanation (explain)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="export.html">Export Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filter.html">Filter datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="info.html">Print dataset info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">Log</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Merge Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="patch.html">Patch Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sources.html">Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stats.html">Get Project Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="status.html">Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transform.html">Transform Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="util.html">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validate.html">Validate Dataset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_manual.html">Developer manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../formats/formats.html">Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contribution Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/cli/cli.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/util/util/util.html">Utilities</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Datumaro Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../user-manual.html">User Manual</a> &raquo;</li>
+          <li><a href="command-reference.html">Command Reference</a> &raquo;</li>
+      <li>Merge Datasets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/user-manual/command-reference/merge.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="merge-datasets">
+<h1>Merge Datasets<a class="headerlink" href="#merge-datasets" title="Permalink to this headline"></a></h1>
+<p>Consider the following task: there is a set of images (the original dataset)
+we want to annotate. Suppose we did this manually and/or automated it
+using models, and now we have few sets of annotations for the same images.
+We want to merge them and produce a single set of high-precision annotations.</p>
+<p>Another use case: there are few datasets with different sets of images
+and labels, which we need to combine in a single dataset. If the labels
+were the same, we could just join the datasets. But in this case we need
+to merge labels and adjust the annotations in the resulting dataset.</p>
+<p>In Datumaro, it can be done with the <code class="docutils literal notranslate"><span class="pre">merge</span></code> command. This command merges 2
+or more datasets and checks annotations for errors.</p>
+<blockquote>
+<div><p>In simple cases, when dataset images do not intersect and new
+labels are not added, the recommended way of merging is using
+<a class="reference internal" href="patch.html"><span class="doc std std-doc">the <code class="docutils literal notranslate"><span class="pre">patch</span></code> command</span></a>.
+It will offer better performance and provide the same results.</p>
+</div></blockquote>
+<p>Datasets are merged by items, and item annotations are merged by finding the
+unique ones across datasets. Annotations are matched between matching dataset
+items by distance. Spatial annotations are compared by the applicable distance
+measure (IoU, OKS, PDJ etc.), labels and annotation attributes are selected
+by voting. Each set of matching annotations produces a single annotation in
+the resulting dataset. The <code class="docutils literal notranslate"><span class="pre">score</span></code> (a number in the range [0; 1]) attribute
+indicates the agreement between different sources in the produced annotation.
+The working time of the function can be estimated as
+<code class="docutils literal notranslate"><span class="pre">O(</span> <span class="pre">(summary</span> <span class="pre">dataset</span> <span class="pre">length)</span> <span class="pre">*</span> <span class="pre">(dataset</span> <span class="pre">count)</span> <span class="pre">^</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">(item</span> <span class="pre">annotations)</span> <span class="pre">^</span> <span class="pre">2</span> <span class="pre">)</span></code></p>
+<p>This command also allows to merge datasets with different, or partially
+overlapping sets of labels (which is impossible by simple joining).</p>
+<p>During the process, some merge conflicts can appear. For example,
+it can be mismatching dataset images having the same ids, label voting
+can be unsuccessful if quorum is not reached (the <code class="docutils literal notranslate"><span class="pre">--quorum</span></code> parameter),
+bboxes may be too close (the <code class="docutils literal notranslate"><span class="pre">-iou</span></code> parameter) etc. Found merge
+conflicts, missing items or annotations, and other errors are saved into
+an output <code class="docutils literal notranslate"><span class="pre">.json</span></code> file.</p>
+<p>In Datumaro, annotations can be grouped. It can be useful to represent
+different parts of a single object - for example, it can be different parts
+of a human body, parts of a vehicle etc. This command allows to check
+annotation groups for completeness with the <code class="docutils literal notranslate"><span class="pre">-g/--groups</span></code> option. If used,
+this parameter must specify a list of labels for annotations that must be
+in the same group. It can be particularly useful to check if separate
+keypoints are grouped and all the necessary object components in the same
+group.</p>
+<p>This command has multiple forms:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">1</span><span class="o">)</span> datum merge &lt;revpath&gt;
+<span class="m">2</span><span class="o">)</span> datum merge &lt;revpath&gt; &lt;revpath&gt; ...
+</pre></div>
+</div>
+<p>&lt;revpath&gt; - either <a class="reference external" href="/docs/user-manual/how_to_use_datumaro/#revpath">a dataset path or a revision path</a>.</p>
+<p>1 - Merges the current project’s main target (“project”)
+in the working tree with the specified dataset.</p>
+<p>2 - Merges the specified datasets.
+Note that the current project is not included in the list of merged
+sources automatically.</p>
+<p>The command supports passing extra exporting options for the output
+dataset. The format can be specified with the <code class="docutils literal notranslate"><span class="pre">-f/--format</span></code> option.
+Extra options should be passed after the main arguments
+and after the <code class="docutils literal notranslate"><span class="pre">--</span></code> separator. Particularly, this is useful to include
+images in the output dataset with <code class="docutils literal notranslate"><span class="pre">--save-images</span></code>.</p>
+<p>Usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum merge <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-iou IOU_THRESH<span class="o">]</span> <span class="o">[</span>-oconf OUTPUT_CONF_THRESH<span class="o">]</span>
+  <span class="o">[</span>--quorum QUORUM<span class="o">]</span> <span class="o">[</span>-g GROUPS<span class="o">]</span> <span class="o">[</span>-o DST_DIR<span class="o">]</span> <span class="o">[</span>--overwrite<span class="o">]</span>
+  <span class="o">[</span>-p PROJECT_DIR<span class="o">]</span> <span class="o">[</span>-f FORMAT<span class="o">]</span>
+  target <span class="o">[</span>target ...<span class="o">]</span> <span class="o">[</span>-- EXTRA_FORMAT_ARGS<span class="o">]</span>
+</pre></div>
+</div>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> (string) - Target <a class="reference external" href="/docs/user-manual/how_to_use_datumaro/#revpath">dataset revpaths</a> (repeatable)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-iou</span></code>, <code class="docutils literal notranslate"><span class="pre">--iou-thresh</span></code> (number) - IoU matching threshold for spatial
+annotations (both maximum inter-cluster and pairwise). Default is 0.25.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--quorum</span></code> (number) - Minimum count of votes for a label or attribute
+to be counted. Default is 0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-g,</span> <span class="pre">--groups</span></code> (string) - A comma-separated list of label names in
+annotation groups to check. The <code class="docutils literal notranslate"><span class="pre">?</span></code> postfix can be added to a label to
+make it optional in the group (repeatable)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-oconf</span></code>, <code class="docutils literal notranslate"><span class="pre">--output-conf-thresh</span></code> (number) - Confidence threshold for output
+annotations to be included in the resulting dataset. Default is 0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-o,</span> <span class="pre">--output-dir</span></code> (string) - Output directory. By default, a new directory
+is created in the current directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--overwrite</span></code> - Allows to overwrite existing files in the output directory,
+when it is specified and is not empty.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-f,</span> <span class="pre">--format</span></code> (string) - Output format. The default format is <code class="docutils literal notranslate"><span class="pre">datumaro</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p,</span> <span class="pre">--project</span></code> (string) - Directory of the project to operate on
+(default: current directory).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h,</span> <span class="pre">--help</span></code> - Print the help message and exit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">&lt;extra</span> <span class="pre">format</span> <span class="pre">args&gt;</span></code> - Additional arguments for the format writer
+(use <code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">-h</span></code> for help). Must be specified after the main command arguments.</p></li>
+</ul>
+<p>Examples:</p>
+<p>Merge 4 (partially-)intersecting projects,</p>
+<ul class="simple">
+<li><p>consider voting successful when there are no less than 3 same votes</p></li>
+<li><p>consider shapes intersecting when IoU &gt;= 0.6</p></li>
+<li><p>check annotation groups to have <code class="docutils literal notranslate"><span class="pre">person</span></code>, <code class="docutils literal notranslate"><span class="pre">hand</span></code>, <code class="docutils literal notranslate"><span class="pre">head</span></code> and <code class="docutils literal notranslate"><span class="pre">foot</span></code>
+(<code class="docutils literal notranslate"><span class="pre">?</span></code> is used for optional parts)</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum merge project1/ project2/ project3/ project4/ <span class="se">\</span>
+  --quorum <span class="m">3</span> <span class="se">\</span>
+  -iou <span class="m">0</span>.6 <span class="se">\</span>
+  --groups <span class="s1">&#39;person,hand?,head,foot?&#39;</span>
+</pre></div>
+</div>
+<p>Merge images and annotations from 2 datasets in COCO format:
+<code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">merge</span> <span class="pre">dataset1/:image_dir</span> <span class="pre">dataset2/:coco</span> <span class="pre">dataset3/:coco</span></code></p>
+<p>Check groups of the merged dataset for consistency:
+look for groups consisting of <code class="docutils literal notranslate"><span class="pre">person</span></code>, <code class="docutils literal notranslate"><span class="pre">hand</span></code> <code class="docutils literal notranslate"><span class="pre">head</span></code>, <code class="docutils literal notranslate"><span class="pre">foot</span></code>
+<code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">merge</span> <span class="pre">project1/</span> <span class="pre">project2/</span> <span class="pre">-g</span> <span class="pre">'person,hand?,head,foot?'</span></code></p>
+<p>Merge two datasets, specify formats:
+<code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">merge</span> <span class="pre">path/to/dataset1:voc</span> <span class="pre">path/to/dataset2:coco</span></code></p>
+<p>Merge the current working tree and a dataset:
+<code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">merge</span> <span class="pre">path/to/dataset2:coco</span></code></p>
+<p>Merge a source from a previous revision and a dataset:
+<code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">merge</span> <span class="pre">HEAD~2:source-2</span> <span class="pre">path/to/dataset2:yolo</span></code></p>
+<p>Merge datasets and save in different format:
+<code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">merge</span> <span class="pre">-f</span> <span class="pre">voc</span> <span class="pre">dataset1/:yolo</span> <span class="pre">path2/:coco</span> <span class="pre">--</span> <span class="pre">--save-images</span></code></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="log.html" class="btn btn-neutral float-left" title="Log" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="models.html" class="btn btn-neutral float-right" title="Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

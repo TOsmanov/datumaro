@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Velodyne Points / KITTI Raw 3D &mdash; Datumaro Documentation 0.2.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="LFW" href="lfw.html" />
+    <link rel="prev" title="KITTI" href="kitti.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../index.html" class="icon"> Datumaro Documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design.html">Datumaro Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-manual/user-manual.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_manual.html">Developer manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="formats.html">Formats</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ade20k2017.html">ADE20k (v2017)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ade20k2020.html">ADE20k (v2020)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="align_celeba.html">Align CelebA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="celeba.html">CelebA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cifar.html">CIFAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cityscapes.html">Cityscapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coco.html">COCO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icdar.html">ICDAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_zip.html">Image zip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imagenet.html">ImageNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kitti.html">KITTI</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Velodyne Points / KITTI Raw 3D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#format-specification">Format specification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#import-kitti-raw-dataset">Import KITTI Raw dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-to-other-formats">Export to other formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-to-kitti-raw">Export to KITTI Raw</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-1-import-dataset-compute-statistics">Example 1. Import dataset, compute statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-2-convert-supervisely-pointclouds-to-kitti-raw">Example 2. Convert Supervisely Pointclouds to KITTI Raw</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-3-create-a-custom-dataset">Example 3. Create a custom dataset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lfw.html">LFW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mapillary_vistas.html">Mapillary Vistas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market1501.html">Market-1501</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mars.html">MARS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mnist.html">MNIST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpii.html">MPII Human Pose Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mpii_json.html">MPII Human Pose Dataset (JSON)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_images.html">Open Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pascal_voc.html">Pascal VOC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sly_pointcloud.html">Supervisely Point Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="synthia.html">SYNTHIA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vgg_face2.html">Vgg Face2 CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vott_csv.html">VoTT CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vott_json.html">VoTT JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wider_face.html">Format specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wider_face.html#import-wider-face-dataset">Import WIDER Face dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wider_face.html#export-wider-face-dataset">Export WIDER Face dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wider_face.html#export-to-wider-face-dataset">Export to WIDER Face dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo.html">YOLO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribution Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/cli/cli.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/util/util/util.html">Utilities</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Datumaro Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="formats.html">Formats</a> &raquo;</li>
+      <li>Velodyne Points / KITTI Raw 3D</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/formats/kitti_raw.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="velodyne-points-kitti-raw-3d">
+<h1>Velodyne Points / KITTI Raw 3D<a class="headerlink" href="#velodyne-points-kitti-raw-3d" title="Permalink to this headline"></a></h1>
+<section id="format-specification">
+<h2>Format specification<a class="headerlink" href="#format-specification" title="Permalink to this headline"></a></h2>
+<p>Velodyne Points / KITTI Raw 3D data format homepage is
+available <a class="reference external" href="http://www.cvlibs.net/datasets/kitti/raw_data.php">here</a>.</p>
+<p>Velodyne Points / KITTI Raw 3D data format specification
+is available <a class="reference external" href="https://s3.eu-central-1.amazonaws.com/avg-kitti/devkit_raw_data.zip">here</a>.</p>
+<p>Supported annotation types:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Cuboid3d</span></code> (represent tracks)</p></li>
+</ul>
+<p>Supported annotation attributes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">truncation</span></code> (write, string), possible values: <code class="docutils literal notranslate"><span class="pre">truncation_unset</span></code>,
+<code class="docutils literal notranslate"><span class="pre">in_image</span></code>, <code class="docutils literal notranslate"><span class="pre">truncated</span></code>, <code class="docutils literal notranslate"><span class="pre">out_image</span></code>, <code class="docutils literal notranslate"><span class="pre">behind_image</span></code> (case-independent).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">occlusion</span></code> (write, string), possible values: <code class="docutils literal notranslate"><span class="pre">occlusion_unset</span></code>, <code class="docutils literal notranslate"><span class="pre">visible</span></code>,
+<code class="docutils literal notranslate"><span class="pre">partly</span></code>, <code class="docutils literal notranslate"><span class="pre">fully</span></code> (case-independent). This attribute has priority
+over <code class="docutils literal notranslate"><span class="pre">occluded</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">occluded</span></code> (read/write, boolean)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">keyframe</span></code> (read/write, boolean). Responsible for <code class="docutils literal notranslate"><span class="pre">occlusion_kf</span></code> field.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">track_id</span></code> (read/write, integer). Indicates the group over frames for
+annotations, represent tracks.</p></li>
+</ul>
+<p>Supported image attributes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> (read/write, integer). Indicates frame number of the image.</p></li>
+</ul>
+</section>
+<section id="import-kitti-raw-dataset">
+<h2>Import KITTI Raw dataset<a class="headerlink" href="#import-kitti-raw-dataset" title="Permalink to this headline"></a></h2>
+<p>The velodyne points/KITTI Raw dataset is available for download
+<a class="reference external" href="http://www.cvlibs.net/datasets/kitti/raw_data.php">here</a> and
+<a class="reference external" href="https://cloud.enterprise.deepsystems.io/s/YcyfIf5zrS7NZcI/download">here</a>.</p>
+<p>KITTI Raw dataset directory should have the following structure:</p>
+<!--lint disable fenced-code-flag-->
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>└─ Dataset/
+    ├── dataset_meta.json # a list of custom labels (optional)
+    ├── image_00/ # optional, aligned images from different cameras
+    │   └── data/
+    │       ├── &lt;name1.ext&gt;
+    │       └── &lt;name2.ext&gt;
+    ├── image_01/
+    │   └── data/
+    │       ├── &lt;name1.ext&gt;
+    │       └── &lt;name2.ext&gt;
+    ...
+    │
+    ├── velodyne_points/ # optional, 3d point clouds
+    │   └── data/
+    │       ├── &lt;name1.pcd&gt;
+    │       └── &lt;name2.pcd&gt;
+    ├── tracklet_labels.xml
+    └── frame_list.txt # optional, required for custom image names
+
+</pre></div>
+</div>
+<p>The format does not support arbitrary image names and paths, but Datumaro
+provides an option to use a special index file to allow this.</p>
+<p><code class="docutils literal notranslate"><span class="pre">frame_list.txt</span></code> contents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">12345</span> <span class="n">relative</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">name1</span><span class="o">/</span><span class="n">from</span><span class="o">/</span><span class="n">data</span>
+<span class="mi">46</span> <span class="n">relative</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">name2</span><span class="o">/</span><span class="n">from</span><span class="o">/</span><span class="n">data</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>To add custom classes, you can use <a class="reference external" href="/docs/user-manual/supported_formats/#dataset-meta-file"><code class="docutils literal notranslate"><span class="pre">dataset_meta.json</span></code></a>.</p>
+<p>A Datumaro project with a KITTI source can be created in the following way:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum create
+datum import --format kitti_raw &lt;path/to/dataset&gt;
+</pre></div>
+</div>
+<p>To make sure that the selected dataset has been added to the project,
+you can run <code class="docutils literal notranslate"><span class="pre">datum</span> <span class="pre">project</span> <span class="pre">info</span></code>, which will display the project and dataset
+information.</p>
+</section>
+<section id="export-to-other-formats">
+<h2>Export to other formats<a class="headerlink" href="#export-to-other-formats" title="Permalink to this headline"></a></h2>
+<p>Datumaro can convert a KITTI Raw dataset into any other
+format <a class="reference internal" href="../user-manual/supported_formats.html"><span class="doc std std-doc">Datumaro supports</span></a>.</p>
+<p>Such conversion will only be successful if the output
+format can represent the type of dataset you want to convert,
+e.g. 3D point clouds can be saved in Supervisely Point Clouds format,
+but not in COCO keypoints.</p>
+<p>There are several ways to convert a KITTI Raw dataset to other dataset formats:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum create
+datum import -f kitti_raw &lt;path/to/kitti_raw&gt;
+datum <span class="nb">export</span> -f sly_pointcloud -o &lt;output/dir&gt;
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum convert -if kitti_raw -i &lt;path/to/kitti_raw&gt; -f sly_pointcloud
+</pre></div>
+</div>
+<p>Or, using Python API:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datumaro.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">import_from</span><span class="p">(</span><span class="s1">&#39;&lt;path/to/dataset&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;kitti_raw&#39;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s1">&#39;save_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;sly_pointcloud&#39;</span><span class="p">,</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="export-to-kitti-raw">
+<h2>Export to KITTI Raw<a class="headerlink" href="#export-to-kitti-raw" title="Permalink to this headline"></a></h2>
+<p>There are several ways to convert a dataset to KITTI Raw format:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># export dataset into KITTI Raw format from existing project</span>
+datum <span class="nb">export</span> -p &lt;path/to/project&gt; -f kitti_raw -o &lt;output/dir&gt; <span class="se">\</span>
+    -- --save-images
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># converting to KITTI Raw format from other format</span>
+datum convert -if sly_pointcloud -i &lt;path/to/dataset&gt; <span class="se">\</span>
+    -f kitti_raw -o &lt;output/dir&gt; -- --save-images --reindex
+</pre></div>
+</div>
+<p>Extra options for exporting to KITTI Raw format:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--save-images</span></code> allow to export dataset with saving images. This will
+include point clouds and related images (by default <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--image-ext</span> <span class="pre">IMAGE_EXT</span></code> allow to specify image extension
+for exporting dataset (by default - keep original or use <code class="docutils literal notranslate"><span class="pre">.png</span></code>, if none)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--reindex</span></code> assigns new indices to frames and tracks. Allows annotations
+without <code class="docutils literal notranslate"><span class="pre">track_id</span></code> attribute (they will be exported as single-frame tracks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--allow-attrs</span></code> allows writing arbitrary annotation attributes. They will
+be written in <code class="docutils literal notranslate"><span class="pre">&lt;annotations&gt;</span></code> section of <code class="docutils literal notranslate"><span class="pre">&lt;poses&gt;&lt;item&gt;</span></code>
+(disabled by default)</p></li>
+</ul>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h2>
+<section id="example-1-import-dataset-compute-statistics">
+<h3>Example 1. Import dataset, compute statistics<a class="headerlink" href="#example-1-import-dataset-compute-statistics" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum create -o project
+datum import -p project -f kitti_raw ../kitti_raw/
+datum stats -p project
+</pre></div>
+</div>
+</section>
+<section id="example-2-convert-supervisely-pointclouds-to-kitti-raw">
+<h3>Example 2. Convert Supervisely Pointclouds to KITTI Raw<a class="headerlink" href="#example-2-convert-supervisely-pointclouds-to-kitti-raw" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datum convert -if sly_pointcloud -i ../sly_pcd/ <span class="se">\</span>
+    -f kitti_raw -o my_kitti/ -- --save-images --allow-attrs
+</pre></div>
+</div>
+</section>
+<section id="example-3-create-a-custom-dataset">
+<h3>Example 3. Create a custom dataset<a class="headerlink" href="#example-3-create-a-custom-dataset" title="Permalink to this headline"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datumaro.components.annotation</span> <span class="kn">import</span> <span class="n">Cuboid3d</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.extractor</span> <span class="kn">import</span> <span class="n">DatasetItem</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span>
+  <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;some/name/qq&#39;</span><span class="p">,</span>
+    <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+      <span class="n">Cuboid3d</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="mf">13.54</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.41</span><span class="p">,</span> <span class="mf">0.24</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;occluded&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;track_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}),</span>
+
+      <span class="n">Cuboid3d</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="mf">3.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.11</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;occluded&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;track_id&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+    <span class="p">],</span>
+    <span class="n">pcd</span><span class="o">=</span><span class="s1">&#39;path/to/pcd1.pcd&#39;</span><span class="p">,</span>
+    <span class="n">related_images</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span> <span class="s1">&#39;path/to/image2.png&#39;</span><span class="p">,</span> <span class="s1">&#39;image3.jpg&#39;</span><span class="p">],</span>
+    <span class="n">attributes</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;frame&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+  <span class="p">),</span>
+<span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">])</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s1">&#39;my_dataset/&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;kitti_raw&#39;</span><span class="p">,</span> <span class="n">save_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Examples of using this format from the code can be found in
+<a class="reference external" href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test_kitti_raw_format.py">the format tests</a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="kitti.html" class="btn btn-neutral float-left" title="KITTI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lfw.html" class="btn btn-neutral float-right" title="LFW" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
