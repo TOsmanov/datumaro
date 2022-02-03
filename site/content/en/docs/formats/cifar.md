@@ -127,7 +127,7 @@ datum convert -if cifar -i <path/to/dataset> \
 Or, using Python API:
 
 ```python
-from datumaro.components.dataset import Dataset
+from datumaro import Dataset
 
 dataset = Dataset.import_from('<path/to/dataset>', 'cifar')
 dataset.export('save_dir', 'imagenet', save_images=True)
@@ -172,9 +172,7 @@ particular problems with CIFAR dataset:
 ### Example 1. How to create a custom CIFAR-like dataset
 
 ```python
-from datumaro.components.annotation import Label
-from datumaro.components.dataset import Dataset
-from datumaro.components.extractor import DatasetItem
+from datumaro import Label, Dataset, DatasetItem
 
 dataset = Dataset.from_iterable([
     DatasetItem(id=0, image=np.ones((32, 32, 3)),

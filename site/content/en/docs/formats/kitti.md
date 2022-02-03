@@ -140,7 +140,7 @@ datum convert -if kitti -i <path/to/kitti> -f cityscapes -o <output/dir>
 Or, using Python API:
 
 ```python
-from datumaro.components.dataset import Dataset
+from datumaro import Dataset
 
 dataset = Dataset.import_from('<path/to/dataset>', 'kitti')
 dataset.export('save_dir', 'cityscapes', save_images=True)
@@ -216,9 +216,7 @@ datum export -p project -f cityscapes -- --save-images
 
 ```python
 import numpy as np
-from datumaro.components.annotation import Mask
-from datumaro.components.dataset import Dataset
-from datumaro.components.extractor import DatasetItem
+from datumaro import Mask, Dataset, DatasetItem
 
 import datumaro.plugins.kitti_format as KITTI
 

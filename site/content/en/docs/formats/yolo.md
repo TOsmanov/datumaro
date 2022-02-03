@@ -123,7 +123,7 @@ datum convert -if yolo -i <path/to/dataset> \
 Or, using Python API:
 
 ```python
-from datumaro.components.dataset import Dataset
+from datumaro import Dataset
 
 dataset = Dataset.import_from('<path/to/dataset>', 'yolo')
 dataset.export('save_dir', 'coco_instances', save_images=True)
@@ -174,9 +174,7 @@ datum export -p project -f yolo -o ./yolo_without_cats
 ### Example 3. Create a custom dataset in YOLO format
 ```python
 import numpy as np
-from datumaro.components.annotation import Bbox
-from datumaro.components.dataset import Dataset
-from datumaro.components.extractor import DatasetItem
+from datumaro import Bbox, Dataset, DatasetItem
 
 dataset = Dataset.from_iterable([
     DatasetItem(id='image_001', subset='train',
@@ -203,8 +201,7 @@ If you only want information about label names for each
 image, then you can get it from code:
 
 ```python
-from datumaro.components.annotation import AnnotationType
-from datumaro.components.dataset import Dataset
+from datumaro import AnnotationType, Dataset
 
 dataset = Dataset.import_from('./yolo_dataset', format='yolo')
 cats = dataset.categories()[AnnotationType.label]

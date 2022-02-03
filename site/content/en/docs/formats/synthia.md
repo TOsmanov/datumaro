@@ -30,7 +30,7 @@ datum import --format synthia <path/to/dataset>
 It is also possible to import the dataset using Python API:
 
 ```python
-from datumaro.components.dataset import Dataset
+from datumaro import Dataset
 
 synthia_dataset = Dataset.import_from('<path/to/dataset>', 'synthia')
 ```
@@ -123,7 +123,7 @@ datum convert -if synthia -i <path/to/dataset> \
 Or, using Python API:
 
 ```python
-from datumaro.components.dataset import Dataset
+from datumaro import Dataset
 
 dataset = Dataset.import_from('<path/to/dataset>', 'synthia')
 dataset.export('save_dir', 'voc')

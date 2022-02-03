@@ -250,7 +250,7 @@ datum convert -if open_images -i <path/to/open_images> -f cvat -o <output/dir>
 Or, using Python API:
 
 ```python
-from datumaro.components.dataset import Dataset
+from datumaro import Dataset
 
 dataset = Dataset.import_from('<path/to/dataset>', 'open_images')
 dataset.export('save_dir', 'cvat', save_images=True)
@@ -304,11 +304,9 @@ datum export -p project -f cvat -- --save-images
 
 ```python
 import numpy as np
-from datumaro.components.dataset import Dataset
-from datumaro.components.annotation import (
-    AnnotationType, Label, LabelCategories,
+from datumaro import (
+    Dataset, AnnotationType, Label, LabelCategories, DatasetItem
 )
-from datumaro.components.extractor import DatasetItem
 
 dataset = Dataset.from_iterable([
   DatasetItem(

@@ -41,7 +41,7 @@ datum import -f imagenet_txt <path_to_dataset>
 Load ImageNet dataset through the Python API:
 
 ```python
-from datumaro.components.dataset import Dataset
+from datumaro import Dataset
 
 dataset = Dataset.import_from('<path_to_dataset>', format='imagenet_txt')
 ```
@@ -111,7 +111,7 @@ datum export -f open_images -o <output_dir>
 And also you can convert your ImageNet dataset using Python API
 
 ```python
-from datumaro.components.dataset import Dataset
+from datumaro import Dataset
 
 imagenet_dataset = Dataset.import_from('<path_to_dataset', format='imagenet')
 

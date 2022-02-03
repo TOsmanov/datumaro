@@ -177,7 +177,7 @@ datum convert -if voc -i <path/to/voc> -f coco -o <output/dir>
 Or, using Python API:
 
 ```python
-from datumaro.components.dataset import Dataset
+from datumaro import Dataset
 
 dataset = Dataset.import_from('<path/to/dataset>', 'voc')
 dataset.export('save_dir', 'coco', save_images=True)
@@ -263,9 +263,7 @@ datum export -p project -f voc -- --label-map voc --save-images
 ### Example 2. How to create a custom dataset
 
 ```python
-from datumaro.components.annotation import Bbox, Polygon, Label
-from datumaro.components.dataset import Dataset
-from datumaro.components.extractor import DatasetItem
+from datumaro import Bbox, Polygon, Label, Dataset, DatasetItem
 from datumaro.util.image import Image
 
 dataset = Dataset.from_iterable([
@@ -296,7 +294,7 @@ Load Pascal VOC dataset, and export train subset with items
 which has `jumping` attribute:
 
 ```python
-from datumaro.components.dataset import Dataset
+from datumaro import Dataset
 
 dataset = Dataset.import_from('./VOC2012', format='voc')
 
@@ -316,8 +314,7 @@ train_dataset.export('./jumping_label_me', format='label_me', save_images=True)
 ### Example 4. Get information about items in Pascal VOC 2012 dataset for segmentation task:
 
 ```python
-from datumaro.components.annotation import AnnotationType
-from datumaro.components.dataset import Dataset
+from datumaro import AnnotationType, Dataset
 
 dataset = Dataset.import_from('./VOC2012', format='voc')
 

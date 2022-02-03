@@ -66,7 +66,7 @@ datum export -p project -f coco -o ./new_dir -- --save-images
 Or, using Python API:
 
 ```python
-from datumaro.components.dataset import Dataset
+from datumaro import Dataset
 
 dataset = Dataset.import_from('<path/to/dataset>', 'image_zip')
 dataset.export('save_dir', 'coco', save_images=True)

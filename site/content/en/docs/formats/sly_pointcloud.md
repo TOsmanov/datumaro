@@ -104,7 +104,7 @@ datum convert -if sly_pointcloud -i <path/to/sly_pcd/> -f kitti_raw
 Or, using Python API:
 
 ```python
-from datumaro.components.dataset import Dataset
+from datumaro import Dataset
 
 dataset = Dataset.import_from('<path/to/dataset>', 'sly_pointcloud')
 dataset.export('save_dir', 'kitti_raw', save_images=True)
@@ -155,9 +155,7 @@ datum convert -if sly_pointcloud -i ../sly_pcd/ \
 ### Example 3. Create a custom dataset
 
 ``` python
-from datumaro.components.annotation import Cuboid3d
-from datumaro.components.dataset import Dataset
-from datumaro.components.extractor import DatasetItem
+from datumaro import Cuboid3d, Dataset, DatasetItem
 
 dataset = Dataset.from_iterable([
     DatasetItem(id='frame_1',
