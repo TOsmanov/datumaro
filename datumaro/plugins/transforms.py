@@ -32,6 +32,13 @@ import datumaro.util.mask_tools as mask_tools
 
 
 class CropCoveredSegments(ItemTransform, CliPlugin):
+    """
+    Sorts polygons and masks ("segments") according to `z_order`,
+    crops covered areas of underlying segments. If a segment is split
+    into several independent parts by the segments above, produces
+    the corresponding number of separate annotations joined into a group.
+    """
+
     def transform_item(self, item):
         annotations = []
         segments = []
@@ -97,6 +104,9 @@ class CropCoveredSegments(ItemTransform, CliPlugin):
 class MergeInstanceSegments(ItemTransform, CliPlugin):
     """
     Replaces instance masks and, optionally, polygons with a single mask.
+    A group of annotations with the same group id is considered an "instance".
+    The largest annotation in the group is considered the group "head", so the
+    resulting mask takes properties from that annotation.
     """
 
     @classmethod
@@ -267,6 +277,10 @@ class ShapesToBoxes(ItemTransform, CliPlugin):
             id=shape.id, attributes=shape.attributes, group=shape.group)
 
 class Reindex(Transform, CliPlugin):
+    """
+    Replaces dataset item IDs with sequential indices.
+    """
+
     @classmethod
     def build_cmdline_parser(cls, **kwargs):
         parser = super().build_cmdline_parser(**kwargs)
@@ -284,6 +298,10 @@ class Reindex(Transform, CliPlugin):
             yield self.wrap_item(item, id=i + self._start)
 
 class MapSubsets(ItemTransform, CliPlugin):
+    """
+    Renames subsets in the dataset.
+    """
+
     @staticmethod
     def _mapping_arg(s):
         parts = s.split(':')
@@ -326,6 +344,8 @@ class RandomSplit(Transform, CliPlugin):
     It is expected that item ids are unique and subset ratios sum up to 1.|n
     |n
     Example:|n
+    .. code-block::
+
     |s|s|s|s%(prog)s --subset train:.67 --subset test:.33
     """
 
@@ -397,6 +417,10 @@ class RandomSplit(Transform, CliPlugin):
             yield self.wrap_item(item, subset=self._find_split(i))
 
 class IdFromImageName(ItemTransform, CliPlugin):
+    """
+    Renames items in the dataset using image file name (without extension).
+    """
+
     def transform_item(self, item):
         if item.has_image and item.image.path:
             name = osp.splitext(osp.basename(item.image.path))[0]
@@ -411,20 +435,30 @@ class Rename(ItemTransform, CliPlugin):
     Renames items in the dataset. Supports regular expressions.
     The first character in the expression is a delimiter for
     the pattern and replacement parts. Replacement part can also
-    contain string.format tokens with 'item' object available.|n
+    contain `str.format` replacement fields with the `item`
+    (of type `DatasetItem`) object available.|n
     |n
     Examples:|n
     |s|s- Replace 'pattern' with 'replacement':|n
+    |s|s.. code-block::
+
     |s|s|s|srename -e '|pattern|replacement|'|n
     |s|s- Remove 'frame_' from item ids:|n
-    |s|s|s|srename -e '|frame_(\d+)|\1|'
+    |s|s.. code-block::
+
+    |s|s|s|srename -e '|^frame_||'|n
+    |s|s- Rename by regex:|n
+    |s|s.. code-block::
+
+    |s|s|s|srename -e '|frame_(\d+)_extra|{item.subset}_id_\1|'
     """
 
     @classmethod
     def build_cmdline_parser(cls, **kwargs):
         parser = super().build_cmdline_parser(**kwargs)
         parser.add_argument('-e', '--regex',
-            help="Regex for renaming.")
+            help="Regex for renaming in the form "
+                "'<sep><search><sep><replacement><sep>'")
         return parser
 
     def __init__(self, extractor, regex):
@@ -446,20 +480,26 @@ class RemapLabels(ItemTransform, CliPlugin):
     |n
     A label can be:|n
     |s|s- renamed (and joined with existing) -|n
-    |s|s|s|swhen specified '--label <old_name>:<new_name>'|n
-    |s|s- deleted - when specified '--label <name>:' or default action is 'delete'|n
-    |s|s|s|sand the label is not mentioned in the list. When a label|n
-    |s|s|s|sis deleted, all the associated annotations are removed|n
+    |s|s|s|swhen '--label <old_name>:<new_name>' is specified|n
+    |s|s- deleted - when '--label <name>:' is specified, or default action |n
+    |s|s|s|sis 'delete' and the label is not mentioned in the list. |n
+    |s|s|s|sWhen a label is deleted, all the associated annotations are removed|n
     |s|s- kept unchanged - when specified '--label <name>:<name>'|n
     |s|s|s|sor default action is 'keep' and the label is not mentioned in the list|n
     Annotations with no label are managed by the default action policy.|n
     |n
     Examples:|n
     |s|s- Remove the 'person' label (and corresponding annotations):|n
+    |s|s.. code-block::
+
     |s|s|s|s%(prog)s -l person: --default keep|n
     |s|s- Rename 'person' to 'pedestrian' and 'human' to 'pedestrian', join:|n
+    |s|s.. code-block::
+
     |s|s|s|s%(prog)s -l person:pedestrian -l human:pedestrian --default keep|n
     |s|s- Rename 'person' to 'car' and 'cat' to 'dog', keep 'bus', remove others:|n
+    |s|s.. code-block::
+
     |s|s|s|s%(prog)s -l person:car -l bus:bus -l cat:dog --default delete
     """
 
@@ -599,6 +639,8 @@ class ProjectLabels(ItemTransform):
     |n
     Examples:|n
     |s|s- Align the source dataset labels to [person, cat, dog]:|n
+    |s|s.. code-block::
+
     |s|s|s|s%(prog)s -l person -l cat -l dog
     """
 
@@ -745,8 +787,10 @@ class ResizeTransform(ItemTransform):
     Supports upscaling, downscaling and mixed variants.|n
     |n
     Examples:|n
-    - Resize all images to 256x256 size|n
-    |s|s%(prog)s -dw 256 -dh 256
+        - Resize all images to 256x256 size|n
+        .. code-block::
+
+        |s|s%(prog)s -dw 256 -dh 256
     """
 
     @classmethod
