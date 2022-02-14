@@ -38,7 +38,7 @@ pip install -e /path/to/the/cloned/repo/ Optional dependencies
 These components are only required for plugins and not installed by default:
  OpenVINO Accuracy Checker TensorFlow PyTorch MxNet Caffe  Usage datum --help python -m datumaro --help python datumaro/ --help python datum.">
 
-<meta itemprop="wordCount" content="618">
+<meta itemprop="wordCount" content="620">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Contribution Guide"/>
 <meta name="twitter:description" content="Related sections:  Design document Developer manual  Installation Prerequisites  Python (3.7&#43;)  git clone https://github.com/openvinotoolkit/datumaro Optionally, install a virtual environment (recommended):
@@ -145,7 +145,7 @@ These components are only required for plugins and not installed by default:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -173,7 +173,7 @@ These components are only required for plugins and not installed by default:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -581,7 +581,8 @@ test, use:</p>
 They can be overridden for a specific test:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">pytest</span>
 
-    <span style="color:#5c35cc;font-weight:bold">@pytest</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">mark</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">proirity_low</span>
+<span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">MyTests</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">TestCase</span><span style="color:#000;font-weight:bold">):</span>
+    <span style="color:#5c35cc;font-weight:bold">@pytest</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">mark</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">priority_low</span>
     <span style="color:#5c35cc;font-weight:bold">@mark_requirement</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Requirements</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">DATUM_GENERAL_REQ</span><span style="color:#000;font-weight:bold">)</span>
     <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">test_my_requirement</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">):</span>
         <span style="color:#ce5c00;font-weight:bold">...</span> <span style="color:#000">do</span> <span style="color:#000">stuff</span> <span style="color:#ce5c00;font-weight:bold">...</span>

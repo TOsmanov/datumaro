@@ -6,6 +6,7 @@
   <title>datumaro.plugins.transforms &mdash; Datumaro API documentation 0.2.3 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -16,6 +17,8 @@
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -37,6 +40,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.html">Datumaro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/cli/cli.html">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/components/components.html">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/plugins/plugins.html">Plugins</a></li>
@@ -105,6 +109,13 @@
 
 
 <div class="viewcode-block" id="CropCoveredSegments"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.CropCoveredSegments">[docs]</a><span class="k">class</span> <span class="nc">CropCoveredSegments</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sorts polygons and masks (&quot;segments&quot;) according to `z_order`,</span>
+<span class="sd">    crops covered areas of underlying segments. If a segment is split</span>
+<span class="sd">    into several independent parts by the segments above, produces</span>
+<span class="sd">    the corresponding number of separate annotations joined into a group.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="CropCoveredSegments.transform_item"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.CropCoveredSegments.transform_item">[docs]</a>    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="n">annotations</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">segments</span> <span class="o">=</span> <span class="p">[]</span>
@@ -170,6 +181,9 @@
 <div class="viewcode-block" id="MergeInstanceSegments"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.MergeInstanceSegments">[docs]</a><span class="k">class</span> <span class="nc">MergeInstanceSegments</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Replaces instance masks and, optionally, polygons with a single mask.</span>
+<span class="sd">    A group of annotations with the same group id is considered an &quot;instance&quot;.</span>
+<span class="sd">    The largest annotation in the group is considered the group &quot;head&quot;, so the</span>
+<span class="sd">    resulting mask takes properties from that annotation.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="MergeInstanceSegments.build_cmdline_parser"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.MergeInstanceSegments.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
@@ -340,6 +354,10 @@
             <span class="nb">id</span><span class="o">=</span><span class="n">shape</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">attributes</span><span class="o">=</span><span class="n">shape</span><span class="o">.</span><span class="n">attributes</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">shape</span><span class="o">.</span><span class="n">group</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="Reindex"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.Reindex">[docs]</a><span class="k">class</span> <span class="nc">Reindex</span><span class="p">(</span><span class="n">Transform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Replaces dataset item IDs with sequential indices.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="Reindex.build_cmdline_parser"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.Reindex.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -357,6 +375,10 @@
             <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="MapSubsets"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.MapSubsets">[docs]</a><span class="k">class</span> <span class="nc">MapSubsets</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Renames subsets in the dataset.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_mapping_arg</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
         <span class="n">parts</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
@@ -399,6 +421,9 @@
 <span class="sd">    It is expected that item ids are unique and subset ratios sum up to 1.|n</span>
 <span class="sd">    |n</span>
 <span class="sd">    Example:|n</span>
+
+<span class="sd">    .. code-block::</span>
+
 <span class="sd">    |s|s|s|s%(prog)s --subset train:.67 --subset test:.33</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -470,6 +495,10 @@
             <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_find_split</span><span class="p">(</span><span class="n">i</span><span class="p">))</span></div></div>
 
 <div class="viewcode-block" id="IdFromImageName"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.IdFromImageName">[docs]</a><span class="k">class</span> <span class="nc">IdFromImageName</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Renames items in the dataset using image file name (without extension).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="IdFromImageName.transform_item"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.IdFromImageName.transform_item">[docs]</a>    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">has_image</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
             <span class="n">name</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
@@ -484,20 +513,30 @@
 <span class="sd">    Renames items in the dataset. Supports regular expressions.</span>
 <span class="sd">    The first character in the expression is a delimiter for</span>
 <span class="sd">    the pattern and replacement parts. Replacement part can also</span>
-<span class="sd">    contain string.format tokens with &#39;item&#39; object available.|n</span>
+<span class="sd">    contain `str.format` replacement fields with the `item`</span>
+<span class="sd">    (of type `DatasetItem`) object available.|n</span>
 <span class="sd">    |n</span>
 <span class="sd">    Examples:|n</span>
 <span class="sd">    |s|s- Replace &#39;pattern&#39; with &#39;replacement&#39;:|n</span>
+<span class="sd">    |s|s.. code-block::</span>
+
 <span class="sd">    |s|s|s|srename -e &#39;|pattern|replacement|&#39;|n</span>
 <span class="sd">    |s|s- Remove &#39;frame_&#39; from item ids:|n</span>
-<span class="sd">    |s|s|s|srename -e &#39;|frame_(\d+)|\1|&#39;</span>
+<span class="sd">    |s|s.. code-block::</span>
+
+<span class="sd">    |s|s|s|srename -e &#39;|^frame_||&#39;|n</span>
+<span class="sd">    |s|s- Rename by regex:|n</span>
+<span class="sd">    |s|s.. code-block::</span>
+
+<span class="sd">    |s|s|s|srename -e &#39;|frame_(\d+)_extra|{item.subset}_id_\1|&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Rename.build_cmdline_parser"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.Rename.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-e&#39;</span><span class="p">,</span> <span class="s1">&#39;--regex&#39;</span><span class="p">,</span>
-            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Regex for renaming.&quot;</span><span class="p">)</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Regex for renaming in the form &quot;</span>
+                <span class="s2">&quot;&#39;&lt;sep&gt;&lt;search&gt;&lt;sep&gt;&lt;replacement&gt;&lt;sep&gt;&#39;&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">parser</span></div>
 
 <div class="viewcode-block" id="Rename.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.Rename.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">,</span> <span class="n">regex</span><span class="p">):</span>
@@ -519,20 +558,26 @@
 <span class="sd">    |n</span>
 <span class="sd">    A label can be:|n</span>
 <span class="sd">    |s|s- renamed (and joined with existing) -|n</span>
-<span class="sd">    |s|s|s|swhen specified &#39;--label &lt;old_name&gt;:&lt;new_name&gt;&#39;|n</span>
-<span class="sd">    |s|s- deleted - when specified &#39;--label &lt;name&gt;:&#39; or default action is &#39;delete&#39;|n</span>
-<span class="sd">    |s|s|s|sand the label is not mentioned in the list. When a label|n</span>
-<span class="sd">    |s|s|s|sis deleted, all the associated annotations are removed|n</span>
+<span class="sd">    |s|s|s|swhen &#39;--label &lt;old_name&gt;:&lt;new_name&gt;&#39; is specified|n</span>
+<span class="sd">    |s|s- deleted - when &#39;--label &lt;name&gt;:&#39; is specified, or default action |n</span>
+<span class="sd">    |s|s|s|sis &#39;delete&#39; and the label is not mentioned in the list. |n</span>
+<span class="sd">    |s|s|s|sWhen a label is deleted, all the associated annotations are removed|n</span>
 <span class="sd">    |s|s- kept unchanged - when specified &#39;--label &lt;name&gt;:&lt;name&gt;&#39;|n</span>
 <span class="sd">    |s|s|s|sor default action is &#39;keep&#39; and the label is not mentioned in the list|n</span>
 <span class="sd">    Annotations with no label are managed by the default action policy.|n</span>
 <span class="sd">    |n</span>
 <span class="sd">    Examples:|n</span>
 <span class="sd">    |s|s- Remove the &#39;person&#39; label (and corresponding annotations):|n</span>
+<span class="sd">    |s|s.. code-block::</span>
+
 <span class="sd">    |s|s|s|s%(prog)s -l person: --default keep|n</span>
 <span class="sd">    |s|s- Rename &#39;person&#39; to &#39;pedestrian&#39; and &#39;human&#39; to &#39;pedestrian&#39;, join:|n</span>
+<span class="sd">    |s|s.. code-block::</span>
+
 <span class="sd">    |s|s|s|s%(prog)s -l person:pedestrian -l human:pedestrian --default keep|n</span>
 <span class="sd">    |s|s- Rename &#39;person&#39; to &#39;car&#39; and &#39;cat&#39; to &#39;dog&#39;, keep &#39;bus&#39;, remove others:|n</span>
+<span class="sd">    |s|s.. code-block::</span>
+
 <span class="sd">    |s|s|s|s%(prog)s -l person:car -l bus:bus -l cat:dog --default delete</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -672,6 +717,8 @@
 <span class="sd">    |n</span>
 <span class="sd">    Examples:|n</span>
 <span class="sd">    |s|s- Align the source dataset labels to [person, cat, dog]:|n</span>
+<span class="sd">    |s|s.. code-block::</span>
+
 <span class="sd">    |s|s|s|s%(prog)s -l person -l cat -l dog</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -818,8 +865,10 @@
 <span class="sd">    Supports upscaling, downscaling and mixed variants.|n</span>
 <span class="sd">    |n</span>
 <span class="sd">    Examples:|n</span>
-<span class="sd">    - Resize all images to 256x256 size|n</span>
-<span class="sd">    |s|s%(prog)s -dw 256 -dh 256</span>
+<span class="sd">        - Resize all images to 256x256 size|n</span>
+<span class="sd">        .. code-block::</span>
+
+<span class="sd">        |s|s%(prog)s -dw 256 -dh 256</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="ResizeTransform.build_cmdline_parser"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.ResizeTransform.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
@@ -945,17 +994,20 @@
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: update-docs-introduce-api-v1
+        v: update-api-docs-fix-docstrings
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
         <dl>
             <dt>Tags</dt>
             <dd><a href="../../../v0.2.2/index.html">v0.2.2</a></dd>
+            <dd><a href="../../../v0.2.3/index.html">v0.2.3</a></dd>
         </dl>
         <dl>
             <dt>Branches</dt>
-            <dd><a href="../../../update-docs-introduce-api-v1/_modules/datumaro/plugins/transforms.html">update-docs-introduce-api-v1</a></dd>
+            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/index.html">revert-19-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/index.html">revert-20-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../update-api-docs-fix-docstrings/_modules/datumaro/plugins/transforms.html">update-api-docs-fix-docstrings</a></dd>
         </dl>
     </div>
 </div><script>

@@ -36,7 +36,7 @@ Supported annotation types:
  center (a list with two coordinates of the center point of the object) scale (float)  Import MPII Human Pose Dataset A Datumaro project with an MPII Human Pose Dataset source can be created in the following way:
 datum create datum import --format mpii &lt;path/to/dataset&gt; It is also possible to import the dataset using Python API:">
 
-<meta itemprop="wordCount" content="223">
+<meta itemprop="wordCount" content="213">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MPII Human Pose Dataset"/>
 <meta name="twitter:description" content="Format specification The original MPII Human Pose Dataset is available here.
@@ -142,7 +142,7 @@ datum create datum import --format mpii &lt;path/to/dataset&gt; It is also possi
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -170,7 +170,7 @@ datum create datum import --format mpii &lt;path/to/dataset&gt; It is also possi
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -488,14 +488,10 @@ created in the following way:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
 datum import --format mpii &lt;path/to/dataset&gt;
 </code></pre></div><p>It is also possible to import the dataset using Python API:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
 
-<span style="color:#000">mpii_dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;mpii&#39;</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../../api/api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.import_from">Dataset.import_from</a></li>
-</ul>
-<p>MPII Human Pose Dataset directory should have the following structure:</p>
+<span style="color:#000">mpii_dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;mpii&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>MPII Human Pose Dataset directory should have the following structure:</p>
 <!--lint disable fenced-code-flag-->
 <pre><code>dataset/
 ├── mpii_human_pose_v1_u12_1.mat
@@ -517,15 +513,11 @@ datum <span style="color:#204a87">export</span> -f voc -o ./save_dir -- --save-i
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum convert -if mpii -i &lt;path/to/dataset&gt; <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    -f voc -o &lt;output/dir&gt; -- --save-images
 </code></pre></div><p>Or, using Python API:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
 
-<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;mpii&#39;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;mpii&#39;</span><span style="color:#000;font-weight:bold">)</span>
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;save_dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;voc&#39;</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../../api/api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.import_from">Dataset.import_from</a></li>
-</ul>
-<h2 id="examples">Examples</h2>
+</code></pre></div><h2 id="examples">Examples</h2>
 <p>Examples of using this format from the code can be found in
 <a href="https://github.com/openvinotoolkit/datumaro/blob/develop/tests/test_mpii_format.py">the format tests</a></p>
 

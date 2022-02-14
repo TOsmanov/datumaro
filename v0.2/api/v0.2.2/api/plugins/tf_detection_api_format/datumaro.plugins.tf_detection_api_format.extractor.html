@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>extractor module &mdash; Datumaro API documentation 0.2.1 documentation</title>
+  <title>extractor module &mdash; Datumaro API documentation 0.2.2 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
@@ -118,8 +118,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="extractor-module">
-<h1>extractor module<a class="headerlink" href="#extractor-module" title="Permalink to this headline"></a></h1>
+  <section id="module-datumaro.plugins.tf_detection_api_format.extractor">
+<span id="extractor-module"></span><h1>extractor module<a class="headerlink" href="#module-datumaro.plugins.tf_detection_api_format.extractor" title="Permalink to this headline"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.plugins.tf_detection_api_format.extractor.clamp">
+<span class="sig-prename descclassname"><span class="pre">datumaro.plugins.tf_detection_api_format.extractor.</span></span><span class="sig-name descname"><span class="pre">clamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_max</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/tf_detection_api_format/extractor.html#clamp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.tf_detection_api_format.extractor.clamp" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiExtractor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.tf_detection_api_format.extractor.</span></span><span class="sig-name descname"><span class="pre">TfDetectionApiExtractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/tf_detection_api_format/extractor.html#TfDetectionApiExtractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiExtractor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.SourceExtractor" title="datumaro.components.extractor.SourceExtractor"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.SourceExtractor</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiExtractor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/tf_detection_api_format/extractor.html#TfDetectionApiExtractor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiExtractor.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiImporter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.tf_detection_api_format.extractor.</span></span><span class="sig-name descname"><span class="pre">TfDetectionApiImporter</span></span><a class="reference internal" href="../../../_modules/datumaro/plugins/tf_detection_api_format/extractor.html#TfDetectionApiImporter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiImporter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.Importer" title="datumaro.components.extractor.Importer"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Importer</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiImporter.find_sources">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">find_sources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/tf_detection_api_format/extractor.html#TfDetectionApiImporter.find_sources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiImporter.find_sources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 
 
@@ -166,10 +193,13 @@
         <dl>
             <dt>Tags</dt>
             <dd><a href="datumaro.plugins.tf_detection_api_format.extractor.html">v0.2.2</a></dd>
+            <dd><a href="../../../../v0.2.3/api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.extractor.html">v0.2.3</a></dd>
         </dl>
         <dl>
             <dt>Branches</dt>
-            <dd><a href="../../../../update-docs-introduce-api-v1/api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.extractor.html">update-docs-introduce-api-v1</a></dd>
+            <dd><a href="../../../../revert-19-update-api-docs-fix-docstrings/api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.extractor.html">revert-19-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../../revert-20-update-api-docs-fix-docstrings/api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.extractor.html">revert-20-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../../update-api-docs-fix-docstrings/api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.extractor.html">update-api-docs-fix-docstrings</a></dd>
         </dl>
     </div>
 </div><script>

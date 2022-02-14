@@ -36,7 +36,7 @@ Supported annotation types:
   Labels
  score (read/write, float). The confidence level from 0 to 1. A score of 0 indicates that the image does not contain objects of the corresponding class.    Bounding boxes">
 
-<meta itemprop="wordCount" content="1151">
+<meta itemprop="wordCount" content="1130">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Open Images"/>
 <meta name="twitter:description" content="Format specification A description of the Open Images Dataset (OID) format is available here. Datumaro supports versions 4, 5 and 6.
@@ -142,7 +142,7 @@ Supported annotation types:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -170,7 +170,7 @@ Supported annotation types:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -696,15 +696,11 @@ datum <span style="color:#204a87">export</span> -f cvat -o &lt;output/dir&gt;
 </code></pre></div><p>or</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum convert -if open_images -i &lt;path/to/open_images&gt; -f cvat -o &lt;output/dir&gt;
 </code></pre></div><p>Or, using Python API:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
 
-<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;open_images&#39;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;open_images&#39;</span><span style="color:#000;font-weight:bold">)</span>
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;save_dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;cvat&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_images</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../../api/api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.import_from">Dataset.import_from</a></li>
-</ul>
-<h2 id="export-to-open-images">Export to Open Images</h2>
+</code></pre></div><h2 id="export-to-open-images">Export to Open Images</h2>
 <p>There are several ways to convert an existing dataset to the Open Images format:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># export dataset into Open Images format from existing project</span>
 datum <span style="color:#204a87">export</span> -p &lt;path/to/project&gt; -f open_images -o &lt;output/dir&gt; <span style="color:#4e9a06">\
@@ -737,33 +733,22 @@ datum stats -p project
 datum <span style="color:#204a87">export</span> -p project -f cvat -- --save-images
 </code></pre></div><h3 id="example-2-create-a-custom-oid-like-dataset">Example 2. Create a custom OID-like dataset</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">numpy</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">np</span>
-<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000;font-weight:bold">(</span>
-    <span style="color:#000">Dataset</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">AnnotationType</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Label</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">LabelCategories</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">DatasetItem</span>
-<span style="color:#000;font-weight:bold">)</span>
+<span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
 
-<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">from_iterable</span><span style="color:#000;font-weight:bold">([</span>
-  <span style="color:#000">DatasetItem</span><span style="color:#000;font-weight:bold">(</span>
-    <span style="color:#204a87">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;0000000000000001&#39;</span><span style="color:#000;font-weight:bold">,</span>
-    <span style="color:#000">image</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ones</span><span style="color:#000;font-weight:bold">((</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">)),</span>
-    <span style="color:#000">subset</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;validation&#39;</span><span style="color:#000;font-weight:bold">,</span>
-    <span style="color:#000">annotations</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span>
-      <span style="color:#000">Label</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">attributes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#39;score&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">}),</span>
-      <span style="color:#000">Label</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">attributes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#39;score&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">}),</span>
-    <span style="color:#000;font-weight:bold">],</span>
-  <span style="color:#000;font-weight:bold">),</span>
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">from_iterable</span><span style="color:#000;font-weight:bold">([</span>
+    <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">DatasetItem</span><span style="color:#000;font-weight:bold">(</span>
+        <span style="color:#204a87">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;0000000000000001&#39;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#000">image</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ones</span><span style="color:#000;font-weight:bold">((</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">)),</span>
+        <span style="color:#000">subset</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;validation&#39;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#000">annotations</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span>
+            <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Label</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">attributes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#39;score&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">}),</span>
+            <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Label</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">attributes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#39;score&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">}),</span>
+        <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#000;font-weight:bold">),</span>
 <span style="color:#000;font-weight:bold">],</span> <span style="color:#000">categories</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;/m/0&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;/m/1&#39;</span><span style="color:#000;font-weight:bold">])</span>
 
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;./dataset&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;open_images&#39;</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../../api/api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.import_from">Dataset.import_from</a></li>
-<li><a href="../../../api/api/components/components/datumaro.components.extractor.html#datumaro.components.extractor.DatasetItem">DatasetItem</a></li>
-<li><a href="../../../api/api/components/components/datumaro.components.dataset.html">Dataset</a></li>
-<li><a href="../../../api/api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.AnnotationType">AnnotationType</a></li>
-<li><a href="../../../api/api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Label">Label</a></li>
-<li><a href="../../../api/api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.LabelCategories">LabelCategories</a></li>
-</ul>
-<p>Examples of using this format from the code can be found in
+</code></pre></div><p>Examples of using this format from the code can be found in
 <a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test_open_images_format.py">the format tests</a>.</p>
 
 	

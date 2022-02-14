@@ -7,6 +7,7 @@
   <title>errors module &mdash; Datumaro API documentation 0.2.3 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -17,6 +18,8 @@
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -40,6 +43,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../datumaro.html">Datumaro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cli/cli.html">CLI</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../components.html">Components</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../algorithms/algorithms.html">algorithms module</a></li>
@@ -53,8 +57,12 @@
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.environment.html">environment module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">errors module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.extractor.html">extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.extractor_tfds.html">extractor_tfds module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.format_detection.html">format_detection module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.hl_ops.html">hl_ops module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.launcher.html">launcher module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.media.html">media module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.media_manager.html">media_manager module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.operations.html">operations module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.project.html">project module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.validator.html">validator module</a></li>
@@ -133,6 +141,11 @@
 <span class="sig-name descname"><span class="pre">ref</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.UnknownRefError.ref">
+<span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#datumaro.components.errors.UnknownRefError.ref" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -154,6 +167,11 @@
 <dl class="py data">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">paths</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.UnsavedChangesError.paths">
+<span class="sig-name descname"><span class="pre">paths</span></span><a class="headerlink" href="#datumaro.components.errors.UnsavedChangesError.paths" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -257,6 +275,11 @@
 <span class="sig-name descname"><span class="pre">path</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.ProjectNotFoundError.path">
+<span class="sig-name descname"><span class="pre">path</span></span><a class="headerlink" href="#datumaro.components.errors.ProjectNotFoundError.path" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -266,6 +289,11 @@
 <dl class="py data">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">path</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.ProjectAlreadyExists.path">
+<span class="sig-name descname"><span class="pre">path</span></span><a class="headerlink" href="#datumaro.components.errors.ProjectAlreadyExists.path" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -279,6 +307,11 @@
 <span class="sig-name descname"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.UnknownSourceError.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#datumaro.components.errors.UnknownSourceError.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -288,6 +321,11 @@
 <dl class="py data">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.UnknownTargetError.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#datumaro.components.errors.UnknownTargetError.name" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -301,6 +339,11 @@
 <span class="sig-name descname"><span class="pre">format</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.UnknownFormatError.format">
+<span class="sig-name descname"><span class="pre">format</span></span><a class="headerlink" href="#datumaro.components.errors.UnknownFormatError.format" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -310,6 +353,11 @@
 <dl class="py data">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.SourceExistsError.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#datumaro.components.errors.SourceExistsError.name" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -329,6 +377,11 @@
 <span class="sig-name descname"><span class="pre">path</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.DatasetNotFoundError.path">
+<span class="sig-name descname"><span class="pre">path</span></span><a class="headerlink" href="#datumaro.components.errors.DatasetNotFoundError.path" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -338,6 +391,11 @@
 <dl class="py data">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">formats</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.MultipleFormatsMatchError.formats">
+<span class="sig-name descname"><span class="pre">formats</span></span><a class="headerlink" href="#datumaro.components.errors.MultipleFormatsMatchError.formats" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -369,6 +427,11 @@
 <span class="sig-name descname"><span class="pre">item_id</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.RepeatedItemError.item_id">
+<span class="sig-name descname"><span class="pre">item_id</span></span><a class="headerlink" href="#datumaro.components.errors.RepeatedItemError.item_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -392,6 +455,26 @@
 <span class="sig-name descname"><span class="pre">distance</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.AnnotationsTooCloseError.item_id">
+<span class="sig-name descname"><span class="pre">item_id</span></span><a class="headerlink" href="#datumaro.components.errors.AnnotationsTooCloseError.item_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.AnnotationsTooCloseError.a">
+<span class="sig-name descname"><span class="pre">a</span></span><a class="headerlink" href="#datumaro.components.errors.AnnotationsTooCloseError.a" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.AnnotationsTooCloseError.b">
+<span class="sig-name descname"><span class="pre">b</span></span><a class="headerlink" href="#datumaro.components.errors.AnnotationsTooCloseError.b" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.AnnotationsTooCloseError.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><a class="headerlink" href="#datumaro.components.errors.AnnotationsTooCloseError.distance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -409,6 +492,26 @@
 <span class="sig-name descname"><span class="pre">group</span> <span class="pre">=</span> <span class="pre">attrib(converter=list)</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.WrongGroupError.item_id">
+<span class="sig-name descname"><span class="pre">item_id</span></span><a class="headerlink" href="#datumaro.components.errors.WrongGroupError.item_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.WrongGroupError.found">
+<span class="sig-name descname"><span class="pre">found</span></span><a class="headerlink" href="#datumaro.components.errors.WrongGroupError.found" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.WrongGroupError.expected">
+<span class="sig-name descname"><span class="pre">expected</span></span><a class="headerlink" href="#datumaro.components.errors.WrongGroupError.expected" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.WrongGroupError.group">
+<span class="sig-name descname"><span class="pre">group</span></span><a class="headerlink" href="#datumaro.components.errors.WrongGroupError.group" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -420,11 +523,16 @@
 <span class="sig-name descname"><span class="pre">sources</span> <span class="pre">=</span> <span class="pre">attrib(converter=set,</span> <span class="pre">factory=set,</span> <span class="pre">kw_only=True)</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.DatasetMergeError.sources">
+<span class="sig-name descname"><span class="pre">sources</span></span><a class="headerlink" href="#datumaro.components.errors.DatasetMergeError.sources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.errors.MismatchingImageInfoError">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.errors.</span></span><span class="sig-name descname"><span class="pre">MismatchingImageInfoError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">NOTHING</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/errors.html#MismatchingImageInfoError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.errors.MismatchingImageInfoError" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.errors.</span></span><span class="sig-name descname"><span class="pre">MismatchingImageInfoError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">NOTHING</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/errors.html#MismatchingImageInfoError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.errors.MismatchingImageInfoError" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#datumaro.components.errors.DatasetMergeError" title="datumaro.components.errors.DatasetMergeError"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.errors.DatasetMergeError</span></code></a></p>
 <dl class="py data">
 <dt class="sig sig-object py">
@@ -435,12 +543,32 @@
 <span class="sig-name descname"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.MismatchingImageInfoError.item_id">
+<span class="sig-name descname"><span class="pre">item_id</span></span><a class="headerlink" href="#datumaro.components.errors.MismatchingImageInfoError.item_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.MismatchingImageInfoError.a">
+<span class="sig-name descname"><span class="pre">a</span></span><a class="headerlink" href="#datumaro.components.errors.MismatchingImageInfoError.a" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.MismatchingImageInfoError.b">
+<span class="sig-name descname"><span class="pre">b</span></span><a class="headerlink" href="#datumaro.components.errors.MismatchingImageInfoError.b" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.errors.ConflictingCategoriesError">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.errors.</span></span><span class="sig-name descname"><span class="pre">ConflictingCategoriesError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/errors.html#ConflictingCategoriesError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.errors.ConflictingCategoriesError" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#datumaro.components.errors.DatasetMergeError" title="datumaro.components.errors.DatasetMergeError"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.errors.DatasetMergeError</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.ConflictingCategoriesError.sources">
+<span class="sig-name descname"><span class="pre">sources</span></span><a class="headerlink" href="#datumaro.components.errors.ConflictingCategoriesError.sources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -454,6 +582,16 @@
 <span class="sig-name descname"><span class="pre">ann</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.NoMatchingAnnError.item_id">
+<span class="sig-name descname"><span class="pre">item_id</span></span><a class="headerlink" href="#datumaro.components.errors.NoMatchingAnnError.item_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.NoMatchingAnnError.ann">
+<span class="sig-name descname"><span class="pre">ann</span></span><a class="headerlink" href="#datumaro.components.errors.NoMatchingAnnError.ann" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -463,6 +601,11 @@
 <dl class="py data">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">item_id</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.NoMatchingItemError.item_id">
+<span class="sig-name descname"><span class="pre">item_id</span></span><a class="headerlink" href="#datumaro.components.errors.NoMatchingItemError.item_id" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -478,6 +621,21 @@
 <span class="sig-name descname"><span class="pre">votes</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">ann</span> <span class="pre">=</span> <span class="pre">attrib(default=None)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FailedLabelVotingError.item_id">
+<span class="sig-name descname"><span class="pre">item_id</span></span><a class="headerlink" href="#datumaro.components.errors.FailedLabelVotingError.item_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FailedLabelVotingError.votes">
+<span class="sig-name descname"><span class="pre">votes</span></span><a class="headerlink" href="#datumaro.components.errors.FailedLabelVotingError.votes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FailedLabelVotingError.ann">
+<span class="sig-name descname"><span class="pre">ann</span></span><a class="headerlink" href="#datumaro.components.errors.FailedLabelVotingError.ann" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -497,6 +655,26 @@
 <span class="sig-name descname"><span class="pre">ann</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FailedAttrVotingError.item_id">
+<span class="sig-name descname"><span class="pre">item_id</span></span><a class="headerlink" href="#datumaro.components.errors.FailedAttrVotingError.item_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FailedAttrVotingError.attr">
+<span class="sig-name descname"><span class="pre">attr</span></span><a class="headerlink" href="#datumaro.components.errors.FailedAttrVotingError.attr" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FailedAttrVotingError.votes">
+<span class="sig-name descname"><span class="pre">votes</span></span><a class="headerlink" href="#datumaro.components.errors.FailedAttrVotingError.votes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FailedAttrVotingError.ann">
+<span class="sig-name descname"><span class="pre">ann</span></span><a class="headerlink" href="#datumaro.components.errors.FailedAttrVotingError.ann" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -506,6 +684,11 @@
 <dl class="py data">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">severity</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.DatasetValidationError.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><a class="headerlink" href="#datumaro.components.errors.DatasetValidationError.severity" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -524,6 +707,16 @@
 <span class="sig-name descname"><span class="pre">item_id</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">subset</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.DatasetItemValidationError.item_id">
+<span class="sig-name descname"><span class="pre">item_id</span></span><a class="headerlink" href="#datumaro.components.errors.DatasetItemValidationError.item_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.DatasetItemValidationError.subset">
+<span class="sig-name descname"><span class="pre">subset</span></span><a class="headerlink" href="#datumaro.components.errors.DatasetItemValidationError.subset" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -548,6 +741,11 @@
 <dt class="sig sig-object py" id="datumaro.components.errors.MissingAnnotation">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.errors.</span></span><span class="sig-name descname"><span class="pre">MissingAnnotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">severity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ann_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/errors.html#MissingAnnotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.errors.MissingAnnotation" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#datumaro.components.errors.DatasetItemValidationError" title="datumaro.components.errors.DatasetItemValidationError"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.errors.DatasetItemValidationError</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.MissingAnnotation.ann_type">
+<span class="sig-name descname"><span class="pre">ann_type</span></span><a class="headerlink" href="#datumaro.components.errors.MissingAnnotation.ann_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -567,6 +765,16 @@
 <span class="sig-name descname"><span class="pre">attr_name</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.MissingAttribute.label_name">
+<span class="sig-name descname"><span class="pre">label_name</span></span><a class="headerlink" href="#datumaro.components.errors.MissingAttribute.label_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.MissingAttribute.attr_name">
+<span class="sig-name descname"><span class="pre">attr_name</span></span><a class="headerlink" href="#datumaro.components.errors.MissingAttribute.attr_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -576,6 +784,11 @@
 <dl class="py data">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">label_name</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.UndefinedLabel.label_name">
+<span class="sig-name descname"><span class="pre">label_name</span></span><a class="headerlink" href="#datumaro.components.errors.UndefinedLabel.label_name" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -591,6 +804,16 @@
 <span class="sig-name descname"><span class="pre">attr_name</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.UndefinedAttribute.label_name">
+<span class="sig-name descname"><span class="pre">label_name</span></span><a class="headerlink" href="#datumaro.components.errors.UndefinedAttribute.label_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.UndefinedAttribute.attr_name">
+<span class="sig-name descname"><span class="pre">attr_name</span></span><a class="headerlink" href="#datumaro.components.errors.UndefinedAttribute.attr_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -600,6 +823,11 @@
 <dl class="py data">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">label_name</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.LabelDefinedButNotFound.label_name">
+<span class="sig-name descname"><span class="pre">label_name</span></span><a class="headerlink" href="#datumaro.components.errors.LabelDefinedButNotFound.label_name" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -615,6 +843,16 @@
 <span class="sig-name descname"><span class="pre">attr_name</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.AttributeDefinedButNotFound.label_name">
+<span class="sig-name descname"><span class="pre">label_name</span></span><a class="headerlink" href="#datumaro.components.errors.AttributeDefinedButNotFound.label_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.AttributeDefinedButNotFound.attr_name">
+<span class="sig-name descname"><span class="pre">attr_name</span></span><a class="headerlink" href="#datumaro.components.errors.AttributeDefinedButNotFound.attr_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -624,6 +862,11 @@
 <dl class="py data">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">label_name</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.OnlyOneLabel.label_name">
+<span class="sig-name descname"><span class="pre">label_name</span></span><a class="headerlink" href="#datumaro.components.errors.OnlyOneLabel.label_name" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -641,6 +884,21 @@
 <span class="sig-name descname"><span class="pre">value</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.OnlyOneAttributeValue.label_name">
+<span class="sig-name descname"><span class="pre">label_name</span></span><a class="headerlink" href="#datumaro.components.errors.OnlyOneAttributeValue.label_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.OnlyOneAttributeValue.attr_name">
+<span class="sig-name descname"><span class="pre">attr_name</span></span><a class="headerlink" href="#datumaro.components.errors.OnlyOneAttributeValue.attr_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.OnlyOneAttributeValue.value">
+<span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#datumaro.components.errors.OnlyOneAttributeValue.value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -652,6 +910,16 @@
 <span class="sig-name descname"><span class="pre">label_name</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">count</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FewSamplesInLabel.label_name">
+<span class="sig-name descname"><span class="pre">label_name</span></span><a class="headerlink" href="#datumaro.components.errors.FewSamplesInLabel.label_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FewSamplesInLabel.count">
+<span class="sig-name descname"><span class="pre">count</span></span><a class="headerlink" href="#datumaro.components.errors.FewSamplesInLabel.count" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -669,6 +937,26 @@
 <span class="sig-name descname"><span class="pre">attr_value</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">count</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FewSamplesInAttribute.label_name">
+<span class="sig-name descname"><span class="pre">label_name</span></span><a class="headerlink" href="#datumaro.components.errors.FewSamplesInAttribute.label_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FewSamplesInAttribute.attr_name">
+<span class="sig-name descname"><span class="pre">attr_name</span></span><a class="headerlink" href="#datumaro.components.errors.FewSamplesInAttribute.attr_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FewSamplesInAttribute.attr_value">
+<span class="sig-name descname"><span class="pre">attr_value</span></span><a class="headerlink" href="#datumaro.components.errors.FewSamplesInAttribute.attr_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FewSamplesInAttribute.count">
+<span class="sig-name descname"><span class="pre">count</span></span><a class="headerlink" href="#datumaro.components.errors.FewSamplesInAttribute.count" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -690,6 +978,16 @@
 <span class="sig-name descname"><span class="pre">attr_name</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.ImbalancedAttribute.label_name">
+<span class="sig-name descname"><span class="pre">label_name</span></span><a class="headerlink" href="#datumaro.components.errors.ImbalancedAttribute.label_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.ImbalancedAttribute.attr_name">
+<span class="sig-name descname"><span class="pre">attr_name</span></span><a class="headerlink" href="#datumaro.components.errors.ImbalancedAttribute.attr_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -701,6 +999,16 @@
 <span class="sig-name descname"><span class="pre">label_name</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">prop</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.ImbalancedDistInLabel.label_name">
+<span class="sig-name descname"><span class="pre">label_name</span></span><a class="headerlink" href="#datumaro.components.errors.ImbalancedDistInLabel.label_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.ImbalancedDistInLabel.prop">
+<span class="sig-name descname"><span class="pre">prop</span></span><a class="headerlink" href="#datumaro.components.errors.ImbalancedDistInLabel.prop" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -720,6 +1028,26 @@
 <span class="sig-name descname"><span class="pre">prop</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.ImbalancedDistInAttribute.label_name">
+<span class="sig-name descname"><span class="pre">label_name</span></span><a class="headerlink" href="#datumaro.components.errors.ImbalancedDistInAttribute.label_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.ImbalancedDistInAttribute.attr_name">
+<span class="sig-name descname"><span class="pre">attr_name</span></span><a class="headerlink" href="#datumaro.components.errors.ImbalancedDistInAttribute.attr_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.ImbalancedDistInAttribute.attr_value">
+<span class="sig-name descname"><span class="pre">attr_value</span></span><a class="headerlink" href="#datumaro.components.errors.ImbalancedDistInAttribute.attr_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.ImbalancedDistInAttribute.prop">
+<span class="sig-name descname"><span class="pre">prop</span></span><a class="headerlink" href="#datumaro.components.errors.ImbalancedDistInAttribute.prop" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -735,6 +1063,21 @@
 <span class="sig-name descname"><span class="pre">val</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.NegativeLength.ann_id">
+<span class="sig-name descname"><span class="pre">ann_id</span></span><a class="headerlink" href="#datumaro.components.errors.NegativeLength.ann_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.NegativeLength.prop">
+<span class="sig-name descname"><span class="pre">prop</span></span><a class="headerlink" href="#datumaro.components.errors.NegativeLength.prop" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.NegativeLength.val">
+<span class="sig-name descname"><span class="pre">val</span></span><a class="headerlink" href="#datumaro.components.errors.NegativeLength.val" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -746,6 +1089,16 @@
 <span class="sig-name descname"><span class="pre">ann_id</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">prop</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.InvalidValue.ann_id">
+<span class="sig-name descname"><span class="pre">ann_id</span></span><a class="headerlink" href="#datumaro.components.errors.InvalidValue.ann_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.InvalidValue.prop">
+<span class="sig-name descname"><span class="pre">prop</span></span><a class="headerlink" href="#datumaro.components.errors.InvalidValue.prop" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -765,6 +1118,31 @@
 <span class="sig-name descname"><span class="pre">mean</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">val</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FarFromLabelMean.label_name">
+<span class="sig-name descname"><span class="pre">label_name</span></span><a class="headerlink" href="#datumaro.components.errors.FarFromLabelMean.label_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FarFromLabelMean.ann_id">
+<span class="sig-name descname"><span class="pre">ann_id</span></span><a class="headerlink" href="#datumaro.components.errors.FarFromLabelMean.ann_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FarFromLabelMean.prop">
+<span class="sig-name descname"><span class="pre">prop</span></span><a class="headerlink" href="#datumaro.components.errors.FarFromLabelMean.prop" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FarFromLabelMean.mean">
+<span class="sig-name descname"><span class="pre">mean</span></span><a class="headerlink" href="#datumaro.components.errors.FarFromLabelMean.mean" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FarFromLabelMean.val">
+<span class="sig-name descname"><span class="pre">val</span></span><a class="headerlink" href="#datumaro.components.errors.FarFromLabelMean.val" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -788,6 +1166,41 @@
 <span class="sig-name descname"><span class="pre">mean</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">val</span> <span class="pre">=</span> <span class="pre">attrib()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FarFromAttrMean.label_name">
+<span class="sig-name descname"><span class="pre">label_name</span></span><a class="headerlink" href="#datumaro.components.errors.FarFromAttrMean.label_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FarFromAttrMean.ann_id">
+<span class="sig-name descname"><span class="pre">ann_id</span></span><a class="headerlink" href="#datumaro.components.errors.FarFromAttrMean.ann_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FarFromAttrMean.attr_name">
+<span class="sig-name descname"><span class="pre">attr_name</span></span><a class="headerlink" href="#datumaro.components.errors.FarFromAttrMean.attr_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FarFromAttrMean.attr_value">
+<span class="sig-name descname"><span class="pre">attr_value</span></span><a class="headerlink" href="#datumaro.components.errors.FarFromAttrMean.attr_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FarFromAttrMean.prop">
+<span class="sig-name descname"><span class="pre">prop</span></span><a class="headerlink" href="#datumaro.components.errors.FarFromAttrMean.prop" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FarFromAttrMean.mean">
+<span class="sig-name descname"><span class="pre">mean</span></span><a class="headerlink" href="#datumaro.components.errors.FarFromAttrMean.mean" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.errors.FarFromAttrMean.val">
+<span class="sig-name descname"><span class="pre">val</span></span><a class="headerlink" href="#datumaro.components.errors.FarFromAttrMean.val" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -831,17 +1244,20 @@
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: update-docs-introduce-api-v1
+        v: update-api-docs-fix-docstrings
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
         <dl>
             <dt>Tags</dt>
             <dd><a href="../../../v0.2.2/api/components/components/datumaro.components.errors.html">v0.2.2</a></dd>
+            <dd><a href="../../../v0.2.3/api/components/components/datumaro.components.errors.html">v0.2.3</a></dd>
         </dl>
         <dl>
             <dt>Branches</dt>
-            <dd><a href="../../../update-docs-introduce-api-v1/api/components/components/datumaro.components.errors.html">update-docs-introduce-api-v1</a></dd>
+            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/api/components/components/datumaro.components.errors.html">revert-19-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/api/components/components/datumaro.components.errors.html">revert-20-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../update-api-docs-fix-docstrings/api/components/components/datumaro.components.errors.html">update-api-docs-fix-docstrings</a></dd>
         </dl>
     </div>
 </div><script>

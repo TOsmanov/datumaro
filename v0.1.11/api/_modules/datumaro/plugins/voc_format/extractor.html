@@ -6,6 +6,7 @@
   <title>datumaro.plugins.voc_format.extractor &mdash; Datumaro API documentation 0.2.3 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -16,6 +17,8 @@
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
@@ -37,6 +40,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/datumaro.html">Datumaro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/cli/cli.html">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/components/components.html">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/plugins/plugins.html">Plugins</a></li>
@@ -203,12 +207,20 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">task</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">image_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dataset_dir</span><span class="p">,</span> <span class="n">VocPath</span><span class="o">.</span><span class="n">IMAGES_DIR</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">image_dir</span><span class="p">):</span>
+            <span class="n">images</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">osp</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">image_dir</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">):</span> <span class="n">p</span>
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">find_images</span><span class="p">(</span><span class="n">image_dir</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">images</span> <span class="o">=</span> <span class="p">{}</span>
+
         <span class="n">anno_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dataset_dir</span><span class="p">,</span> <span class="n">VocPath</span><span class="o">.</span><span class="n">ANNOTATIONS_DIR</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">item_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Reading item &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">item_id</span><span class="p">)</span>
-            <span class="n">image</span> <span class="o">=</span> <span class="n">item_id</span> <span class="o">+</span> <span class="n">VocPath</span><span class="o">.</span><span class="n">IMAGE_EXT</span>
-            <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="kc">None</span>
 
             <span class="n">anns</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="n">ann_file</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">anno_dir</span><span class="p">,</span> <span class="n">item_id</span> <span class="o">+</span> <span class="s1">&#39;.xml&#39;</span><span class="p">)</span>
@@ -220,14 +232,17 @@
                 <span class="n">width</span> <span class="o">=</span> <span class="n">root_elem</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;size/width&#39;</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">width</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">width</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">height</span> <span class="ow">and</span> <span class="n">width</span><span class="p">:</span>
+                    <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
                 <span class="n">filename_elem</span> <span class="o">=</span> <span class="n">root_elem</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">filename_elem</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="n">image</span> <span class="o">=</span> <span class="n">filename_elem</span><span class="o">.</span><span class="n">text</span>
+                    <span class="n">image</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">image_dir</span><span class="p">,</span> <span class="n">filename_elem</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
                 <span class="n">anns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_annotations</span><span class="p">(</span><span class="n">root_elem</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">image</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
-            <span class="n">image</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dataset_dir</span><span class="p">,</span> <span class="n">VocPath</span><span class="o">.</span><span class="n">IMAGES_DIR</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">height</span> <span class="ow">and</span> <span class="n">width</span><span class="p">:</span>
-                <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">image</span> <span class="ow">or</span> <span class="n">size</span><span class="p">:</span>
+                <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
 
             <span class="k">yield</span> <span class="n">DatasetItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">item_id</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_subset</span><span class="p">,</span>
                 <span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="n">anns</span><span class="p">)</span>
@@ -441,17 +456,20 @@
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: update-docs-introduce-api-v1
+        v: update-api-docs-fix-docstrings
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
         <dl>
             <dt>Tags</dt>
             <dd><a href="../../../../v0.2.2/index.html">v0.2.2</a></dd>
+            <dd><a href="../../../../v0.2.3/index.html">v0.2.3</a></dd>
         </dl>
         <dl>
             <dt>Branches</dt>
-            <dd><a href="../../../../update-docs-introduce-api-v1/_modules/datumaro/plugins/voc_format/extractor.html">update-docs-introduce-api-v1</a></dd>
+            <dd><a href="../../../../revert-19-update-api-docs-fix-docstrings/index.html">revert-19-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../../revert-20-update-api-docs-fix-docstrings/index.html">revert-20-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../../update-api-docs-fix-docstrings/_modules/datumaro/plugins/voc_format/extractor.html">update-api-docs-fix-docstrings</a></dd>
         </dl>
     </div>
 </div><script>

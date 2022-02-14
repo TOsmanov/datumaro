@@ -6,6 +6,7 @@
   <title>datumaro.components.project &mdash; Datumaro API documentation 0.2.3 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -16,6 +17,8 @@
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -37,6 +40,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.html">Datumaro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/cli/cli.html">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/components/components.html">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/plugins/plugins.html">Plugins</a></li>
@@ -1647,7 +1651,7 @@
         <span class="n">new_project</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="n">new_project</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="Project.__init__"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.project.html#datumaro.components.project.Project.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="p">:</span>
             <span class="n">path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">curdir</span>
         <span class="n">found_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_project_dir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
@@ -1687,7 +1691,7 @@
 
         <span class="n">plugins_dir</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_aux_dir</span><span class="p">,</span> <span class="n">ProjectLayout</span><span class="o">.</span><span class="n">plugins_dir</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">osp</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">plugins_dir</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_env</span><span class="o">.</span><span class="n">load_plugins</span><span class="p">(</span><span class="n">plugins_dir</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_env</span><span class="o">.</span><span class="n">load_plugins</span><span class="p">(</span><span class="n">plugins_dir</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_init_vcs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># DVC requires Git to be initialized</span>
@@ -2309,6 +2313,7 @@
 <span class="sd">        Creates a new commit. Moves the HEAD pointer to the new commit.</span>
 
 <span class="sd">        Options:</span>
+
 <span class="sd">            - no_cache (bool) - don&#39;t put added dataset data into cache,</span>
 <span class="sd">                store only metainfo. Can be used to reduce storage size.</span>
 <span class="sd">            - allow_empty (bool) - allow commits with no changes.</span>
@@ -2665,17 +2670,20 @@
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: update-docs-introduce-api-v1
+        v: update-api-docs-fix-docstrings
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
         <dl>
             <dt>Tags</dt>
             <dd><a href="../../../v0.2.2/index.html">v0.2.2</a></dd>
+            <dd><a href="../../../v0.2.3/index.html">v0.2.3</a></dd>
         </dl>
         <dl>
             <dt>Branches</dt>
-            <dd><a href="../../../update-docs-introduce-api-v1/_modules/datumaro/components/project.html">update-docs-introduce-api-v1</a></dd>
+            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/index.html">revert-19-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/index.html">revert-20-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../update-api-docs-fix-docstrings/_modules/datumaro/components/project.html">update-api-docs-fix-docstrings</a></dd>
         </dl>
     </div>
 </div><script>

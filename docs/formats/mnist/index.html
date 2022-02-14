@@ -40,7 +40,7 @@ Supported formats:
  Binary (Python pickle) - mnist CSV - mnist_csv  Supported annotation types:
  Label  The format only supports single channel 28 x 28 images.">
 
-<meta itemprop="wordCount" content="662">
+<meta itemprop="wordCount" content="652">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MNIST"/>
 <meta name="twitter:description" content="Format specification MNIST format specification is available here.
@@ -148,7 +148,7 @@ Supported formats:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -176,7 +176,7 @@ Supported formats:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -573,15 +573,11 @@ datum <span style="color:#204a87">export</span> -f imagenet -o &lt;output/dir&gt
 </code></pre></div><p>or</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum convert -if mnist -i &lt;path/to/mnist&gt; -f imagenet -o &lt;output/dir&gt;
 </code></pre></div><p>Or, using Python API:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.dataset</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
 
-<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;mnist&#39;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;mnist&#39;</span><span style="color:#000;font-weight:bold">)</span>
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;save_dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;imagenet&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_images</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../../api/api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.import_from">Dataset.import_from</a></li>
-</ul>
-<p>These steps also will work for MNIST in CSV, if you use <code>mnist_csv</code>
+</code></pre></div><p>These steps also will work for MNIST in CSV, if you use <code>mnist_csv</code>
 instead of <code>mnist</code>.</p>
 <h2 id="export-to-mnist">Export to MNIST</h2>
 <p>There are several ways to convert a dataset to MNIST format:</p>
@@ -608,25 +604,20 @@ to get more information about these operations.</p>
 <p>There are several examples of using Datumaro operations to solve
 particular problems with MNIST dataset:</p>
 <h3 id="example-1-how-to-create-a-custom-mnist-like-dataset">Example 1. How to create a custom MNIST-like dataset</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Label</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Dataset</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">DatasetItem</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">numpy</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">np</span>
+<span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
 
-<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">from_iterable</span><span style="color:#000;font-weight:bold">([</span>
-  <span style="color:#000">DatasetItem</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">image</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ones</span><span style="color:#000;font-weight:bold">((</span><span style="color:#0000cf;font-weight:bold">28</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">28</span><span style="color:#000;font-weight:bold">)),</span>
-    <span style="color:#000">annotations</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">Label</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">)]</span>
-  <span style="color:#000;font-weight:bold">),</span>
-  <span style="color:#000">DatasetItem</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">image</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ones</span><span style="color:#000;font-weight:bold">((</span><span style="color:#0000cf;font-weight:bold">28</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">28</span><span style="color:#000;font-weight:bold">)),</span>
-    <span style="color:#000">annotations</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">Label</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#000;font-weight:bold">)]</span>
-  <span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">from_iterable</span><span style="color:#000;font-weight:bold">([</span>
+    <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">DatasetItem</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">image</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ones</span><span style="color:#000;font-weight:bold">((</span><span style="color:#0000cf;font-weight:bold">28</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">28</span><span style="color:#000;font-weight:bold">)),</span>
+        <span style="color:#000">annotations</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Label</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">)]</span>
+    <span style="color:#000;font-weight:bold">),</span>
+    <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">DatasetItem</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">image</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ones</span><span style="color:#000;font-weight:bold">((</span><span style="color:#0000cf;font-weight:bold">28</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">28</span><span style="color:#000;font-weight:bold">)),</span>
+        <span style="color:#000">annotations</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Label</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#000;font-weight:bold">)]</span>
+    <span style="color:#000;font-weight:bold">)</span>
 <span style="color:#000;font-weight:bold">],</span> <span style="color:#000">categories</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#204a87">str</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">label</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">label</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#204a87">range</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">10</span><span style="color:#000;font-weight:bold">)])</span>
 
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;./dataset&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;mnist&#39;</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../../api/api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.from_iterable">Dataset.from_iterable</a></li>
-<li><a href="../../../api/api/components/components/datumaro.components.extractor.html#datumaro.components.extractor.DatasetItem">DatasetItem</a></li>
-<li><a href="../../../api/api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Label">Label</a></li>
-</ul>
-<h3 id="example-2-how-to-filter-and-convert-a-mnist-dataset-to-imagenet">Example 2. How to filter and convert a MNIST dataset to ImageNet</h3>
+</code></pre></div><h3 id="example-2-how-to-filter-and-convert-a-mnist-dataset-to-imagenet">Example 2. How to filter and convert a MNIST dataset to ImageNet</h3>
 <p>Convert MNIST dataset to ImageNet format, keep only images with <code>3</code> class
 presented:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># Download MNIST dataset:</span>

@@ -34,7 +34,7 @@ Supported types of annotation:
  Bbox Label  Supported attributes for bboxes:
  blur:  0 face without blur; 1 face with normal blur; 2 face with heavy blur.   expression:  0 face with typical expression; 1 face with exaggerate expression.   illumination:  0 image contains normal illumination; 1 image contains extreme illumination.">
 
-<meta itemprop="wordCount" content="479">
+<meta itemprop="wordCount" content="474">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="WIDER Face"/>
 <meta name="twitter:description" content="Format specification WIDER Face dataset is a face detection benchmark dataset, that available for download here.
@@ -139,7 +139,7 @@ Supported types of annotation:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -167,7 +167,7 @@ Supported types of annotation:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -560,19 +560,15 @@ datum create
 datum import -f wider_face &lt;path_to_wider_face&gt;
 datum export -f voc -o &lt;output_dir&gt; -- -save-images
 </code></pre><p>Export WIDER Face dataset using Python API:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
 
-<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path_to_wider_face&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;wider_face&#39;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path_to_wider_face&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;wider_face&#39;</span><span style="color:#000;font-weight:bold">)</span>
 
 <span style="color:#8f5902;font-style:italic"># Here you can perform some transformation using dataset.transform or</span>
 <span style="color:#8f5902;font-style:italic"># dataset.filter</span>
 
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;output_dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;open_images&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_images</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../../api/api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.import_from">Dataset.import_from</a></li>
-</ul>
-<blockquote>
+</code></pre></div><blockquote>
 <p>Note: some formats have extra export options. For particular format see the
 <a href="../../../docs/formats/">docs</a> to get information about it.</p>
 </blockquote>

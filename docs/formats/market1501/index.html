@@ -32,7 +32,7 @@ Supported items attributes:
 Supported items attributes:
  person_id (str): four-digit number that represent ID of pedestrian; camera_id (int): one-digit number that represent ID of camera that took the image (original dataset has totally 6 cameras); track_id (int): one-digit number that represent ID of the track with the particular pedestrian, this attribute matches with sequence_id in the original dataset; frame_id (int): six-digit number, that mean number of frame within this track.">
 
-<meta itemprop="wordCount" content="410">
+<meta itemprop="wordCount" content="405">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Market-1501"/>
 <meta name="twitter:description" content="Format specification Market-1501 is a dataset for person re-identification task, link for downloading this dataset is available here.
@@ -136,7 +136,7 @@ Supported items attributes:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -164,7 +164,7 @@ Supported items attributes:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -498,13 +498,9 @@ datum import -f market1501 &lt;path_to_market1501&gt;
 </code></pre></div><p>See more information about adding datasets to the project in the
 <a href="../../../docs/user-manual/command-reference/sources/#source-add">docs</a>.</p>
 <p>Or you can import Market-1501 using Python API:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
-<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path_to_dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;market1501&#39;</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../../api/api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.import_from">Dataset.import_from</a></li>
-</ul>
-<p>For successful importing the Market-1501 dataset, the directory with it
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path_to_dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;market1501&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>For successful importing the Market-1501 dataset, the directory with it
 should has the following structure:</p>
 <pre><code>market1501_dataset/
 ├── query # optional directory with query image

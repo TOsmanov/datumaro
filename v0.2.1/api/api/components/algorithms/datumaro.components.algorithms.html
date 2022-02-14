@@ -7,6 +7,7 @@
   <title>rise module &mdash; Datumaro API documentation 0.2.3 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -17,6 +18,8 @@
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -40,6 +43,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../datumaro.html">Datumaro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cli/cli.html">CLI</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../components.html">Components</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="algorithms.html">algorithms module</a><ul class="current">
@@ -56,8 +60,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../components/datumaro.components.environment.html">environment module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../components/datumaro.components.errors.html">errors module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../components/datumaro.components.extractor.html">extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/datumaro.components.extractor_tfds.html">extractor_tfds module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/datumaro.components.format_detection.html">format_detection module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/datumaro.components.hl_ops.html">hl_ops module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../components/datumaro.components.launcher.html">launcher module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../components/datumaro.components.media.html">media module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/datumaro.components.media_manager.html">media_manager module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../components/datumaro.components.operations.html">operations module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../components/datumaro.components.project.html">project module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../components/datumaro.components.validator.html">validator module</a></li>
@@ -113,7 +121,7 @@
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.algorithms.rise.</span></span><span class="sig-name descname"><span class="pre">RISE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iou_thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nms_thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">det_conf_thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/algorithms/rise.html#RISE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.algorithms.rise.RISE" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Implements RISE: Randomized Input Sampling for
-Explanation of Black-box Models algorithm
+Explanation of Black-box Models algorithm.
 See explanations at: <a class="reference external" href="https://arxiv.org/pdf/1806.07421.pdf">https://arxiv.org/pdf/1806.07421.pdf</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.components.algorithms.rise.RISE.__init__">
@@ -176,17 +184,20 @@ See explanations at: <a class="reference external" href="https://arxiv.org/pdf/1
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: update-docs-introduce-api-v1
+        v: update-api-docs-fix-docstrings
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
         <dl>
             <dt>Tags</dt>
             <dd><a href="../../../v0.2.2/api/components/algorithms/datumaro.components.algorithms.html">v0.2.2</a></dd>
+            <dd><a href="../../../v0.2.3/api/components/algorithms/datumaro.components.algorithms.html">v0.2.3</a></dd>
         </dl>
         <dl>
             <dt>Branches</dt>
-            <dd><a href="../../../update-docs-introduce-api-v1/api/components/algorithms/datumaro.components.algorithms.html">update-docs-introduce-api-v1</a></dd>
+            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/api/components/algorithms/datumaro.components.algorithms.html">revert-19-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/api/components/algorithms/datumaro.components.algorithms.html">revert-20-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../update-api-docs-fix-docstrings/api/components/algorithms/datumaro.components.algorithms.html">update-api-docs-fix-docstrings</a></dd>
         </dl>
     </div>
 </div><script>

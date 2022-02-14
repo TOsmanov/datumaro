@@ -145,7 +145,7 @@ Usage There are several options available:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -173,7 +173,7 @@ Usage There are several options available:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -512,22 +512,24 @@ formats and providing high performance operations:</p>
 
 <span style="color:#8f5902;font-style:italic"># change dataset labels</span>
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">transform</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;remap_labels&#39;</span><span style="color:#000;font-weight:bold">,</span>
-  <span style="color:#000">mapping</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">{</span>
-    <span style="color:#4e9a06">&#39;cat&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#39;dog&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#8f5902;font-style:italic"># rename cat to dog</span>
-    <span style="color:#4e9a06">&#39;truck&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#39;car&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#8f5902;font-style:italic"># rename truck to car</span>
-    <span style="color:#4e9a06">&#39;person&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#39;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#8f5902;font-style:italic"># remove this label</span>
-  <span style="color:#000;font-weight:bold">},</span> <span style="color:#000">default</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;delete&#39;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#8f5902;font-style:italic"># remove everything else</span>
+    <span style="color:#000">mapping</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#4e9a06">&#39;cat&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#39;dog&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#8f5902;font-style:italic"># rename cat to dog</span>
+        <span style="color:#4e9a06">&#39;truck&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#39;car&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#8f5902;font-style:italic"># rename truck to car</span>
+        <span style="color:#4e9a06">&#39;person&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#39;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#8f5902;font-style:italic"># remove this label</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#000">default</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;delete&#39;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#8f5902;font-style:italic"># remove everything else</span>
 
 <span style="color:#8f5902;font-style:italic"># iterate over dataset elements</span>
 <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">item</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">dataset</span><span style="color:#000;font-weight:bold">:</span>
-  <span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">item</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">id</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">item</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">annotations</span><span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">item</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">id</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">item</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">annotations</span><span style="color:#000;font-weight:bold">)</span>
 
 <span style="color:#8f5902;font-style:italic"># export the resulting dataset in COCO format</span>
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;dst/dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;coco&#39;</span><span style="color:#000;font-weight:bold">)</span>
 
 <span style="color:#8f5902;font-style:italic"># optionally, release the project resources</span>
 <span style="color:#000">project</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">close</span><span style="color:#000;font-weight:bold">()</span>
-</code></pre></div><blockquote>
+</code></pre></div><p><a href="../../api/api/datumaro.html">List of components</a> with the comfortable importing.</p>
+<blockquote>
 <p>Check our <a href="../../docs/developer_manual/">developer manual</a> for additional
 information.</p>
 </blockquote>
@@ -616,13 +618,7 @@ datum <span style="color:#204a87">export</span> --format voc_segmentation -- --l
   <span style="color:#8f5902;font-style:italic"># ...</span>
 <span style="color:#000;font-weight:bold">],</span> <span style="color:#000">categories</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;cat&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;dog&#39;</span><span style="color:#000;font-weight:bold">])</span>
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;test_dataset/&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;coco&#39;</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../api/api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset">dm.Dataset</a></li>
-<li><a href="../../api/api/components/components/datumaro.components.extractor.html#datumaro.components.extractor.DatasetItem">dm.DatasetItem</a></li>
-<li><a href="../../api/api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Bbox">dm.Bbox</a></li>
-</ul>
-</li>
+</code></pre></div></li>
 </ul>
 <!--lint enable list-item-bullet-indent-->
 <!--lint enable list-item-indent-->

@@ -32,7 +32,7 @@ Supported annotation types:
 Supported annotation types:
  Label  Datumaro supports Python version CIFAR-10/100. The difference between CIFAR-10 and CIFAR-100 is how labels are stored in the meta files (batches.meta or meta) and in the annotation files. The 100 classes in the CIFAR-100 are grouped into 20 superclasses. Each image comes with a &ldquo;fine&rdquo; label (the class to which it belongs) and a &ldquo;coarse&rdquo; label (the superclass to which it belongs).">
 
-<meta itemprop="wordCount" content="681">
+<meta itemprop="wordCount" content="671">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="CIFAR"/>
 <meta name="twitter:description" content="Format specification CIFAR format specification is available here.
@@ -136,7 +136,7 @@ Supported annotation types:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -164,7 +164,7 @@ Supported annotation types:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -553,15 +553,11 @@ datum <span style="color:#204a87">export</span> -f imagenet -o &lt;output/dir&gt
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum convert -if cifar -i &lt;path/to/dataset&gt; <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    -f imagenet -o &lt;output/dir&gt; -- --save-images
 </code></pre></div><p>Or, using Python API:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
 
-<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;cifar&#39;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;cifar&#39;</span><span style="color:#000;font-weight:bold">)</span>
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;save_dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;imagenet&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_images</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../../api/api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.import_from">Dataset.import_from</a></li>
-</ul>
-<h2 id="export-to-cifar">Export to CIFAR</h2>
+</code></pre></div><h2 id="export-to-cifar">Export to CIFAR</h2>
 <p>There are several ways to convert a dataset to CIFAR format:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># export dataset into CIFAR format from existing project</span>
 datum <span style="color:#204a87">export</span> -p &lt;path/to/project&gt; -f cifar -o &lt;output/dir&gt; <span style="color:#4e9a06">\
@@ -587,26 +583,21 @@ to get more information about these operations.</p>
 <p>There are several examples of using Datumaro operations to solve
 particular problems with CIFAR dataset:</p>
 <h3 id="example-1-how-to-create-a-custom-cifar-like-dataset">Example 1. How to create a custom CIFAR-like dataset</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Label</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Dataset</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">DatasetItem</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">numpy</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">np</span>
+<span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
 
-<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">from_iterable</span><span style="color:#000;font-weight:bold">([</span>
-    <span style="color:#000">DatasetItem</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">image</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ones</span><span style="color:#000;font-weight:bold">((</span><span style="color:#0000cf;font-weight:bold">32</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">32</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">)),</span>
-        <span style="color:#000">annotations</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">Label</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">)]</span>
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">from_iterable</span><span style="color:#000;font-weight:bold">([</span>
+    <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">DatasetItem</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">image</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ones</span><span style="color:#000;font-weight:bold">((</span><span style="color:#0000cf;font-weight:bold">32</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">32</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">)),</span>
+        <span style="color:#000">annotations</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Label</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">)]</span>
     <span style="color:#000;font-weight:bold">),</span>
-    <span style="color:#000">DatasetItem</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">image</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ones</span><span style="color:#000;font-weight:bold">((</span><span style="color:#0000cf;font-weight:bold">32</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">32</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">)),</span>
-        <span style="color:#000">annotations</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">Label</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">8</span><span style="color:#000;font-weight:bold">)]</span>
+    <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">DatasetItem</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">image</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ones</span><span style="color:#000;font-weight:bold">((</span><span style="color:#0000cf;font-weight:bold">32</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">32</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">)),</span>
+        <span style="color:#000">annotations</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Label</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">8</span><span style="color:#000;font-weight:bold">)]</span>
     <span style="color:#000;font-weight:bold">)</span>
 <span style="color:#000;font-weight:bold">],</span> <span style="color:#000">categories</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;airplane&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;automobile&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;bird&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;cat&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;deer&#39;</span><span style="color:#000;font-weight:bold">,</span>
                <span style="color:#4e9a06">&#39;dog&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;frog&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;horse&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;ship&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;truck&#39;</span><span style="color:#000;font-weight:bold">])</span>
 
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;./dataset&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;cifar&#39;</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../../api/api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.from_iterable">Dataset.from_iterable</a></li>
-<li><a href="../../../api/api/components/components/datumaro.components.extractor.html#datumaro.components.extractor.DatasetItem">DatasetItem</a></li>
-<li><a href="../../../api/api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Label">Label</a></li>
-</ul>
-<h3 id="example-2-how-to-filter-and-convert-a-cifar-dataset-to-imagenet">Example 2. How to filter and convert a CIFAR dataset to ImageNet</h3>
+</code></pre></div><h3 id="example-2-how-to-filter-and-convert-a-cifar-dataset-to-imagenet">Example 2. How to filter and convert a CIFAR dataset to ImageNet</h3>
 <p>Convert a CIFAR dataset to ImageNet format, keep only images with the
 <code>dog</code> class present:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># Download CIFAR-10 dataset:</span>

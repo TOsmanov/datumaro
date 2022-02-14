@@ -7,6 +7,7 @@
   <title>launcher module &mdash; Datumaro API documentation 0.2.3 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -17,11 +18,13 @@
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="samples package" href="samples/samples.html" />
-    <link rel="prev" title="OpenVino plugin package" href="openvino_plugin.html" /> 
+    <link rel="prev" title="OpenVINO plugin package" href="openvino_plugin.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,6 +43,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../datumaro.html">Datumaro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cli/cli.html">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../components/components.html">Components</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../plugins.html">Plugins</a><ul class="current">
@@ -50,7 +54,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../icdar_format/icdar_format.html">ICDAR format package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../kitti_format/kitti_format.html">KITTI format package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../kitti_raw_format/kitti_raw_format.html">KITTI raw format package</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="openvino_plugin.html">OpenVino plugin package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="openvino_plugin.html">OpenVINO plugin package</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">launcher module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="samples/samples.html">samples package</a></li>
 </ul>
@@ -106,7 +110,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../plugins.html">Plugins</a> &raquo;</li>
-          <li><a href="openvino_plugin.html">OpenVino plugin package</a> &raquo;</li>
+          <li><a href="openvino_plugin.html">OpenVINO plugin package</a> &raquo;</li>
       <li>launcher module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.rst.txt" rel="nofollow"> View page source</a>
@@ -117,56 +121,63 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="launcher-module">
-<h1>launcher module<a class="headerlink" href="#launcher-module" title="Permalink to this headline"></a></h1>
+  <section id="module-datumaro.plugins.openvino_plugin.launcher">
+<span id="launcher-module"></span><h1>launcher module<a class="headerlink" href="#module-datumaro.plugins.openvino_plugin.launcher" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.openvino_plugin.launcher.InterpreterScript">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.openvino_plugin.launcher.</span></span><span class="sig-name descname"><span class="pre">InterpreterScript</span></span><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.InterpreterScript" title="Permalink to this definition"></a></dt>
-<dd><dl class="py method">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.openvino_plugin.launcher.</span></span><span class="sig-name descname"><span class="pre">InterpreterScript</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/openvino_plugin/launcher.html#InterpreterScript"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.InterpreterScript" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
 <dt class="sig sig-object py" id="datumaro.plugins.openvino_plugin.launcher.InterpreterScript.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.InterpreterScript.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/openvino_plugin/launcher.html#InterpreterScript.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.InterpreterScript.__init__" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.plugins.openvino_plugin.launcher.InterpreterScript.get_categories">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">get_categories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.InterpreterScript.get_categories" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">get_categories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/openvino_plugin/launcher.html#InterpreterScript.get_categories"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.InterpreterScript.get_categories" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.plugins.openvino_plugin.launcher.InterpreterScript.process_outputs">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">process_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.InterpreterScript.process_outputs" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">process_outputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/openvino_plugin/launcher.html#InterpreterScript.process_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.InterpreterScript.process_outputs" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.openvino_plugin.launcher.</span></span><span class="sig-name descname"><span class="pre">OpenvinoLauncher</span></span><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher" title="Permalink to this definition"></a></dt>
-<dd><dl class="py method">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.openvino_plugin.launcher.</span></span><span class="sig-name descname"><span class="pre">OpenvinoLauncher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpreter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/openvino_plugin/launcher.html#OpenvinoLauncher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../components/components/datumaro.components.launcher.html#datumaro.components.launcher.Launcher" title="datumaro.components.launcher.Launcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.launcher.Launcher</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.cli_plugin">
+<span class="sig-name descname"><span class="pre">cli_plugin</span></span><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.cli_plugin" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.plugins.openvino_plugin.launcher._OpenvinoImporter</span></code></p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpreter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/openvino_plugin/launcher.html#OpenvinoLauncher.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.__init__" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.infer">
-<span class="sig-name descname"><span class="pre">infer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.infer" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">infer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/openvino_plugin/launcher.html#OpenvinoLauncher.infer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.infer" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.launch">
-<span class="sig-name descname"><span class="pre">launch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.launch" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">launch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/openvino_plugin/launcher.html#OpenvinoLauncher.launch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.launch" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.categories">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">categories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.categories" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">categories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/openvino_plugin/launcher.html#OpenvinoLauncher.categories"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.categories" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.process_outputs">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">process_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.process_outputs" title="Permalink to this definition"></a></dt>
-<dd><p>Function should be implemented in the interpreter script</p>
-</dd></dl>
+<span class="sig-name descname"><span class="pre">process_outputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/openvino_plugin/launcher.html#OpenvinoLauncher.process_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.process_outputs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -176,7 +187,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="openvino_plugin.html" class="btn btn-neutral float-left" title="OpenVino plugin package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="openvino_plugin.html" class="btn btn-neutral float-left" title="OpenVINO plugin package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="samples/samples.html" class="btn btn-neutral float-right" title="samples package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -209,17 +220,20 @@
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: update-docs-introduce-api-v1
+        v: update-api-docs-fix-docstrings
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
         <dl>
             <dt>Tags</dt>
             <dd><a href="../../../v0.2.2/api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html">v0.2.2</a></dd>
+            <dd><a href="../../../v0.2.3/api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html">v0.2.3</a></dd>
         </dl>
         <dl>
             <dt>Branches</dt>
-            <dd><a href="../../../update-docs-introduce-api-v1/api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html">update-docs-introduce-api-v1</a></dd>
+            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html">revert-19-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html">revert-20-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../update-api-docs-fix-docstrings/api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html">update-api-docs-fix-docstrings</a></dd>
         </dl>
     </div>
 </div><script>

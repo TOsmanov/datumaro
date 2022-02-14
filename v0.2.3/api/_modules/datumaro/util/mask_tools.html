@@ -6,6 +6,7 @@
   <title>datumaro.util.mask_tools &mdash; Datumaro API documentation 0.2.3 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -16,6 +17,8 @@
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -37,6 +40,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.html">Datumaro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/cli/cli.html">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/components/components.html">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/plugins/plugins.html">Plugins</a></li>
@@ -89,8 +93,8 @@
 <span class="sd">    Generates colors using PASCAL VOC algorithm.</span>
 
 <span class="sd">    If include_background is True, the result will include the item</span>
-<span class="sd">        &quot;0: (0, 0, 0)&quot;, which is typically used as a background color.</span>
-<span class="sd">        Otherwise, indices will start from 0, but (0, 0, 0) is not included.</span>
+<span class="sd">    &quot;0: (0, 0, 0)&quot;, which is typically used as a background color.</span>
+<span class="sd">    Otherwise, indices will start from 0, but (0, 0, 0) is not included.</span>
 
 <span class="sd">    Returns index -&gt; (R, G, B) mapping.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -159,6 +163,7 @@
 <span class="sd">    Applies colormap to index mask</span>
 
 <span class="sd">    mask: HW(C) [0; max_index] mask</span>
+
 <span class="sd">    colormap: index -&gt; (R, G, B)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">check_is_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
@@ -290,7 +295,9 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        A list of input segments&#39; parts (in the same order as input):</span>
+
 <span class="sd">            [</span>
+
 <span class="sd">                [[x1,y1, x2,y2 ...], ...], # input segment #0 parts</span>
 <span class="sd">                mask1, # input segment #1 mask (if source segment is mask)</span>
 <span class="sd">                [], # when source segment is too small</span>
@@ -375,6 +382,7 @@
 <span class="sd">        a generator.</span>
 
 <span class="sd">        Inputs: a sequence of index masks or (binary mask, index) pairs</span>
+
 <span class="sd">        Outputs: an index mask</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">start</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -431,17 +439,20 @@
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: update-docs-introduce-api-v1
+        v: update-api-docs-fix-docstrings
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
         <dl>
             <dt>Tags</dt>
             <dd><a href="../../../v0.2.2/index.html">v0.2.2</a></dd>
+            <dd><a href="../../../v0.2.3/index.html">v0.2.3</a></dd>
         </dl>
         <dl>
             <dt>Branches</dt>
-            <dd><a href="../../../update-docs-introduce-api-v1/_modules/datumaro/util/mask_tools.html">update-docs-introduce-api-v1</a></dd>
+            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/index.html">revert-19-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/index.html">revert-20-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../update-api-docs-fix-docstrings/_modules/datumaro/util/mask_tools.html">update-api-docs-fix-docstrings</a></dd>
         </dl>
     </div>
 </div><script>

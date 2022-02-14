@@ -34,7 +34,7 @@ Supported types of annotations:
  Label  Format doesn&rsquo;t support any attributes for annotations objects.
 The original ImageNet dataset contains about 1.2M images and information about class name for each image. Datumaro supports two versions of ImageNet format: imagenet and imagenet_txt. The imagenet_txt format assumes storing information about the class of the image in *.">
 
-<meta itemprop="wordCount" content="558">
+<meta itemprop="wordCount" content="548">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ImageNet"/>
 <meta name="twitter:description" content="Format specification ImageNet is one of the most popular datasets for image classification task, this dataset is available for downloading here
@@ -139,7 +139,7 @@ The original ImageNet dataset contains about 1.2M images and information about c
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -167,7 +167,7 @@ The original ImageNet dataset contains about 1.2M images and information about c
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -493,14 +493,10 @@ subdirectory of directory with Datumaro project, see more information about
 it in the <a href="../../../docs/user-manual/command-reference/sources/#source-add">docs</a>.</p>
 </blockquote>
 <p>Load ImageNet dataset through the Python API:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
 
-<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path_to_dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;imagenet_txt&#39;</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../../api/api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.import_from">Dataset.import_from</a></li>
-</ul>
-<p>For successful importing of ImageNet dataset the input directory with dataset
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path_to_dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;imagenet_txt&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>For successful importing of ImageNet dataset the input directory with dataset
 should has the following structure:</p>
 <!--lint disable fenced-code-flag-->
 
@@ -606,16 +602,12 @@ datum create
 datum import -f imagenet_txt &lt;path_to_imagenet&gt; -- --labels generate
 datum export -f open_images -o &lt;output_dir&gt;
 </code></pre><p>And also you can convert your ImageNet dataset using Python API</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
 
-<span style="color:#000">imagenet_dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path_to_dataset&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;imagenet&#39;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">imagenet_dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path_to_dataset&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;imagenet&#39;</span><span style="color:#000;font-weight:bold">)</span>
 
 <span style="color:#000">imagenet_dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;output_dir&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;vgg_face2&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_images</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../../api/api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.import_from">Dataset.import_from</a></li>
-</ul>
-<blockquote>
+</code></pre></div><blockquote>
 <p>Note: some formats have extra export options. For particular format see the
 <a href="../../../docs/formats/">docs</a> to get information about it.</p>
 </blockquote>

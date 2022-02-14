@@ -38,7 +38,7 @@ Supported annotation types:
  is_crowd (boolean). Specifies if the annotation label can distinguish between different instances. If False, the annotation id field encodes the instance id.  Import Cityscapes dataset The Cityscapes dataset is available for free download.
 A Datumaro project with a Cityscapes source can be created in the following way:">
 
-<meta itemprop="wordCount" content="760">
+<meta itemprop="wordCount" content="749">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cityscapes"/>
 <meta name="twitter:description" content="Format specification Cityscapes format overview is available here.
@@ -145,7 +145,7 @@ A Datumaro project with a Cityscapes source can be created in the following way:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -173,7 +173,7 @@ A Datumaro project with a Cityscapes source can be created in the following way:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -553,15 +553,11 @@ datum <span style="color:#204a87">export</span> -f voc -o &lt;output/dir&gt;
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum convert -if cityscapes -i &lt;path/to/cityscapes&gt; <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    -f voc -o &lt;output/dir&gt; -- --save-images
 </code></pre></div><p>Or, using Python API:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Dataset</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
 
-<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;cityscapes&#39;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;cityscapes&#39;</span><span style="color:#000;font-weight:bold">)</span>
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;save_dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;voc&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_images</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../../api/api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.import_from">Dataset.import_from</a></li>
-</ul>
-<h2 id="export-to-cityscapes">Export to Cityscapes</h2>
+</code></pre></div><h2 id="export-to-cityscapes">Export to Cityscapes</h2>
 <p>There are several ways to convert a dataset to Cityscapes format:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># export dataset into Cityscapes format from existing project</span>
 datum <span style="color:#204a87">export</span> -p &lt;path/to/project&gt; -f cityscapes -o &lt;output/dir&gt; <span style="color:#4e9a06">\
@@ -599,9 +595,10 @@ datum import -p project -f cityscapes ./Cityscapes/
 datum stats -p project
 datum <span style="color:#204a87">export</span> -p project -o dataset/ -f voc -- --save-images
 </code></pre></div><h3 id="example-2-create-a-custom-cityscapes-like-dataset">Example 2. Create a custom Cityscapes-like dataset</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">numpy</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">np</span>
-<span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Mask</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">Dataset</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">DatasetItem</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">collections</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">OrderedDict</span>
 
+<span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">numpy</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">np</span>
+<span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
 <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro.plugins.cityscapes_format</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">Cityscapes</span>
 
 <span style="color:#000">label_map</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">OrderedDict</span><span style="color:#000;font-weight:bold">()</span>
@@ -610,26 +607,19 @@ datum <span style="color:#204a87">export</span> -p project -o dataset/ -f voc --
 <span style="color:#000">label_map</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;label_2&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">)</span>
 <span style="color:#000">categories</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Cityscapes</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">make_cityscapes_categories</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">label_map</span><span style="color:#000;font-weight:bold">)</span>
 
-<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">from_iterable</span><span style="color:#000;font-weight:bold">([</span>
-  <span style="color:#000">DatasetItem</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
-    <span style="color:#000">image</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ones</span><span style="color:#000;font-weight:bold">((</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">)),</span>
-    <span style="color:#000">annotations</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span>
-      <span style="color:#000">Mask</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">image</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">array</span><span style="color:#000;font-weight:bold">([[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">]]),</span> <span style="color:#000">label</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">),</span>
-      <span style="color:#000">Mask</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">image</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">array</span><span style="color:#000;font-weight:bold">([[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]]),</span> <span style="color:#000">label</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span>
-        <span style="color:#000">attributes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#39;is_crowd&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">False</span><span style="color:#000;font-weight:bold">}),</span>
-    <span style="color:#000;font-weight:bold">]</span>
-  <span style="color:#000;font-weight:bold">),</span>
+<span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">from_iterable</span><span style="color:#000;font-weight:bold">([</span>
+    <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">DatasetItem</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#000">image</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">ones</span><span style="color:#000;font-weight:bold">((</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">)),</span>
+        <span style="color:#000">annotations</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span>
+            <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Mask</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">image</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">array</span><span style="color:#000;font-weight:bold">([[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">]]),</span> <span style="color:#000">label</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">),</span>
+            <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Mask</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">image</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">array</span><span style="color:#000;font-weight:bold">([[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]]),</span> <span style="color:#000">label</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#000">attributes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#39;is_crowd&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">False</span><span style="color:#000;font-weight:bold">}),</span>
+        <span style="color:#000;font-weight:bold">]</span>
+    <span style="color:#000;font-weight:bold">),</span>
 <span style="color:#000;font-weight:bold">],</span> <span style="color:#000">categories</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">categories</span><span style="color:#000;font-weight:bold">)</span>
 
 <span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;./dataset&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;cityscapes&#39;</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../../api/api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.from_iterable">Dataset.from_iterable</a></li>
-<li><a href="../../../api/api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Mask">Mask</a></li>
-<li><a href="../../../api/api/components/components/datumaro.components.dataset.html">Dataset</a></li>
-<li><a href="../../../api/api/components/components/datumaro.components.extractor.html#datumaro.components.extractor.DatasetItem">DatasetItem</a></li>
-</ul>
-<p>Examples of using this format from the code can be found in
+</code></pre></div><p>Examples of using this format from the code can be found in
 <a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/test_cityscapes_format.py">the format tests</a></p>
 
 	

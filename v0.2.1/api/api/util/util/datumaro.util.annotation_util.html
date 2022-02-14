@@ -7,6 +7,7 @@
   <title>annotation_util module &mdash; Datumaro API documentation 0.2.3 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -17,6 +18,8 @@
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -40,6 +43,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../datumaro.html">Datumaro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cli/cli.html">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../components/components.html">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/plugins.html">Plugins</a></li>
@@ -101,14 +105,32 @@
 <span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">find_group_leader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/util/annotation_util.html#find_group_leader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.annotation_util.find_group_leader" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py data">
+<dt class="sig sig-object py" id="datumaro.util.annotation_util.BboxCoords">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">BboxCoords</span></span><a class="headerlink" href="#datumaro.util.annotation_util.BboxCoords" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="datumaro.util.annotation_util.Shape">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">Shape</span></span><a class="headerlink" href="#datumaro.util.annotation_util.Shape" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.annotation._Shape</span></code></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="datumaro.util.annotation_util.SpatialAnnotation">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">SpatialAnnotation</span></span><a class="headerlink" href="#datumaro.util.annotation_util.SpatialAnnotation" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="#datumaro.util.annotation_util.Shape" title="datumaro.util.annotation_util.Shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">Shape</span></code></a>, <a class="reference internal" href="../../components/components/datumaro.components.annotation.html#datumaro.components.annotation.Mask" title="datumaro.components.annotation.Mask"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.annotation.Mask</span></code></a>]</p>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="datumaro.util.annotation_util._get_bbox">
-<span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">_get_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ann</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">,</span> </span><span class="pre">Shape</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../../components/components/datumaro.components.annotation.html#datumaro.components.annotation.Mask" title="datumaro.components.annotation.Mask"><span class="pre">datumaro.components.annotation.Mask</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/util/annotation_util.html#_get_bbox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.annotation_util._get_bbox" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">_get_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ann</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#datumaro.util.annotation_util.Shape" title="datumaro.util.annotation_util.Shape"><span class="pre">Shape</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../../components/components/datumaro.components.annotation.html#datumaro.components.annotation.Mask" title="datumaro.components.annotation.Mask"><span class="pre">datumaro.components.annotation.Mask</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/util/annotation_util.html#_get_bbox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.annotation_util._get_bbox" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="datumaro.util.annotation_util.max_bbox">
-<span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">max_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">annotations</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Shape</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../../components/components/datumaro.components.annotation.html#datumaro.components.annotation.Mask" title="datumaro.components.annotation.Mask"><span class="pre">datumaro.components.annotation.Mask</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/util/annotation_util.html#max_bbox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.annotation_util.max_bbox" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">max_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">annotations</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#datumaro.util.annotation_util.Shape" title="datumaro.util.annotation_util.Shape"><span class="pre">Shape</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../../components/components/datumaro.components.annotation.html#datumaro.components.annotation.Mask" title="datumaro.components.annotation.Mask"><span class="pre">datumaro.components.annotation.Mask</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/util/annotation_util.html#max_bbox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.annotation_util.max_bbox" title="Permalink to this definition"></a></dt>
 <dd><p>Computes the maximum bbox for the set of spatial annotations and boxes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -122,7 +144,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="datumaro.util.annotation_util.mean_bbox">
-<span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">mean_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">annotations</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Shape</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../../components/components/datumaro.components.annotation.html#datumaro.components.annotation.Mask" title="datumaro.components.annotation.Mask"><span class="pre">datumaro.components.annotation.Mask</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/util/annotation_util.html#mean_bbox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.annotation_util.mean_bbox" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">mean_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">annotations</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#datumaro.util.annotation_util.Shape" title="datumaro.util.annotation_util.Shape"><span class="pre">Shape</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../../components/components/datumaro.components.annotation.html#datumaro.components.annotation.Mask" title="datumaro.components.annotation.Mask"><span class="pre">datumaro.components.annotation.Mask</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/util/annotation_util.html#mean_bbox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.annotation_util.mean_bbox" title="Permalink to this definition"></a></dt>
 <dd><p>Computes the mean bbox for the set of spatial annotations and boxes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -173,16 +195,43 @@ Counts the number of matching points.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="datumaro.util.annotation_util.approximate_line">
+<span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">approximate_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segments</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="../../../_modules/datumaro/util/annotation_util.html#approximate_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.annotation_util.approximate_line" title="Permalink to this definition"></a></dt>
+<dd><p>Approximates a 2d line to the required number of segments. The new points
+are distributed uniformly across the input line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>points</strong> (<em>Sequence</em>) – an array of line point coordinates.
+The size is [points * 2], the layout is [x0, y0, x1, y1, …].</p></li>
+<li><p><strong>segments</strong> (<em>int</em>) – the required numebr of segments in the resulting line.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>an array of new line point coordinates.</dt><dd><p>The size is [(segments + 1) * 2], the layout is [x0, y0, x1, y1, …].</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>new_points (ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="datumaro.util.annotation_util.make_label_id_mapping">
 <span class="sig-prename descclassname"><span class="pre">datumaro.util.annotation_util.</span></span><span class="sig-name descname"><span class="pre">make_label_id_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../../components/components/datumaro.components.annotation.html#datumaro.components.annotation.LabelCategories" title="datumaro.components.annotation.LabelCategories"><span class="pre">datumaro.components.annotation.LabelCategories</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../../components/components/datumaro.components.annotation.html#datumaro.components.annotation.LabelCategories" title="datumaro.components.annotation.LabelCategories"><span class="pre">datumaro.components.annotation.LabelCategories</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fallback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/util/annotation_util.html#make_label_id_mapping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.util.annotation_util.make_label_id_mapping" title="Permalink to this definition"></a></dt>
 <dd><p>Maps label ids from source to destination. Fallback id is used for missing
 labels.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>src id -&gt; dst id
-id_mapping (dict): src id -&gt; dst id
-src_labels (dict): src id -&gt; src label
-dst_labels (dict): dst id -&gt; dst label</p>
+<dd class="field-odd"><p><p>src id -&gt; dst id</p>
+<p>id_mapping (dict): src id -&gt; dst id</p>
+<p>src_labels (dict): src id -&gt; src label</p>
+<p>dst_labels (dict): dst id -&gt; dst label</p>
+</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>map_id (callable)</p>
@@ -229,17 +278,20 @@ dst_labels (dict): dst id -&gt; dst label</p>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: update-docs-introduce-api-v1
+        v: update-api-docs-fix-docstrings
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
         <dl>
             <dt>Tags</dt>
             <dd><a href="../../../v0.2.2/api/util/util/datumaro.util.annotation_util.html">v0.2.2</a></dd>
+            <dd><a href="../../../v0.2.3/api/util/util/datumaro.util.annotation_util.html">v0.2.3</a></dd>
         </dl>
         <dl>
             <dt>Branches</dt>
-            <dd><a href="../../../update-docs-introduce-api-v1/api/util/util/datumaro.util.annotation_util.html">update-docs-introduce-api-v1</a></dd>
+            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/api/util/util/datumaro.util.annotation_util.html">revert-19-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/api/util/util/datumaro.util.annotation_util.html">revert-20-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../update-api-docs-fix-docstrings/api/util/util/datumaro.util.annotation_util.html">update-api-docs-fix-docstrings</a></dd>
         </dl>
     </div>
 </div><script>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>transforms module &mdash; Datumaro API documentation 0.2.1 documentation</title>
+  <title>transforms module &mdash; Datumaro API documentation 0.2.2 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
@@ -528,6 +528,38 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.ResizeTransform">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.transforms.</span></span><span class="sig-name descname"><span class="pre">ResizeTransform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.IExtractor" title="datumaro.components.extractor.IExtractor"><span class="pre">datumaro.components.extractor.IExtractor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#ResizeTransform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.ResizeTransform" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.ItemTransform" title="datumaro.components.extractor.ItemTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.ItemTransform</span></code></a></p>
+<p>Resizes images and annotations in the dataset to the specified size.
+Supports upscaling, downscaling and mixed variants.</p>
+<p>Examples:
+
+- Resize all images to 256x256 size</p>
+<blockquote>
+<div><p>%(prog)s -dw 256 -dh 256</p>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.ResizeTransform.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#ResizeTransform.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.ResizeTransform.build_cmdline_parser" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.ResizeTransform.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.IExtractor" title="datumaro.components.extractor.IExtractor"><span class="pre">datumaro.components.extractor.IExtractor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#ResizeTransform.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.ResizeTransform.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.ResizeTransform.transform_item">
+<span class="sig-name descname"><span class="pre">transform_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#ResizeTransform.transform_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.ResizeTransform.transform_item" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a modified copy of the input item.</p>
+<p>Avoid changing and returning the input item, because it can lead to
+unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 
@@ -574,10 +606,13 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
         <dl>
             <dt>Tags</dt>
             <dd><a href="datumaro.plugins.transforms.html">v0.2.2</a></dd>
+            <dd><a href="../../../../v0.2.3/api/plugins/plugins/datumaro.plugins.transforms.html">v0.2.3</a></dd>
         </dl>
         <dl>
             <dt>Branches</dt>
-            <dd><a href="../../../../update-docs-introduce-api-v1/api/plugins/plugins/datumaro.plugins.transforms.html">update-docs-introduce-api-v1</a></dd>
+            <dd><a href="../../../../revert-19-update-api-docs-fix-docstrings/api/plugins/plugins/datumaro.plugins.transforms.html">revert-19-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../../revert-20-update-api-docs-fix-docstrings/api/plugins/plugins/datumaro.plugins.transforms.html">revert-20-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../../update-api-docs-fix-docstrings/api/plugins/plugins/datumaro.plugins.transforms.html">update-api-docs-fix-docstrings</a></dd>
         </dl>
     </div>
 </div><script>

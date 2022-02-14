@@ -6,6 +6,7 @@
   <title>datumaro.components.operations &mdash; Datumaro API documentation 0.2.3 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -16,6 +17,8 @@
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -37,6 +40,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.html">Datumaro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/cli/cli.html">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/components/components.html">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/plugins/plugins.html">Plugins</a></li>
@@ -77,7 +81,7 @@
 
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
 <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">Tuple</span>
 <span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span>
 <span class="kn">import</span> <span class="nn">hashlib</span>
 <span class="kn">import</span> <span class="nn">logging</span> <span class="k">as</span> <span class="nn">log</span>
@@ -95,8 +99,9 @@
 <span class="kn">from</span> <span class="nn">datumaro.components.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">DatasetItemStorage</span><span class="p">,</span> <span class="n">IDataset</span>
 <span class="kn">from</span> <span class="nn">datumaro.components.errors</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">AnnotationsTooCloseError</span><span class="p">,</span> <span class="n">ConflictingCategoriesError</span><span class="p">,</span> <span class="n">DatasetMergeError</span><span class="p">,</span>
-    <span class="n">FailedAttrVotingError</span><span class="p">,</span> <span class="n">FailedLabelVotingError</span><span class="p">,</span> <span class="n">MismatchingImageInfoError</span><span class="p">,</span>
-    <span class="n">NoMatchingAnnError</span><span class="p">,</span> <span class="n">NoMatchingItemError</span><span class="p">,</span> <span class="n">WrongGroupError</span><span class="p">,</span>
+    <span class="n">FailedAttrVotingError</span><span class="p">,</span> <span class="n">FailedLabelVotingError</span><span class="p">,</span> <span class="n">MismatchingAttributesError</span><span class="p">,</span>
+    <span class="n">MismatchingImageInfoError</span><span class="p">,</span> <span class="n">MismatchingImagePathError</span><span class="p">,</span> <span class="n">NoMatchingAnnError</span><span class="p">,</span>
+    <span class="n">NoMatchingItemError</span><span class="p">,</span> <span class="n">WrongGroupError</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">datumaro.components.extractor</span> <span class="kn">import</span> <span class="n">CategoriesInfo</span><span class="p">,</span> <span class="n">DatasetItem</span>
 <span class="kn">from</span> <span class="nn">datumaro.components.media</span> <span class="kn">import</span> <span class="n">Image</span>
@@ -107,9 +112,6 @@
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">datumaro.util.attrs_util</span> <span class="kn">import</span> <span class="n">default_if_none</span><span class="p">,</span> <span class="n">ensure_cls</span>
 
-
-<div class="viewcode-block" id="get_ann_type"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.get_ann_type">[docs]</a><span class="k">def</span> <span class="nf">get_ann_type</span><span class="p">(</span><span class="n">anns</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">anns</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">t</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="match_annotations_equal"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.match_annotations_equal">[docs]</a><span class="k">def</span> <span class="nf">match_annotations_equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="n">matches</span> <span class="o">=</span> <span class="p">[]</span>
@@ -162,8 +164,10 @@
 <div class="viewcode-block" id="ExactMerge"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.ExactMerge">[docs]</a><span class="k">class</span> <span class="nc">ExactMerge</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Merges several datasets using the &quot;simple&quot; algorithm:</span>
+
 <span class="sd">    - items are matched by (id, subset) pairs</span>
 <span class="sd">    - matching items share the media info available:</span>
+
 <span class="sd">        - nothing + nothing = nothing</span>
 <span class="sd">        - nothing + something = something</span>
 <span class="sd">        - something A + something B = conflict</span>
@@ -179,7 +183,7 @@
                 <span class="n">existing_item</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">subset</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">existing_item</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="k">try</span><span class="p">:</span>
-                        <span class="n">item</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">merge_items</span><span class="p">(</span><span class="n">existing_item</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+                        <span class="n">item</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_merge_items</span><span class="p">(</span><span class="n">existing_item</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
                     <span class="k">except</span> <span class="n">DatasetMergeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                         <span class="n">e</span><span class="o">.</span><span class="n">sources</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">source_idx</span><span class="p">))</span>
                         <span class="k">raise</span> <span class="n">e</span>
@@ -187,49 +191,101 @@
                 <span class="n">items</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">items</span></div>
 
-<div class="viewcode-block" id="ExactMerge.merge_items"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.ExactMerge.merge_items">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">merge_items</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">existing_item</span><span class="p">:</span> <span class="n">DatasetItem</span><span class="p">,</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_merge_items</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">existing_item</span><span class="p">:</span> <span class="n">DatasetItem</span><span class="p">,</span>
             <span class="n">current_item</span><span class="p">:</span> <span class="n">DatasetItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DatasetItem</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">existing_item</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span>
-            <span class="n">image</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">merge_images</span><span class="p">(</span><span class="n">existing_item</span><span class="p">,</span> <span class="n">current_item</span><span class="p">),</span>
-            <span class="n">annotations</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">merge_anno</span><span class="p">(</span>
-                <span class="n">existing_item</span><span class="o">.</span><span class="n">annotations</span><span class="p">,</span> <span class="n">current_item</span><span class="o">.</span><span class="n">annotations</span><span class="p">))</span></div>
+            <span class="n">image</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">_merge_images</span><span class="p">(</span><span class="n">existing_item</span><span class="p">,</span> <span class="n">current_item</span><span class="p">),</span>
+            <span class="n">attributes</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">_merge_attrs</span><span class="p">(</span>
+                <span class="n">existing_item</span><span class="o">.</span><span class="n">attributes</span><span class="p">,</span> <span class="n">current_item</span><span class="o">.</span><span class="n">attributes</span><span class="p">,</span>
+                <span class="n">item_id</span><span class="o">=</span><span class="p">(</span><span class="n">existing_item</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">existing_item</span><span class="o">.</span><span class="n">subset</span><span class="p">)),</span>
+            <span class="n">annotations</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">_merge_anno</span><span class="p">(</span>
+                <span class="n">existing_item</span><span class="o">.</span><span class="n">annotations</span><span class="p">,</span> <span class="n">current_item</span><span class="o">.</span><span class="n">annotations</span><span class="p">))</span>
 
-<div class="viewcode-block" id="ExactMerge.merge_images"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.ExactMerge.merge_images">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">merge_images</span><span class="p">(</span><span class="n">existing_item</span><span class="p">:</span> <span class="n">DatasetItem</span><span class="p">,</span>
-            <span class="n">current_item</span><span class="p">:</span> <span class="n">DatasetItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span><span class="p">:</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_merge_attrs</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">b</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+            <span class="n">item_id</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+        <span class="n">merged</span> <span class="o">=</span> <span class="p">{}</span>
 
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">|</span> <span class="n">b</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">a_val</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">b_val</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+                <span class="n">m_val</span> <span class="o">=</span> <span class="n">b_val</span>
+            <span class="k">elif</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">b</span><span class="p">:</span>
+                <span class="n">m_val</span> <span class="o">=</span> <span class="n">a_val</span>
+            <span class="k">elif</span> <span class="n">a_val</span> <span class="o">!=</span> <span class="n">b_val</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">MismatchingAttributesError</span><span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">a_val</span><span class="p">,</span> <span class="n">b_val</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">m_val</span> <span class="o">=</span> <span class="n">a_val</span>
+
+            <span class="n">merged</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">m_val</span>
+
+        <span class="k">return</span> <span class="n">merged</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_merge_images</span><span class="p">(</span><span class="n">item_a</span><span class="p">:</span> <span class="n">DatasetItem</span><span class="p">,</span> <span class="n">item_b</span><span class="p">:</span> <span class="n">DatasetItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span><span class="p">:</span>
         <span class="n">image</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">existing_item</span><span class="o">.</span><span class="n">has_image</span> <span class="ow">and</span> <span class="n">current_item</span><span class="o">.</span><span class="n">has_image</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">existing_item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">has_data</span><span class="p">:</span>
-                <span class="n">image</span> <span class="o">=</span> <span class="n">existing_item</span><span class="o">.</span><span class="n">image</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">image</span> <span class="o">=</span> <span class="n">current_item</span><span class="o">.</span><span class="n">image</span>
 
-            <span class="k">if</span> <span class="n">existing_item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span> <span class="o">!=</span> <span class="n">current_item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">existing_item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
-                    <span class="n">image</span><span class="o">.</span><span class="n">_path</span> <span class="o">=</span> <span class="n">current_item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span>
+        <span class="k">if</span> <span class="n">item_a</span><span class="o">.</span><span class="n">has_image</span> <span class="ow">and</span> <span class="n">item_b</span><span class="o">.</span><span class="n">has_image</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">item_a</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span> <span class="ow">and</span> <span class="n">item_b</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span> <span class="ow">and</span> \
+                    <span class="n">item_a</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span> <span class="o">!=</span> <span class="n">item_b</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span> <span class="ow">and</span> \
+                    <span class="n">item_a</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">has_data</span> <span class="ow">is</span> <span class="n">item_b</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">has_data</span><span class="p">:</span>
+                <span class="c1"># We use has_data as a replacement for path existence check</span>
+                <span class="c1"># - If only one image has data, we&#39;ll use it. The other</span>
+                <span class="c1">#   one is just a path metainfo, which is not significant</span>
+                <span class="c1">#   in this case.</span>
+                <span class="c1"># - If both images have data or both don&#39;t, we need</span>
+                <span class="c1">#   to compare paths.</span>
+                <span class="c1">#</span>
+                <span class="c1"># Different paths can aclually point to the same file,</span>
+                <span class="c1"># but it&#39;s not the case we&#39;d like to allow here to be</span>
+                <span class="c1"># a &quot;simple&quot; merging strategy used for extractor joining</span>
+                <span class="k">raise</span> <span class="n">MismatchingImagePathError</span><span class="p">(</span>
+                    <span class="p">(</span><span class="n">item_a</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">item_a</span><span class="o">.</span><span class="n">subset</span><span class="p">),</span>
+                    <span class="n">item_a</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">item_b</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="n">existing_item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">_size</span><span class="p">,</span> <span class="n">current_item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">_size</span><span class="p">]):</span>
-                <span class="k">if</span> <span class="n">existing_item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">_size</span> <span class="o">!=</span> <span class="n">current_item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">_size</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="n">MismatchingImageInfoError</span><span class="p">(</span>
-                        <span class="p">(</span><span class="n">existing_item</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">existing_item</span><span class="o">.</span><span class="n">subset</span><span class="p">),</span>
-                        <span class="n">existing_item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">_size</span><span class="p">,</span> <span class="n">current_item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">_size</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">existing_item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">_size</span><span class="p">:</span>
-                <span class="n">image</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="n">existing_item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">_size</span>
+            <span class="k">if</span> <span class="n">item_a</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">has_size</span> <span class="ow">and</span> <span class="n">item_b</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">has_size</span> <span class="ow">and</span> \
+                    <span class="n">item_a</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="n">item_b</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">MismatchingImageInfoError</span><span class="p">(</span>
+                    <span class="p">(</span><span class="n">item_a</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">item_a</span><span class="o">.</span><span class="n">subset</span><span class="p">),</span>
+                    <span class="n">item_a</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">item_b</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+            <span class="c1"># Avoid direct comparison here for better performance</span>
+            <span class="c1"># If there are 2 &quot;data-only&quot; images, they won&#39;t be compared and</span>
+            <span class="c1"># we just use the first one</span>
+            <span class="k">if</span> <span class="n">item_a</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">has_data</span><span class="p">:</span>
+                <span class="n">image</span> <span class="o">=</span> <span class="n">item_a</span><span class="o">.</span><span class="n">image</span>
+            <span class="k">elif</span> <span class="n">item_b</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">has_data</span><span class="p">:</span>
+                <span class="n">image</span> <span class="o">=</span> <span class="n">item_b</span><span class="o">.</span><span class="n">image</span>
+            <span class="k">elif</span> <span class="n">item_a</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+                <span class="n">image</span> <span class="o">=</span> <span class="n">item_a</span><span class="o">.</span><span class="n">image</span>
+            <span class="k">elif</span> <span class="n">item_b</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+                <span class="n">image</span> <span class="o">=</span> <span class="n">item_b</span><span class="o">.</span><span class="n">image</span>
+            <span class="k">elif</span> <span class="n">item_a</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">has_size</span><span class="p">:</span>
+                <span class="n">image</span> <span class="o">=</span> <span class="n">item_a</span><span class="o">.</span><span class="n">image</span>
+            <span class="k">elif</span> <span class="n">item_b</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">has_size</span><span class="p">:</span>
+                <span class="n">image</span> <span class="o">=</span> <span class="n">item_b</span><span class="o">.</span><span class="n">image</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">image</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="n">current_item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">_size</span>
-        <span class="k">elif</span> <span class="n">existing_item</span><span class="o">.</span><span class="n">has_image</span><span class="p">:</span>
-            <span class="n">image</span> <span class="o">=</span> <span class="n">existing_item</span><span class="o">.</span><span class="n">image</span>
+                <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Unknown image field combination&quot;</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">image</span><span class="o">.</span><span class="n">has_data</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">image</span><span class="o">.</span><span class="n">has_size</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">item_a</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">_size</span><span class="p">:</span>
+                    <span class="n">image</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="n">item_a</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">_size</span>
+                <span class="k">elif</span> <span class="n">item_b</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">_size</span><span class="p">:</span>
+                    <span class="n">image</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="n">item_b</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">_size</span>
+        <span class="k">elif</span> <span class="n">item_a</span><span class="o">.</span><span class="n">has_image</span><span class="p">:</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="n">item_a</span><span class="o">.</span><span class="n">image</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">image</span> <span class="o">=</span> <span class="n">current_item</span><span class="o">.</span><span class="n">image</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="n">item_b</span><span class="o">.</span><span class="n">image</span>
 
-        <span class="k">return</span> <span class="n">image</span></div>
+        <span class="k">return</span> <span class="n">image</span>
 
-<div class="viewcode-block" id="ExactMerge.merge_anno"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.ExactMerge.merge_anno">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">merge_anno</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Annotation</span><span class="p">],</span> <span class="n">b</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Annotation</span><span class="p">])</span> \
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_merge_anno</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Annotation</span><span class="p">],</span> <span class="n">b</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Annotation</span><span class="p">])</span> \
             <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Annotation</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="n">merge_annotations_equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">merge_annotations_equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ExactMerge.merge_categories"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.ExactMerge.merge_categories">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">merge_categories</span><span class="p">(</span><span class="n">sources</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">IDataset</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">CategoriesInfo</span><span class="p">:</span>
@@ -1098,15 +1154,15 @@
 
     <span class="k">return</span> <span class="n">counter</span><span class="o">.</span><span class="n">get_result</span><span class="p">()</span></div>
 
-<span class="k">class</span> <span class="nc">_MeanStdCounter</span><span class="p">:</span>
+<div class="viewcode-block" id="_MeanStdCounter"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations._MeanStdCounter">[docs]</a><span class="k">class</span> <span class="nc">_MeanStdCounter</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes unbiased mean and std. dev. for dataset images, channel-wise.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_stats</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># (id, subset) -&gt; (pixel count, mean vec, std vec)</span>
+<div class="viewcode-block" id="_MeanStdCounter.__init__"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations._MeanStdCounter.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stats</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># (id, subset) -&gt; (pixel count, mean vec, std vec)</span></div>
 
-    <span class="k">def</span> <span class="nf">accumulate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">DatasetItem</span><span class="p">):</span>
+<div class="viewcode-block" id="_MeanStdCounter.accumulate"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations._MeanStdCounter.accumulate">[docs]</a>    <span class="k">def</span> <span class="nf">accumulate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">DatasetItem</span><span class="p">):</span>
         <span class="n">size</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">size</span>
         <span class="k">if</span> <span class="n">size</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Item </span><span class="si">%s</span><span class="s2">: can&#39;t detect image size, &quot;</span>
@@ -1122,9 +1178,9 @@
         <span class="c1"># opencv is much faster than numpy here</span>
         <span class="n">mean</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">meanStdDev</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_stats</span><span class="p">[(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">subset</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stats</span><span class="p">[(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">subset</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">get_result</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> \
+<div class="viewcode-block" id="_MeanStdCounter.get_result"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations._MeanStdCounter.get_result">[docs]</a>    <span class="k">def</span> <span class="nf">get_result</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> \
             <span class="n">Tuple</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
         <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_stats</span><span class="p">)</span>
 
@@ -1151,11 +1207,11 @@
         <span class="c1"># - handle different image sizes</span>
         <span class="c1"># - avoid cancellation problem</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">var</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_stats</span><span class="p">(</span><span class="n">stats</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">mean</span> <span class="o">*</span> <span class="mi">255</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span>
+        <span class="k">return</span> <span class="n">mean</span> <span class="o">*</span> <span class="mi">255</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span></div>
 
     <span class="c1"># Implements online parallel computation of sample variance</span>
     <span class="c1"># https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Parallel_algorithm</span>
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="_MeanStdCounter._pairwise_stats"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations._MeanStdCounter._pairwise_stats">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_pairwise_stats</span><span class="p">(</span><span class="n">count_a</span><span class="p">,</span> <span class="n">mean_a</span><span class="p">,</span> <span class="n">var_a</span><span class="p">,</span> <span class="n">count_b</span><span class="p">,</span> <span class="n">mean_b</span><span class="p">,</span> <span class="n">var_b</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes vector mean and variance.</span>
@@ -1179,9 +1235,9 @@
             <span class="n">count_a</span> <span class="o">+</span> <span class="n">count_b</span><span class="p">,</span>
             <span class="n">mean_a</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="n">mean_b</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span>
             <span class="n">M2</span> <span class="o">/</span> <span class="p">(</span><span class="n">count_a</span> <span class="o">+</span> <span class="n">count_b</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
-    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="_MeanStdCounter._compute_stats"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations._MeanStdCounter._compute_stats">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_compute_stats</span><span class="p">(</span><span class="n">stats</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="n">mean_accessor</span><span class="p">,</span> <span class="n">variance_accessor</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Recursively computes total count, mean and variance,</span>
@@ -1211,7 +1267,7 @@
         <span class="k">return</span> <span class="vm">__class__</span><span class="o">.</span><span class="n">_pairwise_stats</span><span class="p">(</span>
             <span class="o">*</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_compute_stats</span><span class="p">(</span><span class="n">stats</span><span class="p">[:</span><span class="n">h</span><span class="p">],</span> <span class="n">counts</span><span class="p">[:</span><span class="n">h</span><span class="p">],</span> <span class="n">m</span><span class="p">,</span> <span class="n">v</span><span class="p">),</span>
             <span class="o">*</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_compute_stats</span><span class="p">(</span><span class="n">stats</span><span class="p">[</span><span class="n">h</span><span class="p">:],</span> <span class="n">counts</span><span class="p">[</span><span class="n">h</span><span class="p">:],</span> <span class="n">m</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-            <span class="p">)</span>
+            <span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="compute_image_statistics"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.compute_image_statistics">[docs]</a><span class="k">def</span> <span class="nf">compute_image_statistics</span><span class="p">(</span><span class="n">dataset</span><span class="p">:</span> <span class="n">IDataset</span><span class="p">):</span>
     <span class="n">stats</span> <span class="o">=</span> <span class="p">{</span>
@@ -1409,7 +1465,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_get_ann_type</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">get_ann_type</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">annotations</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">t</span><span class="p">]</span>
 
 <div class="viewcode-block" id="DistanceComparator.match_labels"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.DistanceComparator.match_labels">[docs]</a>    <span class="k">def</span> <span class="nf">match_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item_a</span><span class="p">,</span> <span class="n">item_b</span><span class="p">):</span>
         <span class="n">a_labels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span>
@@ -1601,8 +1657,8 @@
         <span class="n">ignored_fields</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ignored_fields</span>
         <span class="n">ignored_attrs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ignored_attrs</span>
 
-        <span class="n">a_fields</span> <span class="o">=</span> <span class="p">{</span> <span class="n">k</span><span class="p">:</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ignored_fields</span> <span class="p">}</span>
-        <span class="n">b_fields</span> <span class="o">=</span> <span class="p">{</span> <span class="n">k</span><span class="p">:</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ignored_fields</span> <span class="p">}</span>
+        <span class="n">a_fields</span> <span class="o">=</span> <span class="p">{</span> <span class="n">k</span><span class="p">:</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ignored_fields</span> <span class="p">}</span>
+        <span class="n">b_fields</span> <span class="o">=</span> <span class="p">{</span> <span class="n">k</span><span class="p">:</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">b</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ignored_fields</span> <span class="p">}</span>
         <span class="k">if</span> <span class="s1">&#39;attributes&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignored_fields</span><span class="p">:</span>
             <span class="n">a_fields</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filter_dict</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">attributes</span><span class="p">,</span> <span class="n">ignored_attrs</span><span class="p">)</span>
             <span class="n">b_fields</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filter_dict</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">attributes</span><span class="p">,</span> <span class="n">ignored_attrs</span><span class="p">)</span>
@@ -1763,17 +1819,20 @@
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: update-docs-introduce-api-v1
+        v: update-api-docs-fix-docstrings
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
         <dl>
             <dt>Tags</dt>
             <dd><a href="../../../v0.2.2/index.html">v0.2.2</a></dd>
+            <dd><a href="../../../v0.2.3/index.html">v0.2.3</a></dd>
         </dl>
         <dl>
             <dt>Branches</dt>
-            <dd><a href="../../../update-docs-introduce-api-v1/_modules/datumaro/components/operations.html">update-docs-introduce-api-v1</a></dd>
+            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/index.html">revert-19-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/index.html">revert-20-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../update-api-docs-fix-docstrings/_modules/datumaro/components/operations.html">update-api-docs-fix-docstrings</a></dd>
         </dl>
     </div>
 </div><script>

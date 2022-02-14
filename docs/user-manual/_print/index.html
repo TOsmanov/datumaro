@@ -126,7 +126,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.cc34814b5844aa8bcc2b12aa59764844.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -611,11 +611,7 @@ python datum.py --help
 <span style="color:#ce5c00;font-weight:bold">...</span>
 <span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">path</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#000;font-weight:bold">)</span>
 <span style="color:#ce5c00;font-weight:bold">...</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../../api/api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.import_from">dm.Dataset.import_from</a></li>
-</ul>
-<h3 id="glossary">Glossary</h3>
+</code></pre></div><h3 id="glossary">Glossary</h3>
 <ul>
 <li>
 <p>Basic concepts:</p>
@@ -1966,7 +1962,7 @@ You can find examples of the expected model outputs in <a href="https://github.c
 </blockquote>
 <p>For OpenVINO models the output processing script would look like this:</p>
 <p>Classification scenario:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#ce5c00;font-weight:bold">*</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
 <span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.util.annotation_util</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">softmax</span>
 
 <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">process_outputs</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">inputs</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">outputs</span><span style="color:#000;font-weight:bold">):</span>
@@ -1974,15 +1970,14 @@ You can find examples of the expected model outputs in <a href="https://github.c
     <span style="color:#8f5902;font-style:italic"># outputs = model output, logits, shape = (N, n_classes)</span>
     <span style="color:#8f5902;font-style:italic"># results = conversion result, [ [ Annotation, ... ], ... ]</span>
     <span style="color:#000">results</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[]</span>
-    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#204a87">input</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">output</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#204a87">zip</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">inputs</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">outputs</span><span style="color:#000;font-weight:bold">):</span>
-        <span style="color:#000">input_height</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">input_width</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">input</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">shape</span><span style="color:#000;font-weight:bold">[:</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">]</span>
+    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">output</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">outputs</span><span style="color:#000;font-weight:bold">:</span>
         <span style="color:#000">confs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">softmax</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">output</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">])</span>
         <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">label</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">conf</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#204a87">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">confs</span><span style="color:#000;font-weight:bold">):</span>
-            <span style="color:#000">results</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Label</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">int</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">label</span><span style="color:#000;font-weight:bold">)),</span> <span style="color:#000">attributes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#39;score&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87">float</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">conf</span><span style="color:#000;font-weight:bold">)})</span>
+            <span style="color:#000">results</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Label</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">int</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">label</span><span style="color:#000;font-weight:bold">)),</span> <span style="color:#000">attributes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#39;score&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87">float</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">conf</span><span style="color:#000;font-weight:bold">)})</span>
 
     <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">results</span>
 </code></pre></div><p>Object Detection scenario:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#ce5c00;font-weight:bold">*</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
 
 <span style="color:#8f5902;font-style:italic"># return a significant number of output boxes to make multiple runs</span>
 <span style="color:#8f5902;font-style:italic"># statistically correct and meaningful</span>
@@ -1997,24 +1992,20 @@ You can find examples of the expected model outputs in <a href="https://github.c
         <span style="color:#000">input_height</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">input_width</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">input</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">shape</span><span style="color:#000;font-weight:bold">[:</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">]</span>
         <span style="color:#000">detections</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">output</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span>
         <span style="color:#000">image_results</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[]</span>
-        <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">i</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">det</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#204a87">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">detections</span><span style="color:#000;font-weight:bold">):</span>
+        <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">det</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">detections</span><span style="color:#000;font-weight:bold">:</span>
             <span style="color:#000">label</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">int</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">det</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">])</span>
             <span style="color:#000">conf</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">float</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">det</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">])</span>
             <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">max</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">int</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">det</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">input_width</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">)</span>
             <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">max</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">int</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">det</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">input_height</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">)</span>
             <span style="color:#000">w</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">min</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">int</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">det</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">input_width</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">x</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#000">input_width</span><span style="color:#000;font-weight:bold">)</span>
             <span style="color:#000">h</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">min</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">int</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">det</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">input_height</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">y</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#000">input_height</span><span style="color:#000;font-weight:bold">)</span>
-            <span style="color:#000">image_results</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">w</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">h</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#000">image_results</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">w</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">h</span><span style="color:#000;font-weight:bold">,</span>
                 <span style="color:#000">label</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">label</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">attributes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#39;score&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">conf</span><span style="color:#000;font-weight:bold">}</span> <span style="color:#000;font-weight:bold">))</span>
 
             <span style="color:#000">results</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">image_results</span><span style="color:#000;font-weight:bold">[:</span><span style="color:#000">max_det</span><span style="color:#000;font-weight:bold">])</span>
 
     <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">results</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../../api/api/components/components/datumaro.components.extractor.html">datumaro.components.extractor</a></li>
-</ul>
-
+</code></pre></div>
 </div>
 
 
@@ -2478,7 +2469,7 @@ datum model add <span style="color:#4e9a06">\
 </code></pre></div><p>Interpretation script for an OpenVINO detection model (<code>convert.py</code>):
 You can find OpenVINO model interpreter samples in
 <code>datumaro/plugins/openvino/samples</code> (<a href="../../../docs/plugins/openvino_plugin">instruction</a>).</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">datumaro.components.extractor</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#ce5c00;font-weight:bold">*</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
 
 <span style="color:#000">max_det</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">10</span>
 <span style="color:#000">conf_thresh</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">0.1</span>
@@ -2492,7 +2483,7 @@ You can find OpenVINO model interpreter samples in
         <span style="color:#000">input_height</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">input_width</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">input</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">shape</span><span style="color:#000;font-weight:bold">[:</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">]</span>
         <span style="color:#000">detections</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">output</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span>
         <span style="color:#000">image_results</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[]</span>
-        <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">i</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">det</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#204a87">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">detections</span><span style="color:#000;font-weight:bold">):</span>
+        <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">det</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">detections</span><span style="color:#000;font-weight:bold">:</span>
             <span style="color:#000">label</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">int</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">det</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">])</span>
             <span style="color:#000">conf</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">float</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">det</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">])</span>
             <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">conf</span> <span style="color:#ce5c00;font-weight:bold">&lt;=</span> <span style="color:#000">conf_thresh</span><span style="color:#000;font-weight:bold">:</span>
@@ -2502,7 +2493,7 @@ You can find OpenVINO model interpreter samples in
             <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">max</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">int</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">det</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">input_height</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">)</span>
             <span style="color:#000">w</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">min</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">int</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">det</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">input_width</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">x</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#000">input_width</span><span style="color:#000;font-weight:bold">)</span>
             <span style="color:#000">h</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">min</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">int</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">det</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">input_height</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">y</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#000">input_height</span><span style="color:#000;font-weight:bold">)</span>
-            <span style="color:#000">image_results</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">w</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">h</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#000">image_results</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Bbox</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">w</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">h</span><span style="color:#000;font-weight:bold">,</span>
                 <span style="color:#000">label</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">label</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">attributes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#39;score&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">conf</span><span style="color:#000;font-weight:bold">}</span> <span style="color:#000;font-weight:bold">))</span>
 
             <span style="color:#000">results</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">image_results</span><span style="color:#000;font-weight:bold">[:</span><span style="color:#000">max_det</span><span style="color:#000;font-weight:bold">])</span>
@@ -2512,15 +2503,11 @@ You can find OpenVINO model interpreter samples in
 <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">get_categories</span><span style="color:#000;font-weight:bold">():</span>
     <span style="color:#8f5902;font-style:italic"># Optionally, provide output categories - label map etc.</span>
     <span style="color:#8f5902;font-style:italic"># Example:</span>
-    <span style="color:#000">label_categories</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LabelCategories</span><span style="color:#000;font-weight:bold">()</span>
+    <span style="color:#000">label_categories</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">LabelCategories</span><span style="color:#000;font-weight:bold">()</span>
     <span style="color:#000">label_categories</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;person&#39;</span><span style="color:#000;font-weight:bold">)</span>
     <span style="color:#000">label_categories</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;car&#39;</span><span style="color:#000;font-weight:bold">)</span>
-    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">{</span> <span style="color:#000">AnnotationType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">label</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">label_categories</span> <span style="color:#000;font-weight:bold">}</span>
-</code></pre></div><p><em>Links to API documentation:</em></p>
-<ul>
-<li><a href="../../../api/api/components/components/datumaro.components.extractor.html">datumaro.components.extractor</a></li>
-</ul>
-<h3 id="remove-models-a-idmodel-removea">Remove Models <a id="model-remove"></a></h3>
+    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">{</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">AnnotationType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">label</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">label_categories</span> <span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h3 id="remove-models-a-idmodel-removea">Remove Models <a id="model-remove"></a></h3>
 <p>To remove a model from a project, use the <code>datum model remove</code> command.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum model remove <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-p PROJECT_DIR<span style="color:#ce5c00;font-weight:bold">]</span> name
@@ -3316,146 +3303,501 @@ option to print parameter info.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create &lt;...&gt;
 datum import &lt;...&gt; -n source-1
-datum transform -t rename source-1 -- -e <span style="color:#4e9a06">&#39;|frame_(\d+)|\\1|&#39;</span>
+datum transform -t rename source-1 -- -e <span style="color:#4e9a06">&#39;|^frame_||&#39;</span>
 </code></pre></div><h4 id="built-in-transforms-a-idbuiltin-transformsa">Built-in transforms <a id="builtin-transforms"></a></h4>
 <p>Basic dataset item manipulations:</p>
 <ul>
-<li><code>rename</code> - Renames dataset items by regular expression</li>
-<li><code>id_from_image_name</code> - Renames dataset items to their image filenames</li>
-<li><code>reindex</code> - Renames dataset items with numbers</li>
-<li><code>ndr</code> - Removes duplicated images from dataset</li>
-<li><code>relevancy_sampler</code> - Leaves only the most important images
+<li><a href="#rename-transform"><code>rename</code></a> - Renames dataset items by regular expression</li>
+<li><a href="#id_from_image_name-transform"><code>id_from_image_name</code></a> - Renames dataset
+items to their image filenames</li>
+<li><a href="#reindex-transform"><code>reindex</code></a> - Renames dataset items with numbers</li>
+<li><a href="#ndr-transform"><code>ndr</code></a> - Removes duplicated images from dataset</li>
+<li><a href="#relevancy_sampler-transform"><code>relevancy_sampler</code></a> - Leaves only the most
+important images
 (requires model inference results)</li>
-<li><code>random_sampler</code> - Leaves no more than k items from the dataset randomly</li>
-<li><code>resize</code> - Resizes images and annotations in the dataset</li>
+<li><a href="#random_sampler-transform"><code>random_sampler</code></a> - Leaves no more than k items
+from the dataset randomly</li>
+<li><a href="#label_random_sampler-transform"><code>label_random_sampler</code></a> - Leaves at least
+k images with annotations per class</li>
+<li><a href="#resize-transform"><code>resize</code></a> - Resizes images and annotations in the dataset</li>
 </ul>
 <p>Subset manipulations:</p>
 <ul>
-<li><code>random_split</code> - Splits dataset into subsets randomly</li>
-<li><code>split</code> - Splits dataset into subsets for classification, detection,
-segmentation or re-identification</li>
-<li><code>map_subsets</code> - Renames and removes subsets</li>
+<li><a href="#random_split-transform"><code>random_split</code></a> - Splits dataset into subsets
+randomly</li>
+<li><a href="#split-transform"><code>split</code></a> - Splits dataset into subsets for classification,
+detection, segmentation or re-identification</li>
+<li><a href="#map_subsets-transform"><code>map_subsets</code></a> - Renames and removes subsets</li>
 </ul>
 <p>Annotation manipulations:</p>
 <ul>
-<li><code>remap_labels</code> - Renames, adds or removes labels in dataset</li>
-<li><code>project_labels</code> - Sets dataset labels to the requested sequence</li>
-<li><code>shapes_to_boxes</code> - Replaces spatial annotations with bounding boxes</li>
-<li><code>boxes_to_masks</code> - Converts bounding boxes to instance masks</li>
-<li><code>polygons_to_masks</code> - Converts polygons to instance masks</li>
-<li><code>masks_to_polygons</code> - Converts instance masks to polygons</li>
-<li><code>anns_to_labels</code> - Replaces annotations having labels with label annotations</li>
-<li><code>merge_instance_segments</code> - Merges grouped spatial annotations into a mask</li>
-<li><code>crop_covered_segments</code> - Removes occluded segments of covered masks</li>
-<li><code>bbox_value_decrement</code> - Subtracts 1 from bbox coordinates</li>
+<li><a href="#remap_labels-transform"><code>remap_labels</code></a> - Renames, adds or removes
+labels in dataset</li>
+<li><a href="#project_labels-transform"><code>project_labels</code></a> - Sets dataset labels to
+the requested sequence</li>
+<li><a href="#shapes_to_boxes-transform"><code>shapes_to_boxes</code></a> - Replaces spatial
+annotations with bounding boxes</li>
+<li><a href="#boxes_to_masks-transform"><code>boxes_to_masks</code></a> - Converts bounding boxes
+to instance masks</li>
+<li><a href="#polygons_to_masks-transform"><code>polygons_to_masks</code></a> - Converts polygons
+to instance masks</li>
+<li><a href="#masks_to_polygons-transform"><code>masks_to_polygons</code></a> - Converts instance
+masks to polygons</li>
+<li><a href="#anns_to_labels-transform"><code>anns_to_labels</code></a> - Replaces annotations having
+labels with label annotations</li>
+<li><a href="#merge_instance_segments-transform"><code>merge_instance_segments</code></a> - Merges
+grouped spatial annotations into a mask</li>
+<li><a href="#crop_covered_segments-transform"><code>crop_covered_segments</code></a> - Removes
+occluded segments of covered masks</li>
+<li><a href="#bbox_value_decrement-transform"><code>bbox_value_decrement</code></a> - Subtracts
+1 from bbox coordinates</li>
 </ul>
-<p>Examples:</p>
+<h5 id="rename-a-idrename-transforma"><code>rename</code> <a id="rename-transform"></a></h5>
+<p>Renames items in the dataset. Supports regular expressions.
+The first character in the expression is a delimiter for
+the pattern and replacement parts. Replacement part can also
+contain <code>str.format</code> replacement fields with the <code>item</code>
+(of type <code>DatasetItem</code>) object available.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rename <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-e REGEX<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
 <ul>
-<li>Split a dataset randomly to <code>train</code> and <code>test</code> subsets, ratio is 2:1</li>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+<li><code>-e</code>, <code>--regex</code> (string) - Regex for renaming in the form
+<code>&lt;sep&gt;&lt;search&gt;&lt;sep&gt;&lt;replacement&gt;&lt;sep&gt;</code></li>
 </ul>
+<p>Examples:
+Replace &lsquo;pattern&rsquo; with &lsquo;replacement&rsquo;:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t rename -- -e <span style="color:#4e9a06">&#39;|pattern|replacement|&#39;</span>
+</code></pre></div><p>Remove the <code>frame_</code> prefix from item ids:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t rename -- -e <span style="color:#4e9a06">&#39;|^frame_|\1|&#39;</span>
+</code></pre></div><p>Collect images from subdirectories into the base image directory using regex:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t rename -- -e <span style="color:#4e9a06">&#39;|^((.+[/\\])*)?(.+)$|\2|&#39;</span>
+</code></pre></div><p>Add subset prefix to images:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t rename -- -e <span style="color:#4e9a06">&#39;|(.*)|{item.subset}_\1|&#39;</span>
+</code></pre></div><h5 id="id_from_image_name-a-idid_from_image_name-transforma"><code>id_from_image_name</code> <a id="id_from_image_name-transform"></a></h5>
+<p>Renames items in the dataset using image file name (without extension).</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">id_from_image_name <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+</ul>
+<h5 id="reindex-a-idreindex-transforma"><code>reindex</code> <a id="reindex-transform"></a></h5>
+<p>Replaces dataset item IDs with sequential indices.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">reindex <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-s START<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+<li><code>-s</code>, <code>--start</code> (int) - Start value for item ids (default: 1)</li>
+</ul>
+<h5 id="ndr-a-idndr-transforma"><code>ndr</code> <a id="ndr-transform"></a></h5>
+<p>Removes near-duplicated images in subset.</p>
+<p>Remove duplicated images from a dataset. Keep at most <code>-k/--num_cut</code>
+resulting images.</p>
+<p>Available oversampling policies (the <code>-e</code> parameter):</p>
+<ul>
+<li><code>random</code> - sample from removed data randomly</li>
+<li><code>similarity</code> - sample from removed data with ascending similarity score</li>
+</ul>
+<p>Available undersampling policies (the <code>-u</code> parameter):</p>
+<ul>
+<li><code>uniform</code> - sample data with uniform distribution</li>
+<li><code>inverse</code> - sample data with reciprocal of the number of number of
+items with the same similarity</li>
+</ul>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ndr <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-w WORKING_SUBSET<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-d DUPLICATED_SUBSET<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-a <span style="color:#ce5c00;font-weight:bold">{</span>gradient<span style="color:#ce5c00;font-weight:bold">}]</span>
+  <span style="color:#ce5c00;font-weight:bold">[</span>-k NUM_CUT<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-e <span style="color:#ce5c00;font-weight:bold">{</span>random,similarity<span style="color:#ce5c00;font-weight:bold">}]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-u <span style="color:#ce5c00;font-weight:bold">{</span>uniform,inverse<span style="color:#ce5c00;font-weight:bold">}]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-s SEED<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+<li><code>-w</code>, <code>--working_subset</code> (str) - Name of the subset to operate
+(default: <code>None</code>)</li>
+<li><code>-d</code>, <code>--duplicated_subset</code> (str) - Name of the subset for the removed
+data after NDR runs (default: duplicated)</li>
+<li><code>-a</code>, <code>--algorithm</code> (one of: <code>gradient</code>) - Name of the algorithm to
+use (default: <code>gradient</code>)</li>
+<li><code>-k</code>, <code>--num_cut</code> (int) - Maximum output dataset size</li>
+<li><code>-e</code>, <code>--over_sample</code> (one of: <code>random</code>, <code>similarity</code>) - The policy to use
+when <code>num_cut</code> is bigger than result length (default: <code>random</code>)</li>
+<li><code>-u</code>, <code>--under_sample</code> (one of: <code>uniform</code>, <code>inverse</code>) - The policy to use
+when <code>num_cut</code> is smaller than result length (default: <code>uniform</code>)</li>
+<li><code>-s</code>, <code>--seed</code> (int) - Random seed</li>
+</ul>
+<p>Example: apply NDR, return no more than 100 images</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t ndr -- <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  --working_subset train
+  --algorithm gradient
+  --num_cut <span style="color:#0000cf;font-weight:bold">100</span>
+  --over_sample random
+  --under_sample uniform
+</code></pre></div><h5 id="relevancy_sampler-a-idrelevancy_sampler-transforma"><code>relevancy_sampler</code> <a id="relevancy_sampler-transform"></a></h5>
+<p>Sampler that analyzes model inference results on the dataset
+and picks the most relevant samples for training.</p>
+<p>Creates a dataset from the <code>-k/--count</code> hardest items for a model.
+The whole dataset or a single subset will be split into the <code>sampled</code>
+and <code>unsampled</code> subsets based on the model confidence. The dataset
+<strong>must</strong> contain model confidence values in the <code>scores</code> attributes
+of annotations.</p>
+<p>There are five methods of sampling (the <code>-m/--method</code> option):</p>
+<ul>
+<li><code>topk</code> - Return the k items with the highest uncertainty data</li>
+<li><code>lowk</code> - Return the k items with the lowest uncertainty data</li>
+<li><code>randk</code> - Return random k items</li>
+<li><code>mixk</code> - Return a half using topk, and the other half using lowk method</li>
+<li><code>randtopk</code> - Select 3*k items randomly, and return the topk among them</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>Each image&rsquo;s inference result must contain the probability for
+all classes (in the <code>scores</code> attribute).</li>
+<li>Requesting a sample larger than the number of all images will return
+all images.</li>
+</ul>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">relevancy_sampler <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> -k COUNT <span style="color:#ce5c00;font-weight:bold">[</span>-a <span style="color:#ce5c00;font-weight:bold">{</span>entropy<span style="color:#ce5c00;font-weight:bold">}]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-i INPUT_SUBSET<span style="color:#ce5c00;font-weight:bold">]</span>
+  <span style="color:#ce5c00;font-weight:bold">[</span>-o SAMPLED_SUBSET<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-u UNSAMPLED_SUBSET<span style="color:#ce5c00;font-weight:bold">]</span>
+  <span style="color:#ce5c00;font-weight:bold">[</span>-m <span style="color:#ce5c00;font-weight:bold">{</span>topk,lowk,randk,mixk,randtopk<span style="color:#ce5c00;font-weight:bold">}]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-d OUTPUT_FILE<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+<li><code>-k</code>, <code>--count</code> (int) - Number of items to sample</li>
+<li><code>-a</code>, <code>--algorithm</code> (one of: <code>entropy</code>) - Sampling
+algorithm (default: <code>entropy</code>)</li>
+<li><code>-i</code>, <code>--input_subset</code> (str) - Subset name to select sample
+from (default: <code>None</code>)</li>
+<li><code>-o</code>, <code>--sampled_subset</code> (str) - Subset name to put sampled data
+to (default: <code>sample</code>)</li>
+<li><code>-u</code>, <code>--unsampled_subset</code> (str) - Subset name to put the
+rest data to (default: <code>unsampled</code>)</li>
+<li><code>-m</code>, <code>--sampling_method</code> (one of: <code>topk</code>, <code>lowk</code>, <code>randk</code>, <code>mixk</code>,
+<code>randtopk</code>) - Sampling method (default: <code>topk</code>)</li>
+<li><code>-d</code>, <code>--output_file</code> (path) - A <code>.csv</code> file path to dump sampling results</li>
+</ul>
+<p>Examples:
+Select the most relevant data subset of 20 images
+based on model certainty, put the result into <code>sample</code> subset
+and put all the rest into <code>unsampled</code> subset, use <code>train</code> subset
+as input. The dataset <strong>must</strong> contain model confidence values in the <code>scores</code>
+attributes of annotations.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t relevancy_sampler -- <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  --algorithm entropy <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  --subset_name train <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  --sample_name sample <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  --unsampled_name unsampled <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  --sampling_method topk -k <span style="color:#0000cf;font-weight:bold">20</span>
+</code></pre></div><h5 id="random_sampler-a-idrandom_sampler-transforma"><code>random_sampler</code> <a id="random_sampler-transform"></a></h5>
+<p>Sampler that keeps no more than required number of items in the dataset.</p>
+<p>Notes:</p>
+<ul>
+<li>Items are selected uniformly (tries to keep original item distribution
+by subsets)</li>
+<li>Requesting a sample larger than the number of all images will return
+all images</li>
+</ul>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">random_sampler <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> -k COUNT <span style="color:#ce5c00;font-weight:bold">[</span>-s SUBSET<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--seed SEED<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+<li><code>-k</code>, <code>--count</code> (int) - Maximum number of items to sample</li>
+<li><code>-s</code>, <code>--subset</code> (str) - Limit changes to this subset
+(default: affect all dataset)</li>
+<li><code>--seed</code> (int) - Initial value for random number generator</li>
+</ul>
+<p>Examples:
+Select subset of 20 images randomly</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t random_sampler -- -k <span style="color:#0000cf;font-weight:bold">20</span>
+</code></pre></div><p>Select subset of 20 images, modify only <code>train</code> subset</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t random_sampler -- -k <span style="color:#0000cf;font-weight:bold">20</span> -s train
+</code></pre></div><h5 id="random_label_sampler-a-idrandom_label_sampler-transforma"><code>random_label_sampler</code> <a id="random_label_sampler-transform"></a></h5>
+<p>Sampler that keeps at least the required number of annotations of
+each class in the dataset for each subset separately.</p>
+<p>Consider using the &ldquo;stats&rdquo; command to get class distribution in the dataset.</p>
+<p>Notes:</p>
+<ul>
+<li>Items can contain annotations of several selected classes
+(e.g. 3 bounding boxes per image). The number of annotations in the
+resulting dataset varies between <code>max(class counts)</code> and <code>sum(class counts)</code></li>
+<li>If the input dataset does not has enough class annotations, the result
+will contain only what is available</li>
+<li>Items are selected uniformly</li>
+<li>For reasons above, the resulting class distribution in the dataset may
+not be the same as requested</li>
+<li>The resulting dataset will only keep annotations for classes with
+specified <code>count</code> &gt; 0</li>
+</ul>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">label_random_sampler <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> -k COUNT <span style="color:#ce5c00;font-weight:bold">[</span>-l LABEL_COUNTS<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--seed SEED<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+<li><code>-k</code>, <code>--count</code> (int) - Minimum number of annotations of each class</li>
+<li><code>-l</code>, <code>--label</code> (str; repeatable) - Minimum number of annotations of
+a specific class. Overrides the <code>-k/--count</code> setting for the class.
+The format is <code>&lt;label_name&gt;:&lt;count&gt;</code></li>
+<li><code>--seed</code> (int) - Initial value for random number generator</li>
+</ul>
+<p>Examples:
+Select a dataset with at least 10 images of each class:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t label_random_sampler -- -k <span style="color:#0000cf;font-weight:bold">10</span>
+</code></pre></div><p>Select a dataset with at least 20 <code>cat</code> images, 5 <code>dog</code>, 0 <code>car</code> and 10 of each
+unmentioned class:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t label_random_sampler -- <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -l cat:20 <span style="color:#4e9a06">\ </span><span style="color:#8f5902;font-style:italic"># keep 20 images with cats</span>
+  -l dog:5 <span style="color:#4e9a06">\ </span><span style="color:#8f5902;font-style:italic"># keep 5 images with dogs</span>
+  -l car:0 <span style="color:#4e9a06">\ </span><span style="color:#8f5902;font-style:italic"># remove car annotations</span>
+  -k <span style="color:#0000cf;font-weight:bold">10</span> <span style="color:#8f5902;font-style:italic"># for remaining classes</span>
+</code></pre></div><h5 id="resize-a-idresize-transforma"><code>resize</code> <a id="resize-transform"></a></h5>
+<p>Resizes images and annotations in the dataset to the specified size.
+Supports upscaling, downscaling and mixed variants.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">resize <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-dw WIDTH<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-dh HEIGHT<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+<li><code>-dw</code>, <code>--width</code> (int) - Destination image width</li>
+<li><code>-dh</code>, <code>--height</code> (int) - Destination image height</li>
+</ul>
+<p>Examples:
+Resize all images to 256x256 size</p>
+<pre><code>datum transform -t resize -- -dw 256 -dh 256
+</code></pre><h5 id="random_split-a-idrandom_split-transforma"><code>random_split</code> <a id="random_split-transform"></a></h5>
+<p>Joins all subsets into one and splits the result into few parts.
+It is expected that item ids are unique and subset ratios sum up to 1.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">random_split <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-s SPLITS<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--seed SEED<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+<li><code>-s</code>, <code>--subset</code> (str, repeatable) - Subsets in the form: &lsquo;<subset>:<ratio>&rsquo;
+(repeatable, default: {<code>train</code>: 0.67, <code>test</code>: 0.33})</li>
+<li><code>--seed</code> (int) - Random seed</li>
+</ul>
+<p>Example:
+Split a dataset randomly to <code>train</code> and <code>test</code> subsets, ratio is 2:1</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t random_split -- --subset train:.67 --subset test:.33
-</code></pre></div><ul>
-<li>Split a dataset for a specific task. The tasks supported are
-classification, detection, segmentation and re-identification.</li>
+</code></pre></div><h5 id="split-a-idsplit-transforma"><code>split</code> <a id="split-transform"></a></h5>
+<p>Splits a dataset for model training, using task information:</p>
+<ul>
+<li>
+<p>classification splits
+Splits dataset into subsets (train/val/test) in class-wise manner.
+Splits dataset images in the specified ratio, keeping the initial
+class distribution.</p>
+</li>
+<li>
+<p>detection &amp; segmentation splits
+Each image can have multiple object annotations - bbox, mask, polygon.
+Since an image shouldn&rsquo;t be included in multiple subsets at the same time,
+and image annotations shouldn&rsquo;t be split, in general, dataset annotations are
+unlikely to be split exactly in the specified ratio.
+This split tries to split dataset images as close as possible to the specified
+ratio, keeping the initial class distribution.</p>
+</li>
+<li>
+<p>reidentification splits
+In this task, the test set should consist of images of unseen people or
+objects during the training phase.
+This function splits a dataset in the following way:</p>
+</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t split -- <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -t classification --subset train:.5 --subset val:.2 --subset test:.3
-
-datum transform -t split -- <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -t detection --subset train:.5 --subset val:.2 --subset test:.3
-
-datum transform -t split -- <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -t segmentation --subset train:.5 --subset val:.2 --subset test:.3
-
-datum transform -t split -- <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -t reid --subset train:.5 --subset val:.2 --subset test:.3 <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  --query .5
-</code></pre></div><ul>
-<li>Convert spatial annotations between each other</li>
+<ol>
+<li>Splits the dataset into <code>train + val</code> and <code>test</code> sets
+based on person or object ID.</li>
+<li>Splits <code>test</code> set into <code>test-gallery</code> and <code>test-query</code> sets
+in class-wise manner.</li>
+<li>Splits the <code>train + val</code> set into <code>train</code> and <code>val</code> sets
+in the same way.
+The final subsets would be <code>train</code>, <code>val</code>, <code>test-gallery</code> and <code>test-query</code>.</li>
+</ol>
+<p>Notes:</p>
+<ul>
+<li>Each image is expected to have only one <code>Annotation</code>. Unlabeled or
+multi-labeled images will be split into subsets randomly.</li>
+<li>If Labels also have attributes, also splits by attribute values.</li>
+<li>If there is not enough images in some class or attributes group,
+the split ratio can&rsquo;t be guaranteed.</li>
 </ul>
+<p>In reidentification task,</p>
+<ul>
+<li>Object ID can be described by Label, or by attribute (<code>--attr</code> parameter)</li>
+<li>The splits of the test set are controlled by <code>--query</code> parameter
+Gallery ratio would be <code>1.0 - query</code>.</li>
+</ul>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">split <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-t <span style="color:#ce5c00;font-weight:bold">{</span>classification,detection,segmentation,reid<span style="color:#ce5c00;font-weight:bold">}]</span>
+  <span style="color:#ce5c00;font-weight:bold">[</span>-s SPLITS<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--query QUERY<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--attr ATTR_FOR_ID<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--seed SEED<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+<li><code>-t</code>, <code>--task</code> (one of: <code>classification</code>, <code>detection</code>, <code>segmentation</code>,
+<code>reid</code>) - Dataset task (default: <code>classification</code>)</li>
+<li><code>-s</code>, <code>--subset</code> (str; repeatable) - Subsets in the form: &lsquo;<subset>:<ratio>&rsquo;
+(default: {<code>train</code>: 0.5, <code>val</code>: 0.2, <code>test</code>: 0.3})</li>
+<li><code>--query</code> (float) - Query ratio in the test set (default: 0.5)</li>
+<li><code>--attr</code> (str) - Attribute name representing the ID (default: use label)</li>
+<li><code>--seed</code>(int) - Random seed</li>
+</ul>
+<p>Example:</p>
+<pre><code>datum transform -t split -- -t classification \
+  --subset train:.5 --subset val:.2 --subset test:.3
+
+datum transform -t split -- -t detection \
+  --subset train:.5 --subset val:.2 --subset test:.3
+
+datum transform -t split -- -t segmentation \
+  --subset train:.5 --subset val:.2 --subset test:.3
+
+datum transform -t split -- -t reid \
+  --subset train:.5 --subset val:.2 --subset test:.3 --query .5
+</code></pre><p>Example: use <code>person_id</code> attribute for splitting</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t split -- -t detection --attr person_id
+</code></pre></div><h5 id="map_subsets-a-idmap_subsets-transforma"><code>map_subsets</code> <a id="map_subsets-transform"></a></h5>
+<p>Renames subsets in the dataset.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">map_subsets <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-s MAPPING<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+<li><code>-s</code>, <code>--subset</code> (str; repeatable) - Subset mapping of the form: <code>src:dst</code></li>
+</ul>
+<h5 id="remap_labels-a-idremap_labels-transforma"><code>remap_labels</code> <a id="remap_labels-transform"></a></h5>
+<p>Changes labels in the dataset.</p>
+<p>A label can be:</p>
+<ul>
+<li>renamed (and joined with existing) -
+when <code>--label &lt;old_name&gt;:&lt;new_name&gt;</code> is specified</li>
+<li>deleted - when <code>--label &lt;name&gt;:</code> is specified, or default action is <code>delete</code>
+and the label is not mentioned in the list. When a label
+is deleted, all the associated annotations are removed</li>
+<li>kept unchanged - when <code>--label &lt;name&gt;:&lt;name&gt;</code> is specified,
+or default action is <code>keep</code> and the label is not mentioned in the list
+Annotations with no label are managed by the default action policy.</li>
+</ul>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">remap_labels <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-l MAPPING<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--default <span style="color:#ce5c00;font-weight:bold">{</span>keep,delete<span style="color:#ce5c00;font-weight:bold">}]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+<li><code>-l</code>, <code>--label</code> (str; repeatable) - Label in the form of: <code>&lt;src&gt;:&lt;dst&gt;</code></li>
+<li><code>--default</code> (one of: <code>keep</code>, <code>delete</code>) - Action for unspecified labels
+(default: <code>keep</code>)</li>
+</ul>
+<p>Examples:
+Remove the <code>person</code> label (and corresponding annotations):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t remap_labels -- -l person: --default keep
+</code></pre></div><p>Rename <code>person</code> to <code>pedestrian</code> and <code>human</code> to <code>pedestrian</code>, join annotations
+that had different classes under the same class id for <code>pedestrian</code>,
+don&rsquo;t touch other classes:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t remap_labels -- <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -l person:pedestrian -l human:pedestrian --default keep
+</code></pre></div><p>Rename <code>person</code> to <code>car</code> and <code>cat</code> to <code>dog</code>, keep <code>bus</code>, remove others:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t remap_labels -- <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -l person:car -l bus:bus -l cat:dog --default delete
+</code></pre></div><h5 id="project_labels-a-idproject_labels-transforma"><code>project_labels</code> <a id="project_labels-transform"></a></h5>
+<p>Changes the order of labels in the dataset from the existing
+to the desired one, removes unknown labels and adds new labels.
+Updates or removes the corresponding annotations.</p>
+<p>Labels are matched by names (case dependent). Parent labels are
+only kept if they are present in the resulting set of labels.
+If new labels are added, and the dataset has mask colors defined,
+new labels will obtain generated colors.</p>
+<p>Useful for merging similar datasets, whose labels need to be aligned.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">project_labels <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-l DST_LABELS<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+<li><code>-l</code>, <code>--label</code> (str; repeatable) - Label name (ordered)</li>
+</ul>
+<p>Examples:
+Set dataset labels to [<code>person</code>, <code>cat</code>, <code>dog</code>], remove others, add missing.
+Original labels (for example): <code>cat</code>, <code>dog</code>, <code>elephant</code>, <code>human</code>.
+New labels: <code>person</code> (added), <code>cat</code> (kept), <code>dog</code> (kept).</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t project_labels -- -l person -l cat -l dog
+</code></pre></div><h5 id="shapes_to_boxes-a-idshapes_to_boxes-transforma"><code>shapes_to_boxes</code> <a id="shapes_to_boxes-transform"></a></h5>
+<p>Converts spatial annotations (masks, polygons, polylines, points)
+to enclosing bounding boxes.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">shapes_to_boxes <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+</ul>
+<p>Example:
+Convert spatial annotations between each other</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t boxes_to_masks
 datum transform -t masks_to_polygons
 datum transform -t polygons_to_masks
 datum transform -t shapes_to_boxes
-</code></pre></div><ul>
-<li>Set dataset labels to {<code>person</code>, <code>cat</code>, <code>dog</code>}, remove others, add missing.
-Original labels (can be any): <code>cat</code>, <code>dog</code>, <code>elephant</code>, <code>human</code>
-New labels: <code>person</code> (added), <code>cat</code> (kept), <code>dog</code> (kept)</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t project_labels -- -l person -l cat -l dog
-</code></pre></div><ul>
-<li>Remap dataset labels, <code>person</code> to <code>car</code> and <code>cat</code> to <code>dog</code>,
-keep <code>bus</code>, remove others</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t remap_labels -- <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -l person:car -l bus:bus -l cat:dog <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  --default delete
-</code></pre></div><ul>
-<li>Rename dataset items by a regular expression
+</code></pre></div><h5 id="boxes_to_masks-a-idboxes_to_masks-transforma"><code>boxes_to_masks</code> <a id="boxes_to_masks-transform"></a></h5>
+<p>Converts bounding boxes to masks.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">boxes_to_masks <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
 <ul>
-<li>Replace <code>pattern</code> with <code>replacement</code></li>
-<li>Remove <code>frame_</code> from item ids</li>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 </ul>
-</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t rename -- -e <span style="color:#4e9a06">&#39;|pattern|replacement|&#39;</span>
-datum transform -t rename -- -e <span style="color:#4e9a06">&#39;|frame_(\d+)|\\1|&#39;</span>
-</code></pre></div><ul>
-<li>Create a dataset with data subset selected randomly. Tries to keep
-original item distribution by subsets</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t random_sampler -- -k <span style="color:#0000cf;font-weight:bold">1000</span>
-</code></pre></div><ul>
-<li>Create a dataset from K the most hard items for a model. The dataset will
-be split into the <code>sampled</code> and <code>unsampled</code> subsets, based on the model
-confidence, which is stored in the <code>scores</code> annotation attribute.</li>
-</ul>
-<p>There are five methods of sampling (the <code>-m/--method</code> option):</p>
+<h5 id="polygons_to_masks-a-idpolygons_to_masks-transforma"><code>polygons_to_masks</code> <a id="polygons_to_masks-transform"></a></h5>
+<p>Converts polygons to masks.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">polygons_to_masks <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
 <ul>
-<li><code>topk</code> - Return the k with high uncertainty data</li>
-<li><code>lowk</code> - Return the k with low uncertainty data</li>
-<li><code>randk</code> - Return the random k data</li>
-<li><code>mixk</code> - Return half to topk method and the rest to lowk method</li>
-<li><code>randtopk</code> - First, select 3 times the number of k randomly, and return
-the topk among them.</li>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t relevancy_sampler -- <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -a entropy <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -i train <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -o sampled <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -u unsampled <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -m topk <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -k <span style="color:#0000cf;font-weight:bold">20</span>
-</code></pre></div><ul>
-<li>Remove duplicated images from a dataset. Keep at most N resulting images.
+<h5 id="masks_to_polygons-a-idmasks_to_polygons-transforma"><code>masks_to_polygons</code> <a id="masks_to_polygons-transform"></a></h5>
+<p>Converts masks to polygons.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">masks_to_polygons <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
 <ul>
-<li>Available sampling options (the <code>-e</code> parameter):
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+</ul>
+<h5 id="anns_to_labels-a-idanns_to_labels-transforma"><code>anns_to_labels</code> <a id="anns_to_labels-transform"></a></h5>
+<p>Collects all labels from annotations (of all types) and transforms
+them into a set of annotations of type <code>Label</code></p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">anns_to_labels <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
 <ul>
-<li><code>random</code> - sample from removed data randomly</li>
-<li><code>similarity</code> - sample from removed data with ascending</li>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 </ul>
-</li>
-<li>Available sampling methods (the <code>-u</code> parameter):
+<h5 id="merge_instance_segments-a-idmerge_instance_segments-transforma"><code>merge_instance_segments</code> <a id="merge_instance_segments-transform"></a></h5>
+<p>Replaces instance masks and, optionally, polygons with a single mask.
+A group of annotations with the same group id is considered an &ldquo;instance&rdquo;.
+The largest annotation in the group is considered the group &ldquo;head&rdquo;, so the
+resulting mask takes properties from that annotation.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">merge_instance_segments <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--include-polygons<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
 <ul>
-<li><code>uniform</code> - sample data with uniform distribution</li>
-<li><code>inverse</code> - sample data with reciprocal of the number</li>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+<li><code>--include-polygons</code> (flag) - Include polygons</li>
 </ul>
-</li>
+<h5 id="crop_covered_segments-a-idcrop_covered_segments-transforma"><code>crop_covered_segments</code> <a id="crop_covered_segments-transform"></a></h5>
+<p>Sorts polygons and masks (&ldquo;segments&rdquo;) according to <code>z_order</code>,
+crops covered areas of underlying segments. If a segment is split
+into several independent parts by the segments above, produces
+the corresponding number of separate annotations joined into a group.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">crop_covered_segments <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 </ul>
-</li>
+<h5 id="bbox_value_decrement-a-idbbox_value_decrement-transforma"><code>bbox_value_decrement</code> <a id="bbox_value_decrement-transform"></a></h5>
+<p>Subtracts one from the coordinates of bounding boxes</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">bbox_values_decrement <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t ndr -- <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -w train <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -a gradient <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -k <span style="color:#0000cf;font-weight:bold">100</span> <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -e random <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -u uniform
-</code></pre></div><ul>
-<li>Resize dataset images and annotations. Supports upscaling, downscaling
-and mixed variants.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t resize -- -dw <span style="color:#0000cf;font-weight:bold">256</span> -dh <span style="color:#0000cf;font-weight:bold">256</span>
-</code></pre></div>
+
 </div>
 
 

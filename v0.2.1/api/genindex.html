@@ -6,6 +6,7 @@
   <title>Index &mdash; Datumaro API documentation 0.2.3 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -16,6 +17,8 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -37,6 +40,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="api/datumaro.html">Datumaro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/cli/cli.html">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/components/components.html">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/plugins/plugins.html">Plugins</a></li>
@@ -159,6 +163,8 @@
         <li><a href="api/components/components/datumaro.components.config.html#datumaro.components.config.Config.__eq__">(datumaro.components.config.Config method)</a>
 </li>
         <li><a href="api/components/components/datumaro.components.extractor.html#datumaro.components.extractor.DatasetItem.__eq__">(datumaro.components.extractor.DatasetItem method)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.extractor_tfds.html#datumaro.components.extractor_tfds.TfdsDatasetMetadata.__eq__">(datumaro.components.extractor_tfds.TfdsDatasetMetadata method)</a>
 </li>
         <li><a href="api/components/components/datumaro.components.media.html#datumaro.components.media.Image.__eq__">(datumaro.components.media.Image method)</a>
 </li>
@@ -330,6 +336,14 @@
 </li>
         <li><a href="api/components/components/datumaro.components.extractor.html#datumaro.components.extractor.Transform.__init__">(datumaro.components.extractor.Transform method)</a>
 </li>
+        <li><a href="api/components/components/datumaro.components.extractor_tfds.html#datumaro.components.extractor_tfds.TfdsDatasetMetadata.__init__">(datumaro.components.extractor_tfds.TfdsDatasetMetadata method)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetectionContext.__init__">(datumaro.components.format_detection.FormatDetectionContext method)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatRequirementsUnmet.__init__">(datumaro.components.format_detection.FormatRequirementsUnmet method)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.RejectionCallback.__init__">(datumaro.components.format_detection.RejectionCallback method)</a>
+</li>
         <li><a href="api/components/components/datumaro.components.launcher.html#datumaro.components.launcher.Launcher.__init__">(datumaro.components.launcher.Launcher method)</a>
 </li>
         <li><a href="api/components/components/datumaro.components.launcher.html#datumaro.components.launcher.ModelTransform.__init__">(datumaro.components.launcher.ModelTransform method)</a>
@@ -343,6 +357,10 @@
         <li><a href="api/components/components/datumaro.components.media.html#datumaro.components.media.Video.__init__">(datumaro.components.media.Video method)</a>
 </li>
         <li><a href="api/components/components/datumaro.components.media.html#datumaro.components.media.VideoFrame.__init__">(datumaro.components.media.VideoFrame method)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.media_manager.html#datumaro.components.media_manager.MediaManager.__init__">(datumaro.components.media_manager.MediaManager method)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations._MeanStdCounter.__init__">(datumaro.components.operations._MeanStdCounter method)</a>
 </li>
         <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations._ShapeMatcher.__init__">(datumaro.components.operations._ShapeMatcher method)</a>
 </li>
@@ -390,9 +408,11 @@
 </li>
         <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.PolygonMerger.__init__">(datumaro.components.operations.PolygonMerger method)</a>
 </li>
-        <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.ac.html#datumaro.plugins.accuracy_checker_plugin.details.ac.GenericAcLauncher.__init__">(datumaro.plugins.accuracy_checker_plugin.details.ac.GenericAcLauncher method)</a>
+        <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.Project.__init__">(datumaro.components.project.Project method)</a>
 </li>
-        <li><a href="api/plugins/accuracy_checker_plugin/datumaro.plugins.accuracy_checker_plugin.launcher.html#datumaro.plugins.accuracy_checker_plugin.launcher.AcLauncher.__init__">(datumaro.plugins.accuracy_checker_plugin.launcher.AcLauncher method)</a>
+        <li><a href="api/plugins/accuracy_checker_plugin/datumaro.plugins.accuracy_checker_plugin.launcher.html#datumaro.plugins.accuracy_checker_plugin.ac_launcher.AcLauncher.__init__">(datumaro.plugins.accuracy_checker_plugin.ac_launcher.AcLauncher method)</a>
+</li>
+        <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.ac.html#datumaro.plugins.accuracy_checker_plugin.details.ac.GenericAcLauncher.__init__">(datumaro.plugins.accuracy_checker_plugin.details.ac.GenericAcLauncher method)</a>
 </li>
         <li><a href="api/plugins/plugins/datumaro.plugins.ade20k2017_format.html#datumaro.plugins.ade20k2017_format.Ade20k2017Extractor.__init__">(datumaro.plugins.ade20k2017_format.Ade20k2017Extractor method)</a>
 </li>
@@ -504,11 +524,25 @@
 </li>
         <li><a href="api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.__init__">(datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher method)</a>
 </li>
+        <li><a href="api/plugins/sampler/algorithm/datumaro.plugins.sampler.algorithm.entropy.html#datumaro.plugins.sampler.algorithm.entropy.SampleEntropy.__init__">(datumaro.plugins.sampler.algorithm.entropy.SampleEntropy method)</a>
+</li>
         <li><a href="api/plugins/sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.converter.html#datumaro.plugins.sly_pointcloud_format.converter.SuperviselyPointCloudConverter.__init__">(datumaro.plugins.sly_pointcloud_format.converter.SuperviselyPointCloudConverter method)</a>
 </li>
         <li><a href="api/plugins/sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.extractor.html#datumaro.plugins.sly_pointcloud_format.extractor.SuperviselyPointCloudExtractor.__init__">(datumaro.plugins.sly_pointcloud_format.extractor.SuperviselyPointCloudExtractor method)</a>
 </li>
+        <li><a href="api/plugins/plugins/datumaro.plugins.splitter.html#datumaro.plugins.splitter._ClassificationSplit.__init__">(datumaro.plugins.splitter._ClassificationSplit method)</a>
+</li>
+        <li><a href="api/plugins/plugins/datumaro.plugins.splitter.html#datumaro.plugins.splitter._InstanceSpecificSplit.__init__">(datumaro.plugins.splitter._InstanceSpecificSplit method)</a>
+</li>
+        <li><a href="api/plugins/plugins/datumaro.plugins.splitter.html#datumaro.plugins.splitter._ReidentificationSplit.__init__">(datumaro.plugins.splitter._ReidentificationSplit method)</a>
+</li>
+        <li><a href="api/plugins/plugins/datumaro.plugins.splitter.html#datumaro.plugins.splitter._TaskSpecificSplit.__init__">(datumaro.plugins.splitter._TaskSpecificSplit method)</a>
+</li>
         <li><a href="api/plugins/plugins/datumaro.plugins.splitter.html#datumaro.plugins.splitter.Split.__init__">(datumaro.plugins.splitter.Split method)</a>
+</li>
+        <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.converter.html#datumaro.plugins.tf_detection_api_format.converter.TfDetectionApiConverter.__init__">(datumaro.plugins.tf_detection_api_format.converter.TfDetectionApiConverter method)</a>
+</li>
+        <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.extractor.html#datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiExtractor.__init__">(datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiExtractor method)</a>
 </li>
         <li><a href="api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.MapSubsets.__init__">(datumaro.plugins.transforms.MapSubsets method)</a>
 </li>
@@ -675,21 +709,43 @@
         <li><a href="api/plugins/yolo_format/datumaro.plugins.yolo_format.extractor.html#datumaro.plugins.yolo_format.extractor.YoloExtractor.Subset.__len__">(datumaro.plugins.yolo_format.extractor.YoloExtractor.Subset method)</a>
 </li>
       </ul></li>
+      <li><a href="api/plugins/plugins/datumaro.plugins.splitter.html#datumaro.plugins.splitter._ClassificationSplit">_ClassificationSplit (class in datumaro.plugins.splitter)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations._MeanStdCounter._compute_stats">_compute_stats() (datumaro.components.operations._MeanStdCounter static method)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.extractor.html#datumaro.components.extractor.Importer._find_sources_recursive">_find_sources_recursive() (datumaro.components.extractor.Importer class method)</a>
 </li>
       <li><a href="api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util._get_bbox">_get_bbox() (in module datumaro.util.annotation_util)</a>
 </li>
+      <li><a href="api/plugins/sampler/algorithm/datumaro.plugins.sampler.algorithm.entropy.html#datumaro.plugins.sampler.algorithm.entropy.SampleEntropy._get_sample_mixed">_get_sample_mixed() (datumaro.plugins.sampler.algorithm.entropy.SampleEntropy method)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.Pipeline._get_subgraph">_get_subgraph() (datumaro.components.project.Pipeline static method)</a>
+</li>
+      <li><a href="api/plugins/plugins/datumaro.plugins.splitter.html#datumaro.plugins.splitter._TaskSpecificSplit._group_by_attr">_group_by_attr() (datumaro.plugins.splitter._TaskSpecificSplit static method)</a>
 </li>
       <li><a href="api/util/util/datumaro.util.image.html#datumaro.util.image._IMAGE_BACKENDS">_IMAGE_BACKENDS (class in datumaro.util.image)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.ProjectBuilder._init_pipeline">_init_pipeline() (datumaro.components.project.ProjectBuilder method)</a>
 </li>
+      <li><a href="api/plugins/plugins/datumaro.plugins.splitter.html#datumaro.plugins.splitter._InstanceSpecificSplit">_InstanceSpecificSplit (class in datumaro.plugins.splitter)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.DatasetStorage._iter_init_cache">_iter_init_cache() (datumaro.components.dataset.DatasetStorage method)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations._MeanStdCounter">_MeanStdCounter (class in datumaro.components.operations)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations._MeanStdCounter._pairwise_stats">_pairwise_stats() (datumaro.components.operations._MeanStdCounter static method)</a>
+</li>
+      <li><a href="api/plugins/sampler/algorithm/datumaro.plugins.sampler.algorithm.entropy.html#datumaro.plugins.sampler.algorithm.entropy.SampleEntropy._rank_images">_rank_images() (datumaro.plugins.sampler.algorithm.entropy.SampleEntropy method)</a>
+</li>
+      <li><a href="api/plugins/plugins/datumaro.plugins.splitter.html#datumaro.plugins.splitter._ReidentificationSplit">_ReidentificationSplit (class in datumaro.plugins.splitter)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations._ShapeMatcher">_ShapeMatcher (class in datumaro.components.operations)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations._ShapeMerger">_ShapeMerger (class in datumaro.components.operations)</a>
+</li>
+      <li><a href="api/plugins/plugins/datumaro.plugins.splitter.html#datumaro.plugins.splitter._TaskSpecificSplit._split_unlabeled">_split_unlabeled() (datumaro.plugins.splitter._TaskSpecificSplit method)</a>
+</li>
+      <li><a href="api/plugins/plugins/datumaro.plugins.splitter.html#datumaro.plugins.splitter._TaskSpecificSplit">_TaskSpecificSplit (class in datumaro.plugins.splitter)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -697,7 +753,17 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.AnnotationsTooCloseError.a">a (datumaro.components.errors.AnnotationsTooCloseError attribute)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.MismatchingImageInfoError.a">(datumaro.components.errors.MismatchingImageInfoError attribute)</a>
+</li>
+      </ul></li>
       <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Points.Visibility.absent">absent (datumaro.components.annotation.Points.Visibility attribute)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations._MeanStdCounter.accumulate">accumulate() (datumaro.components.operations._MeanStdCounter method)</a>
+</li>
+      <li><a href="api/plugins/accuracy_checker_plugin/datumaro.plugins.accuracy_checker_plugin.launcher.html#datumaro.plugins.accuracy_checker_plugin.ac_launcher.AcLauncher">AcLauncher (class in datumaro.plugins.accuracy_checker_plugin.ac_launcher)</a>
 </li>
       <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocTask.action_classification">action_classification (datumaro.plugins.voc_format.format.VocTask attribute)</a>
 </li>
@@ -721,7 +787,7 @@
 </li>
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.ProjectBuildTargets.add_inference_stage">add_inference_stage() (datumaro.components.project.ProjectBuildTargets method)</a>
 </li>
-      <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.IntersectMerge.add_item_error">add_item_error() (datumaro.components.operations.IntersectMerge method)</a>, <a href="api/components/components/datumaro.components.operations.html#id5">[1]</a>
+      <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.IntersectMerge.add_item_error">add_item_error() (datumaro.components.operations.IntersectMerge method)</a>, <a href="api/components/components/datumaro.components.operations.html#id2">[1]</a>
 </li>
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.Project.add_model">add_model() (datumaro.components.project.Project method)</a>
 </li>
@@ -761,6 +827,28 @@
         <li><a href="api/plugins/sampler/algorithm/datumaro.plugins.sampler.algorithm.html#datumaro.plugins.sampler.algorithm.algorithm.Algorithm">(class in datumaro.plugins.sampler.algorithm.algorithm)</a>
 </li>
       </ul></li>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetectionContext.alternative">alternative() (datumaro.components.format_detection.FormatDetectionContext method)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FailedAttrVotingError.ann">ann (datumaro.components.errors.FailedAttrVotingError attribute)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FailedLabelVotingError.ann">(datumaro.components.errors.FailedLabelVotingError attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.NoMatchingAnnError.ann">(datumaro.components.errors.NoMatchingAnnError attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FarFromAttrMean.ann_id">ann_id (datumaro.components.errors.FarFromAttrMean attribute)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FarFromLabelMean.ann_id">(datumaro.components.errors.FarFromLabelMean attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.InvalidValue.ann_id">(datumaro.components.errors.InvalidValue attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.NegativeLength.ann_id">(datumaro.components.errors.NegativeLength attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.MissingAnnotation.ann_type">ann_type (datumaro.components.errors.MissingAnnotation attribute)</a>
+</li>
       <li><a href="api/plugins/sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.format.html#datumaro.plugins.sly_pointcloud_format.format.PointCloudPath.ANNNOTATION_DIR">ANNNOTATION_DIR (datumaro.plugins.sly_pointcloud_format.format.PointCloudPath attribute)</a>
 </li>
       <li><a href="api/plugins/kitti_raw_format/datumaro.plugins.kitti_raw_format.format.html#datumaro.plugins.kitti_raw_format.format.KittiRawPath.ANNO_FILE">ANNO_FILE (datumaro.plugins.kitti_raw_format.format.KittiRawPath attribute)</a>
@@ -797,10 +885,10 @@
 </li>
       <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.AnnotationType">AnnotationType (class in datumaro.components.annotation)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.AnnsToLabels">AnnsToLabels (class in datumaro.plugins.transforms)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.IgnoreMode.append">append (datumaro.components.project.IgnoreMode attribute)</a>
 </li>
       <li><a href="api/components/algorithms/datumaro.components.algorithms.html#datumaro.components.algorithms.rise.RISE.apply">apply() (datumaro.components.algorithms.rise.RISE method)</a>
@@ -856,6 +944,8 @@
 </li>
         <li><a href="api/plugins/sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.converter.html#datumaro.plugins.sly_pointcloud_format.converter.SuperviselyPointCloudConverter.apply">(datumaro.plugins.sly_pointcloud_format.converter.SuperviselyPointCloudConverter method)</a>
 </li>
+        <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.converter.html#datumaro.plugins.tf_detection_api_format.converter.TfDetectionApiConverter.apply">(datumaro.plugins.tf_detection_api_format.converter.TfDetectionApiConverter method)</a>
+</li>
         <li><a href="api/plugins/plugins/datumaro.plugins.vgg_face2_format.html#datumaro.plugins.vgg_face2_format.VggFace2Converter.apply">(datumaro.plugins.vgg_face2_format.VggFace2Converter method)</a>
 </li>
         <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.converter.html#datumaro.plugins.voc_format.converter.VocConverter.apply">(datumaro.plugins.voc_format.converter.VocConverter method)</a>
@@ -865,6 +955,10 @@
         <li><a href="api/plugins/yolo_format/datumaro.plugins.yolo_format.converter.html#datumaro.plugins.yolo_format.converter.YoloConverter.apply">(datumaro.plugins.yolo_format.converter.YoloConverter method)</a>
 </li>
       </ul></li>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.apply_format_detector">apply_format_detector() (in module datumaro.components.format_detection)</a>
+</li>
+      <li><a href="api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util.approximate_line">approximate_line() (in module datumaro.util.annotation_util)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Mask.as_class_mask">as_class_mask() (datumaro.components.annotation.Mask method)</a>
 </li>
       <li><a href="api/util/util/datumaro.util.scope.html#datumaro.util.scope.Scope.as_current">as_current() (datumaro.util.scope.Scope method)</a>
@@ -885,10 +979,38 @@
       </ul></li>
       <li><a href="api/cli/util/datumaro.cli.util.html#datumaro.cli.util.at_least">at_least() (in module datumaro.cli.util)</a>
 </li>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FailedAttrVotingError.attr">attr (datumaro.components.errors.FailedAttrVotingError attribute)</a>
+</li>
       <li><a href="api/plugins/plugins/datumaro.plugins.labelme_format.html#datumaro.plugins.labelme_format.LabelMePath.ATTR_EXPORT_ESCAPES">ATTR_EXPORT_ESCAPES (datumaro.plugins.labelme_format.LabelMePath attribute)</a>
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.labelme_format.html#datumaro.plugins.labelme_format.LabelMePath.ATTR_IMPORT_ESCAPES">ATTR_IMPORT_ESCAPES (datumaro.plugins.labelme_format.LabelMePath attribute)</a>
 </li>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.AttributeDefinedButNotFound.attr_name">attr_name (datumaro.components.errors.AttributeDefinedButNotFound attribute)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FarFromAttrMean.attr_name">(datumaro.components.errors.FarFromAttrMean attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FewSamplesInAttribute.attr_name">(datumaro.components.errors.FewSamplesInAttribute attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.ImbalancedAttribute.attr_name">(datumaro.components.errors.ImbalancedAttribute attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.ImbalancedDistInAttribute.attr_name">(datumaro.components.errors.ImbalancedDistInAttribute attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.MissingAttribute.attr_name">(datumaro.components.errors.MissingAttribute attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.OnlyOneAttributeValue.attr_name">(datumaro.components.errors.OnlyOneAttributeValue attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.UndefinedAttribute.attr_name">(datumaro.components.errors.UndefinedAttribute attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FarFromAttrMean.attr_value">attr_value (datumaro.components.errors.FarFromAttrMean attribute)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FewSamplesInAttribute.attr_value">(datumaro.components.errors.FewSamplesInAttribute attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.ImbalancedDistInAttribute.attr_value">(datumaro.components.errors.ImbalancedDistInAttribute attribute)</a>
+</li>
+      </ul></li>
       <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.AttributeDefinedButNotFound">AttributeDefinedButNotFound (class in datumaro.components.errors)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.extractor.html#datumaro.components.extractor.DatasetItem.attributes">attributes (datumaro.components.extractor.DatasetItem attribute)</a>
@@ -903,6 +1025,12 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.AnnotationsTooCloseError.b">b (datumaro.components.errors.AnnotationsTooCloseError attribute)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.MismatchingImageInfoError.b">(datumaro.components.errors.MismatchingImageInfoError attribute)</a>
+</li>
+      </ul></li>
       <li><a href="api/plugins/plugins/datumaro.plugins.mots_format.html#datumaro.plugins.mots_format.MotsLabels.background">background (datumaro.plugins.mots_format.MotsLabels attribute)</a>
 
       <ul>
@@ -931,6 +1059,8 @@
 </li>
       <li><a href="api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util.bbox_iou">bbox_iou() (in module datumaro.util.annotation_util)</a>
 </li>
+      <li><a href="api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util.BboxCoords">BboxCoords (in module datumaro.util.annotation_util)</a>
+</li>
       <li><a href="api/plugins/plugins/datumaro.plugins.vgg_face2_format.html#datumaro.plugins.vgg_face2_format.VggFace2Path.BBOXES_FILE">BBOXES_FILE (datumaro.plugins.vgg_face2_format.VggFace2Path attribute)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.BboxMatcher">BboxMatcher (class in datumaro.components.operations)</a>
@@ -943,12 +1073,8 @@
 </li>
       <li><a href="api/util/util/datumaro.util.mask_tools.html#datumaro.util.mask_tools.bgr2index">bgr2index() (in module datumaro.util.mask_tools)</a>
 </li>
-      <li><a href="api/plugins/plugins/datumaro.plugins.mot_format.html#datumaro.plugins.mot_format.MotLabel.bicycle">bicycle (datumaro.plugins.mot_format.MotLabel attribute)</a>
-
-      <ul>
-        <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocLabel.bicycle">(datumaro.plugins.voc_format.format.VocLabel attribute)</a>
+      <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocLabel.bicycle">bicycle (datumaro.plugins.voc_format.format.VocLabel attribute)</a>
 </li>
-      </ul></li>
       <li><a href="api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.bind">bind() (datumaro.components.dataset.Dataset method)</a>
 </li>
       <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocLabel.bird">bird (datumaro.plugins.voc_format.format.VocLabel attribute)</a>
@@ -974,7 +1100,7 @@
       <ul>
         <li><a href="api/components/components/datumaro.components.converter.html#datumaro.components.converter.Converter.build_cmdline_parser">(datumaro.components.converter.Converter class method)</a>
 </li>
-        <li><a href="api/plugins/accuracy_checker_plugin/datumaro.plugins.accuracy_checker_plugin.launcher.html#datumaro.plugins.accuracy_checker_plugin.launcher.AcLauncher.build_cmdline_parser">(datumaro.plugins.accuracy_checker_plugin.launcher.AcLauncher class method)</a>
+        <li><a href="api/plugins/accuracy_checker_plugin/datumaro.plugins.accuracy_checker_plugin.launcher.html#datumaro.plugins.accuracy_checker_plugin.ac_launcher.AcLauncher.build_cmdline_parser">(datumaro.plugins.accuracy_checker_plugin.ac_launcher.AcLauncher class method)</a>
 </li>
         <li><a href="api/plugins/plugins/datumaro.plugins.camvid_format.html#datumaro.plugins.camvid_format.CamvidConverter.build_cmdline_parser">(datumaro.plugins.camvid_format.CamvidConverter class method)</a>
 </li>
@@ -998,9 +1124,17 @@
 </li>
         <li><a href="api/plugins/plugins/datumaro.plugins.ndr.html#datumaro.plugins.ndr.NDR.build_cmdline_parser">(datumaro.plugins.ndr.NDR class method)</a>
 </li>
+        <li><a href="api/plugins/sampler/datumaro.plugins.sampler.random_sampler.html#datumaro.plugins.sampler.random_sampler.LabelRandomSampler.build_cmdline_parser">(datumaro.plugins.sampler.random_sampler.LabelRandomSampler class method)</a>
+</li>
+        <li><a href="api/plugins/sampler/datumaro.plugins.sampler.random_sampler.html#datumaro.plugins.sampler.random_sampler.RandomSampler.build_cmdline_parser">(datumaro.plugins.sampler.random_sampler.RandomSampler class method)</a>
+</li>
+        <li><a href="api/plugins/sampler/datumaro.plugins.sampler.relevancy_sampler.html#datumaro.plugins.sampler.relevancy_sampler.RelevancySampler.build_cmdline_parser">(datumaro.plugins.sampler.relevancy_sampler.RelevancySampler class method)</a>
+</li>
         <li><a href="api/plugins/sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.converter.html#datumaro.plugins.sly_pointcloud_format.converter.SuperviselyPointCloudConverter.build_cmdline_parser">(datumaro.plugins.sly_pointcloud_format.converter.SuperviselyPointCloudConverter class method)</a>
 </li>
         <li><a href="api/plugins/plugins/datumaro.plugins.splitter.html#datumaro.plugins.splitter.Split.build_cmdline_parser">(datumaro.plugins.splitter.Split class method)</a>
+</li>
+        <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.converter.html#datumaro.plugins.tf_detection_api_format.converter.TfDetectionApiConverter.build_cmdline_parser">(datumaro.plugins.tf_detection_api_format.converter.TfDetectionApiConverter class method)</a>
 </li>
         <li><a href="api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.MapSubsets.build_cmdline_parser">(datumaro.plugins.transforms.MapSubsets class method)</a>
 </li>
@@ -1031,15 +1165,6 @@
 </li>
       <li><a href="api/components/components/datumaro.components.config_model.html#datumaro.components.config_model.BuildTarget">BuildTarget (class in datumaro.components.config_model)</a>
 </li>
-      <li>
-    built-in function
-
-      <ul>
-        <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.representation.html#datumaro.plugins.accuracy_checker_plugin.details.representation.import_prediction">datumaro.plugins.accuracy_checker_plugin.details.representation.import_prediction()</a>
-</li>
-        <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.representation.html#datumaro.plugins.accuracy_checker_plugin.details.representation.import_predictions">datumaro.plugins.accuracy_checker_plugin.details.representation.import_predictions()</a>
-</li>
-      </ul></li>
       <li><a href="api/plugins/cvat_format/datumaro.plugins.cvat_format.format.html#datumaro.plugins.cvat_format.format.CvatPath.BUILTIN_ATTRS">BUILTIN_ATTRS (datumaro.plugins.cvat_format.format.CvatPath attribute)</a>
 
       <ul>
@@ -1051,6 +1176,10 @@
       <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocLabel.bus">bus (datumaro.plugins.voc_format.format.VocLabel attribute)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.media.html#datumaro.components.media.ByteImage">ByteImage (class in datumaro.components.media)</a>
+</li>
+      <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.converter.html#datumaro.plugins.tf_detection_api_format.converter.bytes_feature">bytes_feature() (in module datumaro.plugins.tf_detection_api_format.converter)</a>
+</li>
+      <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.converter.html#datumaro.plugins.tf_detection_api_format.converter.bytes_list_feature">bytes_list_feature() (in module datumaro.plugins.tf_detection_api_format.converter)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1092,11 +1221,9 @@
 </li>
       <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.CaptionsMerger">CaptionsMerger (class in datumaro.components.operations)</a>
 </li>
-      <li><a href="api/plugins/plugins/datumaro.plugins.mot_format.html#datumaro.plugins.mot_format.MotLabel.car">car (datumaro.plugins.mot_format.MotLabel attribute)</a>
+      <li><a href="api/plugins/plugins/datumaro.plugins.mots_format.html#datumaro.plugins.mots_format.MotsLabels.car">car (datumaro.plugins.mots_format.MotsLabels attribute)</a>
 
       <ul>
-        <li><a href="api/plugins/plugins/datumaro.plugins.mots_format.html#datumaro.plugins.mots_format.MotsLabels.car">(datumaro.plugins.mots_format.MotsLabels attribute)</a>
-</li>
         <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocLabel.car">(datumaro.plugins.voc_format.format.VocLabel attribute)</a>
 </li>
       </ul></li>
@@ -1131,9 +1258,9 @@
 </li>
         <li><a href="api/components/components/datumaro.components.launcher.html#datumaro.components.launcher.ModelTransform.categories">(datumaro.components.launcher.ModelTransform method)</a>
 </li>
-        <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.ac.html#datumaro.plugins.accuracy_checker_plugin.details.ac.GenericAcLauncher.categories">(datumaro.plugins.accuracy_checker_plugin.details.ac.GenericAcLauncher method)</a>
+        <li><a href="api/plugins/accuracy_checker_plugin/datumaro.plugins.accuracy_checker_plugin.launcher.html#datumaro.plugins.accuracy_checker_plugin.ac_launcher.AcLauncher.categories">(datumaro.plugins.accuracy_checker_plugin.ac_launcher.AcLauncher method)</a>
 </li>
-        <li><a href="api/plugins/accuracy_checker_plugin/datumaro.plugins.accuracy_checker_plugin.launcher.html#datumaro.plugins.accuracy_checker_plugin.launcher.AcLauncher.categories">(datumaro.plugins.accuracy_checker_plugin.launcher.AcLauncher method)</a>
+        <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.ac.html#datumaro.plugins.accuracy_checker_plugin.details.ac.GenericAcLauncher.categories">(datumaro.plugins.accuracy_checker_plugin.details.ac.GenericAcLauncher method)</a>
 </li>
         <li><a href="api/plugins/plugins/datumaro.plugins.ade20k2017_format.html#datumaro.plugins.ade20k2017_format.Ade20k2017Extractor.categories">(datumaro.plugins.ade20k2017_format.Ade20k2017Extractor method)</a>
 </li>
@@ -1143,7 +1270,7 @@
 </li>
         <li><a href="api/plugins/plugins/datumaro.plugins.open_images_format.html#datumaro.plugins.open_images_format.OpenImagesExtractor.categories">(datumaro.plugins.open_images_format.OpenImagesExtractor method)</a>
 </li>
-        <li><a href="api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.categories">(datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher static method)</a>
+        <li><a href="api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.categories">(datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher method)</a>
 </li>
         <li><a href="api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.ProjectLabels.categories">(datumaro.plugins.transforms.ProjectLabels method)</a>
 </li>
@@ -1154,6 +1281,8 @@
         <li><a href="api/plugins/yolo_format/datumaro.plugins.yolo_format.extractor.html#datumaro.plugins.yolo_format.extractor.YoloExtractor.Subset.categories">(datumaro.plugins.yolo_format.extractor.YoloExtractor.Subset method)</a>
 </li>
       </ul></li>
+      <li><a href="api/components/components/datumaro.components.extractor.html#datumaro.components.extractor.CategoriesInfo">CategoriesInfo (in module datumaro.components.extractor)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.CategoriesRedefinedError">CategoriesRedefinedError (class in datumaro.components.errors)</a>
 </li>
       <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocLabel.chair">chair (datumaro.plugins.voc_format.format.VocLabel attribute)</a>
@@ -1190,6 +1319,8 @@
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.cityscapes_format.html#datumaro.plugins.cityscapes_format.CityscapesPath">CityscapesPath (class in datumaro.plugins.cityscapes_format)</a>
 </li>
+      <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.extractor.html#datumaro.plugins.tf_detection_api_format.extractor.clamp">clamp() (in module datumaro.plugins.tf_detection_api_format.extractor)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.CompiledMask.class_mask">class_mask (datumaro.components.annotation.CompiledMask property)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.validator.html#datumaro.components.validator.TaskType.classification">classification (datumaro.components.validator.TaskType attribute)</a>
@@ -1202,7 +1333,13 @@
       </ul></li>
       <li><a href="api/plugins/plugins/datumaro.plugins.validators.html#datumaro.plugins.validators.ClassificationValidator">ClassificationValidator (class in datumaro.plugins.validators)</a>
 </li>
-      <li><a href="api/util/util/datumaro.util.image_cache.html#datumaro.util.image_cache.ImageCache.clear">clear() (datumaro.util.image_cache.ImageCache method)</a>
+      <li><a href="api/components/components/datumaro.components.media_manager.html#datumaro.components.media_manager.MediaManager.clear">clear() (datumaro.components.media_manager.MediaManager method)</a>
+
+      <ul>
+        <li><a href="api/util/util/datumaro.util.image_cache.html#datumaro.util.image_cache.ImageCache.clear">(datumaro.util.image_cache.ImageCache method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.cli_plugin">cli_plugin (datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher attribute)</a>
 </li>
       <li><a href="api/cli/util/datumaro.cli.util.errors.html#datumaro.cli.util.errors.CliException">CliException (class in datumaro.cli.util.errors)</a>
 </li>
@@ -1292,6 +1429,8 @@
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.cityscapes_format.html#datumaro.plugins.cityscapes_format.CityscapesPath.COLOR_IMAGE">COLOR_IMAGE (datumaro.plugins.cityscapes_format.CityscapesPath attribute)</a>
 </li>
+      <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Colormap">Colormap (in module datumaro.components.annotation)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.GitWrapper.commit">commit() (datumaro.components.project.GitWrapper method)</a>
 
       <ul>
@@ -1366,6 +1505,12 @@
 </li>
       <li><a href="api/util/util/datumaro.util.os_util.html#datumaro.util.os_util.copytree">copytree() (in module datumaro.util.os_util)</a>
 </li>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FewSamplesInAttribute.count">count (datumaro.components.errors.FewSamplesInAttribute attribute)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FewSamplesInLabel.count">(datumaro.components.errors.FewSamplesInLabel attribute)</a>
+</li>
+      </ul></li>
       <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocLabel.cow">cow (datumaro.plugins.voc_format.format.VocLabel attribute)</a>
 </li>
       <li><a href="api/util/util/datumaro.util.mask_tools.html#datumaro.util.mask_tools.crop_covered_segments">crop_covered_segments() (in module datumaro.util.mask_tools)</a>
@@ -1539,6 +1684,27 @@
 </li>
       </ul></li>
       <li>
+    datumaro.components.extractor_tfds
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.extractor_tfds.html#module-datumaro.components.extractor_tfds">module</a>
+</li>
+      </ul></li>
+      <li>
+    datumaro.components.format_detection
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.format_detection.html#module-datumaro.components.format_detection">module</a>
+</li>
+      </ul></li>
+      <li>
+    datumaro.components.hl_ops
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.hl_ops.html#module-datumaro.components.hl_ops">module</a>
+</li>
+      </ul></li>
+      <li>
     datumaro.components.launcher
 
       <ul>
@@ -1550,6 +1716,13 @@
 
       <ul>
         <li><a href="api/components/components/datumaro.components.media.html#module-datumaro.components.media">module</a>
+</li>
+      </ul></li>
+      <li>
+    datumaro.components.media_manager
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.media_manager.html#module-datumaro.components.media_manager">module</a>
 </li>
       </ul></li>
       <li>
@@ -1573,24 +1746,27 @@
         <li><a href="api/components/components/datumaro.components.validator.html#module-datumaro.components.validator">module</a>
 </li>
       </ul></li>
-      <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.ac.html#datumaro.plugins.accuracy_checker_plugin.details.ac.GenericAcLauncher">datumaro.plugins.accuracy_checker_plugin.details.ac.GenericAcLauncher (built-in class)</a>
-</li>
       <li>
-    datumaro.plugins.accuracy_checker_plugin.details.representation.import_prediction()
+    datumaro.plugins.accuracy_checker_plugin.ac_launcher
 
       <ul>
-        <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.representation.html#datumaro.plugins.accuracy_checker_plugin.details.representation.import_prediction">built-in function</a>
+        <li><a href="api/plugins/accuracy_checker_plugin/datumaro.plugins.accuracy_checker_plugin.launcher.html#module-datumaro.plugins.accuracy_checker_plugin.ac_launcher">module</a>
 </li>
       </ul></li>
       <li>
-    datumaro.plugins.accuracy_checker_plugin.details.representation.import_predictions()
+    datumaro.plugins.accuracy_checker_plugin.details.ac
 
       <ul>
-        <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.representation.html#datumaro.plugins.accuracy_checker_plugin.details.representation.import_predictions">built-in function</a>
+        <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.ac.html#module-datumaro.plugins.accuracy_checker_plugin.details.ac">module</a>
 </li>
       </ul></li>
-      <li><a href="api/plugins/accuracy_checker_plugin/datumaro.plugins.accuracy_checker_plugin.launcher.html#datumaro.plugins.accuracy_checker_plugin.launcher.AcLauncher">datumaro.plugins.accuracy_checker_plugin.launcher.AcLauncher (built-in class)</a>
+      <li>
+    datumaro.plugins.accuracy_checker_plugin.details.representation
+
+      <ul>
+        <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.representation.html#module-datumaro.plugins.accuracy_checker_plugin.details.representation">module</a>
 </li>
+      </ul></li>
       <li>
     datumaro.plugins.ade20k2017_format
 
@@ -1857,10 +2033,13 @@
         <li><a href="api/plugins/plugins/datumaro.plugins.open_images_format.html#module-datumaro.plugins.open_images_format">module</a>
 </li>
       </ul></li>
-      <li><a href="api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html#datumaro.plugins.openvino_plugin.launcher.InterpreterScript">datumaro.plugins.openvino_plugin.launcher.InterpreterScript (built-in class)</a>
+      <li>
+    datumaro.plugins.openvino_plugin.launcher
+
+      <ul>
+        <li><a href="api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html#module-datumaro.plugins.openvino_plugin.launcher">module</a>
 </li>
-      <li><a href="api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher">datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher (built-in class)</a>
-</li>
+      </ul></li>
       <li>
     datumaro.plugins.openvino_plugin.samples.mobilenet_v2_pytorch_interp
 
@@ -1910,13 +2089,27 @@
         <li><a href="api/plugins/sampler/algorithm/datumaro.plugins.sampler.algorithm.html#module-datumaro.plugins.sampler.algorithm.algorithm">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     datumaro.plugins.sampler.algorithm.entropy
 
       <ul>
         <li><a href="api/plugins/sampler/algorithm/datumaro.plugins.sampler.algorithm.entropy.html#module-datumaro.plugins.sampler.algorithm.entropy">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    datumaro.plugins.sampler.random_sampler
+
+      <ul>
+        <li><a href="api/plugins/sampler/datumaro.plugins.sampler.random_sampler.html#module-datumaro.plugins.sampler.random_sampler">module</a>
+</li>
+      </ul></li>
+      <li>
+    datumaro.plugins.sampler.relevancy_sampler
+
+      <ul>
+        <li><a href="api/plugins/sampler/datumaro.plugins.sampler.relevancy_sampler.html#module-datumaro.plugins.sampler.relevancy_sampler">module</a>
 </li>
       </ul></li>
       <li>
@@ -1945,6 +2138,20 @@
 
       <ul>
         <li><a href="api/plugins/plugins/datumaro.plugins.splitter.html#module-datumaro.plugins.splitter">module</a>
+</li>
+      </ul></li>
+      <li>
+    datumaro.plugins.tf_detection_api_format.converter
+
+      <ul>
+        <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.converter.html#module-datumaro.plugins.tf_detection_api_format.converter">module</a>
+</li>
+      </ul></li>
+      <li>
+    datumaro.plugins.tf_detection_api_format.extractor
+
+      <ul>
+        <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.extractor.html#module-datumaro.plugins.tf_detection_api_format.extractor">module</a>
 </li>
       </ul></li>
       <li>
@@ -2138,6 +2345,8 @@
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.image_zip_format.html#datumaro.plugins.image_zip_format.ImageZipPath.DEFAULT_COMPRESSION">DEFAULT_COMPRESSION (datumaro.plugins.image_zip_format.ImageZipPath attribute)</a>
 </li>
+      <li><a href="api/components/components/datumaro.components.extractor_tfds.html#datumaro.components.extractor_tfds.TfdsDatasetMetadata.default_converter_name">default_converter_name (datumaro.components.extractor_tfds.TfdsDatasetMetadata attribute)</a>
+</li>
       <li><a href="api/util/util/datumaro.util.attrs_util.html#datumaro.util.attrs_util.default_if_none">default_if_none() (in module datumaro.util.attrs_util)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.converter.html#datumaro.components.converter.Converter.DEFAULT_IMAGE_EXT">DEFAULT_IMAGE_EXT (datumaro.components.converter.Converter attribute)</a>
@@ -2193,6 +2402,8 @@
 </li>
         <li><a href="api/plugins/sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.format.html#datumaro.plugins.sly_pointcloud_format.format.PointCloudPath.DEFAULT_IMAGE_EXT">(datumaro.plugins.sly_pointcloud_format.format.PointCloudPath attribute)</a>
 </li>
+        <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.converter.html#datumaro.plugins.tf_detection_api_format.converter.TfDetectionApiConverter.DEFAULT_IMAGE_EXT">(datumaro.plugins.tf_detection_api_format.converter.TfDetectionApiConverter attribute)</a>
+</li>
         <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.format.html#datumaro.plugins.tf_detection_api_format.format.DetectionApiPath.DEFAULT_IMAGE_EXT">(datumaro.plugins.tf_detection_api_format.format.DetectionApiPath attribute)</a>
 </li>
         <li><a href="api/plugins/plugins/datumaro.plugins.vgg_face2_format.html#datumaro.plugins.vgg_face2_format.VggFace2Converter.DEFAULT_IMAGE_EXT">(datumaro.plugins.vgg_face2_format.VggFace2Converter attribute)</a>
@@ -2211,7 +2422,11 @@
       <li><a href="api/plugins/kitti_format/datumaro.plugins.kitti_format.format.html#datumaro.plugins.kitti_format.format.KittiPath.DEFAULT_SCORE">DEFAULT_SCORE (datumaro.plugins.kitti_format.format.KittiPath attribute)</a>
 </li>
       <li><a href="api/plugins/yolo_format/datumaro.plugins.yolo_format.format.html#datumaro.plugins.yolo_format.format.YoloPath.DEFAULT_SUBSET_NAME">DEFAULT_SUBSET_NAME (datumaro.plugins.yolo_format.format.YoloPath attribute)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.extractor.html#datumaro.components.extractor.DEFAULT_SUBSET_NAME">(in module datumaro.components.extractor)</a>
 </li>
+      </ul></li>
       <li><a href="api/plugins/kitti_format/datumaro.plugins.kitti_format.format.html#datumaro.plugins.kitti_format.format.KittiPath.DEFAULT_TRUNCATED">DEFAULT_TRUNCATED (datumaro.plugins.kitti_format.format.KittiPath attribute)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.define_categories">define_categories() (datumaro.components.dataset.Dataset method)</a>
@@ -2274,6 +2489,8 @@
         <li><a href="api/plugins/plugins/datumaro.plugins.mots_format.html#datumaro.plugins.mots_format.MotsPngExtractor.detect_dataset">(datumaro.plugins.mots_format.MotsPngExtractor static method)</a>
 </li>
       </ul></li>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.detect_dataset_format">detect_dataset_format() (in module datumaro.components.format_detection)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.validator.html#datumaro.components.validator.TaskType.detection">detection (datumaro.components.validator.TaskType attribute)</a>
 
       <ul>
@@ -2306,6 +2523,8 @@
 </li>
       <li><a href="api/util/util/datumaro.util.scope.html#datumaro.util.scope.Scope.disable">disable() (datumaro.util.scope.Scope method)</a>
 </li>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.AnnotationsTooCloseError.distance">distance (datumaro.components.errors.AnnotationsTooCloseError attribute)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations._ShapeMatcher.distance">distance() (datumaro.components.operations._ShapeMatcher static method)</a>
 
       <ul>
@@ -2317,8 +2536,6 @@
 </li>
       </ul></li>
       <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.DistanceComparator">DistanceComparator (class in datumaro.components.operations)</a>
-</li>
-      <li><a href="api/plugins/plugins/datumaro.plugins.mot_format.html#datumaro.plugins.mot_format.MotLabel.distractor">distractor (datumaro.plugins.mot_format.MotLabel attribute)</a>
 </li>
       <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocLabel.dog">dog (datumaro.plugins.voc_format.format.VocLabel attribute)</a>
 </li>
@@ -2370,10 +2587,10 @@
 </li>
       <li><a href="api/util/util/datumaro.util.telemetry_stub.html#datumaro.util.telemetry_stub.Telemetry.end_session">end_session() (datumaro.util.telemetry_stub.Telemetry method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/util/util/datumaro.util.attrs_util.html#datumaro.util.attrs_util.ensure_cls">ensure_cls() (in module datumaro.util.attrs_util)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/plugins/sampler/algorithm/datumaro.plugins.sampler.algorithm.html#datumaro.plugins.sampler.algorithm.algorithm.Algorithm.entropy">entropy (datumaro.plugins.sampler.algorithm.algorithm.Algorithm attribute)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.env">env (datumaro.components.dataset.Dataset property)</a>
@@ -2398,8 +2615,14 @@
 </li>
       <li><a href="api/components/algorithms/datumaro.components.algorithms.html#datumaro.components.algorithms.rise.expand">expand() (in module datumaro.components.algorithms.rise)</a>
 </li>
-      <li><a href="api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.export">export() (datumaro.components.dataset.Dataset method)</a>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.WrongGroupError.expected">expected (datumaro.components.errors.WrongGroupError attribute)</a>
 </li>
+      <li><a href="api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.export">export() (datumaro.components.dataset.Dataset method)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.hl_ops.html#datumaro.components.hl_ops.export">(in module datumaro.components.hl_ops)</a>
+</li>
+      </ul></li>
       <li><a href="api/components/components/datumaro.components.media.html#datumaro.components.media.Image.ext">ext (datumaro.components.media.Image property)</a>
 
       <ul>
@@ -2418,6 +2641,8 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetectionContext.fail">fail() (datumaro.components.format_detection.FormatDetectionContext method)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FailedAttrVotingError">FailedAttrVotingError (class in datumaro.components.errors)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FailedLabelVotingError">FailedLabelVotingError (class in datumaro.components.errors)</a>
@@ -2437,7 +2662,11 @@
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.BuildStageType.filter">filter (datumaro.components.project.BuildStageType attribute)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.filter">filter() (datumaro.components.dataset.Dataset method)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.hl_ops.html#datumaro.components.hl_ops.filter">(in module datumaro.components.hl_ops)</a>
 </li>
+      </ul></li>
       <li><a href="api/util/util/datumaro.util.html#datumaro.util.filter_dict">filter_dict() (in module datumaro.util)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.LabelCategories.find">find() (datumaro.components.annotation.LabelCategories method)</a>
@@ -2519,6 +2748,8 @@
 </li>
         <li><a href="api/plugins/sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.extractor.html#datumaro.plugins.sly_pointcloud_format.extractor.SuperviselyPointCloudImporter.find_sources">(datumaro.plugins.sly_pointcloud_format.extractor.SuperviselyPointCloudImporter class method)</a>
 </li>
+        <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.extractor.html#datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiImporter.find_sources">(datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiImporter class method)</a>
+</li>
         <li><a href="api/plugins/plugins/datumaro.plugins.vgg_face2_format.html#datumaro.plugins.vgg_face2_format.VggFace2Importer.find_sources">(datumaro.plugins.vgg_face2_format.VggFace2Importer class method)</a>
 </li>
         <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.importer.html#datumaro.plugins.voc_format.importer.VocImporter.find_sources">(datumaro.plugins.voc_format.importer.VocImporter class method)</a>
@@ -2542,6 +2773,8 @@
 </li>
       <li><a href="api/components/algorithms/datumaro.components.algorithms.html#datumaro.components.algorithms.rise.flatmatvec">flatmatvec() (in module datumaro.components.algorithms.rise)</a>
 </li>
+      <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.converter.html#datumaro.plugins.tf_detection_api_format.converter.float_list_feature">float_list_feature() (in module datumaro.plugins.tf_detection_api_format.converter)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.flush_changes">flush_changes() (datumaro.components.dataset.Dataset method)</a>
 
       <ul>
@@ -2557,6 +2790,22 @@
       <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.ForeignChangesError">ForeignChangesError (class in datumaro.components.errors)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.format">format (datumaro.components.dataset.Dataset property)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.UnknownFormatError.format">(datumaro.components.errors.UnknownFormatError attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetectionConfidence">FormatDetectionConfidence (class in datumaro.components.format_detection)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetectionContext">FormatDetectionContext (class in datumaro.components.format_detection)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetector">FormatDetector (in module datumaro.components.format_detection)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatRequirementsUnmet">FormatRequirementsUnmet</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.MultipleFormatsMatchError.formats">formats (datumaro.components.errors.MultipleFormatsMatchError attribute)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.WrongGroupError.found">found (datumaro.components.errors.WrongGroupError attribute)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.media.html#datumaro.components.media.Video.frame_size">frame_size (datumaro.components.media.Video property)</a>
 </li>
@@ -2608,6 +2857,8 @@
         <li><a href="api/plugins/plugins/datumaro.plugins.validators.html#datumaro.plugins.validators.SegmentationValidator.generate_reports">(datumaro.plugins.validators.SegmentationValidator method)</a>
 </li>
       </ul></li>
+      <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.ac.html#datumaro.plugins.accuracy_checker_plugin.details.ac.GenericAcLauncher">GenericAcLauncher (class in datumaro.plugins.accuracy_checker_plugin.details.ac)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.config.html#datumaro.components.config.Config.get">get() (datumaro.components.config.Config method)</a>
 
       <ul>
@@ -2631,12 +2882,12 @@
 </li>
         <li><a href="api/components/components/datumaro.components.extractor.html#datumaro.components.extractor.SourceExtractor.get">(datumaro.components.extractor.SourceExtractor method)</a>
 </li>
+        <li><a href="api/components/components/datumaro.components.media_manager.html#datumaro.components.media_manager.MediaManager.get">(datumaro.components.media_manager.MediaManager method)</a>
+</li>
         <li><a href="api/util/util/datumaro.util.image_cache.html#datumaro.util.image_cache.ImageCache.get">(datumaro.util.image_cache.ImageCache method)</a>
 </li>
       </ul></li>
       <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.IntersectMerge.get_ann_source">get_ann_source() (datumaro.components.operations.IntersectMerge method)</a>
-</li>
-      <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.get_ann_type">get_ann_type() (in module datumaro.components.operations)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Bbox.get_area">get_area() (datumaro.components.annotation.Bbox method)</a>
 
@@ -2678,10 +2929,10 @@
         <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.RleMask.get_bbox">(datumaro.components.annotation.RleMask method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/components/components/datumaro.components.media.html#datumaro.components.media.ByteImage.get_bytes">get_bytes() (datumaro.components.media.ByteImage method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html#datumaro.plugins.openvino_plugin.launcher.InterpreterScript.get_categories">get_categories() (datumaro.plugins.openvino_plugin.launcher.InterpreterScript static method)</a>
 
       <ul>
@@ -2702,8 +2953,12 @@
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.lfw_format.html#datumaro.plugins.lfw_format.LfwExtractor.get_image_name">get_image_name() (datumaro.plugins.lfw_format.LfwExtractor static method)</a>
 </li>
-      <li><a href="api/util/util/datumaro.util.image_cache.html#datumaro.util.image_cache.ImageCache.get_instance">get_instance() (datumaro.util.image_cache.ImageCache static method)</a>
+      <li><a href="api/components/components/datumaro.components.media_manager.html#datumaro.components.media_manager.MediaManager.get_instance">get_instance() (datumaro.components.media_manager.MediaManager static method)</a>
+
+      <ul>
+        <li><a href="api/util/util/datumaro.util.image_cache.html#datumaro.util.image_cache.ImageCache.get_instance">(datumaro.util.image_cache.ImageCache static method)</a>
 </li>
+      </ul></li>
       <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.CompiledMask.get_instance_labels">get_instance_labels() (datumaro.components.annotation.CompiledMask method)</a>
 </li>
       <li><a href="api/plugins/kitti_format/datumaro.plugins.kitti_format.converter.html#datumaro.plugins.kitti_format.converter.KittiConverter.get_label">get_label() (datumaro.plugins.kitti_format.converter.KittiConverter method)</a>
@@ -2720,6 +2975,8 @@
         <li><a href="api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.DatasetStorage.get_patch">(datumaro.components.dataset.DatasetStorage method)</a>
 </li>
       </ul></li>
+      <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations._MeanStdCounter.get_result">get_result() (datumaro.components.operations._MeanStdCounter method)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.Project.get_rev">get_rev() (datumaro.components.project.Project method)</a>
 </li>
       <li><a href="api/plugins/sampler/algorithm/datumaro.plugins.sampler.algorithm.html#datumaro.plugins.sampler.algorithm.algorithm.InferenceResultAnalyzer.get_sample">get_sample() (datumaro.plugins.sampler.algorithm.algorithm.InferenceResultAnalyzer method)</a>
@@ -2763,6 +3020,8 @@
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.GitWrapper">GitWrapper (class in datumaro.components.project)</a>
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.ndr.html#datumaro.plugins.ndr.Algorithm.gradient">gradient (datumaro.plugins.ndr.Algorithm attribute)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.WrongGroupError.group">group (datumaro.components.errors.WrongGroupError attribute)</a>
 </li>
       <li><a href="api/plugins/icdar_format/datumaro.plugins.icdar_format.format.html#datumaro.plugins.icdar_format.format.IcdarPath.GT_EXT">GT_EXT (datumaro.plugins.icdar_format.format.IcdarPath attribute)</a>
 </li>
@@ -2861,6 +3120,8 @@
       <li><a href="api/plugins/icdar_format/datumaro.plugins.icdar_format.extractor.html#datumaro.plugins.icdar_format.extractor.IcdarWordRecognitionImporter">IcdarWordRecognitionImporter (class in datumaro.plugins.icdar_format.extractor)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.extractor.html#datumaro.components.extractor.DatasetItem.id">id (datumaro.components.extractor.DatasetItem attribute)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.IDataset">IDataset (in module datumaro.components.dataset)</a>
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.IdFromImageName">IdFromImageName (class in datumaro.plugins.transforms)</a>
 </li>
@@ -3004,8 +3265,6 @@
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.image_zip_format.html#datumaro.plugins.image_zip_format.ImageZipConverter">ImageZipConverter (class in datumaro.plugins.image_zip_format)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/plugins/plugins/datumaro.plugins.image_zip_format.html#datumaro.plugins.image_zip_format.ImageZipExtractor">ImageZipExtractor (class in datumaro.plugins.image_zip_format)</a>
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.image_zip_format.html#datumaro.plugins.image_zip_format.ImageZipImporter">ImageZipImporter (class in datumaro.plugins.image_zip_format)</a>
@@ -3020,6 +3279,8 @@
 </li>
       <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.ImbalancedLabels">ImbalancedLabels (class in datumaro.components.errors)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/plugins/kitti_raw_format/datumaro.plugins.kitti_raw_format.format.html#datumaro.plugins.kitti_raw_format.format.KittiRawPath.IMG_DIR_PREFIX">IMG_DIR_PREFIX (datumaro.plugins.kitti_raw_format.format.KittiRawPath attribute)</a>
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.cityscapes_format.html#datumaro.plugins.cityscapes_format.CityscapesPath.IMGS_FINE_DIR">IMGS_FINE_DIR (datumaro.plugins.cityscapes_format.CityscapesPath attribute)</a>
@@ -3029,6 +3290,10 @@
       <li><a href="api/util/util/datumaro.util.os_util.html#datumaro.util.os_util.import_foreign_module">import_foreign_module() (in module datumaro.util.os_util)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.import_from">import_from() (datumaro.components.dataset.Dataset class method)</a>
+</li>
+      <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.representation.html#datumaro.plugins.accuracy_checker_plugin.details.representation.import_prediction">import_prediction() (in module datumaro.plugins.accuracy_checker_plugin.details.representation)</a>
+</li>
+      <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.representation.html#datumaro.plugins.accuracy_checker_plugin.details.representation.import_predictions">import_predictions() (in module datumaro.plugins.accuracy_checker_plugin.details.representation)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.Project.import_source">import_source() (datumaro.components.project.Project method)</a>
 </li>
@@ -3082,7 +3347,15 @@
       </ul></li>
       <li><a href="api/plugins/plugins/datumaro.plugins.cityscapes_format.html#datumaro.plugins.cityscapes_format.CityscapesPath.INSTANCES_IMAGE">INSTANCES_IMAGE (datumaro.plugins.cityscapes_format.CityscapesPath attribute)</a>
 </li>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.RejectionReason.insufficient_confidence">insufficient_confidence (datumaro.components.format_detection.RejectionReason attribute)</a>
+</li>
+      <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.converter.html#datumaro.plugins.tf_detection_api_format.converter.int64_feature">int64_feature() (in module datumaro.plugins.tf_detection_api_format.converter)</a>
+</li>
+      <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.converter.html#datumaro.plugins.tf_detection_api_format.converter.int64_list_feature">int64_list_feature() (in module datumaro.plugins.tf_detection_api_format.converter)</a>
+</li>
       <li><a href="api/plugins/kitti_raw_format/datumaro.plugins.kitti_raw_format.format.html#datumaro.plugins.kitti_raw_format.format.PoseStates.INTERP">INTERP (datumaro.plugins.kitti_raw_format.format.PoseStates attribute)</a>
+</li>
+      <li><a href="api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html#datumaro.plugins.openvino_plugin.launcher.InterpreterScript">InterpreterScript (class in datumaro.plugins.openvino_plugin.launcher)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.IntersectMerge">IntersectMerge (class in datumaro.components.operations)</a>
 </li>
@@ -3150,9 +3423,27 @@
 </li>
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.Tree.is_working_tree">is_working_tree (datumaro.components.project.Tree property)</a>
 </li>
-      <li><a href="api/plugins/plugins/datumaro.plugins.open_images_format.html#datumaro.plugins.open_images_format.UnsupportedBoxIdError.item_id">item_id (datumaro.plugins.open_images_format.UnsupportedBoxIdError attribute)</a>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.AnnotationsTooCloseError.item_id">item_id (datumaro.components.errors.AnnotationsTooCloseError attribute)</a>
 
       <ul>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.DatasetItemValidationError.item_id">(datumaro.components.errors.DatasetItemValidationError attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FailedAttrVotingError.item_id">(datumaro.components.errors.FailedAttrVotingError attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FailedLabelVotingError.item_id">(datumaro.components.errors.FailedLabelVotingError attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.MismatchingImageInfoError.item_id">(datumaro.components.errors.MismatchingImageInfoError attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.NoMatchingAnnError.item_id">(datumaro.components.errors.NoMatchingAnnError attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.NoMatchingItemError.item_id">(datumaro.components.errors.NoMatchingItemError attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.RepeatedItemError.item_id">(datumaro.components.errors.RepeatedItemError attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.WrongGroupError.item_id">(datumaro.components.errors.WrongGroupError attribute)</a>
+</li>
+        <li><a href="api/plugins/plugins/datumaro.plugins.open_images_format.html#datumaro.plugins.open_images_format.UnsupportedBoxIdError.item_id">(datumaro.plugins.open_images_format.UnsupportedBoxIdError attribute)</a>
+</li>
         <li><a href="api/plugins/plugins/datumaro.plugins.open_images_format.html#datumaro.plugins.open_images_format.UnsupportedMaskPathError.item_id">(datumaro.plugins.open_images_format.UnsupportedMaskPathError attribute)</a>
 </li>
         <li><a href="api/plugins/plugins/datumaro.plugins.open_images_format.html#datumaro.plugins.open_images_format.UnsupportedSubsetNameError.item_id">(datumaro.plugins.open_images_format.UnsupportedSubsetNameError attribute)</a>
@@ -3241,23 +3532,43 @@
       <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Label">Label (class in datumaro.components.annotation)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.AnnotationType.label">label (datumaro.components.annotation.AnnotationType attribute)</a>
-
-      <ul>
-        <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Bbox.label">(datumaro.components.annotation.Bbox attribute)</a>
 </li>
-        <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Polygon.label">(datumaro.components.annotation.Polygon attribute)</a>
-</li>
-        <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.PolyLine.label">(datumaro.components.annotation.PolyLine attribute)</a>
-</li>
-        <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.RleMask.label">(datumaro.components.annotation.RleMask attribute)</a>
-</li>
-      </ul></li>
       <li><a href="api/plugins/plugins/datumaro.plugins.open_images_format.html#datumaro.plugins.open_images_format.OpenImagesPath.LABEL_DESCRIPTION_FIELDS">LABEL_DESCRIPTION_FIELDS (datumaro.plugins.open_images_format.OpenImagesPath attribute)</a>
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.open_images_format.html#datumaro.plugins.open_images_format.OpenImagesPath.LABEL_DESCRIPTION_FILE_SUFFIX">LABEL_DESCRIPTION_FILE_SUFFIX (datumaro.plugins.open_images_format.OpenImagesPath attribute)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations._ShapeMatcher.label_matcher">label_matcher() (datumaro.components.operations._ShapeMatcher method)</a>
 </li>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.AttributeDefinedButNotFound.label_name">label_name (datumaro.components.errors.AttributeDefinedButNotFound attribute)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FarFromAttrMean.label_name">(datumaro.components.errors.FarFromAttrMean attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FarFromLabelMean.label_name">(datumaro.components.errors.FarFromLabelMean attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FewSamplesInAttribute.label_name">(datumaro.components.errors.FewSamplesInAttribute attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FewSamplesInLabel.label_name">(datumaro.components.errors.FewSamplesInLabel attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.ImbalancedAttribute.label_name">(datumaro.components.errors.ImbalancedAttribute attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.ImbalancedDistInAttribute.label_name">(datumaro.components.errors.ImbalancedDistInAttribute attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.ImbalancedDistInLabel.label_name">(datumaro.components.errors.ImbalancedDistInLabel attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.LabelDefinedButNotFound.label_name">(datumaro.components.errors.LabelDefinedButNotFound attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.MissingAttribute.label_name">(datumaro.components.errors.MissingAttribute attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.OnlyOneAttributeValue.label_name">(datumaro.components.errors.OnlyOneAttributeValue attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.OnlyOneLabel.label_name">(datumaro.components.errors.OnlyOneLabel attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.UndefinedAttribute.label_name">(datumaro.components.errors.UndefinedAttribute attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.UndefinedLabel.label_name">(datumaro.components.errors.UndefinedLabel attribute)</a>
+</li>
+      </ul></li>
       <li><a href="api/plugins/plugins/datumaro.plugins.cityscapes_format.html#datumaro.plugins.cityscapes_format.CityscapesPath.LABEL_TRAIN_IDS_SUFFIX">LABEL_TRAIN_IDS_SUFFIX (datumaro.plugins.cityscapes_format.CityscapesPath attribute)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.LabelCategories">LabelCategories (class in datumaro.components.annotation)</a>
@@ -3302,6 +3613,10 @@
 </li>
       <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.LabelMerger">LabelMerger (class in datumaro.components.operations)</a>
 </li>
+      <li><a href="api/plugins/sampler/datumaro.plugins.sampler.random_sampler.html#datumaro.plugins.sampler.random_sampler.LabelRandomSampler">LabelRandomSampler (class in datumaro.plugins.sampler.random_sampler)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.PointsCategories.Category.labels">labels (datumaro.components.annotation.PointsCategories.Category attribute)</a>
 
       <ul>
@@ -3324,8 +3639,6 @@
         <li><a href="api/plugins/plugins/datumaro.plugins.widerface_format.html#datumaro.plugins.widerface_format.WiderFacePath.LABELS_FILE">(datumaro.plugins.widerface_format.WiderFacePath attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/plugins/plugins/datumaro.plugins.lfw_format.html#datumaro.plugins.lfw_format.LfwPath.LANDMARKS_FILE">LANDMARKS_FILE (datumaro.plugins.lfw_format.LfwPath attribute)</a>
 
       <ul>
@@ -3335,9 +3648,9 @@
       <li><a href="api/components/components/datumaro.components.launcher.html#datumaro.components.launcher.Launcher.launch">launch() (datumaro.components.launcher.Launcher method)</a>
 
       <ul>
-        <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.ac.html#datumaro.plugins.accuracy_checker_plugin.details.ac.GenericAcLauncher.launch">(datumaro.plugins.accuracy_checker_plugin.details.ac.GenericAcLauncher method)</a>
+        <li><a href="api/plugins/accuracy_checker_plugin/datumaro.plugins.accuracy_checker_plugin.launcher.html#datumaro.plugins.accuracy_checker_plugin.ac_launcher.AcLauncher.launch">(datumaro.plugins.accuracy_checker_plugin.ac_launcher.AcLauncher method)</a>
 </li>
-        <li><a href="api/plugins/accuracy_checker_plugin/datumaro.plugins.accuracy_checker_plugin.launcher.html#datumaro.plugins.accuracy_checker_plugin.launcher.AcLauncher.launch">(datumaro.plugins.accuracy_checker_plugin.launcher.AcLauncher method)</a>
+        <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.ac.html#datumaro.plugins.accuracy_checker_plugin.details.ac.GenericAcLauncher.launch">(datumaro.plugins.accuracy_checker_plugin.details.ac.GenericAcLauncher method)</a>
 </li>
         <li><a href="api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.launch">(datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher method)</a>
 </li>
@@ -3390,6 +3703,8 @@
 </li>
       <li><a href="api/util/util/datumaro.util.log_utils.html#datumaro.util.log_utils.logging_disabled">logging_disabled() (in module datumaro.util.log_utils)</a>
 </li>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetectionConfidence.LOW">LOW (datumaro.components.format_detection.FormatDetectionConfidence attribute)</a>
+</li>
       <li><a href="api/plugins/sampler/algorithm/datumaro.plugins.sampler.algorithm.html#datumaro.plugins.sampler.algorithm.algorithm.SamplingMethod.lowk">lowk (datumaro.plugins.sampler.algorithm.algorithm.SamplingMethod attribute)</a>
 </li>
   </ul></td>
@@ -3439,6 +3754,8 @@
 </li>
       </ul></li>
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.ProjectBuildTargets.make_target_name">make_target_name() (datumaro.components.project.ProjectBuildTargets static method)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.extractor_tfds.html#datumaro.components.extractor_tfds.make_tfds_extractor">make_tfds_extractor() (in module datumaro.components.extractor_tfds)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.environment.html#datumaro.components.environment.Environment.make_transform">make_transform() (datumaro.components.environment.Environment method)</a>
 </li>
@@ -3544,25 +3861,35 @@
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.mots_format.html#datumaro.plugins.mots_format.MotsPath.MAX_INSTANCES">MAX_INSTANCES (datumaro.plugins.mots_format.MotsPath attribute)</a>
 </li>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FarFromAttrMean.mean">mean (datumaro.components.errors.FarFromAttrMean attribute)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FarFromLabelMean.mean">(datumaro.components.errors.FarFromLabelMean attribute)</a>
+</li>
+      </ul></li>
       <li><a href="api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util.mean_bbox">mean_bbox() (in module datumaro.util.annotation_util)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.mean_std">mean_std (class in datumaro.components.operations)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.media.html#datumaro.components.media.MediaElement">MediaElement (class in datumaro.components.media)</a>
 </li>
+      <li><a href="api/components/components/datumaro.components.media_manager.html#datumaro.components.media_manager.MediaManager">MediaManager (class in datumaro.components.media_manager)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetectionConfidence.MEDIUM">MEDIUM (datumaro.components.format_detection.FormatDetectionConfidence attribute)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.ExactMerge.merge">merge() (datumaro.components.operations.ExactMerge class method)</a>, <a href="api/components/components/datumaro.components.operations.html#id0">[1]</a>
 
       <ul>
         <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.MergingStrategy.merge">(datumaro.components.operations.MergingStrategy class method)</a>
 </li>
-      </ul></li>
-      <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.ExactMerge.merge_anno">merge_anno() (datumaro.components.operations.ExactMerge static method)</a>, <a href="api/components/components/datumaro.components.operations.html#id3">[1]</a>
+        <li><a href="api/components/components/datumaro.components.hl_ops.html#datumaro.components.hl_ops.merge">(in module datumaro.components.hl_ops)</a>
 </li>
+      </ul></li>
       <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.IntersectMerge.merge_annotations">merge_annotations() (datumaro.components.operations.IntersectMerge method)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.merge_annotations_equal">merge_annotations_equal() (in module datumaro.components.operations)</a>
 </li>
-      <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.ExactMerge.merge_categories">merge_categories() (datumaro.components.operations.ExactMerge static method)</a>, <a href="api/components/components/datumaro.components.operations.html#id4">[1]</a>
+      <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.ExactMerge.merge_categories">merge_categories() (datumaro.components.operations.ExactMerge static method)</a>, <a href="api/components/components/datumaro.components.operations.html#id1">[1]</a>
 
       <ul>
         <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.merge_categories">(in module datumaro.components.operations)</a>
@@ -3584,14 +3911,8 @@
         <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.LabelMerger.merge_clusters">(datumaro.components.operations.LabelMerger method)</a>
 </li>
       </ul></li>
-      <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.ExactMerge.merge_images">merge_images() (datumaro.components.operations.ExactMerge static method)</a>, <a href="api/components/components/datumaro.components.operations.html#id2">[1]</a>
+      <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.IntersectMerge.merge_items">merge_items() (datumaro.components.operations.IntersectMerge method)</a>
 </li>
-      <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.ExactMerge.merge_items">merge_items() (datumaro.components.operations.ExactMerge class method)</a>, <a href="api/components/components/datumaro.components.operations.html#id1">[1]</a>
-
-      <ul>
-        <li><a href="api/components/components/datumaro.components.operations.html#datumaro.components.operations.IntersectMerge.merge_items">(datumaro.components.operations.IntersectMerge method)</a>
-</li>
-      </ul></li>
       <li><a href="api/util/util/datumaro.util.mask_tools.html#datumaro.util.mask_tools.merge_masks">merge_masks() (in module datumaro.util.mask_tools)</a>
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.MergeInstanceSegments.merge_segments">merge_segments() (datumaro.plugins.transforms.MergeInstanceSegments class method)</a>
@@ -3654,8 +3975,6 @@
 </li>
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.Project.models">models (datumaro.components.project.Project property)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/components/components/datumaro.components.config_model.html#datumaro.components.config_model.ProjectLayout.models_dir">models_dir (datumaro.components.config_model.ProjectLayout attribute)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.launcher.html#datumaro.components.launcher.ModelTransform">ModelTransform (class in datumaro.components.launcher)</a>
@@ -3666,6 +3985,8 @@
         <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.DiffStatus.modified">(datumaro.components.project.DiffStatus attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     module
 
@@ -3698,15 +4019,29 @@
 </li>
         <li><a href="api/components/components/datumaro.components.extractor.html#module-datumaro.components.extractor">datumaro.components.extractor</a>
 </li>
+        <li><a href="api/components/components/datumaro.components.extractor_tfds.html#module-datumaro.components.extractor_tfds">datumaro.components.extractor_tfds</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.format_detection.html#module-datumaro.components.format_detection">datumaro.components.format_detection</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.hl_ops.html#module-datumaro.components.hl_ops">datumaro.components.hl_ops</a>
+</li>
         <li><a href="api/components/components/datumaro.components.launcher.html#module-datumaro.components.launcher">datumaro.components.launcher</a>
 </li>
         <li><a href="api/components/components/datumaro.components.media.html#module-datumaro.components.media">datumaro.components.media</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.media_manager.html#module-datumaro.components.media_manager">datumaro.components.media_manager</a>
 </li>
         <li><a href="api/components/components/datumaro.components.operations.html#module-datumaro.components.operations">datumaro.components.operations</a>
 </li>
         <li><a href="api/components/components/datumaro.components.project.html#module-datumaro.components.project">datumaro.components.project</a>
 </li>
         <li><a href="api/components/components/datumaro.components.validator.html#module-datumaro.components.validator">datumaro.components.validator</a>
+</li>
+        <li><a href="api/plugins/accuracy_checker_plugin/datumaro.plugins.accuracy_checker_plugin.launcher.html#module-datumaro.plugins.accuracy_checker_plugin.ac_launcher">datumaro.plugins.accuracy_checker_plugin.ac_launcher</a>
+</li>
+        <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.ac.html#module-datumaro.plugins.accuracy_checker_plugin.details.ac">datumaro.plugins.accuracy_checker_plugin.details.ac</a>
+</li>
+        <li><a href="api/plugins/accuracy_checker_plugin/details/datumaro.plugins.accuracy_checker_plugin.details.representation.html#module-datumaro.plugins.accuracy_checker_plugin.details.representation">datumaro.plugins.accuracy_checker_plugin.details.representation</a>
 </li>
         <li><a href="api/plugins/plugins/datumaro.plugins.ade20k2017_format.html#module-datumaro.plugins.ade20k2017_format">datumaro.plugins.ade20k2017_format</a>
 </li>
@@ -3784,6 +4119,8 @@
 </li>
         <li><a href="api/plugins/plugins/datumaro.plugins.open_images_format.html#module-datumaro.plugins.open_images_format">datumaro.plugins.open_images_format</a>
 </li>
+        <li><a href="api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html#module-datumaro.plugins.openvino_plugin.launcher">datumaro.plugins.openvino_plugin.launcher</a>
+</li>
         <li><a href="api/plugins/openvino_plugin/samples/datumaro.plugins.openvino_plugin.samples.mobilenet_v2_pytorch_interp.html#module-datumaro.plugins.openvino_plugin.samples.mobilenet_v2_pytorch_interp">datumaro.plugins.openvino_plugin.samples.mobilenet_v2_pytorch_interp</a>
 </li>
         <li><a href="api/plugins/openvino_plugin/samples/datumaro.plugins.openvino_plugin.samples.ssd_face_detection_interp.html#module-datumaro.plugins.openvino_plugin.samples.ssd_face_detection_interp">datumaro.plugins.openvino_plugin.samples.ssd_face_detection_interp</a>
@@ -3800,6 +4137,10 @@
 </li>
         <li><a href="api/plugins/sampler/algorithm/datumaro.plugins.sampler.algorithm.entropy.html#module-datumaro.plugins.sampler.algorithm.entropy">datumaro.plugins.sampler.algorithm.entropy</a>
 </li>
+        <li><a href="api/plugins/sampler/datumaro.plugins.sampler.random_sampler.html#module-datumaro.plugins.sampler.random_sampler">datumaro.plugins.sampler.random_sampler</a>
+</li>
+        <li><a href="api/plugins/sampler/datumaro.plugins.sampler.relevancy_sampler.html#module-datumaro.plugins.sampler.relevancy_sampler">datumaro.plugins.sampler.relevancy_sampler</a>
+</li>
         <li><a href="api/plugins/sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.converter.html#module-datumaro.plugins.sly_pointcloud_format.converter">datumaro.plugins.sly_pointcloud_format.converter</a>
 </li>
         <li><a href="api/plugins/sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.extractor.html#module-datumaro.plugins.sly_pointcloud_format.extractor">datumaro.plugins.sly_pointcloud_format.extractor</a>
@@ -3807,6 +4148,10 @@
         <li><a href="api/plugins/sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.format.html#module-datumaro.plugins.sly_pointcloud_format.format">datumaro.plugins.sly_pointcloud_format.format</a>
 </li>
         <li><a href="api/plugins/plugins/datumaro.plugins.splitter.html#module-datumaro.plugins.splitter">datumaro.plugins.splitter</a>
+</li>
+        <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.converter.html#module-datumaro.plugins.tf_detection_api_format.converter">datumaro.plugins.tf_detection_api_format.converter</a>
+</li>
+        <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.extractor.html#module-datumaro.plugins.tf_detection_api_format.extractor">datumaro.plugins.tf_detection_api_format.extractor</a>
 </li>
         <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.format.html#module-datumaro.plugins.tf_detection_api_format.format">datumaro.plugins.tf_detection_api_format.format</a>
 </li>
@@ -3863,12 +4208,8 @@
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.mot_format.html#datumaro.plugins.mot_format.MotLabel">MotLabel (class in datumaro.plugins.mot_format)</a>
 </li>
-      <li><a href="api/plugins/plugins/datumaro.plugins.mot_format.html#datumaro.plugins.mot_format.MotLabel.motorbike">motorbike (datumaro.plugins.mot_format.MotLabel attribute)</a>
-
-      <ul>
-        <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocLabel.motorbike">(datumaro.plugins.voc_format.format.VocLabel attribute)</a>
+      <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocLabel.motorbike">motorbike (datumaro.plugins.voc_format.format.VocLabel attribute)</a>
 </li>
-      </ul></li>
       <li><a href="api/plugins/plugins/datumaro.plugins.mot_format.html#datumaro.plugins.mot_format.MotPath">MotPath (class in datumaro.plugins.mot_format)</a>
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.mot_format.html#datumaro.plugins.mot_format.MotSeqExtractor">MotSeqExtractor (class in datumaro.plugins.mot_format)</a>
@@ -3902,10 +4243,18 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/components/components/datumaro.components.cli_plugin.html#datumaro.components.cli_plugin.CliPlugin.NAME">NAME (datumaro.components.cli_plugin.CliPlugin attribute)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.SourceExistsError.name">name (datumaro.components.errors.SourceExistsError attribute)</a>
 
       <ul>
-        <li><a href="api/plugins/sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.converter.html#datumaro.plugins.sly_pointcloud_format.converter.SuperviselyPointCloudConverter.NAME">(datumaro.plugins.sly_pointcloud_format.converter.SuperviselyPointCloudConverter attribute)</a>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.UnknownSourceError.name">(datumaro.components.errors.UnknownSourceError attribute)</a>
 </li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.UnknownTargetError.name">(datumaro.components.errors.UnknownTargetError attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/plugins/sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.converter.html#datumaro.plugins.sly_pointcloud_format.converter.SuperviselyPointCloudConverter.NAME">NAME (datumaro.plugins.sly_pointcloud_format.converter.SuperviselyPointCloudConverter attribute)</a>
+
+      <ul>
         <li><a href="api/plugins/sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.extractor.html#datumaro.plugins.sly_pointcloud_format.extractor.SuperviselyPointCloudExtractor.NAME">(datumaro.plugins.sly_pointcloud_format.extractor.SuperviselyPointCloudExtractor attribute)</a>
 </li>
         <li><a href="api/plugins/sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.extractor.html#datumaro.plugins.sly_pointcloud_format.extractor.SuperviselyPointCloudImporter.NAME">(datumaro.plugins.sly_pointcloud_format.extractor.SuperviselyPointCloudImporter attribute)</a>
@@ -3917,11 +4266,13 @@
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.ndr.html#datumaro.plugins.ndr.NDR">NDR (class in datumaro.plugins.ndr)</a>
 </li>
-      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.NegativeLength">NegativeLength (class in datumaro.components.errors)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.NegativeLength">NegativeLength (class in datumaro.components.errors)</a>
+</li>
       <li><a href="api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util.nms">nms() (in module datumaro.util.annotation_util)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.NO_GROUP">NO_GROUP (in module datumaro.components.annotation)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.NoMatchingAnnError">NoMatchingAnnError (class in datumaro.components.errors)</a>
 </li>
@@ -3945,7 +4296,7 @@
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/plugins/plugins/datumaro.plugins.mot_format.html#datumaro.plugins.mot_format.MotLabel.occluder">occluder (datumaro.plugins.mot_format.MotLabel attribute)</a>
+      <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.ObjectId">ObjectId (in module datumaro.components.project)</a>
 </li>
       <li><a href="api/plugins/kitti_raw_format/datumaro.plugins.kitti_raw_format.format.html#datumaro.plugins.kitti_raw_format.format.OcclusionStates.OCCLUSION_UNSET">OCCLUSION_UNSET (datumaro.plugins.kitti_raw_format.format.OcclusionStates attribute)</a>
 </li>
@@ -3996,6 +4347,8 @@
       <li><a href="api/plugins/plugins/datumaro.plugins.open_images_format.html#datumaro.plugins.open_images_format.OpenImagesImporter">OpenImagesImporter (class in datumaro.plugins.open_images_format)</a>
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.open_images_format.html#datumaro.plugins.open_images_format.OpenImagesPath">OpenImagesPath (class in datumaro.plugins.open_images_format)</a>
+</li>
+      <li><a href="api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher">OpenvinoLauncher (class in datumaro.plugins.openvino_plugin.launcher)</a>
 </li>
       <li><a href="api/util/util/datumaro.util.html#datumaro.util.optional_arg_decorator">optional_arg_decorator() (in module datumaro.util)</a>
 </li>
@@ -4076,14 +4429,26 @@
 </li>
         <li><a href="api/plugins/sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.converter.html#datumaro.plugins.sly_pointcloud_format.converter.SuperviselyPointCloudConverter.patch">(datumaro.plugins.sly_pointcloud_format.converter.SuperviselyPointCloudConverter class method)</a>
 </li>
+        <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.converter.html#datumaro.plugins.tf_detection_api_format.converter.TfDetectionApiConverter.patch">(datumaro.plugins.tf_detection_api_format.converter.TfDetectionApiConverter class method)</a>
+</li>
         <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.converter.html#datumaro.plugins.voc_format.converter.VocConverter.patch">(datumaro.plugins.voc_format.converter.VocConverter class method)</a>
 </li>
         <li><a href="api/plugins/yolo_format/datumaro.plugins.yolo_format.converter.html#datumaro.plugins.yolo_format.converter.YoloConverter.patch">(datumaro.plugins.yolo_format.converter.YoloConverter class method)</a>
 </li>
       </ul></li>
-      <li><a href="api/components/components/datumaro.components.media.html#datumaro.components.media.MediaElement.path">path (datumaro.components.media.MediaElement property)</a>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.DatasetNotFoundError.path">path (datumaro.components.errors.DatasetNotFoundError attribute)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.ProjectAlreadyExists.path">(datumaro.components.errors.ProjectAlreadyExists attribute)</a>
 </li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.ProjectNotFoundError.path">(datumaro.components.errors.ProjectNotFoundError attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.media.html#datumaro.components.media.MediaElement.path">(datumaro.components.media.MediaElement property)</a>
+</li>
+      </ul></li>
       <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.PathOutsideSourceError">PathOutsideSourceError (class in datumaro.components.errors)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.UnsavedChangesError.paths">paths (datumaro.components.errors.UnsavedChangesError attribute)</a>
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.lfw_format.html#datumaro.plugins.lfw_format.LfwPath.PATTERN">PATTERN (datumaro.plugins.lfw_format.LfwPath attribute)</a>
 
@@ -4099,12 +4464,8 @@
       </ul></li>
       <li><a href="api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util.PDJ">PDJ() (in module datumaro.util.annotation_util)</a>
 </li>
-      <li><a href="api/plugins/plugins/datumaro.plugins.mot_format.html#datumaro.plugins.mot_format.MotLabel.pedestrian">pedestrian (datumaro.plugins.mot_format.MotLabel attribute)</a>
-
-      <ul>
-        <li><a href="api/plugins/plugins/datumaro.plugins.mots_format.html#datumaro.plugins.mots_format.MotsLabels.pedestrian">(datumaro.plugins.mots_format.MotsLabels attribute)</a>
+      <li><a href="api/plugins/plugins/datumaro.plugins.mots_format.html#datumaro.plugins.mots_format.MotsLabels.pedestrian">pedestrian (datumaro.plugins.mots_format.MotsLabels attribute)</a>
 </li>
-      </ul></li>
       <li><a href="api/plugins/plugins/datumaro.plugins.lfw_format.html#datumaro.plugins.lfw_format.LfwPath.PEOPLE_FILE">PEOPLE_FILE (datumaro.plugins.lfw_format.LfwPath attribute)</a>
 </li>
       <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocLabel.person">person (datumaro.plugins.voc_format.format.VocLabel attribute)</a>
@@ -4146,15 +4507,7 @@
       <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Points">Points (class in datumaro.components.annotation)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.AnnotationType.points">points (datumaro.components.annotation.AnnotationType attribute)</a>
-
-      <ul>
-        <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Bbox.points">(datumaro.components.annotation.Bbox attribute)</a>
 </li>
-        <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Polygon.points">(datumaro.components.annotation.Polygon attribute)</a>
-</li>
-        <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.PolyLine.points">(datumaro.components.annotation.PolyLine attribute)</a>
-</li>
-      </ul></li>
       <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Points.Visibility">Points.Visibility (class in datumaro.components.annotation)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.PointsCategories">PointsCategories (class in datumaro.components.annotation)</a>
@@ -4189,10 +4542,12 @@
 </li>
       <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocLabel.pottedplant">pottedplant (datumaro.plugins.voc_format.format.VocLabel attribute)</a>
 </li>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetectionContext.probe_text_file">probe_text_file() (datumaro.components.format_detection.FormatDetectionContext method)</a>
+</li>
       <li><a href="api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html#datumaro.plugins.openvino_plugin.launcher.InterpreterScript.process_outputs">process_outputs() (datumaro.plugins.openvino_plugin.launcher.InterpreterScript static method)</a>
 
       <ul>
-        <li><a href="api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.process_outputs">(datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher static method)</a>
+        <li><a href="api/plugins/openvino_plugin/datumaro.plugins.openvino_plugin.launcher.html#datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher.process_outputs">(datumaro.plugins.openvino_plugin.launcher.OpenvinoLauncher method)</a>
 </li>
         <li><a href="api/plugins/openvino_plugin/samples/datumaro.plugins.openvino_plugin.samples.mobilenet_v2_pytorch_interp.html#datumaro.plugins.openvino_plugin.samples.mobilenet_v2_pytorch_interp.process_outputs">(in module datumaro.plugins.openvino_plugin.samples.mobilenet_v2_pytorch_interp)</a>
 </li>
@@ -4229,8 +4584,26 @@
 </li>
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.ProjectSources.__init__">ProjectSources.__init__() (in module datumaro.components.project)</a>
 </li>
-      <li><a href="api/util/util/datumaro.util.image_cache.html#datumaro.util.image_cache.ImageCache.push">push() (datumaro.util.image_cache.ImageCache method)</a>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FarFromAttrMean.prop">prop (datumaro.components.errors.FarFromAttrMean attribute)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FarFromLabelMean.prop">(datumaro.components.errors.FarFromLabelMean attribute)</a>
 </li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.ImbalancedDistInAttribute.prop">(datumaro.components.errors.ImbalancedDistInAttribute attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.ImbalancedDistInLabel.prop">(datumaro.components.errors.ImbalancedDistInLabel attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.InvalidValue.prop">(datumaro.components.errors.InvalidValue attribute)</a>
+</li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.NegativeLength.prop">(datumaro.components.errors.NegativeLength attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/components/components/datumaro.components.media_manager.html#datumaro.components.media_manager.MediaManager.push">push() (datumaro.components.media_manager.MediaManager method)</a>
+
+      <ul>
+        <li><a href="api/util/util/datumaro.util.image_cache.html#datumaro.util.image_cache.ImageCache.push">(datumaro.util.image_cache.ImageCache method)</a>
+</li>
+      </ul></li>
       <li><a href="api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.put">put() (datumaro.components.dataset.Dataset method)</a>
 
       <ul>
@@ -4261,6 +4634,8 @@
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.ndr.html#datumaro.plugins.ndr.OverSamplingMethod.random">random (datumaro.plugins.ndr.OverSamplingMethod attribute)</a>
 </li>
+      <li><a href="api/plugins/sampler/datumaro.plugins.sampler.random_sampler.html#datumaro.plugins.sampler.random_sampler.RandomSampler">RandomSampler (class in datumaro.plugins.sampler.random_sampler)</a>
+</li>
       <li><a href="api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RandomSplit">RandomSplit (class in datumaro.plugins.transforms)</a>
 </li>
       <li><a href="api/plugins/sampler/algorithm/datumaro.plugins.sampler.algorithm.html#datumaro.plugins.sampler.algorithm.algorithm.SamplingMethod.randtopk">randtopk (datumaro.plugins.sampler.algorithm.algorithm.SamplingMethod attribute)</a>
@@ -4275,7 +4650,7 @@
 </li>
       <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocPose.Rear">Rear (datumaro.plugins.voc_format.format.VocPose attribute)</a>
 </li>
-      <li><a href="api/plugins/plugins/datumaro.plugins.mot_format.html#datumaro.plugins.mot_format.MotLabel.reflection">reflection (datumaro.plugins.mot_format.MotLabel attribute)</a>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.UnknownRefError.ref">ref (datumaro.components.errors.UnknownRefError attribute)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.Project.refresh_source_hash">refresh_source_hash() (datumaro.components.project.Project method)</a>
 </li>
@@ -4287,6 +4662,10 @@
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.Reindex">Reindex (class in datumaro.plugins.transforms)</a>
 </li>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.RejectionCallback">RejectionCallback (class in datumaro.components.format_detection)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.RejectionReason">RejectionReason (class in datumaro.components.format_detection)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.extractor.html#datumaro.components.extractor.DatasetItem.related_images">related_images (datumaro.components.extractor.DatasetItem attribute)</a>
 </li>
       <li><a href="api/plugins/datumaro_format/datumaro.plugins.datumaro_format.format.html#datumaro.plugins.datumaro_format.format.DatumaroPath.RELATED_IMAGES_DIR">RELATED_IMAGES_DIR (datumaro.plugins.datumaro_format.format.DatumaroPath attribute)</a>
@@ -4295,6 +4674,8 @@
         <li><a href="api/plugins/sly_pointcloud_format/datumaro.plugins.sly_pointcloud_format.format.html#datumaro.plugins.sly_pointcloud_format.format.PointCloudPath.RELATED_IMAGES_DIR">(datumaro.plugins.sly_pointcloud_format.format.PointCloudPath attribute)</a>
 </li>
       </ul></li>
+      <li><a href="api/plugins/sampler/datumaro.plugins.sampler.relevancy_sampler.html#datumaro.plugins.sampler.relevancy_sampler.RelevancySampler">RelevancySampler (class in datumaro.plugins.sampler.relevancy_sampler)</a>
+</li>
       <li><a href="api/util/util/datumaro.util.mask_tools.html#datumaro.util.mask_tools.remap_mask">remap_mask() (in module datumaro.util.mask_tools)</a>
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RemapLabels">RemapLabels (class in datumaro.plugins.transforms)</a>
@@ -4341,6 +4722,10 @@
 </li>
       <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.RepeatedItemError">RepeatedItemError (class in datumaro.components.errors)</a>
 </li>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetectionContext.require_any">require_any() (datumaro.components.format_detection.FormatDetectionContext method)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetectionContext.require_file">require_file() (datumaro.components.format_detection.FormatDetectionContext method)</a>
+</li>
       <li><a href="api/cli/util/datumaro.cli.util.html#datumaro.cli.util.required_count">required_count() (in module datumaro.cli.util)</a>
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.ResizeTransform">ResizeTransform (class in datumaro.plugins.transforms)</a>
@@ -4353,7 +4738,11 @@
 </li>
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.GitWrapper.rev_parse">rev_parse() (datumaro.components.project.GitWrapper method)</a>
 </li>
+      <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.Revision">Revision (in module datumaro.components.project)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.IgnoreMode.rewrite">rewrite (datumaro.components.project.IgnoreMode attribute)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.RgbColor">RgbColor (in module datumaro.components.annotation)</a>
 </li>
       <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocAction.ridingbike">ridingbike (datumaro.plugins.voc_format.format.VocAction attribute)</a>
 </li>
@@ -4367,18 +4756,22 @@
 </li>
       <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.RleMask">RleMask (class in datumaro.components.annotation)</a>
 </li>
-      <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.RleMask.CompiledMaskImage">RleMask.CompiledMaskImage (in module datumaro.components.annotation)</a>
-</li>
       <li><a href="api/util/util/datumaro.util.mask_tools.html#datumaro.util.mask_tools.rles_to_mask">rles_to_mask() (in module datumaro.util.mask_tools)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.config_model.html#datumaro.components.config_model.BuildTarget.root">root (datumaro.components.config_model.BuildTarget property)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetectionContext.root_path">root_path (datumaro.components.format_detection.FormatDetectionContext property)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Cuboid3d.rotation">rotation (datumaro.components.annotation.Cuboid3d property)</a>
 </li>
       <li><a href="api/util/util/datumaro.util.test_utils.html#datumaro.util.test_utils.run_datum">run_datum() (in module datumaro.util.test_utils)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.run_model">run_model() (datumaro.components.dataset.Dataset method)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.hl_ops.html#datumaro.components.hl_ops.run_model">(in module datumaro.components.hl_ops)</a>
 </li>
+      </ul></li>
       <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocAction.running">running (datumaro.plugins.voc_format.format.VocAction attribute)</a>
 </li>
   </ul></td>
@@ -4521,8 +4914,6 @@
 </li>
       <li><a href="api/util/util/datumaro.util.telemetry_utils.html#datumaro.util.telemetry_utils.send_version_info">send_version_info() (in module datumaro.util.telemetry_utils)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/plugins/plugins/datumaro.plugins.mot_format.html#datumaro.plugins.mot_format.MotPath.SEQINFO_FILE">SEQINFO_FILE (datumaro.plugins.mot_format.MotPath attribute)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.config.html#datumaro.components.config.Config.set">set() (datumaro.components.config.Config method)</a>
@@ -4532,6 +4923,12 @@
 </li>
       </ul></li>
       <li><a href="api/components/components/datumaro.components.validator.html#datumaro.components.validator.Severity">Severity (class in datumaro.components.validator)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.DatasetValidationError.severity">severity (datumaro.components.errors.DatasetValidationError attribute)</a>
+</li>
+      <li><a href="api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util.Shape">Shape (in module datumaro.util.annotation_util)</a>
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.ShapesToBoxes">ShapesToBoxes (class in datumaro.plugins.transforms)</a>
 </li>
@@ -4553,8 +4950,12 @@
         <li><a href="api/components/components/datumaro.components.media.html#datumaro.components.media.VideoFrame.size">(datumaro.components.media.VideoFrame property)</a>
 </li>
       </ul></li>
-      <li><a href="api/util/util/datumaro.util.image_cache.html#datumaro.util.image_cache.ImageCache.size">size() (datumaro.util.image_cache.ImageCache method)</a>
+      <li><a href="api/components/components/datumaro.components.media_manager.html#datumaro.components.media_manager.MediaManager.size">size() (datumaro.components.media_manager.MediaManager method)</a>
+
+      <ul>
+        <li><a href="api/util/util/datumaro.util.image_cache.html#datumaro.util.image_cache.ImageCache.size">(datumaro.util.image_cache.ImageCache method)</a>
 </li>
+      </ul></li>
       <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocLabel.sofa">sofa (datumaro.plugins.voc_format.format.VocLabel attribute)</a>
 </li>
       <li><a href="api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util.softmax">softmax() (in module datumaro.util.annotation_util)</a>
@@ -4583,11 +4984,19 @@
 </li>
       <li><a href="api/components/components/datumaro.components.extractor.html#datumaro.components.extractor.SourceExtractor">SourceExtractor (class in datumaro.components.extractor)</a>
 </li>
-      <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.Tree.sources">sources (datumaro.components.project.Tree property)</a>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.ConflictingCategoriesError.sources">sources (datumaro.components.errors.ConflictingCategoriesError attribute)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.DatasetMergeError.sources">(datumaro.components.errors.DatasetMergeError attribute)</a>
 </li>
+        <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.Tree.sources">(datumaro.components.project.Tree property)</a>
+</li>
+      </ul></li>
       <li><a href="api/components/components/datumaro.components.config_model.html#datumaro.components.config_model.TreeLayout.sources_dir">sources_dir (datumaro.components.config_model.TreeLayout attribute)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.SourceUrlInsideProjectError">SourceUrlInsideProjectError (class in datumaro.components.errors)</a>
+</li>
+      <li><a href="api/util/util/datumaro.util.annotation_util.html#datumaro.util.annotation_util.SpatialAnnotation">SpatialAnnotation (in module datumaro.util.annotation_util)</a>
 </li>
       <li><a href="api/plugins/kitti_raw_format/datumaro.plugins.kitti_raw_format.format.html#datumaro.plugins.kitti_raw_format.format.KittiRawPath.SPECIAL_ATTRS">SPECIAL_ATTRS (datumaro.plugins.kitti_raw_format.format.KittiRawPath attribute)</a>
 
@@ -4619,9 +5028,11 @@
 </li>
       <li><a href="api/plugins/coco_format/datumaro.plugins.coco_format.format.html#datumaro.plugins.coco_format.format.CocoTask.stuff">stuff (datumaro.plugins.coco_format.format.CocoTask attribute)</a>
 </li>
-      <li><a href="api/components/components/datumaro.components.extractor.html#datumaro.components.extractor.DatasetItem.subset">subset (datumaro.components.extractor.DatasetItem attribute)</a>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.DatasetItemValidationError.subset">subset (datumaro.components.errors.DatasetItemValidationError attribute)</a>
 
       <ul>
+        <li><a href="api/components/components/datumaro.components.extractor.html#datumaro.components.extractor.DatasetItem.subset">(datumaro.components.extractor.DatasetItem attribute)</a>
+</li>
         <li><a href="api/plugins/plugins/datumaro.plugins.open_images_format.html#datumaro.plugins.open_images_format.UnsupportedSubsetNameError.subset">(datumaro.plugins.open_images_format.UnsupportedSubsetNameError attribute)</a>
 </li>
       </ul></li>
@@ -4689,6 +5100,14 @@
 </li>
       <li><a href="api/plugins/icdar_format/datumaro.plugins.icdar_format.format.html#datumaro.plugins.icdar_format.format.IcdarTask.text_segmentation">text_segmentation (datumaro.plugins.icdar_format.format.IcdarTask attribute)</a>
 </li>
+      <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.converter.html#datumaro.plugins.tf_detection_api_format.converter.TfDetectionApiConverter">TfDetectionApiConverter (class in datumaro.plugins.tf_detection_api_format.converter)</a>
+</li>
+      <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.extractor.html#datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiExtractor">TfDetectionApiExtractor (class in datumaro.plugins.tf_detection_api_format.extractor)</a>
+</li>
+      <li><a href="api/plugins/tf_detection_api_format/datumaro.plugins.tf_detection_api_format.extractor.html#datumaro.plugins.tf_detection_api_format.extractor.TfDetectionApiImporter">TfDetectionApiImporter (class in datumaro.plugins.tf_detection_api_format.extractor)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.extractor_tfds.html#datumaro.components.extractor_tfds.TfdsDatasetMetadata">TfdsDatasetMetadata (class in datumaro.components.extractor_tfds)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.config_model.html#datumaro.components.config_model.ProjectLayout.tmp_dir">tmp_dir (datumaro.components.config_model.ProjectLayout attribute)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.DatasetItemValidationError.to_dict">to_dict() (datumaro.components.errors.DatasetItemValidationError method)</a>
@@ -4718,7 +5137,11 @@
       <ul>
         <li><a href="api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.DatasetStorage.transform">(datumaro.components.dataset.DatasetStorage method)</a>
 </li>
+        <li><a href="api/components/components/datumaro.components.hl_ops.html#datumaro.components.hl_ops.transform">(in module datumaro.components.hl_ops)</a>
+</li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/components/components/datumaro.components.dataset_filter.html#datumaro.components.dataset_filter.XPathAnnotationsFilter.transform_item">transform_item() (datumaro.components.dataset_filter.XPathAnnotationsFilter method)</a>
 
       <ul>
@@ -4757,8 +5180,6 @@
         <li><a href="api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.ShapesToBoxes.transform_item">(datumaro.plugins.transforms.ShapesToBoxes method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/components/components/datumaro.components.environment.html#datumaro.components.environment.Environment.transforms">transforms (datumaro.components.environment.Environment property)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.Tree">Tree (class in datumaro.components.project)</a>
@@ -4807,10 +5228,12 @@
 </li>
       <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.UnknownTargetError">UnknownTargetError (class in datumaro.components.errors)</a>
 </li>
-      <li><a href="api/util/util/datumaro.util.mask_tools.html#datumaro.util.mask_tools.unpaint_mask">unpaint_mask() (in module datumaro.util.mask_tools)</a>
+      <li><a href="api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.RejectionReason.unmet_requirements">unmet_requirements (datumaro.components.format_detection.RejectionReason attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/util/util/datumaro.util.mask_tools.html#datumaro.util.mask_tools.unpaint_mask">unpaint_mask() (in module datumaro.util.mask_tools)</a>
+</li>
       <li><a href="api/components/components/datumaro.components.environment.html#datumaro.components.environment.Registry.unregister">unregister() (datumaro.components.environment.Registry method)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.UnsavedChangesError">UnsavedChangesError (class in datumaro.components.errors)</a>
@@ -4849,13 +5272,27 @@
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.open_images_format.html#datumaro.plugins.open_images_format.OpenImagesPath.V5_CLASS_DESCRIPTION_FILE_NAME">V5_CLASS_DESCRIPTION_FILE_NAME (datumaro.plugins.open_images_format.OpenImagesPath attribute)</a>
 </li>
-      <li><a href="api/components/components/datumaro.components.validator.html#datumaro.components.validator.Validator.validate">validate() (datumaro.components.validator.Validator method)</a>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FarFromAttrMean.val">val (datumaro.components.errors.FarFromAttrMean attribute)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FarFromLabelMean.val">(datumaro.components.errors.FarFromLabelMean attribute)</a>
 </li>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.NegativeLength.val">(datumaro.components.errors.NegativeLength attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/components/components/datumaro.components.validator.html#datumaro.components.validator.Validator.validate">validate() (datumaro.components.validator.Validator method)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.hl_ops.html#datumaro.components.hl_ops.validate">(in module datumaro.components.hl_ops)</a>
+</li>
+      </ul></li>
       <li><a href="api/components/components/datumaro.components.project.html#datumaro.components.project.Project.validate_source_name">validate_source_name() (datumaro.components.project.Project method)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.validator.html#datumaro.components.validator.Validator">Validator (class in datumaro.components.validator)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.environment.html#datumaro.components.environment.Environment.validators">validators (datumaro.components.environment.Environment property)</a>
+</li>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.OnlyOneAttributeValue.value">value (datumaro.components.errors.OnlyOneAttributeValue attribute)</a>
 </li>
       <li><a href="api/components/components/datumaro.components.config.html#datumaro.components.config.Config.values">values() (datumaro.components.config.Config method)</a>
 
@@ -4887,12 +5324,12 @@
 </li>
       <li><a href="api/plugins/kitti_raw_format/datumaro.plugins.kitti_raw_format.format.html#datumaro.plugins.kitti_raw_format.format.OcclusionStates.VISIBLE">VISIBLE (datumaro.plugins.kitti_raw_format.format.OcclusionStates attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.converter.html#datumaro.plugins.voc_format.converter.LabelmapType.voc">voc (datumaro.plugins.voc_format.converter.LabelmapType attribute)</a>
 </li>
       <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocAction">VocAction (class in datumaro.plugins.voc_format.format)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.converter.html#datumaro.plugins.voc_format.converter.VocActionConverter">VocActionConverter (class in datumaro.plugins.voc_format.converter)</a>
 </li>
       <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.extractor.html#datumaro.plugins.voc_format.extractor.VocActionExtractor">VocActionExtractor (class in datumaro.plugins.voc_format.extractor)</a>
@@ -4937,6 +5374,12 @@
 </li>
       <li><a href="api/plugins/voc_format/datumaro.plugins.voc_format.format.html#datumaro.plugins.voc_format.format.VocTask">VocTask (class in datumaro.plugins.voc_format.format)</a>
 </li>
+      <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FailedAttrVotingError.votes">votes (datumaro.components.errors.FailedAttrVotingError attribute)</a>
+
+      <ul>
+        <li><a href="api/components/components/datumaro.components.errors.html#datumaro.components.errors.FailedLabelVotingError.votes">(datumaro.components.errors.FailedLabelVotingError attribute)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -5041,22 +5484,12 @@
 <h2 id="Z">Z</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Bbox.z_order">z_order (datumaro.components.annotation.Bbox attribute)</a>
-
-      <ul>
-        <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.Polygon.z_order">(datumaro.components.annotation.Polygon attribute)</a>
-</li>
-        <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.PolyLine.z_order">(datumaro.components.annotation.PolyLine attribute)</a>
-</li>
-        <li><a href="api/components/components/datumaro.components.annotation.html#datumaro.components.annotation.RleMask.z_order">(datumaro.components.annotation.RleMask attribute)</a>
-</li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/plugins/plugins/datumaro.plugins.image_zip_format.html#datumaro.plugins.image_zip_format.Compression.ZIP_BZIP2">ZIP_BZIP2 (datumaro.plugins.image_zip_format.Compression attribute)</a>
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.image_zip_format.html#datumaro.plugins.image_zip_format.Compression.ZIP_DEFLATED">ZIP_DEFLATED (datumaro.plugins.image_zip_format.Compression attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/plugins/plugins/datumaro.plugins.image_zip_format.html#datumaro.plugins.image_zip_format.Compression.ZIP_LZMA">ZIP_LZMA (datumaro.plugins.image_zip_format.Compression attribute)</a>
 </li>
       <li><a href="api/plugins/plugins/datumaro.plugins.image_zip_format.html#datumaro.plugins.image_zip_format.Compression.ZIP_STORED">ZIP_STORED (datumaro.plugins.image_zip_format.Compression attribute)</a>
@@ -5099,17 +5532,20 @@
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: update-docs-introduce-api-v1
+        v: update-api-docs-fix-docstrings
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
         <dl>
             <dt>Tags</dt>
             <dd><a href="v0.2.2/index.html">v0.2.2</a></dd>
+            <dd><a href="v0.2.3/index.html">v0.2.3</a></dd>
         </dl>
         <dl>
             <dt>Branches</dt>
-            <dd><a href="update-docs-introduce-api-v1/genindex.html">update-docs-introduce-api-v1</a></dd>
+            <dd><a href="revert-19-update-api-docs-fix-docstrings/index.html">revert-19-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="revert-20-update-api-docs-fix-docstrings/index.html">revert-20-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="update-api-docs-fix-docstrings/genindex.html">update-api-docs-fix-docstrings</a></dd>
         </dl>
     </div>
 </div><script>

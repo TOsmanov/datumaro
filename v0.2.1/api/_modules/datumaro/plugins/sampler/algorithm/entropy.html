@@ -6,6 +6,7 @@
   <title>datumaro.plugins.sampler.algorithm.entropy &mdash; Datumaro API documentation 0.2.3 documentation</title>
       <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -16,6 +17,8 @@
         <script src="../../../../../_static/jquery.js"></script>
         <script src="../../../../../_static/underscore.js"></script>
         <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../_static/copybutton.js"></script>
     <script src="../../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" /> 
@@ -37,6 +40,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../api/datumaro.html">Datumaro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../api/cli/cli.html">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../api/components/components.html">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../api/plugins/plugins.html">Plugins</a></li>
@@ -91,15 +95,18 @@
 <span class="sd">    and get samples based on that score.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">inference</span><span class="p">):</span>
+<div class="viewcode-block" id="SampleEntropy.__init__"><a class="viewcode-back" href="../../../../../api/plugins/sampler/algorithm/datumaro.plugins.sampler.algorithm.entropy.html#datumaro.plugins.sampler.algorithm.entropy.SampleEntropy.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">inference</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor function</span>
+
 <span class="sd">        Args:</span>
+
 <span class="sd">            data: Receive the data format in pd.DataFrame format.</span>
 <span class="sd">                    ImageID is an essential element for data.</span>
+
 <span class="sd">            inference:</span>
-<span class="sd">                    Receive the inference format in the form of pd.DataFrame.</span>
-<span class="sd">                    ImageID and ClassProbability are essential for inferences.</span>
+<span class="sd">                Receive the inference format in the form of pd.DataFrame.</span>
+<span class="sd">                ImageID and ClassProbability are essential for inferences.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">inference</span><span class="p">)</span>
 
@@ -120,18 +127,19 @@
                 <span class="s2">&quot;Invalid data, Inference do not have ClassProbability values&quot;</span><span class="p">)</span>
 
         <span class="c1"># rank: The inference DataFrame, sorted according to the score.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rank_images</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;rank&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rank_images</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;rank&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="SampleEntropy.get_sample"><a class="viewcode-back" href="../../../../../api/plugins/sampler/algorithm/datumaro.plugins.sampler.algorithm.entropy.html#datumaro.plugins.sampler.algorithm.entropy.SampleEntropy.get_sample">[docs]</a>    <span class="k">def</span> <span class="nf">get_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A function that extracts sample data and returns it.</span>
+
 <span class="sd">        Args:</span>
 <span class="sd">            method:</span>
-<span class="sd">                - &#39;topk&#39;: It extracts the k sample data with the</span>
-<span class="sd">                    highest uncertainty.</span>
-<span class="sd">                - &#39;lowk&#39;:  It extracts the k sample data with the</span>
-<span class="sd">                    lowest uncertainty.</span>
-<span class="sd">                - &#39;randomk&#39;: Extract and return random k sample data.</span>
+<span class="sd">                - &#39;topk&#39; - It extracts the k sample data with the</span>
+<span class="sd">                  highest uncertainty.</span>
+<span class="sd">                - &#39;lowk&#39; - It extracts the k sample data with the</span>
+<span class="sd">                  lowest uncertainty.</span>
+<span class="sd">                - &#39;randomk&#39; - Extract and return random k sample data.</span>
 <span class="sd">            k: number of sample data</span>
 <span class="sd">            n: Parameters to be used in the randtopk method, Variable to first</span>
 <span class="sd">                extract data of multiple n of k.</span>
@@ -169,14 +177,14 @@
         <span class="n">merged_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">temp_rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ImageID&#39;</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">merged_df</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_get_sample_mixed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<div class="viewcode-block" id="SampleEntropy._get_sample_mixed"><a class="viewcode-back" href="../../../../../api/plugins/sampler/algorithm/datumaro.plugins.sampler.algorithm.entropy.html#datumaro.plugins.sampler.algorithm.entropy.SampleEntropy._get_sample_mixed">[docs]</a>    <span class="k">def</span> <span class="nf">_get_sample_mixed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A function that extracts sample data and returns it.</span>
 <span class="sd">        Args:</span>
 <span class="sd">            method:</span>
 <span class="sd">                - &#39;mixk&#39;: Return top-k and low-k halves based on uncertainty.</span>
 <span class="sd">                - &#39;randomtopk&#39;: Randomly extract n*k and return k</span>
-<span class="sd">                    with high uncertainty.</span>
+<span class="sd">                  with high uncertainty.</span>
 <span class="sd">            k: number of sample data</span>
 <span class="sd">            n: Number to extract n * k from total data according to n,</span>
 <span class="sd">                and top-k from it</span>
@@ -203,9 +211,9 @@
 
         <span class="n">columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
         <span class="n">merged_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">temp_rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ImageID&#39;</span><span class="p">])</span>
-        <span class="k">return</span> <span class="n">merged_df</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">merged_df</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_rank_images</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<div class="viewcode-block" id="SampleEntropy._rank_images"><a class="viewcode-back" href="../../../../../api/plugins/sampler/algorithm/datumaro.plugins.sampler.algorithm.entropy.html#datumaro.plugins.sampler.algorithm.entropy.SampleEntropy._rank_images">[docs]</a>    <span class="k">def</span> <span class="nf">_rank_images</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A internal function that ranks the inference data based on uncertainty.</span>
 <span class="sd">        Returns:</span>
@@ -232,7 +240,7 @@
         <span class="n">res</span><span class="p">[</span><span class="s1">&#39;rank&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;Uncertainty&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>
         <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 
-        <span class="k">return</span> <span class="n">res</span>
+        <span class="k">return</span> <span class="n">res</span></div>
 
     <span class="k">def</span> <span class="nf">_calculate_uncertainty_from_classprob</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">inference</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
@@ -297,17 +305,20 @@
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: update-docs-introduce-api-v1
+        v: update-api-docs-fix-docstrings
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
         <dl>
             <dt>Tags</dt>
             <dd><a href="../../../../../v0.2.2/index.html">v0.2.2</a></dd>
+            <dd><a href="../../../../../v0.2.3/index.html">v0.2.3</a></dd>
         </dl>
         <dl>
             <dt>Branches</dt>
-            <dd><a href="../../../../../update-docs-introduce-api-v1/_modules/datumaro/plugins/sampler/algorithm/entropy.html">update-docs-introduce-api-v1</a></dd>
+            <dd><a href="../../../../../revert-19-update-api-docs-fix-docstrings/index.html">revert-19-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../../../revert-20-update-api-docs-fix-docstrings/index.html">revert-20-update-api-docs-fix-docstrings</a></dd>
+            <dd><a href="../../../../../update-api-docs-fix-docstrings/_modules/datumaro/plugins/sampler/algorithm/entropy.html">update-api-docs-fix-docstrings</a></dd>
         </dl>
     </div>
 </div><script>
