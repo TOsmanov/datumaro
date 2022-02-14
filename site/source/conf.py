@@ -11,7 +11,6 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
 import os
-import re
 import sys
 import re
 
@@ -93,6 +92,7 @@ def skip_member(app, what, name, obj, skip, options):
 def replace(app, what, name, obj, options, lines):
     for i, line in enumerate(lines):
         if line:
+            lines[i] = lines[i].replace("- iterable -", "iterable:")
             prog = str('%(prog)s')
             prog_name = re.sub(r'([A-Z])', r'_\1', name.split('.')[-1])[1:]
             lines[i] = lines[i].replace(prog, prog_name.lower())
