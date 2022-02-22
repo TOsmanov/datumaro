@@ -10,7 +10,6 @@ from typing import (
     Any, Dict, Generic, Iterable, Iterator, List, NewType, Optional, Tuple,
     TypeVar, Union,
 )
-import json
 import logging as log
 import os
 import os.path as osp
@@ -41,7 +40,8 @@ from datumaro.components.errors import (
     UnsavedChangesError, VcsError,
 )
 from datumaro.components.launcher import Launcher
-from datumaro.util import find, parse_str_enum_value
+from datumaro.components.media_manager import MediaManager
+from datumaro.util import find, parse_json_file, parse_str_enum_value
 from datumaro.util.log_utils import catch_logs, logging_disabled
 from datumaro.util.os_util import (
     copytree, generate_next_name, is_subpath, make_file_name, rmfile, rmtree,
@@ -584,7 +584,10 @@ class ProjectBuilder:
     @staticmethod
     def _validate_pipeline(pipeline: Pipeline):
         graph = pipeline._graph
-        if len(graph) == 0:
+        if len(graph) == 0 or len(graph) == 1 and next(iter(graph.nodes)) == \
+                ProjectBuildTargets.make_target_name(
+                    ProjectBuildTargets.MAIN_TARGET,
+                    ProjectBuildTargets.BASE_STAGE):
             raise EmptyPipelineError()
 
         head = pipeline.head
@@ -1263,8 +1266,7 @@ class DvcWrapper:
             return False
 
         if obj_hash.endswith(self.DIR_HASH_SUFFIX):
-            with open(path) as f:
-                objects = json.load(f)
+            objects = parse_json_file(path)
             for entry in objects:
                 if not osp.isfile(self.obj_path(entry['md5'])):
                     return False
@@ -1333,8 +1335,7 @@ class DvcWrapper:
         if not osp.isfile(src):
             raise UnknownRefError(obj_hash)
 
-        with open(src) as f:
-            src_meta = json.load(f)
+        src_meta = parse_json_file(src)
         for entry in src_meta:
             _copy_obj(self.obj_path(entry['md5']),
                 osp.join(dst_dir, entry['relpath']), link=allow_links)
@@ -1349,8 +1350,7 @@ class DvcWrapper:
         if not osp.isfile(src):
             raise UnknownRefError(obj_hash)
 
-        with open(src) as f:
-            src_meta = json.load(f)
+        src_meta = parse_json_file(src)
         for entry in src_meta:
             entry_path = self.obj_path(entry['md5'])
             if osp.isfile(entry_path):
@@ -1627,7 +1627,8 @@ class Project:
                 osp.join(self._aux_dir, ProjectLayout.working_tree_dir),
             ])
             self._git.repo.index.remove(
-                osp.join(self._root_dir, '.dvc', 'plots'), r=True)
+                osp.join(self._root_dir, '.dvc', 'plots'), r=True,
+                    ignore_unmatch=True)
         self.commit('Initial commit', allow_empty=True)
 
     @classmethod
@@ -1662,6 +1663,8 @@ class Project:
         return project
 
     def close(self):
+        MediaManager.get_instance().clear()
+
         if self._dvc:
             self._dvc.close()
             self._dvc = None
@@ -1865,6 +1868,8 @@ class Project:
         if self.readonly:
             raise ReadonlyProjectError()
 
+        MediaManager.get_instance().clear()
+
         obj_type, obj_hash = self._parse_ref(ref)
 
         if self._is_cached(obj_hash):
@@ -2067,6 +2072,8 @@ class Project:
                         "specified by source URL: '%s', '%s'" % (rpath, url))
 
                 rpath = osp.relpath(rpath, url)
+            elif osp.isfile(url):
+                rpath = osp.basename(url)
         else:
             rpath = None
 
@@ -2122,7 +2129,7 @@ class Project:
         in datasets.
 
         Parameters:
-            url (str): URL of the new source. A path to a file or directory
+            url (str): URL of the new source. A path to a directory
             format (str): Dataset format
             options (dict): Options for the format Extractor
             rpath (str): Used to specify a relative path to the dataset
@@ -2195,6 +2202,8 @@ class Project:
 
         if name not in self.working_tree.sources and not force:
             raise UnknownSourceError(name)
+
+        MediaManager.get_instance().clear()
 
         self.working_tree.sources.remove(name)
 
@@ -2316,6 +2325,8 @@ class Project:
             sources = set(sources)
 
         rev = rev or 'HEAD'
+
+        MediaManager.get_instance().clear()
 
         if sources:
             rev_tree = self.get_rev(rev)
@@ -2537,6 +2548,8 @@ class Project:
 
         if name in self.models:
             raise KeyError("Unknown model '%s'" % name)
+
+        MediaManager.get_instance().clear()
 
         data_dir = self.model_data_dir(name)
         if osp.isdir(data_dir):
