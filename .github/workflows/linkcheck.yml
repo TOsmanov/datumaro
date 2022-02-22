@@ -4,10 +4,6 @@ jobs:
   linkcheck:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive
-          fetch-depth: 0
       - uses: actions/setup-python@v2
         with:
           python-version: 3.8
@@ -29,5 +25,5 @@ jobs:
           pip install -r requirements.txt
           sphinx-build -a -n site/source site/static/api
           cd site && npm ci && hugo && cd ..
-          pip install linkchecker
+          pip install -r linkchecker
           linkchecker site/public
