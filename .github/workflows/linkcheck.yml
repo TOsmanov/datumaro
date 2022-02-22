@@ -30,4 +30,4 @@ jobs:
           sphinx-build -a -n site/source site/static/api
           cd site && npm ci && hugo cd ..
           pip install linkchecker
-          linkchecker public
+          linkchecker site/public
