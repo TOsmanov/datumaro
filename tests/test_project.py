@@ -10,10 +10,11 @@ from datumaro.components.annotation import Bbox, Label
 from datumaro.components.config_model import Model, Source
 from datumaro.components.dataset import DEFAULT_FORMAT, Dataset
 from datumaro.components.errors import (
-    DatasetMergeError, EmptyCommitError, ForeignChangesError,
-    MismatchingObjectError, MissingObjectError, MissingSourceHashError,
-    OldProjectError, PathOutsideSourceError, ReadonlyProjectError,
-    SourceExistsError, SourceUrlInsideProjectError, UnexpectedUrlError,
+    DatasetMergeError, EmptyCommitError, EmptyPipelineError,
+    ForeignChangesError, MismatchingObjectError, MissingObjectError,
+    MissingSourceHashError, OldProjectError, PathOutsideSourceError,
+    ReadonlyProjectError, SourceExistsError, SourceUrlInsideProjectError,
+    UnexpectedUrlError, UnknownTargetError,
 )
 from datumaro.components.extractor import DatasetItem, Extractor, ItemTransform
 from datumaro.components.launcher import Launcher
@@ -113,7 +114,7 @@ class ProjectTest(TestCase):
 
     @mark_requirement(Requirements.DATUM_GENERAL_REQ)
     @scoped
-    def test_can_import_local_source(self):
+    def test_can_import_local_dir_source(self):
         test_dir = scope_add(TestDir())
         source_base_url = osp.join(test_dir, 'test_repo')
         source_file_path = osp.join(source_base_url, 'x', 'y.txt')
@@ -127,6 +128,29 @@ class ProjectTest(TestCase):
         source = project.working_tree.sources['s1']
         self.assertEqual('fmt', source.format)
         compare_dirs(self, source_base_url, project.source_data_dir('s1'))
+        with open(osp.join(test_dir, 'proj', '.gitignore')) as f:
+            self.assertTrue('/s1' in [line.strip() for line in f])
+
+    @mark_requirement(Requirements.DATUM_GENERAL_REQ)
+    @scoped
+    def test_can_import_local_file_source(self):
+        # In this variant, we copy and read just the file specified
+
+        test_dir = scope_add(TestDir())
+        source_url = osp.join(test_dir, 'f.txt')
+        os.makedirs(osp.dirname(source_url), exist_ok=True)
+        with open(source_url, 'w') as f:
+            f.write('hello')
+
+        project = scope_add(Project.init(osp.join(test_dir, 'proj')))
+        project.import_source('s1', url=source_url, format='fmt')
+
+        source = project.working_tree.sources['s1']
+        self.assertEqual('fmt', source.format)
+        self.assertEqual('f.txt', source.path)
+
+        self.assertEqual({'f.txt'},
+            set(os.listdir(project.source_data_dir('s1'))))
         with open(osp.join(test_dir, 'proj', '.gitignore')) as f:
             self.assertTrue('/s1' in [line.strip() for line in f])
 
@@ -553,6 +577,26 @@ class ProjectTest(TestCase):
 
     @mark_requirement(Requirements.DATUM_GENERAL_REQ)
     @scoped
+    def test_cant_make_dataset_from_empty_project(self):
+        test_dir = scope_add(TestDir())
+
+        project = scope_add(Project.init(osp.join(test_dir, 'proj')))
+
+        with self.assertRaises(EmptyPipelineError):
+            project.working_tree.make_dataset()
+
+    @mark_requirement(Requirements.DATUM_GENERAL_REQ)
+    @scoped
+    def test_cant_make_dataset_from_unknown_target(self):
+        test_dir = scope_add(TestDir())
+
+        project = scope_add(Project.init(osp.join(test_dir, 'proj')))
+
+        with self.assertRaises(UnknownTargetError):
+            project.working_tree.make_dataset('s1')
+
+    @mark_requirement(Requirements.DATUM_GENERAL_REQ)
+    @scoped
     def test_can_add_filter_stage(self):
         test_dir = scope_add(TestDir())
         source_url = osp.join(test_dir, 'test_repo')
@@ -939,6 +983,9 @@ class ProjectTest(TestCase):
                     DatasetItem)
 
                 class MyExtractor(SourceExtractor):
+                    def __init__(self, *args, **kwargs):
+                        super().__init__()
+
                     def __iter__(self):
                         yield from [
                             DatasetItem('1'),
@@ -959,6 +1006,9 @@ class ProjectTest(TestCase):
     @scoped
     def test_can_transform_by_name(self):
         class CustomExtractor(Extractor):
+            def __init__(self, *args, **kwargs):
+                pass
+
             def __iter__(self):
                 return iter([
                     DatasetItem('a'),
@@ -1142,8 +1192,6 @@ class BackwardCompatibilityTests_v0_1(TestCase):
             DatasetItem(0, subset='train', annotations=[Label(0)]),
             DatasetItem(1, subset='test', annotations=[Label(1)]),
             DatasetItem(2, subset='train', annotations=[Label(0)]),
-            DatasetItem(1),
-            DatasetItem(2),
         ], categories=['a', 'b'])
 
         test_dir = scope_add(TestDir())
@@ -1153,7 +1201,12 @@ class BackwardCompatibilityTests_v0_1(TestCase):
                 'assets', 'compat', 'v0.1', 'project'),
             old_proj_dir)
 
-        Project.migrate_from_v1_to_v2(old_proj_dir, new_proj_dir)
+        with self.assertLogs(None) as logs:
+            Project.migrate_from_v1_to_v2(old_proj_dir, new_proj_dir,
+                skip_import_errors=True)
+
+            self.assertIn("Failed to migrate the source 'source3'",
+                '\n'.join(logs.output))
 
         project = scope_add(Project(new_proj_dir))
         loaded_dataset = project.working_tree.make_dataset()
