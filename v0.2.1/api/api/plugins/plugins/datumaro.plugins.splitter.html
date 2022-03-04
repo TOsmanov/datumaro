@@ -8,7 +8,6 @@
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
@@ -149,61 +148,70 @@
 <dt class="sig sig-object py" id="datumaro.plugins.splitter.Split">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.splitter.</span></span><span class="sig-name descname"><span class="pre">Split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr_for_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/splitter.html#Split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.splitter.Split" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.Transform" title="datumaro.components.extractor.Transform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.Transform</span></code></a>, <a class="reference internal" href="../../components/components/datumaro.components.cli_plugin.html#datumaro.components.cli_plugin.CliPlugin" title="datumaro.components.cli_plugin.CliPlugin"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></a></p>
-<ul class="simple">
-<li><p>classification split</p></li>
-</ul>
-<p>Splits dataset into subsets(train/val/test) in class-wise manner. 
+<ul>
+<li><dl class="simple">
+<dt>classification split 
+</dt><dd><p>Splits dataset into subsets(train/val/test) in class-wise manner. 
 
-Splits dataset images in the specified ratio, keeping the initial class
+Splits dataset images in the specified ratio, keeping the initial class 
+
 distribution.</p>
-<ul class="simple">
-<li><p>detection &amp; segmentation split</p></li>
-</ul>
-<p>Each image can have multiple object annotations -
-(bbox, mask, polygon). Since an image shouldn’t be included
-in multiple subsets at the same time, and image annotations
-shouldn’t be split, in general, dataset annotations are unlikely
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>detection &amp; segmentation split 
+</dt><dd><p>Each image can have multiple object annotations - 
+
+(bbox, mask, polygon). Since an image shouldn’t be included 
+
+in multiple subsets at the same time, and image annotations 
+
+shouldn’t be split, in general, dataset annotations are unlikely 
+
 to be split exactly in the specified ratio. 
 
-This split tries to split dataset images as close as possible
+This split tries to split dataset images as close as possible 
+
 to the specified ratio, keeping the initial class distribution.</p>
-<ul class="simple">
-<li><p>reidentification split</p></li>
-</ul>
-<p>In this task, the test set should consist of images of unseen
-people or objects during the training phase. 
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>reidentification split 
+</dt><dd><p>In this task, the test set should consist of images of unseen
+
+people or objects during the training phase.
 
 This function splits a dataset in the following way:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p>Splits the dataset into ‘train + val’ and ‘test’ sets</p></li>
+</dd>
+</dl>
+<ol class="arabic simple">
+<li><p>Splits the dataset into ‘train + val’ and ‘test’ sets 
+
+based on person or object ID.</p></li>
+<li><p>Splits ‘test’ set into ‘test-gallery’ and ‘test-query’ sets 
+
+in class-wise manner.</p></li>
+<li><p>Splits the ‘train + val’ set into ‘train’ and ‘val’ sets 
+
+in the same way.</p></li>
 </ol>
-<blockquote>
-<div><p>based on person or object ID.</p>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li><p>Splits ‘test’ set into ‘test-gallery’ and ‘test-query’ sets</p></li>
-</ol>
-<blockquote>
-<div><p>in class-wise manner.</p>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li><p>Splits the ‘train + val’ set into ‘train’ and ‘val’ sets</p></li>
-</ol>
-<blockquote>
-<div><p>in the same way.</p>
-</div></blockquote>
-</div></blockquote>
+</li>
+</ul>
 <p>The final subsets would be
+
 ‘train’, ‘val’, ‘test-gallery’ and ‘test-query’.</p>
 <dl class="simple">
 <dt>Notes:
 </dt><dd><ul class="simple">
-<li><p>Each image is expected to have only one Annotation. Unlabeled or
+<li><p>Each image is expected to have only one Annotation. Unlabeled or 
+
 multi-labeled images will be split into subsets randomly.</p></li>
 <li><p>If Labels also have attributes, also splits by attribute values.</p></li>
-<li><p>If there is not enough images in some class or attributes group,
-the split ratio can’t be guaranteed.
+<li><p>If there is not enough images in some class or attributes group, 
+
+the split ratio can’t be guaranteed. 
 
 In reidentification task,</p></li>
 <li><p>Object ID can be described by Label, or by attribute (–attr parameter)</p></li>
@@ -305,19 +313,19 @@ Gallery ratio would be 1.0 - query.</p></li>
 
 Splits dataset images in the specified ratio, keeping the initial class
 distribution.</p>
-<p>Notes:
-
-- Each image is expected to have only one Label. Unlabeled or</p>
-<blockquote>
-<div><p>multi-labeled images will be split into subsets randomly.</p>
-</div></blockquote>
-<ul class="simple">
+<dl class="simple">
+<dt>Notes:
+</dt><dd><ul class="simple">
+<li><p>Each image is expected to have only one Label. Unlabeled or
+multi-labeled images will be split into subsets randomly.</p></li>
 <li><p>If Labels also have attributes, also splits by attribute values.</p></li>
 <li><p>If there is not enough images in some class or attributes group,
 the split ratio can’t be guaranteed.</p></li>
 </ul>
+</dd>
+</dl>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_classification_split</span> <span class="o">-</span><span class="n">t</span> <span class="n">classification</span> <span class="o">--</span><span class="n">subset</span> <span class="n">train</span><span class="p">:</span><span class="mf">.5</span> <span class="o">--</span><span class="n">subset</span> <span class="n">val</span><span class="p">:</span><span class="mf">.2</span> <span class="o">--</span><span class="n">subset</span> <span class="n">test</span><span class="p">:</span><span class="mf">.3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">classification_split</span> <span class="o">-</span><span class="n">t</span> <span class="n">classification</span> <span class="o">--</span><span class="n">subset</span> <span class="n">train</span><span class="p">:</span><span class="mf">.5</span> <span class="o">--</span><span class="n">subset</span> <span class="n">val</span><span class="p">:</span><span class="mf">.2</span> <span class="o">--</span><span class="n">subset</span> <span class="n">test</span><span class="p">:</span><span class="mf">.3</span>
 </pre></div>
 </div>
 <dl class="py method">
@@ -329,7 +337,7 @@ the split ratio can’t be guaranteed.</p></li>
 <li><p><strong>dataset</strong> (<a class="reference internal" href="../../components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset" title="datumaro.components.dataset.Dataset"><em>Dataset</em></a>) – </p></li>
 <li><p><strong>splits</strong> (<em>list</em>) – A list of (subset(str), ratio(float))
 The sum of ratios is expected to be 1.</p></li>
-<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – optional</p></li>
 </ul>
 </dd>
 </dl>
@@ -350,17 +358,17 @@ people or objects during the training phase.
 
 This function splits a dataset in the following way:</p>
 <blockquote>
-<div><p>1. Splits the dataset into ‘train + val’ and ‘test’ sets
+<div><ol class="arabic simple">
+<li><p>Splits the dataset into ‘train + val’ and ‘test’ sets
 
-based on person or object ID.
+based on person or object ID.</p></li>
+<li><p>Splits ‘test’ set into ‘test-gallery’ and ‘test-query’ sets
 
-2. Splits ‘test’ set into ‘test-gallery’ and ‘test-query’ sets
+in class-wise manner.</p></li>
+<li><p>Splits the ‘train + val’ set into ‘train’ and ‘val’ sets
 
-in class-wise manner.
-
-3. Splits the ‘train + val’ set into ‘train’ and ‘val’ sets
-
-in the same way.</p>
+in the same way.</p></li>
+</ol>
 </div></blockquote>
 <p>The final subsets would be
 ‘train’, ‘val’, ‘test-gallery’ and ‘test-query’.</p>
@@ -379,11 +387,11 @@ Gallery ratio would be 1.0 - query.</p></li>
 <p>Example: split a dataset in the specified ratio, split the test set
 
 into gallery and query in 1:1 ratio</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_reidentification_split</span> <span class="o">-</span><span class="n">t</span> <span class="n">reidentification</span> <span class="o">--</span><span class="n">subset</span> <span class="n">train</span><span class="p">:</span><span class="mf">.5</span> <span class="o">--</span><span class="n">subset</span> <span class="n">val</span><span class="p">:</span><span class="mf">.2</span> <span class="o">--</span><span class="n">subset</span> <span class="n">test</span><span class="p">:</span><span class="mf">.3</span> <span class="o">--</span><span class="n">query</span> <span class="mf">.5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reidentification_split</span> <span class="o">-</span><span class="n">t</span> <span class="n">reidentification</span> <span class="o">--</span><span class="n">subset</span> <span class="n">train</span><span class="p">:</span><span class="mf">.5</span> <span class="o">--</span><span class="n">subset</span> <span class="n">val</span><span class="p">:</span><span class="mf">.2</span> <span class="o">--</span><span class="n">subset</span> <span class="n">test</span><span class="p">:</span><span class="mf">.3</span> <span class="o">--</span><span class="n">query</span> <span class="mf">.5</span>
 </pre></div>
 </div>
 <p>Example: use ‘person_id’ attribute for splitting</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_reidentification_split</span> <span class="o">--</span><span class="n">attr</span> <span class="n">person_id</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reidentification_split</span> <span class="o">--</span><span class="n">attr</span> <span class="n">person_id</span>
 </pre></div>
 </div>
 <dl class="py method">
@@ -400,7 +408,7 @@ The sum of ratios is expected to be 1.</p></li>
 The ratio of ‘test-gallery’ set would be 1.0 - query.</p></li>
 <li><p><strong>attr_for_id</strong> (<em>str</em>) – attribute name representing the person/object id.
 if this is not specified, label would be used.</p></li>
-<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – optional</p></li>
 </ul>
 </dd>
 </dl>
@@ -433,13 +441,13 @@ to the specified ratio, keeping the initial class distribution.</p>
 <li><p>Mask or Polygon annotations are considered in segmentation task.</p></li>
 </ul>
 </dd>
-<dt>Example: split dataset so that each object class annotations were split
-</dt><dd><p>in the specified ratio between subsets</p>
-</dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_instance_specific_split</span> <span class="o">-</span><span class="n">t</span> <span class="n">detection</span> <span class="o">--</span><span class="n">subset</span> <span class="n">train</span><span class="p">:</span><span class="mf">.5</span> <span class="o">--</span><span class="n">subset</span> <span class="n">val</span><span class="p">:</span><span class="mf">.2</span> <span class="o">--</span><span class="n">subset</span> <span class="n">test</span><span class="p">:</span><span class="mf">.3</span> 
+<p>Example: split dataset so that each object class annotations were split
 
-<span class="n">_instance_specific_split</span> <span class="o">-</span><span class="n">t</span> <span class="n">segmentation</span> <span class="o">--</span><span class="n">subset</span> <span class="n">train</span><span class="p">:</span><span class="mf">.5</span> <span class="o">--</span><span class="n">subset</span> <span class="n">val</span><span class="p">:</span><span class="mf">.2</span> <span class="o">--</span><span class="n">subset</span> <span class="n">test</span><span class="p">:</span><span class="mf">.3</span>
+in the specified ratio between subsets</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">instance_specific_split</span> <span class="o">-</span><span class="n">t</span> <span class="n">detection</span> <span class="o">--</span><span class="n">subset</span> <span class="n">train</span><span class="p">:</span><span class="mf">.5</span> <span class="o">--</span><span class="n">subset</span> <span class="n">val</span><span class="p">:</span><span class="mf">.2</span> <span class="o">--</span><span class="n">subset</span> <span class="n">test</span><span class="p">:</span><span class="mf">.3</span> 
+
+<span class="n">instance_specific_split</span> <span class="o">-</span><span class="n">t</span> <span class="n">segmentation</span> <span class="o">--</span><span class="n">subset</span> <span class="n">train</span><span class="p">:</span><span class="mf">.5</span> <span class="o">--</span><span class="n">subset</span> <span class="n">val</span><span class="p">:</span><span class="mf">.2</span> <span class="o">--</span><span class="n">subset</span> <span class="n">test</span><span class="p">:</span><span class="mf">.3</span>
 </pre></div>
 </div>
 <dl class="py method">
@@ -451,7 +459,7 @@ to the specified ratio, keeping the initial class distribution.</p>
 <li><p><strong>dataset</strong> (<a class="reference internal" href="../../components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset" title="datumaro.components.dataset.Dataset"><em>Dataset</em></a>) – </p></li>
 <li><p><strong>splits</strong> (<em>list</em>) – A list of (subset(str), ratio(float))
 The sum of ratios is expected to be 1.</p></li>
-<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – optional</p></li>
 </ul>
 </dd>
 </dl>
@@ -495,26 +503,7 @@ The sum of ratios is expected to be 1.</p></li>
       </div>
     </section>
   </div>
-  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-        <span class="fa fa-book"> Other Versions</span>
-        v: update-api-docs-fix-docstrings
-        <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
-        <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../v0.2.2/api/plugins/plugins/datumaro.plugins.splitter.html">v0.2.2</a></dd>
-            <dd><a href="../../../v0.2.3/api/plugins/plugins/datumaro.plugins.splitter.html">v0.2.3</a></dd>
-        </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/api/plugins/plugins/datumaro.plugins.splitter.html">revert-19-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/api/plugins/plugins/datumaro.plugins.splitter.html">revert-20-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../update-api-docs-fix-docstrings/api/plugins/plugins/datumaro.plugins.splitter.html">update-api-docs-fix-docstrings</a></dd>
-        </dl>
-    </div>
-</div><script>
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

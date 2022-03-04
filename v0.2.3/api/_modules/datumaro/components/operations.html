@@ -7,7 +7,6 @@
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
@@ -164,15 +163,14 @@
 <div class="viewcode-block" id="ExactMerge"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.ExactMerge">[docs]</a><span class="k">class</span> <span class="nc">ExactMerge</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Merges several datasets using the &quot;simple&quot; algorithm:</span>
+<span class="sd">        - items are matched by (id, subset) pairs</span>
+<span class="sd">        - matching items share the media info available:</span>
 
-<span class="sd">    - items are matched by (id, subset) pairs</span>
-<span class="sd">    - matching items share the media info available:</span>
-
-<span class="sd">        - nothing + nothing = nothing</span>
-<span class="sd">        - nothing + something = something</span>
-<span class="sd">        - something A + something B = conflict</span>
-<span class="sd">    - annotations are matched by value and shared</span>
-<span class="sd">    - in case of conflicts, throws an error</span>
+<span class="sd">            - nothing + nothing = nothing</span>
+<span class="sd">            - nothing + something = something</span>
+<span class="sd">            - something A + something B = conflict</span>
+<span class="sd">        - annotations are matched by value and shared</span>
+<span class="sd">        - in case of conflicts, throws an error</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="ExactMerge.merge"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.operations.html#datumaro.components.operations.ExactMerge.merge">[docs]</a>    <span class="nd">@classmethod</span>
@@ -1244,10 +1242,10 @@
 <span class="sd">        does O(log(N)) calls.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            stats (float array of shape N, 2 * d, d = dimensions of values)</span>
-<span class="sd">            count (integer array of shape N)</span>
-<span class="sd">            mean_accessor (function(idx, stats)) to retrieve element mean</span>
-<span class="sd">            variance_accessor (function(idx, stats)) to retrieve element variance</span>
+<span class="sd">            stats: (float array of shape N, 2 * d, d = dimensions of values)</span>
+<span class="sd">            count: (integer array of shape N)</span>
+<span class="sd">            mean_accessor: (function(idx, stats)) to retrieve element mean</span>
+<span class="sd">            variance_accessor: (function(idx, stats)) to retrieve element variance</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            A tuple (total count, mean, variance)</span>
@@ -1816,26 +1814,7 @@
       </div>
     </section>
   </div>
-  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-        <span class="fa fa-book"> Other Versions</span>
-        v: update-api-docs-fix-docstrings
-        <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
-        <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../v0.2.2/index.html">v0.2.2</a></dd>
-            <dd><a href="../../../v0.2.3/index.html">v0.2.3</a></dd>
-        </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/index.html">revert-19-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/index.html">revert-20-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../update-api-docs-fix-docstrings/_modules/datumaro/components/operations.html">update-api-docs-fix-docstrings</a></dd>
-        </dl>
-    </div>
-</div><script>
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

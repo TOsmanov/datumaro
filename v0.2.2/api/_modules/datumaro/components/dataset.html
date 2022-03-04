@@ -7,7 +7,6 @@
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
@@ -92,9 +91,13 @@
 <span class="kn">import</span> <span class="nn">logging</span> <span class="k">as</span> <span class="nn">log</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">os.path</span> <span class="k">as</span> <span class="nn">osp</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">from</span> <span class="nn">datumaro.components.annotation</span> <span class="kn">import</span> <span class="n">AnnotationType</span><span class="p">,</span> <span class="n">LabelCategories</span>
-<span class="kn">from</span> <span class="nn">datumaro.components.converter</span> <span class="kn">import</span> <span class="n">Converter</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.config_model</span> <span class="kn">import</span> <span class="n">Source</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.converter</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Converter</span><span class="p">,</span> <span class="n">ExportContext</span><span class="p">,</span> <span class="n">ExportErrorPolicy</span><span class="p">,</span> <span class="n">_ExportFail</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">datumaro.components.dataset_filter</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">XPathAnnotationsFilter</span><span class="p">,</span> <span class="n">XPathDatasetFilter</span><span class="p">,</span>
 <span class="p">)</span>
@@ -106,9 +109,12 @@
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">datumaro.components.extractor</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">DEFAULT_SUBSET_NAME</span><span class="p">,</span> <span class="n">CategoriesInfo</span><span class="p">,</span> <span class="n">DatasetItem</span><span class="p">,</span> <span class="n">Extractor</span><span class="p">,</span> <span class="n">IExtractor</span><span class="p">,</span>
-    <span class="n">ItemTransform</span><span class="p">,</span> <span class="n">Transform</span><span class="p">,</span>
+    <span class="n">ImportContext</span><span class="p">,</span> <span class="n">ImportErrorPolicy</span><span class="p">,</span> <span class="n">ItemTransform</span><span class="p">,</span> <span class="n">Transform</span><span class="p">,</span> <span class="n">_ImportFail</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">datumaro.components.launcher</span> <span class="kn">import</span> <span class="n">Launcher</span><span class="p">,</span> <span class="n">ModelTransform</span>
+<span class="kn">from</span> <span class="nn">datumaro.components.progress_reporting</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">NullProgressReporter</span><span class="p">,</span> <span class="n">ProgressReporter</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">datumaro.plugins.transforms</span> <span class="kn">import</span> <span class="n">ProjectLabels</span>
 <span class="kn">from</span> <span class="nn">datumaro.util</span> <span class="kn">import</span> <span class="n">is_method_redefined</span>
 <span class="kn">from</span> <span class="nn">datumaro.util.log_utils</span> <span class="kn">import</span> <span class="n">logging_disabled</span>
@@ -954,7 +960,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">flush_changes</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Dataset.export"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.export">[docs]</a>    <span class="nd">@scoped</span>
-    <span class="k">def</span> <span class="nf">export</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">Converter</span><span class="p">]],</span>
+    <span class="k">def</span> <span class="nf">export</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">Converter</span><span class="p">]],</span> <span class="o">*</span><span class="p">,</span>
+            <span class="n">progress_reporter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ProgressReporter</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">error_policy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ExportErrorPolicy</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Saves the dataset in some format.</span>
@@ -964,7 +972,9 @@
 <span class="sd">            format: The desired output format.</span>
 <span class="sd">                If a string is passed, it is treated as a plugin name,</span>
 <span class="sd">                which is searched for in the dataset environment.</span>
-<span class="sd">            **kwargs: Parameters for the export format</span>
+<span class="sd">            progress_reporter: An object to report progress</span>
+<span class="sd">            error_policy: An object to report format-related errors</span>
+<span class="sd">            **kwargs: Parameters for the format</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">save_dir</span><span class="p">:</span>
@@ -987,13 +997,59 @@
             <span class="n">inplace</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">save_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">inplace</span><span class="p">:</span>
-            <span class="n">converter</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">save_dir</span><span class="o">=</span><span class="n">save_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_bound</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">save_dir</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">copy</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">flush_changes</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">converter</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_patch</span><span class="p">(),</span> <span class="n">save_dir</span><span class="o">=</span><span class="n">save_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="n">has_ctx_args</span> <span class="o">=</span> <span class="n">progress_reporter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">error_policy</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">progress_reporter</span><span class="p">:</span>
+            <span class="n">progress_reporter</span> <span class="o">=</span> <span class="n">NullProgressReporter</span><span class="p">()</span>
+
+        <span class="k">assert</span> <span class="s1">&#39;ctx&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span>
+        <span class="n">converter_kwargs</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">converter_kwargs</span><span class="p">[</span><span class="s1">&#39;ctx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ExportContext</span><span class="p">(</span>
+            <span class="n">progress_reporter</span><span class="o">=</span><span class="n">progress_reporter</span><span class="p">,</span>
+            <span class="n">error_policy</span><span class="o">=</span><span class="n">error_policy</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">inplace</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">converter</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">save_dir</span><span class="o">=</span><span class="n">save_dir</span><span class="p">,</span>
+                        <span class="o">**</span><span class="n">converter_kwargs</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="c1"># TODO: for backward compatibility. To be removed after 0.3</span>
+                    <span class="k">if</span> <span class="s2">&quot;unexpected keyword argument &#39;ctx&#39;&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+                        <span class="k">raise</span>
+
+                    <span class="k">if</span> <span class="n">has_ctx_args</span><span class="p">:</span>
+                        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;It seems that &#39;</span><span class="si">%s</span><span class="s2">&#39; converter &quot;</span>
+                            <span class="s2">&quot;does not support progress and error reporting, &quot;</span>
+                            <span class="s2">&quot;it will be disabled&quot;</span> <span class="o">%</span> <span class="nb">format</span><span class="p">,</span>
+                            <span class="ne">DeprecationWarning</span><span class="p">)</span>
+                    <span class="n">converter_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;ctx&#39;</span><span class="p">)</span>
+
+                    <span class="n">converter</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">save_dir</span><span class="o">=</span><span class="n">save_dir</span><span class="p">,</span>
+                        <span class="o">**</span><span class="n">converter_kwargs</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">converter</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_patch</span><span class="p">(),</span> <span class="n">save_dir</span><span class="o">=</span><span class="n">save_dir</span><span class="p">,</span>
+                        <span class="o">**</span><span class="n">converter_kwargs</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="c1"># TODO: for backward compatibility. To be removed after 0.3</span>
+                    <span class="k">if</span> <span class="s2">&quot;unexpected keyword argument &#39;ctx&#39;&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+                        <span class="k">raise</span>
+
+                    <span class="k">if</span> <span class="n">has_ctx_args</span><span class="p">:</span>
+                        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;It seems that &#39;</span><span class="si">%s</span><span class="s2">&#39; converter &quot;</span>
+                            <span class="s2">&quot;does not support progress and error reporting, &quot;</span>
+                            <span class="s2">&quot;it will be disabled&quot;</span> <span class="o">%</span> <span class="nb">format</span><span class="p">,</span>
+                            <span class="ne">DeprecationWarning</span><span class="p">)</span>
+                    <span class="n">converter_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;ctx&#39;</span><span class="p">)</span>
+
+                    <span class="n">converter</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_patch</span><span class="p">(),</span> <span class="n">save_dir</span><span class="o">=</span><span class="n">save_dir</span><span class="p">,</span>
+                        <span class="o">**</span><span class="n">converter_kwargs</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">_ExportFail</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">e</span><span class="o">.</span><span class="n">__cause__</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">save_dir</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">copy</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flush_changes</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Dataset.save"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">options</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">)</span>
@@ -1008,8 +1064,27 @@
 
 <div class="viewcode-block" id="Dataset.import_from"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.import_from">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">import_from</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
-            <span class="n">env</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Environment</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dataset</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">datumaro.components.config_model</span> <span class="kn">import</span> <span class="n">Source</span>
+            <span class="n">env</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Environment</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">progress_reporter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ProgressReporter</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">error_policy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ImportErrorPolicy</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dataset</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a `Dataset` instance from a dataset on the disk.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path - The input file or directory path</span>
+<span class="sd">            format - Dataset format.</span>
+<span class="sd">                If a string is passed, it is treated as a plugin name,</span>
+<span class="sd">                which is searched for in the `env` plugin context.</span>
+<span class="sd">                If not set, will try to detect automatically,</span>
+<span class="sd">                using the `env` plugin context.</span>
+<span class="sd">            env - A plugin collection. If not set, the built-in plugins are used</span>
+<span class="sd">            progress_reporter - An object to report progress.</span>
+<span class="sd">                Implies earger loading.</span>
+<span class="sd">            error_policy - An object to report format-related errors.</span>
+<span class="sd">                Implies earger loading.</span>
+<span class="sd">            **kwargs - Parameters for the format</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">env</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">()</span>
@@ -1029,17 +1104,59 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">UnknownFormatError</span><span class="p">(</span><span class="nb">format</span><span class="p">)</span>
 
-        <span class="n">extractors</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">src_conf</span> <span class="ow">in</span> <span class="n">detected_sources</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">src_conf</span><span class="p">,</span> <span class="n">Source</span><span class="p">):</span>
-                <span class="n">src_conf</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="n">src_conf</span><span class="p">)</span>
-            <span class="n">extractors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">make_extractor</span><span class="p">(</span>
-                <span class="n">src_conf</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">src_conf</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">src_conf</span><span class="o">.</span><span class="n">options</span>
-            <span class="p">))</span>
+        <span class="c1"># TODO: probably, should not be available in lazy mode, because it</span>
+        <span class="c1"># becomes unreliable and error-prone. For progress reporting it</span>
+        <span class="c1"># makes little sense, because loading stage is spread over other</span>
+        <span class="c1"># operations. Error reporting is going to be unreliable.</span>
+        <span class="n">has_ctx_args</span> <span class="o">=</span> <span class="n">progress_reporter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">error_policy</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="n">eager</span> <span class="o">=</span> <span class="n">has_ctx_args</span>
 
-        <span class="n">dataset</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_extractors</span><span class="p">(</span><span class="o">*</span><span class="n">extractors</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">progress_reporter</span><span class="p">:</span>
+            <span class="n">progress_reporter</span> <span class="o">=</span> <span class="n">NullProgressReporter</span><span class="p">()</span>
+        <span class="n">pbars</span> <span class="o">=</span> <span class="n">progress_reporter</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">detected_sources</span><span class="p">))</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">extractors</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">src_conf</span><span class="p">,</span> <span class="n">pbar</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">detected_sources</span><span class="p">,</span> <span class="n">pbars</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">src_conf</span><span class="p">,</span> <span class="n">Source</span><span class="p">):</span>
+                    <span class="n">src_conf</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="n">src_conf</span><span class="p">)</span>
+
+                <span class="n">extractor_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">src_conf</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+
+                <span class="k">assert</span> <span class="s1">&#39;ctx&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">extractor_kwargs</span>
+                <span class="n">extractor_kwargs</span><span class="p">[</span><span class="s1">&#39;ctx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ImportContext</span><span class="p">(</span>
+                    <span class="n">progress_reporter</span><span class="o">=</span><span class="n">pbar</span><span class="p">,</span>
+                    <span class="n">error_policy</span><span class="o">=</span><span class="n">error_policy</span><span class="p">)</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">extractors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">make_extractor</span><span class="p">(</span>
+                        <span class="n">src_conf</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">src_conf</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">extractor_kwargs</span>
+                    <span class="p">))</span>
+                <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="c1"># TODO: for backward compatibility. To be removed after 0.3</span>
+                    <span class="k">if</span> <span class="s2">&quot;unexpected keyword argument &#39;ctx&#39;&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+                        <span class="k">raise</span>
+
+                    <span class="k">if</span> <span class="n">has_ctx_args</span><span class="p">:</span>
+                        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;It seems that &#39;</span><span class="si">%s</span><span class="s2">&#39; extractor &quot;</span>
+                            <span class="s2">&quot;does not support progress and error reporting, &quot;</span>
+                            <span class="s2">&quot;it will be disabled&quot;</span> <span class="o">%</span> <span class="n">src_conf</span><span class="o">.</span><span class="n">format</span><span class="p">,</span>
+                            <span class="ne">DeprecationWarning</span><span class="p">)</span>
+                    <span class="n">extractor_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;ctx&#39;</span><span class="p">)</span>
+
+                    <span class="n">extractors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">make_extractor</span><span class="p">(</span>
+                        <span class="n">src_conf</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">src_conf</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">extractor_kwargs</span>
+                    <span class="p">))</span>
+
+            <span class="n">dataset</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_extractors</span><span class="p">(</span><span class="o">*</span><span class="n">extractors</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">eager</span><span class="p">:</span>
+                <span class="n">dataset</span><span class="o">.</span><span class="n">init_cache</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">_ImportFail</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">e</span><span class="o">.</span><span class="n">__cause__</span>
+
         <span class="n">dataset</span><span class="o">.</span><span class="n">_source_path</span> <span class="o">=</span> <span class="n">path</span>
         <span class="n">dataset</span><span class="o">.</span><span class="n">_format</span> <span class="o">=</span> <span class="nb">format</span>
+
         <span class="k">return</span> <span class="n">dataset</span></div>
 
 <div class="viewcode-block" id="Dataset.detect"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.dataset.html#datumaro.components.dataset.Dataset.detect">[docs]</a>    <span class="nd">@staticmethod</span>
@@ -1131,26 +1248,7 @@
       </div>
     </section>
   </div>
-  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-        <span class="fa fa-book"> Other Versions</span>
-        v: update-api-docs-fix-docstrings
-        <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
-        <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../v0.2.2/index.html">v0.2.2</a></dd>
-            <dd><a href="../../../v0.2.3/index.html">v0.2.3</a></dd>
-        </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/index.html">revert-19-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/index.html">revert-20-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../update-api-docs-fix-docstrings/_modules/datumaro/components/dataset.html">update-api-docs-fix-docstrings</a></dd>
-        </dl>
-    </div>
-</div><script>
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

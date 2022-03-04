@@ -7,7 +7,6 @@
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
@@ -110,15 +109,16 @@
 <span class="sd">    |s|s- `randtopk` - Select 3*k items randomly, and return the topk among them|n</span>
 <span class="sd">    |n</span>
 <span class="sd">    Notes:|n</span>
-<span class="sd">    |s|s- Each image&#39;s inference result must contain the probability for</span>
-<span class="sd">        all classes.|n</span>
-<span class="sd">    |s|s- Requesting a sample larger than the number of all images will</span>
-<span class="sd">        return all images.|n</span>
+<span class="sd">    |s|s- Each image&#39;s inference result must contain the probability for|n</span>
+<span class="sd">    |s|s|s|sall classes.|n</span>
+<span class="sd">    |s|s- Requesting a sample larger than the number of all images will|n</span>
+<span class="sd">    |s|s|s|sreturn all images.|n</span>
 <span class="sd">    |n</span>
 <span class="sd">    Example: select the most relevant data subset of 20 images |n</span>
-<span class="sd">    |s|sbased on model certainty, put the result into &#39;sample&#39; subset</span>
+<span class="sd">    |s|sbased on model certainty, put the result into &#39;sample&#39; subset |n</span>
 <span class="sd">    |s|sand put all the rest into &#39;unsampled&#39; subset, use &#39;train&#39; subset |n</span>
 <span class="sd">    |s|sas input. |n</span>
+
 <span class="sd">    .. code-block::</span>
 
 <span class="sd">    |s|s%(prog)s \ |n</span>
@@ -315,26 +315,7 @@
       </div>
     </section>
   </div>
-  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-        <span class="fa fa-book"> Other Versions</span>
-        v: update-api-docs-fix-docstrings
-        <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
-        <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../../v0.2.2/index.html">v0.2.2</a></dd>
-            <dd><a href="../../../../v0.2.3/index.html">v0.2.3</a></dd>
-        </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../../../../revert-19-update-api-docs-fix-docstrings/index.html">revert-19-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../../revert-20-update-api-docs-fix-docstrings/index.html">revert-20-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../../update-api-docs-fix-docstrings/_modules/datumaro/plugins/sampler/relevancy_sampler.html">update-api-docs-fix-docstrings</a></dd>
-        </dl>
-    </div>
-</div><script>
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

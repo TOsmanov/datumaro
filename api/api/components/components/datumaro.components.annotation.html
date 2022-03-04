@@ -8,7 +8,6 @@
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
@@ -58,12 +57,13 @@
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.errors.html">errors module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.extractor.html">extractor module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.extractor_tfds.html">extractor_tfds module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datumaro.components.format_detection.html">format_detection module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.format_detection.html">format detection module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.hl_ops.html">hl_ops module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.launcher.html">launcher module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.media.html">media module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.media_manager.html">media_manager module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.operations.html">operations module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.progress_reporting.html">progress reporting module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.project.html">project module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.validator.html">validator module</a></li>
 </ul>
@@ -149,21 +149,10 @@
 
 </dd></dl>
 
-<dl class="py data">
+<dl class="py attribute">
 <dt class="sig sig-object py" id="datumaro.components.annotation.NO_GROUP">
-<span class="sig-prename descclassname"><span class="pre">datumaro.components.annotation.</span></span><span class="sig-name descname"><span class="pre">NO_GROUP</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#datumaro.components.annotation.NO_GROUP" title="Permalink to this definition"></a></dt>
-<dd><p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by ‘+’ or ‘-’ and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
-&gt;&gt;&gt; int(‘0b100’, base=0)
-4</p>
+<span class="sig-prename descclassname"><span class="pre">datumaro.components.annotation.</span></span><span class="sig-name descname"><span class="pre">NO_GROUP</span></span><a class="headerlink" href="#datumaro.components.annotation.NO_GROUP" title="Permalink to this definition"></a></dt>
+<dd><p>alias of 0</p>
 </dd></dl>
 
 <dl class="py class">
@@ -173,50 +162,31 @@ Base 0 means to interpret the base from the string as an integer literal.
 <p>A base annotation class.</p>
 <p>Derived classes must define the ‘_type’ class variable with a value
 from the AnnotationType enum.</p>
-<blockquote>
-<div><p>Describes an identifier of the annotation.
-Is not required to be unique within DatasetItem annotations or dataset.</p>
-<blockquote>
-<div><dl class="py data">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">id:</span> <span class="pre">int</span></span></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.annotation.Annotation.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#datumaro.components.annotation.Annotation.id" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-</div></blockquote>
-<p>Arbitrary annotation-specific attributes. Typically, includes
-metainfo and properties that are not covered by other fields.
-If possible, try to limit value types of values by the simple
-builtin types (int, float, bool, str) to increase compatibility with
-different formats.
-There are some established names for common attributes like:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>“occluded” (bool)</p></li>
-<li><p>“visible” (bool)</p></li>
-</ul>
-</div></blockquote>
-<p>Possible dataset attributes can be described in Categories.attributes.</p>
-<blockquote>
-<div><dl class="py data">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">attributes:</span> <span class="pre">Dict[str,</span> <span class="pre">Any]</span></span></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.annotation.Annotation.attributes">
+<span class="sig-name descname"><span class="pre">attributes</span></span><a class="headerlink" href="#datumaro.components.annotation.Annotation.attributes" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-</div></blockquote>
-<p>Annotations can be grouped, which means they describe parts of a
-single object. The value of 0 means there is no group.</p>
-<blockquote>
-<div><dl class="py data">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">group:</span> <span class="pre">int</span></span></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.annotation.Annotation.group">
+<span class="sig-name descname"><span class="pre">group</span></span><a class="headerlink" href="#datumaro.components.annotation.Annotation.group" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-</div></blockquote>
-</div></blockquote>
 <dl class="py property">
 <dt class="sig sig-object py" id="datumaro.components.annotation.Annotation.type">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#datumaro.components.annotation.AnnotationType" title="datumaro.components.annotation.AnnotationType"><span class="pre">datumaro.components.annotation.AnnotationType</span></a></em><a class="headerlink" href="#datumaro.components.annotation.Annotation.type" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.annotation.Annotation.as_dict">
+<span class="sig-name descname"><span class="pre">as_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#Annotation.as_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.Annotation.as_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a dictionary { field_name: value }</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.components.annotation.Annotation.wrap">
@@ -245,16 +215,11 @@ single object. The value of 0 means there is no group.</p>
 <p>A base class for annotation metainfo. It is supposed to include
 dataset-wide metainfo like available labels, label colors,
 label attributes etc.</p>
-<blockquote>
-<div><p>Describes the list of possible annotation-type specific attributes in a dataset.</p>
-<blockquote>
-<div><dl class="py data">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">attributes:</span> <span class="pre">Set[str]</span></span></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.annotation.Categories.attributes">
+<span class="sig-name descname"><span class="pre">attributes</span></span><a class="headerlink" href="#datumaro.components.annotation.Categories.attributes" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-</div></blockquote>
-</div></blockquote>
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.components.annotation.Categories.__eq__">
 <span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.components.annotation.Categories.__eq__" title="Permalink to this definition"></a></dt>
@@ -273,13 +238,44 @@ label attributes etc.</p>
 <dt class="sig sig-object py" id="datumaro.components.annotation.LabelCategories">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.annotation.</span></span><span class="sig-name descname"><span class="pre">LabelCategories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">NOTHING</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#LabelCategories"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.LabelCategories" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#datumaro.components.annotation.Categories" title="datumaro.components.annotation.Categories"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.annotation.Categories</span></code></a></p>
-<blockquote>
-<div><dl class="py data">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">items:</span> <span class="pre">List[str]</span></span></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.annotation.LabelCategories.Category">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">NOTHING</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#LabelCategories.Category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.LabelCategories.Category" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.annotation.LabelCategories.Category.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#datumaro.components.annotation.LabelCategories.Category.name" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-</div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.annotation.LabelCategories.Category.parent">
+<span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#datumaro.components.annotation.LabelCategories.Category.parent" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.annotation.LabelCategories.Category.attributes">
+<span class="sig-name descname"><span class="pre">attributes</span></span><a class="headerlink" href="#datumaro.components.annotation.LabelCategories.Category.attributes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.annotation.LabelCategories.Category.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.components.annotation.LabelCategories.Category.__eq__" title="Permalink to this definition"></a></dt>
+<dd><p>Method generated by attrs for class LabelCategories.Category.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.annotation.LabelCategories.Category.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">NOTHING</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#datumaro.components.annotation.LabelCategories.Category.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Method generated by attrs for class LabelCategories.Category.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.annotation.LabelCategories.items">
+<span class="sig-name descname"><span class="pre">items</span></span><a class="headerlink" href="#datumaro.components.annotation.LabelCategories.items" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.components.annotation.LabelCategories.from_iterable">
 <em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_iterable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#datumaro.components.annotation.LabelCategories" title="datumaro.components.annotation.LabelCategories"><span class="pre">datumaro.components.annotation.LabelCategories</span></a></span></span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#LabelCategories.from_iterable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.LabelCategories.from_iterable" title="Permalink to this definition"></a></dt>
@@ -305,12 +301,12 @@ with these arguments</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.components.annotation.LabelCategories.find">
-<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Category</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#LabelCategories.find"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.LabelCategories.find" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#datumaro.components.annotation.LabelCategories.Category" title="datumaro.components.annotation.LabelCategories.Category"><span class="pre">Category</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#LabelCategories.find"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.LabelCategories.find" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.components.annotation.LabelCategories.__getitem__">
-<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Category</span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#LabelCategories.__getitem__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.LabelCategories.__getitem__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#datumaro.components.annotation.LabelCategories.Category" title="datumaro.components.annotation.LabelCategories.Category"><span class="pre">Category</span></a></span></span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#LabelCategories.__getitem__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.LabelCategories.__getitem__" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -325,7 +321,7 @@ with these arguments</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.components.annotation.LabelCategories.__iter__">
-<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Category</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#LabelCategories.__iter__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.LabelCategories.__iter__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#datumaro.components.annotation.LabelCategories.Category" title="datumaro.components.annotation.LabelCategories.Category"><span class="pre">Category</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#LabelCategories.__iter__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.LabelCategories.__iter__" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -368,14 +364,12 @@ with these arguments</p></li>
 <dl class="py data">
 <dt class="sig sig-object py" id="datumaro.components.annotation.RgbColor">
 <span class="sig-prename descclassname"><span class="pre">datumaro.components.annotation.</span></span><span class="sig-name descname"><span class="pre">RgbColor</span></span><a class="headerlink" href="#datumaro.components.annotation.RgbColor" title="Permalink to this definition"></a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="datumaro.components.annotation.Colormap">
 <span class="sig-prename descclassname"><span class="pre">datumaro.components.annotation.</span></span><span class="sig-name descname"><span class="pre">Colormap</span></span><a class="headerlink" href="#datumaro.components.annotation.Colormap" title="Permalink to this definition"></a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]]</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.annotation.MaskCategories">
@@ -386,8 +380,10 @@ with these arguments</p></li>
 <dt class="sig sig-object py" id="datumaro.components.annotation.MaskCategories.generate">
 <em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">255</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_background</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#datumaro.components.annotation.MaskCategories" title="datumaro.components.annotation.MaskCategories"><span class="pre">datumaro.components.annotation.MaskCategories</span></a></span></span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#MaskCategories.generate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.MaskCategories.generate" title="Permalink to this definition"></a></dt>
 <dd><p>Generates MaskCategories with the specified size.</p>
-<p>If include_background is True, the result will include the item
-“0: (0, 0, 0)”, which is typically used as a background color.</p>
+<dl class="simple">
+<dt>If include_background is True, the result will include the item</dt><dd><p>“0: (0, 0, 0)”, which is typically used as a background color.</p>
+</dd>
+</dl>
 <dl class="py data">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">colormap:</span> <span class="pre">Colormap</span></span></dt>
@@ -427,6 +423,18 @@ with these arguments</p></li>
 <dd><p>Method generated by attrs for class MaskCategories.</p>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.annotation.BinaryMaskImage">
+<span class="sig-prename descclassname"><span class="pre">datumaro.components.annotation.</span></span><span class="sig-name descname"><span class="pre">BinaryMaskImage</span></span><a class="headerlink" href="#datumaro.components.annotation.BinaryMaskImage" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.annotation.IndexMaskImage">
+<span class="sig-prename descclassname"><span class="pre">datumaro.components.annotation.</span></span><span class="sig-name descname"><span class="pre">IndexMaskImage</span></span><a class="headerlink" href="#datumaro.components.annotation.IndexMaskImage" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></p>
 </dd></dl>
 
 <dl class="py class">
@@ -537,10 +545,10 @@ with these arguments</p></li>
 
 </dd></dl>
 
-<dl class="py data">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">CompiledMaskImage</span> <span class="pre">=</span> <span class="pre">np.ndarray</span></span></dt>
-<dd><p>2d of integers (of different precision)</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.annotation.CompiledMaskImage">
+<span class="sig-prename descclassname"><span class="pre">datumaro.components.annotation.</span></span><span class="sig-name descname"><span class="pre">CompiledMaskImage</span></span><a class="headerlink" href="#datumaro.components.annotation.CompiledMaskImage" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></p>
 </dd></dl>
 
 <dl class="py class">
@@ -607,9 +615,53 @@ mask. By default, mask labels are used.</p></li>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.annotation._Shape">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.annotation.</span></span><span class="sig-name descname"><span class="pre">_Shape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_order</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#_Shape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation._Shape" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.components.annotation.Annotation" title="datumaro.components.annotation.Annotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.annotation.Annotation</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.annotation._Shape.points">
+<span class="sig-name descname"><span class="pre">points</span></span><a class="headerlink" href="#datumaro.components.annotation._Shape.points" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.annotation._Shape.label">
+<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#datumaro.components.annotation._Shape.label" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.annotation._Shape.z_order">
+<span class="sig-name descname"><span class="pre">z_order</span></span><a class="headerlink" href="#datumaro.components.annotation._Shape.z_order" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.annotation._Shape.get_area">
+<span class="sig-name descname"><span class="pre">get_area</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#_Shape.get_area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation._Shape.get_area" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.annotation._Shape.get_bbox">
+<span class="sig-name descname"><span class="pre">get_bbox</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#_Shape.get_bbox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation._Shape.get_bbox" title="Permalink to this definition"></a></dt>
+<dd><p>Returns [x, y, w, h]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.annotation._Shape.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.components.annotation._Shape.__eq__" title="Permalink to this definition"></a></dt>
+<dd><p>Method generated by attrs for class _Shape.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.annotation._Shape.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_order</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#datumaro.components.annotation._Shape.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Method generated by attrs for class _Shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.annotation.PolyLine">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.annotation.</span></span><span class="sig-name descname"><span class="pre">PolyLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_order</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#PolyLine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.PolyLine" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.annotation._Shape</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.components.annotation._Shape" title="datumaro.components.annotation._Shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.annotation._Shape</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.components.annotation.PolyLine._Shape.get_area">
 <span class="sig-prename descclassname"><span class="pre">_Shape.</span></span><span class="sig-name descname"><span class="pre">get_area</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.components.annotation.PolyLine._Shape.get_area" title="Permalink to this definition"></a></dt>
@@ -689,7 +741,7 @@ mask. By default, mask labels are used.</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.annotation.Polygon">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.annotation.</span></span><span class="sig-name descname"><span class="pre">Polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_order</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#Polygon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.Polygon" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.annotation._Shape</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.components.annotation._Shape" title="datumaro.components.annotation._Shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.annotation._Shape</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.components.annotation.Polygon._Shape.get_area">
 <span class="sig-prename descclassname"><span class="pre">_Shape.</span></span><span class="sig-name descname"><span class="pre">get_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.components.annotation.Polygon._Shape.get_area" title="Permalink to this definition"></a></dt>
@@ -723,7 +775,7 @@ mask. By default, mask labels are used.</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.annotation.Bbox">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.annotation.</span></span><span class="sig-name descname"><span class="pre">Bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#Bbox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.Bbox" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.annotation._Shape</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.components.annotation._Shape" title="datumaro.components.annotation._Shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.annotation._Shape</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.components.annotation.Bbox._Shape.get_area">
 <span class="sig-prename descclassname"><span class="pre">_Shape.</span></span><span class="sig-name descname"><span class="pre">get_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datumaro.components.annotation.Bbox._Shape.get_area" title="Permalink to this definition"></a></dt>
@@ -779,7 +831,7 @@ mask. By default, mask labels are used.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.components.annotation.Bbox.iou">
-<span class="sig-name descname"><span class="pre">iou</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">datumaro.components.annotation._Shape</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union[float,</span> <span class="pre">Literal[-1]]</span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#Bbox.iou"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.Bbox.iou" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">iou</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#datumaro.components.annotation._Shape" title="datumaro.components.annotation._Shape"><span class="pre">datumaro.components.annotation._Shape</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union[float,</span> <span class="pre">Literal[-1]]</span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#Bbox.iou"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.Bbox.iou" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -801,11 +853,6 @@ mask. By default, mask labels are used.</p></li>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.annotation.</span></span><span class="sig-name descname"><span class="pre">PointsCategories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">Category</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">NOTHING</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#PointsCategories"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.PointsCategories" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#datumaro.components.annotation.Categories" title="datumaro.components.annotation.Categories"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.annotation.Categories</span></code></a></p>
 <p>Describes (key-)point metainfo such as point names and joints.</p>
-<dl class="py data">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">items:</span> <span class="pre">Dict[int,</span> <span class="pre">Category]</span></span></dt>
-<dd></dd></dl>
-
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.annotation.PointsCategories.Category">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">joints</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">NOTHING</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#PointsCategories.Category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.PointsCategories.Category" title="Permalink to this definition"></a></dt>
@@ -845,7 +892,7 @@ mask. By default, mask labels are used.</p></li>
 <dd><p>Create PointsCategories from an iterable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>iterable</strong> (<em>-</em>) – <p>An Iterable with the following elements:</p>
+<dd class="field-odd"><p><strong>iterable</strong> – <p>An Iterable with the following elements:</p>
 <ul class="simple">
 <li><p>a label id</p></li>
 <li><p>a list of positional arguments for Categories</p></li>
@@ -898,7 +945,7 @@ mask. By default, mask labels are used.</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.annotation.Points">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.annotation.</span></span><span class="sig-name descname"><span class="pre">Points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">visibility</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_order</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/annotation.html#Points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.annotation.Points" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.annotation._Shape</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#datumaro.components.annotation._Shape" title="datumaro.components.annotation._Shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.annotation._Shape</span></code></a></p>
 <p>Represents an ordered set of points.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.components.annotation.Points._Shape.get_area">
@@ -1023,26 +1070,7 @@ mask. By default, mask labels are used.</p></li>
       </div>
     </section>
   </div>
-  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-        <span class="fa fa-book"> Other Versions</span>
-        v: update-api-docs-fix-docstrings
-        <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
-        <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../v0.2.2/api/components/components/datumaro.components.annotation.html">v0.2.2</a></dd>
-            <dd><a href="../../../v0.2.3/api/components/components/datumaro.components.annotation.html">v0.2.3</a></dd>
-        </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/api/components/components/datumaro.components.annotation.html">revert-19-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/api/components/components/datumaro.components.annotation.html">revert-20-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../update-api-docs-fix-docstrings/api/components/components/datumaro.components.annotation.html">update-api-docs-fix-docstrings</a></dd>
-        </dl>
-    </div>
-</div><script>
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

@@ -4,11 +4,10 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>format_detection module &mdash; Datumaro API documentation 0.2.3 documentation</title>
+  <title>format detection module &mdash; Datumaro API documentation 0.2.3 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
@@ -58,12 +57,13 @@
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.errors.html">errors module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.extractor.html">extractor module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.extractor_tfds.html">extractor_tfds module</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">format_detection module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">format detection module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.hl_ops.html">hl_ops module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.launcher.html">launcher module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.media.html">media module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.media_manager.html">media_manager module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.operations.html">operations module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datumaro.components.progress_reporting.html">progress reporting module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.project.html">project module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datumaro.components.validator.html">validator module</a></li>
 </ul>
@@ -90,7 +90,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../components.html">Components</a> &raquo;</li>
-      <li>format_detection module</li>
+      <li>format detection module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/api/components/components/datumaro.components.format_detection.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -100,9 +100,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="format-detection-module">
-<h1>format_detection module<a class="headerlink" href="#format-detection-module" title="Permalink to this headline"></a></h1>
-<span class="target" id="module-datumaro.components.format_detection"></span><dl class="py class">
+  <section id="module-datumaro.components.format_detection">
+<span id="format-detection-module"></span><h1>format detection module<a class="headerlink" href="#module-datumaro.components.format_detection" title="Permalink to this headline"></a></h1>
+<dl class="py class">
 <dt class="sig sig-object py" id="datumaro.components.format_detection.FormatDetectionConfidence">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.format_detection.</span></span><span class="sig-name descname"><span class="pre">FormatDetectionConfidence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/format_detection.html#FormatDetectionConfidence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.format_detection.FormatDetectionConfidence" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></p>
@@ -124,10 +124,32 @@ to any other format.</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.components.format_detection.RejectionReason">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.format_detection.</span></span><span class="sig-name descname"><span class="pre">RejectionReason</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/format_detection.html#RejectionReason"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.format_detection.RejectionReason" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.format_detection.RejectionReason.unmet_requirements">
+<span class="sig-name descname"><span class="pre">unmet_requirements</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.components.format_detection.RejectionReason.unmet_requirements" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.format_detection.RejectionReason.insufficient_confidence">
+<span class="sig-name descname"><span class="pre">insufficient_confidence</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.components.format_detection.RejectionReason.insufficient_confidence" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="datumaro.components.format_detection.RejectionReason.detection_unsupported">
+<span class="sig-name descname"><span class="pre">detection_unsupported</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#datumaro.components.format_detection.RejectionReason.detection_unsupported" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py exception">
 <dt class="sig sig-object py" id="datumaro.components.format_detection.FormatRequirementsUnmet">
 <em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.format_detection.</span></span><span class="sig-name descname"><span class="pre">FormatRequirementsUnmet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">failed_alternatives</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/format_detection.html#FormatRequirementsUnmet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.format_detection.FormatRequirementsUnmet" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.format_detection._FormatRejected</span></code></p>
 <p>Represents a situation where a dataset does not meet the requirements
 of a given dataset format.
 More specifically, if this exception is raised, then it is necessary
@@ -140,6 +162,26 @@ methods.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.components.format_detection.FormatRequirementsUnmet.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">failed_alternatives</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/format_detection.html#FormatRequirementsUnmet.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.format_detection.FormatRequirementsUnmet.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="datumaro.components.format_detection.FormatRequirementsUnmet.reason">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">reason</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#datumaro.components.format_detection.RejectionReason" title="datumaro.components.format_detection.RejectionReason"><span class="pre">datumaro.components.format_detection.RejectionReason</span></a></em><a class="headerlink" href="#datumaro.components.format_detection.FormatRequirementsUnmet.reason" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="datumaro.components.format_detection.FormatDetectionUnsupported">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.format_detection.</span></span><span class="sig-name descname"><span class="pre">FormatDetectionUnsupported</span></span><a class="reference internal" href="../../../_modules/datumaro/components/format_detection.html#FormatDetectionUnsupported"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.format_detection.FormatDetectionUnsupported" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.format_detection._FormatRejected</span></code></p>
+<p>Represents a situation where detection is attempted with a format that
+does not support it.</p>
+<p>Must not be constructed or raised directly; use
+<cite>FormatDetectionContext.raise_unsupported</cite> instead.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="datumaro.components.format_detection.FormatDetectionUnsupported.reason">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">reason</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#datumaro.components.format_detection.RejectionReason" title="datumaro.components.format_detection.RejectionReason"><span class="pre">datumaro.components.format_detection.RejectionReason</span></a></em><a class="headerlink" href="#datumaro.components.format_detection.FormatDetectionUnsupported.reason" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -170,6 +212,13 @@ requirement methods.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.format_detection.FormatDetectionContext.raise_unsupported">
+<span class="sig-name descname"><span class="pre">raise_unsupported</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/format_detection.html#FormatDetectionContext.raise_unsupported"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.format_detection.FormatDetectionContext.raise_unsupported" title="Permalink to this definition"></a></dt>
+<dd><p>Raises a <cite>FormatDetectionUnsupported</cite> exception to signal that the
+current format does not support detection.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="datumaro.components.format_detection.FormatDetectionContext.fail">
 <span class="sig-name descname"><span class="pre">fail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">requirement_desc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/format_detection.html#FormatDetectionContext.fail"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.format_detection.FormatDetectionContext.fail" title="Permalink to this definition"></a></dt>
 <dd><p>Places a requirement that is never met. <cite>requirement_desc</cite> must contain
@@ -192,6 +241,13 @@ unspecified which one of them is returned.</p>
 If at least one pattern is supplied, then the placed requirement is
 narrowed to only accept files with names that match none of these
 patterns.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.components.format_detection.FormatDetectionContext.require_files">
+<span class="sig-name descname"><span class="pre">require_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_fnames</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Collection</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/datumaro/components/format_detection.html#FormatDetectionContext.require_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.format_detection.FormatDetectionContext.require_files" title="Permalink to this definition"></a></dt>
+<dd><p>Same as <cite>require_file</cite>, but returns all matching paths in alphabetical
+order.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -259,10 +315,15 @@ documentation for <cite>require_any</cite> for more details.</p>
 The callback receives an instance of <cite>FormatDetectionContext</cite> and must call
 methods on that instance to place requirements that the dataset must meet
 in order for it to be considered as belonging to the format.</p>
-<p>Must return the level of confidence in the dataset belonging to the format
-(or <cite>None</cite>, which is equivalent to the <cite>MEDIUM</cite> level)
-or terminate via a <cite>FormatRequirementsUnmet</cite> exception raised by one of
-the <cite>FormatDetectionContext</cite> methods.</p>
+<p>Must terminate in one of the following ways:</p>
+<ul class="simple">
+<li><p>by returning the level of confidence in the dataset belonging to the format
+(or <cite>None</cite>, which is equivalent to the <cite>MEDIUM</cite> level);</p></li>
+<li><p>by raising a <cite>FormatRequirementsUnmet</cite> exception via one of
+the <cite>FormatDetectionContext</cite> methods;</p></li>
+<li><p>by raising a <cite>FormatDetectionUnsupported</cite> exception via
+<cite>FormatDetectionContext.raise_unsupported</cite>.</p></li>
+</ul>
 <p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">Callable</span></code>[[<a class="reference internal" href="#datumaro.components.format_detection.FormatDetectionContext" title="datumaro.components.format_detection.FormatDetectionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.format_detection.FormatDetectionContext</span></code></a>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="#datumaro.components.format_detection.FormatDetectionConfidence" title="datumaro.components.format_detection.FormatDetectionConfidence"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.format_detection.FormatDetectionConfidence</span></code></a>]]</p>
 </dd></dl>
 
@@ -271,24 +332,8 @@ the <cite>FormatDetectionContext</cite> methods.</p>
 <span class="sig-prename descclassname"><span class="pre">datumaro.components.format_detection.</span></span><span class="sig-name descname"><span class="pre">apply_format_detector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detector</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#datumaro.components.format_detection.FormatDetectionContext" title="datumaro.components.format_detection.FormatDetectionContext"><span class="pre">datumaro.components.format_detection.FormatDetectionContext</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#datumaro.components.format_detection.FormatDetectionConfidence" title="datumaro.components.format_detection.FormatDetectionConfidence"><span class="pre">datumaro.components.format_detection.FormatDetectionConfidence</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#datumaro.components.format_detection.FormatDetectionConfidence" title="datumaro.components.format_detection.FormatDetectionConfidence"><span class="pre">datumaro.components.format_detection.FormatDetectionConfidence</span></a></span></span><a class="reference internal" href="../../../_modules/datumaro/components/format_detection.html#apply_format_detector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.format_detection.apply_format_detector" title="Permalink to this definition"></a></dt>
 <dd><p>Checks whether the dataset located at <cite>dataset_root_path</cite> belongs to the
 format detected by <cite>detector</cite>. If it does, returns the confidence level
-of the detection. Otherwise, raises a <cite>FormatRequirementsUnmet</cite> exception.</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="datumaro.components.format_detection.RejectionReason">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.components.format_detection.</span></span><span class="sig-name descname"><span class="pre">RejectionReason</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/components/format_detection.html#RejectionReason"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.components.format_detection.RejectionReason" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
-<p>An enumeration.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="datumaro.components.format_detection.RejectionReason.unmet_requirements">
-<span class="sig-name descname"><span class="pre">unmet_requirements</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#datumaro.components.format_detection.RejectionReason.unmet_requirements" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="datumaro.components.format_detection.RejectionReason.insufficient_confidence">
-<span class="sig-name descname"><span class="pre">insufficient_confidence</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#datumaro.components.format_detection.RejectionReason.insufficient_confidence" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
+of the detection. Otherwise, terminates with the exception that was raised
+by the detector.</p>
 </dd></dl>
 
 <dl class="py class">
@@ -361,26 +406,7 @@ to report the reason it was rejected.</p></li>
       </div>
     </section>
   </div>
-  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-        <span class="fa fa-book"> Other Versions</span>
-        v: update-api-docs-fix-docstrings
-        <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
-        <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../v0.2.2/index.html">v0.2.2</a></dd>
-            <dd><a href="../../../v0.2.3/index.html">v0.2.3</a></dd>
-        </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/api/components/components/datumaro.components.format_detection.html">revert-19-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/api/components/components/datumaro.components.format_detection.html">revert-20-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../update-api-docs-fix-docstrings/api/components/components/datumaro.components.format_detection.html">update-api-docs-fix-docstrings</a></dd>
-        </dl>
-    </div>
-</div><script>
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

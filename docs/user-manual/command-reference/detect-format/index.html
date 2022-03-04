@@ -32,7 +32,7 @@ The detection result may be one of:
 The detection result may be one of:
  a single format being detected; no formats being detected (if the dataset doesn&rsquo;t match any known format); multiple formats being detected (if the dataset is ambiguous).  The command outputs this result in a human-readable form and optionally as a machine-readable JSON report (see --json-report).">
 
-<meta itemprop="wordCount" content="271">
+<meta itemprop="wordCount" content="279">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Detect dataset format"/>
 <meta name="twitter:description" content="This command attempts to detect the format of a dataset in a directory. Currently, only local directories are supported.
@@ -136,7 +136,7 @@ The detection result may be one of:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.49b4a501512a0a967c88e7200a8befef.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -164,7 +164,7 @@ The detection result may be one of:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.49b4a501512a0a967c88e7200a8befef.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -489,6 +489,10 @@ optionally as a machine-readable JSON report (see <code>--json-report</code>).</
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><p>The <code>&lt;reason-code&gt;</code> can be one of:</p>
 <ul>
+<li>
+<p><code>&quot;detection_unsupported&quot;</code>: the corresponding format does not support
+detection.</p>
+</li>
 <li>
 <p><code>&quot;insufficient_confidence&quot;</code>: the dataset matched the corresponding format,
 but it matched at least one other format better.</p>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>datumaro.cli.__main__ &mdash; Datumaro API documentation 0.2.3 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../../index.html" class="icon"> Datumaro API documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/datumaro.html">Datumaro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/cli/cli.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/util/util/util.html">Utilities</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Datumaro API documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>datumaro.cli.__main__</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for datumaro.cli.__main__</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2019-2022 Intel Corporation</span>
+<span class="c1">#</span>
+<span class="c1"># SPDX-License-Identifier: MIT</span>
+
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">logging</span> <span class="k">as</span> <span class="nn">log</span>
+<span class="kn">import</span> <span class="nn">os.path</span> <span class="k">as</span> <span class="nn">osp</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">..util.telemetry_utils</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">close_telemetry_session</span><span class="p">,</span> <span class="n">init_telemetry_session</span><span class="p">,</span>
+    <span class="n">send_command_exception_info</span><span class="p">,</span> <span class="n">send_command_failure_info</span><span class="p">,</span>
+    <span class="n">send_command_success_info</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..version</span> <span class="kn">import</span> <span class="n">VERSION</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">commands</span><span class="p">,</span> <span class="n">contexts</span>
+<span class="kn">from</span> <span class="nn">.util</span> <span class="kn">import</span> <span class="n">add_subparser</span>
+<span class="kn">from</span> <span class="nn">.util.errors</span> <span class="kn">import</span> <span class="n">CliException</span>
+
+<span class="n">_log_levels</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;debug&#39;</span><span class="p">:</span> <span class="n">log</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span>
+    <span class="s1">&#39;info&#39;</span><span class="p">:</span> <span class="n">log</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+    <span class="s1">&#39;warning&#39;</span><span class="p">:</span> <span class="n">log</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span>
+    <span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="n">log</span><span class="o">.</span><span class="n">ERROR</span><span class="p">,</span>
+    <span class="s1">&#39;critical&#39;</span><span class="p">:</span> <span class="n">log</span><span class="o">.</span><span class="n">CRITICAL</span>
+<span class="p">}</span>
+
+<div class="viewcode-block" id="loglevel"><a class="viewcode-back" href="../../../api/cli/__main__.html#datumaro.cli.__main__.loglevel">[docs]</a><span class="k">def</span> <span class="nf">loglevel</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">_log_levels</span><span class="p">[</span><span class="n">name</span><span class="p">]</span></div>
+
+<span class="k">class</span> <span class="nc">_LogManager</span><span class="p">:</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">init_logger</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># Define minimalistic parser only to obtain loglevel</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">add_help</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_define_loglevel_option</span><span class="p">(</span><span class="n">parser</span><span class="p">)</span>
+        <span class="n">args</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_known_args</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+        <span class="n">log</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> </span><span class="si">%(levelname)s</span><span class="s1">: </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="n">level</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">loglevel</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_define_loglevel_option</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--loglevel&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">loglevel</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Logging level (options: </span><span class="si">%s</span><span class="s2">; default: </span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> \
+                <span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_log_levels</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="s2">&quot;</span><span class="si">%(default)s</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">parser</span>
+
+
+<span class="k">def</span> <span class="nf">_make_subcommands_help</span><span class="p">(</span><span class="n">commands</span><span class="p">,</span> <span class="n">help_line_start</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">command_name</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">command_help</span> <span class="ow">in</span> <span class="n">commands</span><span class="p">:</span>
+        <span class="n">desc</span> <span class="o">+=</span> <span class="p">(</span><span class="s2">&quot;  %-&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">help_line_start</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;s</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">%</span> \
+            <span class="p">(</span><span class="n">command_name</span><span class="p">,</span> <span class="n">command_help</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">desc</span>
+
+<span class="k">def</span> <span class="nf">_get_known_contexts</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="n">contexts</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;Actions with models&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;project&#39;</span><span class="p">,</span> <span class="n">contexts</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="s2">&quot;Actions with projects&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">contexts</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="s2">&quot;Actions with data sources&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">,</span> <span class="n">contexts</span><span class="o">.</span><span class="n">util</span><span class="p">,</span> <span class="s2">&quot;Auxillary tools and utilities&quot;</span><span class="p">),</span>
+    <span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">_get_known_commands</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;Project modification:&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="s2">&quot;Add dataset&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;create&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">create</span><span class="p">,</span> <span class="s2">&quot;Create empty project&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;import&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">import_</span><span class="p">,</span> <span class="s2">&quot;Import dataset&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;remove&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">remove</span><span class="p">,</span> <span class="s2">&quot;Remove dataset&quot;</span><span class="p">),</span>
+
+        <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Project versioning:&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;checkout&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">checkout</span><span class="p">,</span> <span class="s2">&quot;Switch to another branch or revision&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;commit&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">commit</span><span class="p">,</span> <span class="s2">&quot;Commit changes in tracked files&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">log</span><span class="p">,</span> <span class="s2">&quot;List history&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="s2">&quot;Display current status&quot;</span><span class="p">),</span>
+
+        <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Dataset operations:&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;convert&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">convert</span><span class="p">,</span> <span class="s2">&quot;Convert dataset between formats&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;detect-format&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">detect_format</span><span class="p">,</span>
+            <span class="s2">&quot;Detect the format of a dataset&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;diff&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">diff</span><span class="p">,</span> <span class="s2">&quot;Compare datasets&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;download&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">download</span><span class="p">,</span> <span class="s2">&quot;Download a publicly available dataset&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;explain&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">explain</span><span class="p">,</span> <span class="s2">&quot;Run Explainable AI algorithm for model&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;export&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">export</span><span class="p">,</span> <span class="s2">&quot;Export dataset in some format&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;filter&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">filter</span><span class="p">,</span> <span class="s2">&quot;Filter dataset items&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">info</span><span class="p">,</span> <span class="s2">&quot;Print dataset info&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;merge&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">merge</span><span class="p">,</span> <span class="s2">&quot;Merge datasets&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;patch&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">patch</span><span class="p">,</span> <span class="s2">&quot;Update dataset from another one&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;stats&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">stats</span><span class="p">,</span> <span class="s2">&quot;Compute dataset statistics&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;transform&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">transform</span><span class="p">,</span> <span class="s2">&quot;Modify dataset items&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;validate&#39;</span><span class="p">,</span> <span class="n">commands</span><span class="o">.</span><span class="n">validate</span><span class="p">,</span> <span class="s2">&quot;Validate dataset&quot;</span><span class="p">)</span>
+    <span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">_get_sensitive_args</span><span class="p">():</span>
+    <span class="n">known_contexts</span> <span class="o">=</span> <span class="n">_get_known_contexts</span><span class="p">()</span>
+    <span class="n">known_commands</span> <span class="o">=</span> <span class="n">_get_known_commands</span><span class="p">()</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">known_contexts</span> <span class="o">+</span> <span class="n">known_commands</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">command</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">get_sensitive_args</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">res</span>
+
+<div class="viewcode-block" id="make_parser"><a class="viewcode-back" href="../../../api/cli/__main__.html#datumaro.cli.__main__.make_parser">[docs]</a><span class="k">def</span> <span class="nf">make_parser</span><span class="p">():</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Dataset Framework&quot;</span><span class="p">,</span>
+        <span class="n">formatter_class</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">RawDescriptionHelpFormatter</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">parser</span><span class="o">.</span><span class="n">prog</span> <span class="o">==</span> <span class="n">osp</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="vm">__file__</span><span class="p">):</span> <span class="c1"># python -m datumaro ...</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">prog</span> <span class="o">=</span> <span class="s1">&#39;datumaro&#39;</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--version&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;version&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">VERSION</span><span class="p">)</span>
+    <span class="n">_LogManager</span><span class="o">.</span><span class="n">_define_loglevel_option</span><span class="p">(</span><span class="n">parser</span><span class="p">)</span>
+
+    <span class="n">known_contexts</span> <span class="o">=</span> <span class="n">_get_known_contexts</span><span class="p">()</span>
+    <span class="n">known_commands</span> <span class="o">=</span> <span class="n">_get_known_commands</span><span class="p">()</span>
+
+    <span class="c1"># Argparse doesn&#39;t support subparser groups:</span>
+    <span class="c1"># https://stackoverflow.com/questions/32017020/grouping-argparse-subparser-arguments</span>
+    <span class="n">help_line_start</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">known_contexts</span> <span class="o">+</span> <span class="n">known_commands</span><span class="p">),</span>
+        <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">help_line_start</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="mi">2</span> <span class="o">+</span> <span class="n">help_line_start</span><span class="p">)</span> <span class="o">//</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span> <span class="c1"># align to tabs</span>
+    <span class="n">subcommands_desc</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">known_contexts</span><span class="p">:</span>
+        <span class="n">subcommands_desc</span> <span class="o">+=</span> <span class="s2">&quot;Contexts:</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">subcommands_desc</span> <span class="o">+=</span> <span class="n">_make_subcommands_help</span><span class="p">(</span><span class="n">known_contexts</span><span class="p">,</span>
+            <span class="n">help_line_start</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">known_commands</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">subcommands_desc</span><span class="p">:</span>
+            <span class="n">subcommands_desc</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">subcommands_desc</span> <span class="o">+=</span> <span class="s2">&quot;Commands:</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">subcommands_desc</span> <span class="o">+=</span> <span class="n">_make_subcommands_help</span><span class="p">(</span><span class="n">known_commands</span><span class="p">,</span>
+            <span class="n">help_line_start</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">subcommands_desc</span><span class="p">:</span>
+        <span class="n">subcommands_desc</span> <span class="o">+=</span> \
+            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Run &#39;</span><span class="si">%s</span><span class="s2"> COMMAND --help&#39; for more information on a command.&quot;</span> <span class="o">%</span> \
+                <span class="n">parser</span><span class="o">.</span><span class="n">prog</span>
+
+    <span class="n">subcommands</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_subparsers</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">subcommands_desc</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">SUPPRESS</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">command_name</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">known_contexts</span> <span class="o">+</span> <span class="n">known_commands</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">command</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">add_subparser</span><span class="p">(</span><span class="n">subcommands</span><span class="p">,</span> <span class="n">command_name</span><span class="p">,</span> <span class="n">command</span><span class="o">.</span><span class="n">build_parser</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">parser</span></div>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../../api/cli/__main__.html#datumaro.cli.__main__.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">_LogManager</span><span class="o">.</span><span class="n">init_logger</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">make_parser</span><span class="p">()</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s1">&#39;command&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">print_help</span><span class="p">()</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="n">sensitive_args</span> <span class="o">=</span> <span class="n">_get_sensitive_args</span><span class="p">()</span>
+    <span class="n">telemetry</span> <span class="o">=</span> <span class="n">init_telemetry_session</span><span class="p">(</span><span class="n">app_name</span><span class="o">=</span><span class="s1">&#39;Datumaro&#39;</span><span class="p">,</span> <span class="n">app_version</span><span class="o">=</span><span class="n">VERSION</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">retcode</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">retcode</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">retcode</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">except</span> <span class="n">CliException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">send_command_exception_info</span><span class="p">(</span><span class="n">telemetry</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span>
+            <span class="n">sensitive_args</span><span class="o">=</span><span class="n">sensitive_args</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">command</span><span class="p">])</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">send_command_exception_info</span><span class="p">(</span><span class="n">telemetry</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span>
+            <span class="n">sensitive_args</span><span class="o">=</span><span class="n">sensitive_args</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">command</span><span class="p">])</span>
+        <span class="k">raise</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">retcode</span><span class="p">:</span>
+            <span class="n">send_command_failure_info</span><span class="p">(</span><span class="n">telemetry</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span>
+                <span class="n">sensitive_args</span><span class="o">=</span><span class="n">sensitive_args</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">command</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">send_command_success_info</span><span class="p">(</span><span class="n">telemetry</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span>
+                <span class="n">sensitive_args</span><span class="o">=</span><span class="n">sensitive_args</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">command</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">retcode</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">close_telemetry_session</span><span class="p">(</span><span class="n">telemetry</span><span class="p">)</span></div>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -8,7 +8,6 @@
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
@@ -362,7 +361,7 @@ contain <cite>str.format</cite> replacement fields with the <cite>item</cite>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Remove ‘<a href="#id1"><span class="problematic" id="id2">frame_</span></a>’ from item ids:</p></li>
+<li><p>Remove ‘frame_’ from item ids:</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rename</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;|^frame_||&#39;</span>
 </pre></div>
@@ -397,7 +396,7 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.transforms.RemapLabels">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.transforms.</span></span><span class="sig-name descname"><span class="pre">RemapLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.IExtractor" title="datumaro.components.extractor.IExtractor"><span class="pre">datumaro.components.extractor.IExtractor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#datumaro.plugins.transforms.RemapLabels.DefaultAction" title="datumaro.plugins.transforms.RemapLabels.DefaultAction"><span class="pre">datumaro.plugins.transforms.RemapLabels.DefaultAction</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#RemapLabels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemapLabels" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.transforms.</span></span><span class="sig-name descname"><span class="pre">RemapLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">IExtractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">DefaultAction</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#RemapLabels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemapLabels" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.ItemTransform" title="datumaro.components.extractor.ItemTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.ItemTransform</span></code></a>, <a class="reference internal" href="../../components/components/datumaro.components.cli_plugin.html#datumaro.components.cli_plugin.CliPlugin" title="datumaro.components.cli_plugin.CliPlugin"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.cli_plugin.CliPlugin</span></code></a></p>
 <p>Changes labels in the dataset.</p>
 <dl class="simple">
@@ -413,14 +412,14 @@ is ‘delete’ and the label is not mentioned in the list.
 When a label is deleted, all the associated annotations are removed</p></li>
 <li><p>kept unchanged - when specified ‘–label &lt;name&gt;:&lt;name&gt;’
 
-or default action is ‘keep’ and the label is not mentioned in the list</p></li>
+or default action is ‘keep’ and the label is not mentioned in the list.</p></li>
 </ul>
 </dd>
 </dl>
 <p>Annotations with no label are managed by the default action policy.</p>
-<dl>
-<dt>Examples:
-</dt><dd><ul class="simple">
+<p>Examples:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>Remove the ‘person’ label (and corresponding annotations):</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">remap_labels</span> <span class="o">-</span><span class="n">l</span> <span class="n">person</span><span class="p">:</span> <span class="o">--</span><span class="n">default</span> <span class="n">keep</span>
@@ -438,8 +437,7 @@ or default action is ‘keep’ and the label is not mentioned in the list</p></
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">remap_labels</span> <span class="o">-</span><span class="n">l</span> <span class="n">person</span><span class="p">:</span><span class="n">car</span> <span class="o">-</span><span class="n">l</span> <span class="n">bus</span><span class="p">:</span><span class="n">bus</span> <span class="o">-</span><span class="n">l</span> <span class="n">cat</span><span class="p">:</span><span class="n">dog</span> <span class="o">--</span><span class="n">default</span> <span class="n">delete</span>
 </pre></div>
 </div>
-</dd>
-</dl>
+</div></blockquote>
 <dl class="py class">
 <dt class="sig sig-object py" id="datumaro.plugins.transforms.RemapLabels.DefaultAction">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">DefaultAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#RemapLabels.DefaultAction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemapLabels.DefaultAction" title="Permalink to this definition"></a></dt>
@@ -464,7 +462,7 @@ or default action is ‘keep’ and the label is not mentioned in the list</p></
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.plugins.transforms.RemapLabels.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.IExtractor" title="datumaro.components.extractor.IExtractor"><span class="pre">datumaro.components.extractor.IExtractor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#datumaro.plugins.transforms.RemapLabels.DefaultAction" title="datumaro.plugins.transforms.RemapLabels.DefaultAction"><span class="pre">datumaro.plugins.transforms.RemapLabels.DefaultAction</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#RemapLabels.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemapLabels.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">IExtractor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#datumaro.plugins.transforms.RemapLabels.DefaultAction" title="datumaro.plugins.transforms.RemapLabels.DefaultAction"><span class="pre">DefaultAction</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#RemapLabels.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemapLabels.__init__" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -571,7 +569,7 @@ Supports upscaling, downscaling and mixed variants.</p>
 </dt><dd><ul class="simple">
 <li><p>Resize all images to 256x256 size</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">resize_transform</span> <span class="o">-</span><span class="n">dw</span> <span class="mi">256</span> <span class="o">-</span><span class="n">dh</span> <span class="mi">256</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">resize</span> <span class="o">-</span><span class="n">dw</span> <span class="mi">256</span> <span class="o">-</span><span class="n">dh</span> <span class="mi">256</span>
 </pre></div>
 </div>
 </dd>
@@ -589,6 +587,122 @@ Supports upscaling, downscaling and mixed variants.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.plugins.transforms.ResizeTransform.transform_item">
 <span class="sig-name descname"><span class="pre">transform_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#ResizeTransform.transform_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.ResizeTransform.transform_item" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a modified copy of the input item.</p>
+<p>Avoid changing and returning the input item, because it can lead to
+unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemoveItems">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.transforms.</span></span><span class="sig-name descname"><span class="pre">RemoveItems</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.IExtractor" title="datumaro.components.extractor.IExtractor"><span class="pre">datumaro.components.extractor.IExtractor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#RemoveItems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemoveItems" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.ItemTransform" title="datumaro.components.extractor.ItemTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.ItemTransform</span></code></a></p>
+<p>Allows to remove specific dataset items from dataset by their ids.</p>
+<p>Can be useful to clean the dataset from broken or unnecessary samples.</p>
+<dl>
+<dt>Examples:
+</dt><dd><ul class="simple">
+<li><p>Remove specific items from the dataset</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">remove_items</span> <span class="o">--</span><span class="nb">id</span> <span class="s1">&#39;image1:train&#39;</span> <span class="o">--</span><span class="nb">id</span> <span class="s1">&#39;image2:test&#39;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemoveItems.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#RemoveItems.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemoveItems.build_cmdline_parser" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemoveItems.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.IExtractor" title="datumaro.components.extractor.IExtractor"><span class="pre">datumaro.components.extractor.IExtractor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#RemoveItems.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemoveItems.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemoveItems.transform_item">
+<span class="sig-name descname"><span class="pre">transform_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#RemoveItems.transform_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemoveItems.transform_item" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a modified copy of the input item.</p>
+<p>Avoid changing and returning the input item, because it can lead to
+unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemoveAnnotations">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.transforms.</span></span><span class="sig-name descname"><span class="pre">RemoveAnnotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.IExtractor" title="datumaro.components.extractor.IExtractor"><span class="pre">datumaro.components.extractor.IExtractor</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#RemoveAnnotations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemoveAnnotations" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.ItemTransform" title="datumaro.components.extractor.ItemTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.ItemTransform</span></code></a></p>
+<p>Allows to remove annotations on specific dataset items.</p>
+<p>Can be useful to clean the dataset from broken or unnecessary annotations.</p>
+<dl>
+<dt>Examples:
+</dt><dd><ul class="simple">
+<li><p>Remove annotations from specific items in the dataset</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">remove_annotations</span> <span class="o">--</span><span class="nb">id</span> <span class="s1">&#39;image1:train&#39;</span> <span class="o">--</span><span class="nb">id</span> <span class="s1">&#39;image2:test&#39;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemoveAnnotations.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#RemoveAnnotations.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemoveAnnotations.build_cmdline_parser" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemoveAnnotations.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.IExtractor" title="datumaro.components.extractor.IExtractor"><span class="pre">datumaro.components.extractor.IExtractor</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#RemoveAnnotations.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemoveAnnotations.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemoveAnnotations.transform_item">
+<span class="sig-name descname"><span class="pre">transform_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.DatasetItem" title="datumaro.components.extractor.DatasetItem"><span class="pre">datumaro.components.extractor.DatasetItem</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#RemoveAnnotations.transform_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemoveAnnotations.transform_item" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a modified copy of the input item.</p>
+<p>Avoid changing and returning the input item, because it can lead to
+unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemoveAttributes">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datumaro.plugins.transforms.</span></span><span class="sig-name descname"><span class="pre">RemoveAttributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.IExtractor" title="datumaro.components.extractor.IExtractor"><span class="pre">datumaro.components.extractor.IExtractor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#RemoveAttributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemoveAttributes" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.ItemTransform" title="datumaro.components.extractor.ItemTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">datumaro.components.extractor.ItemTransform</span></code></a></p>
+<p>Allows to remove item and annotation attributes in a dataset.</p>
+<p>Can be useful to clean the dataset from broken or unnecessary attributes.</p>
+<dl>
+<dt>Examples:
+</dt><dd><ul class="simple">
+<li><p>Remove the <cite>is_crowd</cite> attribute from dataset</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">remove_attributes</span> <span class="o">--</span><span class="n">attr</span> <span class="s1">&#39;is_crowd&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Remove the <cite>occluded</cite> attribute from annotations of
+
+the <cite>2010_001705</cite> item in the <cite>train</cite> subset</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">remove_attributes</span> <span class="o">--</span><span class="nb">id</span> <span class="s1">&#39;2010_001705:train&#39;</span> <span class="o">--</span><span class="n">attr</span> <span class="s1">&#39;occluded&#39;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemoveAttributes.build_cmdline_parser">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#RemoveAttributes.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemoveAttributes.build_cmdline_parser" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemoveAttributes.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.IExtractor" title="datumaro.components.extractor.IExtractor"><span class="pre">datumaro.components.extractor.IExtractor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#RemoveAttributes.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemoveAttributes.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datumaro.plugins.transforms.RemoveAttributes.transform_item">
+<span class="sig-name descname"><span class="pre">transform_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../../components/components/datumaro.components.extractor.html#datumaro.components.extractor.DatasetItem" title="datumaro.components.extractor.DatasetItem"><span class="pre">datumaro.components.extractor.DatasetItem</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/transforms.html#RemoveAttributes.transform_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.transforms.RemoveAttributes.transform_item" title="Permalink to this definition"></a></dt>
 <dd><p>Returns a modified copy of the input item.</p>
 <p>Avoid changing and returning the input item, because it can lead to
 unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
@@ -632,26 +746,7 @@ unexpected problems. Use wrap_item() or item.wrap() to simplify copying.</p>
       </div>
     </section>
   </div>
-  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-        <span class="fa fa-book"> Other Versions</span>
-        v: update-api-docs-fix-docstrings
-        <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
-        <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../v0.2.2/api/plugins/plugins/datumaro.plugins.transforms.html">v0.2.2</a></dd>
-            <dd><a href="../../../v0.2.3/api/plugins/plugins/datumaro.plugins.transforms.html">v0.2.3</a></dd>
-        </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/api/plugins/plugins/datumaro.plugins.transforms.html">revert-19-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/api/plugins/plugins/datumaro.plugins.transforms.html">revert-20-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../update-api-docs-fix-docstrings/api/plugins/plugins/datumaro.plugins.transforms.html">update-api-docs-fix-docstrings</a></dd>
-        </dl>
-    </div>
-</div><script>
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

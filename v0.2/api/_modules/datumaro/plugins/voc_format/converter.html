@@ -7,7 +7,6 @@
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
@@ -75,22 +74,24 @@
            <div itemprop="articleBody">
              
   <h1>Source code for datumaro.plugins.voc_format.converter</h1><div class="highlight"><pre>
-<span></span><span class="c1"># Copyright (C) 2020-2021 Intel Corporation</span>
+<span></span><span class="c1"># Copyright (C) 2020-2022 Intel Corporation</span>
 <span class="c1">#</span>
 <span class="c1"># SPDX-License-Identifier: MIT</span>
 
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span><span class="p">,</span> <span class="n">defaultdict</span>
 <span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">auto</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Set</span>
 <span class="kn">import</span> <span class="nn">logging</span> <span class="k">as</span> <span class="nn">log</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">os.path</span> <span class="k">as</span> <span class="nn">osp</span>
 
+<span class="kn">from</span> <span class="nn">attrs</span> <span class="kn">import</span> <span class="n">define</span><span class="p">,</span> <span class="n">field</span>
 <span class="c1"># Disable B410: import_lxml - the library is used for writing</span>
 <span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span> <span class="k">as</span> <span class="n">ET</span>  <span class="c1"># nosec</span>
 
 <span class="kn">from</span> <span class="nn">datumaro.components.annotation</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">AnnotationType</span><span class="p">,</span> <span class="n">CompiledMask</span><span class="p">,</span> <span class="n">LabelCategories</span><span class="p">,</span>
+    <span class="n">AnnotationType</span><span class="p">,</span> <span class="n">Bbox</span><span class="p">,</span> <span class="n">CompiledMask</span><span class="p">,</span> <span class="n">Label</span><span class="p">,</span> <span class="n">LabelCategories</span><span class="p">,</span> <span class="n">Mask</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">datumaro.components.converter</span> <span class="kn">import</span> <span class="n">Converter</span>
 <span class="kn">from</span> <span class="nn">datumaro.components.dataset</span> <span class="kn">import</span> <span class="n">ItemStatus</span>
@@ -133,6 +134,14 @@
 <div class="viewcode-block" id="LabelmapType"><a class="viewcode-back" href="../../../../api/plugins/voc_format/datumaro.plugins.voc_format.converter.html#datumaro.plugins.voc_format.converter.LabelmapType">[docs]</a><span class="k">class</span> <span class="nc">LabelmapType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
     <span class="n">voc</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
     <span class="n">source</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+
+<span class="nd">@define</span>
+<span class="k">class</span> <span class="nc">_SubsetLists</span><span class="p">:</span>
+    <span class="n">class_lists</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+    <span class="n">clsdet_list</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+    <span class="n">action_list</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+    <span class="n">layout_list</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+    <span class="n">segm_list</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
 
 <div class="viewcode-block" id="VocConverter"><a class="viewcode-back" href="../../../../api/plugins/voc_format/datumaro.plugins.voc_format.converter.html#datumaro.plugins.voc_format.converter.VocConverter">[docs]</a><span class="k">class</span> <span class="nc">VocConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
     <span class="n">DEFAULT_IMAGE_EXT</span> <span class="o">=</span> <span class="n">VocPath</span><span class="o">.</span><span class="n">IMAGE_EXT</span>
@@ -245,202 +254,209 @@
             <span class="n">categories</span><span class="p">()[</span><span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">label_id</span><span class="p">]</span><span class="o">.</span><span class="n">name</span></div>
 
 <div class="viewcode-block" id="VocConverter.save_subsets"><a class="viewcode-back" href="../../../../api/plugins/voc_format/datumaro.plugins.voc_format.converter.html#datumaro.plugins.voc_format.converter.VocConverter.save_subsets">[docs]</a>    <span class="k">def</span> <span class="nf">save_subsets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">subset_name</span><span class="p">,</span> <span class="n">subset</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="o">.</span><span class="n">subsets</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">class_lists</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-            <span class="n">clsdet_list</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-            <span class="n">action_list</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-            <span class="n">layout_list</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-            <span class="n">segm_list</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+        <span class="n">subsets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractor</span><span class="o">.</span><span class="n">subsets</span><span class="p">()</span>
+        <span class="n">pbars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ctx</span><span class="o">.</span><span class="n">progress_reporter</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">subsets</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">pbar</span><span class="p">,</span> <span class="p">(</span><span class="n">subset_name</span><span class="p">,</span> <span class="n">subset</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pbars</span><span class="p">,</span> <span class="n">subsets</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="n">lists</span> <span class="o">=</span> <span class="n">_SubsetLists</span><span class="p">()</span>
 
-            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">subset</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">pbar</span><span class="o">.</span><span class="n">iter</span><span class="p">(</span><span class="n">subset</span><span class="p">,</span>
+                    <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Exporting &#39;</span><span class="si">{</span><span class="n">subset_name</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">):</span>
                 <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Converting item &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
 
-                <span class="n">image_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_image_filename</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_save_images</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">has_image</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">has_data</span><span class="p">:</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">_save_image</span><span class="p">(</span><span class="n">item</span><span class="p">,</span>
-                            <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_images_dir</span><span class="p">,</span> <span class="n">image_filename</span><span class="p">))</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Item &#39;</span><span class="si">%s</span><span class="s2">&#39; has no image&quot;</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">image_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_image_filename</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_save_images</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">has_image</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">has_data</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_save_image</span><span class="p">(</span><span class="n">item</span><span class="p">,</span>
+                                <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_images_dir</span><span class="p">,</span> <span class="n">image_filename</span><span class="p">))</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Item &#39;</span><span class="si">%s</span><span class="s2">&#39; has no image&quot;</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
 
-                <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
-                <span class="n">bboxes</span> <span class="o">=</span> <span class="p">[]</span>
-                <span class="n">masks</span> <span class="o">=</span> <span class="p">[]</span>
-                <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">label</span><span class="p">:</span>
-                        <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-                    <span class="k">elif</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">bbox</span><span class="p">:</span>
-                        <span class="n">bboxes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-                    <span class="k">elif</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">AnnotationType</span><span class="o">.</span><span class="n">mask</span><span class="p">:</span>
-                        <span class="n">masks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span> <span class="o">&amp;</span> <span class="p">{</span><span class="n">VocTask</span><span class="o">.</span><span class="n">detection</span><span class="p">,</span> <span class="n">VocTask</span><span class="o">.</span><span class="n">person_layout</span><span class="p">,</span>
-                        <span class="n">VocTask</span><span class="o">.</span><span class="n">action_classification</span><span class="p">}:</span>
-                    <span class="n">root_elem</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;annotation&#39;</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="s1">&#39;_&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
-                        <span class="n">folder</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">[</span> <span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)]</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-                    <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root_elem</span><span class="p">,</span> <span class="s1">&#39;folder&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">folder</span>
-                    <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root_elem</span><span class="p">,</span> <span class="s1">&#39;filename&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">image_filename</span>
-
-                    <span class="n">source_elem</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root_elem</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">)</span>
-                    <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">source_elem</span><span class="p">,</span> <span class="s1">&#39;database&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Unknown&#39;</span>
-                    <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">source_elem</span><span class="p">,</span> <span class="s1">&#39;annotation&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Unknown&#39;</span>
-                    <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">source_elem</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Unknown&#39;</span>
-
-                    <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">has_image</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">has_size</span><span class="p">:</span>
-                        <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">size</span>
-                        <span class="n">size_elem</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root_elem</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">)</span>
-                        <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">size_elem</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
-                        <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">size_elem</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
-                        <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">size_elem</span><span class="p">,</span> <span class="s1">&#39;depth&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-
-                    <span class="n">item_segmented</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">masks</span><span class="p">)</span>
-                    <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root_elem</span><span class="p">,</span> <span class="s1">&#39;segmented&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> \
-                        <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">item_segmented</span><span class="p">))</span>
-
-                    <span class="n">objects_with_parts</span> <span class="o">=</span> <span class="p">[]</span>
-                    <span class="n">objects_with_actions</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
-
-                    <span class="n">main_bboxes</span> <span class="o">=</span> <span class="p">[]</span>
-                    <span class="n">layout_bboxes</span> <span class="o">=</span> <span class="p">[]</span>
-                    <span class="k">for</span> <span class="n">bbox</span> <span class="ow">in</span> <span class="n">bboxes</span><span class="p">:</span>
-                        <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_label</span><span class="p">(</span><span class="n">bbox</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_part</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
-                            <span class="n">layout_bboxes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bbox</span><span class="p">)</span>
-                        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_label</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
-                            <span class="n">main_bboxes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bbox</span><span class="p">)</span>
-
-                    <span class="k">for</span> <span class="n">new_obj_id</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">main_bboxes</span><span class="p">):</span>
-                        <span class="n">attr</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">attributes</span>
-
-                        <span class="n">obj_elem</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root_elem</span><span class="p">,</span> <span class="s1">&#39;object&#39;</span><span class="p">)</span>
-
-                        <span class="n">obj_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_label</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-                        <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">obj_elem</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">obj_label</span>
-
-                        <span class="k">if</span> <span class="s1">&#39;pose&#39;</span> <span class="ow">in</span> <span class="n">attr</span><span class="p">:</span>
-                            <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">obj_elem</span><span class="p">,</span> <span class="s1">&#39;pose&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> \
-                                <span class="nb">str</span><span class="p">(</span><span class="n">attr</span><span class="p">[</span><span class="s1">&#39;pose&#39;</span><span class="p">])</span>
-
-                        <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">obj_elem</span><span class="p">,</span> <span class="s1">&#39;truncated&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> \
-                            <span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">_convert_attr</span><span class="p">(</span><span class="s1">&#39;truncated&#39;</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-                        <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">obj_elem</span><span class="p">,</span> <span class="s1">&#39;occluded&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> \
-                            <span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">_convert_attr</span><span class="p">(</span><span class="s1">&#39;occluded&#39;</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-                        <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">obj_elem</span><span class="p">,</span> <span class="s1">&#39;difficult&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> \
-                            <span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">_convert_attr</span><span class="p">(</span><span class="s1">&#39;difficult&#39;</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-
-                        <span class="n">bbox</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">get_bbox</span><span class="p">()</span>
-                        <span class="k">if</span> <span class="n">bbox</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                            <span class="n">_write_xml_bbox</span><span class="p">(</span><span class="n">bbox</span><span class="p">,</span> <span class="n">obj_elem</span><span class="p">)</span>
-
-                        <span class="k">for</span> <span class="n">part_bbox</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span>
-                                <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">obj</span><span class="o">.</span><span class="n">group</span> <span class="ow">and</span> <span class="n">obj</span><span class="o">.</span><span class="n">group</span> <span class="o">==</span> <span class="n">x</span><span class="o">.</span><span class="n">group</span><span class="p">,</span>
-                                <span class="n">layout_bboxes</span><span class="p">):</span>
-                            <span class="n">part_elem</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">obj_elem</span><span class="p">,</span> <span class="s1">&#39;part&#39;</span><span class="p">)</span>
-                            <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">part_elem</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> \
-                                <span class="bp">self</span><span class="o">.</span><span class="n">get_label</span><span class="p">(</span><span class="n">part_bbox</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-                            <span class="n">_write_xml_bbox</span><span class="p">(</span><span class="n">part_bbox</span><span class="o">.</span><span class="n">get_bbox</span><span class="p">(),</span> <span class="n">part_elem</span><span class="p">)</span>
-
-                            <span class="n">objects_with_parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_obj_id</span><span class="p">)</span>
-
-                        <span class="n">label_actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_actions</span><span class="p">(</span><span class="n">obj_label</span><span class="p">)</span>
-                        <span class="n">actions_elem</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;actions&#39;</span><span class="p">)</span>
-                        <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">label_actions</span><span class="p">:</span>
-                            <span class="n">present</span> <span class="o">=</span> <span class="mi">0</span>
-                            <span class="k">if</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">attr</span><span class="p">:</span>
-                                <span class="n">present</span> <span class="o">=</span> <span class="n">_convert_attr</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span>
-                                    <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
-                                <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">actions_elem</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> \
-                                    <span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">present</span>
-
-                            <span class="n">objects_with_actions</span><span class="p">[</span><span class="n">new_obj_id</span><span class="p">][</span><span class="n">action</span><span class="p">]</span> <span class="o">=</span> <span class="n">present</span>
-                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">actions_elem</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                            <span class="n">obj_elem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">actions_elem</span><span class="p">)</span>
-
-                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_attributes</span><span class="p">:</span>
-                            <span class="n">native_attrs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">BUILTIN_ATTRS</span><span class="p">)</span>
-                            <span class="n">native_attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">label_actions</span><span class="p">)</span>
-
-                            <span class="n">attrs_elem</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;attributes&#39;</span><span class="p">)</span>
-                            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">attr</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                                <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">native_attrs</span><span class="p">:</span>
-                                    <span class="k">continue</span>
-                                <span class="n">attr_elem</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">attrs_elem</span><span class="p">,</span> <span class="s1">&#39;attribute&#39;</span><span class="p">)</span>
-                                <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">attr_elem</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
-                                <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">attr_elem</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-                            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">attrs_elem</span><span class="p">):</span>
-                                <span class="n">obj_elem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attrs_elem</span><span class="p">)</span>
-
-                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span> <span class="o">&amp;</span> <span class="p">{</span><span class="n">VocTask</span><span class="o">.</span><span class="n">detection</span><span class="p">,</span> <span class="n">VocTask</span><span class="o">.</span><span class="n">person_layout</span><span class="p">,</span>
-                            <span class="n">VocTask</span><span class="o">.</span><span class="n">action_classification</span><span class="p">}:</span>
-                        <span class="n">ann_path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ann_dir</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="o">+</span> <span class="s1">&#39;.xml&#39;</span><span class="p">)</span>
-                        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">ann_path</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">ann_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-                            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">root_elem</span><span class="p">,</span>
-                                <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;unicode&#39;</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-
-                    <span class="n">clsdet_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-
-                    <span class="k">if</span> <span class="n">objects_with_parts</span><span class="p">:</span>
-                        <span class="n">layout_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">objects_with_parts</span>
-
-                    <span class="k">if</span> <span class="n">objects_with_actions</span><span class="p">:</span>
-                        <span class="n">action_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">objects_with_actions</span>
-
-                <span class="k">for</span> <span class="n">label_ann</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
-                    <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_label</span><span class="p">(</span><span class="n">label_ann</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_label</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
-                        <span class="k">continue</span>
-                    <span class="n">class_list</span> <span class="o">=</span> <span class="n">class_lists</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="nb">set</span><span class="p">())</span>
-                    <span class="n">class_list</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">label_ann</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-                    <span class="n">class_lists</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">class_list</span>
-
-                    <span class="n">clsdet_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-
-                <span class="k">if</span> <span class="n">masks</span> <span class="ow">and</span> <span class="n">VocTask</span><span class="o">.</span><span class="n">segmentation</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">:</span>
-                    <span class="n">compiled_mask</span> <span class="o">=</span> <span class="n">CompiledMask</span><span class="o">.</span><span class="n">from_instance_masks</span><span class="p">(</span><span class="n">masks</span><span class="p">,</span>
-                        <span class="n">instance_labels</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_label_id_mapping</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-                            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">masks</span><span class="p">])</span>
-
-                    <span class="bp">self</span><span class="o">.</span><span class="n">save_segm</span><span class="p">(</span>
-                        <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_segm_dir</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="o">+</span> <span class="n">VocPath</span><span class="o">.</span><span class="n">SEGM_EXT</span><span class="p">),</span>
-                        <span class="n">compiled_mask</span><span class="o">.</span><span class="n">class_mask</span><span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">save_segm</span><span class="p">(</span>
-                        <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inst_dir</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="o">+</span> <span class="n">VocPath</span><span class="o">.</span><span class="n">SEGM_EXT</span><span class="p">),</span>
-                        <span class="n">compiled_mask</span><span class="o">.</span><span class="n">instance_mask</span><span class="p">,</span>
-                        <span class="n">colormap</span><span class="o">=</span><span class="n">VocInstColormap</span><span class="p">)</span>
-
-                    <span class="n">segm_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-                <span class="k">elif</span> <span class="ow">not</span> <span class="n">masks</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_patch</span><span class="p">:</span>
-                    <span class="n">cls_mask_path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_segm_dir</span><span class="p">,</span>
-                        <span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="o">+</span> <span class="n">VocPath</span><span class="o">.</span><span class="n">SEGM_EXT</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">cls_mask_path</span><span class="p">):</span>
-                        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">cls_mask_path</span><span class="p">)</span>
-
-                    <span class="n">inst_mask_path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inst_dir</span><span class="p">,</span>
-                        <span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="o">+</span> <span class="n">VocPath</span><span class="o">.</span><span class="n">SEGM_EXT</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">inst_mask_path</span><span class="p">):</span>
-                        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">inst_mask_path</span><span class="p">)</span>
-
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">clsdet_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-                    <span class="n">layout_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-                    <span class="n">action_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-                    <span class="n">segm_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_export_annotations</span><span class="p">(</span><span class="n">item</span><span class="p">,</span>
+                        <span class="n">image_filename</span><span class="o">=</span><span class="n">image_filename</span><span class="p">,</span> <span class="n">lists</span><span class="o">=</span><span class="n">lists</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_report_item_error</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">item_id</span><span class="o">=</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">subset</span><span class="p">))</span>
 
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span> <span class="o">&amp;</span> <span class="p">{</span><span class="n">VocTask</span><span class="o">.</span><span class="n">classification</span><span class="p">,</span> <span class="n">VocTask</span><span class="o">.</span><span class="n">detection</span><span class="p">,</span>
                     <span class="n">VocTask</span><span class="o">.</span><span class="n">action_classification</span><span class="p">,</span> <span class="n">VocTask</span><span class="o">.</span><span class="n">person_layout</span><span class="p">}:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">save_clsdet_lists</span><span class="p">(</span><span class="n">subset_name</span><span class="p">,</span> <span class="n">clsdet_list</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">save_clsdet_lists</span><span class="p">(</span><span class="n">subset_name</span><span class="p">,</span> <span class="n">lists</span><span class="o">.</span><span class="n">clsdet_list</span><span class="p">)</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span> <span class="o">&amp;</span> <span class="p">{</span><span class="n">VocTask</span><span class="o">.</span><span class="n">classification</span><span class="p">}:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">save_class_lists</span><span class="p">(</span><span class="n">subset_name</span><span class="p">,</span> <span class="n">class_lists</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">save_class_lists</span><span class="p">(</span><span class="n">subset_name</span><span class="p">,</span> <span class="n">lists</span><span class="o">.</span><span class="n">class_lists</span><span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span> <span class="o">&amp;</span> <span class="p">{</span><span class="n">VocTask</span><span class="o">.</span><span class="n">action_classification</span><span class="p">}:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">save_action_lists</span><span class="p">(</span><span class="n">subset_name</span><span class="p">,</span> <span class="n">action_list</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">save_action_lists</span><span class="p">(</span><span class="n">subset_name</span><span class="p">,</span> <span class="n">lists</span><span class="o">.</span><span class="n">action_list</span><span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span> <span class="o">&amp;</span> <span class="p">{</span><span class="n">VocTask</span><span class="o">.</span><span class="n">person_layout</span><span class="p">}:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">save_layout_lists</span><span class="p">(</span><span class="n">subset_name</span><span class="p">,</span> <span class="n">layout_list</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">save_layout_lists</span><span class="p">(</span><span class="n">subset_name</span><span class="p">,</span> <span class="n">lists</span><span class="o">.</span><span class="n">layout_list</span><span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span> <span class="o">&amp;</span> <span class="p">{</span><span class="n">VocTask</span><span class="o">.</span><span class="n">segmentation</span><span class="p">}:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">save_segm_lists</span><span class="p">(</span><span class="n">subset_name</span><span class="p">,</span> <span class="n">segm_list</span><span class="p">)</span></div>
+                <span class="bp">self</span><span class="o">.</span><span class="n">save_segm_lists</span><span class="p">(</span><span class="n">subset_name</span><span class="p">,</span> <span class="n">lists</span><span class="o">.</span><span class="n">segm_list</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_export_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">DatasetItem</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+            <span class="n">image_filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lists</span><span class="p">:</span> <span class="n">_SubsetLists</span><span class="p">):</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">bboxes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">masks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">Label</span><span class="p">):</span>
+                <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">Bbox</span><span class="p">):</span>
+                <span class="n">bboxes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">Mask</span><span class="p">):</span>
+                <span class="n">masks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span> <span class="o">&amp;</span> <span class="p">{</span><span class="n">VocTask</span><span class="o">.</span><span class="n">detection</span><span class="p">,</span> <span class="n">VocTask</span><span class="o">.</span><span class="n">person_layout</span><span class="p">,</span>
+                <span class="n">VocTask</span><span class="o">.</span><span class="n">action_classification</span><span class="p">}:</span>
+            <span class="n">root_elem</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;annotation&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s1">&#39;_&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
+                <span class="n">folder</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">[</span> <span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root_elem</span><span class="p">,</span> <span class="s1">&#39;folder&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">folder</span>
+            <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root_elem</span><span class="p">,</span> <span class="s1">&#39;filename&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">image_filename</span>
+
+            <span class="n">source_elem</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root_elem</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">)</span>
+            <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">source_elem</span><span class="p">,</span> <span class="s1">&#39;database&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Unknown&#39;</span>
+            <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">source_elem</span><span class="p">,</span> <span class="s1">&#39;annotation&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Unknown&#39;</span>
+            <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">source_elem</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Unknown&#39;</span>
+
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">has_image</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">has_size</span><span class="p">:</span>
+                <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">size</span>
+                <span class="n">size_elem</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root_elem</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">)</span>
+                <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">size_elem</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+                <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">size_elem</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+                <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">size_elem</span><span class="p">,</span> <span class="s1">&#39;depth&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+            <span class="n">item_segmented</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">masks</span><span class="p">)</span>
+            <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root_elem</span><span class="p">,</span> <span class="s1">&#39;segmented&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> \
+                <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">item_segmented</span><span class="p">))</span>
+
+            <span class="n">objects_with_parts</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">objects_with_actions</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+
+            <span class="n">main_bboxes</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">layout_bboxes</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">bbox</span> <span class="ow">in</span> <span class="n">bboxes</span><span class="p">:</span>
+                <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_label</span><span class="p">(</span><span class="n">bbox</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_part</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+                    <span class="n">layout_bboxes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bbox</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_label</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+                    <span class="n">main_bboxes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bbox</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">new_obj_id</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">main_bboxes</span><span class="p">):</span>
+                <span class="n">attr</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">attributes</span>
+
+                <span class="n">obj_elem</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root_elem</span><span class="p">,</span> <span class="s1">&#39;object&#39;</span><span class="p">)</span>
+
+                <span class="n">obj_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_label</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+                <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">obj_elem</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">obj_label</span>
+
+                <span class="k">if</span> <span class="s1">&#39;pose&#39;</span> <span class="ow">in</span> <span class="n">attr</span><span class="p">:</span>
+                    <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">obj_elem</span><span class="p">,</span> <span class="s1">&#39;pose&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> \
+                        <span class="nb">str</span><span class="p">(</span><span class="n">attr</span><span class="p">[</span><span class="s1">&#39;pose&#39;</span><span class="p">])</span>
+
+                <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">obj_elem</span><span class="p">,</span> <span class="s1">&#39;truncated&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> \
+                    <span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">_convert_attr</span><span class="p">(</span><span class="s1">&#39;truncated&#39;</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">obj_elem</span><span class="p">,</span> <span class="s1">&#39;occluded&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> \
+                    <span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">_convert_attr</span><span class="p">(</span><span class="s1">&#39;occluded&#39;</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">obj_elem</span><span class="p">,</span> <span class="s1">&#39;difficult&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> \
+                    <span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">_convert_attr</span><span class="p">(</span><span class="s1">&#39;difficult&#39;</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+                <span class="n">bbox</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">get_bbox</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">bbox</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">_write_xml_bbox</span><span class="p">(</span><span class="n">bbox</span><span class="p">,</span> <span class="n">obj_elem</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">part_bbox</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span>
+                        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">obj</span><span class="o">.</span><span class="n">group</span> <span class="ow">and</span> <span class="n">obj</span><span class="o">.</span><span class="n">group</span> <span class="o">==</span> <span class="n">x</span><span class="o">.</span><span class="n">group</span><span class="p">,</span>
+                        <span class="n">layout_bboxes</span><span class="p">):</span>
+                    <span class="n">part_elem</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">obj_elem</span><span class="p">,</span> <span class="s1">&#39;part&#39;</span><span class="p">)</span>
+                    <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">part_elem</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> \
+                        <span class="bp">self</span><span class="o">.</span><span class="n">get_label</span><span class="p">(</span><span class="n">part_bbox</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+                    <span class="n">_write_xml_bbox</span><span class="p">(</span><span class="n">part_bbox</span><span class="o">.</span><span class="n">get_bbox</span><span class="p">(),</span> <span class="n">part_elem</span><span class="p">)</span>
+
+                    <span class="n">objects_with_parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_obj_id</span><span class="p">)</span>
+
+                <span class="n">label_actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_actions</span><span class="p">(</span><span class="n">obj_label</span><span class="p">)</span>
+                <span class="n">actions_elem</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;actions&#39;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">label_actions</span><span class="p">:</span>
+                    <span class="n">present</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">if</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">attr</span><span class="p">:</span>
+                        <span class="n">present</span> <span class="o">=</span> <span class="n">_convert_attr</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span>
+                            <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+                        <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">actions_elem</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> \
+                            <span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">present</span>
+
+                    <span class="n">objects_with_actions</span><span class="p">[</span><span class="n">new_obj_id</span><span class="p">][</span><span class="n">action</span><span class="p">]</span> <span class="o">=</span> <span class="n">present</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">actions_elem</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">obj_elem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">actions_elem</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_attributes</span><span class="p">:</span>
+                    <span class="n">native_attrs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">BUILTIN_ATTRS</span><span class="p">)</span>
+                    <span class="n">native_attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">label_actions</span><span class="p">)</span>
+
+                    <span class="n">attrs_elem</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;attributes&#39;</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">attr</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">native_attrs</span><span class="p">:</span>
+                            <span class="k">continue</span>
+                        <span class="n">attr_elem</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">attrs_elem</span><span class="p">,</span> <span class="s1">&#39;attribute&#39;</span><span class="p">)</span>
+                        <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">attr_elem</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+                        <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">attr_elem</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">attrs_elem</span><span class="p">):</span>
+                        <span class="n">obj_elem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attrs_elem</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span> <span class="o">&amp;</span> <span class="p">{</span><span class="n">VocTask</span><span class="o">.</span><span class="n">detection</span><span class="p">,</span> <span class="n">VocTask</span><span class="o">.</span><span class="n">person_layout</span><span class="p">,</span>
+                    <span class="n">VocTask</span><span class="o">.</span><span class="n">action_classification</span><span class="p">}:</span>
+                <span class="n">ann_path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ann_dir</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="o">+</span> <span class="s1">&#39;.xml&#39;</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">ann_path</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">ann_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">root_elem</span><span class="p">,</span>
+                        <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;unicode&#39;</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+            <span class="n">lists</span><span class="o">.</span><span class="n">clsdet_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+            <span class="k">if</span> <span class="n">objects_with_parts</span><span class="p">:</span>
+                <span class="n">lists</span><span class="o">.</span><span class="n">layout_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">objects_with_parts</span>
+
+            <span class="k">if</span> <span class="n">objects_with_actions</span><span class="p">:</span>
+                <span class="n">lists</span><span class="o">.</span><span class="n">action_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">objects_with_actions</span>
+
+        <span class="k">for</span> <span class="n">label_ann</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_label</span><span class="p">(</span><span class="n">label_ann</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_label</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="n">class_list</span> <span class="o">=</span> <span class="n">lists</span><span class="o">.</span><span class="n">class_lists</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="nb">set</span><span class="p">())</span>
+            <span class="n">class_list</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">label_ann</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">lists</span><span class="o">.</span><span class="n">class_lists</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">class_list</span>
+
+            <span class="n">lists</span><span class="o">.</span><span class="n">clsdet_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="n">masks</span> <span class="ow">and</span> <span class="n">VocTask</span><span class="o">.</span><span class="n">segmentation</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tasks</span><span class="p">:</span>
+            <span class="n">compiled_mask</span> <span class="o">=</span> <span class="n">CompiledMask</span><span class="o">.</span><span class="n">from_instance_masks</span><span class="p">(</span><span class="n">masks</span><span class="p">,</span>
+                <span class="n">instance_labels</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_label_id_mapping</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">masks</span><span class="p">])</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_segm</span><span class="p">(</span>
+                <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_segm_dir</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="o">+</span> <span class="n">VocPath</span><span class="o">.</span><span class="n">SEGM_EXT</span><span class="p">),</span>
+                <span class="n">compiled_mask</span><span class="o">.</span><span class="n">class_mask</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_segm</span><span class="p">(</span>
+                <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inst_dir</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="o">+</span> <span class="n">VocPath</span><span class="o">.</span><span class="n">SEGM_EXT</span><span class="p">),</span>
+                <span class="n">compiled_mask</span><span class="o">.</span><span class="n">instance_mask</span><span class="p">,</span>
+                <span class="n">colormap</span><span class="o">=</span><span class="n">VocInstColormap</span><span class="p">)</span>
+
+            <span class="n">lists</span><span class="o">.</span><span class="n">segm_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">masks</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_patch</span><span class="p">:</span>
+            <span class="n">cls_mask_path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_segm_dir</span><span class="p">,</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="o">+</span> <span class="n">VocPath</span><span class="o">.</span><span class="n">SEGM_EXT</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">cls_mask_path</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">cls_mask_path</span><span class="p">)</span>
+
+            <span class="n">inst_mask_path</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inst_dir</span><span class="p">,</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="o">+</span> <span class="n">VocPath</span><span class="o">.</span><span class="n">SEGM_EXT</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">inst_mask_path</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">inst_mask_path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">lists</span><span class="o">.</span><span class="n">clsdet_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">lists</span><span class="o">.</span><span class="n">layout_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">lists</span><span class="o">.</span><span class="n">action_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">lists</span><span class="o">.</span><span class="n">segm_list</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_get_filtered_lines</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">patch</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -833,26 +849,7 @@
       </div>
     </section>
   </div>
-  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-        <span class="fa fa-book"> Other Versions</span>
-        v: update-api-docs-fix-docstrings
-        <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
-        <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../../v0.2.2/index.html">v0.2.2</a></dd>
-            <dd><a href="../../../../v0.2.3/index.html">v0.2.3</a></dd>
-        </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../../../../revert-19-update-api-docs-fix-docstrings/index.html">revert-19-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../../revert-20-update-api-docs-fix-docstrings/index.html">revert-20-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../../update-api-docs-fix-docstrings/_modules/datumaro/plugins/voc_format/converter.html">update-api-docs-fix-docstrings</a></dd>
-        </dl>
-    </div>
-</div><script>
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

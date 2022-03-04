@@ -8,7 +8,6 @@
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
@@ -180,27 +179,22 @@ resulting images.</p>
 
 - <cite>uniform</cite> - sample data with uniform distribution
 
-- <cite>inverse</cite> - sample data with reciprocal of the number of number of</p>
-<blockquote>
-<div><p>items with the same similarity</p>
-</div></blockquote>
-<dl class="simple">
-<dt>Example: apply NDR, return no more than 100 images
-</dt><dd><dl class="simple">
-<dt>n_d_r
-</dt><dd><p>–working_subset train
+- <cite>inverse</cite> - sample data with reciprocal of the number of number of
+items with the same similarity</p>
+<p>Example: apply NDR, return no more than 100 images</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ndr</span>
 
-–algorithm gradient
+  <span class="o">--</span><span class="n">working_subset</span> <span class="n">train</span>
 
-–num_cut 100
+  <span class="o">--</span><span class="n">algorithm</span> <span class="n">gradient</span>
 
-–over_sample random
+  <span class="o">--</span><span class="n">num_cut</span> <span class="mi">100</span>
 
-–under_sample uniform</p>
-</dd>
-</dl>
-</dd>
-</dl>
+  <span class="o">--</span><span class="n">over_sample</span> <span class="n">random</span>
+
+  <span class="o">--</span><span class="n">under_sample</span> <span class="n">uniform</span>
+</pre></div>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="datumaro.plugins.ndr.NDR.build_cmdline_parser">
 <em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build_cmdline_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/plugins/ndr.html#NDR.build_cmdline_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.plugins.ndr.NDR.build_cmdline_parser" title="Permalink to this definition"></a></dt>
@@ -294,26 +288,7 @@ larger value means more generous, i.e., saving more samples</p>
       </div>
     </section>
   </div>
-  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-        <span class="fa fa-book"> Other Versions</span>
-        v: update-api-docs-fix-docstrings
-        <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
-        <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../v0.2.2/api/plugins/plugins/datumaro.plugins.ndr.html">v0.2.2</a></dd>
-            <dd><a href="../../../v0.2.3/api/plugins/plugins/datumaro.plugins.ndr.html">v0.2.3</a></dd>
-        </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/api/plugins/plugins/datumaro.plugins.ndr.html">revert-19-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/api/plugins/plugins/datumaro.plugins.ndr.html">revert-20-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../update-api-docs-fix-docstrings/api/plugins/plugins/datumaro.plugins.ndr.html">update-api-docs-fix-docstrings</a></dd>
-        </dl>
-    </div>
-</div><script>
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

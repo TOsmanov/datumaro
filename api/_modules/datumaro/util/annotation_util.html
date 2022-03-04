@@ -7,7 +7,6 @@
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
@@ -292,7 +291,8 @@
 <span class="sd">      segments (int): the required numebr of segments in the resulting line.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">      new_points (ndarray): an array of new line point coordinates.</span>
+<span class="sd">        new_points (numpy.ndarray): an array of new line point coordinates.</span>
+<span class="sd">    Returns:</span>
 <span class="sd">        The size is [(segments + 1) * 2], the layout is [x0, y0, x1, y1, ...].</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -344,13 +344,11 @@
 <span class="sd">    labels.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        map_id (callable): src id -&gt; dst id</span>
 
-<span class="sd">        id_mapping (dict): src id -&gt; dst id</span>
-
-<span class="sd">        src_labels (dict): src id -&gt; src label</span>
-
-<span class="sd">        dst_labels (dict): dst id -&gt; dst label</span>
+<span class="sd">    |   map_id (callable): src id -&gt; dst id</span>
+<span class="sd">    |   id_mapping (dict): src id -&gt; dst i</span>
+<span class="sd">    |   src_labels (dict): src id -&gt; src label</span>
+<span class="sd">    |   dst_labels (dict): dst id -&gt; dst label</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">source_labels</span> <span class="o">=</span> <span class="p">{</span> <span class="nb">id</span><span class="p">:</span> <span class="n">label</span><span class="o">.</span><span class="n">name</span>
@@ -398,26 +396,7 @@
       </div>
     </section>
   </div>
-  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-        <span class="fa fa-book"> Other Versions</span>
-        v: update-api-docs-fix-docstrings
-        <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
-        <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../v0.2.2/index.html">v0.2.2</a></dd>
-            <dd><a href="../../../v0.2.3/index.html">v0.2.3</a></dd>
-        </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/index.html">revert-19-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/index.html">revert-20-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../update-api-docs-fix-docstrings/_modules/datumaro/util/annotation_util.html">update-api-docs-fix-docstrings</a></dd>
-        </dl>
-    </div>
-</div><script>
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

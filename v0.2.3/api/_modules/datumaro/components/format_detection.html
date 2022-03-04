@@ -7,7 +7,6 @@
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
@@ -120,7 +119,17 @@
 <span class="c1"># * It makes sure that every confidence level is a true value.</span>
 <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">level</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">level</span> <span class="ow">in</span> <span class="n">FormatDetectionConfidence</span><span class="p">)</span>
 
-<div class="viewcode-block" id="FormatRequirementsUnmet"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatRequirementsUnmet">[docs]</a><span class="k">class</span> <span class="nc">FormatRequirementsUnmet</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<div class="viewcode-block" id="RejectionReason"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.RejectionReason">[docs]</a><span class="k">class</span> <span class="nc">RejectionReason</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">unmet_requirements</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">insufficient_confidence</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">detection_unsupported</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+
+<span class="k">class</span> <span class="nc">_FormatRejected</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">reason</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RejectionReason</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+<div class="viewcode-block" id="FormatRequirementsUnmet"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatRequirementsUnmet">[docs]</a><span class="k">class</span> <span class="nc">FormatRequirementsUnmet</span><span class="p">(</span><span class="n">_FormatRejected</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Represents a situation where a dataset does not meet the requirements</span>
 <span class="sd">    of a given dataset format.</span>
@@ -149,7 +158,27 @@
 
         <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="s1">&#39;  &#39;</span> <span class="o">+</span> <span class="n">req</span> <span class="k">for</span> <span class="n">req</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">failed_alternatives</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">reason</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RejectionReason</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">RejectionReason</span><span class="o">.</span><span class="n">unmet_requirements</span></div>
+
+<div class="viewcode-block" id="FormatDetectionUnsupported"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetectionUnsupported">[docs]</a><span class="k">class</span> <span class="nc">FormatDetectionUnsupported</span><span class="p">(</span><span class="n">_FormatRejected</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a situation where detection is attempted with a format that</span>
+<span class="sd">    does not support it.</span>
+
+<span class="sd">    Must not be constructed or raised directly; use</span>
+<span class="sd">    `FormatDetectionContext.raise_unsupported` instead.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Detection for this format is unsupported&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">reason</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RejectionReason</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">RejectionReason</span><span class="o">.</span><span class="n">detection_unsupported</span></div>
 
 <div class="viewcode-block" id="FormatDetectionContext"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetectionContext">[docs]</a><span class="k">class</span> <span class="nc">FormatDetectionContext</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -215,6 +244,14 @@
             <span class="sa">f</span><span class="s2">&quot;a requirement (</span><span class="si">{</span><span class="n">req_type</span><span class="si">}</span><span class="s2">) can&#39;t be placed directly within &quot;</span> \
             <span class="s2">&quot;a &#39;require_any&#39; block&quot;</span>
 
+<div class="viewcode-block" id="FormatDetectionContext.raise_unsupported"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetectionContext.raise_unsupported">[docs]</a>    <span class="k">def</span> <span class="nf">raise_unsupported</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Raises a `FormatDetectionUnsupported` exception to signal that the</span>
+<span class="sd">        current format does not support detection.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">raise</span> <span class="n">FormatDetectionUnsupported</span></div>
+
 <div class="viewcode-block" id="FormatDetectionContext.fail"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetectionContext.fail">[docs]</a>    <span class="k">def</span> <span class="nf">fail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">requirement_desc</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Places a requirement that is never met. `requirement_desc` must contain</span>
@@ -246,6 +283,25 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_start_requirement</span><span class="p">(</span><span class="s2">&quot;require_file&quot;</span><span class="p">)</span>
 
+        <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_require_files_iter</span><span class="p">(</span>
+            <span class="n">pattern</span><span class="p">,</span> <span class="n">exclude_fnames</span><span class="o">=</span><span class="n">exclude_fnames</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="FormatDetectionContext.require_files"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetectionContext.require_files">[docs]</a>    <span class="k">def</span> <span class="nf">require_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+        <span class="n">exclude_fnames</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Collection</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Same as `require_file`, but returns all matching paths in alphabetical</span>
+<span class="sd">        order.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_start_requirement</span><span class="p">(</span><span class="s2">&quot;require_files&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_require_files_iter</span><span class="p">(</span>
+            <span class="n">pattern</span><span class="p">,</span> <span class="n">exclude_fnames</span><span class="o">=</span><span class="n">exclude_fnames</span><span class="p">))</span></div>
+
+    <span class="k">def</span> <span class="nf">_require_files_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+        <span class="n">exclude_fnames</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Collection</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">exclude_fnames</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="n">exclude_fnames</span> <span class="o">=</span> <span class="p">(</span><span class="n">exclude_fnames</span><span class="p">,)</span>
 
@@ -260,6 +316,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="n">requirement_desc</span><span class="p">)</span>
 
         <span class="n">pattern_abs</span> <span class="o">=</span> <span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_root_path</span><span class="p">),</span> <span class="n">pattern</span><span class="p">)</span>
+        <span class="n">none_found</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">pattern_abs</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">osp</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
                 <span class="c1"># Ideally, we should provide a way to filter out whole paths,</span>
@@ -271,9 +328,11 @@
                         <span class="k">for</span> <span class="n">pat</span> <span class="ow">in</span> <span class="n">exclude_fnames</span><span class="p">):</span>
                     <span class="k">continue</span>
 
-                <span class="k">return</span> <span class="n">osp</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_root_path</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">osp</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_root_path</span><span class="p">)</span>
+                <span class="n">none_found</span> <span class="o">=</span> <span class="kc">False</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="n">requirement_desc</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="n">none_found</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="n">requirement_desc</span><span class="p">)</span>
 
 <div class="viewcode-block" id="FormatDetectionContext.probe_text_file"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.FormatDetectionContext.probe_text_file">[docs]</a>    <span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
     <span class="k">def</span> <span class="nf">probe_text_file</span><span class="p">(</span>
@@ -313,7 +372,7 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_root_path</span><span class="p">,</span> <span class="n">path</span><span class="p">),</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
                 <span class="k">yield</span> <span class="n">f</span>
-        <span class="k">except</span> <span class="n">FormatRequirementsUnmet</span><span class="p">:</span>
+        <span class="k">except</span> <span class="n">_FormatRejected</span><span class="p">:</span>
             <span class="k">raise</span>
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="n">requirement_desc_full</span><span class="p">)</span></div>
@@ -405,10 +464,14 @@
 <span class="sd">methods on that instance to place requirements that the dataset must meet</span>
 <span class="sd">in order for it to be considered as belonging to the format.</span>
 
-<span class="sd">Must return the level of confidence in the dataset belonging to the format</span>
-<span class="sd">(or `None`, which is equivalent to the `MEDIUM` level)</span>
-<span class="sd">or terminate via a `FormatRequirementsUnmet` exception raised by one of</span>
-<span class="sd">the `FormatDetectionContext` methods.</span>
+<span class="sd">Must terminate in one of the following ways:</span>
+
+<span class="sd">* by returning the level of confidence in the dataset belonging to the format</span>
+<span class="sd">  (or `None`, which is equivalent to the `MEDIUM` level);</span>
+<span class="sd">* by raising a `FormatRequirementsUnmet` exception via one of</span>
+<span class="sd">  the `FormatDetectionContext` methods;</span>
+<span class="sd">* by raising a `FormatDetectionUnsupported` exception via</span>
+<span class="sd">  `FormatDetectionContext.raise_unsupported`.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="apply_format_detector"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.apply_format_detector">[docs]</a><span class="k">def</span> <span class="nf">apply_format_detector</span><span class="p">(</span>
@@ -417,7 +480,8 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Checks whether the dataset located at `dataset_root_path` belongs to the</span>
 <span class="sd">    format detected by `detector`. If it does, returns the confidence level</span>
-<span class="sd">    of the detection. Otherwise, raises a `FormatRequirementsUnmet` exception.</span>
+<span class="sd">    of the detection. Otherwise, terminates with the exception that was raised</span>
+<span class="sd">    by the detector.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">context</span> <span class="o">=</span> <span class="n">FormatDetectionContext</span><span class="p">(</span><span class="n">dataset_root_path</span><span class="p">)</span>
 
@@ -425,10 +489,6 @@
         <span class="n">context</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;root path </span><span class="si">{</span><span class="n">dataset_root_path</span><span class="si">}</span><span class="s2"> must refer to a directory&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">detector</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="ow">or</span> <span class="n">FormatDetectionConfidence</span><span class="o">.</span><span class="n">MEDIUM</span></div>
-
-<div class="viewcode-block" id="RejectionReason"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.RejectionReason">[docs]</a><span class="k">class</span> <span class="nc">RejectionReason</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-    <span class="n">unmet_requirements</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
-    <span class="n">insufficient_confidence</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="RejectionCallback"><a class="viewcode-back" href="../../../api/components/components/datumaro.components.format_detection.html#datumaro.components.format_detection.RejectionCallback">[docs]</a><span class="k">class</span> <span class="nc">RejectionCallback</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
@@ -484,12 +544,10 @@
         <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Checking &#39;</span><span class="si">%s</span><span class="s2">&#39; format...&quot;</span><span class="p">,</span> <span class="n">format_name</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">new_confidence</span> <span class="o">=</span> <span class="n">apply_format_detector</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">detector</span><span class="p">)</span>
-        <span class="k">except</span> <span class="n">FormatRequirementsUnmet</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+        <span class="k">except</span> <span class="n">_FormatRejected</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
             <span class="n">human_message</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">rejection_callback</span><span class="p">:</span>
-                <span class="n">rejection_callback</span><span class="p">(</span>
-                    <span class="n">format_name</span><span class="p">,</span> <span class="n">RejectionReason</span><span class="o">.</span><span class="n">unmet_requirements</span><span class="p">,</span>
-                    <span class="n">human_message</span><span class="p">)</span>
+                <span class="n">rejection_callback</span><span class="p">(</span><span class="n">format_name</span><span class="p">,</span> <span class="n">ex</span><span class="o">.</span><span class="n">reason</span><span class="p">,</span> <span class="n">human_message</span><span class="p">)</span>
             <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">human_message</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Format matched with confidence </span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">new_confidence</span><span class="p">)</span>
@@ -540,26 +598,7 @@
       </div>
     </section>
   </div>
-  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-        <span class="fa fa-book"> Other Versions</span>
-        v: update-api-docs-fix-docstrings
-        <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
-        <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../v0.2.2/index.html">v0.2.2</a></dd>
-            <dd><a href="../../../v0.2.3/index.html">v0.2.3</a></dd>
-        </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/index.html">revert-19-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/index.html">revert-20-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../update-api-docs-fix-docstrings/_modules/datumaro/components/format_detection.html">update-api-docs-fix-docstrings</a></dd>
-        </dl>
-    </div>
-</div><script>
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

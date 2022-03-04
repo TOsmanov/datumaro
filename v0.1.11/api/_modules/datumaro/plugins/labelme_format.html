@@ -7,7 +7,6 @@
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
@@ -75,7 +74,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for datumaro.plugins.labelme_format</h1><div class="highlight"><pre>
-<span></span><span class="c1"># Copyright (C) 2020-2021 Intel Corporation</span>
+<span></span><span class="c1"># Copyright (C) 2020-2022 Intel Corporation</span>
 <span class="c1">#</span>
 <span class="c1"># SPDX-License-Identifier: MIT</span>
 
@@ -361,31 +360,39 @@
 <div class="viewcode-block" id="LabelMeImporter"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.labelme_format.html#datumaro.plugins.labelme_format.LabelMeImporter">[docs]</a><span class="k">class</span> <span class="nc">LabelMeImporter</span><span class="p">(</span><span class="n">Importer</span><span class="p">):</span>
 <div class="viewcode-block" id="LabelMeImporter.detect"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.labelme_format.html#datumaro.plugins.labelme_format.LabelMeImporter.detect">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">detect</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">FormatDetectionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">annot_file</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">require_file</span><span class="p">(</span><span class="s1">&#39;**/*.xml&#39;</span><span class="p">)</span>
+        <span class="n">annot_paths</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">require_files</span><span class="p">(</span><span class="s1">&#39;**/*.xml&#39;</span><span class="p">)</span>
 
-        <span class="k">with</span> <span class="n">context</span><span class="o">.</span><span class="n">probe_text_file</span><span class="p">(</span>
-            <span class="n">annot_file</span><span class="p">,</span> <span class="s2">&quot;must be a LabelMe annotation file&quot;</span><span class="p">,</span>
-        <span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-            <span class="n">elem_parents</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">annot_path</span> <span class="ow">in</span> <span class="n">annot_paths</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">context</span><span class="o">.</span><span class="n">probe_text_file</span><span class="p">(</span>
+                <span class="n">annot_path</span><span class="p">,</span> <span class="s2">&quot;must be a LabelMe annotation file&quot;</span><span class="p">,</span>
+            <span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">elem_parents</span> <span class="o">=</span> <span class="p">[]</span>
 
-            <span class="k">for</span> <span class="n">event</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">ElementTree</span><span class="o">.</span><span class="n">iterparse</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">)):</span>
-                <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="s1">&#39;start&#39;</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">elem_parents</span> <span class="o">==</span> <span class="p">[]</span> <span class="ow">and</span> <span class="n">elem</span><span class="o">.</span><span class="n">tag</span> <span class="o">!=</span> <span class="s1">&#39;annotation&#39;</span><span class="p">:</span>
-                        <span class="k">raise</span> <span class="ne">Exception</span>
+                <span class="k">for</span> <span class="n">event</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">ElementTree</span><span class="o">.</span><span class="n">iterparse</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">)):</span>
+                    <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="s1">&#39;start&#39;</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">elem_parents</span> <span class="o">==</span> <span class="p">[]</span> <span class="ow">and</span> <span class="n">elem</span><span class="o">.</span><span class="n">tag</span> <span class="o">!=</span> <span class="s1">&#39;annotation&#39;</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="ne">Exception</span>
 
-                    <span class="k">if</span> <span class="n">elem_parents</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;annotation&#39;</span><span class="p">,</span> <span class="s1">&#39;object&#39;</span><span class="p">]</span> \
-                            <span class="ow">and</span> <span class="n">elem</span><span class="o">.</span><span class="n">tag</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;polygon&#39;</span><span class="p">,</span> <span class="s1">&#39;segm&#39;</span><span class="p">}:</span>
-                        <span class="k">return</span>
+                        <span class="k">if</span> <span class="n">elem_parents</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;annotation&#39;</span><span class="p">,</span> <span class="s1">&#39;object&#39;</span><span class="p">]</span> \
+                                <span class="ow">and</span> <span class="n">elem</span><span class="o">.</span><span class="n">tag</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;polygon&#39;</span><span class="p">,</span> <span class="s1">&#39;segm&#39;</span><span class="p">}:</span>
+                            <span class="k">return</span>
 
-                    <span class="n">elem_parents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
-                <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="s1">&#39;end&#39;</span><span class="p">:</span>
-                    <span class="n">elem_parents</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                        <span class="n">elem_parents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="s1">&#39;end&#39;</span><span class="p">:</span>
+                        <span class="n">elem_parents</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
 
-                    <span class="k">if</span> <span class="n">elem_parents</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;annotation&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">elem</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span><span class="p">:</span>
-                        <span class="c1"># If we got here, then we found an object with no</span>
-                        <span class="c1"># polygon and no mask, so it&#39;s probably the wrong</span>
-                        <span class="c1"># format.</span>
-                        <span class="k">raise</span> <span class="ne">Exception</span></div>
+                        <span class="k">if</span> <span class="n">elem_parents</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;annotation&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">elem</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span><span class="p">:</span>
+                            <span class="c1"># If we got here, then we found an object with no</span>
+                            <span class="c1"># polygon and no mask, so it&#39;s probably the wrong</span>
+                            <span class="c1"># format.</span>
+                            <span class="k">raise</span> <span class="ne">Exception</span></div>
+
+            <span class="c1"># If we got here, then the current file has no objects and is thus</span>
+            <span class="c1"># ambiguous - it could be ours or it could be from the VOC format.</span>
+            <span class="c1"># We&#39;ll proceed to test the next one.</span>
+
+        <span class="c1"># If we got here, then every file was ambiguous. We&#39;ll have to</span>
+        <span class="c1"># (implicitly) return a match.</span>
 
 <div class="viewcode-block" id="LabelMeImporter.find_sources"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.labelme_format.html#datumaro.plugins.labelme_format.LabelMeImporter.find_sources">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">find_sources</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
@@ -595,26 +602,7 @@
       </div>
     </section>
   </div>
-  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-        <span class="fa fa-book"> Other Versions</span>
-        v: update-api-docs-fix-docstrings
-        <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
-        <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../v0.2.2/index.html">v0.2.2</a></dd>
-            <dd><a href="../../../v0.2.3/index.html">v0.2.3</a></dd>
-        </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/index.html">revert-19-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/index.html">revert-20-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../update-api-docs-fix-docstrings/_modules/datumaro/plugins/labelme_format.html">update-api-docs-fix-docstrings</a></dd>
-        </dl>
-    </div>
-</div><script>
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

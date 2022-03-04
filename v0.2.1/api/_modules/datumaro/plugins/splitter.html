@@ -7,7 +7,6 @@
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
@@ -103,38 +102,40 @@
 <div class="viewcode-block" id="Split"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.splitter.html#datumaro.plugins.splitter.Split">[docs]</a><span class="k">class</span> <span class="nc">Split</span><span class="p">(</span><span class="n">Transform</span><span class="p">,</span> <span class="n">CliPlugin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    - classification split |n</span>
-<span class="sd">    Splits dataset into subsets(train/val/test) in class-wise manner. |n</span>
-<span class="sd">    Splits dataset images in the specified ratio, keeping the initial class</span>
-<span class="sd">    distribution.|n</span>
+<span class="sd">    |s|s|s|sSplits dataset into subsets(train/val/test) in class-wise manner. |n</span>
+<span class="sd">    |s|s|s|sSplits dataset images in the specified ratio, keeping the initial class |n</span>
+<span class="sd">    |s|s|s|sdistribution.|n</span>
 <span class="sd">    |n</span>
 <span class="sd">    - detection &amp; segmentation split |n</span>
-<span class="sd">    Each image can have multiple object annotations -</span>
-<span class="sd">    (bbox, mask, polygon). Since an image shouldn&#39;t be included</span>
-<span class="sd">    in multiple subsets at the same time, and image annotations</span>
-<span class="sd">    shouldn&#39;t be split, in general, dataset annotations are unlikely</span>
-<span class="sd">    to be split exactly in the specified ratio. |n</span>
-<span class="sd">    This split tries to split dataset images as close as possible</span>
-<span class="sd">    to the specified ratio, keeping the initial class distribution.|n</span>
+<span class="sd">    |s|s|s|sEach image can have multiple object annotations - |n</span>
+<span class="sd">    |s|s|s|s(bbox, mask, polygon). Since an image shouldn&#39;t be included |n</span>
+<span class="sd">    |s|s|s|sin multiple subsets at the same time, and image annotations |n</span>
+<span class="sd">    |s|s|s|sshouldn&#39;t be split, in general, dataset annotations are unlikely |n</span>
+<span class="sd">    |s|s|s|sto be split exactly in the specified ratio. |n</span>
+<span class="sd">    |s|s|s|sThis split tries to split dataset images as close as possible |n</span>
+<span class="sd">    |s|s|s|sto the specified ratio, keeping the initial class distribution.|n</span>
 <span class="sd">    |n</span>
 <span class="sd">    - reidentification split |n</span>
-<span class="sd">    In this task, the test set should consist of images of unseen</span>
-<span class="sd">    people or objects during the training phase. |n</span>
-<span class="sd">    This function splits a dataset in the following way:|n</span>
-<span class="sd">    |s|s1. Splits the dataset into &#39;train + val&#39; and &#39;test&#39; sets|n</span>
-<span class="sd">    |s|s|s|sbased on person or object ID.|n</span>
-<span class="sd">    |s|s2. Splits &#39;test&#39; set into &#39;test-gallery&#39; and &#39;test-query&#39; sets|n</span>
-<span class="sd">    |s|s|s|sin class-wise manner.|n</span>
-<span class="sd">    |s|s3. Splits the &#39;train + val&#39; set into &#39;train&#39; and &#39;val&#39; sets|n</span>
-<span class="sd">    |s|s|s|sin the same way.|n</span>
-<span class="sd">    The final subsets would be</span>
+<span class="sd">    |s|s|s|sIn this task, the test set should consist of images of unseen|n</span>
+<span class="sd">    |s|s|s|speople or objects during the training phase.|n</span>
+<span class="sd">    |s|s|s|sThis function splits a dataset in the following way:|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    |s|s1. Splits the dataset into &#39;train + val&#39; and &#39;test&#39; sets |n</span>
+<span class="sd">    |s|s|s|s|sbased on person or object ID.|n</span>
+<span class="sd">    |s|s2. Splits &#39;test&#39; set into &#39;test-gallery&#39; and &#39;test-query&#39; sets |n</span>
+<span class="sd">    |s|s|s|s|sin class-wise manner.|n</span>
+<span class="sd">    |s|s3. Splits the &#39;train + val&#39; set into &#39;train&#39; and &#39;val&#39; sets |n</span>
+<span class="sd">    |s|s|s|s|sin the same way.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    The final subsets would be|n</span>
 <span class="sd">    &#39;train&#39;, &#39;val&#39;, &#39;test-gallery&#39; and &#39;test-query&#39;. |n</span>
 <span class="sd">    |n</span>
 <span class="sd">    Notes:|n</span>
-<span class="sd">    |s|s- Each image is expected to have only one Annotation. Unlabeled or</span>
+<span class="sd">    |s|s- Each image is expected to have only one Annotation. Unlabeled or |n</span>
 <span class="sd">    |s|s|s|smulti-labeled images will be split into subsets randomly. |n</span>
 <span class="sd">    |s|s- If Labels also have attributes, also splits by attribute values.|n</span>
-<span class="sd">    |s|s- If there is not enough images in some class or attributes group,</span>
-<span class="sd">    |s|s|s|sthe split ratio can&#39;t be guaranteed.|n</span>
+<span class="sd">    |s|s- If there is not enough images in some class or attributes group, |n</span>
+<span class="sd">    |s|s|s|sthe split ratio can&#39;t be guaranteed. |n</span>
 <span class="sd">    |s|s|s|sIn reidentification task, |n</span>
 <span class="sd">    |s|s- Object ID can be described by Label, or by attribute (--attr parameter)|n</span>
 <span class="sd">    |s|s- The splits of the test set are controlled by &#39;--query&#39; parameter |n</span>
@@ -148,6 +149,7 @@
 <span class="sd">    |s|s%(prog)s -t detection --subset train:.5 --subset val:.2 --subset test:.3 |n</span>
 <span class="sd">    |s|s%(prog)s -t segmentation --subset train:.5 --subset val:.2 --subset test:.3 |n</span>
 <span class="sd">    |s|s%(prog)s -t reid --subset train:.5 --subset val:.2 --subset test:.3 --query .5 |n</span>
+<span class="sd">    |n</span>
 <span class="sd">    Example: use &#39;person_id&#39; attribute for splitting|n</span>
 
 <span class="sd">    .. code-block::</span>
@@ -493,11 +495,11 @@
 <span class="sd">    distribution.|n</span>
 <span class="sd">    |n</span>
 <span class="sd">    Notes:|n</span>
-<span class="sd">    - Each image is expected to have only one Label. Unlabeled or</span>
-<span class="sd">      multi-labeled images will be split into subsets randomly. |n</span>
-<span class="sd">    - If Labels also have attributes, also splits by attribute values.|n</span>
-<span class="sd">    - If there is not enough images in some class or attributes group,</span>
-<span class="sd">      the split ratio can&#39;t be guaranteed.|n</span>
+<span class="sd">    |s|s- Each image is expected to have only one Label. Unlabeled or</span>
+<span class="sd">    |s|s|s|smulti-labeled images will be split into subsets randomly. |n</span>
+<span class="sd">    |s|s- If Labels also have attributes, also splits by attribute values.|n</span>
+<span class="sd">    |s|s- If there is not enough images in some class or attributes group,</span>
+<span class="sd">    |s|s|s|sthe split ratio can&#39;t be guaranteed.|n</span>
 <span class="sd">    |n</span>
 <span class="sd">    Example:|n</span>
 
@@ -514,7 +516,8 @@
 <span class="sd">        splits : list</span>
 <span class="sd">            A list of (subset(str), ratio(float))</span>
 <span class="sd">            The sum of ratios is expected to be 1.</span>
-<span class="sd">        seed : int, optional</span>
+<span class="sd">        seed : int</span>
+<span class="sd">            optional</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span></div>
 
@@ -556,18 +559,20 @@
 <span class="sd">    In this task, the test set should consist of images of unseen</span>
 <span class="sd">    people or objects during the training phase. |n</span>
 <span class="sd">    This function splits a dataset in the following way:|n</span>
+<span class="sd">    |n</span>
 <span class="sd">    |s|s1. Splits the dataset into &#39;train + val&#39; and &#39;test&#39; sets|n</span>
-<span class="sd">    |s|sbased on person or object ID.|n</span>
+<span class="sd">    |s|s|s|s|sbased on person or object ID.|n</span>
 <span class="sd">    |s|s2. Splits &#39;test&#39; set into &#39;test-gallery&#39; and &#39;test-query&#39; sets|n</span>
-<span class="sd">    |s|sin class-wise manner.|n</span>
+<span class="sd">    |s|s|s|s|sin class-wise manner.|n</span>
 <span class="sd">    |s|s3. Splits the &#39;train + val&#39; set into &#39;train&#39; and &#39;val&#39; sets|n</span>
-<span class="sd">    |s|sin the same way.|n</span>
+<span class="sd">    |s|s|s|s|sin the same way.|n</span>
+<span class="sd">    |n</span>
 <span class="sd">    The final subsets would be</span>
 <span class="sd">    &#39;train&#39;, &#39;val&#39;, &#39;test-gallery&#39; and &#39;test-query&#39;. |n</span>
 <span class="sd">    |n</span>
 <span class="sd">    Notes:|n</span>
 <span class="sd">    |s|s- Each image is expected to have a single Label. Unlabeled or multi-labeled</span>
-<span class="sd">    |s|s  images will be split into &#39;not-supported&#39;.|n</span>
+<span class="sd">    |s|s|s|simages will be split into &#39;not-supported&#39;.|n</span>
 <span class="sd">    |s|s- Object ID can be described by Label, or by attribute (--attr parameter)|n</span>
 <span class="sd">    |s|s- The splits of the test set are controlled by &#39;--query&#39; parameter. |n</span>
 <span class="sd">    |s|s|s|sGallery ratio would be 1.0 - query.|n</span>
@@ -578,6 +583,7 @@
 <span class="sd">    .. code-block::</span>
 
 <span class="sd">    |s|s%(prog)s -t reidentification --subset train:.5 --subset val:.2 --subset test:.3 --query .5|n</span>
+<span class="sd">    |n</span>
 <span class="sd">    Example: use &#39;person_id&#39; attribute for splitting|n</span>
 
 <span class="sd">    .. code-block::</span>
@@ -602,7 +608,8 @@
 <span class="sd">        attr_for_id: str</span>
 <span class="sd">            attribute name representing the person/object id.</span>
 <span class="sd">            if this is not specified, label would be used.</span>
-<span class="sd">        seed : int, optional</span>
+<span class="sd">        seed : int</span>
+<span class="sd">            optional</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">restrict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -790,7 +797,8 @@
 <span class="sd">    |s|s- Mask or Polygon annotations are considered in segmentation task.|n</span>
 <span class="sd">    |n</span>
 <span class="sd">    Example: split dataset so that each object class annotations were split|n</span>
-<span class="sd">    |s|sin the specified ratio between subsets|n</span>
+<span class="sd">    in the specified ratio between subsets|n</span>
+
 <span class="sd">    .. code-block::</span>
 
 <span class="sd">    |s|s%(prog)s -t detection --subset train:.5 --subset val:.2 --subset test:.3 |n</span>
@@ -805,7 +813,8 @@
 <span class="sd">        splits : list</span>
 <span class="sd">            A list of (subset(str), ratio(float))</span>
 <span class="sd">            The sum of ratios is expected to be 1.</span>
-<span class="sd">        seed : int, optional</span>
+<span class="sd">        seed : int</span>
+<span class="sd">            optional</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
 
@@ -984,26 +993,7 @@
       </div>
     </section>
   </div>
-  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-        <span class="fa fa-book"> Other Versions</span>
-        v: update-api-docs-fix-docstrings
-        <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
-        <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../v0.2.2/index.html">v0.2.2</a></dd>
-            <dd><a href="../../../v0.2.3/index.html">v0.2.3</a></dd>
-        </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/index.html">revert-19-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/index.html">revert-20-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../update-api-docs-fix-docstrings/_modules/datumaro/plugins/splitter.html">update-api-docs-fix-docstrings</a></dd>
-        </dl>
-    </div>
-</div><script>
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

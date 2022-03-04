@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>convert module &mdash; Datumaro API documentation 0.2.3 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="create module" href="datumaro.cli.commands.create.html" />
+    <link rel="prev" title="commit module" href="datumaro.cli.commands.commit.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #30638E" >
+  <a href="../../../index.html" class="icon"> Datumaro API documentation
+</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../datumaro.html">Datumaro</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cli.html">CLI</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="commands.html">commands package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.add.html">add module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.checkout.html">checkout module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.commit.html">commit module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">convert module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.create.html">create module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.detect_format.html">detect_format module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.diff.html">diff module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.download.html">download module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.explain.html">explain module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.export.html">export module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.filter.html">filter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.import_.html">import_ module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.info.html">info module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.log.html">log module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.merge.html">merge module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.patch.html">patch module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.remove.html">remove module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.stats.html">stats module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.status.html">status module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.transform.html">transform module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datumaro.cli.commands.validate.html">validate module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#module-datumaro.cli.commands">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../util/util.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supported_plugins.html">Supported plugins</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plugins/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../util/util/util.html">Utilities</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://openvinotoolkit.github.io/datumaro/docs/">Back to main documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #30638E" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Datumaro API documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../cli.html">CLI</a> &raquo;</li>
+          <li><a href="commands.html">commands package</a> &raquo;</li>
+      <li>convert module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/api/cli/commands/datumaro.cli.commands.convert.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-datumaro.cli.commands.convert">
+<span id="convert-module"></span><h1>convert module<a class="headerlink" href="#module-datumaro.cli.commands.convert" title="Permalink to this headline"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.cli.commands.convert.build_parser">
+<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.convert.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">parser_ctor=&lt;class</span> <span class="pre">'argparse.ArgumentParser'&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/cli/commands/convert.html#build_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.cli.commands.convert.build_parser" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.cli.commands.convert.get_sensitive_args">
+<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.convert.</span></span><span class="sig-name descname"><span class="pre">get_sensitive_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/cli/commands/convert.html#get_sensitive_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.cli.commands.convert.get_sensitive_args" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datumaro.cli.commands.convert.convert_command">
+<span class="sig-prename descclassname"><span class="pre">datumaro.cli.commands.convert.</span></span><span class="sig-name descname"><span class="pre">convert_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datumaro/cli/commands/convert.html#convert_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datumaro.cli.commands.convert.convert_command" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="datumaro.cli.commands.commit.html" class="btn btn-neutral float-left" title="commit module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="datumaro.cli.commands.create.html" class="btn btn-neutral float-right" title="create module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+      &#169; Copyright 2021, Intel.<div>
+      <small><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy Policy</a></small>
+      |
+      <small><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html">Terms of Use</a></small>
+    </div>
+    <br/>
+    <small>
+      Intel technologies may require enabled hardware, software or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration and other factors. // See our complete legal <u><a href="https://edc.intel.com/content/www/us/en/products/performance/benchmarks/overview/?r=219444055">Notices and Disclaimers</a></u>. // Intel is committed to respecting human rights and avoiding complicity in human rights abuses. See Intel’s <a href="https://www.intel.com/content/www/us/en/policy/policy-human-rights.html"><u>Global Human Rights Principles</u></a>. Intel’s products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.
+    </small>
+  </p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

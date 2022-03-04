@@ -7,7 +7,6 @@
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
@@ -79,11 +78,14 @@
 <span class="c1">#</span>
 <span class="c1"># SPDX-License-Identifier: MIT</span>
 
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 <span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">auto</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">import</span> <span class="nn">logging</span> <span class="k">as</span> <span class="nn">log</span>
 <span class="kn">import</span> <span class="nn">os.path</span> <span class="k">as</span> <span class="nn">osp</span>
 <span class="kn">import</span> <span class="nn">random</span>
@@ -100,10 +102,10 @@
 <span class="kn">from</span> <span class="nn">datumaro.components.cli_plugin</span> <span class="kn">import</span> <span class="n">CliPlugin</span>
 <span class="kn">from</span> <span class="nn">datumaro.components.errors</span> <span class="kn">import</span> <span class="n">DatumaroError</span>
 <span class="kn">from</span> <span class="nn">datumaro.components.extractor</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">DEFAULT_SUBSET_NAME</span><span class="p">,</span> <span class="n">IExtractor</span><span class="p">,</span> <span class="n">ItemTransform</span><span class="p">,</span> <span class="n">Transform</span><span class="p">,</span>
+    <span class="n">DEFAULT_SUBSET_NAME</span><span class="p">,</span> <span class="n">DatasetItem</span><span class="p">,</span> <span class="n">IExtractor</span><span class="p">,</span> <span class="n">ItemTransform</span><span class="p">,</span> <span class="n">Transform</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">datumaro.components.media</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">from</span> <span class="nn">datumaro.util</span> <span class="kn">import</span> <span class="n">NOTSET</span><span class="p">,</span> <span class="n">parse_str_enum_value</span><span class="p">,</span> <span class="n">take_by</span>
+<span class="kn">from</span> <span class="nn">datumaro.util</span> <span class="kn">import</span> <span class="n">NOTSET</span><span class="p">,</span> <span class="n">filter_dict</span><span class="p">,</span> <span class="n">parse_str_enum_value</span><span class="p">,</span> <span class="n">take_by</span>
 <span class="kn">from</span> <span class="nn">datumaro.util.annotation_util</span> <span class="kn">import</span> <span class="n">find_group_leader</span><span class="p">,</span> <span class="n">find_instances</span>
 <span class="kn">import</span> <span class="nn">datumaro.util.mask_tools</span> <span class="k">as</span> <span class="nn">mask_tools</span>
 
@@ -383,7 +385,6 @@
     <span class="k">def</span> <span class="nf">_mapping_arg</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
         <span class="n">parts</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="nn">argparse</span>
             <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">parts</span>
 
@@ -434,7 +435,6 @@
     <span class="k">def</span> <span class="nf">_split_arg</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
         <span class="n">parts</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="nn">argparse</span>
             <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">()</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 
@@ -518,14 +518,19 @@
 <span class="sd">    |n</span>
 <span class="sd">    Examples:|n</span>
 <span class="sd">    |s|s- Replace &#39;pattern&#39; with &#39;replacement&#39;:|n</span>
+
 <span class="sd">    |s|s.. code-block::</span>
 
 <span class="sd">    |s|s|s|srename -e &#39;|pattern|replacement|&#39;|n</span>
+<span class="sd">    |n</span>
 <span class="sd">    |s|s- Remove &#39;frame_&#39; from item ids:|n</span>
+
 <span class="sd">    |s|s.. code-block::</span>
 
 <span class="sd">    |s|s|s|srename -e &#39;|^frame_||&#39;|n</span>
+<span class="sd">    |n</span>
 <span class="sd">    |s|s- Rename by regex:|n</span>
+
 <span class="sd">    |s|s.. code-block::</span>
 
 <span class="sd">    |s|s|s|srename -e &#39;|frame_(\d+)_extra|{item.subset}_id_\1|&#39;</span>
@@ -563,19 +568,26 @@
 <span class="sd">    |s|s|s|sis &#39;delete&#39; and the label is not mentioned in the list. |n</span>
 <span class="sd">    |s|s|s|sWhen a label is deleted, all the associated annotations are removed|n</span>
 <span class="sd">    |s|s- kept unchanged - when specified &#39;--label &lt;name&gt;:&lt;name&gt;&#39;|n</span>
-<span class="sd">    |s|s|s|sor default action is &#39;keep&#39; and the label is not mentioned in the list|n</span>
+<span class="sd">    |s|s|s|sor default action is &#39;keep&#39; and the label is not mentioned in the list.|n</span>
+<span class="sd">    |n</span>
 <span class="sd">    Annotations with no label are managed by the default action policy.|n</span>
 <span class="sd">    |n</span>
 <span class="sd">    Examples:|n</span>
+<span class="sd">    |n</span>
 <span class="sd">    |s|s- Remove the &#39;person&#39; label (and corresponding annotations):|n</span>
+
 <span class="sd">    |s|s.. code-block::</span>
 
 <span class="sd">    |s|s|s|s%(prog)s -l person: --default keep|n</span>
+<span class="sd">    |n</span>
 <span class="sd">    |s|s- Rename &#39;person&#39; to &#39;pedestrian&#39; and &#39;human&#39; to &#39;pedestrian&#39;, join:|n</span>
+
 <span class="sd">    |s|s.. code-block::</span>
 
 <span class="sd">    |s|s|s|s%(prog)s -l person:pedestrian -l human:pedestrian --default keep|n</span>
+<span class="sd">    |n</span>
 <span class="sd">    |s|s- Rename &#39;person&#39; to &#39;car&#39; and &#39;cat&#39; to &#39;dog&#39;, keep &#39;bus&#39;, remove others:|n</span>
+
 <span class="sd">    |s|s.. code-block::</span>
 
 <span class="sd">    |s|s|s|s%(prog)s -l person:car -l bus:bus -l cat:dog --default delete</span>
@@ -589,7 +601,6 @@
     <span class="k">def</span> <span class="nf">_split_arg</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
         <span class="n">parts</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="nn">argparse</span>
             <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">()</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
@@ -717,6 +728,7 @@
 <span class="sd">    |n</span>
 <span class="sd">    Examples:|n</span>
 <span class="sd">    |s|s- Align the source dataset labels to [person, cat, dog]:|n</span>
+
 <span class="sd">    |s|s.. code-block::</span>
 
 <span class="sd">    |s|s|s|s%(prog)s -l person -l cat -l dog</span>
@@ -866,6 +878,7 @@
 <span class="sd">    |n</span>
 <span class="sd">    Examples:|n</span>
 <span class="sd">        - Resize all images to 256x256 size|n</span>
+
 <span class="sd">        .. code-block::</span>
 
 <span class="sd">        |s|s%(prog)s -dw 256 -dh 256</span>
@@ -959,6 +972,156 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span>
             <span class="n">image</span><span class="o">=</span><span class="n">resized_image</span><span class="p">,</span>
             <span class="n">annotations</span><span class="o">=</span><span class="n">resized_annotations</span><span class="p">)</span></div></div>
+
+<div class="viewcode-block" id="RemoveItems"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RemoveItems">[docs]</a><span class="k">class</span> <span class="nc">RemoveItems</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Allows to remove specific dataset items from dataset by their ids.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Can be useful to clean the dataset from broken or unnecessary samples.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Examples:|n</span>
+<span class="sd">        - Remove specific items from the dataset|n</span>
+
+<span class="sd">        .. code-block::</span>
+
+<span class="sd">        |s|s%(prog)s --id &#39;image1:train&#39; --id &#39;image2:test&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_parse_id</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="n">full_id</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_id</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Invalid id format of &#39;</span><span class="si">%s</span><span class="s2">&#39;. &quot;</span>
+                    <span class="s2">&quot;Expected a &#39;name:subset&#39; pair.&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">full_id</span>
+
+<div class="viewcode-block" id="RemoveItems.build_cmdline_parser"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RemoveItems.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--id&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;ids&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">_parse_id</span><span class="p">,</span>
+            <span class="n">action</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Item id to remove. Id is &#39;name:subset&#39; pair (repeatable)&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">parser</span></div>
+
+<div class="viewcode-block" id="RemoveItems.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RemoveItems.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">:</span> <span class="n">IExtractor</span><span class="p">,</span> <span class="n">ids</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">extractor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">(</span><span class="n">ids</span> <span class="ow">or</span> <span class="p">[]))</span></div>
+
+<div class="viewcode-block" id="RemoveItems.transform_item"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RemoveItems.transform_item">[docs]</a>    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">subset</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ids</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">item</span></div></div>
+
+<div class="viewcode-block" id="RemoveAnnotations"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RemoveAnnotations">[docs]</a><span class="k">class</span> <span class="nc">RemoveAnnotations</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Allows to remove annotations on specific dataset items.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Can be useful to clean the dataset from broken or unnecessary annotations.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Examples:|n</span>
+<span class="sd">        - Remove annotations from specific items in the dataset|n</span>
+
+<span class="sd">        .. code-block::</span>
+
+<span class="sd">        |s|s%(prog)s --id &#39;image1:train&#39; --id &#39;image2:test&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_parse_id</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="n">full_id</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_id</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Invalid id format of &#39;</span><span class="si">%s</span><span class="s2">&#39;. &quot;</span>
+                    <span class="s2">&quot;Expected a &#39;name:subset&#39; pair.&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">full_id</span>
+
+<div class="viewcode-block" id="RemoveAnnotations.build_cmdline_parser"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RemoveAnnotations.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--id&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;ids&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">_parse_id</span><span class="p">,</span>
+            <span class="n">action</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Image id to clean from annotations. &quot;</span>
+            <span class="s2">&quot;Id is &#39;name:subset&#39; pair. If not specified, removes &quot;</span>
+                <span class="s2">&quot;all annotations (repeatable)&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">parser</span></div>
+
+<div class="viewcode-block" id="RemoveAnnotations.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RemoveAnnotations.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">:</span> <span class="n">IExtractor</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+            <span class="n">ids</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">extractor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">(</span><span class="n">ids</span> <span class="ow">or</span> <span class="p">[]))</span></div>
+
+<div class="viewcode-block" id="RemoveAnnotations.transform_item"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RemoveAnnotations.transform_item">[docs]</a>    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">DatasetItem</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ids</span> <span class="ow">or</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">subset</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ids</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">annotations</span><span class="o">=</span><span class="p">[])</span>
+        <span class="k">return</span> <span class="n">item</span></div></div>
+
+<div class="viewcode-block" id="RemoveAttributes"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RemoveAttributes">[docs]</a><span class="k">class</span> <span class="nc">RemoveAttributes</span><span class="p">(</span><span class="n">ItemTransform</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Allows to remove item and annotation attributes in a dataset.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Can be useful to clean the dataset from broken or unnecessary attributes.|n</span>
+<span class="sd">    |n</span>
+<span class="sd">    Examples:|n</span>
+<span class="sd">        - Remove the `is_crowd` attribute from dataset|n</span>
+
+<span class="sd">        .. code-block::</span>
+
+<span class="sd">        |s|s%(prog)s --attr &#39;is_crowd&#39;|n</span>
+<span class="sd">        |n</span>
+<span class="sd">        - Remove the `occluded` attribute from annotations of|n</span>
+<span class="sd">        |s|sthe `2010_001705` item in the `train` subset|n</span>
+
+<span class="sd">        .. code-block::</span>
+
+<span class="sd">        |s|s%(prog)s --id &#39;2010_001705:train&#39; --attr &#39;occluded&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_parse_id</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="n">full_id</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_id</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Invalid id format of &#39;</span><span class="si">%s</span><span class="s2">&#39;. &quot;</span>
+                    <span class="s2">&quot;Expected a &#39;name:subset&#39; pair.&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">full_id</span>
+
+<div class="viewcode-block" id="RemoveAttributes.build_cmdline_parser"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RemoveAttributes.build_cmdline_parser">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">build_cmdline_parser</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_cmdline_parser</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--id&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;ids&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">_parse_id</span><span class="p">,</span>
+            <span class="n">action</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Image id to clean from annotations. &quot;</span>
+                <span class="s2">&quot;Id is &#39;name:subset&#39; pair. If not specified, &quot;</span>
+                <span class="s2">&quot;affects all images and annotations (repeatable)&quot;</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;--attr&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;attributes&#39;</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Attribute name to be removed. If not specified, &quot;</span>
+                <span class="s2">&quot;removes all attributes (repeatable)&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">parser</span></div>
+
+<div class="viewcode-block" id="RemoveAttributes.__init__"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RemoveAttributes.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extractor</span><span class="p">:</span> <span class="n">IExtractor</span><span class="p">,</span>
+            <span class="n">ids</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">attributes</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">extractor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">(</span><span class="n">ids</span> <span class="ow">or</span> <span class="p">[]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_attributes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">attributes</span> <span class="ow">or</span> <span class="p">[])</span></div>
+
+    <span class="k">def</span> <span class="nf">_filter_attrs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_attributes</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">filter_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">exclude_keys</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_attributes</span><span class="p">)</span>
+
+<div class="viewcode-block" id="RemoveAttributes.transform_item"><a class="viewcode-back" href="../../../api/plugins/plugins/datumaro.plugins.transforms.html#datumaro.plugins.transforms.RemoveAttributes.transform_item">[docs]</a>    <span class="k">def</span> <span class="nf">transform_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">DatasetItem</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ids</span> <span class="ow">or</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">subset</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ids</span><span class="p">:</span>
+            <span class="n">filtered_annotations</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">annotations</span><span class="p">:</span>
+                <span class="n">filtered_annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ann</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span>
+                    <span class="n">attributes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_attrs</span><span class="p">(</span><span class="n">ann</span><span class="o">.</span><span class="n">attributes</span><span class="p">)))</span>
+
+            <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">attributes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_attrs</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">attributes</span><span class="p">),</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="n">filtered_annotations</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">item</span></div></div>
 </pre></div>
 
            </div>
@@ -991,26 +1154,7 @@
       </div>
     </section>
   </div>
-  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-        <span class="fa fa-book"> Other Versions</span>
-        v: update-api-docs-fix-docstrings
-        <span class="fa fa-caret-down"></span>
-    </span>
-    <div class="rst-other-versions">
-        <dl>
-            <dt>Tags</dt>
-            <dd><a href="../../../v0.2.2/index.html">v0.2.2</a></dd>
-            <dd><a href="../../../v0.2.3/index.html">v0.2.3</a></dd>
-        </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../../../revert-19-update-api-docs-fix-docstrings/index.html">revert-19-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../revert-20-update-api-docs-fix-docstrings/index.html">revert-20-update-api-docs-fix-docstrings</a></dd>
-            <dd><a href="../../../update-api-docs-fix-docstrings/_modules/datumaro/plugins/transforms.html">update-api-docs-fix-docstrings</a></dd>
-        </dl>
-    </div>
-</div><script>
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

@@ -126,7 +126,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.c94ad8784f167c2ba7d577b4454e01e0.json"
+  data-offline-search-index-json-src="../../offline-search-index.49b4a501512a0a967c88e7200a8befef.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -2520,6 +2520,10 @@ optionally as a machine-readable JSON report (see <code>--json-report</code>).</
 </code></pre></div><p>The <code>&lt;reason-code&gt;</code> can be one of:</p>
 <ul>
 <li>
+<p><code>&quot;detection_unsupported&quot;</code>: the corresponding format does not support
+detection.</p>
+</li>
+<li>
 <p><code>&quot;insufficient_confidence&quot;</code>: the dataset matched the corresponding format,
 but it matched at least one other format better.</p>
 </li>
@@ -4183,6 +4187,9 @@ from the dataset randomly</li>
 <li><a href="#label_random_sampler-transform"><code>label_random_sampler</code></a> - Leaves at least
 k images with annotations per class</li>
 <li><a href="#resize-transform"><code>resize</code></a> - Resizes images and annotations in the dataset</li>
+<li><a href="#remove_images-transform"><code>remove_images</code></a> - Removes specific images</li>
+<li><a href="#remove_annotations-transform"><code>remove_annotations</code></a> - Removes annotations</li>
+<li><a href="#remove_attributes-transform"><code>remove_attributes</code></a> - Removes attributes</li>
 </ul>
 <p>Subset manipulations:</p>
 <ul>
@@ -4427,7 +4434,54 @@ Supports upscaling, downscaling and mixed variants.</p>
 <p>Examples:
 Resize all images to 256x256 size</p>
 <pre><code>datum transform -t resize -- -dw 256 -dh 256
-</code></pre><h5 id="random_split-a-idrandom_split-transforma"><code>random_split</code> <a id="random_split-transform"></a></h5>
+</code></pre><h5 id="remove_images-a-idremove_images-transforma"><code>remove_images</code> <a id="remove_images-transform"></a></h5>
+<p>Removes specific dataset items by their ids.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">remove_images <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--id IDs<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+<li><code>--id</code> (str) - Item id to remove. Id is &lsquo;<name>:<subset>&rsquo; pair (repeatable)</li>
+</ul>
+<p>Examples:</p>
+<p>Remove specific images from the dataset</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t remove_images -- --id <span style="color:#4e9a06">&#39;image1:train&#39;</span> --id <span style="color:#4e9a06">&#39;image2:test&#39;</span>
+</code></pre></div><h5 id="remove_annotations-a-idremove_annotations-transforma"><code>remove_annotations</code> <a id="remove_annotations-transform"></a></h5>
+<p>Allows to remove annotations on specific dataset items.</p>
+<p>Can be useful to clean the dataset from broken or unnecessary annotations.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">remove_annotations <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--id IDs<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+<li><code>--id</code> (str) - Item id to clean from annotations. Id is &lsquo;<name>:<subset>&rsquo; pair.
+If not specified, removes all annotations (repeatable)</li>
+</ul>
+<p>Examples:
+Remove annotations from specific items in the dataset</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t remove_annotations -- --id <span style="color:#4e9a06">&#39;image1:train&#39;</span> --id <span style="color:#4e9a06">&#39;image2:test&#39;</span>
+</code></pre></div><h5 id="remove_attributes-a-idremove_attributes-transforma"><code>remove_attributes</code> <a id="remove_attributes-transform"></a></h5>
+<p>Allows to remove item and annotation attributes in a dataset.</p>
+<p>Can be useful to clean the dataset from broken or unnecessary attributes.</p>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">remove_attributes <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--id IDs<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--attr ATTRIBUTE_NAME<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><p>Optional arguments:</p>
+<ul>
+<li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
+<li><code>--id</code> (str) - Image id to clean from annotations. Id is &lsquo;<name>:<subset>&rsquo; pair.
+If not specified, affects all items and annotations (repeatable)</li>
+<li><code>-a</code>, <code>--attr</code> (flag) - Attribute name to be removed. If not specified,
+removes all attributes (repeatable)</li>
+</ul>
+<p>Examples:
+Remove the <code>is_crowd</code> attribute from dataset</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t remove_attributes -- <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  --attr <span style="color:#4e9a06">&#39;is_crowd&#39;</span>
+</code></pre></div><p>Remove the <code>occluded</code> attribute from annotations of
+the <code>2010_001705</code> item in the <code>train</code> subset</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t remove_attributes -- <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  --id <span style="color:#4e9a06">&#39;2010_001705:train&#39;</span> --attr <span style="color:#4e9a06">&#39;occluded&#39;</span>
+</code></pre></div><h5 id="random_split-a-idrandom_split-transforma"><code>random_split</code> <a id="random_split-transform"></a></h5>
 <p>Joins all subsets into one and splits the result into few parts.
 It is expected that item ids are unique and subset ratios sum up to 1.</p>
 <p>Usage:</p>
