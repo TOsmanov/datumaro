@@ -1,3 +1,7 @@
+# Copyright (C) 2021-2022 Intel Corporation
+#
+# SPDX-License-Identifier: MIT
+
 # Configuration file for the Sphinx documentation builder.
 #
 # This file only contains a selection of the most common options. For a full
@@ -37,8 +41,10 @@ extensions = [
     'sphinx.ext.autodoc',  # Core library for html generation from docstrings
     'sphinx.ext.viewcode', # Find the source files
     'sphinx_copybutton', # Copy buttons for code blocks
+    'sphinx.ext.autosectionlabel', # Refer sections its title
     'sphinx.ext.intersphinx', # Generate links to the documentation
                               # of objects in external projects
+    'sphinxcontrib.mermaid', # allows Mermaid graphs
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -83,6 +89,7 @@ intersphinx_mapping = {
 
 nitpick_ignore_regex = [
     ('py:class', r"^(.*[\s\"(\._)]+.*)+$"), # Hiding warnings contain ' ', '"' or '._'
+    ('py:class', ''),
 ]
 
 # Members to be included.
@@ -100,11 +107,18 @@ def skip_member(app, what, name, obj, skip, options):
         return name.startswith('_')
 
 def replace(app, what, name, obj, options, lines):
+    exclude_plugins_name = ['transform', 'extractor', 'converter', 'launcher',
+    'importer', 'validator']
     names = re.sub(r'([A-Z])', r' \1', name.replace('_', '').split('.')[-1]).split()
     for n, a in enumerate(names):
-        if a.lower() in name.split('.')[-2]:
-            names.pop(n)
-    prog_name = '_'.join(names).lower()
+        if len(a) != 1:
+            for b in exclude_plugins_name:
+                if a.lower() == b:
+                    names.pop(n)
+    if all(1 == len(a) for a in names):
+        prog_name = ''.join(names).lower()
+    else:
+        prog_name = '_'.join(names).lower()
     for i, line in enumerate(lines):
         if line:
             prog = str('%(prog)s')

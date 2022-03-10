@@ -4,7 +4,7 @@
 
 from __future__ import annotations
 
-from typing import Callable, Iterable, Iterator, Optional, Tuple, Union
+from typing import Callable, Iterable, Iterator, List, Optional, Tuple, Union
 import os
 import os.path as osp
 import shutil
@@ -20,6 +20,7 @@ from datumaro.util.image import (
 
 class MediaElement:
     def __init__(self, path: str) -> None:
+        assert path, "Path can't be empty"
         self._path = path
 
     @property
@@ -64,9 +65,9 @@ class Image(MediaElement):
             size: A pair (H, W), which represents image size.
         """
 
-        assert size is None or len(size) == 2, size
         if size is not None:
-            assert len(size) == 2 and 0 < size[0] and 0 < size[1], size
+            assert len(size) == 2 and 0 < size[0] and 0 < size[1], \
+                f"Invalid image size info '{size}'"
             size = tuple(map(int, size))
         self._size = size # (H, W)
 
@@ -88,7 +89,8 @@ class Image(MediaElement):
 
         if not isinstance(data, np.ndarray):
             assert path or callable(data) or size, "Image can not be empty"
-            assert data is None or callable(data)
+            assert data is None or callable(data), \
+                f"Image data has unexpected type '{type(data)}'"
             if data or path and osp.isfile(path):
                 data = lazy_image(path, loader=data)
         self._data = data
@@ -481,3 +483,9 @@ class Video(MediaElement, Iterable[VideoFrame]):
     def __hash__(self):
         # Required for caching
         return hash((self._path, self._step, self._start_frame, self._end_frame))
+
+class PointCloud(MediaElement):
+    def __init__(self, path: str, extra_images: Optional[List[Image]] = None):
+        self._path = path
+
+        self.extra_images: List[Image] = extra_images or []

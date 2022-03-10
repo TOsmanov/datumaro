@@ -1,12 +1,13 @@
-from unittest import TestCase
+from unittest import TestCase, mock
 import os
 import os.path as osp
+import pickle  # nosec - disable B403:import_pickle check
 
 import numpy as np
 
 from datumaro.components.annotation import (
-    AnnotationType, Bbox, Caption, Label, LabelCategories, Mask, Points,
-    Polygon, PolyLine,
+    AnnotationType, Bbox, Caption, Label, LabelCategories, Mask, MaskCategories,
+    Points, Polygon, PolyLine,
 )
 from datumaro.components.converter import Converter
 from datumaro.components.dataset import (
@@ -17,17 +18,22 @@ from datumaro.components.dataset_filter import (
 )
 from datumaro.components.environment import Environment
 from datumaro.components.errors import (
-    ConflictingCategoriesError, DatasetNotFoundError,
+    ConflictingCategoriesError, DatasetNotFoundError, MediaTypeError,
     MismatchingAttributesError, MismatchingImageInfoError,
-    MismatchingImagePathError, MultipleFormatsMatchError,
+    MismatchingMediaPathError, MultipleFormatsMatchError,
     NoMatchingFormatsError, RepeatedItemError, UnknownFormatError,
 )
 from datumaro.components.extractor import (
-    DEFAULT_SUBSET_NAME, DatasetItem, Extractor, ItemTransform, Transform,
+    DEFAULT_SUBSET_NAME, DatasetItem, Extractor, FailingImportErrorPolicy,
+    ImportErrorPolicy, ItemTransform, ProgressReporter, SourceExtractor,
+    Transform,
 )
 from datumaro.components.launcher import Launcher
-from datumaro.components.media import Image
-from datumaro.util.test_utils import TestDir, compare_datasets
+from datumaro.components.media import Image, MediaElement, Video
+from datumaro.components.progress_reporting import NullProgressReporter
+from datumaro.util.test_utils import (
+    TestDir, compare_datasets, compare_datasets_strict,
+)
 import datumaro.components.hl_ops as hl_ops
 
 from .requirements import Requirements, mark_requirement
@@ -181,13 +187,13 @@ class DatasetTest(TestCase):
     @mark_requirement(Requirements.DATUM_GENERAL_REQ)
     def test_can_detect_with_nested_folder_and_multiply_matches(self):
         dataset = Dataset.from_iterable([
-            DatasetItem(id=1, image=np.ones((3, 3, 3)),
+            DatasetItem(id=1, media=Image(data=np.ones((3, 3, 3))),
                 annotations=[ Label(2) ]),
         ], categories=['a', 'b', 'c'])
 
         with TestDir() as test_dir:
             dataset_path = osp.join(test_dir, 'a', 'b')
-            dataset.export(dataset_path, 'coco', save_images=True)
+            dataset.export(dataset_path, 'coco', save_media=True)
 
             detected_format = Dataset.detect(test_dir, depth=2)
 
@@ -302,11 +308,11 @@ class DatasetTest(TestCase):
     @mark_requirement(Requirements.DATUM_GENERAL_REQ)
     def test_can_remember_export_options(self):
         dataset = Dataset.from_iterable([
-            DatasetItem(id=1, image=np.ones((1, 2, 3))),
+            DatasetItem(id=1, media=Image(data=np.ones((1, 2, 3)))),
         ], categories=['a'])
 
         with TestDir() as test_dir:
-            dataset.save(test_dir, save_images=True)
+            dataset.save(test_dir, save_media=True)
             dataset.put(dataset.get(1)) # mark the item modified for patching
 
             image_path = osp.join(test_dir, 'images', 'default', '1.jpg')
@@ -314,12 +320,12 @@ class DatasetTest(TestCase):
 
             dataset.save(test_dir)
 
-            self.assertEqual({'save_images': True}, dataset.options)
+            self.assertEqual({'save_media': True}, dataset.options)
             self.assertTrue(osp.isfile(image_path))
 
     @mark_requirement(Requirements.DATUM_GENERAL_REQ)
     def test_can_compute_length_when_created_from_scratch(self):
-        dataset = Dataset()
+        dataset = Dataset(media_type=MediaElement)
 
         dataset.put(DatasetItem(1))
         dataset.put(DatasetItem(2))
@@ -426,10 +432,10 @@ class DatasetTest(TestCase):
     @mark_requirement(Requirements.DATUM_GENERAL_REQ)
     def test_cant_join_different_image_info(self):
         s1 = Dataset.from_iterable([
-            DatasetItem(1, image=Image(path='1.png', size=(2, 4)))
+            DatasetItem(1, media=Image(path='1.png', size=(2, 4)))
         ])
         s2 = Dataset.from_iterable([
-            DatasetItem(1, image=Image(path='1.png', size=(4, 2)))
+            DatasetItem(1, media=Image(path='1.png', size=(4, 2)))
         ])
 
         with self.assertRaises(MismatchingImageInfoError):
@@ -438,13 +444,13 @@ class DatasetTest(TestCase):
     @mark_requirement(Requirements.DATUM_GENERAL_REQ)
     def test_cant_join_different_images(self):
         s1 = Dataset.from_iterable([
-            DatasetItem(1, image=Image(path='1.png'))
+            DatasetItem(1, media=Image(path='1.png'))
         ])
         s2 = Dataset.from_iterable([
-            DatasetItem(1, image=Image(path='2.png'))
+            DatasetItem(1, media=Image(path='2.png'))
         ])
 
-        with self.assertRaises(MismatchingImagePathError):
+        with self.assertRaises(MismatchingMediaPathError):
             Dataset.from_extractors(s1, s2)
 
     @mark_requirement(Requirements.DATUM_GENERAL_REQ)
@@ -457,6 +463,14 @@ class DatasetTest(TestCase):
         ])
 
         with self.assertRaises(MismatchingAttributesError):
+            Dataset.from_extractors(s1, s2)
+
+    @mark_requirement(Requirements.DATUM_GENERIC_MEDIA)
+    def test_cant_join_different_media_types(self):
+        s1 = Dataset.from_iterable([], media_type=Video)
+        s2 = Dataset.from_iterable([], media_type=Image)
+
+        with self.assertRaises(MediaTypeError):
             Dataset.from_extractors(s1, s2)
 
     @mark_requirement(Requirements.DATUM_GENERAL_REQ)
@@ -898,7 +912,7 @@ class DatasetTest(TestCase):
 
     @mark_requirement(Requirements.DATUM_GENERAL_REQ)
     def test_can_put(self):
-        dataset = Dataset()
+        dataset = Dataset(media_type=MediaElement)
 
         dataset.put(DatasetItem(1))
 
@@ -1250,7 +1264,7 @@ class DatasetTest(TestCase):
             called = True
 
         dataset = Dataset.from_iterable([
-            DatasetItem(1, image=test_loader)
+            DatasetItem(1, media=Image(data=test_loader))
         ])
 
         with TestDir() as test_dir:
@@ -1270,14 +1284,14 @@ class DatasetTest(TestCase):
     @mark_requirement(Requirements.DATUM_GENERAL_REQ)
     def test_can_run_model(self):
         dataset = Dataset.from_iterable([
-            DatasetItem(i, image=np.array([i]))
+            DatasetItem(i, media=Image(data=np.array([i])))
             for i in range(5)
         ], categories=['label'])
 
         batch_size = 3
 
         expected = Dataset.from_iterable([
-            DatasetItem(i, image=np.array([i]), annotations=[
+            DatasetItem(i, media=Image(data=np.array([i])), annotations=[
                 Label(0, attributes={ 'idx': i % batch_size, 'data': i })
             ])
             for i in range(5)
@@ -1297,7 +1311,7 @@ class DatasetTest(TestCase):
 
         actual = dataset.run_model(model, batch_size=batch_size)
 
-        compare_datasets(self, expected, actual, require_images=True)
+        compare_datasets(self, expected, actual, require_media=True)
         self.assertEqual(2, calls)
 
     @mark_requirement(Requirements.DATUM_BUG_259)
@@ -1382,8 +1396,8 @@ class DatasetTest(TestCase):
                             self._save_dir, name + '.txt'), 'w') as f:
                         f.write('\n')
 
-                    if self._save_images and \
-                            item.has_image and item.image.has_data:
+                    if self._save_media and \
+                            item.media and item.media.has_data:
                         self._save_image(item, name=name)
 
         env = Environment()
@@ -1391,16 +1405,19 @@ class DatasetTest(TestCase):
 
         with TestDir() as path:
             dataset = Dataset.from_iterable([
-                DatasetItem(1, subset='train', image=np.ones((2, 4, 3))),
+                DatasetItem(1, subset='train',
+                    media=Image(data=np.ones((2, 4, 3)))),
                 DatasetItem(2, subset='train',
-                    image=Image(path='2.jpg', size=(3, 2))),
-                DatasetItem(3, subset='valid', image=np.ones((2, 2, 3))),
+                    media=Image(path='2.jpg', size=(3, 2))),
+                DatasetItem(3, subset='valid',
+                    media=Image(data=np.ones((2, 2, 3)))),
             ], categories=[], env=env)
-            dataset.export(path, 'test', save_images=True)
+            dataset.export(path, 'test', save_media=True)
 
-            dataset.put(DatasetItem(2, subset='train', image=np.ones((3, 2, 3))))
+            dataset.put(DatasetItem(2, subset='train',
+                media=Image(data=np.ones((3, 2, 3)))))
             dataset.remove(3, 'valid')
-            dataset.save(save_images=True)
+            dataset.save(save_media=True)
 
             self.assertEqual({
                     'train_1.txt', 'train_1.jpg',
@@ -1494,6 +1511,265 @@ class DatasetTest(TestCase):
 
         compare_datasets(self, expected, dataset, ignored_attrs='*')
 
+    @mark_requirement(Requirements.DATUM_PROGRESS_REPORTING)
+    def test_progress_reporter_implies_eager_mode(self):
+        class TestExtractor(SourceExtractor):
+            def __init__(self, url, **kwargs):
+                super().__init__(**kwargs)
+
+            def __iter__(self):
+                yield DatasetItem('1')
+
+        env = Environment()
+        env.importers.items.clear()
+        env.extractors.items['test'] = TestExtractor
+
+        dataset = Dataset.import_from('', 'test', env=env,
+            progress_reporter=NullProgressReporter())
+
+        self.assertTrue(dataset.is_cache_initialized)
+
+    @mark_requirement(Requirements.DATUM_ERROR_REPORTING)
+    def test_error_reporter_implies_eager_mode(self):
+        class TestExtractor(SourceExtractor):
+            def __init__(self, url, **kwargs):
+                super().__init__(**kwargs)
+
+            def __iter__(self):
+                yield DatasetItem('1')
+
+        env = Environment()
+        env.importers.items.clear()
+        env.extractors.items['test'] = TestExtractor
+
+        dataset = Dataset.import_from('', 'test', env=env,
+            error_policy=FailingImportErrorPolicy())
+
+        self.assertTrue(dataset.is_cache_initialized)
+
+    @mark_requirement(Requirements.DATUM_PROGRESS_REPORTING)
+    def test_can_report_progress_from_extractor(self):
+        class TestExtractor(SourceExtractor):
+            def __init__(self, url, **kwargs):
+                super().__init__(**kwargs)
+
+            def __iter__(self):
+                list(self._ctx.progress_reporter.iter(
+                    [None] * 5, desc='loading images'))
+                yield from []
+
+        class TestProgressReporter(ProgressReporter):
+            def split(self, count):
+                return (self, ) * count
+
+        progress_reporter = TestProgressReporter()
+        period_mock = mock.PropertyMock(return_value=0.1)
+        type(progress_reporter).period = period_mock
+        progress_reporter.start = mock.MagicMock()
+        progress_reporter.report_status = mock.MagicMock()
+        progress_reporter.finish = mock.MagicMock()
+
+        env = Environment()
+        env.importers.items.clear()
+        env.extractors.items['test'] = TestExtractor
+
+        Dataset.import_from('', 'test', env=env,
+            progress_reporter=progress_reporter)
+
+        period_mock.assert_called_once()
+        progress_reporter.start.assert_called_once()
+        progress_reporter.report_status.assert_called()
+        progress_reporter.finish.assert_called_once()
+
+    @mark_requirement(Requirements.DATUM_PROGRESS_REPORTING)
+    def test_can_report_progress_from_extractor_multiple_pbars(self):
+        class TestExtractor(SourceExtractor):
+            def __init__(self, url, **kwargs):
+                super().__init__(**kwargs, media_type=MediaElement)
+
+            def __iter__(self):
+                pbars = self._ctx.progress_reporter.split(2)
+                list(pbars[0].iter([None] * 5))
+                list(pbars[1].iter([None] * 5))
+
+                yield from []
+
+        class TestProgressReporter(ProgressReporter):
+            def init(self, *args, **kwargs):
+                pass
+
+            def split(self, count):
+                return tuple(TestProgressReporter() for _ in range(count))
+
+            iter = mock.MagicMock()
+
+        progress_reporter = TestProgressReporter()
+        progress_reporter.split = mock.MagicMock(wraps=lambda count: \
+            TestProgressReporter.split(progress_reporter, count))
+
+        env = Environment()
+        env.importers.items.clear()
+        env.extractors.items['test'] = TestExtractor
+
+        Dataset.import_from('', 'test', env=env,
+            progress_reporter=progress_reporter)
+
+        progress_reporter.split.assert_called_once()
+
+    @mark_requirement(Requirements.DATUM_ERROR_REPORTING)
+    def test_can_report_errors_from_extractor(self):
+        class TestExtractor(SourceExtractor):
+            def __init__(self, url, **kwargs):
+                super().__init__(**kwargs, media_type=MediaElement)
+
+            def __iter__(self):
+                class TestError(Exception):
+                    pass
+                self._ctx.error_policy.report_item_error(TestError(),
+                    item_id=('0', 'a'))
+                self._ctx.error_policy.report_annotation_error(TestError(),
+                    item_id=('0', 'a'))
+                yield from []
+
+        env = Environment()
+        env.importers.items.clear()
+        env.extractors.items['test'] = TestExtractor
+
+        class TestErrorPolicy(ImportErrorPolicy):
+            pass
+        error_policy = TestErrorPolicy()
+        error_policy.report_item_error = mock.MagicMock()
+        error_policy.report_annotation_error = mock.MagicMock()
+
+        Dataset.import_from('', 'test', env=env,
+            error_policy=error_policy)
+
+        error_policy.report_item_error.assert_called()
+        error_policy.report_annotation_error.assert_called()
+
+    @mark_requirement(Requirements.DATUM_PROGRESS_REPORTING)
+    def test_can_report_progress_from_converter(self):
+        class TestConverter(Converter):
+            DEFAULT_IMAGE_EXT = '.jpg'
+
+            def apply(self):
+                list(self._ctx.progress_reporter.iter(
+                    [None] * 5, desc='loading images'))
+
+        class TestProgressReporter(ProgressReporter):
+            pass
+        progress_reporter = TestProgressReporter()
+        period_mock = mock.PropertyMock(return_value=0.1)
+        type(progress_reporter).period = period_mock
+        progress_reporter.start = mock.MagicMock()
+        progress_reporter.report_status = mock.MagicMock()
+        progress_reporter.finish = mock.MagicMock()
+
+        with TestDir() as test_dir:
+            Dataset(media_type=MediaElement).export(test_dir, TestConverter,
+                progress_reporter=progress_reporter)
+
+        period_mock.assert_called_once()
+        progress_reporter.start.assert_called_once()
+        progress_reporter.report_status.assert_called()
+        progress_reporter.finish.assert_called()
+
+    @mark_requirement(Requirements.DATUM_ERROR_REPORTING)
+    def test_can_report_errors_from_converter(self):
+        class TestConverter(Converter):
+            DEFAULT_IMAGE_EXT = '.jpg'
+
+            def apply(self):
+                class TestError(Exception):
+                    pass
+                self._ctx.error_policy.report_item_error(TestError(),
+                    item_id=('0', 'a'))
+                self._ctx.error_policy.report_annotation_error(TestError(),
+                    item_id=('0', 'a'))
+
+        class TestErrorPolicy(ImportErrorPolicy):
+            pass
+        error_policy = TestErrorPolicy()
+        error_policy.report_item_error = mock.MagicMock()
+        error_policy.report_annotation_error = mock.MagicMock()
+
+        with TestDir() as test_dir:
+            Dataset(media_type=MediaElement).export(test_dir, TestConverter,
+                error_policy=error_policy)
+
+        error_policy.report_item_error.assert_called()
+        error_policy.report_annotation_error.assert_called()
+
+    @mark_requirement(Requirements.DATUM_673)
+    def test_can_pickle(self):
+        source = Dataset.from_iterable([
+            DatasetItem(id=1, subset='subset',
+                media=Image(data=np.ones((5, 4, 3))),
+                annotations=[
+                    Label(0, attributes={'a1': 1, 'a2': '2'}, id=1, group=2),
+                    Caption('hello', id=1, group=5),
+                    Label(2, id=3, group=2, attributes={ 'x': 1, 'y': '2' }),
+                    Bbox(1, 2, 3, 4, label=4, id=4, attributes={ 'a': 1.0 }),
+                    Points([1, 2, 2, 0, 1, 1], label=0, id=5, group=6),
+                    Mask(label=3, id=5, image=np.ones((2, 3))),
+                    PolyLine([1, 2, 3, 4, 5, 6, 7, 8], id=11),
+                    Polygon([1, 2, 3, 4, 5, 6, 7, 8]),
+                ])
+        ], categories={
+            AnnotationType.label: LabelCategories.from_iterable(['a', 'b']),
+            AnnotationType.mask: MaskCategories.generate(2),
+        })
+        source.init_cache()
+
+        parsed = pickle.loads(pickle.dumps(source)) # nosec
+
+        compare_datasets_strict(self, source, parsed)
+
+    @mark_requirement(Requirements.DATUM_GENERIC_MEDIA)
+    def test_can_specify_media_type_in_ctor(self):
+        dataset = Dataset.from_iterable([
+            DatasetItem(id=1, media=Image(data=np.ones((5, 4, 3))))
+        ], media_type=Video)
+
+        self.assertTrue(dataset.media_type() is Video)
+
+    @mark_requirement(Requirements.DATUM_GENERIC_MEDIA)
+    def test_cant_put_item_with_mismatching_media_type(self):
+        dataset = Dataset(media_type=Video)
+
+        with self.assertRaises(MediaTypeError):
+            dataset.put(DatasetItem(id=1, media=Image(data=np.ones((5, 4, 3)))))
+
+    @mark_requirement(Requirements.DATUM_GENERIC_MEDIA)
+    def test_cant_change_media_type_with_transform(self):
+        class TestTransform(Transform):
+            def media_type(self):
+                return Image
+
+        dataset = Dataset(media_type=Video)
+
+        with self.assertRaises(MediaTypeError):
+            dataset.transform(TestTransform)
+            dataset.init_cache()
+
+    @mark_requirement(Requirements.DATUM_GENERIC_MEDIA)
+    def test_can_get_media_type_from_extractor(self):
+        class TestExtractor(Extractor):
+            def __init__(self, **kwargs):
+                super().__init__(media_type=Video, **kwargs)
+
+        dataset = Dataset.from_extractors(TestExtractor())
+
+        self.assertTrue(dataset.media_type() is Video)
+
+    @mark_requirement(Requirements.DATUM_GENERIC_MEDIA)
+    def test_can_check_media_type_on_caching(self):
+        dataset = Dataset.from_iterable([
+            DatasetItem(id=1, media=Image(data=np.ones((5, 4, 3))))
+        ], media_type=Video)
+
+        with self.assertRaises(MediaTypeError):
+            dataset.init_cache()
 
 class DatasetItemTest(TestCase):
     @mark_requirement(Requirements.DATUM_GENERAL_REQ)
@@ -1507,11 +1783,11 @@ class DatasetItemTest(TestCase):
     @mark_requirement(Requirements.DATUM_GENERAL_REQ)
     def test_ctors_with_image():
         for args in [
-            { 'id': 0, 'image': None },
-            { 'id': 0, 'image': 'path.jpg' },
-            { 'id': 0, 'image': np.array([1, 2, 3]) },
-            { 'id': 0, 'image': lambda f: np.array([1, 2, 3]) },
-            { 'id': 0, 'image': Image(data=np.array([1, 2, 3])) },
+            { 'id': 0, 'media': None },
+            { 'id': 0, 'media': Image(path='path.jpg') },
+            { 'id': 0, 'media': Image(data=np.array([1, 2, 3])) },
+            { 'id': 0, 'media': Image(data=lambda f: np.array([1, 2, 3])) },
+            { 'id': 0, 'media': Image(data=np.array([1, 2, 3])) },
         ]:
             DatasetItem(**args)
 
@@ -1521,7 +1797,7 @@ class DatasetFilterTest(TestCase):
     @mark_requirement(Requirements.DATUM_GENERAL_REQ)
     def test_item_representations():
         item = DatasetItem(id=1, subset='subset',
-            image=np.ones((5, 4, 3)),
+            media=Image(data=np.ones((5, 4, 3))),
             annotations=[
                 Label(0, attributes={'a1': 1, 'a2': '2'}, id=1, group=2),
                 Caption('hello', id=1),

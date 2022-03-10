@@ -60,7 +60,7 @@ class TfdsExtractorTest(TestCase):
 
             expected_dataset = Dataset.from_iterable([
                 DatasetItem(id='0', subset='train',
-                    image=tfds_example['image'].numpy().squeeze(axis=2),
+                    media=Image(data=tfds_example['image'].numpy().squeeze(axis=2)),
                     annotations=[Label(tfds_example['label'].numpy())],
                 ),
             ], categories=tfds_info.features['label'].names)
@@ -69,7 +69,7 @@ class TfdsExtractorTest(TestCase):
             actual_dataset = Dataset(extractor)
 
             compare_datasets(self, expected_dataset, actual_dataset,
-                require_images=True)
+                require_media=True)
 
     def _test_can_extract_cifar(self, name):
         with mock_tfds_data():
@@ -81,7 +81,7 @@ class TfdsExtractorTest(TestCase):
                 DatasetItem(
                     id=tfds_example['id'].numpy().decode('UTF-8'),
                     subset='train',
-                    image=tfds_example['image'].numpy()[..., ::-1],
+                    media=Image(data=tfds_example['image'].numpy()[..., ::-1]),
                     annotations=[Label(tfds_example['label'].numpy())],
                 ),
             ], categories=tfds_info.features['label'].names)
@@ -90,7 +90,7 @@ class TfdsExtractorTest(TestCase):
             actual_dataset = Dataset(extractor)
 
             compare_datasets(self, expected_dataset, actual_dataset,
-                require_images=True)
+                require_media=True)
 
     @mark_requirement(Requirements.DATUM_GENERAL_REQ)
     def test_can_extract_cifar10(self):
@@ -120,7 +120,7 @@ class TfdsExtractorTest(TestCase):
                 DatasetItem(
                     id='test',
                     subset='train',
-                    image=np.ones((20, 10)),
+                    media=Image(data=np.ones((20, 10))),
                     annotations=[
                         Bbox(2, 2, 2, 4, label=5,
                             attributes={'is_crowd': True}),
@@ -133,7 +133,7 @@ class TfdsExtractorTest(TestCase):
             actual_dataset = Dataset(extractor)
 
             compare_datasets(self, expected_dataset, actual_dataset,
-                require_images=True)
+                require_media=True)
 
     @mark_requirement(Requirements.DATUM_GENERAL_REQ)
     def test_can_extract_imagenet_v2(self):
@@ -153,7 +153,7 @@ class TfdsExtractorTest(TestCase):
 
             expected_dataset = Dataset.from_iterable([
                 DatasetItem(id=osp.splitext(example_file_name)[0], subset='train',
-                    image=Image(
+                    media=Image(
                         data=decode_image(tfds_example['image'].numpy()),
                         path=example_file_name,
                     ),
@@ -165,7 +165,7 @@ class TfdsExtractorTest(TestCase):
             actual_dataset = Dataset(extractor)
 
             compare_datasets(self, expected_dataset, actual_dataset,
-                require_images=True)
+                require_media=True)
 
     @mark_requirement(Requirements.DATUM_GENERAL_REQ)
     def test_can_extract_voc(self):
@@ -177,19 +177,27 @@ class TfdsExtractorTest(TestCase):
             'objects': {
                 'bbox': [[0.1, 0.2, 0.3, 0.4]],
                 'label': [5],
+                'is_difficult': [True],
+                'is_truncated': [False],
+                'pose': [0],
             }
         }
 
         with mock_tfds_data(example=tfds_example):
             tfds_info = tfds.builder('voc/2012').info
 
+            pose_names = tfds_info.features['objects'].feature['pose'].names
+
             expected_dataset = Dataset.from_iterable([
                 DatasetItem(
                     id='test',
                     subset='train',
-                    image=np.ones((20, 10)),
+                    media=Image(data=np.ones((20, 10))),
                     annotations=[
-                        Bbox(2, 2, 2, 4, label=5),
+                        Bbox(2, 2, 2, 4, label=5, attributes={
+                            'difficult': True, 'truncated': False,
+                            'pose': pose_names[0].title(),
+                        }),
                     ],
                 ),
             ], categories=tfds_info.features['objects'].feature['label'].names)
@@ -198,4 +206,4 @@ class TfdsExtractorTest(TestCase):
             actual_dataset = Dataset(extractor)
 
             compare_datasets(self, expected_dataset, actual_dataset,
-                require_images=True)
+                require_media=True)

@@ -8,6 +8,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## \[Unreleased\]
 ### Added
+- Support for custom media types, new `PointCloud` media type,
+  `DatasetItem.media` and `.media_as(type)` members
+  (<https://github.com/openvinotoolkit/datumaro/pull/539>)
+- \[API\] A way to request dataset and extractor media type with `media_type`
+  (<https://github.com/openvinotoolkit/datumaro/pull/539>)
+
+### Changed
+- TBD
+
+### Deprecated
+- `--save-images` is replaced with `--save-media` in CLI and converter API
+  (<https://github.com/openvinotoolkit/datumaro/pull/539>)
+- \[API\] `image`, `point_cloud` and `related_images` of `DatasetItem` are
+  replaced with `media` and `media_as(type)` members and c-tor parameters
+  (<https://github.com/openvinotoolkit/datumaro/pull/539>)
+
+### Removed
+- TBD
+
+### Fixed
+- TBD
+
+### Security
+- TBD
+
+## 21/02/2022 - Release v0.3
+### Added
 - Ability to import a video as frames with the `video_frames` format and
   to split a video into frames with the `datum util split_video` command
   (<https://github.com/openvinotoolkit/datumaro/pull/555>)
@@ -27,6 +54,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   to create smaller datasets from bigger ones
   (<https://github.com/openvinotoolkit/datumaro/pull/636>,
    <https://github.com/openvinotoolkit/datumaro/pull/640>)
+- API to report dataset import and export progress;
+  API to report dataset import and export errors and take action (skip, fail)
+  (supported in COCO, VOC and YOLO formats)
+  (<https://github.com/openvinotoolkit/datumaro/pull/650>)
 - Support for downloading the ImageNetV2 and COCO datasets
   (<https://github.com/openvinotoolkit/datumaro/pull/653>,
    <https://github.com/openvinotoolkit/datumaro/pull/659>)
@@ -45,14 +76,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   image stats (`unique`, `repeated`) moved to the `dataset` section,
   removed `mean` and `std` from the `dataset` section
   (<https://github.com/openvinotoolkit/datumaro/pull/621>)
-- OpenVINO telemetry library 2022.1.0 from PyPI.
-  (<https://github.com/openvinotoolkit/datumaro/pull/625>)
 - Allowed `Image` creation from just `size` info
   (<https://github.com/openvinotoolkit/datumaro/pull/634>)
 - Added image search in VOC XML-based subformats
   (<https://github.com/openvinotoolkit/datumaro/pull/634>)
 - Added image path equality checks in simple merge, when applicable
   (<https://github.com/openvinotoolkit/datumaro/pull/634>)
+- Supported saving box attributes when downloading the TFDS version of VOC
+  (<https://github.com/openvinotoolkit/datumaro/pull/668>)
+- Switched to a `pyproject.toml`-based build
+  (<https://github.com/openvinotoolkit/datumaro/pull/671>)
 
 ### Deprecated
 - TBD

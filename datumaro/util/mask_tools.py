@@ -2,6 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
+from functools import partial
 from itertools import chain
 from typing import Tuple
 
@@ -137,7 +138,8 @@ def load_mask(path, inverse_colormap=None):
     return mask
 
 def lazy_mask(path, inverse_colormap=None):
-    return lazy_image(path, lambda path: load_mask(path, inverse_colormap))
+    return lazy_image(path,
+        partial(load_mask, inverse_colormap=inverse_colormap))
 
 def mask_to_rle(binary_mask):
     # walk in row-major order as COCO format specifies
@@ -218,13 +220,13 @@ def crop_covered_segments(segments, width, height,
     Returns:
         A list of input segments' parts (in the same order as input):
 
-            [
+        .. code-block::
 
+            [
                 [[x1,y1, x2,y2 ...], ...], # input segment #0 parts
                 mask1, # input segment #1 mask (if source segment is mask)
                 [], # when source segment is too small
                 ...
-
             ]
     """
     from pycocotools import mask as mask_utils

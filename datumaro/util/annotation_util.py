@@ -215,6 +215,7 @@ def approximate_line(points: Sequence[float], segments: int) -> np.ndarray:
 
     Returns:
         new_points (numpy.ndarray): an array of new line point coordinates.
+    Returns:
         The size is [(segments + 1) * 2], the layout is [x0, y0, x1, y1, ...].
     """
 
@@ -266,12 +267,11 @@ def make_label_id_mapping(
     labels.
 
     Returns:
-        .. code-block::
 
-        map_id (callable): src id -> dst id
-        id_mapping (dict): src id -> dst id
-        src_labels (dict): src id -> src label
-        dst_labels (dict): dst id -> dst label
+    |   map_id (callable): src id -> dst id
+    |   id_mapping (dict): src id -> dst i
+    |   src_labels (dict): src id -> src label
+    |   dst_labels (dict): dst id -> dst label
     """
 
     source_labels = { id: label.name

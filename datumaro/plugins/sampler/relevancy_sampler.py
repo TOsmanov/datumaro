@@ -33,13 +33,13 @@ class RelevancySampler(Transform, CliPlugin):
     |s|s- `randtopk` - Select 3*k items randomly, and return the topk among them|n
     |n
     Notes:|n
-    |s|s- Each image's inference result must contain the probability for \
-    all classes.|n
-    |s|s- Requesting a sample larger than the number of all images will \
-    return all images.|n
+    |s|s- Each image's inference result must contain the probability for|n
+    |s|s|s|sall classes.|n
+    |s|s- Requesting a sample larger than the number of all images will|n
+    |s|s|s|sreturn all images.|n
     |n
     Example: select the most relevant data subset of 20 images |n
-    |s|sbased on model certainty, put the result into 'sample' subset
+    |s|sbased on model certainty, put the result into 'sample' subset |n
     |s|sand put all the rest into 'unsampled' subset, use 'train' subset |n
     |s|sas input. |n
 
@@ -135,13 +135,13 @@ class RelevancySampler(Transform, CliPlugin):
         for item in subset:
             data_df['ImageID'].append(item.id)
 
-            if not item.has_image or item.image.size is None:
+            if not item.media or item.media.size is None:
                 raise Exception(f"Item {item.id} does not have image info")
 
-            width, height = item.image.size
+            width, height = item.media.size
             data_df['Width'].append(width)
             data_df['Height'].append(height)
-            data_df['ImagePath'].append(item.image.path)
+            data_df['ImagePath'].append(item.media.path)
 
             if not item.annotations:
                 raise Exception(f"Item {item.id} does not have annotations")
