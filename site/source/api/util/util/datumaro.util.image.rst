@@ -32,7 +32,7 @@ image module
       :special-members:
       :show-inheritance:
 
-   .. autodata:: ImageMeta
+   .. autoclass:: ImageMeta
 
    .. autofunction:: load_image_meta_file
 

@@ -3,7 +3,7 @@ extractor module
 
 .. automodule:: datumaro.components.extractor
 
-   .. autodata:: DEFAULT_SUBSET_NAME
+   .. autoclass:: DEFAULT_SUBSET_NAME
 
    .. autoclass:: DatasetItem
       :members:
@@ -12,7 +12,7 @@ extractor module
       :special-members:
       :show-inheritance:
 
-   .. autodata:: CategoriesInfo
+   .. autoclass:: CategoriesInfo
 
    .. autoclass:: IExtractor
       :members:
