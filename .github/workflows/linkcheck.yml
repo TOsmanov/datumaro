@@ -1,36 +1,21 @@
-name: Linkcheck
-on: pull_request
+name: Link check
+
+on:
+  push:
+    branches:
+      - gh-pages
+
 jobs:
-  linkcheck:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive
-          fetch-depth: 0
-      - uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: '0.83.1'
-          extended: true
-
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14.x'
-
-      - name: Build docs and check
-        run: |
-          pip install gitpython packaging toml Sphinx==4.2.0 sphinx-rtd-theme==1.0.0 sphinx-copybutton==0.4.0 tensorflow openvino-dev[accuracy_check]
-          pip install -r requirements.txt
-          sphinx-build -a -n site/source site/static/api
-          cd site && npm ci && hugo && cd ..
-
-      - name: Linkcheck
-        run: |
-          pip install linkchecker
-          linkchecker site/public/ -t 8 -r -1 --check-extern --no-follow-url="https://*" > ./linkcheck.txt
+  - name: install and run linkchecker
+    deploy:
+      runs-on: ubuntu-20.04
+      steps:
+        - name: LinkChecker
+          run: mkdir -p linkcheck_reports
+          run: pip install LinkChecker
+          run: linkchecker https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }} -r -1 > linkcheck_reports/linkcheck.txt
+        - name: LinkChecker report
+          uses: actions/upload-artifact@v3
+          with:
+            name: LinkChecker report
+            path: linkcheck_reports/linkcheck.txt
