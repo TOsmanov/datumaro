@@ -6,16 +6,15 @@ on:
       - gh-pages
 
 jobs:
-  - name: install and run linkchecker
-    deploy:
-      runs-on: ubuntu-20.04
-      steps:
-        - name: LinkChecker
-          run: mkdir -p linkcheck_reports
-          run: pip install LinkChecker
-          run: linkchecker https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }} -r -1 > linkcheck_reports/linkcheck.txt
-        - name: LinkChecker report
-          uses: actions/upload-artifact@v3
-          with:
-            name: LinkChecker report
-            path: linkcheck_reports/linkcheck.txt
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: LinkChecker
+        run: mkdir -p linkcheck_reports
+        run: pip install LinkChecker
+        run: linkchecker https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }} -r -1 > linkcheck_reports/linkcheck.txt
+      - name: LinkChecker report
+        uses: actions/upload-artifact@v3
+        with:
+          name: LinkChecker report
+          path: linkcheck_reports/linkcheck.txt
