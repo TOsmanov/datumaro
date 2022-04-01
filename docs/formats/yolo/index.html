@@ -23,8 +23,8 @@
 You can also find official examples of working with YOLO dataset here.
 Supported annotation types:
  Bounding boxes  YOLO format doesn&rsquo;t support attributes for annotations.
-The format only supports subsets named train or valid.
-Import YOLO dataset A Datumaro project with a YOLO source can be created in the following way:" />
+The format supports arbitrary subset names, except classes, names and backup.
+ Note, that by default, the YOLO framework does not expect any subset names, except train and valid, Datumaro supports this as an extension." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/formats/yolo/" /><meta property="article:section" content="docs" />
 
@@ -35,18 +35,18 @@ Import YOLO dataset A Datumaro project with a YOLO source can be created in the 
 You can also find official examples of working with YOLO dataset here.
 Supported annotation types:
  Bounding boxes  YOLO format doesn&rsquo;t support attributes for annotations.
-The format only supports subsets named train or valid.
-Import YOLO dataset A Datumaro project with a YOLO source can be created in the following way:">
+The format supports arbitrary subset names, except classes, names and backup.
+ Note, that by default, the YOLO framework does not expect any subset names, except train and valid, Datumaro supports this as an extension.">
 
-<meta itemprop="wordCount" content="810">
+<meta itemprop="wordCount" content="812">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="YOLO"/>
 <meta name="twitter:description" content="Format specification The YOLO dataset format is for training and validating object detection models. Specification for this format is available here.
 You can also find official examples of working with YOLO dataset here.
 Supported annotation types:
  Bounding boxes  YOLO format doesn&rsquo;t support attributes for annotations.
-The format only supports subsets named train or valid.
-Import YOLO dataset A Datumaro project with a YOLO source can be created in the following way:"/>
+The format supports arbitrary subset names, except classes, names and backup.
+ Note, that by default, the YOLO framework does not expect any subset names, except train and valid, Datumaro supports this as an extension."/>
 
 
 
@@ -127,6 +127,9 @@ Import YOLO dataset A Datumaro project with a YOLO source can be created in the 
     
       <a class="dropdown-item" href="../../../v0.2.3/docs/formats/yolo/">v0.2.3</a>
   
+    
+      <a class="dropdown-item" href="../../../v0.3/docs/formats/yolo/">v0.3</a>
+  
 </div>
 
         </li>
@@ -145,7 +148,7 @@ Import YOLO dataset A Datumaro project with a YOLO source can be created in the 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.49b4a501512a0a967c88e7200a8befef.json"
+  data-offline-search-index-json-src="../../../offline-search-index.4c302fb9da6c68e6b9055a86a86caab0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -173,7 +176,7 @@ Import YOLO dataset A Datumaro project with a YOLO source can be created in the 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.49b4a501512a0a967c88e7200a8befef.json"
+  data-offline-search-index-json-src="../../../offline-search-index.4c302fb9da6c68e6b9055a86a86caab0.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -215,6 +218,8 @@ Import YOLO dataset A Datumaro project with a YOLO source can be created in the 
   <a href="../../../docs/user-manual/command-reference/convert/" title="Convert datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceconvert"><span class="">convert</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencecreate-li">
   <a href="../../../docs/user-manual/command-reference/create/" title="Create project" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencecreate"><span class="">create</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencedescribe-downloads-li">
+  <a href="../../../docs/user-manual/command-reference/describe-downloads/" title="Describe downloadable datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencedescribe-downloads"><span class="">describe-downloads</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencedetect-format-li">
   <a href="../../../docs/user-manual/command-reference/detect-format/" title="Detect dataset format" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencedetect-format"><span class="">detect-format</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencediff-li">
@@ -261,8 +266,6 @@ Import YOLO dataset A Datumaro project with a YOLO source can be created in the 
   <a href="../../../docs/user-manual/how_to_control_tm_data_collection/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualhow_to_control_tm_data_collection"><span class="">How to control telemetry data collection</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsdeveloper_manual-li">
-  <a href="../../../docs/developer_manual/" title="Dataset Management Framework (Datumaro) API and developer manual" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsdeveloper_manual"><span class="">Developer Manual</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsformats-li">
   <a href="../../../docs/formats/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsformats"><span class="">Formats</span></a>
   <ul class="ul-2 foldable">
@@ -272,56 +275,66 @@ Import YOLO dataset A Datumaro project with a YOLO source can be created in the 
   <a href="../../../docs/formats/ade20k2020/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsade20k2020"><span class="">ADE20k (v2020)</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsalign_celeba-li">
   <a href="../../../docs/formats/align_celeba/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsalign_celeba"><span class="">Align CelebA</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsbrats-li">
+  <a href="../../../docs/formats/brats/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsbrats"><span class="">BraTS</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsbrats_numpy-li">
+  <a href="../../../docs/formats/brats_numpy/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsbrats_numpy"><span class="">BraTS Numpy</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsceleba-li">
   <a href="../../../docs/formats/celeba/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsceleba"><span class="">CelebA</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatscifar-li">
   <a href="../../../docs/formats/cifar/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatscifar"><span class="">CIFAR</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsmpii-li">
-  <a href="../../../docs/formats/mpii/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmpii"><span class="">MPII Human Pose Dataset</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsmpii_json-li">
-  <a href="../../../docs/formats/mpii_json/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmpii_json"><span class="">MPII Human Pose Dataset (JSON)</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatssynthia-li">
-  <a href="../../../docs/formats/synthia/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatssynthia"><span class="">SYNTHIA</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsvott_csv-li">
-  <a href="../../../docs/formats/vott_csv/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsvott_csv"><span class="">VoTT CSV</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsvott_json-li">
-  <a href="../../../docs/formats/vott_json/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsvott_json"><span class="">VoTT JSON</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatscityscapes-li">
   <a href="../../../docs/formats/cityscapes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatscityscapes"><span class="">Cityscapes</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatscoco-li">
   <a href="../../../docs/formats/coco/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatscoco"><span class="">COCO</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatscommon_semantic_segmentation-li">
+  <a href="../../../docs/formats/common_semantic_segmentation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatscommon_semantic_segmentation"><span class="">Common Semantic Segmentation</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatscommon_super_resolution-li">
+  <a href="../../../docs/formats/common_super_resolution/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatscommon_super_resolution"><span class="">Common Super Resolution</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsicdar-li">
+  <a href="../../../docs/formats/icdar/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsicdar"><span class="">ICDAR</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsimage_zip-li">
   <a href="../../../docs/formats/image_zip/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsimage_zip"><span class="">Image zip</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatskitti_raw-li">
-  <a href="../../../docs/formats/kitti_raw/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatskitti_raw"><span class="">Velodyne Points / KITTI Raw 3D</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsimagenet-li">
+  <a href="../../../docs/formats/imagenet/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsimagenet"><span class="">ImageNet</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatskinetics-li">
+  <a href="../../../docs/formats/kinetics/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatskinetics"><span class="">Kinetics</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatskitti-li">
   <a href="../../../docs/formats/kitti/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatskitti"><span class="">KITTI</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatslfw-li">
   <a href="../../../docs/formats/lfw/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatslfw"><span class="">LFW</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsmapillary_vistas-li">
   <a href="../../../docs/formats/mapillary_vistas/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmapillary_vistas"><span class="">Mapillary Vistas</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsmnist-li">
-  <a href="../../../docs/formats/mnist/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmnist"><span class="">MNIST</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsicdar-li">
-  <a href="../../../docs/formats/icdar/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsicdar"><span class="">ICDAR</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsopen_images-li">
-  <a href="../../../docs/formats/open_images/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsopen_images"><span class="">Open Images</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsimagenet-li">
-  <a href="../../../docs/formats/imagenet/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsimagenet"><span class="">ImageNet</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatspascal_voc-li">
-  <a href="../../../docs/formats/pascal_voc/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatspascal_voc"><span class="">Pascal VOC</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatssly_pointcloud-li">
-  <a href="../../../docs/formats/sly_pointcloud/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatssly_pointcloud"><span class="">Supervisely Point Cloud</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsformatsyolo-li">
-  <a href="../../../docs/formats/yolo/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-docsformatsyolo"><span class="td-sidebar-nav-active-item">YOLO</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsmarket1501-li">
   <a href="../../../docs/formats/market1501/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmarket1501"><span class="">Market-1501</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsmars-li">
   <a href="../../../docs/formats/mars/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmars"><span class="">MARS</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatswider_face-li">
-  <a href="../../../docs/formats/wider_face/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatswider_face"><span class="">WIDER Face</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsmnist-li">
+  <a href="../../../docs/formats/mnist/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmnist"><span class="">MNIST</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsmpii-li">
+  <a href="../../../docs/formats/mpii/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmpii"><span class="">MPII Human Pose Dataset</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsmpii_json-li">
+  <a href="../../../docs/formats/mpii_json/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmpii_json"><span class="">MPII Human Pose Dataset (JSON)</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsopen_images-li">
+  <a href="../../../docs/formats/open_images/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsopen_images"><span class="">Open Images</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatspascal_voc-li">
+  <a href="../../../docs/formats/pascal_voc/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatspascal_voc"><span class="">Pascal VOC</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatssly_pointcloud-li">
+  <a href="../../../docs/formats/sly_pointcloud/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatssly_pointcloud"><span class="">Supervisely Point Cloud</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatssynthia-li">
+  <a href="../../../docs/formats/synthia/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatssynthia"><span class="">SYNTHIA</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatskitti_raw-li">
+  <a href="../../../docs/formats/kitti_raw/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatskitti_raw"><span class="">Velodyne Points / KITTI Raw 3D</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsvgg_face2-li">
   <a href="../../../docs/formats/vgg_face2/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsvgg_face2"><span class="">Vgg Face2 CSV</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsvott_csv-li">
+  <a href="../../../docs/formats/vott_csv/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsvott_csv"><span class="">VoTT CSV</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatsvott_json-li">
+  <a href="../../../docs/formats/vott_json/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsvott_json"><span class="">VoTT JSON</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsformatswider_face-li">
+  <a href="../../../docs/formats/wider_face/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatswider_face"><span class="">WIDER Face</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsformatsyolo-li">
+  <a href="../../../docs/formats/yolo/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-docsformatsyolo"><span class="td-sidebar-nav-active-item">YOLO</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsplugins-li">
@@ -489,7 +502,13 @@ models. Specification for this format is available
 <li><code>Bounding boxes</code></li>
 </ul>
 <p>YOLO format doesn&rsquo;t support attributes for annotations.</p>
-<p>The format only supports subsets named <code>train</code> or <code>valid</code>.</p>
+<p>The format supports arbitrary subset names, except <code>classes</code>, <code>names</code> and <code>backup</code>.</p>
+<blockquote>
+<p>Note, that by default, the YOLO framework does not expect any subset names,
+except <code>train</code> and <code>valid</code>, Datumaro supports this as an extension.
+If there is no subset separation in a project, the data
+will be saved in the <code>train</code> subset.</p>
+</blockquote>
 <h2 id="import-yolo-dataset">Import YOLO dataset</h2>
 <p>A Datumaro project with a YOLO source can be created in the following way:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
@@ -517,15 +536,7 @@ datum import --format yolo &lt;path/to/dataset&gt;
         ├── image102.txt
         ├── image102.jpg
         └── ...
-</code></pre><blockquote>
-<p>YOLO dataset cannot contain a subset with a name other than <code>train</code> or <code>valid</code>.
-If an imported dataset contains such subsets, they will be ignored.
-If you are exporting a project into YOLO format,
-all subsets different from <code>train</code> and <code>valid</code> will be skipped.
-If there is no subset separation in a project, the data
-will be saved in <code>train</code> subset.</p>
-</blockquote>
-<ul>
+</code></pre><ul>
 <li><code>obj.data</code> should have the following content, it is not necessary to have both
 subsets, but necessary to have one of them:</li>
 </ul>
@@ -577,20 +588,22 @@ datum <span style="color:#204a87">export</span> -f voc -o &lt;output/dir&gt;
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">dm</span>
 
 <span style="color:#000">dataset</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">import_from</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&lt;path/to/dataset&gt;&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;yolo&#39;</span><span style="color:#000;font-weight:bold">)</span>
-<span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;save_dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;coco_instances&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_images</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;save_dir&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;coco_instances&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_media</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">)</span>
 </code></pre></div><h2 id="export-to-yolo-format">Export to YOLO format</h2>
 <p>Datumaro can convert an existing dataset to YOLO format,
 if the dataset supports object detection task.</p>
 <p>Example:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
 datum import -f coco_instances &lt;path/to/dataset&gt;
-datum <span style="color:#204a87">export</span> -f yolo -o &lt;path/to/dataset&gt; -- --save-images
+datum <span style="color:#204a87">export</span> -f yolo -o &lt;path/to/dataset&gt; -- --save-media
 </code></pre></div><p>Extra options for exporting to YOLO format:</p>
 <ul>
-<li><code>--save-images</code> allow to export dataset with saving images
+<li><code>--save-media</code> allow to export dataset with saving media files
 (default: <code>False</code>)</li>
 <li><code>--image-ext &lt;IMAGE_EXT&gt;</code> allow to specify image extension
 for exporting dataset (default: use original or <code>.jpg</code>, if none)</li>
+<li><code>--add-path-prefix</code> allows to specify, whether to include the
+<code>data/</code> path prefix in the annotation files or not (default: <code>True</code>)</li>
 </ul>
 <h2 id="examples">Examples</h2>
 <h3 id="example-1-prepare-pascal-voc-dataset-for-exporting-to-yolo-format-dataset">Example 1. Prepare PASCAL VOC dataset for exporting to YOLO format dataset</h3>
@@ -598,7 +611,7 @@ for exporting dataset (default: use original or <code>.jpg</code>, if none)</li>
 datum import -p project -f voc ./VOC2012
 datum filter -p project -e <span style="color:#4e9a06">&#39;/item[subset=&#34;train&#34; or subset=&#34;val&#34;]&#39;</span>
 datum transform -p project -t map_subsets -- -s train:train -s val:valid
-datum <span style="color:#204a87">export</span> -p project -f yolo -- --save-images
+datum <span style="color:#204a87">export</span> -p project -f yolo -- --save-media
 </code></pre></div><h3 id="example-2-remove-a-class-from-yolo-dataset">Example 2. Remove a class from YOLO dataset</h3>
 <p>Delete all items, which contain <code>cat</code> objects and remove
 <code>cat</code> from list of classes:</p>
@@ -627,7 +640,7 @@ datum <span style="color:#204a87">export</span> -p project -f yolo -o ./yolo_wit
     <span style="color:#000;font-weight:bold">)</span>
 <span style="color:#000;font-weight:bold">],</span> <span style="color:#000">categories</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;house&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;bridge&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;crosswalk&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;traffic_light&#39;</span><span style="color:#000;font-weight:bold">])</span>
 
-<span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;../yolo_dataset&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;yolo&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_images</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">dataset</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">export</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;../yolo_dataset&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;yolo&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">save_media</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">)</span>
 </code></pre></div><h3 id="example-4-get-information-about-objects-on-each-image">Example 4. Get information about objects on each image</h3>
 <p>If you only want information about label names for each
 image, then you can get it from code:</p>

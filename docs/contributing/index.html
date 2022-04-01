@@ -38,7 +38,7 @@ pip install -e /path/to/the/cloned/repo/ Optional dependencies
 These components are only required for plugins and not installed by default:
  OpenVINO Accuracy Checker TensorFlow PyTorch MxNet Caffe  Usage datum --help python -m datumaro --help python datumaro/ --help python datum.">
 
-<meta itemprop="wordCount" content="620">
+<meta itemprop="wordCount" content="512">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Contribution Guide"/>
 <meta name="twitter:description" content="Related sections:  Design document Developer manual  Installation Prerequisites  Python (3.7&#43;)  git clone https://github.com/openvinotoolkit/datumaro Optionally, install a virtual environment (recommended):
@@ -127,6 +127,9 @@ These components are only required for plugins and not installed by default:
     
       <a class="dropdown-item" href="../../v0.2.3/docs/contributing/">v0.2.3</a>
   
+    
+      <a class="dropdown-item" href="../../v0.3/docs/contributing/">v0.3</a>
+  
 </div>
 
         </li>
@@ -145,7 +148,7 @@ These components are only required for plugins and not installed by default:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.49b4a501512a0a967c88e7200a8befef.json"
+  data-offline-search-index-json-src="../../offline-search-index.4c302fb9da6c68e6b9055a86a86caab0.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -173,7 +176,7 @@ These components are only required for plugins and not installed by default:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.49b4a501512a0a967c88e7200a8befef.json"
+  data-offline-search-index-json-src="../../offline-search-index.4c302fb9da6c68e6b9055a86a86caab0.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -215,6 +218,8 @@ These components are only required for plugins and not installed by default:
   <a href="../../docs/user-manual/command-reference/convert/" title="Convert datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referenceconvert"><span class="">convert</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencecreate-li">
   <a href="../../docs/user-manual/command-reference/create/" title="Create project" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencecreate"><span class="">create</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencedescribe-downloads-li">
+  <a href="../../docs/user-manual/command-reference/describe-downloads/" title="Describe downloadable datasets" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencedescribe-downloads"><span class="">describe-downloads</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencedetect-format-li">
   <a href="../../docs/user-manual/command-reference/detect-format/" title="Detect dataset format" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualcommand-referencedetect-format"><span class="">detect-format</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsuser-manualcommand-referencediff-li">
@@ -261,8 +266,6 @@ These components are only required for plugins and not installed by default:
   <a href="../../docs/user-manual/how_to_control_tm_data_collection/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsuser-manualhow_to_control_tm_data_collection"><span class="">How to control telemetry data collection</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsdeveloper_manual-li">
-  <a href="../../docs/developer_manual/" title="Dataset Management Framework (Datumaro) API and developer manual" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsdeveloper_manual"><span class="">Developer Manual</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsformats-li">
   <a href="../../docs/formats/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsformats"><span class="">Formats</span></a>
   <ul class="ul-2 foldable">
@@ -272,56 +275,66 @@ These components are only required for plugins and not installed by default:
   <a href="../../docs/formats/ade20k2020/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsade20k2020"><span class="">ADE20k (v2020)</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsalign_celeba-li">
   <a href="../../docs/formats/align_celeba/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsalign_celeba"><span class="">Align CelebA</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsbrats-li">
+  <a href="../../docs/formats/brats/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsbrats"><span class="">BraTS</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsbrats_numpy-li">
+  <a href="../../docs/formats/brats_numpy/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsbrats_numpy"><span class="">BraTS Numpy</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsceleba-li">
   <a href="../../docs/formats/celeba/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsceleba"><span class="">CelebA</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatscifar-li">
   <a href="../../docs/formats/cifar/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatscifar"><span class="">CIFAR</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmpii-li">
-  <a href="../../docs/formats/mpii/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmpii"><span class="">MPII Human Pose Dataset</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmpii_json-li">
-  <a href="../../docs/formats/mpii_json/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmpii_json"><span class="">MPII Human Pose Dataset (JSON)</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatssynthia-li">
-  <a href="../../docs/formats/synthia/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatssynthia"><span class="">SYNTHIA</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsvott_csv-li">
-  <a href="../../docs/formats/vott_csv/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsvott_csv"><span class="">VoTT CSV</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsvott_json-li">
-  <a href="../../docs/formats/vott_json/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsvott_json"><span class="">VoTT JSON</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatscityscapes-li">
   <a href="../../docs/formats/cityscapes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatscityscapes"><span class="">Cityscapes</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatscoco-li">
   <a href="../../docs/formats/coco/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatscoco"><span class="">COCO</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatscommon_semantic_segmentation-li">
+  <a href="../../docs/formats/common_semantic_segmentation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatscommon_semantic_segmentation"><span class="">Common Semantic Segmentation</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatscommon_super_resolution-li">
+  <a href="../../docs/formats/common_super_resolution/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatscommon_super_resolution"><span class="">Common Super Resolution</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsicdar-li">
+  <a href="../../docs/formats/icdar/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsicdar"><span class="">ICDAR</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsimage_zip-li">
   <a href="../../docs/formats/image_zip/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsimage_zip"><span class="">Image zip</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatskitti_raw-li">
-  <a href="../../docs/formats/kitti_raw/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatskitti_raw"><span class="">Velodyne Points / KITTI Raw 3D</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsimagenet-li">
+  <a href="../../docs/formats/imagenet/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsimagenet"><span class="">ImageNet</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatskinetics-li">
+  <a href="../../docs/formats/kinetics/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatskinetics"><span class="">Kinetics</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatskitti-li">
   <a href="../../docs/formats/kitti/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatskitti"><span class="">KITTI</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatslfw-li">
   <a href="../../docs/formats/lfw/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatslfw"><span class="">LFW</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmapillary_vistas-li">
   <a href="../../docs/formats/mapillary_vistas/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmapillary_vistas"><span class="">Mapillary Vistas</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmnist-li">
-  <a href="../../docs/formats/mnist/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmnist"><span class="">MNIST</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsicdar-li">
-  <a href="../../docs/formats/icdar/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsicdar"><span class="">ICDAR</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsopen_images-li">
-  <a href="../../docs/formats/open_images/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsopen_images"><span class="">Open Images</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsimagenet-li">
-  <a href="../../docs/formats/imagenet/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsimagenet"><span class="">ImageNet</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatspascal_voc-li">
-  <a href="../../docs/formats/pascal_voc/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatspascal_voc"><span class="">Pascal VOC</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatssly_pointcloud-li">
-  <a href="../../docs/formats/sly_pointcloud/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatssly_pointcloud"><span class="">Supervisely Point Cloud</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsyolo-li">
-  <a href="../../docs/formats/yolo/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsyolo"><span class="">YOLO</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmarket1501-li">
   <a href="../../docs/formats/market1501/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmarket1501"><span class="">Market-1501</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmars-li">
   <a href="../../docs/formats/mars/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmars"><span class="">MARS</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatswider_face-li">
-  <a href="../../docs/formats/wider_face/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatswider_face"><span class="">WIDER Face</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmnist-li">
+  <a href="../../docs/formats/mnist/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmnist"><span class="">MNIST</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmpii-li">
+  <a href="../../docs/formats/mpii/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmpii"><span class="">MPII Human Pose Dataset</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsmpii_json-li">
+  <a href="../../docs/formats/mpii_json/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsmpii_json"><span class="">MPII Human Pose Dataset (JSON)</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsopen_images-li">
+  <a href="../../docs/formats/open_images/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsopen_images"><span class="">Open Images</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatspascal_voc-li">
+  <a href="../../docs/formats/pascal_voc/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatspascal_voc"><span class="">Pascal VOC</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatssly_pointcloud-li">
+  <a href="../../docs/formats/sly_pointcloud/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatssly_pointcloud"><span class="">Supervisely Point Cloud</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatssynthia-li">
+  <a href="../../docs/formats/synthia/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatssynthia"><span class="">SYNTHIA</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatskitti_raw-li">
+  <a href="../../docs/formats/kitti_raw/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatskitti_raw"><span class="">Velodyne Points / KITTI Raw 3D</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsvgg_face2-li">
   <a href="../../docs/formats/vgg_face2/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsvgg_face2"><span class="">Vgg Face2 CSV</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsvott_csv-li">
+  <a href="../../docs/formats/vott_csv/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsvott_csv"><span class="">VoTT CSV</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsvott_json-li">
+  <a href="../../docs/formats/vott_json/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsvott_json"><span class="">VoTT JSON</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatswider_face-li">
+  <a href="../../docs/formats/wider_face/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatswider_face"><span class="">WIDER Face</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docsformatsyolo-li">
+  <a href="../../docs/formats/yolo/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsformatsyolo"><span class="">YOLO</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsplugins-li">
@@ -393,11 +406,11 @@ These components are only required for plugins and not installed by default:
     <li><a href="#usage">Usage</a></li>
     <li><a href="#code-style">Code style</a></li>
     <li><a href="#environment">Environment</a></li>
-    <li><a href="#testing-a-idtestinga">Testing <a id="testing"></a></a>
+    <li><a href="#testing">Testing</a>
       <ul>
-        <li><a href="#test-cases-a-idtest_case_descriptiona">Test cases <a id="Test_case_description"></a></a></li>
-        <li><a href="#test-marking-a-idtest_markinga">Test marking <a id="Test_marking"></a></a></li>
-        <li><a href="#test-documentation-a-idtestdoca">Test documentation <a id="TestDoc"></a></a></li>
+        <li><a href="#test-cases">Test cases</a></li>
+        <li><a href="#test-marking">Test marking</a></li>
+        <li><a href="#test-documentation">Test documentation</a></li>
       </ul>
     </li>
   </ul>
@@ -476,7 +489,7 @@ These components are only required for plugins and not installed by default:
 	<h2 id="related-sections">Related sections:</h2>
 <ul>
 <li><a href="../../docs/design/">Design document</a></li>
-<li><a href="../../docs/developer_manual/">Developer manual</a></li>
+<li><a href="../../api/api/developer_manual.html">Developer manual</a></li>
 </ul>
 <h2 id="installation">Installation</h2>
 <h3 id="prerequisites">Prerequisites</h3>
@@ -510,50 +523,15 @@ python datum.py --help
 </code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">datumaro</span>
 </code></pre></div><h2 id="code-style">Code style</h2>
 <p>Try to be readable and consistent with the existing codebase.</p>
-<p>The project mostly follows PEP8 with little differences.
-Continuation lines have a standard indentation step by default,
-or any other, if it improves readability. For long conditionals use 2 steps.
-No trailing whitespaces, 80 characters per line.</p>
-<p>Example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">do_important_work</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">parameter1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">parameter2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">parameter3</span><span style="color:#000;font-weight:bold">,</span>
-        <span style="color:#000">option1</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">None</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">option2</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">None</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">option3</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">None</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#204a87">str</span><span style="color:#000;font-weight:bold">:</span>
-    <span style="color:#4e9a06">&#34;&#34;&#34;
-</span><span style="color:#4e9a06">    Optional description. Mandatory for API.
-</span><span style="color:#4e9a06">    Use comments for implementation specific information, use docstrings
-</span><span style="color:#4e9a06">    to give information to user / developer.
-</span><span style="color:#4e9a06">
-</span><span style="color:#4e9a06">    Returns: status (str) - Possible values: &#39;done&#39;, &#39;failed&#39;
-</span><span style="color:#4e9a06">    &#34;&#34;&#34;</span>
-
-    <span style="color:#ce5c00;font-weight:bold">...</span> <span style="color:#000">do</span> <span style="color:#000">stuff</span> <span style="color:#ce5c00;font-weight:bold">...</span>
-
-    <span style="color:#8f5902;font-style:italic"># Use +1 level of indentation for continuation lines</span>
-    <span style="color:#000">variable_with_a_long_but_meaningful_name</span> <span style="color:#ce5c00;font-weight:bold">=</span> \
-        <span style="color:#000">function_with_a_long_but_meaningful_name</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">arg1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">arg2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">arg3</span><span style="color:#000;font-weight:bold">,</span>
-            <span style="color:#000">kwarg1</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">value_with_a_long_name</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">kwarg2</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">value_with_a_long_name</span><span style="color:#000;font-weight:bold">)</span>
-
-    <span style="color:#8f5902;font-style:italic"># long conditions, loops, with etc. also use +1 level of indentation</span>
-    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">condition1</span> <span style="color:#204a87;font-weight:bold">and</span> <span style="color:#000">long_condition2</span> <span style="color:#204a87;font-weight:bold">or</span> \
-            <span style="color:#204a87;font-weight:bold">not</span> <span style="color:#000">condition3</span> <span style="color:#204a87;font-weight:bold">and</span> <span style="color:#000">condition4</span> <span style="color:#204a87;font-weight:bold">and</span> <span style="color:#000">condition5</span> <span style="color:#204a87;font-weight:bold">or</span> \
-            <span style="color:#000">condition6</span> <span style="color:#204a87;font-weight:bold">and</span> <span style="color:#000">condition7</span><span style="color:#000;font-weight:bold">:</span>
-
-        <span style="color:#ce5c00;font-weight:bold">...</span> <span style="color:#000">do</span> <span style="color:#000">other</span> <span style="color:#000">stuff</span> <span style="color:#ce5c00;font-weight:bold">...</span>
-
-    <span style="color:#204a87;font-weight:bold">elif</span> <span style="color:#000">other_conditions</span><span style="color:#000;font-weight:bold">:</span>
-
-        <span style="color:#ce5c00;font-weight:bold">...</span> <span style="color:#000">some</span> <span style="color:#000">other</span> <span style="color:#000">things</span> <span style="color:#ce5c00;font-weight:bold">...</span>
-
-    <span style="color:#8f5902;font-style:italic"># in some cases special formatting can improve code readability</span>
-    <span style="color:#000">specific_case_formatting</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">array</span><span style="color:#000;font-weight:bold">([</span>
-        <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span>
-        <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span>
-        <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">],</span>
-    <span style="color:#000;font-weight:bold">],</span> <span style="color:#000">dtype</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">int32</span><span style="color:#000;font-weight:bold">)</span>
-
-    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">status</span>
-</code></pre></div><h2 id="environment">Environment</h2>
+<p>The project uses Black for code formatting and isort for sorting import statements.
+You can find corresponding configurations in <code>pyproject.toml</code> in the repository root.
+No trailing whitespaces, at most 100 characters per line.</p>
+<p>Datumaro includes a Git pre-commit hook, <code>dev/pre-commit.py</code> that can help you
+follow the style requirements. See the comment at the top of that file for more information.</p>
+<h2 id="environment">Environment</h2>
 <p>The recommended editor is VS Code with the Python language plugin.</p>
-<h2 id="testing-a-idtestinga">Testing <a id="testing"></a></h2>
+<h2 id="testing">Testing</h2>
+<p><a id="testing"></a></p>
 <p>It is expected that all Datumaro functionality is covered and checked by
 unit tests. Tests are placed in the <code>tests/</code> directory. Additional
 pre-generated files for tests can be stored in the <code>tests/assets/</code> directory.
@@ -564,8 +542,10 @@ CLI tests are separated from the core tests, they are stored in the
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pytest -v
 </code></pre></div><p>or</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">python -m pytest -v
-</code></pre></div><h3 id="test-cases-a-idtest_case_descriptiona">Test cases <a id="Test_case_description"></a></h3>
-<h3 id="test-marking-a-idtest_markinga">Test marking <a id="Test_marking"></a></h3>
+</code></pre></div><h3 id="test-cases">Test cases</h3>
+<p><a id="Test_case_description"></a></p>
+<h3 id="test-marking">Test marking</h3>
+<p><a id="Test_marking"></a></p>
 <p>For better integration with CI and requirements tracking,
 we use special annotations for tests.</p>
 <p>A test needs to linked with a requirement it is related to. To link a
@@ -586,7 +566,8 @@ They can be overridden for a specific test:</p>
     <span style="color:#5c35cc;font-weight:bold">@mark_requirement</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Requirements</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">DATUM_GENERAL_REQ</span><span style="color:#000;font-weight:bold">)</span>
     <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">test_my_requirement</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">):</span>
         <span style="color:#ce5c00;font-weight:bold">...</span> <span style="color:#000">do</span> <span style="color:#000">stuff</span> <span style="color:#ce5c00;font-weight:bold">...</span>
-</code></pre></div><h4 id="requirements-a-idrequirementsa">Requirements <a id="Requirements"></a></h4>
+</code></pre></div><h4 id="requirements">Requirements</h4>
+<p><a id="Requirements"></a></p>
 <p>Requirements and other links need to be added to <a href="https://github.com/openvinotoolkit/datumaro/tree/develop/tests/requirements.py"><code>tests/requirements.py</code></a>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000">DATUM_244</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Add Snyk integration&#34;</span>
 <span style="color:#000">DATUM_BUG_219</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Return format is not uniform&#34;</span>
@@ -618,7 +599,8 @@ The marking used for indication of different system components</p>
     <span style="color:#000;font-weight:bold">(</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">zeros</span><span style="color:#000;font-weight:bold">([</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">]),</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">),</span>
     <span style="color:#000;font-weight:bold">(</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">zeros</span><span style="color:#000;font-weight:bold">([</span><span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">]),</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">),</span>
 <span style="color:#000;font-weight:bold">])</span>
-</code></pre></div><h3 id="test-documentation-a-idtestdoca">Test documentation <a id="TestDoc"></a></h3>
+</code></pre></div><h3 id="test-documentation">Test documentation</h3>
+<p><a id="TestDoc"></a></p>
 <p>Tests are documented with docs strings. Test descriptions must contain
 the following: sections: <code>Description</code>, <code>Expected results</code> and <code>Steps</code>.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">test_can_convert_polygons_to_mask</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">):</span>
