@@ -142,7 +142,7 @@ import datumaro as dm ... dataset = dm.Dataset.import_from(path, format) ... Glo
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.4c302fb9da6c68e6b9055a86a86caab0.json"
+  data-offline-search-index-json-src="../../../offline-search-index.b92f5c42cd63a0ec31112003b6deae86.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -170,7 +170,7 @@ import datumaro as dm ... dataset = dm.Dataset.import_from(path, format) ... Glo
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.4c302fb9da6c68e6b9055a86a86caab0.json"
+  data-offline-search-index-json-src="../../../offline-search-index.b92f5c42cd63a0ec31112003b6deae86.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -627,8 +627,8 @@ command line context.</p>
 first using the <a href="../../../docs/user-manual/command-reference/models/#register-model"><code>model add</code></a> command.</p>
 <p>A typical way to obtain Datumaro projects is to export tasks in
 <a href="https://github.com/openvinotoolkit/cvat">CVAT</a> UI.</p>
-<h3 id="project-data-model">Project data model</h3>
 <p><a id="data-model"></a></p>
+<h3 id="project-data-model">Project data model</h3>
 <p><img src="../../../images/project_model.svg" alt="project model"></p>
 <p>Datumaro tries to combine a &ldquo;Git for datasets&rdquo; and a build system like
 make or CMake for datasets in a single solution. Currently, <code>Project</code>
@@ -699,8 +699,8 @@ datum transform &lt;...&gt; source2
 │   └── &lt;<span style="color:#204a87">source</span> data&gt;
 └── &lt;<span style="color:#204a87">source</span> name 2&gt;/ <span style="color:#8f5902;font-style:italic"># working directory for the source 2</span>
     └── &lt;<span style="color:#204a87">source</span> data&gt;
-</code></pre></div><h3 id="datasets-and-data-sources">Datasets and Data Sources</h3>
-<p><a id="data-sources"></a></p>
+</code></pre></div><p><a id="data-sources"></a></p>
+<h3 id="datasets-and-data-sources">Datasets and Data Sources</h3>
 <p>A project can contain an arbitrary number of Data Sources. Each Data Source
 describes a dataset in a specific format. A project acts as a manager for
 the data sources and allows to manipulate them separately or as a whole, in
@@ -837,8 +837,8 @@ common files, so if there are only annotation differences between datasets,
 or data sources contain the same images, there will only be a single copy
 of the related media files. This helps to keep storage use reasonable and
 avoid unnecessary data copies.</p>
-<h3 id="examples">Examples</h3>
 <p><a id="cli-examples"></a></p>
+<h3 id="examples">Examples</h3>
 <p>Example: create a project, add dataset, modify, restore an old version</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
 datum import &lt;path/to/dataset&gt; -f coco -n source1

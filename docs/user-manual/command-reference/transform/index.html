@@ -136,7 +136,7 @@ This command allows to modify dataset images or annotations all at once."/>
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.4c302fb9da6c68e6b9055a86a86caab0.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.b92f5c42cd63a0ec31112003b6deae86.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -164,7 +164,7 @@ This command allows to modify dataset images or annotations all at once."/>
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.4c302fb9da6c68e6b9055a86a86caab0.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.b92f5c42cd63a0ec31112003b6deae86.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -539,8 +539,8 @@ option to print parameter info.</li>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create &lt;...&gt;
 datum import &lt;...&gt; -n source-1
 datum transform -t rename source-1 -- -e <span style="color:#4e9a06">&#39;|^frame_||&#39;</span>
-</code></pre></div><h4 id="built-in-transforms">Built-in transforms</h4>
-<p><a id="builtin-transforms"></a></p>
+</code></pre></div><p><a id="builtin-transforms"></a></p>
+<h4 id="built-in-transforms">Built-in transforms</h4>
 <p>Basic dataset item manipulations:</p>
 <ul>
 <li><a href="#rename-transform"><code>rename</code></a> - Renames dataset items by regular expression</li>
@@ -591,8 +591,8 @@ occluded segments of covered masks</li>
 <li><a href="#bbox_value_decrement-transform"><code>bbox_value_decrement</code></a> - Subtracts
 1 from bbox coordinates</li>
 </ul>
-<h5 id="rename"><code>rename</code></h5>
 <p><a id="rename-transform"></a></p>
+<h5 id="rename"><code>rename</code></h5>
 <p>Renames items in the dataset. Supports regular expressions.
 The first character in the expression is a delimiter for
 the pattern and replacement parts. Replacement part can also
@@ -624,8 +624,8 @@ Replace &lsquo;pattern&rsquo; with &lsquo;replacement&rsquo;:</p>
 <ul>
 <li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 </ul>
-<h5 id="reindex"><code>reindex</code></h5>
 <p><a id="reindex-transform"></a></p>
+<h5 id="reindex"><code>reindex</code></h5>
 <p>Replaces dataset item IDs with sequential indices.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">reindex <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-s START<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -676,8 +676,8 @@ when <code>num_cut</code> is smaller than result length (default: <code>uniform<
   --num_cut <span style="color:#0000cf;font-weight:bold">100</span>
   --over_sample random
   --under_sample uniform
-</code></pre></div><h5 id="relevancy_sampler"><code>relevancy_sampler</code></h5>
-<p><a id="relevancy_sampler-transform"></a></p>
+</code></pre></div><p><a id="relevancy_sampler-transform"></a></p>
+<h5 id="relevancy_sampler"><code>relevancy_sampler</code></h5>
 <p>Sampler that analyzes model inference results on the dataset
 and picks the most relevant samples for training.</p>
 <p>Creates a dataset from the <code>-k/--count</code> hardest items for a model.
@@ -757,8 +757,8 @@ Select subset of 20 images randomly</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t random_sampler -- -k <span style="color:#0000cf;font-weight:bold">20</span>
 </code></pre></div><p>Select subset of 20 images, modify only <code>train</code> subset</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t random_sampler -- -k <span style="color:#0000cf;font-weight:bold">20</span> -s train
-</code></pre></div><h5 id="random_label_sampler"><code>random_label_sampler</code></h5>
-<p><a id="label_random_sampler-transform"></a></p>
+</code></pre></div><p><a id="label_random_sampler-transform"></a></p>
+<h5 id="random_label_sampler"><code>random_label_sampler</code></h5>
 <p>Sampler that keeps at least the required number of annotations of
 each class in the dataset for each subset separately.</p>
 <p>Consider using the &ldquo;stats&rdquo; command to get class distribution in the dataset.</p>
@@ -796,8 +796,8 @@ unmentioned class:</p>
   -l dog:5 <span style="color:#4e9a06">\ </span><span style="color:#8f5902;font-style:italic"># keep 5 images with dogs</span>
   -l car:0 <span style="color:#4e9a06">\ </span><span style="color:#8f5902;font-style:italic"># remove car annotations</span>
   -k <span style="color:#0000cf;font-weight:bold">10</span> <span style="color:#8f5902;font-style:italic"># for remaining classes</span>
-</code></pre></div><h5 id="resize"><code>resize</code></h5>
-<p><a id="resize-transform"></a></p>
+</code></pre></div><p><a id="resize-transform"></a></p>
+<h5 id="resize"><code>resize</code></h5>
 <p>Resizes images and annotations in the dataset to the specified size.
 Supports upscaling, downscaling and mixed variants.</p>
 <p>Usage:</p>
@@ -824,8 +824,8 @@ Resize all images to 256x256 size</p>
 <p>Examples:</p>
 <p>Remove specific images from the dataset</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t remove_images -- --id <span style="color:#4e9a06">&#39;image1:train&#39;</span> --id <span style="color:#4e9a06">&#39;image2:test&#39;</span>
-</code></pre></div><h5 id="remove_annotations"><code>remove_annotations</code></h5>
-<p><a id="remove_annotations-transform"></a></p>
+</code></pre></div><p><a id="remove_annotations-transform"></a></p>
+<h5 id="remove_annotations"><code>remove_annotations</code></h5>
 <p>Allows to remove annotations on specific dataset items.</p>
 <p>Can be useful to clean the dataset from broken or unnecessary annotations.</p>
 <p>Usage:</p>
@@ -839,8 +839,8 @@ If not specified, removes all annotations (repeatable)</li>
 <p>Examples:
 Remove annotations from specific items in the dataset</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t remove_annotations -- --id <span style="color:#4e9a06">&#39;image1:train&#39;</span> --id <span style="color:#4e9a06">&#39;image2:test&#39;</span>
-</code></pre></div><h5 id="remove_attributes"><code>remove_attributes</code></h5>
-<p><a id="remove_attributes-transform"></a></p>
+</code></pre></div><p><a id="remove_attributes-transform"></a></p>
+<h5 id="remove_attributes"><code>remove_attributes</code></h5>
 <p>Allows to remove item and annotation attributes in a dataset.</p>
 <p>Can be useful to clean the dataset from broken or unnecessary attributes.</p>
 <p>Usage:</p>
@@ -861,8 +861,8 @@ Remove the <code>is_crowd</code> attribute from dataset</p>
 the <code>2010_001705</code> item in the <code>train</code> subset</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t remove_attributes -- <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  --id <span style="color:#4e9a06">&#39;2010_001705:train&#39;</span> --attr <span style="color:#4e9a06">&#39;occluded&#39;</span>
-</code></pre></div><h5 id="random_split"><code>random_split</code></h5>
-<p><a id="random_split-transform"></a></p>
+</code></pre></div><p><a id="random_split-transform"></a></p>
+<h5 id="random_split"><code>random_split</code></h5>
 <p>Joins all subsets into one and splits the result into few parts.
 It is expected that item ids are unique and subset ratios sum up to 1.</p>
 <p>Usage:</p>
@@ -954,8 +954,8 @@ datum transform -t split -- -t reid \
   --subset train:.5 --subset val:.2 --subset test:.3 --query .5
 </code></pre><p>Example: use <code>person_id</code> attribute for splitting</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t split -- -t detection --attr person_id
-</code></pre></div><h5 id="map_subsets"><code>map_subsets</code></h5>
-<p><a id="map_subsets-transform"></a></p>
+</code></pre></div><p><a id="map_subsets-transform"></a></p>
+<h5 id="map_subsets"><code>map_subsets</code></h5>
 <p>Renames subsets in the dataset.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">map_subsets <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-s MAPPING<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -998,8 +998,8 @@ don&rsquo;t touch other classes:</p>
 </code></pre></div><p>Rename <code>person</code> to <code>car</code> and <code>cat</code> to <code>dog</code>, keep <code>bus</code>, remove others:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t remap_labels -- <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -l person:car -l bus:bus -l cat:dog --default delete
-</code></pre></div><h5 id="project_labels"><code>project_labels</code></h5>
-<p><a id="project_labels-transform"></a></p>
+</code></pre></div><p><a id="project_labels-transform"></a></p>
+<h5 id="project_labels"><code>project_labels</code></h5>
 <p>Changes the order of labels in the dataset from the existing
 to the desired one, removes unknown labels and adds new labels.
 Updates or removes the corresponding annotations.</p>
@@ -1020,8 +1020,8 @@ Set dataset labels to [<code>person</code>, <code>cat</code>, <code>dog</code>],
 Original labels (for example): <code>cat</code>, <code>dog</code>, <code>elephant</code>, <code>human</code>.
 New labels: <code>person</code> (added), <code>cat</code> (kept), <code>dog</code> (kept).</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t project_labels -- -l person -l cat -l dog
-</code></pre></div><h5 id="shapes_to_boxes"><code>shapes_to_boxes</code></h5>
-<p><a id="shapes_to_boxes-transform"></a></p>
+</code></pre></div><p><a id="shapes_to_boxes-transform"></a></p>
+<h5 id="shapes_to_boxes"><code>shapes_to_boxes</code></h5>
 <p>Converts spatial annotations (masks, polygons, polylines, points)
 to enclosing bounding boxes.</p>
 <p>Usage:</p>
@@ -1036,8 +1036,8 @@ Convert spatial annotations between each other</p>
 datum transform -t masks_to_polygons
 datum transform -t polygons_to_masks
 datum transform -t shapes_to_boxes
-</code></pre></div><h5 id="boxes_to_masks"><code>boxes_to_masks</code></h5>
-<p><a id="boxes_to_masks-transform"></a></p>
+</code></pre></div><p><a id="boxes_to_masks-transform"></a></p>
+<h5 id="boxes_to_masks"><code>boxes_to_masks</code></h5>
 <p>Converts bounding boxes to masks.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">boxes_to_masks <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -1045,8 +1045,8 @@ datum transform -t shapes_to_boxes
 <ul>
 <li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 </ul>
-<h5 id="polygons_to_masks"><code>polygons_to_masks</code></h5>
 <p><a id="polygons_to_masks-transform"></a></p>
+<h5 id="polygons_to_masks"><code>polygons_to_masks</code></h5>
 <p>Converts polygons to masks.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">polygons_to_masks <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -1054,8 +1054,8 @@ datum transform -t shapes_to_boxes
 <ul>
 <li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 </ul>
-<h5 id="masks_to_polygons"><code>masks_to_polygons</code></h5>
 <p><a id="masks_to_polygons-transform"></a></p>
+<h5 id="masks_to_polygons"><code>masks_to_polygons</code></h5>
 <p>Converts masks to polygons.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">masks_to_polygons <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -1063,8 +1063,8 @@ datum transform -t shapes_to_boxes
 <ul>
 <li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 </ul>
-<h5 id="anns_to_labels"><code>anns_to_labels</code></h5>
 <p><a id="anns_to_labels-transform"></a></p>
+<h5 id="anns_to_labels"><code>anns_to_labels</code></h5>
 <p>Collects all labels from annotations (of all types) and transforms
 them into a set of annotations of type <code>Label</code></p>
 <p>Usage:</p>
@@ -1073,8 +1073,8 @@ them into a set of annotations of type <code>Label</code></p>
 <ul>
 <li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 </ul>
-<h5 id="merge_instance_segments"><code>merge_instance_segments</code></h5>
 <p><a id="merge_instance_segments-transform"></a></p>
+<h5 id="merge_instance_segments"><code>merge_instance_segments</code></h5>
 <p>Replaces instance masks and, optionally, polygons with a single mask.
 A group of annotations with the same group id is considered an &ldquo;instance&rdquo;.
 The largest annotation in the group is considered the group &ldquo;head&rdquo;, so the
@@ -1086,8 +1086,8 @@ resulting mask takes properties from that annotation.</p>
 <li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 <li><code>--include-polygons</code> (flag) - Include polygons</li>
 </ul>
-<h5 id="crop_covered_segments"><code>crop_covered_segments</code></h5>
 <p><a id="crop_covered_segments-transform"></a></p>
+<h5 id="crop_covered_segments"><code>crop_covered_segments</code></h5>
 <p>Sorts polygons and masks (&ldquo;segments&rdquo;) according to <code>z_order</code>,
 crops covered areas of underlying segments. If a segment is split
 into several independent parts by the segments above, produces
@@ -1098,8 +1098,8 @@ the corresponding number of separate annotations joined into a group.</p>
 <ul>
 <li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 </ul>
-<h5 id="bbox_value_decrement"><code>bbox_value_decrement</code></h5>
 <p><a id="bbox_value_decrement-transform"></a></p>
+<h5 id="bbox_value_decrement"><code>bbox_value_decrement</code></h5>
 <p>Subtracts one from the coordinates of bounding boxes</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">bbox_values_decrement <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span>

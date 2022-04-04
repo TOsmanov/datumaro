@@ -129,7 +129,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.4c302fb9da6c68e6b9055a86a86caab0.json"
+  data-offline-search-index-json-src="../../../offline-search-index.b92f5c42cd63a0ec31112003b6deae86.json"
   data-offline-search-base-href="../../../"
   data-offline-search-max-results="10"
 >
@@ -562,8 +562,8 @@ pip install datumaro<span style="color:#ce5c00;font-weight:bold">[</span>default
 pip install <span style="color:#4e9a06">&#39;git+https://github.com/openvinotoolkit/datumaro[default]&#39;</span>
 </code></pre></div><p>Read more about choosing between <code>datumaro</code> and <code>datumaro[default]</code>
 <a href="#core-install">here</a>.</p>
-<h4 id="plugins">Plugins</h4>
 <p><a id="installation-plugins"></a></p>
+<h4 id="plugins">Plugins</h4>
 <p>Datumaro has many plugins, which are responsible for dataset formats,
 model launchers and other optional components. If a plugin has dependencies,
 they can require additional installation. You can find the list of all the
@@ -758,8 +758,8 @@ command line context.</p>
 first using the <a href="../../../docs/user-manual/command-reference/models/#register-model"><code>model add</code></a> command.</p>
 <p>A typical way to obtain Datumaro projects is to export tasks in
 <a href="https://github.com/openvinotoolkit/cvat">CVAT</a> UI.</p>
-<h3 id="project-data-model">Project data model</h3>
 <p><a id="data-model"></a></p>
+<h3 id="project-data-model">Project data model</h3>
 <p><img src="../../../images/project_model.svg" alt="project model"></p>
 <p>Datumaro tries to combine a &ldquo;Git for datasets&rdquo; and a build system like
 make or CMake for datasets in a single solution. Currently, <code>Project</code>
@@ -830,8 +830,8 @@ datum transform &lt;...&gt; source2
 │   └── &lt;<span style="color:#204a87">source</span> data&gt;
 └── &lt;<span style="color:#204a87">source</span> name 2&gt;/ <span style="color:#8f5902;font-style:italic"># working directory for the source 2</span>
     └── &lt;<span style="color:#204a87">source</span> data&gt;
-</code></pre></div><h3 id="datasets-and-data-sources">Datasets and Data Sources</h3>
-<p><a id="data-sources"></a></p>
+</code></pre></div><p><a id="data-sources"></a></p>
+<h3 id="datasets-and-data-sources">Datasets and Data Sources</h3>
 <p>A project can contain an arbitrary number of Data Sources. Each Data Source
 describes a dataset in a specific format. A project acts as a manager for
 the data sources and allows to manipulate them separately or as a whole, in
@@ -968,8 +968,8 @@ common files, so if there are only annotation differences between datasets,
 or data sources contain the same images, there will only be a single copy
 of the related media files. This helps to keep storage use reasonable and
 avoid unnecessary data copies.</p>
-<h3 id="examples">Examples</h3>
 <p><a id="cli-examples"></a></p>
+<h3 id="examples">Examples</h3>
 <p>Example: create a project, add dataset, modify, restore an old version</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
 datum import &lt;path/to/dataset&gt; -f coco -n source1
@@ -1269,8 +1269,8 @@ datum <span style="color:#204a87">export</span> -f voc -- --save-images
 </ul>
 </li>
 </ul>
-<h3 id="supported-annotation-types">Supported annotation types</h3>
 <p><a id="annotation-types"></a></p>
+<h3 id="supported-annotation-types">Supported annotation types</h3>
 <ul>
 <li>Labels</li>
 <li>Bounding boxes</li>
@@ -1285,8 +1285,8 @@ datum <span style="color:#204a87">export</span> -f voc -- --save-images
 <p>Datumaro does not separate datasets by tasks like classification, detection
 etc. Instead, datasets can have any annotations. When a dataset is exported
 in a specific format, only relevant annotations are exported.</p>
-<h3 id="dataset-meta-info-file">Dataset meta info file</h3>
 <p><a id="dataset-meta-file"></a></p>
+<h3 id="dataset-meta-info-file">Dataset meta info file</h3>
 <p>It is possible to use classes that are not original to the format.
 To do this, use <code>dataset_meta.json</code>.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
@@ -2553,8 +2553,8 @@ look for groups consisting of <code>person</code>, <code>hand</code> <code>head<
     
 	<h1 id="pg-db2ab356420634e305b5ea0550f9b9c3">5.15 - Models</h1>
     
-	<h3 id="register-model">Register model</h3>
-<p><a id="model-add"></a></p>
+	<p><a id="model-add"></a></p>
+<h3 id="register-model">Register model</h3>
 <p>Datumaro can execute deep learning models in various frameworks. Check
 <a href="../../../docs/user-manual/extending/#builtin-plugins">the plugins section</a>
 for more info.</p>
@@ -2629,8 +2629,8 @@ You can find OpenVINO model interpreter samples in
     <span style="color:#000">label_categories</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;person&#39;</span><span style="color:#000;font-weight:bold">)</span>
     <span style="color:#000">label_categories</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;car&#39;</span><span style="color:#000;font-weight:bold">)</span>
     <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">{</span> <span style="color:#000">dm</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">AnnotationType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">label</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">label_categories</span> <span style="color:#000;font-weight:bold">}</span>
-</code></pre></div><h3 id="remove-models">Remove Models</h3>
-<p><a id="model-remove"></a></p>
+</code></pre></div><p><a id="model-remove"></a></p>
+<h3 id="remove-models">Remove Models</h3>
 <p>To remove a model from a project, use the <code>datum model remove</code> command.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum model remove <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-p PROJECT_DIR<span style="color:#ce5c00;font-weight:bold">]</span> name
@@ -2645,8 +2645,8 @@ You can find OpenVINO model interpreter samples in
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create
 datum model add &lt;...&gt; -n model1
 datum remove model1
-</code></pre></div><h3 id="run-model">Run Model</h3>
-<p><a id="model-run"></a></p>
+</code></pre></div><p><a id="model-run"></a></p>
+<h3 id="run-model">Run Model</h3>
 <p>This command applies model to dataset images and produces a new dataset.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum model run
@@ -2765,8 +2765,8 @@ when it is not empty.</li>
     
 	<h1 id="pg-49c04c4e75f0995ee1c9c4c121d042c7">5.17 - Projects</h1>
     
-	<h3 id="migrate-project">Migrate project</h3>
-<p><a id="project-migrate"></a></p>
+	<p><a id="project-migrate"></a></p>
+<h3 id="migrate-project">Migrate project</h3>
 <p>Updates the project from an old version to the current one and saves the
 resulting project in the output directory. Projects cannot be updated
 inplace.</p>
@@ -2790,8 +2790,8 @@ skip these errors an continue its work.</p>
 <li>Migrate a project from v1 to v2, save the new project in other dir:
 <code>datum project migrate -o &lt;output/dir&gt;</code></li>
 </ul>
-<h3 id="print-project-info">Print project info</h3>
 <p><a id="project-info"></a></p>
+<h3 id="print-project-info">Print project info</h3>
 <p>Prints project configuration info such as available plugins, registered models,
 imported sources and build tree.</p>
 <p>Usage:</p>
@@ -2869,8 +2869,8 @@ Sources:
 	<h1 id="pg-dc182af461d71cbd7217b8679bde29bc">5.18 - Sources</h1>
     
 	<p>These commands are specific for Data Sources. Read more about them <a href="../../../docs/user-manual/how_to_use_datumaro#data-sources">here</a>.</p>
-<h3 id="import-dataset">Import Dataset</h3>
 <p><a id="source-import"></a></p>
+<h3 id="import-dataset">Import Dataset</h3>
 <p>Datasets can be added to a Datumaro project with the <code>import</code> command,
 which adds a dataset link into the project and downloads (or copies)
 the dataset. If you need to add a dataset already copied into the project,
@@ -2923,8 +2923,8 @@ datum import -f voc_detection -r custom_subset_dir/default.txt &lt;path/to/voc&g
 datum import -f datumaro &lt;path/to/datumaro/default.json&gt;
 datum import -f image_dir &lt;path/to/images/dir&gt;
 datum <span style="color:#204a87">export</span> -f tf_detection_api -- --save-images
-</code></pre></div><h3 id="add-dataset">Add Dataset</h3>
-<p><a id="source-add"></a></p>
+</code></pre></div><p><a id="source-add"></a></p>
+<h3 id="add-dataset">Add Dataset</h3>
 <p>Existing datasets can be added to a Datumaro project with the <code>add</code> command.
 The command adds a project-local directory as a data source in the project.
 Unlike the <a href="#source-import"><code>import</code></a>
@@ -2979,8 +2979,8 @@ datum <span style="color:#204a87">export</span> -f yolo -- --save-images
 </code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create -o proj/
 mv ~/my_coco/ proj/my_coco/ <span style="color:#8f5902;font-style:italic"># move the dataset into the project directory</span>
 datum add -p proj/ -f coco proj/my_coco/
-</code></pre></div><h3 id="remove-datasets">Remove Datasets</h3>
-<p><a id="source-remove"></a></p>
+</code></pre></div><p><a id="source-remove"></a></p>
+<h3 id="remove-datasets">Remove Datasets</h3>
 <p>To remove a data source from a project, use the <code>remove</code> command.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum remove <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--force<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--keep-data<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-p PROJECT_DIR<span style="color:#ce5c00;font-weight:bold">]</span> name <span style="color:#ce5c00;font-weight:bold">[</span>name ...<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -3433,8 +3433,8 @@ option to print parameter info.</li>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create &lt;...&gt;
 datum import &lt;...&gt; -n source-1
 datum transform -t rename source-1 -- -e <span style="color:#4e9a06">&#39;|^frame_||&#39;</span>
-</code></pre></div><h4 id="built-in-transforms">Built-in transforms</h4>
-<p><a id="builtin-transforms"></a></p>
+</code></pre></div><p><a id="builtin-transforms"></a></p>
+<h4 id="built-in-transforms">Built-in transforms</h4>
 <p>Basic dataset item manipulations:</p>
 <ul>
 <li><a href="#rename-transform"><code>rename</code></a> - Renames dataset items by regular expression</li>
@@ -3485,8 +3485,8 @@ occluded segments of covered masks</li>
 <li><a href="#bbox_value_decrement-transform"><code>bbox_value_decrement</code></a> - Subtracts
 1 from bbox coordinates</li>
 </ul>
-<h5 id="rename"><code>rename</code></h5>
 <p><a id="rename-transform"></a></p>
+<h5 id="rename"><code>rename</code></h5>
 <p>Renames items in the dataset. Supports regular expressions.
 The first character in the expression is a delimiter for
 the pattern and replacement parts. Replacement part can also
@@ -3518,8 +3518,8 @@ Replace &lsquo;pattern&rsquo; with &lsquo;replacement&rsquo;:</p>
 <ul>
 <li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 </ul>
-<h5 id="reindex"><code>reindex</code></h5>
 <p><a id="reindex-transform"></a></p>
+<h5 id="reindex"><code>reindex</code></h5>
 <p>Replaces dataset item IDs with sequential indices.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">reindex <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-s START<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -3570,8 +3570,8 @@ when <code>num_cut</code> is smaller than result length (default: <code>uniform<
   --num_cut <span style="color:#0000cf;font-weight:bold">100</span>
   --over_sample random
   --under_sample uniform
-</code></pre></div><h5 id="relevancy_sampler"><code>relevancy_sampler</code></h5>
-<p><a id="relevancy_sampler-transform"></a></p>
+</code></pre></div><p><a id="relevancy_sampler-transform"></a></p>
+<h5 id="relevancy_sampler"><code>relevancy_sampler</code></h5>
 <p>Sampler that analyzes model inference results on the dataset
 and picks the most relevant samples for training.</p>
 <p>Creates a dataset from the <code>-k/--count</code> hardest items for a model.
@@ -3651,8 +3651,8 @@ Select subset of 20 images randomly</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t random_sampler -- -k <span style="color:#0000cf;font-weight:bold">20</span>
 </code></pre></div><p>Select subset of 20 images, modify only <code>train</code> subset</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t random_sampler -- -k <span style="color:#0000cf;font-weight:bold">20</span> -s train
-</code></pre></div><h5 id="random_label_sampler"><code>random_label_sampler</code></h5>
-<p><a id="label_random_sampler-transform"></a></p>
+</code></pre></div><p><a id="label_random_sampler-transform"></a></p>
+<h5 id="random_label_sampler"><code>random_label_sampler</code></h5>
 <p>Sampler that keeps at least the required number of annotations of
 each class in the dataset for each subset separately.</p>
 <p>Consider using the &ldquo;stats&rdquo; command to get class distribution in the dataset.</p>
@@ -3690,8 +3690,8 @@ unmentioned class:</p>
   -l dog:5 <span style="color:#4e9a06">\ </span><span style="color:#8f5902;font-style:italic"># keep 5 images with dogs</span>
   -l car:0 <span style="color:#4e9a06">\ </span><span style="color:#8f5902;font-style:italic"># remove car annotations</span>
   -k <span style="color:#0000cf;font-weight:bold">10</span> <span style="color:#8f5902;font-style:italic"># for remaining classes</span>
-</code></pre></div><h5 id="resize"><code>resize</code></h5>
-<p><a id="resize-transform"></a></p>
+</code></pre></div><p><a id="resize-transform"></a></p>
+<h5 id="resize"><code>resize</code></h5>
 <p>Resizes images and annotations in the dataset to the specified size.
 Supports upscaling, downscaling and mixed variants.</p>
 <p>Usage:</p>
@@ -3718,8 +3718,8 @@ Resize all images to 256x256 size</p>
 <p>Examples:</p>
 <p>Remove specific images from the dataset</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t remove_images -- --id <span style="color:#4e9a06">&#39;image1:train&#39;</span> --id <span style="color:#4e9a06">&#39;image2:test&#39;</span>
-</code></pre></div><h5 id="remove_annotations"><code>remove_annotations</code></h5>
-<p><a id="remove_annotations-transform"></a></p>
+</code></pre></div><p><a id="remove_annotations-transform"></a></p>
+<h5 id="remove_annotations"><code>remove_annotations</code></h5>
 <p>Allows to remove annotations on specific dataset items.</p>
 <p>Can be useful to clean the dataset from broken or unnecessary annotations.</p>
 <p>Usage:</p>
@@ -3733,8 +3733,8 @@ If not specified, removes all annotations (repeatable)</li>
 <p>Examples:
 Remove annotations from specific items in the dataset</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t remove_annotations -- --id <span style="color:#4e9a06">&#39;image1:train&#39;</span> --id <span style="color:#4e9a06">&#39;image2:test&#39;</span>
-</code></pre></div><h5 id="remove_attributes"><code>remove_attributes</code></h5>
-<p><a id="remove_attributes-transform"></a></p>
+</code></pre></div><p><a id="remove_attributes-transform"></a></p>
+<h5 id="remove_attributes"><code>remove_attributes</code></h5>
 <p>Allows to remove item and annotation attributes in a dataset.</p>
 <p>Can be useful to clean the dataset from broken or unnecessary attributes.</p>
 <p>Usage:</p>
@@ -3755,8 +3755,8 @@ Remove the <code>is_crowd</code> attribute from dataset</p>
 the <code>2010_001705</code> item in the <code>train</code> subset</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t remove_attributes -- <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  --id <span style="color:#4e9a06">&#39;2010_001705:train&#39;</span> --attr <span style="color:#4e9a06">&#39;occluded&#39;</span>
-</code></pre></div><h5 id="random_split"><code>random_split</code></h5>
-<p><a id="random_split-transform"></a></p>
+</code></pre></div><p><a id="random_split-transform"></a></p>
+<h5 id="random_split"><code>random_split</code></h5>
 <p>Joins all subsets into one and splits the result into few parts.
 It is expected that item ids are unique and subset ratios sum up to 1.</p>
 <p>Usage:</p>
@@ -3848,8 +3848,8 @@ datum transform -t split -- -t reid \
   --subset train:.5 --subset val:.2 --subset test:.3 --query .5
 </code></pre><p>Example: use <code>person_id</code> attribute for splitting</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t split -- -t detection --attr person_id
-</code></pre></div><h5 id="map_subsets"><code>map_subsets</code></h5>
-<p><a id="map_subsets-transform"></a></p>
+</code></pre></div><p><a id="map_subsets-transform"></a></p>
+<h5 id="map_subsets"><code>map_subsets</code></h5>
 <p>Renames subsets in the dataset.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">map_subsets <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-s MAPPING<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -3892,8 +3892,8 @@ don&rsquo;t touch other classes:</p>
 </code></pre></div><p>Rename <code>person</code> to <code>car</code> and <code>cat</code> to <code>dog</code>, keep <code>bus</code>, remove others:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t remap_labels -- <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -l person:car -l bus:bus -l cat:dog --default delete
-</code></pre></div><h5 id="project_labels"><code>project_labels</code></h5>
-<p><a id="project_labels-transform"></a></p>
+</code></pre></div><p><a id="project_labels-transform"></a></p>
+<h5 id="project_labels"><code>project_labels</code></h5>
 <p>Changes the order of labels in the dataset from the existing
 to the desired one, removes unknown labels and adds new labels.
 Updates or removes the corresponding annotations.</p>
@@ -3914,8 +3914,8 @@ Set dataset labels to [<code>person</code>, <code>cat</code>, <code>dog</code>],
 Original labels (for example): <code>cat</code>, <code>dog</code>, <code>elephant</code>, <code>human</code>.
 New labels: <code>person</code> (added), <code>cat</code> (kept), <code>dog</code> (kept).</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum transform -t project_labels -- -l person -l cat -l dog
-</code></pre></div><h5 id="shapes_to_boxes"><code>shapes_to_boxes</code></h5>
-<p><a id="shapes_to_boxes-transform"></a></p>
+</code></pre></div><p><a id="shapes_to_boxes-transform"></a></p>
+<h5 id="shapes_to_boxes"><code>shapes_to_boxes</code></h5>
 <p>Converts spatial annotations (masks, polygons, polylines, points)
 to enclosing bounding boxes.</p>
 <p>Usage:</p>
@@ -3930,8 +3930,8 @@ Convert spatial annotations between each other</p>
 datum transform -t masks_to_polygons
 datum transform -t polygons_to_masks
 datum transform -t shapes_to_boxes
-</code></pre></div><h5 id="boxes_to_masks"><code>boxes_to_masks</code></h5>
-<p><a id="boxes_to_masks-transform"></a></p>
+</code></pre></div><p><a id="boxes_to_masks-transform"></a></p>
+<h5 id="boxes_to_masks"><code>boxes_to_masks</code></h5>
 <p>Converts bounding boxes to masks.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">boxes_to_masks <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -3939,8 +3939,8 @@ datum transform -t shapes_to_boxes
 <ul>
 <li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 </ul>
-<h5 id="polygons_to_masks"><code>polygons_to_masks</code></h5>
 <p><a id="polygons_to_masks-transform"></a></p>
+<h5 id="polygons_to_masks"><code>polygons_to_masks</code></h5>
 <p>Converts polygons to masks.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">polygons_to_masks <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -3948,8 +3948,8 @@ datum transform -t shapes_to_boxes
 <ul>
 <li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 </ul>
-<h5 id="masks_to_polygons"><code>masks_to_polygons</code></h5>
 <p><a id="masks_to_polygons-transform"></a></p>
+<h5 id="masks_to_polygons"><code>masks_to_polygons</code></h5>
 <p>Converts masks to polygons.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">masks_to_polygons <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -3957,8 +3957,8 @@ datum transform -t shapes_to_boxes
 <ul>
 <li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 </ul>
-<h5 id="anns_to_labels"><code>anns_to_labels</code></h5>
 <p><a id="anns_to_labels-transform"></a></p>
+<h5 id="anns_to_labels"><code>anns_to_labels</code></h5>
 <p>Collects all labels from annotations (of all types) and transforms
 them into a set of annotations of type <code>Label</code></p>
 <p>Usage:</p>
@@ -3967,8 +3967,8 @@ them into a set of annotations of type <code>Label</code></p>
 <ul>
 <li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 </ul>
-<h5 id="merge_instance_segments"><code>merge_instance_segments</code></h5>
 <p><a id="merge_instance_segments-transform"></a></p>
+<h5 id="merge_instance_segments"><code>merge_instance_segments</code></h5>
 <p>Replaces instance masks and, optionally, polygons with a single mask.
 A group of annotations with the same group id is considered an &ldquo;instance&rdquo;.
 The largest annotation in the group is considered the group &ldquo;head&rdquo;, so the
@@ -3980,8 +3980,8 @@ resulting mask takes properties from that annotation.</p>
 <li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 <li><code>--include-polygons</code> (flag) - Include polygons</li>
 </ul>
-<h5 id="crop_covered_segments"><code>crop_covered_segments</code></h5>
 <p><a id="crop_covered_segments-transform"></a></p>
+<h5 id="crop_covered_segments"><code>crop_covered_segments</code></h5>
 <p>Sorts polygons and masks (&ldquo;segments&rdquo;) according to <code>z_order</code>,
 crops covered areas of underlying segments. If a segment is split
 into several independent parts by the segments above, produces
@@ -3992,8 +3992,8 @@ the corresponding number of separate annotations joined into a group.</p>
 <ul>
 <li><code>-h</code>, <code>--help</code> (flag) - Show this help message and exit</li>
 </ul>
-<h5 id="bbox_value_decrement"><code>bbox_value_decrement</code></h5>
 <p><a id="bbox_value_decrement-transform"></a></p>
+<h5 id="bbox_value_decrement"><code>bbox_value_decrement</code></h5>
 <p>Subtracts one from the coordinates of bounding boxes</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">bbox_values_decrement <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -4018,11 +4018,11 @@ the corresponding number of separate annotations joined into a group.</p>
     
 	<h1 id="pg-10150a1a6326aa9e8f2020442e6da77d">5.22 - Utilities</h1>
     
-	<h3 id="split-video-into-frames">Split video into frames</h3>
-<p><a id="split-video"></a></p>
+	<p><a id="split-video"></a></p>
+<h3 id="split-video-into-frames">Split video into frames</h3>
 <p>Splits a video into separate frames and saves them in a directory.
 After the splitting, the images can be added into a project using
-the <a href="./sources/#source-import"><code>import</code> command</a> and the <code>image_dir</code> format.</p>
+the <a href="../sources/#source-import"><code>import</code> command</a> and the <code>image_dir</code> format.</p>
 <p>This command is useful for making a dataset from a video file.
 Unlike direct video reading during model training, which can produce
 different results if the system environment changes, this command
@@ -4376,8 +4376,8 @@ It must be put into a plugin directory:</p>
 <li><code>&lt;project_dir&gt;/.datumaro/plugins</code> for project-specific plugins</li>
 <li><code>&lt;datumaro_dir&gt;/plugins</code> for global plugins</li>
 </ul>
-<h3 id="built-in-plugins">Built-in plugins</h3>
 <p><a id="builtin-plugins"></a></p>
+<h3 id="built-in-plugins">Built-in plugins</h3>
 <p>Datumaro provides several builtin plugins. Plugins can have dependencies,
 which need to be installed separately.</p>
 <h4 id="tensorflow">TensorFlow</h4>

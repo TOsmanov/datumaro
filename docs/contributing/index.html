@@ -148,7 +148,7 @@ These components are only required for plugins and not installed by default:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.4c302fb9da6c68e6b9055a86a86caab0.json"
+  data-offline-search-index-json-src="../../offline-search-index.b92f5c42cd63a0ec31112003b6deae86.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -176,7 +176,7 @@ These components are only required for plugins and not installed by default:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.4c302fb9da6c68e6b9055a86a86caab0.json"
+  data-offline-search-index-json-src="../../offline-search-index.b92f5c42cd63a0ec31112003b6deae86.json"
   data-offline-search-base-href="../../"
   data-offline-search-max-results="10"
 >
@@ -530,8 +530,8 @@ No trailing whitespaces, at most 100 characters per line.</p>
 follow the style requirements. See the comment at the top of that file for more information.</p>
 <h2 id="environment">Environment</h2>
 <p>The recommended editor is VS Code with the Python language plugin.</p>
-<h2 id="testing">Testing</h2>
 <p><a id="testing"></a></p>
+<h2 id="testing">Testing</h2>
 <p>It is expected that all Datumaro functionality is covered and checked by
 unit tests. Tests are placed in the <code>tests/</code> directory. Additional
 pre-generated files for tests can be stored in the <code>tests/assets/</code> directory.
@@ -542,10 +542,10 @@ CLI tests are separated from the core tests, they are stored in the
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pytest -v
 </code></pre></div><p>or</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">python -m pytest -v
-</code></pre></div><h3 id="test-cases">Test cases</h3>
-<p><a id="Test_case_description"></a></p>
-<h3 id="test-marking">Test marking</h3>
+</code></pre></div><p><a id="Test_case_description"></a></p>
+<h3 id="test-cases">Test cases</h3>
 <p><a id="Test_marking"></a></p>
+<h3 id="test-marking">Test marking</h3>
 <p>For better integration with CI and requirements tracking,
 we use special annotations for tests.</p>
 <p>A test needs to linked with a requirement it is related to. To link a
@@ -599,8 +599,8 @@ The marking used for indication of different system components</p>
     <span style="color:#000;font-weight:bold">(</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">zeros</span><span style="color:#000;font-weight:bold">([</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">]),</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">),</span>
     <span style="color:#000;font-weight:bold">(</span><span style="color:#000">np</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">zeros</span><span style="color:#000;font-weight:bold">([</span><span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">]),</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">),</span>
 <span style="color:#000;font-weight:bold">])</span>
-</code></pre></div><h3 id="test-documentation">Test documentation</h3>
-<p><a id="TestDoc"></a></p>
+</code></pre></div><p><a id="TestDoc"></a></p>
+<h3 id="test-documentation">Test documentation</h3>
 <p>Tests are documented with docs strings. Test descriptions must contain
 the following: sections: <code>Description</code>, <code>Expected results</code> and <code>Steps</code>.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">test_can_convert_polygons_to_mask</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">):</span>

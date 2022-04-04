@@ -20,8 +20,8 @@
 <title>Sources | Dataset Management Framework</title>
 <meta name="description" content=""><meta property="og:title" content="Sources" />
 <meta property="og:description" content="These commands are specific for Data Sources. Read more about them here.
-Import Dataset 
-Datasets can be added to a Datumaro project with the import command, which adds a dataset link into the project and downloads (or copies) the dataset. If you need to add a dataset already copied into the project, use the add command.
+
+Import Dataset Datasets can be added to a Datumaro project with the import command, which adds a dataset link into the project and downloads (or copies) the dataset. If you need to add a dataset already copied into the project, use the add command.
 Dataset format readers can provide some additional import options. To pass such options, use the -- separator after the main command arguments." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/user-manual/command-reference/sources/" /><meta property="article:section" content="docs" />
@@ -30,16 +30,16 @@ Dataset format readers can provide some additional import options. To pass such 
 
 <meta itemprop="name" content="Sources">
 <meta itemprop="description" content="These commands are specific for Data Sources. Read more about them here.
-Import Dataset 
-Datasets can be added to a Datumaro project with the import command, which adds a dataset link into the project and downloads (or copies) the dataset. If you need to add a dataset already copied into the project, use the add command.
+
+Import Dataset Datasets can be added to a Datumaro project with the import command, which adds a dataset link into the project and downloads (or copies) the dataset. If you need to add a dataset already copied into the project, use the add command.
 Dataset format readers can provide some additional import options. To pass such options, use the -- separator after the main command arguments.">
 
 <meta itemprop="wordCount" content="949">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Sources"/>
 <meta name="twitter:description" content="These commands are specific for Data Sources. Read more about them here.
-Import Dataset 
-Datasets can be added to a Datumaro project with the import command, which adds a dataset link into the project and downloads (or copies) the dataset. If you need to add a dataset already copied into the project, use the add command.
+
+Import Dataset Datasets can be added to a Datumaro project with the import command, which adds a dataset link into the project and downloads (or copies) the dataset. If you need to add a dataset already copied into the project, use the add command.
 Dataset format readers can provide some additional import options. To pass such options, use the -- separator after the main command arguments."/>
 
 
@@ -142,7 +142,7 @@ Dataset format readers can provide some additional import options. To pass such 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.4c302fb9da6c68e6b9055a86a86caab0.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.b92f5c42cd63a0ec31112003b6deae86.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -170,7 +170,7 @@ Dataset format readers can provide some additional import options. To pass such 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.4c302fb9da6c68e6b9055a86a86caab0.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.b92f5c42cd63a0ec31112003b6deae86.json"
   data-offline-search-base-href="../../../../"
   data-offline-search-max-results="10"
 >
@@ -492,8 +492,8 @@ Dataset format readers can provide some additional import options. To pass such 
 		
 	</header>    
 	<p>These commands are specific for Data Sources. Read more about them <a href="../../../../docs/user-manual/how_to_use_datumaro#data-sources">here</a>.</p>
-<h3 id="import-dataset">Import Dataset</h3>
 <p><a id="source-import"></a></p>
+<h3 id="import-dataset">Import Dataset</h3>
 <p>Datasets can be added to a Datumaro project with the <code>import</code> command,
 which adds a dataset link into the project and downloads (or copies)
 the dataset. If you need to add a dataset already copied into the project,
@@ -546,8 +546,8 @@ datum import -f voc_detection -r custom_subset_dir/default.txt &lt;path/to/voc&g
 datum import -f datumaro &lt;path/to/datumaro/default.json&gt;
 datum import -f image_dir &lt;path/to/images/dir&gt;
 datum <span style="color:#204a87">export</span> -f tf_detection_api -- --save-images
-</code></pre></div><h3 id="add-dataset">Add Dataset</h3>
-<p><a id="source-add"></a></p>
+</code></pre></div><p><a id="source-add"></a></p>
+<h3 id="add-dataset">Add Dataset</h3>
 <p>Existing datasets can be added to a Datumaro project with the <code>add</code> command.
 The command adds a project-local directory as a data source in the project.
 Unlike the <a href="#source-import"><code>import</code></a>
@@ -602,8 +602,8 @@ datum <span style="color:#204a87">export</span> -f yolo -- --save-images
 </code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum create -o proj/
 mv ~/my_coco/ proj/my_coco/ <span style="color:#8f5902;font-style:italic"># move the dataset into the project directory</span>
 datum add -p proj/ -f coco proj/my_coco/
-</code></pre></div><h3 id="remove-datasets">Remove Datasets</h3>
-<p><a id="source-remove"></a></p>
+</code></pre></div><p><a id="source-remove"></a></p>
+<h3 id="remove-datasets">Remove Datasets</h3>
 <p>To remove a data source from a project, use the <code>remove</code> command.</p>
 <p>Usage:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">datum remove <span style="color:#ce5c00;font-weight:bold">[</span>-h<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--force<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>--keep-data<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>-p PROJECT_DIR<span style="color:#ce5c00;font-weight:bold">]</span> name <span style="color:#ce5c00;font-weight:bold">[</span>name ...<span style="color:#ce5c00;font-weight:bold">]</span>
